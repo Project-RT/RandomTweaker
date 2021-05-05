@@ -1,5 +1,5 @@
 #from hdsutils
-name: ICTTweaker
+name: ICRTweaker
 
 on:
   push:
