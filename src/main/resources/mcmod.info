@@ -1,0 +1,16 @@
+[
+{
+  "modid": "icrtweaker",
+  "name": "ICRTweaker",
+  "description": "for IsolatedCrystalRemaker ModPack",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ikexing"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
