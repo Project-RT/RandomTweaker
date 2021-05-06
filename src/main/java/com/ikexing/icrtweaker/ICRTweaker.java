@@ -1,8 +1,11 @@
 package com.ikexing.icrtweaker;
 
+import com.ikexing.icrtweaker.api.utils.ICRTweakerGlobal;
+import crafttweaker.api.player.IPlayer;
+import crafttweaker.zenscript.GlobalRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
@@ -15,13 +18,12 @@ public class ICRTweaker {
     private static Logger logger;
 
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
+    public static void onPreInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
     }
 
     @EventHandler
-    public void init(FMLInitializationEvent event) {
-
+    public static void onConstruct(FMLConstructionEvent event) {
+        GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(ICRTweakerGlobal.class, "giverDreamJournl", IPlayer.class));
     }
-
 }
