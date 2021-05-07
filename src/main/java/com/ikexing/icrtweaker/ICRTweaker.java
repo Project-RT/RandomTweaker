@@ -9,11 +9,12 @@ import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = ICRTweaker.MODID, name = ICRTweaker.NAME, version = ICRTweaker.VERSION)
+@Mod(modid = ICRTweaker.MODID, name = ICRTweaker.NAME, version = ICRTweaker.VERSION, dependencies = ICRTweaker.DESPENDENCIES)
 public class ICRTweaker {
     public static final String MODID = "icrtweaker";
     public static final String NAME = "ICRTweaker";
     public static final String VERSION = "1.0.0";
+    public static final String DESPENDENCIES = "required-after:crafttweaker;required-after:astralsorcery;;required-after:thaumcraft";
 
     private static Logger logger;
 
