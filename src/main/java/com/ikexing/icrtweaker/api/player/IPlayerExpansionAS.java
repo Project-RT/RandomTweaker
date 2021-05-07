@@ -10,7 +10,7 @@ import stanhebben.zenscript.annotations.*;
 
 @ZenRegister
 @ZenExpansion("crafttweaker.player.IPlayer")
-public class PlayerExpansionAS {
+public class IPlayerExpansionAS {
     @ZenMethod
     public static int getPerkLevel(IPlayer player) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);

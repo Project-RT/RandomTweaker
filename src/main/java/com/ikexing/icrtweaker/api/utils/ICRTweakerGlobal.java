@@ -21,16 +21,10 @@ public class ICRTweakerGlobal {
     }
 
     @ZenMethod
-    public static boolean giverDreamJournl(IPlayer player) {
+    public static void giverDreamJournl(IPlayer player) {
         EntityPlayer player1 = CraftTweakerMC.getPlayer(player);
-
-        IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(player1);
         giverDreamJournl(player1);
         player1.sendMessage(new TextComponentString(TextFormatting.DARK_PURPLE + I18n.translateToLocal("got.dream")));
-        if (knowledge.isResearchKnown("!gotdream"))
-            return false;
-        else
-            return true;
     }
 
     private static void giverDreamJournl(EntityPlayer player) {
