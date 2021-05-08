@@ -13,17 +13,17 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenClass("mods.icrtweaker.IMouse")
 public class IMouse {
     @ZenMethod
-    public static IVector3d getMouseHit(){
+    public static IVector3d getMouseHit() {
         return CraftTweakerMC.getIVector3d(Minecraft.getMinecraft().objectMouseOver.hitVec);
     }
 
     @ZenMethod
-    public static IBlockPos getMouseHitBlock(){
+    public static IBlockPos getMouseHitBlock() {
         return CraftTweakerMC.getIBlockPos(Minecraft.getMinecraft().objectMouseOver.getBlockPos());
     }
 
     @ZenMethod
-    public static IEntity getMouseHitEntity(){
+    public static IEntity getMouseHitEntity() {
         return CraftTweakerMC.getIEntity(Minecraft.getMinecraft().objectMouseOver.entityHit);
     }
 }

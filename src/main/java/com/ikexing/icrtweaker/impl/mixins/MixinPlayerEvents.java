@@ -10,7 +10,7 @@ import thaumcraft.common.lib.events.PlayerEvents;
 @Mixin(value = PlayerEvents.class, remap = false)
 public class MixinPlayerEvents {
     @Inject(method = "wakeUp", at = @At(value = "HEAD", target = "Lthaumcraft/common/lib/events/PlayerEvents;wakeUp(Lnet/minecraftforge/event/entity/player/PlayerWakeUpEvent;)V"), cancellable = true)
-    private static void MixinWakeUp(PlayerWakeUpEvent event, CallbackInfo ci){
+    private static void MixinWakeUp(PlayerWakeUpEvent event, CallbackInfo ci) {
         ci.cancel();
     }
 }

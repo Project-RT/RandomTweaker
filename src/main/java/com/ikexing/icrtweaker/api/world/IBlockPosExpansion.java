@@ -24,10 +24,10 @@ public class IBlockPosExpansion {
     }
 
     @ZenMethod
-    public static IBlockPos[] getAllInBox(IBlockPos pos, int x1, int y1, int z1, int x2, int y2, int z2){
+    public static IBlockPos[] getAllInBox(IBlockPos pos, int x1, int y1, int z1, int x2, int y2, int z2) {
         Iterable<BlockPos> allInBox = BlockPos.getAllInBox(x1, y1, z1, x2, y2, z2);
         List<IBlockPos> list = Lists.newArrayList();
-        allInBox.forEach(single ->{
+        allInBox.forEach(single -> {
             list.add(CraftTweakerMC.getIBlockPos(single));
         });
         return list.toArray(new IBlockPos[0]);
@@ -37,69 +37,69 @@ public class IBlockPosExpansion {
     public static IBlockPos[] getAllInBox(IBlockPos pos, IBlockPos from, IBlockPos to) {
         Iterable<BlockPos> allInBox = BlockPos.getAllInBox(CraftTweakerMC.getBlockPos(from), CraftTweakerMC.getBlockPos(to));
         List<IBlockPos> list = Lists.newArrayList();
-        allInBox.forEach(single ->{
+        allInBox.forEach(single -> {
             list.add(CraftTweakerMC.getIBlockPos(single));
         });
         return list.toArray(new IBlockPos[0]);
     }
 
     @ZenMethod
-    public static IBlockPos up(IBlockPos pos){
+    public static IBlockPos up(IBlockPos pos) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).up());
     }
 
     @ZenMethod
-    public static IBlockPos up(IBlockPos pos, int n){
+    public static IBlockPos up(IBlockPos pos, int n) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).up(n));
     }
 
     @ZenMethod
-    public static IBlockPos down(IBlockPos pos){
+    public static IBlockPos down(IBlockPos pos) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).down());
     }
 
     @ZenMethod
-    public static IBlockPos down(IBlockPos pos, int n){
+    public static IBlockPos down(IBlockPos pos, int n) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).down(n));
     }
 
     @ZenMethod
-    public static IBlockPos north(IBlockPos pos){
+    public static IBlockPos north(IBlockPos pos) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).north());
     }
 
     @ZenMethod
-    public static IBlockPos north(IBlockPos pos, int n){
+    public static IBlockPos north(IBlockPos pos, int n) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).north(n));
     }
 
     @ZenMethod
-    public static IBlockPos south(IBlockPos pos){
+    public static IBlockPos south(IBlockPos pos) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).south());
     }
 
     @ZenMethod
-    public static IBlockPos south(IBlockPos pos, int n){
+    public static IBlockPos south(IBlockPos pos, int n) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).south(n));
     }
 
     @ZenMethod
-    public static IBlockPos west(IBlockPos pos){
+    public static IBlockPos west(IBlockPos pos) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).west());
     }
 
     @ZenMethod
-    public static IBlockPos west(IBlockPos pos, int n){
+    public static IBlockPos west(IBlockPos pos, int n) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).west(n));
     }
 
     @ZenMethod
-    public static IBlockPos east(IBlockPos pos){
+    public static IBlockPos east(IBlockPos pos) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).east());
     }
 
     @ZenMethod
-    public static IBlockPos east(IBlockPos pos, int n){
+    public static IBlockPos east(IBlockPos pos, int n) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).east(n));
     }
 }
