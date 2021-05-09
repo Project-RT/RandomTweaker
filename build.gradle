@@ -30,14 +30,16 @@ minecraft {
 dependencies {
     def mc_version = "1.12"
 
+
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.646"
+    deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
 
-    compile "mezz.jei:jei_1.12.2:4.16.1.302"
-    compile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.646"
-    compile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
-
+    runtime "mezz.jei:jei_1.12.2:4.16.1.302"
     runtime "curse.maven:Baubles-227083:2518667"
+    runtime "curse.maven:zenutils-401178:3295521"
+    runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
 
     provided('org.spongepowered:mixin:0.8') {
         exclude module: 'guava'
@@ -79,6 +81,10 @@ repositories {
         name = "CurseMaven"
         url = "https://www.cursemaven.com"
     }
+    maven {
+        name = "CoFH Maven"
+        url = "http://maven.covers1624.net"
+    }
 }
 
 jar {
@@ -91,7 +97,7 @@ jar {
 }
 
 mixin {
-    add sourceSets.main, "mixins.solitudinem.refmap.json"
+    add sourceSets.main, "mixins.icrtweaker.refmap.json"
 }
 
 repositories.each {
