@@ -8,6 +8,7 @@ import hellfirepvp.astralsorcery.common.constellation.IMajorConstellation;
 import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.fml.relauncher.Side;
 import stanhebben.zenscript.annotations.*;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,19 +17,20 @@ import java.lang.reflect.Method;
 @ZenRegister
 @ZenExpansion("crafttweaker.player.IPlayer")
 public class IPlayerExpansionAS {
-    @ZenGetter("PerkPercentToNextLevel")
+
+    @ZenMethod
     public static float getPerkPercentToNextLevel(IPlayer player) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         return ResearchManager.getProgress(mcPlayer).getPercentToNextLevel(mcPlayer);
     }
 
-    @ZenGetter("PerkLevel")
+    @ZenMethod
     public static int getPerkLevel(IPlayer player) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         return ResearchManager.getProgress(mcPlayer).getPerkLevel(mcPlayer);
     }
 
-    @ZenGetter("PerkExp")
+    @ZenMethod
     public static double getPerkExp(IPlayer player) {
         return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getPerkExp();
     }
@@ -45,43 +47,45 @@ public class IPlayerExpansionAS {
             Class<? extends PlayerProgress> progClass = prog.getClass();
             Method setExp = progClass.getMethod("modifyExp", double.class, EntityPlayer.class);
             setExp.setAccessible(true);
-            setExp.invoke(progClass, exp, mcPlayer);
+            setExp.invoke(prog, exp, mcPlayer);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             CraftTweakerAPI.logError("Maybe you need to report this error", e);
         }
         return true;
     }
 
-    @ZenSetter("PerkExp")
+    @ZenMethod
     public static boolean setPerkExp(IPlayer player, double exp) {
+
         PlayerProgress prog = ResearchManager.getProgress(CraftTweakerMC.getPlayer(player));
+
         if (IPlayerExpansionAS.getAttunedConstellation(player) == null) {
             CraftTweakerAPI.logInfo("This Player is not constellations");
             return false;
         }
         try {
             Class<? extends PlayerProgress> progClass = prog.getClass();
-            Method setExp = progClass.getMethod("setExp", double.class);
+            Method setExp = progClass.getDeclaredMethod("setExp", double.class);
             setExp.setAccessible(true);
-            setExp.invoke(progClass, exp);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            setExp.invoke(prog, exp);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException  e) {
             CraftTweakerAPI.logError("Maybe you need to report this error", e);
         }
         return true;
     }
 
-    @ZenGetter("AttunedConstellation")
+    @ZenMethod
     public static String getAttunedConstellation(IPlayer player) {
         IMajorConstellation attunedConstellation = ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getAttunedConstellation();
         return attunedConstellation == null ? null : attunedConstellation.getSimpleName();
     }
 
-    @ZenGetter("KnownConstellations")
+    @ZenMethod
     public static String[] getKnownConstellations(IPlayer player) {
         return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getKnownConstellations().toArray(new String[0]);
     }
 
-    @ZenGetter("SeenConstellations")
+    @ZenMethod
     public static String[] getSeenConstellations(IPlayer player) {
         return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getSeenConstellations().toArray(new String[0]);
     }
