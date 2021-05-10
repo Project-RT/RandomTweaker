@@ -2,6 +2,7 @@ package com.ikexing.icrtweaker;
 
 import com.ikexing.icrtweaker.api.utils.ICRTweakerGlobal;
 import crafttweaker.api.player.IPlayer;
+import crafttweaker.api.world.IBlockPos;
 import crafttweaker.zenscript.GlobalRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -26,5 +27,6 @@ public class ICRTweaker {
     @EventHandler
     public static void onConstruct(FMLConstructionEvent event) {
         GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(ICRTweakerGlobal.class, "giverDreamJournl", IPlayer.class));
+        GlobalRegistry.registerGlobal("getAllInBox", GlobalRegistry.getStaticFunction(ICRTweakerGlobal.class, "getAllInBox", IBlockPos.class, IBlockPos.class));
     }
 }

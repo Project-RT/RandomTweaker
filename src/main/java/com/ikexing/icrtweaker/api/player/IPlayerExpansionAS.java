@@ -8,8 +8,8 @@ import hellfirepvp.astralsorcery.common.constellation.IMajorConstellation;
 import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraftforge.fml.relauncher.Side;
-import stanhebben.zenscript.annotations.*;
+import stanhebben.zenscript.annotations.ZenExpansion;
+import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -68,7 +68,7 @@ public class IPlayerExpansionAS {
             Method setExp = progClass.getDeclaredMethod("setExp", double.class);
             setExp.setAccessible(true);
             setExp.invoke(prog, exp);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException  e) {
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             CraftTweakerAPI.logError("Maybe you need to report this error", e);
         }
         return true;

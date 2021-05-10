@@ -1,14 +1,10 @@
 package com.ikexing.icrtweaker.api.world;
 
-import com.google.common.collect.Lists;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
-import net.minecraft.util.math.BlockPos;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
-
-import java.util.List;
 
 @ZenRegister
 @ZenExpansion("crafttweaker.world.IBlockPos")
@@ -21,26 +17,6 @@ public class IBlockPosExpansion {
     @ZenMethod
     public static IBlockPos add(IBlockPos pos, int x, int y, int z) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).add(x, y, z));
-    }
-
-    @ZenMethod
-    public static IBlockPos[] getAllInBox(IBlockPos pos, int x1, int y1, int z1, int x2, int y2, int z2) {
-        Iterable<BlockPos> allInBox = BlockPos.getAllInBox(x1, y1, z1, x2, y2, z2);
-        List<IBlockPos> list = Lists.newArrayList();
-        allInBox.forEach(single -> {
-            list.add(CraftTweakerMC.getIBlockPos(single));
-        });
-        return list.toArray(new IBlockPos[0]);
-    }
-
-    @ZenMethod
-    public static IBlockPos[] getAllInBox(IBlockPos pos, IBlockPos from, IBlockPos to) {
-        Iterable<BlockPos> allInBox = BlockPos.getAllInBox(CraftTweakerMC.getBlockPos(from), CraftTweakerMC.getBlockPos(to));
-        List<IBlockPos> list = Lists.newArrayList();
-        allInBox.forEach(single -> {
-            list.add(CraftTweakerMC.getIBlockPos(single));
-        });
-        return list.toArray(new IBlockPos[0]);
     }
 
     @ZenMethod
