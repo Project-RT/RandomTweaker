@@ -1,6 +1,7 @@
 package com.ikexing.icrtweaker.api.player;
 
 import crafttweaker.CraftTweakerAPI;
+import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
@@ -15,6 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @ZenRegister
+@ModOnly("astralsorcery")
 @ZenExpansion("crafttweaker.player.IPlayer")
 public class IPlayerExpansionAS {
 
