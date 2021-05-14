@@ -11,6 +11,6 @@ import net.minecraftforge.common.config.Config;
 @Config(modid = RandomTweaker.MODID)
 public class RTConfig {
     @Config.RequiresMcRestart
-    @Config.Comment("If true, The original dreamjournal will be No longer available.")
+    @Config.Comment("If true, The original dreamjournal will be no longer available.")
     public static boolean DreamJournal = false;
 }
