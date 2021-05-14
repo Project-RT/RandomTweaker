@@ -9,6 +9,9 @@ import net.minecraft.client.Minecraft;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+/**
+ * @author ikexing
+ */
 @ZenRegister
 @ZenClass("mods.icrtweaker.IMouse")
 public class IMouse {

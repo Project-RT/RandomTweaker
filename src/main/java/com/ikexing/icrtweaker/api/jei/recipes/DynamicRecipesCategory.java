@@ -9,6 +9,9 @@ import net.minecraft.client.Minecraft;
 import javax.annotation.Nullable;
 import java.util.List;
 
+/**
+ * @author ikexing
+ */
 public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWrapper> {
     @Override
     public String getUid() {

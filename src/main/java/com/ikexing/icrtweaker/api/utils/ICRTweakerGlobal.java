@@ -20,6 +20,9 @@ import thaumcraft.common.lib.utils.InventoryUtils;
 
 import java.util.List;
 
+/**
+ * @author ikexing
+ */
 @ZenClass("mods.icrtweaker.ICRTweaker")
 public class ICRTweakerGlobal {
     public ICRTweakerGlobal() {

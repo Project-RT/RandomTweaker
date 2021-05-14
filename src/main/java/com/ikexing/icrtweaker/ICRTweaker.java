@@ -10,6 +10,9 @@ import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * @author ikexing
+ */
 @Mod(modid = ICRTweaker.MODID, name = ICRTweaker.NAME, version = ICRTweaker.VERSION, dependencies = ICRTweaker.DESPENDENCIES)
 public class ICRTweaker {
     public static final String MODID = "icrtweaker";

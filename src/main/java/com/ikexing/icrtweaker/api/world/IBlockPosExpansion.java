@@ -6,6 +6,9 @@ import crafttweaker.api.world.IBlockPos;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+/**
+ * @author ikexing
+ */
 @ZenRegister
 @ZenExpansion("crafttweaker.world.IBlockPos")
 public class IBlockPosExpansion {

@@ -6,6 +6,9 @@ import net.minecraft.client.Minecraft;
 
 import java.util.List;
 
+/**
+ * @author ikexing
+ */
 public class DynamicRecipesWrapper implements IRecipeWrapper {
     @Override
     public void getIngredients(IIngredients ingredients) {

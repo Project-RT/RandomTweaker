@@ -13,6 +13,9 @@ import java.net.URL;
 import java.security.CodeSource;
 import java.util.Map;
 
+/**
+ * @author ikexing
+ */
 @IFMLLoadingPlugin.Name("icrtweaker")
 @IFMLLoadingPlugin.MCVersion("1.12.2")
 public class ICRTweakerPlugin implements IFMLLoadingPlugin {

@@ -15,6 +15,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * @author ikexing
+ */
 @ZenRegister
 @ModOnly("astralsorcery")
 @ZenExpansion("crafttweaker.player.IPlayer")
