@@ -1,4 +1,4 @@
-package com.ikexing.icrtweaker.api.mouse;
+package com.ikexing.randomtweaker.api.mouse;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.entity.IEntity;

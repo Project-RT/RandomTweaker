@@ -1,4 +1,4 @@
-package com.ikexing.icrtweaker.impl.init;
+package com.ikexing.randomtweaker.impl.init;
 
 import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
@@ -18,8 +18,8 @@ import java.util.Map;
  */
 @IFMLLoadingPlugin.Name("icrtweaker")
 @IFMLLoadingPlugin.MCVersion("1.12.2")
-public class ICRTweakerPlugin implements IFMLLoadingPlugin {
-    public ICRTweakerPlugin() {
+public class RTPlugin implements IFMLLoadingPlugin {
+    public RTPlugin() {
         MixinBootstrap.init();
         Mixins.addConfiguration("mixins.icrtweaker.json");
         CodeSource codeSource = this.getClass().getProtectionDomain().getCodeSource();

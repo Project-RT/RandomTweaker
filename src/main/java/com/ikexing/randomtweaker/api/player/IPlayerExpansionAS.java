@@ -1,4 +1,4 @@
-package com.ikexing.icrtweaker.api.player;
+package com.ikexing.randomtweaker.api.player;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;

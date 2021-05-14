@@ -1,4 +1,4 @@
-package com.ikexing.icrtweaker.api.world;
+package com.ikexing.randomtweaker.api.world;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;

@@ -1,4 +1,4 @@
-package com.ikexing.icrtweaker.api.utils;
+package com.ikexing.randomtweaker.api.utils;
 
 import com.google.common.collect.Lists;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -19,13 +19,14 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.lib.utils.InventoryUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author ikexing
  */
 @ZenClass("mods.icrtweaker.ICRTweaker")
-public class ICRTweakerGlobal {
-    public ICRTweakerGlobal() {
+public class RTGlobal {
+    public RTGlobal() {
     }
 
     @ZenMethod
@@ -40,7 +41,7 @@ public class ICRTweakerGlobal {
         knowledge.addResearch("!gotdream");
         knowledge.sync((EntityPlayerMP) player);
         ItemStack book = ConfigItems.startBook.copy();
-        book.getTagCompound().setString("author", player.getName());
+        Objects.requireNonNull(book.getTagCompound()).setString("author", player.getName());
         if (!player.inventory.addItemStackToInventory(book)) {
             InventoryUtils.dropItemAtEntity(player.world, book, player);
         }
