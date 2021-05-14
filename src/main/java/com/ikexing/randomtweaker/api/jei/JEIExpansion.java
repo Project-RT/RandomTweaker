@@ -12,7 +12,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenExpansion("mods.jei.JEI")
 public class JEIExpansion {
     @ZenMethod
-    public static JEIRecipe create(int uid, String localizedname) {
+    public static JEIRecipe create(String uid, String localizedname) {
         return new JEIRecipe(uid, localizedname);
     }
 }

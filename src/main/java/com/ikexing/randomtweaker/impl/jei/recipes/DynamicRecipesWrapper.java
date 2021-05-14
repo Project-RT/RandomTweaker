@@ -3,6 +3,7 @@ package com.ikexing.randomtweaker.impl.jei.recipes;
 import com.ikexing.randomtweaker.impl.jei.JEIRecipe.FontInfo;
 import com.ikexing.randomtweaker.impl.jei.JEIRecipe.Input;
 import com.ikexing.randomtweaker.impl.jei.JEIRecipe.Output;
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -32,19 +33,20 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
 
     @Override
     public void getIngredients(IIngredients ingredients) {
+
         for (Input input : inputs) {
             if ("item".equals(input.type)) {
-                ingredients.setInput(VanillaTypes.ITEM, input.item);
+                ingredients.setInput(VanillaTypes.ITEM, CraftTweakerMC.getItemStack(input.item));
             } else {
-                ingredients.setInput(VanillaTypes.FLUID, input.fluid);
+                ingredients.setInput(VanillaTypes.FLUID, CraftTweakerMC.getLiquidStack(input.fluid));
             }
         }
 
         for (Output output : outputs) {
             if ("item".equals(output.type)) {
-                ingredients.setInput(VanillaTypes.ITEM, output.item);
+                ingredients.setOutput(VanillaTypes.ITEM, CraftTweakerMC.getItemStack(output.item));
             } else {
-                ingredients.setInput(VanillaTypes.FLUID, output.fluid);
+                ingredients.setOutput(VanillaTypes.FLUID, CraftTweakerMC.getLiquidStack(output.fluid));
             }
         }
     }

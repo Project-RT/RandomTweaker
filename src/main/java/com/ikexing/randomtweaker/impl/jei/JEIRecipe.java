@@ -5,10 +5,12 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.ZenProperty;
 
 import java.util.List;
 
@@ -18,27 +20,65 @@ import java.util.List;
 @ZenRegister
 @ZenClass("mods.icrtweaker.JEIRecipes")
 public class JEIRecipe {
-    private int uid;
-    private String localizedname;
+    private final String uid;
+    private final String title;
 
+    @ZenProperty
+    private String modid = RandomTweaker.MODID;
+    @ZenProperty
+    private IItemStack icon = CraftTweakerMC.getIItemStack(new ItemStack(Blocks.BEDROCK));
+    @ZenProperty
     private List<ItemStack> recipeCatalysts;
+    @ZenProperty
     private List<FontInfo> fontInfos;
+    @ZenProperty
     private List<Input> inputs;
+    @ZenProperty
     private List<Output> outputs;
 
-    public JEIRecipe(int uid, String localizedname) {
+    public JEIRecipe(String uid, String localizedname) {
         this.uid = uid;
-        this.localizedname = localizedname;
+        this.title = I18n.format(localizedname);
     }
 
     @ZenMethod
-    public List<ItemStack> getIcons() {
+    public String getModid() {
+        return modid;
+    }
+
+    @ZenMethod
+    public void setModid(String modid) {
+        this.modid = modid;
+    }
+
+    @ZenMethod
+    public IItemStack getIcon() {
+        return icon;
+    }
+
+    @ZenMethod
+    public void setIcon(IItemStack icon) {
+        this.icon = icon;
+    }
+
+    @ZenMethod
+    public List<ItemStack> getRecipeCatalysts() {
         return recipeCatalysts;
     }
 
     @ZenMethod
-    public List<FontInfo> getFontInfo() {
+    public void setRecipeCatalysts(List<ItemStack> recipeCatalysts) {
+        this.recipeCatalysts = recipeCatalysts;
+    }
+
+    @ZenMethod
+    public List<FontInfo> getFontInfos() {
         return fontInfos;
+    }
+
+    @ZenMethod
+    public void setFontInfos(List<FontInfo> fontInfos) {
+        this.fontInfos = fontInfos;
     }
 
     @ZenMethod
@@ -47,8 +87,18 @@ public class JEIRecipe {
     }
 
     @ZenMethod
+    public void setInputs(List<Input> inputs) {
+        this.inputs = inputs;
+    }
+
+    @ZenMethod
     public List<Output> getOutputs() {
         return outputs;
+    }
+
+    @ZenMethod
+    public void setOutputs(List<Output> outputs) {
+        this.outputs = outputs;
     }
 
     @ZenMethod
@@ -63,27 +113,35 @@ public class JEIRecipe {
 
     @ZenMethod
     public void addInputItem(String type, int xPosition, int yPosition, IItemStack item) {
-        this.inputs.add(new Input(type, xPosition, yPosition, CraftTweakerMC.getItemStack(item)));
+        this.inputs.add(new Input(type, xPosition, yPosition, item));
     }
 
     @ZenMethod
     public void addInputFluid(String type, int xPosition, int yPosition, ILiquidStack fluid) {
-        this.inputs.add(new Input(type, xPosition, yPosition, CraftTweakerMC.getLiquidStack(fluid)));
+        this.inputs.add(new Input(type, xPosition, yPosition, fluid));
     }
 
     @ZenMethod
     public void addOutputItem(String type, int xPosition, int yPosition, IItemStack item) {
-        this.outputs.add(new Output(type, xPosition, yPosition, CraftTweakerMC.getItemStack(item)));
+        this.outputs.add(new Output(type, xPosition, yPosition, item));
     }
 
     @ZenMethod
     public void addOutputFluid(String type, int xPosition, int yPosition, ILiquidStack fluid) {
-        this.outputs.add(new Output(type, xPosition, yPosition, CraftTweakerMC.getLiquidStack(fluid)));
+        this.outputs.add(new Output(type, xPosition, yPosition, fluid));
     }
 
     @ZenMethod
     public void register() {
         RandomTweaker.JEIRecipes.add(this);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getUid() {
+        return uid;
     }
 
     public class FontInfo {
@@ -107,17 +165,17 @@ public class JEIRecipe {
         public String type;
         public int xPosition;
         public int yPosition;
-        public FluidStack fluid = null;
-        public ItemStack item = null;
+        public ILiquidStack fluid = null;
+        public IItemStack item = null;
 
-        public Input(String type, int xPosition, int yPosition, ItemStack item) {
+        public Input(String type, int xPosition, int yPosition, IItemStack item) {
             this.type = type;
             this.xPosition = xPosition;
             this.yPosition = yPosition;
             this.item = item;
         }
 
-        public Input(String type, int xPosition, int yPosition, FluidStack fluid) {
+        public Input(String type, int xPosition, int yPosition, ILiquidStack fluid) {
             this.type = type;
             this.xPosition = xPosition;
             this.yPosition = yPosition;
@@ -129,17 +187,17 @@ public class JEIRecipe {
         public String type;
         public int xPosition;
         public int yPosition;
-        public FluidStack fluid = null;
-        public ItemStack item = null;
+        public ILiquidStack fluid = null;
+        public IItemStack item = null;
 
-        public Output(String type, int xPosition, int yPosition, ItemStack item) {
+        public Output(String type, int xPosition, int yPosition, IItemStack item) {
             this.type = type;
             this.xPosition = xPosition;
             this.yPosition = yPosition;
             this.item = item;
         }
 
-        public Output(String type, int xPosition, int yPosition, FluidStack fluid) {
+        public Output(String type, int xPosition, int yPosition, ILiquidStack fluid) {
             this.type = type;
             this.xPosition = xPosition;
             this.yPosition = yPosition;
