@@ -1,8 +1,8 @@
 [
 {
-  "modid": "icrtweaker",
-  "name": "ICRTweaker",
-  "description": "for IsolatedCrystalRemaker ModPack",
+  "modid": "randomtweaker",
+  "name": "RandomTweaker",
+  "description": "Random Tweaker",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
