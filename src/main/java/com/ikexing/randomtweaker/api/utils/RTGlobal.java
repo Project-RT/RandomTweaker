@@ -24,7 +24,7 @@ import java.util.Objects;
 /**
  * @author ikexing
  */
-@ZenClass("mods.icrtweaker.ICRTweaker")
+@ZenClass("mods.randomtweaker.ICRTweaker")
 public class RTGlobal {
     public RTGlobal() {
     }

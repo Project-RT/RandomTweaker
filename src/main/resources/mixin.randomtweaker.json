@@ -4,7 +4,7 @@
   "package": "com.ikexing.randomtweaker.impl.mixins",
   "minVersion": "0.7.11",
   "setSourceFile": true,
-  "refmap": "mixins.icrtweaker.refmap.json",
+  "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
   ]
 }

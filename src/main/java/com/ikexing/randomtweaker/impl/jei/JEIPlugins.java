@@ -1,6 +1,7 @@
 package com.ikexing.randomtweaker.impl.jei;
 
 import com.ikexing.randomtweaker.RandomTweaker;
+import com.ikexing.randomtweaker.api.jei.JEIRecipe;
 import com.ikexing.randomtweaker.impl.jei.recipes.DynamicRecipesCategory;
 import com.ikexing.randomtweaker.impl.jei.recipes.DynamicRecipesWrapper;
 import mezz.jei.Internal;

@@ -1,8 +1,8 @@
 package com.ikexing.randomtweaker.impl.jei.recipes;
 
-import com.ikexing.randomtweaker.impl.jei.JEIRecipe.FontInfo;
-import com.ikexing.randomtweaker.impl.jei.JEIRecipe.Input;
-import com.ikexing.randomtweaker.impl.jei.JEIRecipe.Output;
+import com.ikexing.randomtweaker.api.jei.JEIRecipe.FontInfo;
+import com.ikexing.randomtweaker.api.jei.JEIRecipe.Input;
+import com.ikexing.randomtweaker.api.jei.JEIRecipe.Output;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;

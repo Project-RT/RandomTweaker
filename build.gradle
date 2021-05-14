@@ -97,7 +97,7 @@ jar {
 }
 
 mixin {
-    add sourceSets.main, "mixins.icrtweaker.refmap.json"
+    add sourceSets.main, "mixins.randomtweaker.refmap.json"
 }
 
 repositories.each {

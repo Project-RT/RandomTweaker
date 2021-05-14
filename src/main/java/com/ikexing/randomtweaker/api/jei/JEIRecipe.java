@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.impl.jei;
+package com.ikexing.randomtweaker.api.jei;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import crafttweaker.annotations.ZenRegister;
@@ -18,7 +18,7 @@ import java.util.List;
  * @author ikexing
  */
 @ZenRegister
-@ZenClass("mods.icrtweaker.JEIRecipes")
+@ZenClass("mods.randomtweaker.JEIRecipes")
 public class JEIRecipe {
     private final String uid;
     private final String title;

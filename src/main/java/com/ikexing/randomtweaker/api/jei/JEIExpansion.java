@@ -1,6 +1,5 @@
 package com.ikexing.randomtweaker.api.jei;
 
-import com.ikexing.randomtweaker.impl.jei.JEIRecipe;
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;

@@ -13,7 +13,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
  * @author ikexing
  */
 @ZenRegister
-@ZenClass("mods.icrtweaker.IMouse")
+@ZenClass("mods.randomtweaker.IMouse")
 public class IMouse {
     @ZenMethod
     public static IVector3d getMouseHit() {
