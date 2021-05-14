@@ -1,7 +1,6 @@
 package com.ikexing.randomtweaker.impl.jei;
 
 import com.ikexing.randomtweaker.RandomTweaker;
-import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
@@ -26,8 +25,6 @@ public class JEIRecipe {
     private List<FontInfo> fontInfos;
     private List<Input> inputs;
     private List<Output> outputs;
-
-
 
     public JEIRecipe(int uid, String localizedname) {
         this.uid = uid;
@@ -65,22 +62,22 @@ public class JEIRecipe {
     }
 
     @ZenMethod
-    public void addInputItem(String type, int xPosition, int yPosition, IItemStack item){
+    public void addInputItem(String type, int xPosition, int yPosition, IItemStack item) {
         this.inputs.add(new Input(type, xPosition, yPosition, CraftTweakerMC.getItemStack(item)));
     }
 
     @ZenMethod
-    public void addInputFluid(String type, int xPosition, int yPosition, ILiquidStack fluid){
+    public void addInputFluid(String type, int xPosition, int yPosition, ILiquidStack fluid) {
         this.inputs.add(new Input(type, xPosition, yPosition, CraftTweakerMC.getLiquidStack(fluid)));
     }
 
     @ZenMethod
-    public void addOutputItem(String type, int xPosition, int yPosition, IItemStack item){
+    public void addOutputItem(String type, int xPosition, int yPosition, IItemStack item) {
         this.outputs.add(new Output(type, xPosition, yPosition, CraftTweakerMC.getItemStack(item)));
     }
 
     @ZenMethod
-    public void addOutputFluid(String type, int xPosition, int yPosition, ILiquidStack fluid){
+    public void addOutputFluid(String type, int xPosition, int yPosition, ILiquidStack fluid) {
         this.outputs.add(new Output(type, xPosition, yPosition, CraftTweakerMC.getLiquidStack(fluid)));
     }
 
@@ -106,7 +103,7 @@ public class JEIRecipe {
         }
     }
 
-    public class Input{
+    public class Input {
         public String type;
         public int xPosition;
         public int yPosition;
@@ -128,7 +125,7 @@ public class JEIRecipe {
         }
     }
 
-    public class Output{
+    public class Output {
         public String type;
         public int xPosition;
         public int yPosition;
