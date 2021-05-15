@@ -5,6 +5,7 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
 
 import javax.annotation.Nullable;
@@ -30,8 +31,8 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         title = jeiRecipe.getTitle();
         UID = jeiRecipe.getUid();
         modName = jeiRecipe.getModid();
-        inputs = jeiRecipe.getInputs();
-        outputs = jeiRecipe.getOutputs();
+        inputs = jeiRecipe.inputs;
+        outputs = jeiRecipe.outputs;
     }
 
     @Override
@@ -70,13 +71,27 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
         int i = 0;
         for (JEIRecipe.Input input : inputs) {
-            recipeLayout.getItemStacks().init(i, true, input.xPosition, input.yPosition);
-            i++;
+            if (input.fluid == null) {
+                recipeLayout.getItemStacks().init(i, true, input.xPosition, input.yPosition);
+                recipeLayout.getItemStacks().set(0, ingredients.getInputs(VanillaTypes.ITEM).get(0));
+                i++;
+            } else {
+                recipeLayout.getItemStacks().init(i, true, input.xPosition, input.yPosition);
+                recipeLayout.getFluidStacks().set(0, ingredients.getInputs(VanillaTypes.FLUID).get(0));
+                i++;
+            }
         }
         i = 0;
         for (JEIRecipe.Output output : outputs) {
-            recipeLayout.getItemStacks().init(i, false, output.xPosition, output.yPosition);
-            i++;
+            if (output.fluid == null) {
+                recipeLayout.getItemStacks().init(i, false, output.xPosition, output.yPosition);
+                recipeLayout.getItemStacks().set(0, ingredients.getInputs(VanillaTypes.ITEM).get(0));
+                i++;
+            } else {
+                recipeLayout.getItemStacks().init(i, false, output.xPosition, output.yPosition);
+                recipeLayout.getFluidStacks().set(0, ingredients.getInputs(VanillaTypes.FLUID).get(0));
+                i++;
+            }
         }
     }
 

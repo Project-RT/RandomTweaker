@@ -46,7 +46,7 @@ public class JEIPlugins implements IModPlugin {
             for (IItemStack recipeCatalyst : jeiRecipe.getRecipeCatalysts()) {
                 registry.addRecipeCatalyst(CraftTweakerMC.getItemStack(recipeCatalyst), jeiRecipe.getUid());
             }
-            recipes.add(new DynamicRecipesWrapper(jeiRecipe.getOutputs(), jeiRecipe.getInputs(), jeiRecipe.getFontInfos()));
+            recipes.add(new DynamicRecipesWrapper(jeiRecipe.outputs, jeiRecipe.inputs, jeiRecipe.fontInfos));
         }
 //        registry.addRecipeCatalyst(new ItemStack(Blocks.COAL_ORE), DynamicRecipesCategory.getUID());
 

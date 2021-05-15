@@ -4,15 +4,23 @@ import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
-import stanhebben.zenscript.annotations.ZenExpansion;
+import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
+
+import java.util.Random;
 
 /**
  * @author ikexing
  */
 @ZenRegister
-@ZenExpansion("mods.jei.JEI")
+@ZenClass("mods.randomtweaker.JEI")
 public class JEIExpansion {
+
+    @ZenMethod
+    public static JEIRecipe create(String localizedname) {
+        return new JEIRecipe(getRandomString(10), localizedname);
+    }
+
     @ZenMethod
     public static JEIRecipe create(String uid, String localizedname) {
         return new JEIRecipe(uid, localizedname);
@@ -41,5 +49,16 @@ public class JEIExpansion {
     @ZenMethod
     public static JEIRecipe.Output createOutput(String type, int xPosition, int yPosition, ILiquidStack fluid){
         return new JEIRecipe.Output(type, xPosition, yPosition, fluid);
+    }
+
+    protected static String getRandomString(int length){
+        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random=new Random();
+        StringBuffer sb=new StringBuffer();
+        for(int i=0;i<length;i++){
+            int number=random.nextInt(62);
+            sb.append(str.charAt(number));
+        }
+        return sb.toString();
     }
 }

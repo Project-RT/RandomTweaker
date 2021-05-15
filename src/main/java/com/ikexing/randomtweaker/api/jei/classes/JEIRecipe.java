@@ -12,6 +12,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,18 +24,16 @@ public class JEIRecipe {
     private final String uid;
     private final String title;
 
+    public List<FontInfo> fontInfos = new ArrayList<>();
+    public List<Input> inputs = new ArrayList<>();
+    public List<Output> outputs = new ArrayList<>();
+
     @ZenProperty
     private String modid = RandomTweaker.MODID;
     @ZenProperty
     private IItemStack icon = CraftTweakerMC.getIItemStack(new ItemStack(Blocks.BEDROCK));
     @ZenProperty
-    private List<IItemStack> recipeCatalysts;
-    @ZenProperty
-    private List<FontInfo> fontInfos;
-    @ZenProperty
-    private List<Input> inputs;
-    @ZenProperty
-    private List<Output> outputs;
+    private List<IItemStack> recipeCatalysts = new ArrayList<>();
 
     public JEIRecipe(String uid, String localizedname) {
         this.uid = uid;
@@ -72,33 +71,8 @@ public class JEIRecipe {
     }
 
     @ZenMethod
-    public List<FontInfo> getFontInfos() {
-        return fontInfos;
-    }
-
-    @ZenMethod
-    public void setFontInfos(List<FontInfo> fontInfos) {
-        this.fontInfos = fontInfos;
-    }
-
-    @ZenMethod
-    public List<Input> getInputs() {
-        return inputs;
-    }
-
-    @ZenMethod
-    public void setInputs(List<Input> inputs) {
-        this.inputs = inputs;
-    }
-
-    @ZenMethod
-    public List<Output> getOutputs() {
-        return outputs;
-    }
-
-    @ZenMethod
-    public void setOutputs(List<Output> outputs) {
-        this.outputs = outputs;
+    public void addRecipeCatalyst(IItemStack item){
+        this.recipeCatalysts.add(item);
     }
 
     @ZenMethod
@@ -127,12 +101,6 @@ public class JEIRecipe {
     }
 
     @ZenMethod
-    public void addInputAndOutput(List<Input> inputs, List<Output> outputs){
-        this.inputs = inputs;
-        this.outputs = outputs;
-    }
-
-    @ZenMethod
     public void register() {
         RandomTweaker.JEIRecipes.add(this);
     }
@@ -145,8 +113,6 @@ public class JEIRecipe {
         return uid;
     }
 
-    @ZenRegister
-    @ZenClass("mods.randomtweaker.JEIRecipes.FontInfo")
     public static class FontInfo {
         public String fontInfoName;
         public int color;
@@ -164,8 +130,6 @@ public class JEIRecipe {
         }
     }
 
-    @ZenRegister
-    @ZenClass("mods.randomtweaker.JEIRecipes.Input")
     public static class Input {
         public String type;
         public int xPosition;
@@ -188,8 +152,6 @@ public class JEIRecipe {
         }
     }
 
-    @ZenRegister
-    @ZenClass("mods.randomtweaker.JEIRecipes.Output")
     public static class Output {
         public String type;
         public int xPosition;
