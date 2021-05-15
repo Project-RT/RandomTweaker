@@ -1,7 +1,7 @@
 package com.ikexing.randomtweaker.impl.jei;
 
 import com.ikexing.randomtweaker.RandomTweaker;
-import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
+import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.impl.jei.recipes.DynamicRecipesCategory;
 import com.ikexing.randomtweaker.impl.jei.recipes.DynamicRecipesWrapper;
 import crafttweaker.api.item.IItemStack;
@@ -13,7 +13,6 @@ import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.gui.GuiHelper;
-import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,19 +33,20 @@ public class JEIPlugins implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
         GuiHelper guiHelper = Internal.getHelpers().getGuiHelper();
-        for (JEIRecipe jeiRecipe : RandomTweaker.JEIRecipes) {
-            registry.addRecipeCategories(new DynamicRecipesCategory(guiHelper, jeiRecipe));
+        for (JEICustom jeiCustom : RandomTweaker.jeiCustomList) {
+            registry.addRecipeCategories(new DynamicRecipesCategory(guiHelper, jeiCustom));
         }
 //        registry.addRecipeCategories(new DynamicRecipesCategory(guiHelper));
     }
 
     @Override
     public void register(IModRegistry registry) {
-        for (JEIRecipe jeiRecipe : RandomTweaker.JEIRecipes) {
-            for (IItemStack recipeCatalyst : jeiRecipe.getRecipeCatalysts()) {
-                registry.addRecipeCatalyst(CraftTweakerMC.getItemStack(recipeCatalyst), jeiRecipe.getUid());
+
+        for (JEICustom jeiCustom : RandomTweaker.jeiCustomList) {
+            for (IItemStack recipeCatalyst : jeiCustom.getRecipeCatalysts()) {
+                registry.addRecipeCatalyst(CraftTweakerMC.getItemStack(recipeCatalyst), jeiCustom.uid);
             }
-            recipes.add(new DynamicRecipesWrapper(jeiRecipe.outputs, jeiRecipe.inputs, jeiRecipe.fontInfos));
+            recipes.add(new DynamicRecipesWrapper(jeiCustom.getJeiFontInfos(), jeiCustom.getJeiRecipes()));
         }
 //        registry.addRecipeCatalyst(new ItemStack(Blocks.COAL_ORE), DynamicRecipesCategory.getUID());
 

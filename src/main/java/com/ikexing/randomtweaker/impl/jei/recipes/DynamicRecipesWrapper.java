@@ -1,18 +1,24 @@
 package com.ikexing.randomtweaker.impl.jei.recipes;
 
-import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe.FontInfo;
-import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe.Input;
-import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe.Output;
+import com.ikexing.randomtweaker.api.jei.classes.JEIFontInfo;
+import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
+import crafttweaker.CraftTweakerAPI;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,33 +26,34 @@ import java.util.List;
  */
 public class DynamicRecipesWrapper implements IRecipeWrapper {
 
-    private final List<FontInfo> fontInfos;
-    private final List<Output> outputs;
-    private final List<Input> inputs;
+    private final List<JEIFontInfo> fontInfos;
+    private final List<JEIRecipe> jeiRecipes;
 
-    public DynamicRecipesWrapper(List<Output> outputs, List<Input> inputs, List<FontInfo> fontInfos) {
-        this.outputs = outputs;
-        this.inputs = inputs;
+    public DynamicRecipesWrapper(List<JEIFontInfo> fontInfos, List<JEIRecipe> jeiRecipes) {
         this.fontInfos = fontInfos;
+        this.jeiRecipes = jeiRecipes;
     }
 
 
     @Override
     public void getIngredients(IIngredients ingredients) {
-
-        for (Input input : inputs) {
-            if ("item".equals(input.type)) {
-                ingredients.setInput(VanillaTypes.ITEM, CraftTweakerMC.getItemStack(input.item));
+        for (JEIRecipe nowJeiRecipe : jeiRecipes) {
+            if (nowJeiRecipe.isInput) {
+                if ("item".equals(nowJeiRecipe.type)) {
+                    ingredients.setInputs(VanillaTypes.ITEM, getItemStacks(nowJeiRecipe.items));
+                } else if ("fluid".equals(nowJeiRecipe.type)) {
+                    ingredients.setInputs(VanillaTypes.FLUID, getFluidStacks(nowJeiRecipe.fluids));
+                } else {
+                    CraftTweakerAPI.logError("Type is not supported");
+                }
             } else {
-                ingredients.setInput(VanillaTypes.FLUID, CraftTweakerMC.getLiquidStack(input.fluid));
-            }
-        }
-
-        for (Output output : outputs) {
-            if ("item".equals(output.type)) {
-                ingredients.setOutput(VanillaTypes.ITEM, CraftTweakerMC.getItemStack(output.item));
-            } else {
-                ingredients.setOutput(VanillaTypes.FLUID, CraftTweakerMC.getLiquidStack(output.fluid));
+                if ("item".equals(nowJeiRecipe.type)) {
+                    ingredients.setOutputs(VanillaTypes.ITEM, getItemStacks(nowJeiRecipe.items));
+                } else if ("fluid".equals(nowJeiRecipe.type)) {
+                    ingredients.setOutputs(VanillaTypes.FLUID, getFluidStacks(nowJeiRecipe.fluids));
+                } else {
+                    CraftTweakerAPI.logError("Type is not supported");
+                }
             }
         }
     }
@@ -55,10 +62,18 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
     @Override
     public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
         FontRenderer fontRenderer = minecraft.fontRenderer;
-
-        for (FontInfo fontInfo : fontInfos) {
-            fontRenderer.drawString(new TextComponentTranslation(fontInfo.fontInfoName).getUnformattedComponentText(), fontInfo.x, fontInfo.y, fontInfo.color);
+        if (!fontInfos.isEmpty()) {
+            for (JEIFontInfo fontInfo : fontInfos) {
+                fontRenderer.drawString(new TextComponentTranslation(fontInfo.name).getUnformattedComponentText(), fontInfo.x, fontInfo.y, fontInfo.color);
+            }
         }
     }
 
+    private List<ItemStack> getItemStacks(List<IItemStack> stacks) {
+        return new ArrayList<>(Arrays.asList(CraftTweakerMC.getItemStacks(stacks)));
+    }
+
+    private List<FluidStack> getFluidStacks(List<ILiquidStack> stacks) {
+        return new ArrayList<>(Arrays.asList(CraftTweakerMC.getLiquidStacks(stacks.toArray(new ILiquidStack[0]))));
+    }
 }
