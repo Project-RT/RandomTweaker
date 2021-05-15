@@ -21,7 +21,7 @@ public class JEIRecipe {
     public List<ILiquidStack> fluids = new ArrayList<>();
     public List<IItemStack> items = new ArrayList<>();
 
-    public JEIRecipe(boolean isInput, String type, int xPosition, int yPosition, List<ILiquidStack> fluids, List<IItemStack> items) {
+    public JEIRecipe(boolean isInput, String type, int xPosition, int yPosition, List<IItemStack> items, List<ILiquidStack> fluids) {
         this.isInput = isInput;
         this.type = type;
         this.xPosition = xPosition;
@@ -30,7 +30,7 @@ public class JEIRecipe {
         this.items = items;
     }
 
-    public JEIRecipe(boolean isInput, String type, int xPosition, int yPosition, ILiquidStack fluid, IItemStack item) {
+    public JEIRecipe(boolean isInput, String type, int xPosition, int yPosition, IItemStack item, ILiquidStack fluid) {
         this.isInput = isInput;
         this.type = type;
         this.xPosition = xPosition;

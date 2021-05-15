@@ -9,6 +9,7 @@ import crafttweaker.api.liquid.ILiquidStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
@@ -35,8 +36,8 @@ public class JEISupport {
     }
 
     @ZenMethod
-    public static JEIRecipe createRecipe(boolean isInput, String type, int xPosition, int yPosition, List<ILiquidStack> fluids, List<IItemStack> items) {
-        return new JEIRecipe(isInput, type, xPosition, yPosition, fluids, items);
+    public static JEIRecipe createRecipe(boolean isInput, String type, int xPosition, int yPosition, @Nullable List<IItemStack> items, @Nullable List<ILiquidStack> fluids) {
+        return new JEIRecipe(isInput, type, xPosition, yPosition, items, fluids);
     }
 
     @SuppressWarnings("SameParameterValue")
