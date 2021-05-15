@@ -64,5 +64,6 @@ public class JEIRecipe {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.items.add(item);
+        this.fluids.add(fluid);
     }
 }

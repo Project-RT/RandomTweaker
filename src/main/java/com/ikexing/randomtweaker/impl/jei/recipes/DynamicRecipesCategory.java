@@ -67,17 +67,15 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, DynamicRecipesWrapper recipeWrapper, IIngredients ingredients) {
-        IGuiItemStackGroup group = recipeLayout.getItemStacks();
-        IGuiFluidStackGroup fGroup = recipeLayout.getFluidStacks();
         int i = 0;
         for (JEIRecipe nowJeiRecipe : jeiRecipes) {
             if (nowJeiRecipe.isInput) {
                 if ("item".equals(nowJeiRecipe.type)) {
-                    group.init(i, true, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
-                    group.set(i, ingredients.getInputs(VanillaTypes.ITEM).get(i));
+                    recipeLayout.getItemStacks().init(i, true, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
+                    recipeLayout.getItemStacks().set(i, ingredients.getInputs(VanillaTypes.ITEM).get(i));
                 } else if ("fluid".equals(nowJeiRecipe.type)) {
-                    fGroup.init(i, true, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition, nowJeiRecipe.width, nowJeiRecipe.height, nowJeiRecipe.capacityMb, nowJeiRecipe.showCapacity, null);
-                    fGroup.set(i, ingredients.getInputs(VanillaTypes.FLUID).get(i));
+                    recipeLayout.getFluidStacks().init(i, true, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition, nowJeiRecipe.width, nowJeiRecipe.height, nowJeiRecipe.capacityMb, nowJeiRecipe.showCapacity, null);
+                    recipeLayout.getFluidStacks().set(i, ingredients.getInputs(VanillaTypes.FLUID).get(i));
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
@@ -88,11 +86,11 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         for (JEIRecipe nowJeiRecipe : jeiRecipes) {
             if (!nowJeiRecipe.isInput) {
                 if ("item".equals(nowJeiRecipe.type)) {
-                    group.init(i, false, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
-                    group.set(i, ingredients.getOutputs(VanillaTypes.ITEM).get(i));
+                    recipeLayout.getItemStacks().init(i, false, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
+                    recipeLayout.getItemStacks().set(i, ingredients.getOutputs(VanillaTypes.ITEM).get(i));
                 } else if ("fluid".equals(nowJeiRecipe.type)) {
-                    fGroup.init(i, false, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition, nowJeiRecipe.width, nowJeiRecipe.height, nowJeiRecipe.capacityMb, nowJeiRecipe.showCapacity, null);
-                    fGroup.set(i, ingredients.getOutputs(VanillaTypes.FLUID).get(i));
+                    recipeLayout.getFluidStacks().init(i, false, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition, nowJeiRecipe.width, nowJeiRecipe.height, nowJeiRecipe.capacityMb, nowJeiRecipe.showCapacity, null);
+                    recipeLayout.getFluidStacks().set(i, ingredients.getOutputs(VanillaTypes.FLUID).get(i));
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
