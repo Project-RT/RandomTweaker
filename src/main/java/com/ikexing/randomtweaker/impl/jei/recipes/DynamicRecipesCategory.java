@@ -1,5 +1,6 @@
 package com.ikexing.randomtweaker.impl.jei.recipes;
 
+import com.ikexing.randomtweaker.api.jei.classes.JEIBackGroup;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
 import crafttweaker.CraftTweakerAPI;
@@ -10,6 +11,7 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
+import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -28,12 +30,18 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
     private final String modName;
 
     public DynamicRecipesCategory(IGuiHelper guiHelper, JEICustom jeiCustom) {
-        background = guiHelper.createBlankDrawable(128, 72);
+        JEIBackGroup jeiBackGroup = jeiCustom.getJeiBackGroup();
         icon = guiHelper.createDrawableIngredient(CraftTweakerMC.getItemStack(jeiCustom.getIcon()));
         title = jeiCustom.title;
         UID = jeiCustom.uid;
         modName = jeiCustom.getModid();
-        this.jeiRecipes = jeiCustom.jeiRecipes;
+        jeiRecipes = jeiCustom.jeiRecipes;
+        if (jeiBackGroup.isNull()) {
+            background = guiHelper.createBlankDrawable(jeiBackGroup.width, jeiBackGroup.heigh);
+        } else {
+            ResourceLocation location = new ResourceLocation(jeiBackGroup.namespaceIn, jeiBackGroup.pathIn);
+            background = guiHelper.createDrawable(location, jeiBackGroup.u, jeiBackGroup.v, jeiBackGroup.width, jeiBackGroup.heigh);
+        }
     }
 
     @Override

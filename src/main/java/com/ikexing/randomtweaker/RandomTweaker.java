@@ -26,8 +26,9 @@ public class RandomTweaker {
     public static final String VERSION = "1.0.0";
     public static final String DESPENDENCIES = "required-after:crafttweaker";
 
+    public static Logger logger;
+    public static String thaumcraft = "thaumcraft";
     public static List<JEICustom> jeiCustomList = new ArrayList<>();
-    private static Logger logger;
 
     @EventHandler
     public static void onPreInit(FMLPreInitializationEvent event) {
@@ -38,7 +39,7 @@ public class RandomTweaker {
     public static void onConstruct(FMLConstructionEvent event) {
         GlobalRegistry.registerGlobal("getAllInBox", GlobalRegistry.getStaticFunction(RTGlobal.class, "getAllInBox", IBlockPos.class, IBlockPos.class));
 
-        if (Loader.isModLoaded("thaumcraft")) {
+        if (Loader.isModLoaded(thaumcraft)) {
             MinecraftForge.EVENT_BUS.register(EventHandler.class);
             GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
         }

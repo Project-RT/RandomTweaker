@@ -1,6 +1,7 @@
 package com.ikexing.randomtweaker.api.jei.classes;
 
 import com.ikexing.randomtweaker.RandomTweaker;
+import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
@@ -24,6 +25,7 @@ import java.util.List;
 public class JEICustom {
     public final String uid;
     public final String title;
+
     @ZenProperty
     public List<JEIFontInfo> jeiFontInfos = new ArrayList<>();
     @ZenProperty
@@ -34,10 +36,37 @@ public class JEICustom {
     private IItemStack icon = CraftTweakerMC.getIItemStack(new ItemStack(Blocks.BEDROCK));
     @ZenProperty
     private List<IItemStack> recipeCatalysts = new ArrayList<>();
+    @ZenProperty
+    private JEIBackGroup jeiBackGroup;
 
     public JEICustom(String uid, String localizedname) {
         this.uid = uid;
         this.title = I18n.format(localizedname);
+    }
+
+    @ZenMethod
+    public JEIBackGroup getJeiBackGroup() {
+        return jeiBackGroup;
+    }
+
+    @ZenMethod
+    public void setJeiBackGroup(JEIBackGroup jeiBackGroup) {
+        this.jeiBackGroup = jeiBackGroup;
+    }
+
+    @ZenMethod
+    public void setJeiBackGroup(String namespaceIn, String pathIn, int u, int v, int width, int heigh) {
+        this.jeiBackGroup = new JEIBackGroup(namespaceIn, pathIn, u, v, width, heigh);
+    }
+
+    @ZenMethod
+    public void setJeiBackGroup(String namespaceIn, String pathIn, int width, int heigh) {
+        this.jeiBackGroup = new JEIBackGroup(namespaceIn, pathIn, 0, 0, width, heigh);
+    }
+
+    @ZenMethod
+    public void setJeiBackGroup(int width, int heigh) {
+        this.jeiBackGroup = new JEIBackGroup(width, heigh);
     }
 
     @ZenMethod
@@ -138,7 +167,13 @@ public class JEICustom {
 
     @ZenMethod
     public void register() {
-        RandomTweaker.jeiCustomList.add(this);
+        if (jeiBackGroup == null || jeiFontInfos.isEmpty() || jeiRecipes.isEmpty() || recipeCatalysts.isEmpty()) {
+            CraftTweakerAPI.logError("Parameters mustn't be empty !!!");
+        } else if (modid.equals(RandomTweaker.MODID) || icon.matches(CraftTweakerMC.getIItemStack(new ItemStack(Blocks.BEDROCK)))) {
+            CraftTweakerAPI.logInfo("Please modify modid and icon, even though this is not a requirement");
+        } else {
+            RandomTweaker.jeiCustomList.add(this);
+        }
     }
 
 }

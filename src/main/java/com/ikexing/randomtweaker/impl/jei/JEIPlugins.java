@@ -36,7 +36,6 @@ public class JEIPlugins implements IModPlugin {
         for (JEICustom jeiCustom : RandomTweaker.jeiCustomList) {
             registry.addRecipeCategories(new DynamicRecipesCategory(guiHelper, jeiCustom));
         }
-//        registry.addRecipeCategories(new DynamicRecipesCategory(guiHelper));
     }
 
     @Override
