@@ -1,6 +1,6 @@
 package com.ikexing.randomtweaker.impl.jei.recipes;
 
-import com.ikexing.randomtweaker.api.jei.JEIRecipe;
+import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;

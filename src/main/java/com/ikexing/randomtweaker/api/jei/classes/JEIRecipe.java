@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.jei;
+package com.ikexing.randomtweaker.api.jei.classes;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import crafttweaker.annotations.ZenRegister;
@@ -28,7 +28,7 @@ public class JEIRecipe {
     @ZenProperty
     private IItemStack icon = CraftTweakerMC.getIItemStack(new ItemStack(Blocks.BEDROCK));
     @ZenProperty
-    private List<ItemStack> recipeCatalysts;
+    private List<IItemStack> recipeCatalysts;
     @ZenProperty
     private List<FontInfo> fontInfos;
     @ZenProperty
@@ -62,12 +62,12 @@ public class JEIRecipe {
     }
 
     @ZenMethod
-    public List<ItemStack> getRecipeCatalysts() {
+    public List<IItemStack> getRecipeCatalysts() {
         return recipeCatalysts;
     }
 
     @ZenMethod
-    public void setRecipeCatalysts(List<ItemStack> recipeCatalysts) {
+    public void setRecipeCatalysts(List<IItemStack> recipeCatalysts) {
         this.recipeCatalysts = recipeCatalysts;
     }
 
@@ -102,11 +102,6 @@ public class JEIRecipe {
     }
 
     @ZenMethod
-    public void addIcon(IItemStack item) {
-        this.recipeCatalysts.add(CraftTweakerMC.getItemStack(item));
-    }
-
-    @ZenMethod
     public void addFontInfo(String fontInfoName, int color, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
         this.fontInfos.add(new FontInfo(fontInfoName, color, recipeWidth, recipeHeight, mouseX, mouseY));
     }
@@ -132,6 +127,12 @@ public class JEIRecipe {
     }
 
     @ZenMethod
+    public void addInputAndOutput(List<Input> inputs, List<Output> outputs){
+        this.inputs = inputs;
+        this.outputs = outputs;
+    }
+
+    @ZenMethod
     public void register() {
         RandomTweaker.JEIRecipes.add(this);
     }
@@ -144,24 +145,28 @@ public class JEIRecipe {
         return uid;
     }
 
-    public class FontInfo {
+    @ZenRegister
+    @ZenClass("mods.randomtweaker.JEIRecipes.FontInfo")
+    public static class FontInfo {
         public String fontInfoName;
         public int color;
         public int recipeWidth;
         public int recipeHeight;
-        public int mouseX;
-        public int mouseY;
+        public int x;
+        public int y;
 
-        public FontInfo(String fontInfoName, int color, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
+        public FontInfo(String fontInfoName, int color, int recipeWidth, int recipeHeight, int x, int y) {
             this.fontInfoName = fontInfoName;
             this.recipeWidth = recipeWidth;
             this.recipeHeight = recipeHeight;
-            this.mouseX = mouseX;
-            this.mouseY = mouseY;
+            this.x = x;
+            this.y = y;
         }
     }
 
-    public class Input {
+    @ZenRegister
+    @ZenClass("mods.randomtweaker.JEIRecipes.Input")
+    public static class Input {
         public String type;
         public int xPosition;
         public int yPosition;
@@ -183,7 +188,9 @@ public class JEIRecipe {
         }
     }
 
-    public class Output {
+    @ZenRegister
+    @ZenClass("mods.randomtweaker.JEIRecipes.Output")
+    public static class Output {
         public String type;
         public int xPosition;
         public int yPosition;

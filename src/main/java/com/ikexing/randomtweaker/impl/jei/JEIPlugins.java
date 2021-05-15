@@ -1,9 +1,11 @@
 package com.ikexing.randomtweaker.impl.jei;
 
 import com.ikexing.randomtweaker.RandomTweaker;
-import com.ikexing.randomtweaker.api.jei.JEIRecipe;
+import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
 import com.ikexing.randomtweaker.impl.jei.recipes.DynamicRecipesCategory;
 import com.ikexing.randomtweaker.impl.jei.recipes.DynamicRecipesWrapper;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import mezz.jei.Internal;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
@@ -41,8 +43,8 @@ public class JEIPlugins implements IModPlugin {
     @Override
     public void register(IModRegistry registry) {
         for (JEIRecipe jeiRecipe : RandomTweaker.JEIRecipes) {
-            for (ItemStack recipeCatalyst : jeiRecipe.getRecipeCatalysts()) {
-                registry.addRecipeCatalyst(recipeCatalyst, jeiRecipe.getUid());
+            for (IItemStack recipeCatalyst : jeiRecipe.getRecipeCatalysts()) {
+                registry.addRecipeCatalyst(CraftTweakerMC.getItemStack(recipeCatalyst), jeiRecipe.getUid());
             }
             recipes.add(new DynamicRecipesWrapper(jeiRecipe.getOutputs(), jeiRecipe.getInputs(), jeiRecipe.getFontInfos()));
         }

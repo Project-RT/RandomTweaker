@@ -1,8 +1,8 @@
 package com.ikexing.randomtweaker.impl.jei.recipes;
 
-import com.ikexing.randomtweaker.api.jei.JEIRecipe.FontInfo;
-import com.ikexing.randomtweaker.api.jei.JEIRecipe.Input;
-import com.ikexing.randomtweaker.api.jei.JEIRecipe.Output;
+import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe.FontInfo;
+import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe.Input;
+import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe.Output;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
@@ -57,7 +57,7 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
         FontRenderer fontRenderer = minecraft.fontRenderer;
 
         for (FontInfo fontInfo : fontInfos) {
-            fontRenderer.drawString(new TextComponentTranslation(fontInfo.fontInfoName).getUnformattedComponentText(), fontInfo.mouseX, fontInfo.mouseY, fontInfo.color);
+            fontRenderer.drawString(new TextComponentTranslation(fontInfo.fontInfoName).getUnformattedComponentText(), fontInfo.x, fontInfo.y, fontInfo.color);
         }
     }
 

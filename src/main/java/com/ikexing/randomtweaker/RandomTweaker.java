@@ -1,7 +1,7 @@
 package com.ikexing.randomtweaker;
 
 import com.ikexing.randomtweaker.api.utils.RTGlobal;
-import com.ikexing.randomtweaker.api.jei.JEIRecipe;
+import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
 import crafttweaker.api.player.IPlayer;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.zenscript.GlobalRegistry;
