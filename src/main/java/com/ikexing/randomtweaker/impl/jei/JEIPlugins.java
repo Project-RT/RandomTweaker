@@ -41,18 +41,12 @@ public class JEIPlugins implements IModPlugin {
 
     @Override
     public void register(IModRegistry registry) {
-
         for (JEICustom jeiCustom : RandomTweaker.jeiCustomList) {
             for (IItemStack recipeCatalyst : jeiCustom.getRecipeCatalysts()) {
                 registry.addRecipeCatalyst(CraftTweakerMC.getItemStack(recipeCatalyst), jeiCustom.uid);
             }
             recipes.add(new DynamicRecipesWrapper(jeiCustom.getJeiFontInfos(), jeiCustom.getJeiRecipes()));
         }
-//        registry.addRecipeCatalyst(new ItemStack(Blocks.COAL_ORE), DynamicRecipesCategory.getUID());
-
-//        recipes.add(new DynamicRecipesWrapper(new ItemStack(Items.GOLDEN_APPLE), new ItemStack(Items.APPLE)));
-//        recipes.add(new DynamicRecipesWrapper(new ItemStack(Items.GOLDEN_APPLE), new ItemStack(Items.APPLE)));
-
         registry.addRecipes(recipes, DynamicRecipesCategory.UID);
     }
 }

@@ -13,6 +13,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -87,6 +88,31 @@ public class JEICustom {
     @ZenMethod
     public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, ILiquidStack stack) {
         this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, null, stack));
+    }
+
+    @ZenMethod
+    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, IItemStack[] stacks) {
+        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, Arrays.asList(stacks), null));
+    }
+
+    @ZenMethod
+    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, ILiquidStack[] stacks) {
+        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, null, Arrays.asList(stacks)));
+    }
+
+    @ZenMethod
+    public void addJeiRecipeLiquid(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity, ILiquidStack fluid){
+        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, width, height, capacityMb, showCapacity, fluid));
+    }
+
+    @ZenMethod
+    public void addJeiRecipeLiquid(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity, ILiquidStack[] fluid){
+        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, width, height, capacityMb, showCapacity, Arrays.asList(fluid)));
+    }
+
+    @ZenMethod
+    public void addJeiRecipe(JEIRecipe jeiRecipe){
+        this.jeiRecipes.add(jeiRecipe);
     }
 
     @ZenMethod

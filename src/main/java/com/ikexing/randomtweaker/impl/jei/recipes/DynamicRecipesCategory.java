@@ -6,6 +6,8 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.gui.IGuiFluidStackGroup;
+import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
@@ -65,35 +67,37 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, DynamicRecipesWrapper recipeWrapper, IIngredients ingredients) {
-//        recipeLayout.getItemStacks().init(0, true, 18, 12);
-//        recipeLayout.getItemStacks().set(0, ingredients.getInputs(VanillaTypes.ITEM).get(0));
-//
-//        recipeLayout.getItemStacks().init(1, false, 90, 12);
-//        recipeLayout.getItemStacks().set(1, ingredients.getOutputs(VanillaTypes.ITEM).get(0));
-        for (int i = 0; i < jeiRecipes.size(); i++) {
-            JEIRecipe nowJeiRecipe = jeiRecipes.get(i);
+        IGuiItemStackGroup group = recipeLayout.getItemStacks();
+        IGuiFluidStackGroup fGroup = recipeLayout.getFluidStacks();
+        int i = 0;
+        for (JEIRecipe nowJeiRecipe : jeiRecipes) {
             if (nowJeiRecipe.isInput) {
                 if ("item".equals(nowJeiRecipe.type)) {
-                    recipeLayout.getItemStacks().init(i, true, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
-                    recipeLayout.getItemStacks().set(i, ingredients.getInputs(VanillaTypes.ITEM).get(i));
+                    group.init(i, true, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
+                    group.set(i, ingredients.getInputs(VanillaTypes.ITEM).get(i));
                 } else if ("fluid".equals(nowJeiRecipe.type)) {
-                    recipeLayout.getItemStacks().init(i, true, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
-                    recipeLayout.getItemStacks().set(i, ingredients.getInputs(VanillaTypes.ITEM).get(i));
+                    fGroup.init(i, true, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition, nowJeiRecipe.width, nowJeiRecipe.height, nowJeiRecipe.capacityMb, nowJeiRecipe.showCapacity, null);
+                    fGroup.set(i, ingredients.getInputs(VanillaTypes.FLUID).get(i));
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
-            } else {
-                if ("item".equals(nowJeiRecipe.type)) {
-                    recipeLayout.getItemStacks().init(i, false, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
-                    recipeLayout.getItemStacks().set(i, ingredients.getInputs(VanillaTypes.ITEM).get(i));
-                } else if ("fluid".equals(nowJeiRecipe.type)) {
-                    recipeLayout.getItemStacks().init(i, false, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
-                    recipeLayout.getItemStacks().set(i, ingredients.getInputs(VanillaTypes.ITEM).get(i));
-                } else {
-                    CraftTweakerAPI.logError("Type is not supported");
-                }
+                i++;
             }
         }
-
+        i = 0;
+        for (JEIRecipe nowJeiRecipe : jeiRecipes) {
+            if (!nowJeiRecipe.isInput) {
+                if ("item".equals(nowJeiRecipe.type)) {
+                    group.init(i, false, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
+                    group.set(i, ingredients.getOutputs(VanillaTypes.ITEM).get(i));
+                } else if ("fluid".equals(nowJeiRecipe.type)) {
+                    fGroup.init(i, false, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition, nowJeiRecipe.width, nowJeiRecipe.height, nowJeiRecipe.capacityMb, nowJeiRecipe.showCapacity, null);
+                    fGroup.set(i, ingredients.getOutputs(VanillaTypes.FLUID).get(i));
+                } else {
+                    CraftTweakerAPI.logError("Type is not supported");
+                }
+                i++;
+            }
+        }
     }
 }

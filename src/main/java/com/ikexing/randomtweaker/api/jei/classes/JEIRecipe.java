@@ -18,8 +18,36 @@ public class JEIRecipe {
     public String type;
     public int xPosition;
     public int yPosition;
+    public int width = 18;
+    public int height = 18;
+    public int capacityMb = 1000;
+    public boolean showCapacity = false;
     public List<ILiquidStack> fluids = new ArrayList<>();
     public List<IItemStack> items = new ArrayList<>();
+
+    public JEIRecipe(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity, List<ILiquidStack> fluids) {
+        this.isInput = isInput;
+        this.type = type;
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+        this.width = width;
+        this.height = height;
+        this.capacityMb = capacityMb;
+        this.showCapacity = showCapacity;
+        this.fluids = fluids;
+    }
+
+    public JEIRecipe(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity, ILiquidStack fluid) {
+        this.isInput = isInput;
+        this.type = type;
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+        this.width = width;
+        this.height = height;
+        this.capacityMb = capacityMb;
+        this.showCapacity = showCapacity;
+        this.fluids.add(fluid);
+    }
 
     public JEIRecipe(boolean isInput, String type, int xPosition, int yPosition, List<IItemStack> items, List<ILiquidStack> fluids) {
         this.isInput = isInput;
@@ -35,7 +63,6 @@ public class JEIRecipe {
         this.type = type;
         this.xPosition = xPosition;
         this.yPosition = yPosition;
-        this.fluids.add(fluid);
         this.items.add(item);
     }
 }
