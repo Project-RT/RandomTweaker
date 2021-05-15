@@ -23,8 +23,8 @@ import java.util.List;
 public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWrapper> {
 
     public static String UID;
-    public List<JEIRecipe> jeiRecipes = new ArrayList<>();
 
+    private final List<JEIRecipe> jeiRecipes;
     private final IDrawable background;
     private final IDrawable icon;
     private final String title;
