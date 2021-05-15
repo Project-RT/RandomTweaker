@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Config;
 
 /**
  * @author ikexing
- *
+ * <p>
  * Config Settings
  */
 @Config(modid = RandomTweaker.MODID)
