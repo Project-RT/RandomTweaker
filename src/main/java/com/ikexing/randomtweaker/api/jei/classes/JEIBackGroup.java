@@ -1,6 +1,5 @@
 package com.ikexing.randomtweaker.api.jei.classes;
 
-import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 
@@ -31,7 +30,7 @@ public class JEIBackGroup {
         this.heigh = heigh;
     }
 
-    public boolean isNull(){
+    public boolean isNull() {
         return this.namespaceIn.isEmpty() || this.pathIn.isEmpty();
     }
 }
