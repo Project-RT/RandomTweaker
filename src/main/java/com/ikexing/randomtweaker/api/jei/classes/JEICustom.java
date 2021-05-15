@@ -12,7 +12,6 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,10 +80,14 @@ public class JEICustom {
     }
 
     @ZenMethod
-    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, @Nullable IItemStack item, @Nullable ILiquidStack fluid) {
-        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, item, fluid));
+    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, IItemStack stack) {
+        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, stack, null));
     }
 
+    @ZenMethod
+    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, ILiquidStack stack) {
+        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, null, stack));
+    }
 
     @ZenMethod
     public List<JEIFontInfo> getJeiFontInfos() {

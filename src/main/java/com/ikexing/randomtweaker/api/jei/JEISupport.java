@@ -9,8 +9,7 @@ import crafttweaker.api.liquid.ILiquidStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-import javax.annotation.Nullable;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -36,19 +35,24 @@ public class JEISupport {
     }
 
     @ZenMethod
-    public static JEIRecipe createRecipe(boolean isInput, String type, int xPosition, int yPosition, @Nullable List<IItemStack> items, @Nullable List<ILiquidStack> fluids) {
-        return new JEIRecipe(isInput, type, xPosition, yPosition, items, fluids);
+    public static JEIRecipe createRecipe(boolean isInput, String type, int xPosition, int yPosition, IItemStack[] stacks) {
+        return new JEIRecipe(isInput, type, xPosition, yPosition, Arrays.asList(stacks), null);
+    }
+
+    @ZenMethod
+    public static JEIRecipe createRecipe(boolean isInput, String type, int xPosition, int yPosition, ILiquidStack[] stacks) {
+        return new JEIRecipe(isInput, type, xPosition, yPosition, null, Arrays.asList(stacks));
     }
 
     @SuppressWarnings("SameParameterValue")
     protected static String getRandomString(int length) {
         String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         Random random = new Random();
-        StringBuffer sb = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
         for (int i = 0; i < length; i++) {
             int number = random.nextInt(62);
-            sb.append(str.charAt(number));
+            stringBuffer.append(str.charAt(number));
         }
-        return sb.toString();
+        return stringBuffer.toString();
     }
 }
