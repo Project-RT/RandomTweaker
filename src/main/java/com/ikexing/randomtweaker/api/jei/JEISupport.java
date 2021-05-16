@@ -9,7 +9,6 @@ import crafttweaker.api.item.IIngredient;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -35,7 +34,7 @@ public class JEISupport {
     }
 
     @ZenMethod
-    public static JEISpace createSpace(boolean isInput, String type, int xPosition, int yPosition){
+    public static JEISpace createSpace(boolean isInput, String type, int xPosition, int yPosition) {
         return new JEISpace(isInput, type, xPosition, yPosition);
     }
 

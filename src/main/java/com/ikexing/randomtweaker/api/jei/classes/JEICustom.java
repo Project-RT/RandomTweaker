@@ -5,7 +5,6 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
-import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
@@ -137,8 +136,13 @@ public class JEICustom {
     }
 
     @ZenMethod
-    public void addJeiRecipe(JEIRecipe jeiRecipe){
+    public void addJeiRecipe(JEIRecipe jeiRecipe) {
         this.jeiRecipes.add(jeiRecipe);
+    }
+
+    @ZenMethod
+    public void addJeiRecipe(IIngredient[] inputs, IIngredient[] outputs) {
+        this.jeiRecipes.add(new JEIRecipe(inputs, outputs));
     }
 
     @ZenMethod
@@ -147,12 +151,12 @@ public class JEICustom {
     }
 
     @ZenMethod
-    public void addJeiSpaces(JEISpace jeiSpace) {
+    public void addJeiSpace(JEISpace jeiSpace) {
         this.jeiSpaces.add(jeiSpace);
     }
 
     @ZenMethod
-    public void addJeiSpaces(boolean isInput, String type, int xPosition, int yPosition) {
+    public void addJeiSpace(boolean isInput, String type, int xPosition, int yPosition) {
         this.jeiSpaces.add(new JEISpace(isInput, type, xPosition, yPosition));
     }
 

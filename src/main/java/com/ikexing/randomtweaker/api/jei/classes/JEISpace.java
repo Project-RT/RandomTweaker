@@ -7,7 +7,7 @@ import stanhebben.zenscript.annotations.ZenClass;
  * @author ikexing
  */
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEICustom")
+@ZenClass("mods.randomtweaker.JEISpace")
 public class JEISpace {
     public boolean isInput;
     public String type;

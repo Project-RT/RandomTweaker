@@ -37,17 +37,19 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
     @Override
     public void getIngredients(IIngredients ingredients) {
         for (IIngredient iIngredient : jeiRecipe.input) {
-            if (!iIngredient.getItems().isEmpty()) {
+            System.out.println(iIngredient.getLiquids().isEmpty());
+            if (iIngredient.getLiquids().isEmpty()) {
                 ingredients.setInputs(VanillaTypes.ITEM, getItemStacks(iIngredient.getItems()));
-            }else{
+            } else {
                 ingredients.setInputs(VanillaTypes.FLUID, getFluidStacks(iIngredient.getLiquids()));
             }
         }
 
-        for (IIngredient iIngredient : jeiRecipe.output){
-            if (!iIngredient.getItems().isEmpty()) {
+        for (IIngredient iIngredient : jeiRecipe.output) {
+            System.out.println(iIngredient.getLiquids().isEmpty());
+            if (iIngredient.getLiquids().isEmpty()) {
                 ingredients.setOutputs(VanillaTypes.ITEM, getItemStacks(iIngredient.getItems()));
-            }else{
+            } else {
                 ingredients.setOutputs(VanillaTypes.FLUID, getFluidStacks(iIngredient.getLiquids()));
             }
         }

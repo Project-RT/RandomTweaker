@@ -9,7 +9,6 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.util.ResourceLocation;
 
@@ -73,31 +72,31 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, DynamicRecipesWrapper recipeWrapper, IIngredients ingredients) {
-
         int i = 0;
-        for (JEISpace jeiSpace : jeiSpaces) {
-            if (!jeiSpace.isInput) {
+        for (JEISpace jeiSpace : this.jeiSpaces) {
+            if (jeiSpace.isInput) {
                 if ("item".equals(jeiSpace.type)) {
                     recipeLayout.getItemStacks().init(i, true, jeiSpace.xPosition, jeiSpace.yPosition);
-                    recipeLayout.getItemStacks().set(i, ingredients.getInputs(VanillaTypes.ITEM).get(i));
+                    recipeLayout.getItemStacks().set(ingredients);
                 } else if ("fluid".equals(jeiSpace.type)) {
                     recipeLayout.getFluidStacks().init(i, true, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
-                    recipeLayout.getFluidStacks().set(i, ingredients.getInputs(VanillaTypes.FLUID).get(i));
+                    recipeLayout.getFluidStacks().set(ingredients);
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
             } else {
                 if ("item".equals(jeiSpace.type)) {
                     recipeLayout.getItemStacks().init(i, false, jeiSpace.xPosition, jeiSpace.yPosition);
-                    recipeLayout.getItemStacks().set(i, ingredients.getOutputs(VanillaTypes.ITEM).get(i));
+                    recipeLayout.getItemStacks().set(ingredients);
                 } else if ("fluid".equals(jeiSpace.type)) {
                     recipeLayout.getFluidStacks().init(i, false, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
-                    recipeLayout.getFluidStacks().set(i, ingredients.getOutputs(VanillaTypes.FLUID).get(i));
+                    recipeLayout.getFluidStacks().set(ingredients);
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
             }
             i++;
         }
+
     }
 }
