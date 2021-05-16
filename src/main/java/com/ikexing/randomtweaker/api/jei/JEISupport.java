@@ -3,13 +3,12 @@ package com.ikexing.randomtweaker.api.jei;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.jei.classes.JEIFontInfo;
 import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
+import com.ikexing.randomtweaker.api.jei.classes.JEISpace;
 import crafttweaker.annotations.ZenRegister;
-import crafttweaker.api.item.IItemStack;
-import crafttweaker.api.liquid.ILiquidStack;
+import crafttweaker.api.item.IIngredient;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -36,23 +35,18 @@ public class JEISupport {
     }
 
     @ZenMethod
-    public static JEIRecipe createRecipe(boolean isInput, String type, int xPosition, int yPosition, IItemStack[] stacks) {
-        return new JEIRecipe(isInput, type, xPosition, yPosition, Arrays.asList(stacks), null);
+    public static JEISpace createSpace(boolean isInput, String type, int xPosition, int yPosition){
+        return new JEISpace(isInput, type, xPosition, yPosition);
     }
 
     @ZenMethod
-    public static JEIRecipe createRecipe(boolean isInput, String type, int xPosition, int yPosition, ILiquidStack[] stacks) {
-        return new JEIRecipe(isInput, type, xPosition, yPosition, null, Arrays.asList(stacks));
+    public static JEISpace createSpace(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity) {
+        return new JEISpace(isInput, type, xPosition, yPosition, width, height, capacityMb, showCapacity);
     }
 
     @ZenMethod
-    public static JEIRecipe createRecipe(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity, ILiquidStack fluid) {
-        return new JEIRecipe(isInput, type, xPosition, yPosition, width, height, capacityMb, showCapacity, fluid);
-    }
-
-    @ZenMethod
-    public static JEIRecipe createRecipe(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity, List<ILiquidStack> fluids) {
-        return new JEIRecipe(isInput, type, xPosition, yPosition, width, height, capacityMb, showCapacity, fluids);
+    public static JEIRecipe createRecipe(IIngredient[] input, IIngredient[] output) {
+        return new JEIRecipe(input, output);
     }
 
     @SuppressWarnings("SameParameterValue")

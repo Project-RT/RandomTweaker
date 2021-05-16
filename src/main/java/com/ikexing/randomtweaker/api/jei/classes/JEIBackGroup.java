@@ -31,6 +31,6 @@ public class JEIBackGroup {
     }
 
     public boolean isNull() {
-        return this.namespaceIn.isEmpty() || this.pathIn.isEmpty();
+        return this.namespaceIn == null || namespaceIn.length() == 0;
     }
 }

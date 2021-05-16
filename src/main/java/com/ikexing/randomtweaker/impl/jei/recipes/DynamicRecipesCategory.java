@@ -2,7 +2,7 @@ package com.ikexing.randomtweaker.impl.jei.recipes;
 
 import com.ikexing.randomtweaker.api.jei.classes.JEIBackGroup;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
-import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
+import com.ikexing.randomtweaker.api.jei.classes.JEISpace;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import mezz.jei.api.IGuiHelper;
@@ -23,7 +23,7 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
     public static String UID;
 
-    private final List<JEIRecipe> jeiRecipes;
+    private final List<JEISpace> jeiSpaces;
     private final IDrawable background;
     private final IDrawable icon;
     private final String title;
@@ -35,7 +35,8 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         title = jeiCustom.title;
         UID = jeiCustom.uid;
         modName = jeiCustom.getModid();
-        jeiRecipes = jeiCustom.jeiRecipes;
+        jeiSpaces = jeiCustom.jeiSpaces;
+
         if (jeiBackGroup.isNull()) {
             background = guiHelper.createBlankDrawable(jeiBackGroup.width, jeiBackGroup.heigh);
         } else {
@@ -72,35 +73,31 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, DynamicRecipesWrapper recipeWrapper, IIngredients ingredients) {
+
         int i = 0;
-        for (JEIRecipe nowJeiRecipe : jeiRecipes) {
-            if (nowJeiRecipe.isInput) {
-                if ("item".equals(nowJeiRecipe.type)) {
-                    recipeLayout.getItemStacks().init(i, true, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
+        for (JEISpace jeiSpace : jeiSpaces) {
+            if (!jeiSpace.isInput) {
+                if ("item".equals(jeiSpace.type)) {
+                    recipeLayout.getItemStacks().init(i, true, jeiSpace.xPosition, jeiSpace.yPosition);
                     recipeLayout.getItemStacks().set(i, ingredients.getInputs(VanillaTypes.ITEM).get(i));
-                } else if ("fluid".equals(nowJeiRecipe.type)) {
-                    recipeLayout.getFluidStacks().init(i, true, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition, nowJeiRecipe.width, nowJeiRecipe.height, nowJeiRecipe.capacityMb, nowJeiRecipe.showCapacity, null);
+                } else if ("fluid".equals(jeiSpace.type)) {
+                    recipeLayout.getFluidStacks().init(i, true, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
                     recipeLayout.getFluidStacks().set(i, ingredients.getInputs(VanillaTypes.FLUID).get(i));
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
-                i++;
-            }
-        }
-        i = 0;
-        for (JEIRecipe nowJeiRecipe : jeiRecipes) {
-            if (!nowJeiRecipe.isInput) {
-                if ("item".equals(nowJeiRecipe.type)) {
-                    recipeLayout.getItemStacks().init(i, false, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition);
+            } else {
+                if ("item".equals(jeiSpace.type)) {
+                    recipeLayout.getItemStacks().init(i, false, jeiSpace.xPosition, jeiSpace.yPosition);
                     recipeLayout.getItemStacks().set(i, ingredients.getOutputs(VanillaTypes.ITEM).get(i));
-                } else if ("fluid".equals(nowJeiRecipe.type)) {
-                    recipeLayout.getFluidStacks().init(i, false, nowJeiRecipe.xPosition, nowJeiRecipe.yPosition, nowJeiRecipe.width, nowJeiRecipe.height, nowJeiRecipe.capacityMb, nowJeiRecipe.showCapacity, null);
+                } else if ("fluid".equals(jeiSpace.type)) {
+                    recipeLayout.getFluidStacks().init(i, false, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
                     recipeLayout.getFluidStacks().set(i, ingredients.getOutputs(VanillaTypes.FLUID).get(i));
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
-                i++;
             }
+            i++;
         }
     }
 }

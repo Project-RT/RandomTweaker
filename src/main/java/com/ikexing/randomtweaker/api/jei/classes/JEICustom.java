@@ -3,6 +3,7 @@ package com.ikexing.randomtweaker.api.jei.classes;
 import com.ikexing.randomtweaker.RandomTweaker;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ZenRegister;
+import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -14,7 +15,6 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -27,9 +27,11 @@ public class JEICustom {
     public final String title;
 
     @ZenProperty
-    public List<JEIFontInfo> jeiFontInfos = new ArrayList<>();
-    @ZenProperty
     public List<JEIRecipe> jeiRecipes = new ArrayList<>();
+    @ZenProperty
+    public List<JEISpace> jeiSpaces = new ArrayList<>();
+    @ZenProperty
+    public List<JEIFontInfo> jeiFontInfos = new ArrayList<>();
     @ZenProperty
     private String modid = RandomTweaker.MODID;
     @ZenProperty
@@ -110,42 +112,6 @@ public class JEICustom {
     }
 
     @ZenMethod
-    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, IItemStack stack) {
-        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, stack, null));
-    }
-
-    @ZenMethod
-    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, ILiquidStack stack) {
-        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, null, stack));
-    }
-
-    @ZenMethod
-    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, IItemStack[] stacks) {
-        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, Arrays.asList(stacks), null));
-    }
-
-    @ZenMethod
-    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, ILiquidStack[] stacks) {
-        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, null, Arrays.asList(stacks)));
-
-    }
-
-    @ZenMethod
-    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity, ILiquidStack fluid) {
-        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, width, height, capacityMb, showCapacity, fluid));
-    }
-
-    @ZenMethod
-    public void addJeiRecipe(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity, ILiquidStack[] fluid) {
-        this.jeiRecipes.add(new JEIRecipe(isInput, type, xPosition, yPosition, width, height, capacityMb, showCapacity, Arrays.asList(fluid)));
-    }
-
-    @ZenMethod
-    public void addJeiRecipe(JEIRecipe jeiRecipe) {
-        this.jeiRecipes.add(jeiRecipe);
-    }
-
-    @ZenMethod
     public List<JEIFontInfo> getJeiFontInfos() {
         return jeiFontInfos;
     }
@@ -153,6 +119,11 @@ public class JEICustom {
     @ZenMethod
     public void setJeiFontInfos(List<JEIFontInfo> jeiFontInfos) {
         this.jeiFontInfos = jeiFontInfos;
+    }
+
+    @ZenMethod
+    public List<JEISpace> getJeiSpaces() {
+        return jeiSpaces;
     }
 
     @ZenMethod
@@ -166,8 +137,28 @@ public class JEICustom {
     }
 
     @ZenMethod
+    public void addJeiRecipe(JEIRecipe jeiRecipe){
+        this.jeiRecipes.add(jeiRecipe);
+    }
+
+    @ZenMethod
+    public void setJeiSpaces(List<JEISpace> jeiSpaces) {
+        this.jeiSpaces = jeiSpaces;
+    }
+
+    @ZenMethod
+    public void addJeiSpaces(JEISpace jeiSpace) {
+        this.jeiSpaces.add(jeiSpace);
+    }
+
+    @ZenMethod
+    public void addJeiSpaces(boolean isInput, String type, int xPosition, int yPosition) {
+        this.jeiSpaces.add(new JEISpace(isInput, type, xPosition, yPosition));
+    }
+
+    @ZenMethod
     public void register() {
-        if (jeiBackGroup == null || jeiFontInfos.isEmpty() || jeiRecipes.isEmpty() || recipeCatalysts.isEmpty()) {
+        if (jeiBackGroup == null || jeiRecipes.isEmpty() || recipeCatalysts.isEmpty() || jeiSpaces.isEmpty()) {
             CraftTweakerAPI.logError("Parameters mustn't be empty !!!");
         } else if (modid.equals(RandomTweaker.MODID) || icon.matches(CraftTweakerMC.getIItemStack(new ItemStack(Blocks.BEDROCK)))) {
             CraftTweakerAPI.logInfo("Please modify modid and icon, even though this is not a requirement");

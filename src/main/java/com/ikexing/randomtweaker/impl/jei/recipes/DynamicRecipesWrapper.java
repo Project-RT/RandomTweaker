@@ -2,7 +2,7 @@ package com.ikexing.randomtweaker.impl.jei.recipes;
 
 import com.ikexing.randomtweaker.api.jei.classes.JEIFontInfo;
 import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
-import crafttweaker.CraftTweakerAPI;
+import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -27,35 +27,50 @@ import java.util.List;
 public class DynamicRecipesWrapper implements IRecipeWrapper {
 
     private final List<JEIFontInfo> fontInfos;
-    private final List<JEIRecipe> jeiRecipes;
+    private final JEIRecipe jeiRecipe;
 
-    public DynamicRecipesWrapper(List<JEIFontInfo> fontInfos, List<JEIRecipe> jeiRecipes) {
+    public DynamicRecipesWrapper(List<JEIFontInfo> fontInfos, JEIRecipe jeiRecipe) {
         this.fontInfos = fontInfos;
-        this.jeiRecipes = jeiRecipes;
+        this.jeiRecipe = jeiRecipe;
     }
-
 
     @Override
     public void getIngredients(IIngredients ingredients) {
-        for (JEIRecipe nowJeiRecipe : jeiRecipes) {
-            if (nowJeiRecipe.isInput) {
-                if ("item".equals(nowJeiRecipe.type)) {
-                    ingredients.setInputs(VanillaTypes.ITEM, getItemStacks(nowJeiRecipe.items));
-                } else if ("fluid".equals(nowJeiRecipe.type)) {
-                    ingredients.setInputs(VanillaTypes.FLUID, getFluidStacks(nowJeiRecipe.fluids));
-                } else {
-                    CraftTweakerAPI.logError("Type is not supported");
-                }
-            } else {
-                if ("item".equals(nowJeiRecipe.type)) {
-                    ingredients.setOutputs(VanillaTypes.ITEM, getItemStacks(nowJeiRecipe.items));
-                } else if ("fluid".equals(nowJeiRecipe.type)) {
-                    ingredients.setOutputs(VanillaTypes.FLUID, getFluidStacks(nowJeiRecipe.fluids));
-                } else {
-                    CraftTweakerAPI.logError("Type is not supported");
-                }
+        for (IIngredient iIngredient : jeiRecipe.input) {
+            if (!iIngredient.getItems().isEmpty()) {
+                ingredients.setInputs(VanillaTypes.ITEM, getItemStacks(iIngredient.getItems()));
+            }else{
+                ingredients.setInputs(VanillaTypes.FLUID, getFluidStacks(iIngredient.getLiquids()));
             }
         }
+
+        for (IIngredient iIngredient : jeiRecipe.output){
+            if (!iIngredient.getItems().isEmpty()) {
+                ingredients.setOutputs(VanillaTypes.ITEM, getItemStacks(iIngredient.getItems()));
+            }else{
+                ingredients.setOutputs(VanillaTypes.FLUID, getFluidStacks(iIngredient.getLiquids()));
+            }
+        }
+
+//        for (JEIInput nowJeiRecipe : jeiInputs) {
+//            if (nowJeiRecipe.isInput) {
+//                if ("item".equals(nowJeiRecipe.type)) {
+//                    ingredients.setInputs(VanillaTypes.ITEM, getItemStacks(nowJeiRecipe.items));
+//                } else if ("fluid".equals(nowJeiRecipe.type)) {
+//                    ingredients.setInputs(VanillaTypes.FLUID, getFluidStacks(nowJeiRecipe.fluids));
+//                } else {
+//                    CraftTweakerAPI.logError("Type is not supported");
+//                }
+//            } else {
+//                if ("item".equals(nowJeiRecipe.type)) {
+//                    ingredients.setOutputs(VanillaTypes.ITEM, getItemStacks(nowJeiRecipe.items));
+//                } else if ("fluid".equals(nowJeiRecipe.type)) {
+//                    ingredients.setOutputs(VanillaTypes.FLUID, getFluidStacks(nowJeiRecipe.fluids));
+//                } else {
+//                    CraftTweakerAPI.logError("Type is not supported");
+//                }
+//            }
+//        }
     }
 
     @SideOnly(Side.CLIENT)
