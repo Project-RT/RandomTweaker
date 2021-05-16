@@ -7,8 +7,11 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.gui.IGuiFluidStackGroup;
+import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.util.ResourceLocation;
 
@@ -72,31 +75,31 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, DynamicRecipesWrapper recipeWrapper, IIngredients ingredients) {
+        IGuiItemStackGroup group = recipeLayout.getItemStacks();
+        IGuiFluidStackGroup fgroup = recipeLayout.getFluidStacks();
         int i = 0;
         for (JEISpace jeiSpace : this.jeiSpaces) {
             if (jeiSpace.isInput) {
                 if ("item".equals(jeiSpace.type)) {
-                    recipeLayout.getItemStacks().init(i, true, jeiSpace.xPosition, jeiSpace.yPosition);
-                    recipeLayout.getItemStacks().set(ingredients);
+                    group.init(i, true, jeiSpace.xPosition, jeiSpace.yPosition);
                 } else if ("fluid".equals(jeiSpace.type)) {
-                    recipeLayout.getFluidStacks().init(i, true, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
-                    recipeLayout.getFluidStacks().set(ingredients);
+                    fgroup.init(i, true, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
             } else {
                 if ("item".equals(jeiSpace.type)) {
-                    recipeLayout.getItemStacks().init(i, false, jeiSpace.xPosition, jeiSpace.yPosition);
-                    recipeLayout.getItemStacks().set(ingredients);
+                    group.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition);
                 } else if ("fluid".equals(jeiSpace.type)) {
-                    recipeLayout.getFluidStacks().init(i, false, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
-                    recipeLayout.getFluidStacks().set(ingredients);
+                    fgroup.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
             }
             i++;
+            System.out.println(i);
         }
-
+        group.set(ingredients);
+        fgroup.set(ingredients);
     }
 }

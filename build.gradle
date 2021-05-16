@@ -105,7 +105,3 @@ repositories.each {
         it.url = "https://maven.minecraftforge.net/"
     }
 }
-
-tasks.withType(JavaCompile) {
-    options.encoding = "GBK"
-}

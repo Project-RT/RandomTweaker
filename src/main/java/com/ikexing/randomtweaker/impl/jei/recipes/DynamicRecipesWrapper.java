@@ -53,26 +53,6 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
                 ingredients.setOutputs(VanillaTypes.FLUID, getFluidStacks(iIngredient.getLiquids()));
             }
         }
-
-//        for (JEIInput nowJeiRecipe : jeiInputs) {
-//            if (nowJeiRecipe.isInput) {
-//                if ("item".equals(nowJeiRecipe.type)) {
-//                    ingredients.setInputs(VanillaTypes.ITEM, getItemStacks(nowJeiRecipe.items));
-//                } else if ("fluid".equals(nowJeiRecipe.type)) {
-//                    ingredients.setInputs(VanillaTypes.FLUID, getFluidStacks(nowJeiRecipe.fluids));
-//                } else {
-//                    CraftTweakerAPI.logError("Type is not supported");
-//                }
-//            } else {
-//                if ("item".equals(nowJeiRecipe.type)) {
-//                    ingredients.setOutputs(VanillaTypes.ITEM, getItemStacks(nowJeiRecipe.items));
-//                } else if ("fluid".equals(nowJeiRecipe.type)) {
-//                    ingredients.setOutputs(VanillaTypes.FLUID, getFluidStacks(nowJeiRecipe.fluids));
-//                } else {
-//                    CraftTweakerAPI.logError("Type is not supported");
-//                }
-//            }
-//        }
     }
 
     @SideOnly(Side.CLIENT)
