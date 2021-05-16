@@ -2,7 +2,6 @@ package com.ikexing.randomtweaker.impl.jei.recipes;
 
 import com.ikexing.randomtweaker.api.jei.classes.JEIFontInfo;
 import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
-import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -36,23 +35,22 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
 
     @Override
     public void getIngredients(IIngredients ingredients) {
-        for (IIngredient iIngredient : jeiRecipe.input) {
-            System.out.println(iIngredient.getLiquids().isEmpty());
-            if (iIngredient.getLiquids().isEmpty()) {
-                ingredients.setInputs(VanillaTypes.ITEM, getItemStacks(iIngredient.getItems()));
+        for (crafttweaker.api.item.IIngredient it : jeiRecipe.input) {
+            if (it.getLiquids().isEmpty()) {
+                ingredients.setInputs(VanillaTypes.ITEM, getItemStacks(it.getItems()));
             } else {
-                ingredients.setInputs(VanillaTypes.FLUID, getFluidStacks(iIngredient.getLiquids()));
+                ingredients.setInputs(VanillaTypes.FLUID, getFluidStacks(it.getLiquids()));
             }
         }
 
-        for (IIngredient iIngredient : jeiRecipe.output) {
-            System.out.println(iIngredient.getLiquids().isEmpty());
-            if (iIngredient.getLiquids().isEmpty()) {
-                ingredients.setOutputs(VanillaTypes.ITEM, getItemStacks(iIngredient.getItems()));
+        for (crafttweaker.api.item.IIngredient it : jeiRecipe.output) {
+            if (it.getLiquids().isEmpty()) {
+                ingredients.setOutputs(VanillaTypes.ITEM, getItemStacks(it.getItems()));
             } else {
-                ingredients.setOutputs(VanillaTypes.FLUID, getFluidStacks(iIngredient.getLiquids()));
+                ingredients.setOutputs(VanillaTypes.FLUID, getFluidStacks(it.getLiquids()));
             }
         }
+
     }
 
     @SideOnly(Side.CLIENT)

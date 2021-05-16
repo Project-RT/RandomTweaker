@@ -90,6 +90,7 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
             } else {
                 if ("item".equals(jeiSpace.type)) {
                     group.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition);
+                    group.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition);
                 } else if ("fluid".equals(jeiSpace.type)) {
                     fgroup.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
                 } else {
@@ -97,7 +98,6 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
                 }
             }
             i++;
-            System.out.println(i);
         }
         group.set(ingredients);
         fgroup.set(ingredients);
