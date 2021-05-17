@@ -2,6 +2,7 @@ package com.ikexing.randomtweaker;
 
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.utils.RTGlobal;
+import com.ikexing.randomtweaker.impl.events.DreamJournal;
 import crafttweaker.api.player.IPlayer;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.zenscript.GlobalRegistry;
@@ -40,7 +41,7 @@ public class RandomTweaker {
         GlobalRegistry.registerGlobal("getAllInBox", GlobalRegistry.getStaticFunction(RTGlobal.class, "getAllInBox", IBlockPos.class, IBlockPos.class));
 
         if (Loader.isModLoaded(thaumcraft)) {
-            MinecraftForge.EVENT_BUS.register(EventHandler.class);
+            MinecraftForge.EVENT_BUS.register(DreamJournal.class);
             GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
         }
     }

@@ -16,6 +16,7 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author ikexing
@@ -78,18 +79,19 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         IGuiFluidStackGroup fgroup = recipeLayout.getFluidStacks();
         int i = 0;
         for (JEISpace jeiSpace : this.jeiSpaces) {
+            String s = jeiSpace.type.toLowerCase();
             if (jeiSpace.isInput) {
-                if ("item".equals(jeiSpace.type)) {
+                if ("item".equals(s)) {
                     group.init(i, true, jeiSpace.xPosition, jeiSpace.yPosition);
-                } else if ("fluid".equals(jeiSpace.type)) {
+                } else if ("fluid".equals(s)) {
                     fgroup.init(i, true, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
             } else {
-                if ("item".equals(jeiSpace.type)) {
+                if ("item".equals(s)) {
                     group.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition);
-                } else if ("fluid".equals(jeiSpace.type)) {
+                } else if ("fluid".equals(s)) {
                     fgroup.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
