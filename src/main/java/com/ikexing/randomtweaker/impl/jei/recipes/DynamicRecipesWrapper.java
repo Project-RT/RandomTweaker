@@ -35,22 +35,31 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
 
     @Override
     public void getIngredients(IIngredients ingredients) {
+        List<List<FluidStack>> inputFluidStack = new ArrayList<>();
+        List<List<ItemStack>> inputItemStack = new ArrayList<>();
+
+        List<List<FluidStack>> outputFluidStack = new ArrayList<>();
+        List<List<ItemStack>> outputItemStack = new ArrayList<>();
+
         for (crafttweaker.api.item.IIngredient it : jeiRecipe.input) {
             if (it.getLiquids().isEmpty()) {
-                ingredients.setInputs(VanillaTypes.ITEM, getItemStacks(it.getItems()));
+                inputItemStack.add(getItemStacks(it.getItems()));
             } else {
-                ingredients.setInputs(VanillaTypes.FLUID, getFluidStacks(it.getLiquids()));
+                inputFluidStack.add(getFluidStacks(it.getLiquids()));
             }
         }
+        ingredients.setInputLists(VanillaTypes.ITEM, inputItemStack);
+        ingredients.setInputLists(VanillaTypes.FLUID, inputFluidStack);
 
         for (crafttweaker.api.item.IIngredient it : jeiRecipe.output) {
             if (it.getLiquids().isEmpty()) {
-                ingredients.setOutputs(VanillaTypes.ITEM, getItemStacks(it.getItems()));
+                outputItemStack.add(getItemStacks(it.getItems()));
             } else {
-                ingredients.setOutputs(VanillaTypes.FLUID, getFluidStacks(it.getLiquids()));
+                outputFluidStack.add(getFluidStacks(it.getLiquids()));
             }
         }
-
+        ingredients.setOutputLists(VanillaTypes.ITEM, outputItemStack);
+        ingredients.setOutputLists(VanillaTypes.FLUID, outputFluidStack);
     }
 
     @SideOnly(Side.CLIENT)

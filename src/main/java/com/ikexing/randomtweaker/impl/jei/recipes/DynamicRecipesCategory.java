@@ -11,7 +11,6 @@ import mezz.jei.api.gui.IGuiFluidStackGroup;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.util.ResourceLocation;
 
@@ -89,7 +88,6 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
                 }
             } else {
                 if ("item".equals(jeiSpace.type)) {
-                    group.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition);
                     group.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition);
                 } else if ("fluid".equals(jeiSpace.type)) {
                     fgroup.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);

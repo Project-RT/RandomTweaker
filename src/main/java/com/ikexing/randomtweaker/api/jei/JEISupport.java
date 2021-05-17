@@ -15,7 +15,7 @@ import java.util.Random;
  * @author ikexing
  */
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEI")
+@ZenClass("mods.randomtweaker.JEISupport")
 public class JEISupport {
 
     @ZenMethod
