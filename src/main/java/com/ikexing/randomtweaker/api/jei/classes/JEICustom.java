@@ -28,7 +28,7 @@ public class JEICustom {
     @ZenProperty
     public List<JEIRecipe> jeiRecipes = new ArrayList<>();
     @ZenProperty
-    public List<JEISpace> jeiSpaces = new ArrayList<>();
+    public List<JEISlot> jeiSlots = new ArrayList<>();
     @ZenProperty
     public List<JEIFontInfo> jeiFontInfos = new ArrayList<>();
     @ZenProperty
@@ -121,8 +121,8 @@ public class JEICustom {
     }
 
     @ZenMethod
-    public List<JEISpace> getJeiSpaces() {
-        return jeiSpaces;
+    public List<JEISlot> getJeiSlots() {
+        return jeiSlots;
     }
 
     @ZenMethod
@@ -146,23 +146,23 @@ public class JEICustom {
     }
 
     @ZenMethod
-    public void setJeiSpaces(List<JEISpace> jeiSpaces) {
-        this.jeiSpaces = jeiSpaces;
+    public void setJeiSlots(List<JEISlot> jeiSlots) {
+        this.jeiSlots = jeiSlots;
     }
 
     @ZenMethod
-    public void addJeiSpace(JEISpace jeiSpace) {
-        this.jeiSpaces.add(jeiSpace);
+    public void addJeiSlot(JEISlot jeiSlot) {
+        this.jeiSlots.add(jeiSlot);
     }
 
     @ZenMethod
-    public void addJeiSpace(boolean isInput, String type, int xPosition, int yPosition) {
-        this.jeiSpaces.add(new JEISpace(isInput, type, xPosition, yPosition));
+    public void addJeiSlot(boolean isInput, String type, int xPosition, int yPosition) {
+        this.jeiSlots.add(new JEISlot(isInput, type, xPosition, yPosition));
     }
 
     @ZenMethod
     public void register() {
-        if (jeiBackGroup == null || jeiRecipes.isEmpty() || recipeCatalysts.isEmpty() || jeiSpaces.isEmpty()) {
+        if (jeiBackGroup == null || jeiRecipes.isEmpty() || recipeCatalysts.isEmpty() || jeiSlots.isEmpty()) {
             CraftTweakerAPI.logError("Parameters mustn't be empty !!!");
         } else if (modid.equals(RandomTweaker.MODID) || icon.matches(CraftTweakerMC.getIItemStack(new ItemStack(Blocks.BEDROCK)))) {
             CraftTweakerAPI.logInfo("Please modify modid and icon, even though this is not a requirement");

@@ -3,10 +3,11 @@ package com.ikexing.randomtweaker.api.jei;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.jei.classes.JEIFontInfo;
 import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
-import com.ikexing.randomtweaker.api.jei.classes.JEISpace;
+import com.ikexing.randomtweaker.api.jei.classes.JEISlot;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
 import java.util.Random;
@@ -18,32 +19,32 @@ import java.util.Random;
 @ZenClass("mods.randomtweaker.JEISupport")
 public class JEISupport {
 
-    @ZenMethodStatic
+    @ZenMethod
     public static JEICustom create(String localizedname) {
         return new JEICustom(getRandomString(8), localizedname);
     }
 
-    @ZenMethodStatic
+    @ZenMethod
     public static JEICustom create(String uid, String localizedname) {
         return new JEICustom(uid, localizedname);
     }
 
-    @ZenMethodStatic
+    @ZenMethod
     public static JEIFontInfo createFontInfo(String fontInfoName, int color, int recipeWidth, int recipeHeight, int x, int y) {
         return new JEIFontInfo(fontInfoName, color, recipeWidth, recipeHeight, x, y);
     }
 
-    @ZenMethodStatic
-    public static JEISpace createSpace(boolean isInput, String type, int xPosition, int yPosition) {
-        return new JEISpace(isInput, type, xPosition, yPosition);
+    @ZenMethod
+    public static JEISlot createSlot(boolean isInput, String type, int xPosition, int yPosition) {
+        return new JEISlot(isInput, type, xPosition, yPosition);
     }
 
-    @ZenMethodStatic
-    public static JEISpace createSpace(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity) {
-        return new JEISpace(isInput, type, xPosition, yPosition, width, height, capacityMb, showCapacity);
+    @ZenMethod
+    public static JEISlot createSlot(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity) {
+        return new JEISlot(isInput, type, xPosition, yPosition, width, height, capacityMb, showCapacity);
     }
 
-    @ZenMethodStatic
+    @ZenMethod
     public static JEIRecipe createRecipe(IIngredient[] input, IIngredient[] output) {
         return new JEIRecipe(input, output);
     }

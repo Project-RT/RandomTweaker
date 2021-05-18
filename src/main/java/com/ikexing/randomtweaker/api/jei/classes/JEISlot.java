@@ -8,7 +8,7 @@ import stanhebben.zenscript.annotations.ZenClass;
  */
 @ZenRegister
 @ZenClass("mods.randomtweaker.JEISpace")
-public class JEISpace {
+public class JEISlot {
     public boolean isInput;
     public String type;
     public int xPosition;
@@ -18,7 +18,7 @@ public class JEISpace {
     public int capacityMb = 1000;
     public boolean showCapacity = false;
 
-    public JEISpace(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity) {
+    public JEISlot(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity) {
         this.isInput = isInput;
         this.type = type;
         this.xPosition = xPosition;
@@ -29,7 +29,7 @@ public class JEISpace {
         this.showCapacity = showCapacity;
     }
 
-    public JEISpace(boolean isInput, String type, int xPosition, int yPosition) {
+    public JEISlot(boolean isInput, String type, int xPosition, int yPosition) {
         this.isInput = isInput;
         this.type = type;
         this.xPosition = xPosition;

@@ -2,7 +2,7 @@ package com.ikexing.randomtweaker.impl.jei.recipes;
 
 import com.ikexing.randomtweaker.api.jei.classes.JEIBackGroup;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
-import com.ikexing.randomtweaker.api.jei.classes.JEISpace;
+import com.ikexing.randomtweaker.api.jei.classes.JEISlot;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import mezz.jei.api.IGuiHelper;
@@ -16,7 +16,6 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * @author ikexing
@@ -25,7 +24,7 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
     public static String UID;
 
-    private final List<JEISpace> jeiSpaces;
+    private final List<JEISlot> jeiSlots;
     private final IDrawable background;
     private final IDrawable icon;
     private final String title;
@@ -37,7 +36,7 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         title = jeiCustom.title;
         UID = jeiCustom.uid;
         modName = jeiCustom.getModid();
-        jeiSpaces = jeiCustom.jeiSpaces;
+        jeiSlots = jeiCustom.jeiSlots;
 
         if (jeiBackGroup.isNull()) {
             background = guiHelper.createBlankDrawable(jeiBackGroup.width, jeiBackGroup.heigh);
@@ -78,21 +77,21 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         IGuiItemStackGroup group = recipeLayout.getItemStacks();
         IGuiFluidStackGroup fgroup = recipeLayout.getFluidStacks();
         int i = 0;
-        for (JEISpace jeiSpace : this.jeiSpaces) {
-            String s = jeiSpace.type.toLowerCase();
-            if (jeiSpace.isInput) {
+        for (JEISlot jeiSlot : this.jeiSlots) {
+            String s = jeiSlot.type.toLowerCase();
+            if (jeiSlot.isInput) {
                 if ("item".equals(s)) {
-                    group.init(i, true, jeiSpace.xPosition, jeiSpace.yPosition);
+                    group.init(i, true, jeiSlot.xPosition, jeiSlot.yPosition);
                 } else if ("fluid".equals(s)) {
-                    fgroup.init(i, true, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
+                    fgroup.init(i, true, jeiSlot.xPosition, jeiSlot.yPosition, jeiSlot.width, jeiSlot.height, jeiSlot.capacityMb, jeiSlot.showCapacity, null);
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
             } else {
                 if ("item".equals(s)) {
-                    group.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition);
+                    group.init(i, false, jeiSlot.xPosition, jeiSlot.yPosition);
                 } else if ("fluid".equals(s)) {
-                    fgroup.init(i, false, jeiSpace.xPosition, jeiSpace.yPosition, jeiSpace.width, jeiSpace.height, jeiSpace.capacityMb, jeiSpace.showCapacity, null);
+                    fgroup.init(i, false, jeiSlot.xPosition, jeiSlot.yPosition, jeiSlot.width, jeiSlot.height, jeiSlot.capacityMb, jeiSlot.showCapacity, null);
                 } else {
                     CraftTweakerAPI.logError("Type is not supported");
                 }
