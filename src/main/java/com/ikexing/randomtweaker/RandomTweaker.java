@@ -39,7 +39,7 @@ public class RandomTweaker {
     @EventHandler
     public static void onConstruct(FMLConstructionEvent event) {
         GlobalRegistry.registerGlobal("getAllInBox", GlobalRegistry.getStaticFunction(RTGlobal.class, "getAllInBox", IBlockPos.class, IBlockPos.class));
-        GlobalRegistry.registerGlobal("sendMessage", GlobalRegistry.getStaticFunction(RTGlobal.class, "sendChat", String.class));
+        GlobalRegistry.registerGlobal("sendMessage", GlobalRegistry.getStaticFunction(RTGlobal.class, "sendMessage", String.class));
 
         if (Loader.isModLoaded(thaumcraft)) {
             MinecraftForge.EVENT_BUS.register(DreamJournal.class);
