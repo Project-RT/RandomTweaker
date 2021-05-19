@@ -15,14 +15,14 @@ import thaumcraft.common.items.resources.ItemCrystalEssence;
  */
 public class DreamJournal {
     @SubscribeEvent(priority = EventPriority.HIGH)
-    public void onItemPickup(EntityItemPickupEvent event) {
+    public static void onItemPickup(EntityItemPickupEvent event) {
         EntityPlayer player = event.getEntityPlayer();
         World world = player.getEntityWorld();
-
         if (!world.isRemote && event.getItem() != null) {
             IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(player);
-            if ((event.getItem().getItem().getItem() instanceof ItemCrystalEssence && RTConfig.DreamJournal)) {
-                knowledge.addResearch("!gotdream");
+            String gotdream = "!gotdream";
+            if ((event.getItem().getItem().getItem() instanceof ItemCrystalEssence && RTConfig.DreamJournal && !knowledge.isResearchKnown(gotdream))){
+                knowledge.addResearch(gotdream);
             }
         }
     }
