@@ -61,7 +61,6 @@ public class IPlayerExpansionAS {
 
     @ZenMethod
     public static boolean setPerkExp(IPlayer player, double exp) {
-
         PlayerProgress prog = ResearchManager.getProgress(CraftTweakerMC.getPlayer(player));
 
         if (IPlayerExpansionAS.getAttunedConstellation(player) == null) {

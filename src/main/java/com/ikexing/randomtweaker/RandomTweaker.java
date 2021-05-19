@@ -25,7 +25,7 @@ public class RandomTweaker {
     public static final String MODID = "randomtweaker";
     public static final String NAME = "RandomTweaker";
     public static final String VERSION = "1.0.0";
-    public static final String DESPENDENCIES = "required-after:crafttweaker;after:crafttweakerjei";
+    public static final String DESPENDENCIES = "required-after:crafttweaker";
 
     public static Logger logger;
     public static String thaumcraft = "thaumcraft";
@@ -39,6 +39,7 @@ public class RandomTweaker {
     @EventHandler
     public static void onConstruct(FMLConstructionEvent event) {
         GlobalRegistry.registerGlobal("getAllInBox", GlobalRegistry.getStaticFunction(RTGlobal.class, "getAllInBox", IBlockPos.class, IBlockPos.class));
+        GlobalRegistry.registerGlobal("sendMessage", GlobalRegistry.getStaticFunction(RTGlobal.class, "sendChat", String.class));
 
         if (Loader.isModLoaded(thaumcraft)) {
             MinecraftForge.EVENT_BUS.register(DreamJournal.class);

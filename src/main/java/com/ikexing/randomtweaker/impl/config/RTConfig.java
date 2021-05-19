@@ -2,6 +2,10 @@ package com.ikexing.randomtweaker.impl.config;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.Config.LangKey;
+import net.minecraftforge.common.config.Config.RequiresMcRestart;
+
+import static net.minecraftforge.common.config.Config.Comment;
 
 /**
  * @author ikexing
@@ -10,7 +14,8 @@ import net.minecraftforge.common.config.Config;
  */
 @Config(modid = RandomTweaker.MODID)
 public class RTConfig {
-    @Config.RequiresMcRestart
-    @Config.Comment("If true, The original dreamjournal will be no longer available.")
+    @LangKey("config.randomtweaker.thaumcraft.dreamjournal")
+    @RequiresMcRestart
+    @Comment("If true, The original DreamJournal will be no longer available.")
     public static boolean DreamJournal = false;
 }

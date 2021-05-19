@@ -3,7 +3,10 @@ package com.ikexing.randomtweaker.api.utils;
 import com.google.common.collect.Lists;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
+import crafttweaker.api.text.ITextComponent;
 import crafttweaker.api.world.IBlockPos;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiNewChat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -36,6 +39,20 @@ public class RTGlobal {
         player1.sendMessage(new TextComponentString(TextFormatting.DARK_PURPLE + I18n.translateToLocal("got.dream")));
     }
 
+    @ZenMethod
+    public static IBlockPos[] getAllInBox(IBlockPos from, IBlockPos to) {
+        Iterable<BlockPos> allInBox = BlockPos.getAllInBox(CraftTweakerMC.getBlockPos(from), CraftTweakerMC.getBlockPos(to));
+        List<IBlockPos> list = Lists.newArrayList();
+        allInBox.forEach(single -> list.add(CraftTweakerMC.getIBlockPos(single)));
+        return list.toArray(new IBlockPos[0]);
+    }
+
+    @ZenMethod
+    public static void sendMessage(String string) {
+        GuiNewChat guinewchat = Minecraft.getMinecraft().ingameGUI.getChatGUI();
+        guinewchat.printChatMessage(new TextComponentString(string));
+    }
+
     private static void giverDreamJournl(EntityPlayer player) {
         IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(player);
         knowledge.addResearch("!gotdream");
@@ -45,13 +62,5 @@ public class RTGlobal {
         if (!player.inventory.addItemStackToInventory(book)) {
             InventoryUtils.dropItemAtEntity(player.world, book, player);
         }
-    }
-
-    @ZenMethod
-    public static IBlockPos[] getAllInBox(IBlockPos from, IBlockPos to) {
-        Iterable<BlockPos> allInBox = BlockPos.getAllInBox(CraftTweakerMC.getBlockPos(from), CraftTweakerMC.getBlockPos(to));
-        List<IBlockPos> list = Lists.newArrayList();
-        allInBox.forEach(single -> list.add(CraftTweakerMC.getIBlockPos(single)));
-        return list.toArray(new IBlockPos[0]);
     }
 }
