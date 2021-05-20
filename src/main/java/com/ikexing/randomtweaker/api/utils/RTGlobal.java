@@ -3,10 +3,8 @@ package com.ikexing.randomtweaker.api.utils;
 import com.google.common.collect.Lists;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
-import crafttweaker.api.text.ITextComponent;
 import crafttweaker.api.world.IBlockPos;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiNewChat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -49,8 +47,7 @@ public class RTGlobal {
 
     @ZenMethod
     public static void sendMessage(String string) {
-        GuiNewChat guinewchat = Minecraft.getMinecraft().ingameGUI.getChatGUI();
-        guinewchat.printChatMessage(new TextComponentString(string));
+        Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString(string));
     }
 
     private static void giverDreamJournl(EntityPlayer player) {
