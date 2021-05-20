@@ -164,11 +164,11 @@ public class JEICustom {
     public void register() {
         if (jeiBackGroup == null || jeiRecipes.isEmpty() || recipeCatalysts.isEmpty() || jeiSlots.isEmpty()) {
             CraftTweakerAPI.logError("Parameters mustn't be empty !!!");
+            return;
         } else if (modid.equals(RandomTweaker.MODID) || icon.matches(CraftTweakerMC.getIItemStack(new ItemStack(Blocks.BEDROCK)))) {
             CraftTweakerAPI.logInfo("Please modify modid and icon, even though this is not a requirement");
-        } else {
-            RandomTweaker.jeiCustomList.add(this);
         }
+        RandomTweaker.jeiCustomList.add(this);
     }
 
 }
