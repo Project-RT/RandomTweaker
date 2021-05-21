@@ -18,6 +18,6 @@ public class RTConfig {
     public static boolean DreamJournal = false;
 
     @RequiresMcRestart
-    @Comment("If true, You can manipulate randomtweaker.prop I / O")
+    @Comment("If true, Allow CrT to manipulate the file \"randomtweaker.prop\".")
     public static boolean Prop = true;
 }
