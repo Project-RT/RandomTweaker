@@ -28,19 +28,20 @@ minecraft {
 }
 
 dependencies {
-    def mc_version = "1.12"
+    compile files('libs/')
 
     deobfCompile "mezz.jei:jei_1.12.2:4.16.1.302"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
-    deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
-    deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
+    deobfCompile "curse.maven:thebetweenlands-243363:3248202"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.646"
-    deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
 
     runtime "curse.maven:Baubles-227083:2518667"
     runtime "curse.maven:zenutils-401178:3303426"
     runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
+    runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
+    runtime "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
+    runtime "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
 
     provided('org.spongepowered:mixin:0.8') {
         exclude module: 'guava'
