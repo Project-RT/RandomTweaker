@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.tbl;
+package com.ikexing.randomtweaker.api.thebetweenlands;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
@@ -18,7 +18,7 @@ import java.util.List;
 @ZenRegister
 @ModOnly("thebetweenlands")
 @ZenClass("mods.randomtweaker.ItemTbl")
-public class TBLItemHandler {
+public class BLItemHandler {
     @ZenMethod
     public static void addCorrosionPropertyOverrides(IItemDefinition item) {
         CorrosionHelper.addCorrosionPropertyOverrides(CraftTweakerMC.getItem(item));

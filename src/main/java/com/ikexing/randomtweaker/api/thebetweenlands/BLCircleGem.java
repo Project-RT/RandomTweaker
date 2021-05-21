@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.tbl;
+package com.ikexing.randomtweaker.api.thebetweenlands;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
@@ -18,7 +18,7 @@ import thebetweenlands.common.capability.circlegem.CircleGemType;
 @ZenRegister
 @ModOnly("thebetweenlands")
 @ZenClass("mods.randomtweaker.CircleGem")
-public class CircleGem {
+public class BLCircleGem {
     @ZenMethod
     public static void setGem(IItemStack stack, String gemType) {
         CircleGemType circleGemType = getCircleGemType(gemType);
