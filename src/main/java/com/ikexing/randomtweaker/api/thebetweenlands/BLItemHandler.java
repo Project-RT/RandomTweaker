@@ -17,7 +17,7 @@ import java.util.List;
  */
 @ZenRegister
 @ModOnly("thebetweenlands")
-@ZenClass("mods.randomtweaker.ItemTbl")
+@ZenClass("mods.randomtweaker.BLItem")
 public class BLItemHandler {
     @ZenMethod
     public static void addCorrosionPropertyOverrides(IItemDefinition item) {

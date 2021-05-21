@@ -2,15 +2,12 @@ package com.ikexing.randomtweaker.api.thebetweenlands.event;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
-import stanhebben.zenscript.annotations.ZenExpansion;
-import stanhebben.zenscript.annotations.ZenGetter;
-import stanhebben.zenscript.annotations.ZenMethod;
-import stanhebben.zenscript.annotations.ZenSetter;
+import stanhebben.zenscript.annotations.*;
 import thebetweenlands.api.environment.IEnvironmentEvent;
 
 @ZenRegister
 @ModOnly("thebetweenlands")
-@ZenExpansion("mods.randomtweaker.IBLEnvironmentEvent")
+@ZenClass("mods.randomtweaker.IBLEnvironmentEvent")
 public class IBLEnvironmentEvent {
     private final IEnvironmentEvent event;
 
