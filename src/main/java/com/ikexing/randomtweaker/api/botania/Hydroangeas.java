@@ -1,6 +1,7 @@
 package com.ikexing.randomtweaker.api.botania;
 
 import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
+import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
@@ -11,6 +12,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
  * @author ikexing, niyan
  */
 @ZenRegister
+@ModOnly("botania")
 @ZenClass("mods.randomtweaker.Hydroangeas")
 public class Hydroangeas {
     @ZenMethod

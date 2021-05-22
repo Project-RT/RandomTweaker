@@ -28,8 +28,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ikexing.randomtweaker.impl.config.RTConfig.HydroangeasModified;
-
 /**
  * @author ikexing
  */
@@ -65,10 +63,12 @@ public class RandomTweaker {
 
     @EventHandler
     public void onInit(FMLInitializationEvent event) {
-        registryOverride();
+        if (!RTConfig.HydroangeasModified) {
+            registryHydroangeasModified();
+        }
     }
 
-    private void registryOverride() {
+    private void registryHydroangeasModified() {
         final BiMap<String, Class<? extends SubTileEntity>> subTiles;
         try {
             Field field = BotaniaAPI.class.getDeclaredField("subTiles");
@@ -77,9 +77,7 @@ public class RandomTweaker {
             subTiles = (BiMap<String, Class<? extends SubTileEntity>>) field.get(null);
 
             if (subTiles != null) {
-                if (!HydroangeasModified) {
-                    subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
-                }
+                subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
             }
 
         } catch (NoSuchFieldException | IllegalAccessException e) {

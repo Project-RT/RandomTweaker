@@ -14,11 +14,11 @@ import static net.minecraftforge.common.config.Config.Comment;
 @Config(modid = RandomTweaker.MODID)
 public class RTConfig {
     @RequiresMcRestart
-    @Comment("If true, The original DreamJournal will be no longer available.")
+    @Comment("If true, The original DreamJournal will be no longer available. [default: false]")
     public static boolean DreamJournal = false;
 
     @RequiresMcRestart
-    @Comment("If true, Allow CrT to manipulate the file \"randomtweaker.prop\".")
+    @Comment("If true, Allow CrT to manipulate the file \"randomtweaker.prop\". [default: true]")
     public static boolean Prop = true;
 
     @RequiresMcRestart
