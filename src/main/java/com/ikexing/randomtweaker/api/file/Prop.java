@@ -50,7 +50,7 @@ public class Prop {
         return false;
     }
 
-    public static void createOrDelete(boolean flag) throws IOException {
+    public static boolean createOrDelete(boolean flag) throws IOException {
         File file = new File(FILE);
         if (flag) {
             if (!file.exists()) {
@@ -61,6 +61,7 @@ public class Prop {
                 file.delete();
             }
         }
+        return flag;
     }
 
     public static String getPath(String... path) {
