@@ -11,7 +11,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
  * @author ikexing, niyan
  */
 @ZenRegister
-@ZenClass("mods.atutils.Hydroangeas")
+@ZenClass("mods.randomtweaker.Hydroangeas")
 public class Hydroangeas {
     @ZenMethod
     public static void addManaRecipe(ILiquidStack inputFluid, int mana, double factor) {
