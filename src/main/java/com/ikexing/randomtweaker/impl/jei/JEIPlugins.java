@@ -28,27 +28,33 @@ public class JEIPlugins implements IModPlugin {
 
     @Override
     public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
-        System.out.println("JEIPlugin Loading");
+        if (!RandomTweaker.jeiCustomList.isEmpty()) {
+            System.out.println("JEIPlugin Loading");
+        }
     }
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
         GuiHelper guiHelper = Internal.getHelpers().getGuiHelper();
-        for (JEICustom jeiCustom : RandomTweaker.jeiCustomList) {
-            registry.addRecipeCategories(new DynamicRecipesCategory(guiHelper, jeiCustom));
+        if (!RandomTweaker.jeiCustomList.isEmpty()) {
+            for (JEICustom jeiCustom : RandomTweaker.jeiCustomList) {
+                registry.addRecipeCategories(new DynamicRecipesCategory(guiHelper, jeiCustom));
+            }
         }
     }
 
     @Override
     public void register(IModRegistry registry) {
-        for (JEICustom jeiCustom : RandomTweaker.jeiCustomList) {
-            for (IItemStack recipeCatalyst : jeiCustom.getRecipeCatalysts()) {
-                registry.addRecipeCatalyst(CraftTweakerMC.getItemStack(recipeCatalyst), jeiCustom.uid);
+        if (!RandomTweaker.jeiCustomList.isEmpty()) {
+            for (JEICustom jeiCustom : RandomTweaker.jeiCustomList) {
+                for (IItemStack recipeCatalyst : jeiCustom.getRecipeCatalysts()) {
+                    registry.addRecipeCatalyst(CraftTweakerMC.getItemStack(recipeCatalyst), jeiCustom.uid);
+                }
+                for (JEIRecipe jeiRecipe : jeiCustom.getJeiRecipes()) {
+                    recipes.add(new DynamicRecipesWrapper(jeiCustom.getJeiFontInfos(), jeiRecipe));
+                }
             }
-            for (JEIRecipe jeiRecipe : jeiCustom.getJeiRecipes()) {
-                recipes.add(new DynamicRecipesWrapper(jeiCustom.getJeiFontInfos(), jeiRecipe));
-            }
+            registry.addRecipes(recipes, DynamicRecipesCategory.UID);
         }
-        registry.addRecipes(recipes, DynamicRecipesCategory.UID);
     }
 }
