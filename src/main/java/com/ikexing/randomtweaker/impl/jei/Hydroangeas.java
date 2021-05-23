@@ -2,18 +2,14 @@ package com.ikexing.randomtweaker.impl.jei;
 
 import com.ikexing.randomtweaker.api.jei.JEISupport;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
-import com.ikexing.randomtweaker.api.jei.classes.JEIFontInfo;
 import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
 import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import scala.tools.nsc.doc.model.Public;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
@@ -27,8 +23,6 @@ import java.util.Map;
  */
 public class Hydroangeas {
 
-    private static String jeiFontInfo;
-
     public static void init() {
         JEICustom JH = JEISupport.create("jei_hydroangeas");
         JH.setJeiBackGroup("randomtweaker", "textures/gui/jei/hydroangeas.png", 98, 55);
@@ -39,7 +33,6 @@ public class Hydroangeas {
         JH.addJeiSlot(true, "fluid", 77, 9);
         JH.addJeiSlot(true, "fluid", 77, 34);
         JH.setJeiRecipes(getHydroangeasRecipes());
-        JH.addJeiFontInfo(jeiFontInfo, 0x494949, 5, 10, 7, 50);
         JH.register();
     }
 
@@ -55,7 +48,6 @@ public class Hydroangeas {
                         CraftTweakerMC.getIIngredient(fluidFactor),
                         blockBelow
                 };
-                jeiFontInfo = String.valueOf(handler.getManaGen());
                 jeiRecipes.add(new JEIRecipe(input));
             }
         }
