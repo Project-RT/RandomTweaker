@@ -17,8 +17,8 @@ import thebetweenlands.common.capability.circlegem.CircleGemType;
  */
 @ZenRegister
 @ModOnly("thebetweenlands")
-@ZenClass("mods.randomtweaker.CircleGem")
-public class CircleGem {
+@ZenClass("mods.randomtweaker.BLCircleGem")
+public class BLCircleGem {
     @ZenMethod
     public static void setGem(IItemStack stack, String gemType) {
         CircleGemType circleGemType = getCircleGemType(gemType);

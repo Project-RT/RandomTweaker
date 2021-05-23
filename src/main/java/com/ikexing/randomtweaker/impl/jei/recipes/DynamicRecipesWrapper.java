@@ -51,15 +51,18 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
         ingredients.setInputLists(VanillaTypes.ITEM, inputItemStack);
         ingredients.setInputLists(VanillaTypes.FLUID, inputFluidStack);
 
-        for (crafttweaker.api.item.IIngredient it : jeiRecipe.output) {
-            if (it.getLiquids().isEmpty()) {
-                outputItemStack.add(getItemStacks(it.getItems()));
-            } else {
-                outputFluidStack.add(getFluidStacks(it.getLiquids()));
+        if (jeiRecipe.output != null){
+            for (crafttweaker.api.item.IIngredient it : jeiRecipe.output) {
+                if (it.getLiquids().isEmpty()) {
+                    outputItemStack.add(getItemStacks(it.getItems()));
+                } else {
+                    outputFluidStack.add(getFluidStacks(it.getLiquids()));
+                }
             }
+            ingredients.setOutputLists(VanillaTypes.ITEM, outputItemStack);
+            ingredients.setOutputLists(VanillaTypes.FLUID, outputFluidStack);
         }
-        ingredients.setOutputLists(VanillaTypes.ITEM, outputItemStack);
-        ingredients.setOutputLists(VanillaTypes.FLUID, outputFluidStack);
+
     }
 
     @SideOnly(Side.CLIENT)

@@ -13,8 +13,8 @@ public class JEIBackGroup {
     public String pathIn;
     public int u = 0;
     public int v = 0;
-    public int width = 0;
-    public int heigh = 0;
+    public int width;
+    public int heigh;
 
     public JEIBackGroup(String namespaceIn, String pathIn, int u, int v, int width, int heigh) {
         this.namespaceIn = namespaceIn;
