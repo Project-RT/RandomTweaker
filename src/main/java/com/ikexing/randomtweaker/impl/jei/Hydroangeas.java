@@ -2,6 +2,7 @@ package com.ikexing.randomtweaker.impl.jei;
 
 import com.ikexing.randomtweaker.api.jei.JEISupport;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
+import com.ikexing.randomtweaker.api.jei.classes.JEIFontInfo;
 import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
 import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
 import crafttweaker.api.item.IIngredient;
@@ -12,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import scala.tools.nsc.doc.model.Public;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
@@ -24,20 +26,24 @@ import java.util.Map;
  * @author ikexing
  */
 public class Hydroangeas {
+
+    private static String jeiFontInfo;
+
     public static void init() {
         JEICustom JH = JEISupport.create("jei_hydroangeas");
         JH.setJeiBackGroup("randomtweaker", "textures/gui/jei/hydroangeas.png", 98, 55);
         JH.setIcon(CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HYDROANGEAS)));
         JH.addRecipeCatalyst(CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HYDROANGEAS)));
         JH.addRecipeCatalyst(CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), LibBlockNames.SUBTILE_HYDROANGEAS)));
-        JH.addJeiSlot(true, "item", 7, 35);
-        JH.addJeiSlot(true, "fluid", 78, 10);
-        JH.addJeiSlot(true, "fluid", 78, 35);
+        JH.addJeiSlot(true, "item", 5, 33);
+        JH.addJeiSlot(true, "fluid", 77, 9);
+        JH.addJeiSlot(true, "fluid", 77, 34);
         JH.setJeiRecipes(getHydroangeasRecipes());
+        JH.addJeiFontInfo(jeiFontInfo, 0x494949, 5, 10, 7, 50);
         JH.register();
     }
 
-    public static List<JEIRecipe> getHydroangeasRecipes() {
+    private static List<JEIRecipe> getHydroangeasRecipes() {
         List<JEIRecipe> jeiRecipes = new ArrayList<>();
         for (Map.Entry<IItemStack, Double> entry : ModHydroangeas.blockFactorList.entrySet()) {
             for (ModHydroangeas.HydroangeasHandler handler : ModHydroangeas.handlerList) {
@@ -49,6 +55,7 @@ public class Hydroangeas {
                         CraftTweakerMC.getIIngredient(fluidFactor),
                         blockBelow
                 };
+                jeiFontInfo = String.valueOf(handler.getManaGen());
                 jeiRecipes.add(new JEIRecipe(input));
             }
         }

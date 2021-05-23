@@ -13,8 +13,8 @@ public class JEISlot {
     public String type;
     public int xPosition;
     public int yPosition;
-    public int width = 18;
-    public int height = 18;
+    public int width = 16;
+    public int height = 16;
     public int capacityMb = 1000;
     public boolean showCapacity = false;
 
