@@ -7,6 +7,7 @@ import com.ikexing.randomtweaker.api.utils.RTGlobal;
 import com.ikexing.randomtweaker.impl.botania.subtitle.SubTileHydroangeasModified;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
 import com.ikexing.randomtweaker.impl.events.DreamJournal;
+import com.ikexing.randomtweaker.impl.jei.Hydroangeas;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.player.IPlayer;
 import crafttweaker.api.world.IBlockPos;
@@ -78,6 +79,7 @@ public class RandomTweaker {
 
             if (subTiles != null) {
                 subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
+                Hydroangeas.init();
             }
 
         } catch (NoSuchFieldException | IllegalAccessException e) {
