@@ -39,8 +39,9 @@ public class RandomTweaker {
     public static final String VERSION = "1.0.0";
     public static final String DESPENDENCIES = "required-after:crafttweaker";
 
+    public static final String THAUMCRAFT = "thaumcraft";
+
     public static Logger logger;
-    public static String thaumcraft = "thaumcraft";
     public static List<JEICustom> jeiCustomList = new ArrayList<>();
 
     @EventHandler
@@ -51,7 +52,7 @@ public class RandomTweaker {
             CraftTweakerAPI.registerClass(Prop.class);
         }
 
-        if (Loader.isModLoaded(thaumcraft) && RTConfig.DreamJournal) {
+        if (Loader.isModLoaded(THAUMCRAFT) && RTConfig.DreamJournal) {
             MinecraftForge.EVENT_BUS.register(DreamJournal.class);
             GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
         }

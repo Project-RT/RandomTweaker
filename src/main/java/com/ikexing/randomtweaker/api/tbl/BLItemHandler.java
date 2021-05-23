@@ -25,13 +25,13 @@ public class BLItemHandler {
     }
 
     @ZenMethod
-    public static void getModifier(IItemStack item) {
-        CorrosionHelper.getModifier(CraftTweakerMC.getItemStack(item));
+    public static float getModifier(IItemStack item) {
+        return CorrosionHelper.getModifier(CraftTweakerMC.getItemStack(item));
     }
 
     @ZenMethod
-    public static void getDestroySpeed(IItemStack item, float normalStrength, IBlockState blockState) {
-        CorrosionHelper.getDestroySpeed(normalStrength, CraftTweakerMC.getItemStack(item), CraftTweakerMC.getBlockState(blockState));
+    public static float getDestroySpeed(IItemStack item, float normalStrength, IBlockState blockState) {
+        return CorrosionHelper.getDestroySpeed(normalStrength, CraftTweakerMC.getItemStack(item), CraftTweakerMC.getBlockState(blockState));
     }
 
     @ZenMethod
