@@ -47,7 +47,7 @@ public class Hydroangeas {
                 IIngredient[] input = new IIngredient[]{
                         CraftTweakerMC.getIIngredient(blockInput),
                         CraftTweakerMC.getIIngredient(fluidFactor),
-                        CraftTweakerMC.getIIngredient(blockBelow)
+                        blockBelow
                 };
                 jeiRecipes.add(new JEIRecipe(input));
             }
