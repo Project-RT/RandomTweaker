@@ -2,6 +2,8 @@ package com.ikexing.randomtweaker.impl.botania.subtitle;
 
 import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
@@ -102,8 +104,9 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
                     break;
                 }
             }
-            if (ModHydroangeas.blockFactorList.containsKey(supertile.getWorld().getBlockState(pos.down()).getBlock())) {
-                manaFactorBlock = ModHydroangeas.blockFactorList.get(supertile.getWorld().getBlockState(pos.down()).getBlock());
+            IItemStack block = CraftTweakerMC.getIItemStack(new ItemStack(supertile.getWorld().getBlockState(pos.down()).getBlock()));
+            if (ModHydroangeas.blockFactorList.containsKey(block)) {
+                manaFactorBlock = ModHydroangeas.blockFactorList.get(block);
             }
 
             addMana((int) (manaGen * manaFactorFluid * manaFactorBlock));

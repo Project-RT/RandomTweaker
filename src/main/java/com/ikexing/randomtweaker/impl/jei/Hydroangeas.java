@@ -26,7 +26,7 @@ import java.util.Map;
 public class Hydroangeas {
     public static void init() {
         JEICustom JH = JEISupport.create("jei_hydroangeas");
-        JH.setJeiBackGroup("randomtweaker", "assets/randomtweaker/jei/hydroangeas.png", 98, 55);
+        JH.setJeiBackGroup("randomtweaker", "textures/gui/jei/hydroangeas.png", 98, 55);
         JH.setIcon(CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HYDROANGEAS)));
         JH.addRecipeCatalyst(CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HYDROANGEAS)));
         JH.addRecipeCatalyst(CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), LibBlockNames.SUBTILE_HYDROANGEAS)));
