@@ -19,11 +19,11 @@ public class ModHydroangeas {
     public static Block fluidFactor;
 
     public static List<HydroangeasHandler> handlerList = new ArrayList<>();
-    public static Map<Block, Double> blockFactorList = new HashMap();
+    public static Map<IItemStack, Double> blockFactorList = new HashMap();
 
     public static void setBlockBelowFactor(IItemStack block, double factor) {
         if (block.isItemBlock()) {
-            blockFactorList.put(CraftTweakerMC.getBlock(block), factor);
+            blockFactorList.put(block, factor);
         } else {
             CraftTweakerAPI.getLogger().logError(block + " is not a block.");
         }
