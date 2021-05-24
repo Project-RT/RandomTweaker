@@ -29,7 +29,7 @@ public class JEIPlugins implements IModPlugin {
     @Override
     public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
         if (!RandomTweaker.jeiCustomList.isEmpty()) {
-            System.out.println("JEIPlugin Loading");
+            System.out.println("[RT] : The JEI is Mine!!!]");
         }
     }
 
