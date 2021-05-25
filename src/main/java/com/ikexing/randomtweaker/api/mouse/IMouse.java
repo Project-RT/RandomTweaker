@@ -25,7 +25,7 @@ public class IMouse {
     }
 
     @ZenMethod
-    public static IBlockPos getMouseHitBlock() {
+    public static IBlockPos getMouseHitBlockPos() {
         return CraftTweakerMC.getIBlockPos(getMouse().getBlockPos());
     }
 
