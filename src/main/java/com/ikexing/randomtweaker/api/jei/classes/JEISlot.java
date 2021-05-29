@@ -7,16 +7,17 @@ import stanhebben.zenscript.annotations.ZenClass;
  * @author ikexing
  */
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEISpace")
+@ZenClass("mods.randomtweaker.JEISlot")
 public class JEISlot {
-    public boolean isInput;
     public String type;
+    public boolean isInput;
     public int xPosition;
     public int yPosition;
     public int width = 16;
     public int height = 16;
     public int capacityMb = 1000;
     public boolean showCapacity = false;
+
 
     public JEISlot(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity) {
         this.isInput = isInput;

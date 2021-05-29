@@ -18,6 +18,7 @@ public class JEIFontInfo {
 
     public JEIFontInfo(String name, int color, int recipeWidth, int recipeHeight, int x, int y) {
         this.name = name;
+        this.color = color;
         this.recipeWidth = recipeWidth;
         this.recipeHeight = recipeHeight;
         this.x = x;
