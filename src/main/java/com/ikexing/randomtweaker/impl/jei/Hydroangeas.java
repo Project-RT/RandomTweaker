@@ -1,6 +1,6 @@
 package com.ikexing.randomtweaker.impl.jei;
 
-import com.ikexing.randomtweaker.api.jei.JEISupport;
+import com.ikexing.randomtweaker.api.jei.JEIExpansion;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
 import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class Hydroangeas {
 
     public static void init() {
-        JEICustom JH = JEISupport.create("jei_hydroangeas");
+        JEICustom JH = JEIExpansion.create("jei_hydroangeas");
         JH.setJeiBackGroup("randomtweaker", "textures/gui/jei/hydroangeas.png", 98, 55);
         JH.setIcon(CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HYDROANGEAS)));
         JH.addRecipeCatalyst(CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HYDROANGEAS)));
