@@ -4,6 +4,7 @@ import com.google.common.collect.BiMap;
 import com.ikexing.randomtweaker.api.file.Prop;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.utils.RTGlobal;
+import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
 import com.ikexing.randomtweaker.impl.botania.subtitle.SubTileHydroangeasModified;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
 import com.ikexing.randomtweaker.impl.events.DreamJournal;
@@ -68,6 +69,9 @@ public class RandomTweaker {
         if (!RTConfig.HydroangeasModified) {
             registryHydroangeasModified();
         }
+        if(!ModHydroangeas.blockFactorList.isEmpty()){
+            Hydroangeas.init();
+        }
     }
 
     private void registryHydroangeasModified() {
@@ -80,7 +84,6 @@ public class RandomTweaker {
 
             if (subTiles != null) {
                 subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
-                Hydroangeas.init();
             }
 
         } catch (NoSuchFieldException | IllegalAccessException e) {
