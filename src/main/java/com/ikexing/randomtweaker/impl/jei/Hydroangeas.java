@@ -33,7 +33,9 @@ public class Hydroangeas {
         JH.addJeiSlot(true, "fluid", 77, 9);
         JH.addJeiSlot(true, "fluid", 77, 34);
         JH.setJeiRecipes(getHydroangeasRecipes());
-        JH.register();
+        if(!ModHydroangeas.blockFactorList.isEmpty()){
+            JH.register();
+        }
     }
 
     private static List<JEIRecipe> getHydroangeasRecipes() {

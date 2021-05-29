@@ -68,8 +68,6 @@ public class RandomTweaker {
     public void onInit(FMLInitializationEvent event) {
         if (!RTConfig.HydroangeasModified) {
             registryHydroangeasModified();
-        }
-        if(!ModHydroangeas.blockFactorList.isEmpty()){
             Hydroangeas.init();
         }
     }
