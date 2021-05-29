@@ -12,10 +12,7 @@ import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentTranslation;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -28,7 +25,6 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
     public static String UID;
     public static int i;
 
-    private final JEICustom jeiCustom;
     private final List<JEISlot> jeiSlots;
     private final IDrawable background;
     private final IDrawable icon;
@@ -40,7 +36,6 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         JEIBackGroup jeiBackGroup = jeiCustom.getJeiBackGroup();
         UID = jeiCustom.uid;
 
-        this.jeiCustom = jeiCustom;
         this.icon = guiHelper.createDrawableIngredient(CraftTweakerMC.getItemStack(jeiCustom.getIcon()));
         this.title = jeiCustom.title;
         this.modName = jeiCustom.getModid();
