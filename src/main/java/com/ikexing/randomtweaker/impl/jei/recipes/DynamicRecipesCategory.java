@@ -88,8 +88,6 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
                 case "fluid":
                     fgroup.init(i, jeiSlot.isInput, jeiSlot.xPosition, jeiSlot.yPosition, jeiSlot.width, jeiSlot.height, jeiSlot.capacityMb, jeiSlot.showCapacity, null);
                     break;
-                case "font":
-                    continue;
                 default:
                     CraftTweakerAPI.logError("Type is not supported");
                     break;
