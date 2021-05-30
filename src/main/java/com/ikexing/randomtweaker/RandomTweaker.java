@@ -29,7 +29,9 @@ import vazkii.botania.common.lib.LibBlockNames;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author ikexing
@@ -44,7 +46,7 @@ public class RandomTweaker {
     public static final String THAUMCRAFT = "thaumcraft";
 
     public static Logger logger;
-    public static List<ItemStack> noFireItems = new ArrayList<>();
+    public static Set<ItemStack> noBurnItems = new HashSet<>();
     public static List<JEICustom> jeiCustomList = new ArrayList<>();
 
     @EventHandler
