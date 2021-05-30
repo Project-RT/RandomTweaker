@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.tbl;
+package com.ikexing.randomtweaker.api.item;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
@@ -7,7 +7,9 @@ import crafttweaker.api.item.IItemDefinition;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.ZenMethodStatic;
 import thebetweenlands.api.item.CorrosionHelper;
 
 import java.util.List;
@@ -17,13 +19,8 @@ import java.util.List;
  */
 @ZenRegister
 @ModOnly("thebetweenlands")
-@ZenClass("mods.randomtweaker.BLItem")
-public class BLItemHandler {
-    @ZenMethod
-    public static void addCorrosionPropertyOverrides(IItemDefinition item) {
-        CorrosionHelper.addCorrosionPropertyOverrides(CraftTweakerMC.getItem(item));
-    }
-
+@ZenExpansion("crafttweaker.item.IItemStack")
+public class IItemStackExpansionTBL {
     @ZenMethod
     public static float getModifier(IItemStack item) {
         return CorrosionHelper.getModifier(CraftTweakerMC.getItemStack(item));
@@ -32,21 +29,6 @@ public class BLItemHandler {
     @ZenMethod
     public static float getDestroySpeed(IItemStack item, float normalStrength, IBlockState blockState) {
         return CorrosionHelper.getDestroySpeed(normalStrength, CraftTweakerMC.getItemStack(item), CraftTweakerMC.getBlockState(blockState));
-    }
-
-    @ZenMethod
-    public static boolean shouldCauseBlockBreakReset(IItemStack oldStack, IItemStack newStack) {
-        return CorrosionHelper.shouldCauseBlockBreakReset(CraftTweakerMC.getItemStack(oldStack), CraftTweakerMC.getItemStack(newStack));
-    }
-
-    @ZenMethod
-    public static boolean shouldCauseReequipAnimation(IItemStack oldStack, IItemStack newStack, boolean slotChanged) {
-        return CorrosionHelper.shouldCauseReequipAnimation(CraftTweakerMC.getItemStack(oldStack), CraftTweakerMC.getItemStack(newStack), slotChanged);
-    }
-
-    @ZenMethod
-    public static boolean areItemStackTagsEqual(IItemStack oldStack, IItemStack newStack) {
-        return CorrosionHelper.areItemStackTagsEqual(CraftTweakerMC.getItemStack(oldStack), CraftTweakerMC.getItemStack(newStack));
     }
 
     @ZenMethod
@@ -62,5 +44,25 @@ public class BLItemHandler {
     @ZenMethod
     public static int getCorrosionStage(IItemStack stack) {
         return CorrosionHelper.getCorrosionStage(CraftTweakerMC.getItemStack(stack));
+    }
+
+    @ZenMethodStatic
+    public static void addCorrosionPropertyOverrides(IItemStack stack) {
+        CorrosionHelper.addCorrosionPropertyOverrides(CraftTweakerMC.getItem(stack.getDefinition()));
+    }
+
+    @ZenMethodStatic
+    public static boolean shouldCauseBlockBreakReset(IItemStack oldStack, IItemStack newStack) {
+        return CorrosionHelper.shouldCauseBlockBreakReset(CraftTweakerMC.getItemStack(oldStack), CraftTweakerMC.getItemStack(newStack));
+    }
+
+    @ZenMethodStatic
+    public static boolean shouldCauseReequipAnimation(IItemStack oldStack, IItemStack newStack, boolean slotChanged) {
+        return CorrosionHelper.shouldCauseReequipAnimation(CraftTweakerMC.getItemStack(oldStack), CraftTweakerMC.getItemStack(newStack), slotChanged);
+    }
+
+    @ZenMethodStatic
+    public static boolean areItemStackTagsEqual(IItemStack oldStack, IItemStack newStack) {
+        return CorrosionHelper.areItemStackTagsEqual(CraftTweakerMC.getItemStack(oldStack), CraftTweakerMC.getItemStack(newStack));
     }
 }
