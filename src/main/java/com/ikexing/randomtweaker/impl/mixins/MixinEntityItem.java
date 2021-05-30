@@ -32,7 +32,7 @@ public abstract class MixinEntityItem extends Entity {
         if (!this.world.isRemote && !this.isDead && !this.isEntityInvulnerable(source)) {
             noBurnItems.forEach((k, v) -> {
                 ItemStack oItem = this.getItem();
-                if (k == oItem.getItem() && v == oItem.getMetadata()) {
+                if (k == oItem.getItem() && v == oItem.getMetadata() && source.isFireDamage()) {
                     cir.setReturnValue(false);
                 }
             });
