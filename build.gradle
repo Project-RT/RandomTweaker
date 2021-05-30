@@ -29,8 +29,8 @@ minecraft {
 
 dependencies {
     compile files('libs/')
-    compile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.646"
 
+    deobfCompile "mezz.jei:jei_1.12.2:4.16.1.302"
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
