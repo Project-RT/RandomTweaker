@@ -17,12 +17,11 @@ public class IItemStackExpansion {
 
     @ZenMethodStatic
     public static void addNoBurn(IItemStack stack) {
-        noBurnItems.add(CraftTweakerMC.getItemStack(stack));
+        noBurnItems.put(CraftTweakerMC.getItemStack(stack).getItem(), stack.getMetadata());
     }
 
     @ZenMethodStatic
     public static void removeNoBurn(IItemStack stack) {
-        noBurnItems.remove(CraftTweakerMC.getItemStack(stack));
+        noBurnItems.remove(CraftTweakerMC.getItemStack(stack).getItem(), stack.getMetadata());
     }
-
 }

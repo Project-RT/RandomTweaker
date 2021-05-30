@@ -30,12 +30,12 @@ public abstract class MixinEntityItem extends Entity {
     @Inject(method = "attackEntityFrom", at = @At("HEAD"), cancellable = true)
     public void mixinAttackEntityFrom(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (!this.world.isRemote && !this.isDead && !this.isEntityInvulnerable(source)) {
-            for (ItemStack item : noBurnItems) {
+            noBurnItems.forEach((k, v) -> {
                 ItemStack oItem = this.getItem();
-                if (item.getItem() == oItem.getItem() && item.getMetadata() == oItem.getMetadata()) {
+                if (k == oItem.getItem() && v == oItem.getMetadata()) {
                     cir.setReturnValue(false);
                 }
-            }
+            });
         }
     }
 }

@@ -12,7 +12,7 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.player.IPlayer;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.zenscript.GlobalRegistry;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -29,9 +29,9 @@ import vazkii.botania.common.lib.LibBlockNames;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 /**
  * @author ikexing
@@ -46,7 +46,7 @@ public class RandomTweaker {
     public static final String THAUMCRAFT = "thaumcraft";
 
     public static Logger logger;
-    public static Set<ItemStack> noBurnItems = new HashSet<>();
+    public static Map<Item, Integer> noBurnItems = new HashMap<>();
     public static List<JEICustom> jeiCustomList = new ArrayList<>();
 
     @EventHandler
