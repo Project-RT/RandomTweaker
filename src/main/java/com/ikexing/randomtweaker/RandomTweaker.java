@@ -52,14 +52,15 @@ public class RandomTweaker {
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) throws IOException {
         GlobalRegistry.registerGlobal("getAllInBox", GlobalRegistry.getStaticFunction(RTGlobal.class, "getAllInBox", IBlockPos.class, IBlockPos.class));
-        GlobalRegistry.registerGlobal("sendMessage", GlobalRegistry.getStaticFunction(RTGlobal.class, "sendMessage", String.class));
-        if (Prop.createOrDelete(RTConfig.Prop)) {
-            CraftTweakerAPI.registerClass(Prop.class);
+        if (Side.SERVER.isClient()) {
+            GlobalRegistry.registerGlobal("printChat", GlobalRegistry.getStaticFunction(RTGlobal.class, "sendMessage", String.class));
         }
-
         if (Loader.isModLoaded(THAUMCRAFT) && RTConfig.DreamJournal) {
             MinecraftForge.EVENT_BUS.register(DreamJournal.class);
             GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
+        }
+        if (Prop.createOrDelete(RTConfig.Prop)) {
+            CraftTweakerAPI.registerClass(Prop.class);
         }
     }
 
@@ -72,9 +73,7 @@ public class RandomTweaker {
     public void onInit(FMLInitializationEvent event) {
         if (!RTConfig.HydroangeasModified) {
             registryHydroangeasModified();
-            if (Side.SERVER.isClient()) {
-                Hydroangeas.init();
-            }
+            Hydroangeas.init();
         }
     }
 

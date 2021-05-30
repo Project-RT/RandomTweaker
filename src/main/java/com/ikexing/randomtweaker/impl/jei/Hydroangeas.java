@@ -25,7 +25,6 @@ import java.util.Map;
  */
 public class Hydroangeas {
 
-    @SideOnly(Side.CLIENT)
     public static void init() {
         JEICustom JH = JEIExpansion.create("jei_hydroangeas");
         JH.setJeiBackGroup("randomtweaker", "textures/gui/jei/hydroangeas.png", 98, 55);

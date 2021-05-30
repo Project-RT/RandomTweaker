@@ -6,11 +6,8 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -42,10 +39,9 @@ public class JEICustom {
     @ZenProperty
     private JEIBackGroup jeiBackGroup;
 
-    @SideOnly(Side.CLIENT)
-    public JEICustom(String uid, String localizedname) {
+    public JEICustom(String uid, String name) {
         this.uid = uid;
-        this.title = I18n.format(localizedname);
+        this.title = name;
     }
 
     @ZenMethod

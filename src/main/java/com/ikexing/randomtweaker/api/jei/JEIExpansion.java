@@ -6,8 +6,6 @@ import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
 import com.ikexing.randomtweaker.api.jei.classes.JEISlot;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
@@ -20,16 +18,14 @@ import java.util.Random;
 @ZenExpansion("mods.jei.JEI")
 public class JEIExpansion {
 
-    @SideOnly(Side.CLIENT)
     @ZenMethodStatic
-    public static JEICustom create(String localizedname) {
-        return new JEICustom(getRandomString(8), localizedname);
+    public static JEICustom create(String name) {
+        return create(getRandomString(8), name);
     }
 
-    @SideOnly(Side.CLIENT)
     @ZenMethodStatic
-    public static JEICustom create(String uid, String localizedname) {
-        return new JEICustom(uid, localizedname);
+    public static JEICustom create(String uid, String name) {
+        return new JEICustom(uid, name);
     }
 
     @ZenMethodStatic

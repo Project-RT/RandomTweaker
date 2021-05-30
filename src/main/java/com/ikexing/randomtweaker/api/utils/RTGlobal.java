@@ -49,7 +49,7 @@ public class RTGlobal {
 
     @SideOnly(Side.CLIENT)
     @ZenMethod
-    public static void sendMessage(String string) {
+    public static void printChat(String string) {
         Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString(string));
     }
 
