@@ -12,6 +12,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import thaumcraft.api.capabilities.IPlayerKnowledge;
@@ -45,6 +47,7 @@ public class RTGlobal {
         return list.toArray(new IBlockPos[0]);
     }
 
+    @SideOnly(Side.CLIENT)
     @ZenMethod
     public static void sendMessage(String string) {
         Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString(string));
