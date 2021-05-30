@@ -4,7 +4,6 @@ import com.google.common.collect.BiMap;
 import com.ikexing.randomtweaker.api.file.Prop;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.utils.RTGlobal;
-import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
 import com.ikexing.randomtweaker.impl.botania.subtitle.SubTileHydroangeasModified;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
 import com.ikexing.randomtweaker.impl.events.DreamJournal;
@@ -13,6 +12,7 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.player.IPlayer;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.zenscript.GlobalRegistry;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -20,6 +20,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.Logger;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
@@ -43,6 +44,7 @@ public class RandomTweaker {
     public static final String THAUMCRAFT = "thaumcraft";
 
     public static Logger logger;
+    public static List<ItemStack> noFireItems = new ArrayList<>();
     public static List<JEICustom> jeiCustomList = new ArrayList<>();
 
     @EventHandler
@@ -68,7 +70,9 @@ public class RandomTweaker {
     public void onInit(FMLInitializationEvent event) {
         if (!RTConfig.HydroangeasModified) {
             registryHydroangeasModified();
-            Hydroangeas.init();
+            if (Side.SERVER.isClient()) {
+                Hydroangeas.init();
+            }
         }
     }
 

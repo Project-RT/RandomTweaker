@@ -10,6 +10,8 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
@@ -23,6 +25,7 @@ import java.util.Map;
  */
 public class Hydroangeas {
 
+    @SideOnly(Side.CLIENT)
     public static void init() {
         JEICustom JH = JEIExpansion.create("jei_hydroangeas");
         JH.setJeiBackGroup("randomtweaker", "textures/gui/jei/hydroangeas.png", 98, 55);
@@ -33,7 +36,7 @@ public class Hydroangeas {
         JH.addJeiSlot(true, "fluid", 77, 9);
         JH.addJeiSlot(true, "fluid", 77, 34);
         JH.setJeiRecipes(getHydroangeasRecipes());
-        if(!ModHydroangeas.blockFactorList.isEmpty()){
+        if (!ModHydroangeas.blockFactorList.isEmpty()) {
             JH.register();
         }
     }
