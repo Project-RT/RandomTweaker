@@ -20,7 +20,6 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.Logger;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
@@ -52,9 +51,8 @@ public class RandomTweaker {
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) throws IOException {
         GlobalRegistry.registerGlobal("getAllInBox", GlobalRegistry.getStaticFunction(RTGlobal.class, "getAllInBox", IBlockPos.class, IBlockPos.class));
-        if (Side.SERVER.isClient()) {
-            GlobalRegistry.registerGlobal("printChat", GlobalRegistry.getStaticFunction(RTGlobal.class, "sendMessage", String.class));
-        }
+        GlobalRegistry.registerGlobal("printChat", GlobalRegistry.getStaticFunction(RTGlobal.class, "printChat", String.class));
+
         if (Loader.isModLoaded(THAUMCRAFT) && RTConfig.DreamJournal) {
             MinecraftForge.EVENT_BUS.register(DreamJournal.class);
             GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));

@@ -17,7 +17,7 @@ public class IItemStackExpansion {
 
     @ZenMethodStatic
     public static void addNoBurn(IItemStack stack) {
-        noBurnItems.put(CraftTweakerMC.getItemStack(stack).getItem(), stack.getMetadata());
+        noBurnItems.putIfAbsent(CraftTweakerMC.getItemStack(stack).getItem(), stack.getMetadata());
     }
 
     @ZenMethodStatic

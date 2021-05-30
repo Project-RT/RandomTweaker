@@ -1,9 +1,11 @@
 package com.ikexing.randomtweaker.api.utils;
 
 import com.google.common.collect.Lists;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
 import crafttweaker.api.world.IBlockPos;
+import crafttweaker.mc1120.CraftTweaker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -27,6 +29,7 @@ import java.util.Objects;
 /**
  * @author ikexing
  */
+@ZenRegister
 @ZenClass("mods.randomtweaker.ICRTweaker")
 public class RTGlobal {
     public RTGlobal() {
@@ -34,9 +37,9 @@ public class RTGlobal {
 
     @ZenMethod
     public static void giverDreamJournl(IPlayer player) {
-        EntityPlayer player1 = CraftTweakerMC.getPlayer(player);
-        giverDreamJournl(player1);
-        player1.sendMessage(new TextComponentString(TextFormatting.DARK_PURPLE + I18n.translateToLocal("got.dream")));
+        EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
+        giverDreamJournl(mcPlayer);
+        mcPlayer.sendMessage(new TextComponentString(TextFormatting.DARK_PURPLE + I18n.translateToLocal("got.dream")));
     }
 
     @ZenMethod
@@ -47,10 +50,9 @@ public class RTGlobal {
         return list.toArray(new IBlockPos[0]);
     }
 
-    @SideOnly(Side.CLIENT)
     @ZenMethod
     public static void printChat(String string) {
-        Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(new TextComponentString(string));
+        CraftTweaker.server.sendMessage(new TextComponentString(string));
     }
 
     private static void giverDreamJournl(EntityPlayer player) {
