@@ -6,5 +6,6 @@
   "setSourceFile": true,
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
+    "MixinEntityItem"
   ]
 }
