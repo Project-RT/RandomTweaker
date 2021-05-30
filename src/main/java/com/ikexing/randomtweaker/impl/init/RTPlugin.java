@@ -1,6 +1,5 @@
 package com.ikexing.randomtweaker.impl.init;
 
-import com.ikexing.randomtweaker.RandomTweaker;
 import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.apache.logging.log4j.LogManager;

@@ -27,9 +27,9 @@ public abstract class MixinEntityItem extends Entity {
     }
 
     @Inject(method = "attackEntityFrom", at = @At("HEAD"), cancellable = true)
-    public void MixinAttackEntityFrom(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+    public void mixinAttackEntityFrom(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (!this.world.isRemote && !this.isDead && !this.isEntityInvulnerable(source)) {
-            if (this.getItem().isEmpty() && this.getItem().getItem() == Items.STICK) {
+            if (this.getItem().getItem() == Items.STICK) {
                 cir.setReturnValue(false);
             }
         }

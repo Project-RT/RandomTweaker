@@ -25,6 +25,9 @@ minecraft {
     version = "1.12.2-14.23.5.2847"
     runDir = "run"
     mappings = "stable_39"
+
+    clientJvmArgs += "-Dfml.coreMods.load=com.ikexing.randomtweaker.impl.init.RTPlugin"
+    serverJvmArgs += "-Dfml.coreMods.load=com.ikexing.randomtweaker.impl.init.RTPlugin"
 }
 
 dependencies {
@@ -43,7 +46,7 @@ dependencies {
     runtime "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     runtime "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
 
-    provided('org.spongepowered:mixin:0.8') {
+    compile('org.spongepowered:mixin:0.8') {
         exclude module: 'guava'
         exclude module: 'commons-io'
         exclude module: 'gson'
@@ -93,7 +96,9 @@ jar {
     manifest {
         attributes([
                 'TweakClass' : 'org.spongepowered.asm.launch.MixinTweaker',
-                "ForceLoadAsMod" : true
+                "ForceLoadAsMod" : true,
+                "FMLCorePlugin": "com.ikexing.randomtweaker.impl.init.RTPlugin",
+                "FMLCorePluginContainsFMLMod": true,
         ])
     }
 }
