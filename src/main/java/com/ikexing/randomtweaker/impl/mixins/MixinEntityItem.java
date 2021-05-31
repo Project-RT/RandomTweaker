@@ -29,16 +29,15 @@ public abstract class MixinEntityItem extends Entity {
         super(worldIn);
     }
 
-    @Inject(method = "attackEntityFrom", at = @At("HEAD"), cancellable = true)
-    public void mixinAttackEntityFrom(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+    @Inject(method = "attackEntityFrom", at = @At(value = "HEAD", target = "Lnet/minecraft/entity/item/EntityItem;attackEntityFrom(Lnet/minecraft/util/DamageSource;F)Z"), cancellable = true)
+    public void injectAttackEntityFrom(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (!this.world.isRemote && !this.isDead && !this.isEntityInvulnerable(source)) {
             itemDsSet.forEach(it -> {
                 ItemStack oItem = this.getItem();
-                if (it.item == oItem.getItem() && it.meta == oItem.getMetadata() && Objects.equals(source.getDamageType(), it.damageSource.getDamageType())) {
+                if (it.item == oItem.getItem() && it.meta == oItem.getMetadata() && source == it.damageSource) {
                     cir.setReturnValue(false);
                 }
             });
-
         }
     }
 }

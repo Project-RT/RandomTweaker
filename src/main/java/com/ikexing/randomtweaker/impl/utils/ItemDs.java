@@ -41,7 +41,7 @@ public class ItemDs {
     @Override
     public String toString() {
         return "ItemDs{" +
-                "item=" + Objects.requireNonNull(item.getRegistryName()).getNamespace() + Objects.requireNonNull(item.getRegistryName()).getPath() +
+                "item=" + Objects.requireNonNull(item.getRegistryName()).getNamespace() + ":" + Objects.requireNonNull(item.getRegistryName()).getPath() +
                 ", meta=" + meta +
                 ", damageSource=" + damageSource.getDamageType() +
                 '}';

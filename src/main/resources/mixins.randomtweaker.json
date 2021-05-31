@@ -4,8 +4,9 @@
   "package": "com.ikexing.randomtweaker.impl.mixins",
   "minVersion": "0.7.11",
   "setSourceFile": true,
+  "priority": 0,
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
-    "MixinEntityItem"
+    "MixinBlockTFPortal"
   ]
 }
