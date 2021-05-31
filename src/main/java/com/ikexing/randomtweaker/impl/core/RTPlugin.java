@@ -21,8 +21,8 @@ import java.util.Map;
 public class RTPlugin implements IFMLLoadingPlugin {
     public RTPlugin() {
         MixinBootstrap.init();
-        Mixins.addConfiguration("mixins.randomtweaker.init.json");
         Mixins.addConfiguration("mixins.randomtweaker.core.json");
+        Mixins.addConfiguration("mixins.randomtweaker.init.json");
         CodeSource codeSource = this.getClass().getProtectionDomain().getCodeSource();
         if (codeSource != null) {
             URL location = codeSource.getLocation();
