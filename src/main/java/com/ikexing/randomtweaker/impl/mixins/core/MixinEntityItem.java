@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.impl.mixins.init;
+package com.ikexing.randomtweaker.impl.mixins.core;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
