@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.impl.init;
+package com.ikexing.randomtweaker.impl.core;
 
 import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
@@ -18,11 +18,10 @@ import java.util.Map;
  */
 @IFMLLoadingPlugin.Name("randomtweaker")
 @IFMLLoadingPlugin.MCVersion("1.12.2")
-@IFMLLoadingPlugin.SortingIndex(-7500)
 public class RTPlugin implements IFMLLoadingPlugin {
     public RTPlugin() {
         MixinBootstrap.init();
-        Mixins.addConfiguration("mixins.randomtweaker.json");
+        Mixins.addConfiguration("mixins.randomtweaker.init.json");
         CodeSource codeSource = this.getClass().getProtectionDomain().getCodeSource();
         if (codeSource != null) {
             URL location = codeSource.getLocation();

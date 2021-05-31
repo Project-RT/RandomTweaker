@@ -26,8 +26,14 @@ minecraft {
     runDir = "run"
     mappings = "stable_39"
 
-    clientJvmArgs += "-Dfml.coreMods.load=com.ikexing.randomtweaker.impl.init.RTPlugin"
-    serverJvmArgs += "-Dfml.coreMods.load=com.ikexing.randomtweaker.impl.init.RTPlugin"
+    def args = [
+            "-Dfml.coreMods.load=com.ikexing.randomtweaker.impl.core.RTPlugin",
+            "-Dmixin.hotSwap=true",
+            "-Dmixin.checks.interfaces=true"
+    ]
+
+    clientJvmArgs.addAll(args)
+    serverJvmArgs.addAll(args)
 }
 
 dependencies {

@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "com.ikexing.randomtweaker.impl.mixins.init",
+  "minVersion": "0.7.11",
+  "target": "@env(INIT)",
+  "priority": 0,
+  "mixins": [
+    "MixinLoader"
+  ],
+  "client": [
+  ]
+}
