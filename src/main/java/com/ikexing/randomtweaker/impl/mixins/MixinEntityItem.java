@@ -11,7 +11,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static com.ikexing.randomtweaker.RandomTweaker.noBurnItems;
+import java.util.Objects;
+
+import static com.ikexing.randomtweaker.RandomTweaker.itemDsSet;
 
 /**
  * @author ikexing
@@ -30,12 +32,13 @@ public abstract class MixinEntityItem extends Entity {
     @Inject(method = "attackEntityFrom", at = @At("HEAD"), cancellable = true)
     public void mixinAttackEntityFrom(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (!this.world.isRemote && !this.isDead && !this.isEntityInvulnerable(source)) {
-            noBurnItems.forEach((k, v) -> {
+            itemDsSet.forEach(it -> {
                 ItemStack oItem = this.getItem();
-                if (k == oItem.getItem() && v == oItem.getMetadata() && source.isFireDamage()) {
+                if (it.item == oItem.getItem() && it.meta == oItem.getMetadata() && Objects.equals(source.getDamageType(), it.damageSource.getDamageType())) {
                     cir.setReturnValue(false);
                 }
             });
+
         }
     }
 }

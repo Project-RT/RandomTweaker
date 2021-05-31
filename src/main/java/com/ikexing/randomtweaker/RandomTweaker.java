@@ -8,11 +8,11 @@ import com.ikexing.randomtweaker.impl.botania.subtitle.SubTileHydroangeasModifie
 import com.ikexing.randomtweaker.impl.config.RTConfig;
 import com.ikexing.randomtweaker.impl.events.DreamJournal;
 import com.ikexing.randomtweaker.impl.jei.Hydroangeas;
+import com.ikexing.randomtweaker.impl.utils.ItemDs;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.player.IPlayer;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.zenscript.GlobalRegistry;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -28,9 +28,9 @@ import vazkii.botania.common.lib.LibBlockNames;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 /**
  * @author ikexing
@@ -45,7 +45,7 @@ public class RandomTweaker {
     public static final String THAUMCRAFT = "thaumcraft";
 
     public static Logger logger;
-    public static Map<Item, Integer> noBurnItems = new HashMap<>();
+    public static Set<ItemDs> itemDsSet = new HashSet<>();
     public static List<JEICustom> jeiCustomList = new ArrayList<>();
 
     @EventHandler
