@@ -40,6 +40,7 @@ dependencies {
     compile files('libs/')
 
     deobfCompile "mezz.jei:jei_1.12.2:4.16.1.302"
+    deobfCompile "curse.maven:jeid-296289:2919737"
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
@@ -78,7 +79,7 @@ repositories {
     mavenCentral()
     maven {
         name = 'jei'
-        url =  "http://dvs1.progwml6.com/files/maven"
+        url =  "https://dvs1.progwml6.com/files/maven"
     }
     maven {
         name = 'blamejared'
@@ -94,7 +95,7 @@ repositories {
     }
     maven {
         name = "CoFH Maven"
-        url = "http://maven.covers1624.net"
+        url = "https://maven.covers1624.net"
     }
 }
 
