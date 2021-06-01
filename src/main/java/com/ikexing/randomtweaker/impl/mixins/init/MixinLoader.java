@@ -25,15 +25,15 @@ public abstract class MixinLoader {
 
     @Inject(method = "loadMods", at = @At(value = "INVOKE", target = "Lnet/minecraftforge/fml/common/LoadController;transition(Lnet/minecraftforge/fml/common/LoaderState;Z)V", ordinal = 1), remap = false)
     private void initMixins(List<String> injectedModContainers, CallbackInfo ci) {
-        LogManager.getLogger("rt mixins").info("registering mod mixins...");
+        LogManager.getLogger("RandomTweaker Mixins").info("registering mod mixins...");
         Mixins.addConfiguration("mixins.randomtweaker.json");
-        System.out.println("sss");
     }
 
     @Inject(method = "identifyMods", at = @At(value = "INVOKE", target = "Lnet/minecraftforge/fml/common/Loader;identifyDuplicates(Ljava/util/List;)V"), remap = false)
     private void injectIdentifyMods(List<String> additionalContainers, CallbackInfoReturnable<ModDiscoverer> cir) {
-        if (mods.stream().filter(modContainer -> "randomtweaker".equals(modContainer.getModId())).count() <= 1)
+        if (mods.stream().filter(modContainer -> "randomtweaker".equals(modContainer.getModId())).count() <= 1) {
             return;
+        }
         final Iterator<ModContainer> each = mods.iterator();
         while (each.hasNext()) {
             if ("randomtweaker".equals(each.next().getModId())) {

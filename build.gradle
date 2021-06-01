@@ -52,7 +52,7 @@ dependencies {
     runtime "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     runtime "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
 
-    compile('org.spongepowered:mixin:0.8') {
+    compile('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
         exclude module: 'guava'
         exclude module: 'commons-io'
         exclude module: 'gson'
@@ -99,11 +99,14 @@ repositories {
 }
 
 jar {
+    from configurations.provided.asFileTree.files.collect {
+        zipTree(it)
+    }
     manifest {
         attributes([
                 'TweakClass' : 'org.spongepowered.asm.launch.MixinTweaker',
                 "ForceLoadAsMod" : true,
-                "FMLCorePlugin": "com.ikexing.randomtweaker.impl.init.RTPlugin",
+                "FMLCorePlugin": "com.ikexing.randomtweaker.impl.core.RTPlugin",
                 "FMLCorePluginContainsFMLMod": true,
         ])
     }
