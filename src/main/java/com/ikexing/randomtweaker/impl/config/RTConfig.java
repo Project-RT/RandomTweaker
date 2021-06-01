@@ -34,6 +34,7 @@ public class RTConfig {
     @Comment("How much mana is max of hydroangeas? [Valid only for modified results | default: 18000]")
     public static int HydroangeasMaxMana = 18000;
 
-    @Comment("Modify the liquid of Twilight forest portal. [Modify requires has mod | default: water]")
+    @RequiresMcRestart
+    @Comment("Modify the liquid of Twilight forest portal. [Corresponding Mod Needed | default: water]")
     public static String TFPortalLiquid = "water";
 }
