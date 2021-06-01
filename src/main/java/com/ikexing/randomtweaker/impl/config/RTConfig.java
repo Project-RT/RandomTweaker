@@ -13,6 +13,7 @@ import static net.minecraftforge.common.config.Config.Comment;
  */
 @Config(modid = RandomTweaker.MODID)
 public class RTConfig {
+
     @RequiresMcRestart
     @Comment("If true, The original DreamJournal will be no longer available. [default: false]")
     public static boolean DreamJournal = false;
@@ -32,4 +33,7 @@ public class RTConfig {
     @RequiresMcRestart
     @Comment("How much mana is max of hydroangeas? [Valid only for modified results | default: 18000]")
     public static int HydroangeasMaxMana = 18000;
+
+    @Comment("Modify the liquid of Twilight forest portal. [Modify requires has mod | default: water]")
+    public static String TFPortalLiquid = "water";
 }
