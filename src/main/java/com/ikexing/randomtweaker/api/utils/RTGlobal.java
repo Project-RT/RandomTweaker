@@ -1,17 +1,13 @@
 package com.ikexing.randomtweaker.api.utils;
 
-import com.google.common.collect.Lists;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
-import crafttweaker.api.world.IBlockPos;
 import crafttweaker.mc1120.CraftTweaker;
-import java.util.List;
 import java.util.Objects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
@@ -32,15 +28,6 @@ public class RTGlobal {
         giverDreamJournl(mcPlayer);
         mcPlayer.sendMessage(new TextComponentString(
             TextFormatting.DARK_PURPLE + I18n.translateToLocal("got.dream")));
-    }
-
-    @ZenMethod
-    public static IBlockPos[] getAllInBox(IBlockPos from, IBlockPos to) {
-        Iterable<BlockPos> allInBox = BlockPos
-            .getAllInBox(CraftTweakerMC.getBlockPos(from), CraftTweakerMC.getBlockPos(to));
-        List<IBlockPos> list = Lists.newArrayList();
-        allInBox.forEach(single -> list.add(CraftTweakerMC.getIBlockPos(single)));
-        return list.toArray(new IBlockPos[0]);
     }
 
     @ZenMethod

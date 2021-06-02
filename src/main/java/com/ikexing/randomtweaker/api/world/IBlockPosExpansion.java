@@ -1,14 +1,27 @@
 package com.ikexing.randomtweaker.api.world;
 
+import com.google.common.collect.Lists;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
+import java.util.List;
+import net.minecraft.util.math.BlockPos;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.ZenMethodStatic;
 
 @ZenRegister
 @ZenExpansion("crafttweaker.world.IBlockPos")
 public class IBlockPosExpansion {
+
+    @ZenMethodStatic
+    public static IBlockPos[] getAllInBox(IBlockPos from, IBlockPos to) {
+        Iterable<BlockPos> allInBox = BlockPos
+            .getAllInBox(CraftTweakerMC.getBlockPos(from), CraftTweakerMC.getBlockPos(to));
+        List<IBlockPos> list = Lists.newArrayList();
+        allInBox.forEach(single -> list.add(CraftTweakerMC.getIBlockPos(single)));
+        return list.toArray(new IBlockPos[0]);
+    }
 
     @ZenMethod
     public static IBlockPos add(IBlockPos pos, double x, double y, double z) {

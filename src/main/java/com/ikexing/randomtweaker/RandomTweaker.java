@@ -47,10 +47,8 @@ public class RandomTweaker {
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) throws IOException {
-        GlobalRegistry.registerGlobal("getAllInBox", GlobalRegistry
-            .getStaticFunction(RTGlobal.class, "getAllInBox", IBlockPos.class, IBlockPos.class));
         GlobalRegistry.registerGlobal("printChat",
-            GlobalRegistry.getStaticFunction(RTGlobal.class, "printChat", String.class));
+            GlobalRegistry.getStaticFunction(RTGlowbal.class, "printChat", String.class));
 
         if (Loader.isModLoaded(THAUMCRAFT)) {
             if (RTConfig.DreamJournal) {
