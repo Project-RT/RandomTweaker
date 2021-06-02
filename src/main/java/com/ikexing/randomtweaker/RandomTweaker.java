@@ -13,6 +13,12 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.player.IPlayer;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.zenscript.GlobalRegistry;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -25,18 +31,9 @@ import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-/**
- * @author ikexing
- */
 @Mod(modid = RandomTweaker.MODID, name = RandomTweaker.NAME, version = RandomTweaker.VERSION, dependencies = RandomTweaker.DESPENDENCIES)
 public class RandomTweaker {
+
     public static final String MODID = "randomtweaker";
     public static final String NAME = "RandomTweaker";
     public static final String VERSION = "1.0.0";
@@ -50,12 +47,17 @@ public class RandomTweaker {
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) throws IOException {
-        GlobalRegistry.registerGlobal("getAllInBox", GlobalRegistry.getStaticFunction(RTGlobal.class, "getAllInBox", IBlockPos.class, IBlockPos.class));
-        GlobalRegistry.registerGlobal("printChat", GlobalRegistry.getStaticFunction(RTGlobal.class, "printChat", String.class));
+        GlobalRegistry.registerGlobal("getAllInBox", GlobalRegistry
+            .getStaticFunction(RTGlobal.class, "getAllInBox", IBlockPos.class, IBlockPos.class));
+        GlobalRegistry.registerGlobal("printChat",
+            GlobalRegistry.getStaticFunction(RTGlobal.class, "printChat", String.class));
 
-        if (Loader.isModLoaded(THAUMCRAFT) && RTConfig.DreamJournal) {
-            MinecraftForge.EVENT_BUS.register(DreamJournal.class);
-            GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
+        if (Loader.isModLoaded(THAUMCRAFT)) {
+            if (RTConfig.DreamJournal) {
+                MinecraftForge.EVENT_BUS.register(DreamJournal.class);
+            }
+            GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry
+                .getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
         }
         if (Prop.createOrDelete(RTConfig.Prop)) {
             CraftTweakerAPI.registerClass(Prop.class);
@@ -84,7 +86,8 @@ public class RandomTweaker {
             subTiles = (BiMap<String, Class<? extends SubTileEntity>>) field.get(null);
 
             if (subTiles != null) {
-                subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
+                subTiles
+                    .forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
             }
 
         } catch (NoSuchFieldException | IllegalAccessException e) {

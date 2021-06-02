@@ -10,9 +10,6 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import thebetweenlands.api.capability.IDecayCapability;
 import thebetweenlands.common.registries.CapabilityRegistry;
 
-/**
- * @author ikexing
- */
 @ZenRegister
 @ModOnly("thebetweenlands")
 @ZenExpansion("crafttweaker.player.IPlayer")

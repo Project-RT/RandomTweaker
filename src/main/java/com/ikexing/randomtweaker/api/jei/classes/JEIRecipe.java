@@ -2,18 +2,14 @@ package com.ikexing.randomtweaker.api.jei.classes;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
-import stanhebben.zenscript.annotations.Optional;
-import stanhebben.zenscript.annotations.ZenClass;
-
 import java.util.Arrays;
 import java.util.List;
+import stanhebben.zenscript.annotations.ZenClass;
 
-/**
- * @author ikexing
- */
 @ZenRegister
 @ZenClass("mods.randomtweaker.JEIRecipe")
 public class JEIRecipe {
+
     public List<IIngredient> input;
     public List<IIngredient> output;
 

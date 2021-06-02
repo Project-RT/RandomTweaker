@@ -3,12 +3,10 @@ package com.ikexing.randomtweaker.api.jei.classes;
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 
-/**
- * @author ikexing
- */
 @ZenRegister
 @ZenClass("mods.randomtweaker.JEISlot")
 public class JEISlot {
+
     public String type;
     public boolean isInput;
     public int xPosition;
@@ -19,7 +17,8 @@ public class JEISlot {
     public boolean showCapacity = false;
 
 
-    public JEISlot(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity) {
+    public JEISlot(boolean isInput, String type, int xPosition, int yPosition, int width,
+        int height, int capacityMb, boolean showCapacity) {
         this.isInput = isInput;
         this.type = type;
         this.xPosition = xPosition;

@@ -4,15 +4,14 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import net.minecraft.block.Block;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import net.minecraft.block.Block;
 
 /**
- * @author ikexing, niyan
+ * @author niyan
  */
 public class ModHydroangeas {
 

@@ -2,23 +2,22 @@ package com.ikexing.randomtweaker.api.file;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import crafttweaker.CraftTweakerAPI;
-import stanhebben.zenscript.annotations.ZenClass;
-import stanhebben.zenscript.annotations.ZenMethod;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
+import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenMethod;
 
-/**
- * @author ikexing
- */
 @ZenClass("mods.randomtweaker.Prop")
 public class Prop {
-    private static final boolean ISWINDOWS = System.getProperties().getProperty("os.name").startsWith("Windows");
+
+    private static final boolean ISWINDOWS = System.getProperties().getProperty("os.name")
+        .startsWith("Windows");
     private static final String MARK = ISWINDOWS ? "\\" : "/";
-    private static final String FILE = getPath(System.getProperty("user.dir"), RandomTweaker.MODID + ".prop");
+    private static final String FILE = getPath(System.getProperty("user.dir"),
+        RandomTweaker.MODID + ".prop");
 
     @ZenMethod
     public static String read(String key) {

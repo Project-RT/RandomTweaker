@@ -1,14 +1,10 @@
 package com.ikexing.randomtweaker.impl.utils;
 
+import java.util.Objects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 
-import java.util.Objects;
-
-/**
- * @author ikexing
- */
 public class ItemDs {
 
     public final Item item;
@@ -30,20 +26,23 @@ public class ItemDs {
             return false;
         }
         ItemDs itemDs = (ItemDs) o;
-        return meta == itemDs.meta && item == itemDs.item && Objects.equals(damageSource.getDamageType(), itemDs.damageSource.getDamageType());
+        return meta == itemDs.meta && item == itemDs.item && Objects
+            .equals(damageSource.getDamageType(), itemDs.damageSource.getDamageType());
     }
 
     @Override
     public int hashCode() {
-        return item.getDefaultInstance().getDisplayName().hashCode() + meta + damageSource.getDamageType().hashCode();
+        return item.getDefaultInstance().getDisplayName().hashCode() + meta + damageSource
+            .getDamageType().hashCode();
     }
 
     @Override
     public String toString() {
         return "ItemDs{" +
-                "item=" + Objects.requireNonNull(item.getRegistryName()).getNamespace() + ":" + Objects.requireNonNull(item.getRegistryName()).getPath() +
-                ", meta=" + meta +
-                ", damageSource=" + damageSource.getDamageType() +
-                '}';
+            "item=" + Objects.requireNonNull(item.getRegistryName()).getNamespace() + ":" + Objects
+            .requireNonNull(item.getRegistryName()).getPath() +
+            ", meta=" + meta +
+            ", damageSource=" + damageSource.getDamageType() +
+            '}';
     }
 }

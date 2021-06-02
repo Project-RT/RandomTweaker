@@ -6,12 +6,10 @@ import crafttweaker.api.world.IBlockPos;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-/**
- * @author ikexing
- */
 @ZenRegister
 @ZenExpansion("crafttweaker.world.IBlockPos")
 public class IBlockPosExpansion {
+
     @ZenMethod
     public static IBlockPos add(IBlockPos pos, double x, double y, double z) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).add(x, y, z));

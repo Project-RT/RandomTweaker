@@ -8,16 +8,12 @@ import crafttweaker.api.player.IPlayer;
 import hellfirepvp.astralsorcery.common.constellation.IMajorConstellation;
 import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import net.minecraft.entity.player.EntityPlayer;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-/**
- * @author ikexing
- */
 @ZenRegister
 @ModOnly("astralsorcery")
 @ZenExpansion("crafttweaker.player.IPlayer")
@@ -80,17 +76,20 @@ public class IPlayerExpansionAS {
 
     @ZenMethod
     public static String getAttunedConstellation(IPlayer player) {
-        IMajorConstellation attunedConstellation = ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getAttunedConstellation();
+        IMajorConstellation attunedConstellation = ResearchManager
+            .getProgress(CraftTweakerMC.getPlayer(player)).getAttunedConstellation();
         return attunedConstellation == null ? null : attunedConstellation.getSimpleName();
     }
 
     @ZenMethod
     public static String[] getKnownConstellations(IPlayer player) {
-        return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getKnownConstellations().toArray(new String[0]);
+        return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player))
+            .getKnownConstellations().toArray(new String[0]);
     }
 
     @ZenMethod
     public static String[] getSeenConstellations(IPlayer player) {
-        return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getSeenConstellations().toArray(new String[0]);
+        return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getSeenConstellations()
+            .toArray(new String[0]);
     }
 }

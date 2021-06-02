@@ -9,15 +9,17 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 /**
- * @author ikexing, niyan
+ * @author niyan
  */
 @ZenRegister
 @ModOnly("botania")
 @ZenClass("mods.randomtweaker.Hydroangeas")
 public class Hydroangeas {
+
     @ZenMethod
     public static void addManaRecipe(ILiquidStack inputFluid, int mana, double factor) {
-        ModHydroangeas.handlerList.add(new ModHydroangeas.HydroangeasHandler(inputFluid, mana, factor));
+        ModHydroangeas.handlerList
+            .add(new ModHydroangeas.HydroangeasHandler(inputFluid, mana, factor));
     }
 
     @ZenMethod

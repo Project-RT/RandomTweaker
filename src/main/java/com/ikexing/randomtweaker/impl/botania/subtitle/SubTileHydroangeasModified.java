@@ -4,6 +4,7 @@ import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import java.util.List;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
@@ -22,10 +23,8 @@ import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.lexicon.LexiconData;
 
-import java.util.List;
-
 /**
- * @author ikexing, niyan
+ * @author niyan
  */
 public class SubTileHydroangeasModified extends SubTileGenerating {
 
@@ -47,7 +46,10 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
         if (cooldown > 0) {
             cooldown--;
             for (int i = 0; i < 3; i++) {
-                Botania.proxy.wispFX(supertile.getPos().getX() + 0.5 + Math.random() * 0.2 - 0.1, supertile.getPos().getY() + 0.5 + Math.random() * 0.2 - 0.1, supertile.getPos().getZ() + 0.5 + Math.random() * 0.2 - 0.1, 0.1F, 0.1F, 0.1F, (float) Math.random() / 6, (float) -Math.random() / 30);
+                Botania.proxy.wispFX(supertile.getPos().getX() + 0.5 + Math.random() * 0.2 - 0.1,
+                    supertile.getPos().getY() + 0.5 + Math.random() * 0.2 - 0.1,
+                    supertile.getPos().getZ() + 0.5 + Math.random() * 0.2 - 0.1, 0.1F, 0.1F, 0.1F,
+                    (float) Math.random() / 6, (float) -Math.random() / 30);
             }
         }
 
@@ -58,16 +60,20 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
 
                 blockCheck:
                 for (BlockPos posCheck : BlockPos.getAllInBox(
-                        pos.add(-RANGE, -RANGE_Y, -RANGE),
-                        pos.add(RANGE, RANGE_Y, RANGE))) {
+                    pos.add(-RANGE, -RANGE_Y, -RANGE),
+                    pos.add(RANGE, RANGE_Y, RANGE))) {
 
-                    PropertyInteger prop = supertile.getWorld().getBlockState(posCheck).getBlock() instanceof BlockLiquid ? BlockLiquid.LEVEL :
-                            supertile.getWorld().getBlockState(posCheck).getBlock() instanceof BlockFluidBase ? BlockFluidBase.LEVEL : null;
+                    PropertyInteger prop = supertile.getWorld().getBlockState(posCheck)
+                        .getBlock() instanceof BlockLiquid ? BlockLiquid.LEVEL :
+                        supertile.getWorld().getBlockState(posCheck)
+                            .getBlock() instanceof BlockFluidBase ? BlockFluidBase.LEVEL : null;
 
                     for (ModHydroangeas.HydroangeasHandler handler : ModHydroangeas.handlerList) {
 
-                        if (getWorld().getBlockState(posCheck).getBlock() == handler.getBlockLiquid()
-                                && (prop == null || supertile.getWorld().getBlockState(posCheck).getValue(prop) == 0)) {
+                        if (getWorld().getBlockState(posCheck).getBlock() == handler
+                            .getBlockLiquid()
+                            && (prop == null
+                            || supertile.getWorld().getBlockState(posCheck).getValue(prop) == 0)) {
                             supertile.getWorld().setBlockToAir(posCheck);
                             manaGen = handler.getManaGen();
                             manaFactorFluid = handler.getManaFactor();
@@ -96,15 +102,17 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
             double t = manaFactorFluid;
             manaFactorFluid = 1;
             for (BlockPos.MutableBlockPos posCheck : BlockPos.getAllInBoxMutable(
-                    pos.add(-RANGE, -RANGE_Y, -RANGE),
-                    pos.add(RANGE, RANGE_Y, RANGE))) {
+                pos.add(-RANGE, -RANGE_Y, -RANGE),
+                pos.add(RANGE, RANGE_Y, RANGE))) {
 
-                if (supertile.getWorld().getBlockState(posCheck).getBlock() == ModHydroangeas.fluidFactor) {
+                if (supertile.getWorld().getBlockState(posCheck).getBlock()
+                    == ModHydroangeas.fluidFactor) {
                     manaFactorFluid = t;
                     break;
                 }
             }
-            IItemStack block = CraftTweakerMC.getIItemStack(new ItemStack(supertile.getWorld().getBlockState(pos.down()).getBlock()));
+            IItemStack block = CraftTweakerMC.getIItemStack(
+                new ItemStack(supertile.getWorld().getBlockState(pos.down()).getBlock()));
             if (ModHydroangeas.blockFactorList.containsKey(block)) {
                 manaFactorBlock = ModHydroangeas.blockFactorList.get(block);
             }
@@ -119,11 +127,15 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
     }
 
     public void doBurnParticles() {
-        Botania.proxy.wispFX(supertile.getPos().getX() + 0.55 + Math.random() * 0.2 - 0.1, supertile.getPos().getY() + 0.55 + Math.random() * 0.2 - 0.1, supertile.getPos().getZ() + 0.5, 0.05F, 0.05F, 0.7F, (float) Math.random() / 6, (float) -Math.random() / 60);
+        Botania.proxy.wispFX(supertile.getPos().getX() + 0.55 + Math.random() * 0.2 - 0.1,
+            supertile.getPos().getY() + 0.55 + Math.random() * 0.2 - 0.1,
+            supertile.getPos().getZ() + 0.5, 0.05F, 0.05F, 0.7F, (float) Math.random() / 6,
+            (float) -Math.random() / 60);
     }
 
     public void playSound() {
-        getWorld().playSound(null, supertile.getPos(), SoundEvents.ENTITY_GENERIC_DRINK, SoundCategory.BLOCKS, 0.01F, 0.5F + (float) Math.random() * 0.5F);
+        getWorld().playSound(null, supertile.getPos(), SoundEvents.ENTITY_GENERIC_DRINK,
+            SoundCategory.BLOCKS, 0.01F, 0.5F + (float) Math.random() * 0.5F);
     }
 
     public int getBurnTime() {
@@ -180,7 +192,8 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
     }
 
     @Override
-    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack stack) {
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state,
+        EntityLivingBase entity, ItemStack stack) {
         super.onBlockPlacedBy(world, pos, state, entity, stack);
         cooldown = ItemNBTHelper.getInt(stack, TAG_COOLDOWN, 0);
     }

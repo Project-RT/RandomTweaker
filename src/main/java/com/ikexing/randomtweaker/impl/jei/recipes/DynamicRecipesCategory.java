@@ -5,6 +5,8 @@ import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.jei.classes.JEISlot;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import java.util.List;
+import javax.annotation.Nullable;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiFluidStackGroup;
@@ -14,12 +16,7 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.util.ResourceLocation;
 
-import javax.annotation.Nullable;
-import java.util.List;
 
-/**
- * @author ikexing
- */
 public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWrapper> {
 
     public static String UID;
@@ -36,7 +33,8 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         JEIBackGroup jeiBackGroup = jeiCustom.getJeiBackGroup();
         UID = jeiCustom.uid;
 
-        this.icon = guiHelper.createDrawableIngredient(CraftTweakerMC.getItemStack(jeiCustom.getIcon()));
+        this.icon = guiHelper
+            .createDrawableIngredient(CraftTweakerMC.getItemStack(jeiCustom.getIcon()));
         this.title = jeiCustom.title;
         this.modName = jeiCustom.getModid();
         this.jeiSlots = jeiCustom.jeiSlots;
@@ -44,8 +42,11 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         if (jeiBackGroup.isNull()) {
             background = guiHelper.createBlankDrawable(jeiBackGroup.width, jeiBackGroup.heigh);
         } else {
-            ResourceLocation location = new ResourceLocation(jeiBackGroup.namespaceIn, jeiBackGroup.pathIn);
-            background = guiHelper.createDrawable(location, jeiBackGroup.u, jeiBackGroup.v, jeiBackGroup.width, jeiBackGroup.heigh);
+            ResourceLocation location = new ResourceLocation(jeiBackGroup.namespaceIn,
+                jeiBackGroup.pathIn);
+            background = guiHelper
+                .createDrawable(location, jeiBackGroup.u, jeiBackGroup.v, jeiBackGroup.width,
+                    jeiBackGroup.heigh);
         }
     }
 
@@ -76,7 +77,8 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
     }
 
     @Override
-    public void setRecipe(IRecipeLayout recipeLayout, DynamicRecipesWrapper recipeWrapper, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayout recipeLayout, DynamicRecipesWrapper recipeWrapper,
+        IIngredients ingredients) {
         IGuiItemStackGroup group = recipeLayout.getItemStacks();
         IGuiFluidStackGroup fgroup = recipeLayout.getFluidStacks();
         for (JEISlot jeiSlot : this.jeiSlots) {
@@ -86,7 +88,9 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
                     group.init(i, jeiSlot.isInput, jeiSlot.xPosition, jeiSlot.yPosition);
                     break;
                 case "fluid":
-                    fgroup.init(i, jeiSlot.isInput, jeiSlot.xPosition, jeiSlot.yPosition, jeiSlot.width, jeiSlot.height, jeiSlot.capacityMb, jeiSlot.showCapacity, null);
+                    fgroup.init(i, jeiSlot.isInput, jeiSlot.xPosition, jeiSlot.yPosition,
+                        jeiSlot.width, jeiSlot.height, jeiSlot.capacityMb, jeiSlot.showCapacity,
+                        null);
                     break;
                 default:
                     CraftTweakerAPI.logError("Type is not supported");

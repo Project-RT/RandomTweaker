@@ -3,12 +3,10 @@ package com.ikexing.randomtweaker.api.jei.classes;
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 
-/**
- * @author ikexing
- */
 @ZenRegister
 @ZenClass("mods.randomtweaker.JEIBackGroup")
 public class JEIBackGroup {
+
     public String namespaceIn;
     public String pathIn;
     public int u = 0;

@@ -12,13 +12,11 @@ import thebetweenlands.common.capability.circlegem.CircleGem.CombatType;
 import thebetweenlands.common.capability.circlegem.CircleGemHelper;
 import thebetweenlands.common.capability.circlegem.CircleGemType;
 
-/**
- * @author ikexing
- */
 @ZenRegister
 @ModOnly("thebetweenlands")
 @ZenClass("mods.randomtweaker.BLCircleGem")
 public class BLCircleGem {
+
     @ZenMethod
     public static void setGem(IItemStack stack, String gemType) {
         CircleGemType circleGemType = getCircleGemType(gemType);
@@ -40,7 +38,8 @@ public class BLCircleGem {
         CombatType combatType1 = getCombatType(combatType);
         if (circleGemType != null) {
             if (combatType1 != null) {
-                CircleGemHelper.addGem(CraftTweakerMC.getEntity(entity), circleGemType, combatType1);
+                CircleGemHelper
+                    .addGem(CraftTweakerMC.getEntity(entity), circleGemType, combatType1);
             } else {
                 CraftTweakerAPI.logError("combatType was non-existent");
             }

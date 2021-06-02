@@ -6,14 +6,10 @@ import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
 import com.ikexing.randomtweaker.api.jei.classes.JEISlot;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
+import java.util.Random;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-import java.util.Random;
-
-/**
- * @author ikexing
- */
 @ZenRegister
 @ZenExpansion("mods.jei.JEI")
 public class JEIExpansion {
@@ -29,7 +25,8 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
-    public static JEIFontInfo createFontInfo(String fontInfoName, int color, int recipeWidth, int recipeHeight, int x, int y) {
+    public static JEIFontInfo createFontInfo(String fontInfoName, int color, int recipeWidth,
+        int recipeHeight, int x, int y) {
         return new JEIFontInfo(fontInfoName, color, recipeWidth, recipeHeight, x, y);
     }
 
@@ -39,8 +36,10 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
-    public static JEISlot createSlot(boolean isInput, String type, int xPosition, int yPosition, int width, int height, int capacityMb, boolean showCapacity) {
-        return new JEISlot(isInput, type, xPosition, yPosition, width, height, capacityMb, showCapacity);
+    public static JEISlot createSlot(boolean isInput, String type, int xPosition, int yPosition,
+        int width, int height, int capacityMb, boolean showCapacity) {
+        return new JEISlot(isInput, type, xPosition, yPosition, width, height, capacityMb,
+            showCapacity);
     }
 
     @ZenMethodStatic

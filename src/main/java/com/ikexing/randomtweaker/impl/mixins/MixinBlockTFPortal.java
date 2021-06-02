@@ -1,5 +1,7 @@
 package com.ikexing.randomtweaker.impl.mixins;
 
+import static com.ikexing.randomtweaker.impl.config.RTConfig.TFPortalLiquid;
+
 import crafttweaker.api.block.IBlock;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.mc1120.brackets.BracketHandlerLiquid;
@@ -12,14 +14,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Pseudo;
+import org.spongepowered.asm.mixin.Shadow;
 import twilightforest.block.BlockTFPortal;
 
-import static com.ikexing.randomtweaker.impl.config.RTConfig.TFPortalLiquid;
-
-/**
- * @author ikexing
- */
 @Pseudo
 @Mixin(value = BlockTFPortal.class, remap = false)
 public class MixinBlockTFPortal extends BlockBreakable {
@@ -38,7 +39,8 @@ public class MixinBlockTFPortal extends BlockBreakable {
      */
     @Deprecated
     @Overwrite
-    public void func_189540_a(IBlockState state, World world, BlockPos pos, Block notUsed, BlockPos fromPos) {
+    public void func_189540_a(IBlockState state, World world, BlockPos pos, Block notUsed,
+        BlockPos fromPos) {
         boolean good = world.getBlockState(pos.down()).isFullCube();
 
         for (EnumFacing facing : EnumFacing.HORIZONTALS) {
@@ -63,12 +65,14 @@ public class MixinBlockTFPortal extends BlockBreakable {
      */
     @Overwrite(remap = false)
     public boolean canFormPortal(IBlockState state) {
-        return state == getLiquidState(TFPortalLiquid) || state.getBlock() == this && state.getValue(DISALLOW_RETURN);
+        return state == getLiquidState(TFPortalLiquid) || state.getBlock() == this && state
+            .getValue(DISALLOW_RETURN);
     }
 
     private static IBlockState getLiquidState(String liquidName) {
         if (BracketHandlerLiquid.getLiquid(liquidName) != null) {
-            IBlock liquidIBlock = BracketHandlerLiquid.getLiquid(liquidName).getDefinition().getBlock();
+            IBlock liquidIBlock = BracketHandlerLiquid.getLiquid(liquidName).getDefinition()
+                .getBlock();
             return CraftTweakerMC.getBlock(liquidIBlock).getDefaultState();
         } else {
             return Blocks.WATER.getDefaultState();

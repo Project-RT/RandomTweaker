@@ -9,10 +9,8 @@ import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
 
-/**
- * @author ikexing
- */
 public class DreamJournal {
+
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onItemPickup(EntityItemPickupEvent event) {
         EntityPlayer player = event.getEntityPlayer();
@@ -20,7 +18,8 @@ public class DreamJournal {
         if (!world.isRemote && event.getItem() != null) {
             IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(player);
             String gotdream = "!gotdream";
-            if ((event.getItem().getItem().getItem() instanceof ItemCrystalEssence && !knowledge.isResearchKnown(gotdream))) {
+            if ((event.getItem().getItem().getItem() instanceof ItemCrystalEssence && !knowledge
+                .isResearchKnown(gotdream))) {
                 knowledge.addResearch(gotdream);
             }
         }
