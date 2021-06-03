@@ -11,7 +11,7 @@ public class PotionContent extends Potion {
         super(potionRepresentation.isBadEffectIn, potionRepresentation.liquidColorIn);
         this.potionRepresentation = potionRepresentation;
         this.setPotionName(
-            "effect." + ContentTweaker.MOD_ID + potionRepresentation.unlocalizedName);
+            "effect." + ContentTweaker.MOD_ID + "." + potionRepresentation.unlocalizedName);
         this.setRegistryName(ContentTweaker.MOD_ID, potionRepresentation.unlocalizedName);
     }
 
