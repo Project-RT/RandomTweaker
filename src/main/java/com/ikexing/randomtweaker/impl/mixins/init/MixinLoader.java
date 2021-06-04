@@ -1,5 +1,7 @@
 package com.ikexing.randomtweaker.impl.mixins.init;
 
+import java.util.Iterator;
+import java.util.List;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.discovery.ModDiscoverer;
@@ -12,14 +14,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Iterator;
-import java.util.List;
-
-/**
- * @author ikexing
- */
 @Mixin(value = Loader.class, remap = false, priority = 800)
 public abstract class MixinLoader {
+
     @Shadow
     private List<ModContainer> mods;
 
@@ -30,8 +27,10 @@ public abstract class MixinLoader {
     }
 
     @Inject(method = "identifyMods", at = @At(value = "INVOKE", target = "Lnet/minecraftforge/fml/common/Loader;identifyDuplicates(Ljava/util/List;)V"), remap = false)
-    private void injectIdentifyMods(List<String> additionalContainers, CallbackInfoReturnable<ModDiscoverer> cir) {
-        if (mods.stream().filter(modContainer -> "randomtweaker".equals(modContainer.getModId())).count() <= 1) {
+    private void injectIdentifyMods(List<String> additionalContainers,
+        CallbackInfoReturnable<ModDiscoverer> cir) {
+        if (mods.stream().filter(modContainer -> "randomtweaker".equals(modContainer.getModId()))
+            .count() <= 1) {
             return;
         }
         final Iterator<ModContainer> each = mods.iterator();

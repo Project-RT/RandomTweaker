@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -38,7 +39,7 @@ public class JEICustom {
 
     public JEICustom(String uid, String name) {
         this.uid = uid;
-        this.title = name;
+        this.title = I18n.translateToLocal(name);
     }
 
     @ZenMethod
