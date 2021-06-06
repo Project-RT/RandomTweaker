@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -45,6 +46,7 @@ public class RandomTweaker {
     public static Set<ItemDs> itemDsSet = new HashSet<>();
     public static List<Potion> potionRegList = new ArrayList<>();
     public static List<JEICustom> jeiCustomList = new ArrayList<>();
+    public static List<PotionType> potionTypeList = new ArrayList<>();
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) throws IOException {

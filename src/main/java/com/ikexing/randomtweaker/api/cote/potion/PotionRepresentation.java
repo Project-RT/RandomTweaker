@@ -3,6 +3,7 @@ package com.ikexing.randomtweaker.api.cote.potion;
 import com.ikexing.randomtweaker.RandomTweaker;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
+import net.minecraft.potion.Potion;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -11,6 +12,8 @@ import stanhebben.zenscript.annotations.ZenProperty;
 @ModOnly("contenttweaker")
 @ZenClass("mods.randomtweaker.cote.Potion")
 public class PotionRepresentation {
+
+    private Potion potion;
 
     @ZenProperty
     public int liquidColorIn;
@@ -92,6 +95,11 @@ public class PotionRepresentation {
 
     @ZenMethod
     public void register() {
-        RandomTweaker.potionRegList.add(new PotionContent(this));
+        potion = new PotionContent(this);
+        RandomTweaker.potionRegList.add(potion);
+    }
+
+    public Potion getInternal() {
+        return potion;
     }
 }

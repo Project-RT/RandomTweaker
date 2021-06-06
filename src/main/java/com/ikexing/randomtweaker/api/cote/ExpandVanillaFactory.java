@@ -1,6 +1,7 @@
 package com.ikexing.randomtweaker.api.cote;
 
 import com.ikexing.randomtweaker.api.cote.potion.PotionRepresentation;
+import com.ikexing.randomtweaker.api.cote.potion.PotionTypeRepresentation;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -12,8 +13,13 @@ import stanhebben.zenscript.annotations.ZenMethodStatic;
 public class ExpandVanillaFactory {
 
     @ZenMethodStatic
-    public static PotionRepresentation createPotion(String unlocalizedName,
-        int color) {
-        return new PotionRepresentation(unlocalizedName, color);
+    public static PotionRepresentation createPotion(String name, int color) {
+        return new PotionRepresentation(name, color);
+    }
+
+    @ZenMethodStatic
+    public static PotionTypeRepresentation cretePotionType(String name,
+        PotionRepresentation potion) {
+        return new PotionTypeRepresentation(name, potion);
     }
 }
