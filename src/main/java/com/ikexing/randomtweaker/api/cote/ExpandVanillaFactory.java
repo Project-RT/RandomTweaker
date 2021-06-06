@@ -12,8 +12,8 @@ import stanhebben.zenscript.annotations.ZenMethodStatic;
 public class ExpandVanillaFactory {
 
     @ZenMethodStatic
-    public static PotionRepresentation createPotion(String unlocalizedName, boolean isBadEffectIn,
+    public static PotionRepresentation createPotion(String unlocalizedName,
         int color) {
-        return new PotionRepresentation(unlocalizedName, isBadEffectIn, color);
+        return new PotionRepresentation(unlocalizedName, color);
     }
 }
