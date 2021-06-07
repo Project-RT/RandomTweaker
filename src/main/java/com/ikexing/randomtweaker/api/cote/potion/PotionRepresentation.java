@@ -95,8 +95,10 @@ public class PotionRepresentation {
 
     @ZenMethod
     public void register() {
-        potion = new PotionContent(this);
-        RandomTweaker.potionRegList.add(potion);
+        if (RandomTweaker.potionRegList.get(name) != null) {
+            potion = new PotionContent(this);
+            RandomTweaker.potionRegList.put(name, potion);
+        }
     }
 
     public Potion getInternal() {

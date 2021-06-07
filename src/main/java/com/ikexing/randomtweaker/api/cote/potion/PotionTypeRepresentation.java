@@ -18,7 +18,7 @@ public class PotionTypeRepresentation {
     @ZenProperty
     public String name;
     @ZenProperty
-    public int duration= 3600;
+    public int duration = 3600;
     @ZenProperty
     public int amplifier = 0;
     @ZenProperty
@@ -71,8 +71,11 @@ public class PotionTypeRepresentation {
 
     @ZenMethod
     public void register() {
-        RandomTweaker.potionTypeList
-            .add(new PotionType(ContentTweaker.MOD_ID + "." + this.name,
-                new PotionEffect(potion.getInternal(), duration, amplifier)).setRegistryName(name));
+        if (RandomTweaker.potionTypeList.get(name) != null) {
+            RandomTweaker.potionTypeList
+                .put(name, new PotionType(ContentTweaker.MOD_ID + "." + this.name,
+                    new PotionEffect(potion.getInternal(), duration, amplifier))
+                    .setRegistryName(name));
+        }
     }
 }

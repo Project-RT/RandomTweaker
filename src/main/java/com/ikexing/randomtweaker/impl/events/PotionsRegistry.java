@@ -15,7 +15,7 @@ public class PotionsRegistry {
     public static void onPotionRegistry(Register<Potion> event) {
         IForgeRegistry<Potion> registry = event.getRegistry();
         if (!RandomTweaker.potionRegList.isEmpty()) {
-            registry.registerAll(RandomTweaker.potionRegList.toArray(new Potion[0]));
+            RandomTweaker.potionRegList.forEach((k, v) -> registry.register(v));
         }
     }
 
@@ -23,7 +23,7 @@ public class PotionsRegistry {
     public static void onPotionTypeRegistry(Register<PotionType> event) {
         IForgeRegistry<PotionType> registry = event.getRegistry();
         if (!RandomTweaker.potionTypeList.isEmpty()) {
-            registry.registerAll(RandomTweaker.potionTypeList.toArray(new PotionType[0]));
+            RandomTweaker.potionTypeList.forEach((k, v) -> registry.register(v));
         }
     }
 }
