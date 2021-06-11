@@ -2,6 +2,7 @@ package com.ikexing.randomtweaker.api.cote.potion;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
+import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import net.minecraft.potion.PotionEffect;
@@ -71,11 +72,15 @@ public class PotionTypeRepresentation {
 
     @ZenMethod
     public void register() {
-        if (RandomTweaker.potionTypeList.get(name) != null) {
+        if (RandomTweaker.potionTypeList.get(name) == null) {
             RandomTweaker.potionTypeList
                 .put(name, new PotionType(ContentTweaker.MOD_ID + "." + this.name,
                     new PotionEffect(potion.getInternal(), duration, amplifier))
                     .setRegistryName(name));
+        } else {
+            CraftTweakerAPI
+                .logError(" All PotionTypes must be unique. Key: contenttweaker:" + name + " is not.",
+                    new UnsupportedOperationException());
         }
     }
 }

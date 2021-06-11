@@ -1,6 +1,7 @@
 package com.ikexing.randomtweaker.api.cote.potion;
 
 import com.ikexing.randomtweaker.RandomTweaker;
+import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import net.minecraft.potion.Potion;
@@ -95,9 +96,11 @@ public class PotionRepresentation {
 
     @ZenMethod
     public void register() {
-        if (RandomTweaker.potionRegList.get(name) != null) {
+        if (RandomTweaker.potionRegList.get(name) == null) {
             potion = new PotionContent(this);
             RandomTweaker.potionRegList.put(name, potion);
+        }else {
+            CraftTweakerAPI.logError(" All Potions must be unique. Key: contenttweaker:"+ name +" is not.", new UnsupportedOperationException());
         }
     }
 
