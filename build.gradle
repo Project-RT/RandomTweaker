@@ -45,6 +45,7 @@ dependencies {
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
     deobfCompile "curse.maven:thebetweenlands-243363:3248202"
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
+    deobfCompile "curse.maven:toughasnails-246391:2710969"
 
     runtime "curse.maven:mixin-booter-419286:3321174"
     runtime "curse.maven:Baubles-227083:2518667"
