@@ -35,4 +35,14 @@ public class IPlayerExpansionSanity {
     public static void updateSanity(IPlayer player, float sanity) {
         PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player)).updateSanity(sanity);
     }
+
+    /**
+     * You need to call this method if the value you changed is not stored or processed in the
+     * client (world.remote). It is generally not needed.
+     */
+
+    @ZenMethod
+    public static void sync(IPlayer player) {
+        PlayerSanityHelper.sync(CraftTweakerMC.getPlayer(player));
+    }
 }

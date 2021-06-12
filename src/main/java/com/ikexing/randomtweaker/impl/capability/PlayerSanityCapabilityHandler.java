@@ -1,7 +1,6 @@
 package com.ikexing.randomtweaker.impl.capability;
 
 import com.ikexing.randomtweaker.RandomTweaker;
-import com.ikexing.randomtweaker.impl.network.PlayerSanityNetWork;
 import com.ikexing.randomtweaker.impl.utils.cap.PlayerSanityHelper;
 import java.util.Objects;
 import net.minecraft.entity.Entity;
@@ -10,7 +9,6 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.common.capabilities.CapabilityInject;
@@ -75,9 +73,7 @@ public class PlayerSanityCapabilityHandler {
                 sanityCap.setOriginalSanity(
                     (int) (random >= 0.6 ? random * 100 : (random + (random / 2)) * 100));
             }
-            PlayerSanityNetWork.Sanity.sendClientCustomPacket((EntityPlayer) entity);
-            entity.sendMessage(new TextComponentString(
-                sanityCap.getOriginalSanity() + " " + sanityCap.getSanity()));
+            PlayerSanityHelper.sync(entity);
         }
     }
 }
