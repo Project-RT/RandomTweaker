@@ -30,11 +30,6 @@ public class RTGlobal {
             TextFormatting.DARK_PURPLE + I18n.translateToLocal("got.dream")));
     }
 
-    @ZenMethod
-    public static void printChat(String string) {
-        CraftTweaker.server.sendMessage(new TextComponentString(string));
-    }
-
     private static void giverDreamJournl(EntityPlayer player) {
         IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(player);
         knowledge.addResearch("!gotdream");

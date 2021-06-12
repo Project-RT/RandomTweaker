@@ -54,9 +54,6 @@ public class RandomTweaker {
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) throws IOException {
-        GlobalRegistry.registerGlobal("printChat",
-            GlobalRegistry.getStaticFunction(RTGlobal.class, "printChat", String.class));
-
         if (Loader.isModLoaded(THAUMCRAFT)) {
             if (RTConfig.DreamJournal) {
                 MinecraftForge.EVENT_BUS.register(DreamJournal.class);
