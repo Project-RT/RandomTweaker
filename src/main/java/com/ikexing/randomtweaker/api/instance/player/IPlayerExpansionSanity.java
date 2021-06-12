@@ -11,6 +11,7 @@ public class IPlayerExpansionSanity {
 
     @ZenMethod
     public static float getOriginalSanity(IPlayer player) {
+        PlayerSanityHelper.sync(CraftTweakerMC.getPlayer(player));
         return PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player))
             .getOriginalSanity();
     }
@@ -19,30 +20,24 @@ public class IPlayerExpansionSanity {
     public static void setOriginalSanity(IPlayer player, int sanity) {
         PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player))
             .setOriginalSanity(sanity);
+        PlayerSanityHelper.sync(CraftTweakerMC.getPlayer(player));
     }
 
     @ZenMethod
     public static float getSanity(IPlayer player) {
+        PlayerSanityHelper.sync(CraftTweakerMC.getPlayer(player));
         return PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player)).getSanity();
     }
 
     @ZenMethod
     public static void setSanity(IPlayer player, float sanity) {
         PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player)).setSanity(sanity);
+        PlayerSanityHelper.sync(CraftTweakerMC.getPlayer(player));
     }
 
     @ZenMethod
     public static void updateSanity(IPlayer player, float sanity) {
         PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player)).updateSanity(sanity);
-    }
-
-    /**
-     * You need to call this method if the value you changed is not stored or processed in the
-     * client (world.remote). It is generally not needed.
-     */
-
-    @ZenMethod
-    public static void sync(IPlayer player) {
         PlayerSanityHelper.sync(CraftTweakerMC.getPlayer(player));
     }
 }
