@@ -1,9 +1,9 @@
 package com.ikexing.randomtweaker;
 
 import com.google.common.collect.BiMap;
-import com.ikexing.randomtweaker.api.file.Prop;
+import com.ikexing.randomtweaker.api.instance.file.Prop;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
-import com.ikexing.randomtweaker.api.player.IPlayerExpansionSanity;
+import com.ikexing.randomtweaker.api.instance.player.IPlayerExpansionSanity;
 import com.ikexing.randomtweaker.api.utils.RTGlobal;
 import com.ikexing.randomtweaker.impl.botania.subtitle.SubTileHydroangeasModified;
 import com.ikexing.randomtweaker.impl.capability.PlayerSanityCapabilityHandler;

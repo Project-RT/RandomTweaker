@@ -6,6 +6,15 @@ import net.minecraftforge.common.util.INBTSerializable;
 public class PlayerSanityCapability implements INBTSerializable<NBTTagCompound> {
 
     private float sanity;
+    private int originalSanity;
+
+    public int getOriginalSanity() {
+        return originalSanity;
+    }
+
+    public void setOriginalSanity(int originalSanity) {
+        this.originalSanity = originalSanity;
+    }
 
     public float getSanity() {
         return sanity;
@@ -23,6 +32,7 @@ public class PlayerSanityCapability implements INBTSerializable<NBTTagCompound> 
     public NBTTagCompound serializeNBT() {
         NBTTagCompound nbt = new NBTTagCompound();
         nbt.setFloat("sanity", sanity);
+        nbt.setInteger("oSanity", originalSanity);
 
         return nbt;
     }
@@ -30,5 +40,6 @@ public class PlayerSanityCapability implements INBTSerializable<NBTTagCompound> 
     @Override
     public void deserializeNBT(NBTTagCompound nbt) {
         setSanity(nbt.getFloat("sanity"));
+        setOriginalSanity(nbt.getInteger("oSanity"));
     }
 }

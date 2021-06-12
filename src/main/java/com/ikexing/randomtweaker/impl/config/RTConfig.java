@@ -12,7 +12,7 @@ public class RTConfig {
     @RequiresMcRestart
     @Comment({
         "RandomTweaker",
-        "If true, [default : false]"
+        "If true, the sanity function will be enabled. [default : false]"
     })
     public static boolean PlayerSanity = false;
 
