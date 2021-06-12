@@ -5,6 +5,7 @@ import com.ikexing.randomtweaker.api.file.Prop;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.utils.RTGlobal;
 import com.ikexing.randomtweaker.impl.botania.subtitle.SubTileHydroangeasModified;
+import com.ikexing.randomtweaker.impl.capability.PlayerSanityCapabilityHandler;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
 import com.ikexing.randomtweaker.impl.events.DreamJournal;
 import com.ikexing.randomtweaker.impl.jei.Hydroangeas;
@@ -70,6 +71,7 @@ public class RandomTweaker {
     @EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
+        PlayerSanityCapabilityHandler.register();
     }
 
     @EventHandler
