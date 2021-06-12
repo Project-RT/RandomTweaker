@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.file;
+package com.ikexing.randomtweaker.api.instance.file;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import crafttweaker.CraftTweakerAPI;
