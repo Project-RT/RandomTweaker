@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @EventBusSubscriber
-public class PotionsRegistry {
+public class Registry {
 
     @SubscribeEvent
     public static void onPotionRegistry(Register<Potion> event) {
