@@ -3,6 +3,7 @@ package com.ikexing.randomtweaker;
 import com.google.common.collect.BiMap;
 import com.ikexing.randomtweaker.api.file.Prop;
 import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
+import com.ikexing.randomtweaker.api.player.IPlayerExpansionSanity;
 import com.ikexing.randomtweaker.api.utils.RTGlobal;
 import com.ikexing.randomtweaker.impl.botania.subtitle.SubTileHydroangeasModified;
 import com.ikexing.randomtweaker.impl.capability.PlayerSanityCapabilityHandler;
@@ -59,6 +60,9 @@ public class RandomTweaker {
         if (Loader.isModLoaded(THAUMCRAFT)) {
             if (RTConfig.DreamJournal) {
                 MinecraftForge.EVENT_BUS.register(DreamJournal.class);
+            }
+            if (RTConfig.PlayerSanity) {
+                CraftTweakerAPI.registerClass(IPlayerExpansionSanity.class);
             }
             GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry
                 .getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));

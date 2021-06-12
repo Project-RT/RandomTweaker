@@ -12,6 +12,13 @@ public class RTConfig {
     @RequiresMcRestart
     @Comment({
         "RandomTweaker",
+        "If true, [default : false]"
+    })
+    public static boolean PlayerSanity = false;
+
+    @RequiresMcRestart
+    @Comment({
+        "RandomTweaker",
         "If true, Allow CrT to manipulate the file \"randomtweaker.prop\". [default: false]"
     })
     public static boolean Prop = false;

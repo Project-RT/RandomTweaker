@@ -15,6 +15,10 @@ public class PlayerSanityCapability implements INBTSerializable<NBTTagCompound> 
         this.sanity = sanity;
     }
 
+    public void updateSanity(float sanity) {
+        this.sanity += sanity;
+    }
+
     @Override
     public NBTTagCompound serializeNBT() {
         NBTTagCompound nbt = new NBTTagCompound();
