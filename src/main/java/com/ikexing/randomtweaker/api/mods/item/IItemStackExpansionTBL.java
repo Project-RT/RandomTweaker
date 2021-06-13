@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.item;
+package com.ikexing.randomtweaker.api.mods.item;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;

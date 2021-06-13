@@ -1,9 +1,9 @@
-package com.ikexing.randomtweaker.api.jei;
+package com.ikexing.randomtweaker.api.instance.jei;
 
-import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
-import com.ikexing.randomtweaker.api.jei.classes.JEIFontInfo;
-import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
-import com.ikexing.randomtweaker.api.jei.classes.JEISlot;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEIFontInfo;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEIRecipe;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEISlot;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import java.util.Random;

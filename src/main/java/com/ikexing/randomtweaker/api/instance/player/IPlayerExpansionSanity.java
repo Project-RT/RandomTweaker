@@ -1,6 +1,6 @@
 package com.ikexing.randomtweaker.api.instance.player;
 
-import com.ikexing.randomtweaker.impl.utils.cap.PlayerSanityHelper;
+import com.ikexing.randomtweaker.impl.client.utils.cap.PlayerSanityHelper;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -11,7 +11,6 @@ public class IPlayerExpansionSanity {
 
     @ZenMethod
     public static float getOriginalSanity(IPlayer player) {
-        PlayerSanityHelper.sync(CraftTweakerMC.getPlayer(player));
         return PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player))
             .getOriginalSanity();
     }
@@ -25,7 +24,6 @@ public class IPlayerExpansionSanity {
 
     @ZenMethod
     public static float getSanity(IPlayer player) {
-        PlayerSanityHelper.sync(CraftTweakerMC.getPlayer(player));
         return PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player)).getSanity();
     }
 

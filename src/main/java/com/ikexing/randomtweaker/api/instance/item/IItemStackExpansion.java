@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.item;
+package com.ikexing.randomtweaker.api.instance.item;
 
 import static com.ikexing.randomtweaker.RandomTweaker.itemDsSet;
 

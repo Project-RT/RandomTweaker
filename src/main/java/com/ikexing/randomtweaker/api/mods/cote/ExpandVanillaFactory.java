@@ -1,7 +1,7 @@
-package com.ikexing.randomtweaker.api.cote;
+package com.ikexing.randomtweaker.api.mods.cote;
 
-import com.ikexing.randomtweaker.api.cote.potion.PotionRepresentation;
-import com.ikexing.randomtweaker.api.cote.potion.PotionTypeRepresentation;
+import com.ikexing.randomtweaker.api.mods.cote.potion.PotionRepresentation;
+import com.ikexing.randomtweaker.api.mods.cote.potion.PotionTypeRepresentation;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenExpansion;

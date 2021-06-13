@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.tbl;
+package com.ikexing.randomtweaker.api.mods.tbl;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;

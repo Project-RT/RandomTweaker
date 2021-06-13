@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.jei.classes;
+package com.ikexing.randomtweaker.api.instance.jei.classes;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import crafttweaker.CraftTweakerAPI;

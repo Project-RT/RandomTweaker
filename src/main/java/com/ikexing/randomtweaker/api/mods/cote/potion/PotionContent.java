@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.cote.potion;
+package com.ikexing.randomtweaker.api.mods.cote.potion;
 
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import net.minecraft.client.Minecraft;

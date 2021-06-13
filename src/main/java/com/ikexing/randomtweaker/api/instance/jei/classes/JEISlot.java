@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.jei.classes;
+package com.ikexing.randomtweaker.api.instance.jei.classes;
 
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;

@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.world;
+package com.ikexing.randomtweaker.api.instance.world;
 
 import com.google.common.collect.Lists;
 import crafttweaker.annotations.ZenRegister;

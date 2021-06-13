@@ -1,9 +1,8 @@
-package com.ikexing.randomtweaker.api.utils;
+package com.ikexing.randomtweaker.api.instance.utils;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
-import crafttweaker.mc1120.CraftTweaker;
 import java.util.Objects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;

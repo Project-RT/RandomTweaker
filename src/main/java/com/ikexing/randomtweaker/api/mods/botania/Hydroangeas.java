@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.botania;
+package com.ikexing.randomtweaker.api.mods.botania;
 
 import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
 import crafttweaker.annotations.ModOnly;
