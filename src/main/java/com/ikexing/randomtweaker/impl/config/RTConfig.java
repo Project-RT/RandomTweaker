@@ -13,9 +13,10 @@ public class RTConfig {
         "RandomTweaker",
         "This option decide the position of Sanity hud, the first parameter is the width, The second parameter is the height.",
         "The specific position is width and height of the game window divided by this number.",
-        "[If the unit of measurement is px, then it refer to a fixed coordinate. e.g. 102px]"
+        "[If the unit of measurement is px, then it refer to a fixed coordinate. e.g. 102px]",
+        "[default : <6.0, 1.152>"
     })
-    public static String[] SanityPos = {"15.0", "10.0"};
+    public static String[] SanityPos = {"6.0", "1.152"};
 
     @RequiresMcRestart
     @Comment({
