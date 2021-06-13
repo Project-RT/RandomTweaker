@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.impl.events.client;
+package com.ikexing.randomtweaker.impl.client.events;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import com.ikexing.randomtweaker.impl.client.capability.PlayerSanityCapability;
