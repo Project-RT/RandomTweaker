@@ -1,8 +1,8 @@
 package com.ikexing.randomtweaker.impl.jei;
 
 import com.ikexing.randomtweaker.RandomTweaker;
-import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
-import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEIRecipe;
 import com.ikexing.randomtweaker.impl.jei.recipes.DynamicRecipesCategory;
 import com.ikexing.randomtweaker.impl.jei.recipes.DynamicRecipesWrapper;
 import crafttweaker.api.item.IItemStack;

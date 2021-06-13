@@ -1,7 +1,7 @@
 package com.ikexing.randomtweaker.impl.jei.recipes;
 
-import com.ikexing.randomtweaker.api.jei.classes.JEIFontInfo;
-import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEIFontInfo;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEIRecipe;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;

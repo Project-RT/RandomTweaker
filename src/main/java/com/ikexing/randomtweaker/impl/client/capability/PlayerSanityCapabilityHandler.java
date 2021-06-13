@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.impl.capability;
+package com.ikexing.randomtweaker.impl.client.capability;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import java.util.Objects;

@@ -1,8 +1,8 @@
 package com.ikexing.randomtweaker.impl.jei.recipes;
 
-import com.ikexing.randomtweaker.api.jei.classes.JEIBackGroup;
-import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
-import com.ikexing.randomtweaker.api.jei.classes.JEISlot;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEIBackGroup;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEISlot;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import java.util.List;

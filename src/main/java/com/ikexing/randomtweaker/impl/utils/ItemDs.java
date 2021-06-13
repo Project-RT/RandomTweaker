@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.impl.client.utils;
+package com.ikexing.randomtweaker.impl.utils;
 
 import java.util.Objects;
 import net.minecraft.item.Item;

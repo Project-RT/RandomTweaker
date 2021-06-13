@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.impl.capability;
+package com.ikexing.randomtweaker.impl.client.capability;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.INBTSerializable;

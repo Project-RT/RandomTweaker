@@ -1,8 +1,8 @@
 package com.ikexing.randomtweaker.impl.jei;
 
-import com.ikexing.randomtweaker.api.jei.JEIExpansion;
-import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
-import com.ikexing.randomtweaker.api.jei.classes.JEIRecipe;
+import com.ikexing.randomtweaker.api.instance.jei.JEIExpansion;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEIRecipe;
 import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;

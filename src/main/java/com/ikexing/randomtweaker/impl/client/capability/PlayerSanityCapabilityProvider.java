@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.impl.capability;
+package com.ikexing.randomtweaker.impl.client.capability;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
