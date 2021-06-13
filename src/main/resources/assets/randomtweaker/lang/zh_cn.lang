@@ -1,1 +1,4 @@
-jei_hydroangeas=水绣球
+item.randomtweaker.sanity_gem.name=理智宝石
+
+randomtweaker.jei_hydroangeas=水绣球
+randomtweaker.message.used=当前的理智值为:%s

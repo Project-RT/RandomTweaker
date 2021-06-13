@@ -10,6 +10,7 @@ import com.ikexing.randomtweaker.impl.client.capability.PlayerSanityCapabilityHa
 import com.ikexing.randomtweaker.impl.client.network.PlayerSanityNetWork;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
 import com.ikexing.randomtweaker.impl.events.DreamJournal;
+import com.ikexing.randomtweaker.impl.item.SanityGem;
 import com.ikexing.randomtweaker.impl.jei.Hydroangeas;
 import com.ikexing.randomtweaker.impl.utils.ItemDs;
 import crafttweaker.CraftTweakerAPI;
@@ -25,6 +26,8 @@ import java.util.Map;
 import java.util.Set;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -53,6 +56,10 @@ public class RandomTweaker {
     public static final String DESPENDENCIES = "required-after:crafttweaker;after:contenttweaker;";
 
     public static final String THAUMCRAFT = "thaumcraft";
+    public static final SanityGem SANITY_GEM = new SanityGem();
+    public static final SoundEvent SOUND_SAN = new SoundEvent(
+        new ResourceLocation(RandomTweaker.MODID, "san"))
+        .setRegistryName(new ResourceLocation(RandomTweaker.MODID, "san"));
 
     public static Logger logger;
     public static Set<ItemDs> itemDsSet = new HashSet<>();

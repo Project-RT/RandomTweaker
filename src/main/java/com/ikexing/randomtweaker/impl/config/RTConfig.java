@@ -21,6 +21,13 @@ public class RTConfig {
     @RequiresMcRestart
     @Comment({
         "RandomTweaker",
+        "If true, when entering a world for the first time, it will generate a value of OriginalSanity randomly. [default : true]"
+    })
+    public static boolean OriginalSanity = true;
+
+    @RequiresMcRestart
+    @Comment({
+        "RandomTweaker",
         "If true, the sanity function will be enabled. [default : false]"
     })
     public static boolean PlayerSanity = false;
