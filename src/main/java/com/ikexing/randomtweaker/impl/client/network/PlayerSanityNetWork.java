@@ -42,10 +42,10 @@ public class PlayerSanityNetWork {
         @SideOnly(Side.CLIENT)
         public static void onClientCustomPacket(FMLNetworkEvent.ClientCustomPacketEvent event) {
             ByteBuf buffer = event.getPacket().payload();
-            int oSanity = buffer.readInt();
             float sanity = buffer.readFloat();
-            Minecraft mc = Minecraft.getMinecraft();
+            int oSanity = buffer.readInt();
 
+            Minecraft mc = Minecraft.getMinecraft();
             mc.addScheduledTask(() -> {
                 EntityPlayer player = mc.player;
                 PlayerSanityCapability sanityCap = PlayerSanityHelper.getPlayerSanity(player);
