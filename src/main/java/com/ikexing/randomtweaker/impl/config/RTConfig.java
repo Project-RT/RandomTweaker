@@ -9,6 +9,14 @@ import net.minecraftforge.common.config.Config.RequiresMcRestart;
 @Config(modid = RandomTweaker.MODID)
 public class RTConfig {
 
+    @Comment({
+        "RandomTweaker",
+        "This option decide the position of Sanity hud, the first parameter is the width, The second parameter is the height.",
+        "The specific position is width and height of the game window divided by this number.",
+        "[If the unit of measurement is px, then it refer to a fixed coordinate. e.g. 102px]"
+    })
+    public static String[] SanityPos = {"15.0", "10.0"};
+
     @RequiresMcRestart
     @Comment({
         "RandomTweaker",

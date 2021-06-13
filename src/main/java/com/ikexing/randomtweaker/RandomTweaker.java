@@ -2,11 +2,12 @@ package com.ikexing.randomtweaker;
 
 import com.google.common.collect.BiMap;
 import com.ikexing.randomtweaker.api.instance.file.Prop;
-import com.ikexing.randomtweaker.api.jei.classes.JEICustom;
+import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.instance.player.IPlayerExpansionSanity;
-import com.ikexing.randomtweaker.api.utils.RTGlobal;
+import com.ikexing.randomtweaker.api.instance.utils.RTGlobal;
 import com.ikexing.randomtweaker.impl.botania.subtitle.SubTileHydroangeasModified;
-import com.ikexing.randomtweaker.impl.capability.PlayerSanityCapabilityHandler;
+import com.ikexing.randomtweaker.impl.client.capability.PlayerSanityCapabilityHandler;
+import com.ikexing.randomtweaker.impl.client.network.PlayerSanityNetWork;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
 import com.ikexing.randomtweaker.impl.events.DreamJournal;
 import com.ikexing.randomtweaker.impl.jei.Hydroangeas;
@@ -36,12 +37,19 @@ import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
 
-@Mod(modid = RandomTweaker.MODID, name = RandomTweaker.NAME, version = RandomTweaker.VERSION, dependencies = RandomTweaker.DESPENDENCIES)
+@Mod(
+    modid = RandomTweaker.MODID,
+    name = RandomTweaker.NAME,
+    version = RandomTweaker.VERSION,
+    guiFactory = RandomTweaker.GUI_FACTORY,
+    dependencies = RandomTweaker.DESPENDENCIES
+)
 public class RandomTweaker {
 
     public static final String MODID = "randomtweaker";
     public static final String NAME = "RandomTweaker";
     public static final String VERSION = "1.0.0";
+    public static final String GUI_FACTORY = "com.ikexing.randomtweaker.impl.config.RTConfigGuiFactory";
     public static final String DESPENDENCIES = "required-after:crafttweaker;after:contenttweaker;";
 
     public static final String THAUMCRAFT = "thaumcraft";
@@ -72,6 +80,7 @@ public class RandomTweaker {
     @EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
+        PlayerSanityNetWork.register();
         PlayerSanityCapabilityHandler.register();
     }
 
