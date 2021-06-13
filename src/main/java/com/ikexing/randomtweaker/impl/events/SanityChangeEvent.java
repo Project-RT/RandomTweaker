@@ -8,29 +8,15 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 public class SanityChangeEvent extends Event {
 
     private final EntityPlayer player;
-    private float sanity;
-    private boolean playSound;
+    private final float sanity;
 
-    public SanityChangeEvent(float sanity, EntityPlayer player, boolean playSound) {
+    public SanityChangeEvent(float sanity, EntityPlayer player) {
         this.sanity = sanity;
         this.player = player;
-        this.playSound = playSound;
-    }
-
-    public boolean isPlaySound() {
-        return playSound;
-    }
-
-    public void setPlaySound(boolean playSound) {
-        this.playSound = playSound;
     }
 
     public float getSanity() {
         return sanity;
-    }
-
-    public void setSanity(float sanity) {
-        this.sanity = sanity;
     }
 
     public EntityPlayer getPlayer() {
