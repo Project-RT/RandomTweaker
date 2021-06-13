@@ -1,7 +1,7 @@
 package com.ikexing.randomtweaker.impl.item;
 
 import com.ikexing.randomtweaker.RandomTweaker;
-import com.ikexing.randomtweaker.impl.client.utils.cap.PlayerSanityHelper;
+import com.ikexing.randomtweaker.impl.utils.cap.PlayerSanityHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;

@@ -3,7 +3,7 @@ package com.ikexing.randomtweaker.impl.client.events;
 import com.ikexing.randomtweaker.RandomTweaker;
 import com.ikexing.randomtweaker.impl.client.capability.PlayerSanityCapability;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
-import com.ikexing.randomtweaker.impl.client.utils.cap.PlayerSanityHelper;
+import com.ikexing.randomtweaker.impl.utils.cap.PlayerSanityHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;

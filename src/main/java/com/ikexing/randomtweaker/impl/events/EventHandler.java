@@ -2,7 +2,7 @@ package com.ikexing.randomtweaker.impl.events;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import com.ikexing.randomtweaker.impl.client.capability.PlayerSanityCapability;
-import com.ikexing.randomtweaker.impl.client.utils.cap.PlayerSanityHelper;
+import com.ikexing.randomtweaker.impl.utils.cap.PlayerSanityHelper;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
 import java.util.Objects;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -11,7 +11,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;

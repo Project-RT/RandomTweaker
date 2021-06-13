@@ -1,7 +1,7 @@
 package com.ikexing.randomtweaker.impl.client.network;
 
 import com.ikexing.randomtweaker.impl.client.capability.PlayerSanityCapability;
-import com.ikexing.randomtweaker.impl.client.utils.cap.PlayerSanityHelper;
+import com.ikexing.randomtweaker.impl.utils.cap.PlayerSanityHelper;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import net.minecraft.client.Minecraft;
