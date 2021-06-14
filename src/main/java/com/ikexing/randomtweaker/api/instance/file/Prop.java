@@ -1,11 +1,14 @@
 package com.ikexing.randomtweaker.api.instance.file;
 
+import com.google.common.collect.Lists;
 import com.ikexing.randomtweaker.RandomTweaker;
 import crafttweaker.CraftTweakerAPI;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -47,6 +50,22 @@ public class Prop {
             CraftTweakerAPI.logError("Maybe you need to report this error", e);
         }
         return false;
+    }
+
+    @ZenMethod
+    public static List<String> getAllKeys() {
+        ArrayList<String> keys = Lists.newArrayList();
+        Properties prop = new Properties();
+        try {
+            FileReader fr = new FileReader(FILE);
+            prop.load(fr);
+
+            prop.keySet().forEach(s -> keys.add((String) s));
+            fr.close();
+        } catch (IOException e) {
+            CraftTweakerAPI.logError("Maybe you need to report this error", e);
+        }
+        return keys;
     }
 
     public static boolean createOrDelete(boolean flag) throws IOException {
