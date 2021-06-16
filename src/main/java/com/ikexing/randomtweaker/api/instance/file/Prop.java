@@ -3,11 +3,15 @@ package com.ikexing.randomtweaker.api.instance.file;
 import com.google.common.collect.Lists;
 import com.ikexing.randomtweaker.RandomTweaker;
 import crafttweaker.CraftTweakerAPI;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Properties;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -40,11 +44,14 @@ public class Prop {
     public static boolean write(String key, String value) {
         Properties prop = new Properties();
         try {
+            InputStream in = new BufferedInputStream(new FileInputStream(FILE));
+            prop.load(in);
+            in.close();
+            OutputStream out = new BufferedOutputStream(new FileOutputStream(FILE, true));
             prop.setProperty(key, value);
-            FileWriter fw = new FileWriter(FILE);
-            prop.store(fw, null);
+            prop.store(out, "The New properties file");
 
-            fw.close();
+            out.close();
             return true;
         } catch (IOException e) {
             CraftTweakerAPI.logError("Maybe you need to report this error", e);
@@ -53,8 +60,8 @@ public class Prop {
     }
 
     @ZenMethod
-    public static List<String> getAllKeys() {
-        ArrayList<String> keys = Lists.newArrayList();
+    public static String[] getAllKeys() {
+        List<String> keys = Lists.newArrayList();
         Properties prop = new Properties();
         try {
             FileReader fr = new FileReader(FILE);
@@ -65,7 +72,7 @@ public class Prop {
         } catch (IOException e) {
             CraftTweakerAPI.logError("Maybe you need to report this error", e);
         }
-        return keys;
+        return keys.toArray(new String[0]);
     }
 
     public static boolean createOrDelete(boolean flag) throws IOException {
