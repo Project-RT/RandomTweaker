@@ -30,14 +30,14 @@ public class EventHandler {
     @SubscribeEvent
     public static void onItemRegistry(Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
-        if (RTConfig.OriginalSanity) {
+        if (RTConfig.RandomTweaker.OriginalSanity) {
             registry.register(RandomTweaker.SANITY_GEM);
         }
     }
 
     @SubscribeEvent
     public static void onModelRegistry(ModelRegistryEvent event) {
-        if (RTConfig.OriginalSanity) {
+        if (RTConfig.RandomTweaker.OriginalSanity) {
             ModelLoader.setCustomModelResourceLocation(RandomTweaker.SANITY_GEM, 0,
                 new ModelResourceLocation(
                     Objects.requireNonNull(RandomTweaker.SANITY_GEM.getRegistryName()),
@@ -73,7 +73,7 @@ public class EventHandler {
         if (!event.getWorld().isRemote && entity instanceof EntityPlayer) {
             PlayerSanityCapability sanityCap = PlayerSanityHelper
                 .getPlayerSanity((EntityPlayer) entity);
-            if (sanityCap.getOriginalSanity() == 0 && RTConfig.OriginalSanity) {
+            if (sanityCap.getOriginalSanity() == 0 && RTConfig.RandomTweaker.OriginalSanity) {
                 double random = Math.random();
                 sanityCap.setOriginalSanity(
                     (int) (random >= 0.75 ? random * 100 : (random + (random / 2)) * 100));

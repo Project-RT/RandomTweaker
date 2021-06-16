@@ -25,7 +25,7 @@ public class Render {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void onRenderGameOverlayPost(RenderGameOverlayEvent.Post event) {
-        if (RTConfig.PlayerSanity) {
+        if (RTConfig.RandomTweaker.PlayerSanity) {
             Minecraft mc = Minecraft.getMinecraft();
             Entity entity = mc.getRenderViewEntity();
             if (entity instanceof EntityPlayer) {
@@ -62,7 +62,7 @@ public class Render {
     }
 
     private static float getWidth(int width) {
-        String widthC = RTConfig.SanityPos[0];
+        String widthC = RTConfig.RandomTweaker.SanityPos[0];
         if (widthC.contains("px")) {
             widthC = widthC.substring(0, widthC.length() - 2);
         }
@@ -70,7 +70,7 @@ public class Render {
     }
 
     private static float getHeigh(int heigh) {
-        String heightC = RTConfig.SanityPos[1];
+        String heightC = RTConfig.RandomTweaker.SanityPos[1];
 
         if (heightC.contains("px")) {
             heightC = heightC.substring(0, heightC.length() - 2);

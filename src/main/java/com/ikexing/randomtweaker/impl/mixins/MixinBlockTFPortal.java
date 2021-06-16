@@ -1,7 +1,6 @@
 package com.ikexing.randomtweaker.impl.mixins;
 
-import static com.ikexing.randomtweaker.impl.config.RTConfig.TFPortalLiquid;
-
+import com.ikexing.randomtweaker.impl.config.RTConfig;
 import crafttweaker.api.block.IBlock;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.mc1120.brackets.BracketHandlerLiquid;
@@ -55,7 +54,7 @@ public class MixinBlockTFPortal extends BlockBreakable {
 
         if (!good) {
             world.playEvent(2001, pos, Block.getStateId(state));
-            world.setBlockState(pos, getLiquidState(TFPortalLiquid), 0b11);
+            world.setBlockState(pos, getLiquidState(RTConfig.TwilightForest.TFPortalLiquid), 0b11);
         }
     }
 
@@ -65,7 +64,7 @@ public class MixinBlockTFPortal extends BlockBreakable {
      */
     @Overwrite(remap = false)
     public boolean canFormPortal(IBlockState state) {
-        return state == getLiquidState(TFPortalLiquid) || state.getBlock() == this && state
+        return state == getLiquidState(RTConfig.TwilightForest.TFPortalLiquid) || state.getBlock() == this && state
             .getValue(DISALLOW_RETURN);
     }
 

@@ -149,7 +149,7 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
 
     @Override
     public int getMaxMana() {
-        return RTConfig.HydroangeasMaxMana;
+        return RTConfig.Botania.HydroangeasMaxMana;
     }
 
     @Override
@@ -204,6 +204,6 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
 
     @Override
     public boolean isPassiveFlower() {
-        return RTConfig.HydroangeasDecay;
+        return RTConfig.Botania.HydroangeasDecay;
     }
 }
