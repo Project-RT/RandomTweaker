@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.instance.game;
+package com.ikexing.randomtweaker.api.instance.bracket;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.potions.IPotion;
@@ -10,7 +10,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenRegister
 @ZenClass("mods.randomtweaker.BracketHandler")
-public class IGameExpansion {
+public class BracketHandler {
 
     @ZenMethod
     public static IPotion getPotion(String name) {
