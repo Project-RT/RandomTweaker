@@ -1,7 +1,9 @@
 package com.ikexing.randomtweaker.api.instance.jei;
 
 import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
+import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIBackGroup;
 import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIItemSlot;
+import com.ikexing.randomtweaker.impl.jei.impl.JEIBackGroupImpl;
 import com.ikexing.randomtweaker.impl.jei.impl.JEIItemSlotImpl;
 import com.ikexing.randomtweaker.impl.jei.impl.JEILiquidSlotImpl;
 import crafttweaker.annotations.ZenRegister;
@@ -50,6 +52,12 @@ public class JEIExpansion {
 //    }
 
     //------------------------------------------------------------------------------
+
+    @ZenMethodStatic
+    public static JEIBackGroup createJEIBackGroup(String resourceName, int u, int v, int width,
+        int heigh) {
+        return new JEIBackGroupImpl(resourceName, u, v, width, heigh);
+    }
 
     @ZenMethodStatic
     public static JEILiquidSlotImpl createLiquidSlot(ILiquidStack liquid, int id, boolean isInput,
