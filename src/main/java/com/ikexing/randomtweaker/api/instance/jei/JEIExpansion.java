@@ -2,11 +2,11 @@ package com.ikexing.randomtweaker.api.instance.jei;
 
 import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIBackGroup;
-import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIItemSlot;
+import com.ikexing.randomtweaker.api.instance.jei.interfaces.slots.JEIItemSlot;
 import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIPanel;
 import com.ikexing.randomtweaker.impl.jei.impl.JEIBackGroupImpl;
-import com.ikexing.randomtweaker.impl.jei.impl.JEIItemSlotImpl;
-import com.ikexing.randomtweaker.impl.jei.impl.JEILiquidSlotImpl;
+import com.ikexing.randomtweaker.impl.jei.impl.slots.JEIItemSlotImpl;
+import com.ikexing.randomtweaker.impl.jei.impl.slots.JEILiquidSlotImpl;
 import com.ikexing.randomtweaker.impl.jei.impl.JEIPanelImpl;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;

@@ -18,6 +18,11 @@ public class JEIBackGroupImpl implements JEIBackGroup {
         this.heigh = heigh;
     }
 
+    public JEIBackGroupImpl(int width, int heigh) {
+        this.width = width;
+        this.heigh = heigh;
+    }
+
     @Override
     public String getResourceName() {
         return this.resourceName;

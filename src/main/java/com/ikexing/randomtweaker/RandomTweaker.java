@@ -2,7 +2,7 @@ package com.ikexing.randomtweaker;
 
 import com.google.common.collect.BiMap;
 import com.ikexing.randomtweaker.api.instance.file.Prop;
-import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
+import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIPanel;
 import com.ikexing.randomtweaker.api.instance.player.IPlayerExpansionSanity;
 import com.ikexing.randomtweaker.api.instance.utils.RTGlobal;
 import com.ikexing.randomtweaker.impl.botania.subtitle.SubTileHydroangeasModified;
@@ -11,7 +11,6 @@ import com.ikexing.randomtweaker.impl.client.network.PlayerSanityNetWork;
 import com.ikexing.randomtweaker.impl.config.RTConfig;
 import com.ikexing.randomtweaker.impl.events.DreamJournal;
 import com.ikexing.randomtweaker.impl.item.SanityGem;
-import com.ikexing.randomtweaker.impl.jei.Hydroangeas;
 import com.ikexing.randomtweaker.impl.utils.ItemDs;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.player.IPlayer;
@@ -65,7 +64,7 @@ public class RandomTweaker {
     public static Set<ItemDs> itemDsSet = new HashSet<>();
     public static Map<String, Potion> potionRegList = new HashMap<>();
     public static Map<String, PotionType> potionTypeList = new HashMap<>();
-    public static List<JEICustom> jeiCustomList = new ArrayList<>();
+    public static List<JEIPanel> JEIPanel = new ArrayList<>();
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) throws IOException {
@@ -95,7 +94,7 @@ public class RandomTweaker {
     public void onInit(FMLInitializationEvent event) {
         if (!RTConfig.Botania.HydroangeasModified) {
             registryHydroangeasModified();
-            Hydroangeas.init();
+//            Hydroangeas.init();
         }
     }
 

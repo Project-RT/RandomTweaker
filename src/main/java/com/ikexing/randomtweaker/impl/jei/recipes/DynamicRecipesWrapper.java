@@ -7,8 +7,6 @@ import net.minecraft.client.Minecraft;
 
 @SuppressWarnings("NullableProblems")
 public class DynamicRecipesWrapper implements IRecipeWrapper {
-
-
     @Override
     public void getIngredients(IIngredients ingredients) {
 

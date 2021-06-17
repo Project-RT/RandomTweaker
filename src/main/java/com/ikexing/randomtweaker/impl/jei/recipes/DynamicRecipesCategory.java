@@ -1,6 +1,6 @@
 package com.ikexing.randomtweaker.impl.jei.recipes;
 
-import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
+import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIPanel;
 import javax.annotation.Nullable;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -11,7 +11,7 @@ import mezz.jei.api.recipe.IRecipeCategory;
 @SuppressWarnings("NullableProblems")
 public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWrapper> {
 
-    public DynamicRecipesCategory(IGuiHelper guiHelper) {
+    public DynamicRecipesCategory(IGuiHelper guiHelper, JEIPanel jeiPanel) {
         
     }
 

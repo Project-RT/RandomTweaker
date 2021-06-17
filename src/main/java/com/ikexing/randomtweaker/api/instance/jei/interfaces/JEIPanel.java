@@ -1,9 +1,9 @@
 package com.ikexing.randomtweaker.api.instance.jei.interfaces;
 
-import com.ikexing.randomtweaker.RandomTweaker;
+import com.ikexing.randomtweaker.api.instance.jei.interfaces.slots.JEISlot;
 import crafttweaker.annotations.ZenRegister;
+import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
-import java.util.Queue;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -24,14 +24,20 @@ public interface JEIPanel {
     @ZenGetter("icon")
     IItemStack getIcon();
 
-    @ZenGetter("JEIBackGroupImpl")
+    @ZenGetter("JEIBackGroup")
     JEIBackGroup getJEIBackGroup();
 
-    @ZenGetter("recipeCatalyst")
-    Queue<IItemStack> getRecipeCatalysts();
+    @ZenGetter("recipeCatalysts")
+    IItemStack[] getRecipeCatalysts();
 
-    @ZenGetter("JEISlot")
-    Queue<JEISlot> getJEISlots();
+    @ZenGetter("JEISlots")
+    JEISlot[] getJEISlots();
+
+    @ZenGetter("JEIInputRecipes")
+    IIngredient[] getJEIInputRecipes();
+
+    @ZenGetter("JEIOutputRecipes")
+    IIngredient[] getJEIOutputRecipes();
 
     @ZenMethod
     void setModID(String modid);
@@ -43,15 +49,36 @@ public interface JEIPanel {
     void setJEIBackGroup(JEIBackGroup JEIBackGroup);
 
     @ZenMethod
+    void setJEIBackGroup(int width, int heigh);
+
+    @ZenMethod
     void setJEISlots(JEISlot[] JEISlots);
 
     @ZenMethod
     void setRecipeCatalysts(IItemStack[] recipeCatalysts);
 
     @ZenMethod
+    void setJEIInputRecipes(IIngredient[] inputs);
+
+    @ZenMethod
+    void setJEIOutputRecipes(IIngredient[] outputs);
+
+    @ZenMethod
+    void setJEIRecipe(IIngredient[] inputs, IIngredient[] outputs);
+
+    @ZenMethod
     void addJEISlot(JEISlot JEIISlot);
 
     @ZenMethod
     void addRecipeCatalyst(IItemStack recipeCatalyst);
+
+    @ZenMethod
+    void addJEIInputRecipe(IIngredient input);
+
+    @ZenMethod
+    void addJEIOutPutRecipe(IIngredient output);
+
+    @ZenMethod
+    void register();
 
 }
