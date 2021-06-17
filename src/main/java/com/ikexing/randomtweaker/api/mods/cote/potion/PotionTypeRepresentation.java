@@ -5,8 +5,6 @@ import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
-import crafttweaker.api.minecraft.CraftTweakerMC;
-import crafttweaker.api.potions.IPotion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -25,9 +23,9 @@ public class PotionTypeRepresentation {
     @ZenProperty
     public int amplifier = 0;
     @ZenProperty
-    public IPotion potion;
+    public PotionRepresentation potion;
 
-    public PotionTypeRepresentation(String name, IPotion potion) {
+    public PotionTypeRepresentation(String name, PotionRepresentation potion) {
         this.name = name;
         this.potion = potion;
     }
@@ -63,12 +61,12 @@ public class PotionTypeRepresentation {
     }
 
     @ZenMethod
-    public IPotion getPotion() {
+    public PotionRepresentation getPotion() {
         return potion;
     }
 
     @ZenMethod
-    public void setPotion(IPotion potion) {
+    public void setPotion(PotionRepresentation potion) {
         this.potion = potion;
     }
 
@@ -77,7 +75,7 @@ public class PotionTypeRepresentation {
         if (RandomTweaker.potionTypeList.get(name) == null) {
             RandomTweaker.potionTypeList
                 .put(name, new PotionType(ContentTweaker.MOD_ID + "." + this.name,
-                    new PotionEffect(CraftTweakerMC.getPotion(potion), duration, amplifier))
+                    new PotionEffect(potion.getInternal(), duration, amplifier))
                     .setRegistryName(name));
         } else {
             CraftTweakerAPI
