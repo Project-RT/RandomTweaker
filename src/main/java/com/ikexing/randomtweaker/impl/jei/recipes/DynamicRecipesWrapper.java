@@ -1,5 +1,6 @@
 package com.ikexing.randomtweaker.impl.jei.recipes;
 
+import crafttweaker.api.item.IIngredient;
 import java.util.List;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -7,6 +8,16 @@ import net.minecraft.client.Minecraft;
 
 @SuppressWarnings("NullableProblems")
 public class DynamicRecipesWrapper implements IRecipeWrapper {
+
+    private final List<IIngredient> JEI_INPUT_RECIPES;
+    private final List<IIngredient> JEI_OUTPUT_RECIPES;
+
+    public DynamicRecipesWrapper(List<IIngredient> JEI_INPUT_RECIPES,
+        List<IIngredient> JEI_OUTPUT_RECIPES) {
+        this.JEI_INPUT_RECIPES = JEI_INPUT_RECIPES;
+        this.JEI_OUTPUT_RECIPES = JEI_OUTPUT_RECIPES;
+    }
+
     @Override
     public void getIngredients(IIngredients ingredients) {
 
