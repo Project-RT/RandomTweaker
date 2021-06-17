@@ -28,6 +28,11 @@ public class CTPlayerSanityChangeEvent implements IEventCancelable {
         return event.getSanity();
     }
 
+    @ZenGetter("originalSanity")
+    public float getOriginalSanity(){
+        return event.getOriginalSanity();
+    }
+
     @Override
     public boolean isCanceled() {
         return event.isCanceled();

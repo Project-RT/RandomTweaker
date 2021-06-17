@@ -9,10 +9,16 @@ public class SanityChangeEvent extends Event {
 
     private final EntityPlayer player;
     private final float sanity;
+    private final int originalSanity;
 
-    public SanityChangeEvent(float sanity, EntityPlayer player) {
+    public SanityChangeEvent(float sanity, int originalSanity, EntityPlayer player) {
         this.sanity = sanity;
         this.player = player;
+        this.originalSanity = originalSanity;
+    }
+
+    public float getOriginalSanity() {
+        return originalSanity;
     }
 
     public float getSanity() {

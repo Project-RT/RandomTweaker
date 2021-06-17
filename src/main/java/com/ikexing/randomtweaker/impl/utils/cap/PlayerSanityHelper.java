@@ -23,7 +23,7 @@ public class PlayerSanityHelper {
 
     public static void setSanity(EntityPlayer player, float sanity, boolean playSound) {
         boolean res = MinecraftForge.EVENT_BUS.post(new SanityChangeEvent(
-            sanity, player));
+            sanity, PlayerSanityHelper.getPlayerSanity(player).getOriginalSanity(), player));
 
         if (!res) {
             if (playSound) {
