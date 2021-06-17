@@ -11,9 +11,6 @@ public interface JEISlot {
     @ZenGetter("id")
     int getID();
 
-    @ZenGetter("type")
-    String getType();
-
     @ZenGetter("isInput")
     boolean isInput();
 
@@ -29,9 +26,10 @@ public interface JEISlot {
     @ZenGetter("heigh")
     int getHeigh();
 
+    @ZenGetter("isBase")
+    boolean isBase();
+
     @ZenGetter("textures")
-    default String getTexture() {
-        return "randomtweaker:textures/gui/jei/jei_default.png";
-    }
+    String getTexture();
 
 }

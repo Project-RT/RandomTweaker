@@ -4,7 +4,7 @@ import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 
 @ZenRegister
-//@ZenClass("mods.randomtweaker.JEISlotImpl")
+@ZenClass("mods.randomtweaker.JEISlot")
 public class JEISlot {
 
     public String type;
