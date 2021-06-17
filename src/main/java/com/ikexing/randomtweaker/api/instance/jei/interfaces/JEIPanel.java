@@ -3,7 +3,6 @@ package com.ikexing.randomtweaker.api.instance.jei.interfaces;
 import com.ikexing.randomtweaker.RandomTweaker;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
-import crafttweaker.mc1120.brackets.BracketHandlerItem;
 import java.util.Queue;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
@@ -25,9 +24,7 @@ public interface JEIPanel {
     }
 
     @ZenGetter("icon")
-    default IItemStack getIcon() {
-        return BracketHandlerItem.getItem("minecraft:bedrock", 0);
-    }
+    IItemStack getIcon();
 
     @ZenGetter("JEIBackGroupImpl")
     JEIBackGroup getJEIBackGroup();
@@ -39,24 +36,24 @@ public interface JEIPanel {
     Queue<JEISlot> getJEISlots();
 
     @ZenMethod
-    void setModID();
+    void setModID(String modid);
 
     @ZenMethod
-    void setIcon();
+    void setIcon(IItemStack icon);
 
     @ZenMethod
-    void setJEIBackGroup();
+    void setJEIBackGroup(JEIBackGroup JEIBackGroup);
 
     @ZenMethod
-    void setJEISlots();
+    void setJEISlots(JEISlot[] JEISlots);
 
     @ZenMethod
-    void setRecipeCatalysts();
+    void setRecipeCatalysts(IItemStack[] recipeCatalysts);
 
     @ZenMethod
-    void addJEISlot();
+    void addJEISlot(JEISlot JEIISlot);
 
     @ZenMethod
-    void addRecipeCatalyst();
+    void addRecipeCatalyst(IItemStack recipeCatalyst);
 
 }
