@@ -1,7 +1,7 @@
 package com.ikexing.randomtweaker.impl.jei.impl;
 
 import com.ikexing.randomtweaker.RandomTweaker;
-import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIBackGroup;
+import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIBackground;
 import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIPanel;
 import com.ikexing.randomtweaker.api.instance.jei.interfaces.slots.JEISlot;
 import crafttweaker.CraftTweakerAPI;
@@ -18,7 +18,7 @@ public class JEIPanelImpl implements JEIPanel {
     public String localizationKey;
     public String modid = RandomTweaker.MODID;
     public IItemStack icon = BracketHandlerItem.getItem("minecraft:bedrock", 0);
-    public JEIBackGroup JEIBackGroup;
+    public JEIBackground JEIBackground;
     public List<IItemStack> recipeCatalysts = new ArrayList<>();
     public List<JEISlot> JEISlots = new ArrayList<>();
     public List<IIngredient> JEIInputRecipes = new ArrayList<>();
@@ -50,8 +50,8 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
-    public JEIBackGroup getJEIBackGroup() {
-        return this.JEIBackGroup;
+    public JEIBackground getJEIBackground() {
+        return this.JEIBackground;
     }
 
     @Override
@@ -85,13 +85,13 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
-    public void setJEIBackGroup(JEIBackGroup JEIBackGroup) {
-        this.JEIBackGroup = JEIBackGroup;
+    public void setJEIBackGroup(JEIBackground JEIBackground) {
+        this.JEIBackground = JEIBackground;
     }
 
     @Override
     public void setJEIBackGroup(int width, int heigh) {
-        this.JEIBackGroup = new JEIBackGroupImpl(width, heigh);
+        this.JEIBackground = new JEIBackgroundImpl(width, heigh);
     }
 
     @Override
@@ -142,7 +142,7 @@ public class JEIPanelImpl implements JEIPanel {
 
     @Override
     public void register() {
-        if (JEIBackGroup == null || recipeCatalysts.isEmpty() ||
+        if (JEIBackground == null || recipeCatalysts.isEmpty() ||
             JEISlots.isEmpty() || JEIInputRecipes.isEmpty()) {
             CraftTweakerAPI.getLogger().logError("Parameters mustn't be empty !!!");
         } else if (modid.equals(RandomTweaker.MODID) || icon

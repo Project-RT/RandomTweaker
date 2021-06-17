@@ -24,8 +24,8 @@ public interface JEIPanel {
     @ZenGetter("icon")
     IItemStack getIcon();
 
-    @ZenGetter("JEIBackGroup")
-    JEIBackGroup getJEIBackGroup();
+    @ZenGetter("JEIBackground")
+    JEIBackground getJEIBackground();
 
     @ZenGetter("recipeCatalysts")
     IItemStack[] getRecipeCatalysts();
@@ -46,7 +46,7 @@ public interface JEIPanel {
     void setIcon(IItemStack icon);
 
     @ZenMethod
-    void setJEIBackGroup(JEIBackGroup JEIBackGroup);
+    void setJEIBackGroup(JEIBackground JEIBackground);
 
     @ZenMethod
     void setJEIBackGroup(int width, int heigh);
