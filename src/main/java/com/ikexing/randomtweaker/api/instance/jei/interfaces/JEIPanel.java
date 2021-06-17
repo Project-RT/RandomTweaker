@@ -15,13 +15,11 @@ public interface JEIPanel {
     @ZenGetter("uid")
     String getUid();
 
-    @ZenGetter("title")
-    String getTitle();
+    @ZenGetter("localizationKey")
+    String getLocalizationKey();
 
     @ZenGetter("modid")
-    default String getModID() {
-        return RandomTweaker.MODID;
-    }
+    String getModID();
 
     @ZenGetter("icon")
     IItemStack getIcon();

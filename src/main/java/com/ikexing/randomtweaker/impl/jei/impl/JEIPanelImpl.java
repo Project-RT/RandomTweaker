@@ -12,22 +12,16 @@ import java.util.Queue;
 public class JEIPanelImpl implements JEIPanel {
 
     public String uid;
-    public String title;
+    public String localizationKey;
     public String modid = RandomTweaker.MODID;
     public IItemStack icon = BracketHandlerItem.getItem("minecraft:bedrock", 0);
     public JEIBackGroup JEIBackGroup;
     public Queue<IItemStack> recipeCatalysts;
     public Queue<JEISlot> JEISlots;
 
-    public JEIPanelImpl(String uid, String title, String modid, IItemStack icon,
-        JEIBackGroup JEIBackGroup, IItemStack[] recipeCatalysts, JEISlot[] JEISlots) {
+    public JEIPanelImpl(String uid, String localizationKey) {
         this.uid = uid;
-        this.title = title;
-        this.modid = modid;
-        this.icon = icon;
-        this.JEIBackGroup = JEIBackGroup;
-        this.recipeCatalysts.addAll(Arrays.asList(recipeCatalysts));
-        this.JEISlots.addAll(Arrays.asList(JEISlots));
+        this.localizationKey = localizationKey;
     }
 
     @Override
@@ -36,8 +30,8 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
-    public String getTitle() {
-        return this.title;
+    public String getLocalizationKey() {
+        return this.localizationKey;
     }
 
     @Override

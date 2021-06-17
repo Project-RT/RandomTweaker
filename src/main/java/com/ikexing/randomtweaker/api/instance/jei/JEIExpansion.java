@@ -4,7 +4,6 @@ import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
 import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIBackGroup;
 import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIItemSlot;
 import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIPanel;
-import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEISlot;
 import com.ikexing.randomtweaker.impl.jei.impl.JEIBackGroupImpl;
 import com.ikexing.randomtweaker.impl.jei.impl.JEIItemSlotImpl;
 import com.ikexing.randomtweaker.impl.jei.impl.JEILiquidSlotImpl;
@@ -57,16 +56,13 @@ public class JEIExpansion {
     //------------------------------------------------------------------------------
 
     @ZenMethodStatic
-    public static JEIPanel createJEIPanel(String title, String modid, IItemStack icon,
-        JEIBackGroup JEIBackGroup, IItemStack[] recipeCatalysts, JEISlot[] JEISlots) {
-        return new JEIPanelImpl(getRandomString(8), title, modid, icon, JEIBackGroup,
-            recipeCatalysts, JEISlots);
+    public static JEIPanel createJEIPanel(String localizationKey) {
+        return createJEIPanel(getRandomString(8), localizationKey);
     }
 
     @ZenMethodStatic
-    public static JEIPanel createJEIPanel(String uid, String title, String modid, IItemStack icon,
-        JEIBackGroup JEIBackGroup, IItemStack[] recipeCatalysts, JEISlot[] JEISlots) {
-        return new JEIPanelImpl(uid, title, modid, icon, JEIBackGroup, recipeCatalysts, JEISlots);
+    public static JEIPanel createJEIPanel(String uid, String localizationKey) {
+        return new JEIPanelImpl(uid, localizationKey);
     }
 
     @ZenMethodStatic
