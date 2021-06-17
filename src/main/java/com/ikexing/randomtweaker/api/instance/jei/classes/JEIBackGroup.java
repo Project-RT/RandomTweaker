@@ -4,7 +4,7 @@ import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEIBackGroup")
+@ZenClass("mods.randomtweaker.JEIBackGroupImpl")
 public class JEIBackGroup {
 
     public String namespaceIn;
