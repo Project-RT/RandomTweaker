@@ -1,4 +1,4 @@
-package com.ikexing.randomtweaker.api.instance.jei.interfaces;
+package com.ikexing.randomtweaker.api.instance.jei.interfaces.slots;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;

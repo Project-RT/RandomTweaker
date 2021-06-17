@@ -1,6 +1,6 @@
-package com.ikexing.randomtweaker.impl.jei.impl;
+package com.ikexing.randomtweaker.impl.jei.impl.slots;
 
-import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEILiquidSlot;
+import com.ikexing.randomtweaker.api.instance.jei.interfaces.slots.JEILiquidSlot;
 import crafttweaker.api.liquid.ILiquidStack;
 
 public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {
