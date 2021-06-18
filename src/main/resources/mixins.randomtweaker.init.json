@@ -1,12 +1,12 @@
 {
   "required": true,
   "compatibilityLevel": "JAVA_8",
-  "package": "com.ikexing.randomtweaker.impl.mixins.init",
+  "package": "ink.ikx.rt.impl.mixins.init",
   "minVersion": "0.7.11",
   "target": "@env(INIT)",
   "priority": 0,
   "mixins": [
-    "ink.ikx.randomtweaker.impl.mixins.init.MixinLoader"
+    "MixinLoader"
   ],
   "client": [
   ]

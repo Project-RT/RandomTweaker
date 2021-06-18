@@ -1,13 +1,13 @@
 {
   "required": true,
   "compatibilityLevel": "JAVA_8",
-  "package": "com.ikexing.randomtweaker.impl.mixins",
+  "package": "ink.ikx.rt.impl.mixins",
   "minVersion": "0.7.11",
   "setSourceFile": true,
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
-    "ink.ikx.randomtweaker.impl.mixins.MixinBlockTFPortal",
-    "ink.ikx.randomtweaker.impl.mixins.MixinFTBUltimine"
+    "MixinBlockTFPortal",
+    "MixinFTBUltimine"
   ],
   "client": [],
   "injectors": {
