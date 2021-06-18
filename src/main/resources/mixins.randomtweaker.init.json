@@ -6,7 +6,7 @@
   "target": "@env(INIT)",
   "priority": 0,
   "mixins": [
-    "MixinLoader"
+    "ink.ikx.randomtweaker.impl.mixins.init.MixinLoader"
   ],
   "client": [
   ]

@@ -6,8 +6,8 @@
   "setSourceFile": true,
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
-    "MixinBlockTFPortal",
-    "MixinFTBUltimine"
+    "ink.ikx.randomtweaker.impl.mixins.MixinBlockTFPortal",
+    "ink.ikx.randomtweaker.impl.mixins.MixinFTBUltimine"
   ],
   "client": [],
   "injectors": {
