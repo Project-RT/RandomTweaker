@@ -30,14 +30,14 @@ public class EventHandler {
     @SubscribeEvent
     public static void onItemRegistry(Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
-        if (RTConfig.RandomTweaker.OriginalSanity) {
+        if (RTConfig.RandomTweaker.PlayerSanity) {
             registry.register(RandomTweaker.SANITY_GEM);
         }
     }
 
     @SubscribeEvent
     public static void onModelRegistry(ModelRegistryEvent event) {
-        if (RTConfig.RandomTweaker.OriginalSanity) {
+        if (RTConfig.RandomTweaker.PlayerSanity) {
             ModelLoader.setCustomModelResourceLocation(RandomTweaker.SANITY_GEM, 0,
                 new ModelResourceLocation(
                     Objects.requireNonNull(RandomTweaker.SANITY_GEM.getRegistryName()),
