@@ -4,7 +4,6 @@ import static net.minecraftforge.common.config.Config.Comment;
 
 import com.ikexing.randomtweaker.RandomTweaker;
 import net.minecraftforge.common.config.Config;
-import net.minecraftforge.common.config.Config.Name;
 import net.minecraftforge.common.config.Config.RequiresMcRestart;
 
 @Config(modid = RandomTweaker.MODID)
@@ -17,6 +16,8 @@ public class RTConfig {
     public static Thaumcraft Thaumcraft = new Thaumcraft();
 
     public static TwilightForest TwilightForest = new TwilightForest();
+
+    public static FTBUltimine FTBUltimine = new FTBUltimine();
 
     public static class RandomTweakerC {
 
@@ -42,6 +43,13 @@ public class RTConfig {
 
     }
 
+    public static class FTBUltimine {
+
+        @RequiresMcRestart
+        @Comment("If true, Allow Crt to Control the FTBUltimine enable")
+        public boolean AllowCrTControl = false;
+    }
+
     public static class TwilightForest {
 
         @Comment("Modify the liquid of Twilight forest portal. [Corresponding Mod Needed | default: water]")
@@ -53,7 +61,6 @@ public class RTConfig {
         @RequiresMcRestart
         @Comment("If true, The original DreamJournal will be no longer available. [default: false]")
         public boolean DreamJournal = false;
-
     }
 
     public static class Botania {
@@ -69,6 +76,5 @@ public class RTConfig {
         @RequiresMcRestart
         @Comment("How much mana is max of hydroangeas? [Valid only for modified results | default: 18000]")
         public int HydroangeasMaxMana = 18000;
-
     }
 }

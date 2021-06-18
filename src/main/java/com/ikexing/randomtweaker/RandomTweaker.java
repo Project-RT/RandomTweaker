@@ -3,6 +3,7 @@ package com.ikexing.randomtweaker;
 import com.google.common.collect.BiMap;
 import com.ikexing.randomtweaker.api.instance.file.Prop;
 import com.ikexing.randomtweaker.api.instance.jei.interfaces.JEIPanel;
+import com.ikexing.randomtweaker.api.instance.player.IPlayerExpansionFTBU;
 import com.ikexing.randomtweaker.api.instance.player.IPlayerExpansionSanity;
 import com.ikexing.randomtweaker.api.instance.utils.RTGlobal;
 import com.ikexing.randomtweaker.impl.botania.subtitle.SubTileHydroangeasModified;
@@ -72,11 +73,14 @@ public class RandomTweaker {
             if (RTConfig.Thaumcraft.DreamJournal) {
                 MinecraftForge.EVENT_BUS.register(DreamJournal.class);
             }
-            if (RTConfig.RandomTweaker.PlayerSanity) {
-                CraftTweakerAPI.registerClass(IPlayerExpansionSanity.class);
-            }
             GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry
                 .getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
+        }
+        if (RTConfig.RandomTweaker.PlayerSanity) {
+            CraftTweakerAPI.registerClass(IPlayerExpansionSanity.class);
+        }
+        if (RTConfig.FTBUltimine.AllowCrTControl) {
+            CraftTweakerAPI.registerClass(IPlayerExpansionFTBU.class);
         }
         if (Prop.createOrDelete(RTConfig.RandomTweaker.Prop)) {
             CraftTweakerAPI.registerClass(Prop.class);
