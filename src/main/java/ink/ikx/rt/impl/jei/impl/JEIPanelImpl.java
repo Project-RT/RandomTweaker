@@ -131,12 +131,8 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
-    public void addJEIInputRecipe(IIngredient input) {
+    public void addJEIRecipe(IIngredient input, IIngredient output) {
         this.JEIInputRecipes.add(input);
-    }
-
-    @Override
-    public void addJEIOutPutRecipe(IIngredient output) {
         this.JEIOutputRecipes.add(output);
     }
 
@@ -145,12 +141,11 @@ public class JEIPanelImpl implements JEIPanel {
         if (JEIBackground == null || recipeCatalysts.isEmpty() ||
             JEISlots.isEmpty() || JEIInputRecipes.isEmpty()) {
             CraftTweakerAPI.getLogger().logError("Parameters mustn't be empty !!!");
-        } else if (modid.equals(RandomTweaker.MODID) || icon
-            .matches(BracketHandlerItem.getItem("minecraft:bedrock", 0))) {
+        } else if (icon.matches(BracketHandlerItem.getItem("minecraft:bedrock", 0))) {
             CraftTweakerAPI.getLogger()
                 .logInfo("Please modify modid and icon, even though this is not a requirement");
         } else {
-            RandomTweaker.JEIPanel.add(this);
+            RandomTweaker.JEIPanelList.add(this);
         }
     }
 }

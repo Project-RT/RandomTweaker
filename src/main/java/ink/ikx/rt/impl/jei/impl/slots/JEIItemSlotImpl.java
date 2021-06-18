@@ -1,21 +1,20 @@
 package ink.ikx.rt.impl.jei.impl.slots;
 
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEIItemSlot;
-import crafttweaker.api.item.IItemStack;
 
 public class JEIItemSlotImpl extends JEISlotImpl implements JEIItemSlot {
 
-    public IItemStack item;
+    private final boolean isBase;
 
-    public JEIItemSlotImpl(IItemStack item, int id, boolean isInput,
-        int x, int y, int width, int heigh, boolean isBase, String texture) {
-        super(id, isInput, x, y, width, heigh, isBase, texture);
+    public JEIItemSlotImpl(boolean isInput,
+        int x, int y, boolean isBase, String texture) {
+        super(isInput, x, y, texture);
 
-        this.item = item;
+        this.isBase = isBase;
     }
 
     @Override
-    public IItemStack getItem() {
-        return this.item;
+    public boolean isBase() {
+        return this.isBase;
     }
 }

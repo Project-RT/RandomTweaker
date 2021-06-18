@@ -1,5 +1,8 @@
 package ink.ikx.rt.api.instance.jei;
 
+import crafttweaker.annotations.ZenRegister;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.liquid.ILiquidStack;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIBackground;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEIItemSlot;
@@ -7,9 +10,6 @@ import ink.ikx.rt.impl.jei.impl.JEIBackgroundImpl;
 import ink.ikx.rt.impl.jei.impl.JEIPanelImpl;
 import ink.ikx.rt.impl.jei.impl.slots.JEIItemSlotImpl;
 import ink.ikx.rt.impl.jei.impl.slots.JEILiquidSlotImpl;
-import crafttweaker.annotations.ZenRegister;
-import crafttweaker.api.item.IItemStack;
-import crafttweaker.api.liquid.ILiquidStack;
 import java.util.Random;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -30,26 +30,31 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
+    public static JEIBackground createJEIBackGroup(int width, int heigh) {
+        return new JEIBackgroundImpl(width, heigh);
+    }
+
+    @ZenMethodStatic
     public static JEIBackground createJEIBackGroup(String resourceName, int u, int v, int width,
         int heigh) {
         return new JEIBackgroundImpl(resourceName, u, v, width, heigh);
     }
 
     @ZenMethodStatic
-    public static JEILiquidSlotImpl createLiquidSlot(ILiquidStack liquid, int id, boolean isInput,
+    public static JEILiquidSlotImpl createLiquidSlot(boolean isInput,
         int x, int y,
         int width, int heigh, @Optional(valueBoolean = true) boolean isBase,
         @Optional("randomtweaker:textures/gui/jei/jei_default.png") String texture) {
 
-        return new JEILiquidSlotImpl(liquid, id, isInput, x, y, width, heigh, isBase, texture);
+        return new JEILiquidSlotImpl(isInput, x, y, width, heigh, isBase, texture);
     }
 
     @ZenMethodStatic
-    public static JEIItemSlot createItemSlot(IItemStack item, int id, boolean isInput,
-        int x, int y, int width, int heigh, @Optional(valueBoolean = true) boolean isBase,
+    public static JEIItemSlot createItemSlot(boolean isInput,
+        int x, int y, @Optional(valueBoolean = true) boolean isBase,
         @Optional("randomtweaker:textures/gui/jei/jei_default.png") String texture) {
 
-        return new JEIItemSlotImpl(item, id, isInput, x, y, width, heigh, isBase, texture);
+        return new JEIItemSlotImpl(isInput, x, y, isBase, texture);
     }
 
     @SuppressWarnings("SameParameterValue")

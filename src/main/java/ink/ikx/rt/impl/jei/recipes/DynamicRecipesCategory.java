@@ -1,11 +1,19 @@
 package ink.ikx.rt.impl.jei.recipes;
 
+import crafttweaker.CraftTweakerAPI;
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIBackground;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
-import crafttweaker.api.minecraft.CraftTweakerMC;
+import ink.ikx.rt.api.instance.jei.interfaces.slots.JEIItemSlot;
+import ink.ikx.rt.api.instance.jei.interfaces.slots.JEILiquidSlot;
+import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
+import java.util.Arrays;
+import java.util.List;
 import javax.annotation.Nullable;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.gui.IGuiFluidStackGroup;
+import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
@@ -15,12 +23,18 @@ import net.minecraft.util.text.translation.I18n;
 @SuppressWarnings("NullableProblems")
 public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWrapper> {
 
+    public static String UID;
+
     private final JEIPanel JEI_PANEL;
     private final IDrawable BACKGROUND;
     private final IDrawable ICON;
+    private final List<JEISlot> JEISlotList;
 
     public DynamicRecipesCategory(IGuiHelper guiHelper, JEIPanel JEIPanel) {
         JEIBackground JEIBackground = JEIPanel.getJEIBackground();
+        UID = JEIPanel.getUid();
+
+        this.JEISlotList = Arrays.asList(JEIPanel.getJEISlots());
         this.JEI_PANEL = JEIPanel;
         this.ICON = guiHelper
             .createDrawableIngredient(CraftTweakerMC.getItemStack(JEIPanel.getIcon()));
@@ -38,7 +52,7 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
     @Override
     public String getUid() {
-        return this.JEI_PANEL.getUid();
+        return UID;
     }
 
     @Override
@@ -65,6 +79,24 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
     @Override
     public void setRecipe(IRecipeLayout recipeLayout, DynamicRecipesWrapper recipeWrapper,
         IIngredients ingredients) {
+
+        IGuiItemStackGroup group = recipeLayout.getItemStacks();
+        IGuiFluidStackGroup fGroup = recipeLayout.getFluidStacks();
+
+        int index = 0;
+
+        for (JEISlot i : JEISlotList) {
+            if (i instanceof JEIItemSlot) {
+                group.init(index, i.isInput(), i.getX(), i.getY());
+            } else if (i instanceof JEILiquidSlot) {
+                fGroup.init(index, i.isInput(), i.getX(), i.getY());
+            } else {
+                CraftTweakerAPI.logError("Type is not supported and you shouldn't goto in here");
+            }
+            index++;
+        }
+        group.set(ingredients);
+        fGroup.set(ingredients);
 
     }
 }

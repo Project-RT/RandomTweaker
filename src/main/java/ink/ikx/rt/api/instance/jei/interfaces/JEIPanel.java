@@ -73,10 +73,7 @@ public interface JEIPanel {
     void addRecipeCatalyst(IItemStack recipeCatalyst);
 
     @ZenMethod
-    void addJEIInputRecipe(IIngredient input);
-
-    @ZenMethod
-    void addJEIOutPutRecipe(IIngredient output);
+    void addJEIRecipe(IIngredient input, IIngredient output);
 
     @ZenMethod
     void register();
