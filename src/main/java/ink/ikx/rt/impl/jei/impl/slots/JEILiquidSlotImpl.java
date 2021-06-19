@@ -5,10 +5,10 @@ import ink.ikx.rt.api.instance.jei.interfaces.slots.JEILiquidSlot;
 public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {
 
     public boolean isBase;
-    public int width = 16;
-    public int heigh = 16;
-    public int capacityMb = 1000;
-    public boolean showCapacity = false;
+    public int width;
+    public int heigh;
+    public int capacityMb;
+    public boolean showCapacity;
 
     public JEILiquidSlotImpl(boolean isInput, int x, int y, int width, int heigh,
         int capacityMb, boolean showCapacity, boolean isBase, String texture) {
@@ -38,22 +38,11 @@ public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {
 
     @Override
     public int getCapacityMb() {
-        return 0;
+        return capacityMb;
     }
 
     @Override
     public boolean isShowCapacity() {
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return "JEILiquidSlotImpl{" +
-            "isBase=" + isBase +
-            ", width=" + width +
-            ", heigh=" + heigh +
-            ", capacityMb=" + capacityMb +
-            ", showCapacity=" + showCapacity +
-            '}';
+        return showCapacity;
     }
 }

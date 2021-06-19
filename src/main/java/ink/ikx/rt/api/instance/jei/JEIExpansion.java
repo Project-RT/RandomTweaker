@@ -46,6 +46,15 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
+    public static JEILiquidSlotImpl createLiquidSlot(boolean isInput,
+        int x, int y,
+        @Optional(valueBoolean = true) boolean isBase,
+        @Optional("randomtweaker:textures/gui/jei/jei_default.png") String texture) {
+
+        return createLiquidSlot(isInput, x, y, 16, 16, 1000, false, isBase, texture);
+    }
+
+    @ZenMethodStatic
     public static JEIItemSlot createItemSlot(boolean isInput, int x, int y,
         @Optional(valueBoolean = true) boolean isBase,
         @Optional("randomtweaker:textures/gui/jei/jei_default.png") String texture) {
