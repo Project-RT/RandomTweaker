@@ -63,7 +63,7 @@ public class RandomTweaker {
 
     public static Logger logger;
     public static Set<ItemDs> itemDsSet = new HashSet<>();
-    public static List<JEIPanel> JEIPanelList = new ArrayList<>();
+    public static Set<JEIPanel> JEIPanelList = new HashSet<>();
     public static Map<String, Potion> potionRegList = new HashMap<>();
     public static Map<String, PotionType> potionTypeList = new HashMap<>();
 

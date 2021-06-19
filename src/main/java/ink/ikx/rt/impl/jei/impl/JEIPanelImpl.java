@@ -120,14 +120,35 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        JEIPanel JEIPanel = (JEIPanelImpl) o;
+        return this.uid.equals(JEIPanel.getUid());
+    }
+
+    @Override
+    public int hashCode() {
+        return this.uid.hashCode();
+    }
+
+    @Override
     public void register() {
+        if (RandomTweaker.JEIPanelList.contains(this)) {
+            CraftTweakerAPI.getLogger().logError("All Potions must be unique. JEIKey:"+ this.uid +" is not.", new UnsupportedOperationException());
+            return;
+        }
         if (JEIBackground == null || recipeCatalysts.isEmpty() ||
             JEISlots.isEmpty() || JEIRecipeList.isEmpty()) {
             CraftTweakerAPI.getLogger().logError("Parameters mustn't be empty !!!");
             return;
         } else if (icon.matches(BracketHandlerItem.getItem("minecraft:bedrock", 0))) {
             CraftTweakerAPI.getLogger()
-                .logInfo("Please modify icon, even though this is not a requirement");
+                .logWarning("Please modify icon, even though this is not a requirement");
         }
 
         RandomTweaker.JEIPanelList.add(this);

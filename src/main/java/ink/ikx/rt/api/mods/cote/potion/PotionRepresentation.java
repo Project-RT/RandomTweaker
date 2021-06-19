@@ -100,7 +100,7 @@ public class PotionRepresentation {
             potion = new PotionContent(this);
             RandomTweaker.potionRegList.put(name, potion);
         }else {
-            CraftTweakerAPI.logError(" All Potions must be unique. Key: contenttweaker:"+ name +" is not.", new UnsupportedOperationException());
+            CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:"+ name +" is not.", new UnsupportedOperationException());
         }
     }
 
