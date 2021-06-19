@@ -1,13 +1,13 @@
 package ink.ikx.rt.impl.jei.impl;
 
+import crafttweaker.CraftTweakerAPI;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.mc1120.brackets.BracketHandlerItem;
 import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIBackground;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
+import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
-import crafttweaker.CraftTweakerAPI;
-import crafttweaker.api.item.IIngredient;
-import crafttweaker.api.item.IItemStack;
-import crafttweaker.mc1120.brackets.BracketHandlerItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,13 +16,12 @@ public class JEIPanelImpl implements JEIPanel {
 
     public String uid;
     public String localizationKey;
+    public JEIBackground JEIBackground;
     public String modid = RandomTweaker.MODID;
-    public IItemStack icon = BracketHandlerItem.getItem("minecraft:bedrock", 0);
-    public ink.ikx.rt.api.instance.jei.interfaces.JEIBackground JEIBackground;
-    public List<IItemStack> recipeCatalysts = new ArrayList<>();
     public List<JEISlot> JEISlots = new ArrayList<>();
-    public List<IIngredient> JEIInputRecipes = new ArrayList<>();
-    public List<IIngredient> JEIOutputRecipes = new ArrayList<>();
+    public List<IItemStack> recipeCatalysts = new ArrayList<>();
+    public List<JEIRecipe> JEIRecipeList = new ArrayList<>();
+    public IItemStack icon = BracketHandlerItem.getItem("minecraft:bedrock", 0);
 
     public JEIPanelImpl(String uid, String localizationKey) {
         this.uid = uid;
@@ -65,13 +64,8 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
-    public IIngredient[] getJEIInputRecipes() {
-        return this.JEIInputRecipes.toArray(new IIngredient[0]);
-    }
-
-    @Override
-    public IIngredient[] getJEIOutputRecipes() {
-        return this.JEIOutputRecipes.toArray(new IIngredient[0]);
+    public JEIRecipe[] getJEIRecipes() {
+        return this.JEIRecipeList.toArray(new JEIRecipe[0]);
     }
 
     @Override
@@ -99,25 +93,15 @@ public class JEIPanelImpl implements JEIPanel {
         this.JEISlots = Arrays.asList(JEISlots);
     }
 
+
     @Override
     public void setRecipeCatalysts(IItemStack[] recipeCatalysts) {
         this.recipeCatalysts = Arrays.asList(recipeCatalysts);
     }
 
     @Override
-    public void setJEIInputRecipes(IIngredient[] inputs) {
-        this.JEIInputRecipes = Arrays.asList(inputs);
-    }
-
-    @Override
-    public void setJEIOutputRecipes(IIngredient[] outputs) {
-        this.JEIOutputRecipes = Arrays.asList(outputs);
-    }
-
-    @Override
-    public void setJEIRecipe(IIngredient[] inputs, IIngredient[] outputs) {
-        this.JEIInputRecipes = Arrays.asList(inputs);
-        this.JEIOutputRecipes = Arrays.asList(outputs);
+    public void setJEIRecipe(JEIRecipe[] JEIRecipes) {
+        this.JEIRecipeList = Arrays.asList(getJEIRecipes());
     }
 
     @Override
@@ -131,21 +115,21 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
-    public void addJEIRecipe(IIngredient input, IIngredient output) {
-        this.JEIInputRecipes.add(input);
-        this.JEIOutputRecipes.add(output);
+    public void addJEIRecipe(JEIRecipe JEIRecipe) {
+        this.JEIRecipeList.add(JEIRecipe);
     }
 
     @Override
     public void register() {
         if (JEIBackground == null || recipeCatalysts.isEmpty() ||
-            JEISlots.isEmpty() || JEIInputRecipes.isEmpty()) {
+            JEISlots.isEmpty() || JEIRecipeList.isEmpty()) {
             CraftTweakerAPI.getLogger().logError("Parameters mustn't be empty !!!");
+            return;
         } else if (icon.matches(BracketHandlerItem.getItem("minecraft:bedrock", 0))) {
             CraftTweakerAPI.getLogger()
-                .logInfo("Please modify modid and icon, even though this is not a requirement");
-        } else {
-            RandomTweaker.JEIPanelList.add(this);
+                .logInfo("Please modify icon, even though this is not a requirement");
         }
+
+        RandomTweaker.JEIPanelList.add(this);
     }
 }

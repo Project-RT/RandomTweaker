@@ -1,9 +1,9 @@
 package ink.ikx.rt.api.instance.jei.interfaces;
 
-import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 import crafttweaker.annotations.ZenRegister;
-import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
+import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
+import java.util.List;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -33,11 +33,8 @@ public interface JEIPanel {
     @ZenGetter("JEISlots")
     JEISlot[] getJEISlots();
 
-    @ZenGetter("JEIInputRecipes")
-    IIngredient[] getJEIInputRecipes();
-
-    @ZenGetter("JEIOutputRecipes")
-    IIngredient[] getJEIOutputRecipes();
+    @ZenGetter("JEIRecipes")
+    JEIRecipe[] getJEIRecipes();
 
     @ZenMethod
     void setModID(String modid);
@@ -52,19 +49,13 @@ public interface JEIPanel {
     void setJEIBackGroup(int width, int heigh);
 
     @ZenMethod
-    void setJEISlots(JEISlot[] JEISlots);
-
-    @ZenMethod
     void setRecipeCatalysts(IItemStack[] recipeCatalysts);
 
     @ZenMethod
-    void setJEIInputRecipes(IIngredient[] inputs);
+    void setJEISlots(JEISlot[] JEISlots);
 
     @ZenMethod
-    void setJEIOutputRecipes(IIngredient[] outputs);
-
-    @ZenMethod
-    void setJEIRecipe(IIngredient[] inputs, IIngredient[] outputs);
+    void setJEIRecipe(JEIRecipe[] JEIRecipes);
 
     @ZenMethod
     void addJEISlot(JEISlot JEIISlot);
@@ -73,7 +64,7 @@ public interface JEIPanel {
     void addRecipeCatalyst(IItemStack recipeCatalyst);
 
     @ZenMethod
-    void addJEIRecipe(IIngredient input, IIngredient output);
+    void addJEIRecipe(JEIRecipe JEIRecipe);
 
     @ZenMethod
     void register();

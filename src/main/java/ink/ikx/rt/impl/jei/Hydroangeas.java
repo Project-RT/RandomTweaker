@@ -2,7 +2,7 @@
 //
 //import com.ikexing.randomtweaker.api.instance.jei.JEIExpansion;
 //import com.ikexing.randomtweaker.api.instance.jei.classes.JEICustom;
-//import com.ikexing.randomtweaker.api.instance.jei.classes.JEIRecipe;
+//import com.ikexing.randomtweaker.api.instance.jei.classes.JEIRecipeImpl;
 //import com.ikexing.randomtweaker.impl.botania.module.ModHydroangeas;
 //import crafttweaker.api.item.IIngredient;
 //import crafttweaker.api.item.IItemStack;
@@ -38,8 +38,8 @@
 //        }
 //    }
 //
-//    private static List<JEIRecipe> getHydroangeasRecipes() {
-//        List<JEIRecipe> jeiRecipes = new ArrayList<>();
+//    private static List<JEIRecipeImpl> getHydroangeasRecipes() {
+//        List<JEIRecipeImpl> jeiRecipes = new ArrayList<>();
 //        for (Map.Entry<IItemStack, Double> entry : ModHydroangeas.blockFactorList.entrySet()) {
 //            for (ModHydroangeas.HydroangeasHandler handler : ModHydroangeas.handlerList) {
 //                IItemStack blockBelow = entry.getKey();
@@ -52,7 +52,7 @@
 //                    CraftTweakerMC.getIIngredient(fluidFactor),
 //                    blockBelow
 //                };
-//                jeiRecipes.add(new JEIRecipe(input));
+//                jeiRecipes.add(new JEIRecipeImpl(input));
 //            }
 //        }
 //        return jeiRecipes;

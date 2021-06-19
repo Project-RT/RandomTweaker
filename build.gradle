@@ -39,7 +39,7 @@ minecraft {
 dependencies {
     compile files('libs/')
 
-    deobfCompile "mezz.jei:jei_1.12.2:4.16.1.302"
+    deobfCompile "mezz.jei:jei_1.12.2:4.16.1.301"
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
     deobfCompile "curse.maven:toughasnails-246391:2710969"

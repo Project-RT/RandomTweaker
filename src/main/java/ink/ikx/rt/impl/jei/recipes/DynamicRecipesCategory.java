@@ -23,8 +23,7 @@ import net.minecraft.util.text.translation.I18n;
 @SuppressWarnings("NullableProblems")
 public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWrapper> {
 
-    public static String UID;
-
+    private final String UID;
     private final JEIPanel JEI_PANEL;
     private final IDrawable BACKGROUND;
     private final IDrawable ICON;
@@ -52,7 +51,7 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
     @Override
     public String getUid() {
-        return UID;
+        return this.UID;
     }
 
     @Override
@@ -85,11 +84,13 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
 
         int index = 0;
 
-        for (JEISlot i : JEISlotList) {
-            if (i instanceof JEIItemSlot) {
+        for (JEISlot s : JEISlotList) {
+            if (s instanceof JEIItemSlot) {
+                JEIItemSlot i = (JEIItemSlot) s;
                 group.init(index, i.isInput(), i.getX(), i.getY());
-            } else if (i instanceof JEILiquidSlot) {
-                fGroup.init(index, i.isInput(), i.getX(), i.getY());
+            } else if (s instanceof JEILiquidSlot) {
+                JEILiquidSlot f = ((JEILiquidSlot) s);
+                fGroup.init(index, f.isInput(), f.getX(), f.getY(), f.getWidth(), f.getHeigh(), f.getCapacityMb(), f.isShowCapacity(), null);
             } else {
                 CraftTweakerAPI.logError("Type is not supported and you shouldn't goto in here");
             }
@@ -97,6 +98,5 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         }
         group.set(ingredients);
         fGroup.set(ingredients);
-
     }
 }

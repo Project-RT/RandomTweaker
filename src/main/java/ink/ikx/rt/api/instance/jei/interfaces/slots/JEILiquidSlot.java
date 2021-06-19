@@ -18,4 +18,10 @@ public interface JEILiquidSlot extends JEISlot {
     @ZenGetter("heigh")
     int getHeigh();
 
+    @ZenGetter("capacityMb")
+    int getCapacityMb();
+
+    @ZenGetter("showCapacity")
+    boolean isShowCapacity();
+
 }
