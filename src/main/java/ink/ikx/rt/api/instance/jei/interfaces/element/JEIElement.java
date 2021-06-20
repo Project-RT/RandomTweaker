@@ -10,6 +10,12 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenClass("mods.randomtweaker.JEIElement")
 public interface JEIElement {
 
+    @ZenGetter("u")
+    int getU();
+
+    @ZenGetter("v")
+    int getV();
+
     @ZenGetter("x")
     int getX();
 

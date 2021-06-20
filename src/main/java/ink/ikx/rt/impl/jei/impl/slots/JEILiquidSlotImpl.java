@@ -1,5 +1,6 @@
 package ink.ikx.rt.impl.jei.impl.slots;
 
+import ink.ikx.rt.api.instance.jei.JEIExpansion;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEILiquidSlot;
 import net.minecraft.client.Minecraft;
 
@@ -42,6 +43,8 @@ public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {
 
     @Override
     public void Render(Minecraft minecraft) {
-
+        if (this.hasBase) {
+            JEIExpansion.createJEIFluidElement(this.x, this.y, this.width, this.heigh).Render(minecraft);
+        }
     }
 }

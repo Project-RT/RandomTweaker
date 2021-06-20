@@ -12,7 +12,7 @@ public class JEIItemOutputElementImpl extends JEIElementImpl implements JEIItemE
     public final int V = 0;
 
     public JEIItemOutputElementImpl(int x, int y) {
-        super(x, y, 26, 26);
+        super(x, y, 27, 26);
     }
 
     @Override
