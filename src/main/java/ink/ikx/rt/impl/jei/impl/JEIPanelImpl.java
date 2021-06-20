@@ -107,7 +107,7 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
-    public void setJEIRecipe(JEIRecipe[] JEIRecipes) {
+    public void setJEIRecipes(JEIRecipe[] JEIRecipes) {
         this.JEIRecipeList = Arrays.asList(JEIRecipes);
     }
 

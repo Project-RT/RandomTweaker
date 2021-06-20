@@ -59,7 +59,7 @@ public interface JEIPanel {
     void setJEISlots(JEISlot[] JEISlots);
 
     @ZenMethod
-    void setJEIRecipe(JEIRecipe[] JEIRecipes);
+    void setJEIRecipes(JEIRecipe[] JEIRecipes);
 
     @ZenMethod
     void setJEIElement(JEIElement[] JEIElements);

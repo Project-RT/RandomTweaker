@@ -1,6 +1,9 @@
 package ink.ikx.rt;
 
 import com.google.common.collect.BiMap;
+import crafttweaker.CraftTweakerAPI;
+import crafttweaker.api.player.IPlayer;
+import crafttweaker.zenscript.GlobalRegistry;
 import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionFTBU;
@@ -12,16 +15,12 @@ import ink.ikx.rt.impl.client.network.PlayerSanityNetWork;
 import ink.ikx.rt.impl.config.RTConfig;
 import ink.ikx.rt.impl.events.DreamJournal;
 import ink.ikx.rt.impl.item.SanityGem;
+import ink.ikx.rt.impl.jei.Hydroangeas;
 import ink.ikx.rt.impl.utils.ItemDs;
-import crafttweaker.CraftTweakerAPI;
-import crafttweaker.api.player.IPlayer;
-import crafttweaker.zenscript.GlobalRegistry;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import net.minecraft.potion.Potion;
@@ -98,7 +97,7 @@ public class RandomTweaker {
     public void onInit(FMLInitializationEvent event) {
         if (!RTConfig.Botania.HydroangeasModified) {
             registryHydroangeasModified();
-//            Hydroangeas.init();
+            Hydroangeas.init();
         }
     }
 
