@@ -11,6 +11,7 @@ import ink.ikx.rt.impl.jei.impl.JEIBackgroundImpl;
 import ink.ikx.rt.impl.jei.impl.JEIPanelImpl;
 import ink.ikx.rt.impl.jei.impl.JEIRecipeImpl;
 import ink.ikx.rt.impl.jei.impl.element.JEIItemInputElementImpl;
+import ink.ikx.rt.impl.jei.impl.element.JEIItemOutputElementImpl;
 import ink.ikx.rt.impl.jei.impl.slots.JEIItemSlotImpl;
 import ink.ikx.rt.impl.jei.impl.slots.JEILiquidSlotImpl;
 import stanhebben.zenscript.annotations.Optional;
@@ -77,5 +78,10 @@ public class JEIExpansion {
     @ZenMethodStatic
     public static JEIItemElement createJEIItemInputElement(int x, int y) {
         return new JEIItemInputElementImpl(x, y);
+    }
+
+    @ZenMethodStatic
+    public static JEIItemElement createJEIItemOutputElement(int x, int y) {
+        return new JEIItemOutputElementImpl(x, y);
     }
 }

@@ -70,10 +70,9 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
         int mouseY) {
 
         for (JEISlot JEISlot : JEISlots) {
-            if (JEISlot instanceof JEIItemSlot) {
-
-            }
+            JEISlot.Render(minecraft);
         }
+
     }
 
     private List<ItemStack> getItemStacks(List<IItemStack> stacks) {
