@@ -33,7 +33,5 @@ public interface JEIElement {
         return "randomtweaker:textures/gui/jei/jei_default.png";
     }
 
-    @ZenMethod
     void Render(Minecraft minecraft);
-
 }

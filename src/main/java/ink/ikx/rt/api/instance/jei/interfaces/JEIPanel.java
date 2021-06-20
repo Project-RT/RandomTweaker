@@ -2,6 +2,7 @@ package ink.ikx.rt.api.instance.jei.interfaces;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
+import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 import java.util.List;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -36,6 +37,9 @@ public interface JEIPanel {
     @ZenGetter("JEIRecipes")
     JEIRecipe[] getJEIRecipes();
 
+    @ZenGetter("JEIElements")
+    JEIElement[] getJEIElements();
+
     @ZenMethod
     void setModID(String modid);
 
@@ -58,6 +62,9 @@ public interface JEIPanel {
     void setJEIRecipe(JEIRecipe[] JEIRecipes);
 
     @ZenMethod
+    void setJEIElement(JEIElement[] JEIElements);
+
+    @ZenMethod
     void addJEISlot(JEISlot JEIISlot);
 
     @ZenMethod
@@ -65,6 +72,9 @@ public interface JEIPanel {
 
     @ZenMethod
     void addJEIRecipe(JEIRecipe JEIRecipe);
+
+    @ZenMethod
+    void addJEIElement(JEIElement JEIElement);
 
     @ZenMethod
     void register();

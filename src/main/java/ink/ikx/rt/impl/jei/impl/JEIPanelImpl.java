@@ -7,6 +7,7 @@ import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIBackground;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
+import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,8 +20,9 @@ public class JEIPanelImpl implements JEIPanel {
     public JEIBackground JEIBackground;
     public String modid = RandomTweaker.MODID;
     public List<JEISlot> JEISlots = new ArrayList<>();
-    public List<IItemStack> recipeCatalysts = new ArrayList<>();
+    public List<JEIElement> JEIElements = new ArrayList<>();
     public List<JEIRecipe> JEIRecipeList = new ArrayList<>();
+    public List<IItemStack> recipeCatalysts = new ArrayList<>();
     public IItemStack icon = BracketHandlerItem.getItem("minecraft:bedrock", 0);
 
     public JEIPanelImpl(String uid, String localizationKey) {
@@ -69,6 +71,11 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
+    public JEIElement[] getJEIElements() {
+        return this.JEIElements.toArray(new JEIElement[0]);
+    }
+
+    @Override
     public void setModID(String modid) {
         this.modid = modid;
     }
@@ -101,7 +108,12 @@ public class JEIPanelImpl implements JEIPanel {
 
     @Override
     public void setJEIRecipe(JEIRecipe[] JEIRecipes) {
-        this.JEIRecipeList = Arrays.asList(getJEIRecipes());
+        this.JEIRecipeList = Arrays.asList(JEIRecipes);
+    }
+
+    @Override
+    public void setJEIElement(JEIElement[] JEIElements) {
+        this.JEIElements = Arrays.asList(JEIElements);
     }
 
     @Override
@@ -117,6 +129,11 @@ public class JEIPanelImpl implements JEIPanel {
     @Override
     public void addJEIRecipe(JEIRecipe JEIRecipe) {
         this.JEIRecipeList.add(JEIRecipe);
+    }
+
+    @Override
+    public void addJEIElement(JEIElement JEIElement) {
+        this.JEIElements.add(JEIElement);
     }
 
     @Override
@@ -139,7 +156,9 @@ public class JEIPanelImpl implements JEIPanel {
     @Override
     public void register() {
         if (RandomTweaker.JEIPanelList.contains(this)) {
-            CraftTweakerAPI.getLogger().logError("All Potions must be unique. JEIKey:"+ this.uid +" is not.", new UnsupportedOperationException());
+            CraftTweakerAPI.getLogger()
+                .logError("All Potions must be unique. JEIKey:" + this.uid + " is not.",
+                    new UnsupportedOperationException());
             return;
         }
         if (JEIBackground == null || recipeCatalysts.isEmpty() ||

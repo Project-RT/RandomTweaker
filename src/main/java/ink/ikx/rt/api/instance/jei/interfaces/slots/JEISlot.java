@@ -22,6 +22,5 @@ public interface JEISlot {
     @ZenGetter("hasBase")
     boolean hasBase();
 
-    @ZenMethod
     void Render(Minecraft minecraft);
 }

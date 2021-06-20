@@ -28,8 +28,10 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
 
     private final JEIRecipe JEIRecipe;
     private final JEISlot[] JEISlots;
+    private final JEIElement[] JEIElements;
 
-    public DynamicRecipesWrapper(JEIRecipe JEIRecipe, JEISlot[] JEISlots) {
+    public DynamicRecipesWrapper(JEIRecipe JEIRecipe, JEISlot[] JEISlots, JEIElement[] JEIElements) {
+        this.JEIElements = JEIElements;
         this.JEISlots = JEISlots;
         this.JEIRecipe = JEIRecipe;
     }
@@ -72,7 +74,9 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
         for (JEISlot JEISlot : JEISlots) {
             JEISlot.Render(minecraft);
         }
-
+        for (JEIElement JEIElement : JEIElements) {
+            JEIElement.Render(minecraft);
+        }
     }
 
     private List<ItemStack> getItemStacks(List<IItemStack> stacks) {
