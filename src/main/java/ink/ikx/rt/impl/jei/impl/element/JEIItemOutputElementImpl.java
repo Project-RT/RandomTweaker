@@ -15,7 +15,6 @@ public class JEIItemOutputElementImpl extends JEIElementImpl implements JEIItemE
         super(x, y, 26, 26);
     }
 
-
     @Override
     public int getU() {
         return this.U;

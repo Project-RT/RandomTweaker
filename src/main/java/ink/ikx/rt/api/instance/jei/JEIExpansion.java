@@ -50,16 +50,16 @@ public class JEIExpansion {
     @ZenMethodStatic
     public static JEILiquidSlotImpl createLiquidSlot(boolean isInput,
         int x, int y,
-        @Optional(valueBoolean = true) boolean isBase) {
+        @Optional(valueBoolean = true) boolean hasBase) {
 
-        return createLiquidSlot(isInput, x, y, 16, 16, 1000, false, isBase);
+        return createLiquidSlot(isInput, x, y, 16, 16, 1000, false, hasBase);
     }
 
     @ZenMethodStatic
     public static JEIItemSlot createItemSlot(boolean isInput, int x, int y,
-        @Optional(valueBoolean = true) boolean isBase) {
+        @Optional(valueBoolean = true) boolean hasBase) {
 
-        return new JEIItemSlotImpl(isInput, x, y, isBase);
+        return new JEIItemSlotImpl(isInput, x, y, hasBase);
     }
 
     @ZenMethodStatic

@@ -11,8 +11,8 @@ public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {
     public boolean showCapacity;
 
     public JEILiquidSlotImpl(boolean isInput, int x, int y, int width, int heigh,
-        int capacityMb, boolean showCapacity, boolean isBase) {
-        super(isBase, isInput, x, y);
+        int capacityMb, boolean showCapacity, boolean hasBase) {
+        super(hasBase, isInput, x, y);
 
         this.width = width;
         this.heigh = heigh;

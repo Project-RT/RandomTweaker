@@ -4,13 +4,13 @@ import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 
 public abstract class JEISlotImpl implements JEISlot {
 
-    public boolean isBase;
+    public boolean hasBase;
     public boolean isInput;
     public int x;
     public int y;
 
-    public JEISlotImpl(boolean isBase, boolean isInput, int x, int y) {
-        this.isBase = isBase;
+    public JEISlotImpl(boolean hasBase, boolean isInput, int x, int y) {
+        this.hasBase = hasBase;
         this.isInput = isInput;
         this.x = x;
         this.y = y;
@@ -32,5 +32,5 @@ public abstract class JEISlotImpl implements JEISlot {
     }
 
     @Override
-    public boolean isBase() { return this.isBase; }
+    public boolean hasBase() { return this.hasBase; }
 }

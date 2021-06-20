@@ -7,13 +7,13 @@ import net.minecraft.client.Minecraft;
 public class JEIItemSlotImpl extends JEISlotImpl implements JEIItemSlot {
 
     public JEIItemSlotImpl(boolean isInput,
-        int x, int y, boolean isBase) {
-        super(isBase, isInput, x, y);
+        int x, int y, boolean hasBase) {
+        super(hasBase, isInput, x, y);
     }
 
     @Override
     public void Render(Minecraft minecraft) {
-        if (this.isBase) {
+        if (this.hasBase) {
             if (this.isInput) {
                 JEIExpansion.createJEIItemInputElement(this.getX(), this.getY()).Render(minecraft);
             } else {
