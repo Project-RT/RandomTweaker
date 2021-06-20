@@ -47,7 +47,7 @@ public class JEIPlugins implements IModPlugin {
                     registry.addRecipeCatalyst(CraftTweakerMC.getItemStack(c), p.getUid());
                 }
                 for (JEIRecipe r : p.getJEIRecipes()) {
-                    recipes.add(new DynamicRecipesWrapper(r));
+                    recipes.add(new DynamicRecipesWrapper(r, p.getJEISlots()));
                 }
                 registry.addRecipes(recipes, p.getUid());
             }

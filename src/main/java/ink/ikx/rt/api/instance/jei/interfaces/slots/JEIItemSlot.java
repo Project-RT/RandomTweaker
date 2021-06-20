@@ -8,7 +8,4 @@ import stanhebben.zenscript.annotations.ZenGetter;
 @ZenRegister
 @ZenClass("mods.randomtweaker.JEIItemSlot")
 public interface JEIItemSlot extends JEISlot {
-
-    @ZenGetter("isBase")
-    boolean isBase();
 }

@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.instance.jei.interfaces.slots;
+package ink.ikx.rt.api.instance.jei.interfaces.element;
 
 import crafttweaker.annotations.ZenRegister;
 import net.minecraft.client.Minecraft;
@@ -7,11 +7,8 @@ import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEISlot")
-public interface JEISlot {
-
-    @ZenGetter("isInput")
-    boolean isInput();
+@ZenClass("mods.randomtweaker.JEIElement")
+public interface JEIElement {
 
     @ZenGetter("x")
     int getX();
@@ -19,9 +16,18 @@ public interface JEISlot {
     @ZenGetter("y")
     int getY();
 
-    @ZenGetter("isBase")
-    boolean isBase();
+    @ZenGetter("width")
+    int getWidth();
+
+    @ZenGetter("heigh")
+    int getHeigh();
+
+    @ZenGetter("texture")
+    default String getTexture() {
+        return "randomtweaker:textures/gui/jei/jei_default.png";
+    }
 
     @ZenMethod
     void Render(Minecraft minecraft);
+
 }

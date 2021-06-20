@@ -9,9 +9,6 @@ import stanhebben.zenscript.annotations.ZenGetter;
 @ZenClass("mods.randomtweaker.JEILiquidSlot")
 public interface JEILiquidSlot extends JEISlot {
 
-    @ZenGetter("isBase")
-    boolean isBase();
-
     @ZenGetter("width")
     int getWidth();
 

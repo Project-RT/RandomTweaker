@@ -2,18 +2,18 @@ package ink.ikx.rt.impl.jei.impl.slots;
 
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 
-public class JEISlotImpl implements JEISlot {
+public abstract class JEISlotImpl implements JEISlot {
 
+    public boolean isBase;
     public boolean isInput;
     public int x;
     public int y;
-    public String texture;
 
-    public JEISlotImpl(boolean isInput, int x, int y, String texture) {
+    public JEISlotImpl(boolean isBase, boolean isInput, int x, int y) {
+        this.isBase = isBase;
         this.isInput = isInput;
         this.x = x;
         this.y = y;
-        this.texture = texture;
     }
 
     @Override
@@ -32,8 +32,5 @@ public class JEISlotImpl implements JEISlot {
     }
 
     @Override
-    public String getTexture() {
-        return this.texture;
-    }
-
+    public boolean isBase() { return this.isBase; }
 }

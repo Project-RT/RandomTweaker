@@ -4,22 +4,33 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import ink.ikx.rt.api.instance.jei.JEIExpansion;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
+import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
+import ink.ikx.rt.api.instance.jei.interfaces.element.JEIItemElement;
+import ink.ikx.rt.api.instance.jei.interfaces.slots.JEIItemSlot;
+import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 
 @SuppressWarnings("NullableProblems")
 public class DynamicRecipesWrapper implements IRecipeWrapper {
 
     private final JEIRecipe JEIRecipe;
+    private final JEISlot[] JEISlots;
 
-    public DynamicRecipesWrapper(JEIRecipe JEIRecipe) {
+    public DynamicRecipesWrapper(JEIRecipe JEIRecipe, JEISlot[] JEISlots) {
+        this.JEISlots = JEISlots;
         this.JEIRecipe = JEIRecipe;
     }
 
@@ -54,17 +65,16 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
         }
     }
 
-//    @Override
-//    public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX,
-//        int mouseY) {
-////        IRecipeWrapper.super.drawInfo(minecraft, recipeWidth, recipeHeight, mouseX, mouseY);
-//    }
+    @Override
+    public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX,
+        int mouseY) {
 
-    /**
-     * todo //@Override public boolean handleClick(Minecraft minecraft, int mouseX, int mouseY, int
-     * mouseButton) { return IRecipeWrapper.super.handleClick(minecraft, mouseX, mouseY,
-     * mouseButton); }
-     */
+        for (JEISlot JEISlot : JEISlots) {
+            if (JEISlot instanceof JEIItemSlot) {
+
+            }
+        }
+    }
 
     private List<ItemStack> getItemStacks(List<IItemStack> stacks) {
         return new ArrayList<>(Arrays.asList(CraftTweakerMC.getItemStacks(stacks)));
