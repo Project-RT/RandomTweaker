@@ -1,10 +1,10 @@
 package ink.ikx.rt.api.mods.botania;
 
-import ink.ikx.rt.impl.botania.module.ModHydroangeas;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
+import ink.ikx.rt.impl.botania.module.ModHydroangeas;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -18,8 +18,7 @@ public class Hydroangeas {
 
     @ZenMethod
     public static void addManaRecipe(ILiquidStack inputFluid, int mana, double factor) {
-        ModHydroangeas.handlerList
-            .add(new ModHydroangeas.HydroangeasHandler(inputFluid, mana, factor));
+        ModHydroangeas.handlerList.add(new ModHydroangeas.HydroangeasHandler(inputFluid, mana, factor));
     }
 
     @ZenMethod

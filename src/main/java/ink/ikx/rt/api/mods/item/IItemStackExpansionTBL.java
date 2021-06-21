@@ -24,15 +24,13 @@ public class IItemStackExpansionTBL {
     @ZenMethod
     public static float getDestroySpeed(IItemStack item, float normalStrength,
         IBlockState blockState) {
-        return CorrosionHelper.getDestroySpeed(normalStrength, CraftTweakerMC.getItemStack(item),
-            CraftTweakerMC.getBlockState(blockState));
+        return CorrosionHelper.getDestroySpeed(normalStrength, CraftTweakerMC.getItemStack(item), CraftTweakerMC.getBlockState(blockState));
     }
 
     @ZenMethod
     public static void addCorrosionTooltips(IItemStack stack, List<String> lines,
         boolean advancedItemTooltips) {
-        CorrosionHelper
-            .addCorrosionTooltips(CraftTweakerMC.getItemStack(stack), lines, advancedItemTooltips);
+        CorrosionHelper.addCorrosionTooltips(CraftTweakerMC.getItemStack(stack), lines, advancedItemTooltips);
     }
 
     @ZenMethod
@@ -47,8 +45,7 @@ public class IItemStackExpansionTBL {
 
     @ZenMethodStatic
     public static void addCorrosionPropertyOverrides(IItemStack stack) {
-        CorrosionHelper
-            .addCorrosionPropertyOverrides(CraftTweakerMC.getItem(stack.getDefinition()));
+        CorrosionHelper.addCorrosionPropertyOverrides(CraftTweakerMC.getItem(stack.getDefinition()));
     }
 
     @ZenMethodStatic
@@ -60,13 +57,11 @@ public class IItemStackExpansionTBL {
     @ZenMethodStatic
     public static boolean shouldCauseReequipAnimation(IItemStack oldStack, IItemStack newStack,
         boolean slotChanged) {
-        return CorrosionHelper.shouldCauseReequipAnimation(CraftTweakerMC.getItemStack(oldStack),
-            CraftTweakerMC.getItemStack(newStack), slotChanged);
+        return CorrosionHelper.shouldCauseReequipAnimation(CraftTweakerMC.getItemStack(oldStack), CraftTweakerMC.getItemStack(newStack), slotChanged);
     }
 
     @ZenMethodStatic
     public static boolean areItemStackTagsEqual(IItemStack oldStack, IItemStack newStack) {
-        return CorrosionHelper.areItemStackTagsEqual(CraftTweakerMC.getItemStack(oldStack),
-            CraftTweakerMC.getItemStack(newStack));
+        return CorrosionHelper.areItemStackTagsEqual(CraftTweakerMC.getItemStack(oldStack), CraftTweakerMC.getItemStack(newStack));
     }
 }

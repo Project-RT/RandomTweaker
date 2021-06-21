@@ -25,8 +25,7 @@ public class RTGlobal {
     public static void giverDreamJournl(IPlayer player) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         giverDreamJournl(mcPlayer);
-        mcPlayer.sendMessage(new TextComponentString(
-            TextFormatting.DARK_PURPLE + I18n.translateToLocal("got.dream")));
+        mcPlayer.sendMessage(new TextComponentString(TextFormatting.DARK_PURPLE + I18n.translateToLocal("got.dream")));
     }
 
     private static void giverDreamJournl(EntityPlayer player) {

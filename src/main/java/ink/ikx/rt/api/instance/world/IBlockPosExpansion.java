@@ -16,8 +16,7 @@ public class IBlockPosExpansion {
 
     @ZenMethodStatic
     public static IBlockPos[] getAllInBox(IBlockPos from, IBlockPos to) {
-        Iterable<BlockPos> allInBox = BlockPos
-            .getAllInBox(CraftTweakerMC.getBlockPos(from), CraftTweakerMC.getBlockPos(to));
+        Iterable<BlockPos> allInBox = BlockPos.getAllInBox(CraftTweakerMC.getBlockPos(from), CraftTweakerMC.getBlockPos(to));
         List<IBlockPos> list = Lists.newArrayList();
         allInBox.forEach(single -> list.add(CraftTweakerMC.getIBlockPos(single)));
         return list.toArray(new IBlockPos[0]);

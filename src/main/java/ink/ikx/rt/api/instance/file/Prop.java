@@ -1,8 +1,8 @@
 package ink.ikx.rt.api.instance.file;
 
 import com.google.common.collect.Lists;
-import ink.ikx.rt.RandomTweaker;
 import crafttweaker.CraftTweakerAPI;
+import ink.ikx.rt.RandomTweaker;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -20,8 +20,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenClass("mods.randomtweaker.Prop")
 public class Prop {
 
-    private static final boolean ISWINDOWS = System.getProperties().getProperty("os.name")
-        .startsWith("Windows");
+    private static final boolean ISWINDOWS = System.getProperties().getProperty("os.name").startsWith("Windows");
     private static final String MARK = ISWINDOWS ? "\\" : "/";
     private static final String FILE = getPath(System.getProperty("user.dir"),
         RandomTweaker.MODID + ".prop");

@@ -76,20 +76,17 @@ public class IPlayerExpansionAS {
 
     @ZenMethod
     public static String getAttunedConstellation(IPlayer player) {
-        IMajorConstellation attunedConstellation = ResearchManager
-            .getProgress(CraftTweakerMC.getPlayer(player)).getAttunedConstellation();
+        IMajorConstellation attunedConstellation = ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getAttunedConstellation();
         return attunedConstellation == null ? null : attunedConstellation.getSimpleName();
     }
 
     @ZenMethod
     public static String[] getKnownConstellations(IPlayer player) {
-        return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player))
-            .getKnownConstellations().toArray(new String[0]);
+        return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getKnownConstellations().toArray(new String[0]);
     }
 
     @ZenMethod
     public static String[] getSeenConstellations(IPlayer player) {
-        return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getSeenConstellations()
-            .toArray(new String[0]);
+        return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getSeenConstellations().toArray(new String[0]);
     }
 }

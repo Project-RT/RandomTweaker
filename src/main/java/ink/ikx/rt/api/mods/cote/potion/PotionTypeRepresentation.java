@@ -1,10 +1,10 @@
 package ink.ikx.rt.api.mods.cote.potion;
 
-import ink.ikx.rt.RandomTweaker;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
+import ink.ikx.rt.RandomTweaker;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -73,14 +73,11 @@ public class PotionTypeRepresentation {
     @ZenMethod
     public void register() {
         if (RandomTweaker.potionTypeList.get(name) == null) {
-            RandomTweaker.potionTypeList
-                .put(name, new PotionType(ContentTweaker.MOD_ID + "." + this.name,
-                    new PotionEffect(potion.getInternal(), duration, amplifier))
-                    .setRegistryName(name));
+            RandomTweaker.potionTypeList.put(name,
+                new PotionType(ContentTweaker.MOD_ID + "." + this.name,
+                    new PotionEffect(potion.getInternal(), duration, amplifier)).setRegistryName(name));
         } else {
-            CraftTweakerAPI
-                .logError(" All PotionTypes must be unique. Key: contenttweaker:" + name + " is not.",
-                    new UnsupportedOperationException());
+            CraftTweakerAPI.logError(" All PotionTypes must be unique. Key: contenttweaker:" + name + " is not.", new UnsupportedOperationException());
         }
     }
 }

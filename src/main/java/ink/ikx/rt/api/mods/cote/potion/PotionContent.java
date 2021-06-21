@@ -15,10 +15,8 @@ public class PotionContent extends Potion {
     protected PotionContent(PotionRepresentation potionRepresentation) {
         super(potionRepresentation.isBadEffectIn, potionRepresentation.liquidColorIn);
         this.potionRepresentation = potionRepresentation;
-        this.textureResourceLocation = new ResourceLocation(
-            "contenttweaker:textures/gui/" + potionRepresentation.getName() + ".png");
-        this.setPotionName(
-            "effect." + ContentTweaker.MOD_ID + "." + potionRepresentation.name);
+        this.textureResourceLocation = new ResourceLocation("contenttweaker:textures/gui/" + potionRepresentation.getName() + ".png");
+        this.setPotionName("effect." + ContentTweaker.MOD_ID + "." + potionRepresentation.name);
         this.setRegistryName(ContentTweaker.MOD_ID, potionRepresentation.name);
     }
 

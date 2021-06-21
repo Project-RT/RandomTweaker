@@ -37,32 +37,22 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
-    public static JEIBackground createJEIBackground(String resourceName, int u, int v, int width,
-        int heigh) {
+    public static JEIBackground createJEIBackground(String resourceName, int u, int v, int width, int heigh) {
         return new JEIBackgroundImpl(resourceName, u, v, width, heigh);
     }
 
     @ZenMethodStatic
-    public static JEILiquidSlotImpl createLiquidSlot(boolean isInput,
-        int x, int y, int width, int heigh, int capacityMb, boolean showCapacity,
-        @Optional(valueBoolean = true) boolean isBase) {
-
-        return new JEILiquidSlotImpl(isInput, x, y, width, heigh, capacityMb, showCapacity,
-            isBase);
+    public static JEILiquidSlotImpl createLiquidSlot(boolean isInput, int x, int y, int width, int heigh, int capacityMb, boolean showCapacity, @Optional(valueBoolean = true) boolean isBase) {
+        return new JEILiquidSlotImpl(isInput, x, y, width, heigh, capacityMb, showCapacity, isBase);
     }
 
     @ZenMethodStatic
-    public static JEILiquidSlotImpl createLiquidSlot(boolean isInput,
-        int x, int y,
-        @Optional(valueBoolean = true) boolean hasBase) {
-
+    public static JEILiquidSlotImpl createLiquidSlot(boolean isInput, int x, int y, @Optional(valueBoolean = true) boolean hasBase) {
         return createLiquidSlot(isInput, x, y, 16, 16, 1000, false, hasBase);
     }
 
     @ZenMethodStatic
-    public static JEIItemSlot createItemSlot(boolean isInput, int x, int y,
-        @Optional(valueBoolean = true) boolean hasBase) {
-
+    public static JEIItemSlot createItemSlot(boolean isInput, int x, int y, @Optional(valueBoolean = true) boolean hasBase) {
         return new JEIItemSlotImpl(isInput, x, y, hasBase);
     }
 
@@ -97,8 +87,7 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
-    public static JEIFontInfoElement createJEIFontInfoElement(int x, int y,
-        String info, int color) {
+    public static JEIFontInfoElement createJEIFontInfoElement(int x, int y, String info, int color) {
         return new JEIFontInfoElementImpl(x, y, info, color);
     }
 }
