@@ -74,7 +74,7 @@ public class RandomTweaker {
             }
             GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
         }
-        if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("Botania")) {
+        if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
             CraftTweakerAPI.registerClass(Hydroangeas.class);
         }
         if (RTConfig.RandomTweaker.PlayerSanity) {
