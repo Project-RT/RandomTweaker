@@ -2,13 +2,14 @@ package ink.ikx.rt.impl.jei.impl;
 
 import crafttweaker.api.item.IIngredient;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class JEIRecipeImpl implements JEIRecipe {
 
     public List<IIngredient> input;
-    public List<IIngredient> output;
+    public List<IIngredient> output = new ArrayList<>();
 
     public JEIRecipeImpl(IIngredient[] inputs, IIngredient[] outputs) {
         this.input = Arrays.asList(inputs);
