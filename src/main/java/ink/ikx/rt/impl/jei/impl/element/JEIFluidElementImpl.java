@@ -38,7 +38,7 @@ public class JEIFluidElementImpl extends JEIElementImpl implements JEIFluidEleme
         minecraft.getTextureManager()
             .bindTexture(new ResourceLocation(this.getTexture()));
         Gui.drawModalRectWithCustomSizedTexture(this.getX() - 1, this.getY() - 1,
-            u, v, this.getWidth() + 2, this.getHeigh() + 2, 255, 255);
+            u, v, this.getWidth() + 2, this.getHeigh() + 2, 256, 256);
         GlStateManager.disableAlpha();
     }
 }
