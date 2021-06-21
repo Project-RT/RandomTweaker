@@ -1,7 +1,5 @@
 package ink.ikx.rt.api.mods.botania;
 
-import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import ink.ikx.rt.impl.botania.module.ModHydroangeas;
@@ -11,8 +9,6 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author niyan
  */
-@ZenRegister
-@ModOnly("botania")
 @ZenClass("mods.randomtweaker.Hydroangeas")
 public class Hydroangeas {
 

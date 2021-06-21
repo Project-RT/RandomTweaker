@@ -18,7 +18,7 @@ import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
 
-public class Hydroangeas {
+public class HydroangeasJEI {
 
     public static void init() {
         JEIPanel JH = JEIExpansion

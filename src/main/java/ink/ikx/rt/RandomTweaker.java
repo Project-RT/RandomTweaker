@@ -9,13 +9,14 @@ import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionFTBU;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.instance.utils.RTGlobal;
+import ink.ikx.rt.api.mods.botania.Hydroangeas;
 import ink.ikx.rt.impl.botania.subtitle.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
 import ink.ikx.rt.impl.client.network.PlayerSanityNetWork;
 import ink.ikx.rt.impl.config.RTConfig;
 import ink.ikx.rt.impl.events.DreamJournal;
 import ink.ikx.rt.impl.item.SanityGem;
-import ink.ikx.rt.impl.jei.Hydroangeas;
+import ink.ikx.rt.impl.jei.HydroangeasJEI;
 import ink.ikx.rt.impl.utils.ItemDs;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -54,7 +55,6 @@ public class RandomTweaker {
     public static final String GUI_FACTORY = "ink.ikx.rt.impl.config.RTConfigGuiFactory";
     public static final String DESPENDENCIES = "required-after:crafttweaker;after:contenttweaker";
 
-    public static final String THAUMCRAFT = "thaumcraft";
     public static final SanityGem SANITY_GEM = new SanityGem();
     public static final SoundEvent SOUND_SAN = new SoundEvent(
         new ResourceLocation(RandomTweaker.MODID, "san"))
@@ -68,12 +68,14 @@ public class RandomTweaker {
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) throws IOException {
-        if (Loader.isModLoaded(THAUMCRAFT)) {
+        if (Loader.isModLoaded("thaumcraft")) {
             if (RTConfig.Thaumcraft.DreamJournal) {
                 MinecraftForge.EVENT_BUS.register(DreamJournal.class);
             }
-            GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry
-                .getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
+            GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
+        }
+        if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("Botania")) {
+            CraftTweakerAPI.registerClass(Hydroangeas.class);
         }
         if (RTConfig.RandomTweaker.PlayerSanity) {
             CraftTweakerAPI.registerClass(IPlayerExpansionSanity.class);
@@ -95,9 +97,9 @@ public class RandomTweaker {
 
     @EventHandler
     public void onInit(FMLInitializationEvent event) {
-        if (!RTConfig.Botania.HydroangeasModified) {
+        if (RTConfig.Botania.HydroangeasModified) {
             registryHydroangeasModified();
-            Hydroangeas.init();
+            HydroangeasJEI.init();
         }
     }
 

@@ -66,8 +66,8 @@ public class RTConfig {
     public static class Botania {
 
         @RequiresMcRestart
-        @Comment("If true, the hydroangeas will not be modified. [default: true]")
-        public boolean HydroangeasModified = true;
+        @Comment("If true, the hydroangeas will be modified. [default: false]")
+        public boolean HydroangeasModified = false;
 
         @RequiresMcRestart
         @Comment("If true, the hydroangeas won't decay. [Valid only for modified results | default: false]")
