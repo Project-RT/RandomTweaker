@@ -112,8 +112,7 @@ public class RandomTweaker {
             subTiles = (BiMap<String, Class<? extends SubTileEntity>>) field.get(null);
 
             if (subTiles != null) {
-                subTiles
-                    .forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
+                subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
             }
 
         } catch (NoSuchFieldException | IllegalAccessException e) {
