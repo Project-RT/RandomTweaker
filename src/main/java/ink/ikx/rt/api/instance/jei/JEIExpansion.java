@@ -6,6 +6,7 @@ import ink.ikx.rt.api.instance.jei.interfaces.JEIBackground;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIArrowElement;
+import ink.ikx.rt.api.instance.jei.interfaces.element.JEICustomElement;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIFluidElement;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIFontInfoElement;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIItemElement;
@@ -14,6 +15,7 @@ import ink.ikx.rt.impl.jei.impl.JEIBackgroundImpl;
 import ink.ikx.rt.impl.jei.impl.JEIPanelImpl;
 import ink.ikx.rt.impl.jei.impl.JEIRecipeImpl;
 import ink.ikx.rt.impl.jei.impl.element.JEIArrowElementImpl;
+import ink.ikx.rt.impl.jei.impl.element.JEICustomElementImpl;
 import ink.ikx.rt.impl.jei.impl.element.JEIFluidElementImpl;
 import ink.ikx.rt.impl.jei.impl.element.JEIFontInfoElementImpl;
 import ink.ikx.rt.impl.jei.impl.element.JEIItemInputElementImpl;
@@ -96,5 +98,10 @@ public class JEIExpansion {
     @ZenMethodStatic
     public static JEIArrowElement createJEIFontInfoElement(int x, int y, int direction) {
         return new JEIArrowElementImpl(x, y, direction);
+    }
+
+    @ZenMethodStatic
+    public static JEICustomElement createJEIFontInfoElement(int x, int y, int width, int heigh, int u, int v, String texture) {
+        return new JEICustomElementImpl(x, y, width, heigh, u, v, texture);
     }
 }

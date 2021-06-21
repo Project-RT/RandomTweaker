@@ -112,7 +112,7 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
-    public void setJEIElement(JEIElement[] JEIElements) {
+    public void setJEIElements(JEIElement[] JEIElements) {
         this.JEIElements = Arrays.asList(JEIElements);
     }
 
