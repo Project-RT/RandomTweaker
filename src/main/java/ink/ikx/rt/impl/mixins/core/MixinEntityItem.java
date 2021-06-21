@@ -28,9 +28,7 @@ public abstract class MixinEntityItem extends Entity {
         CallbackInfoReturnable<Boolean> cir) {
         if (!this.world.isRemote && !this.isDead && !this.isEntityInvulnerable(source)) {
             itemDsSet.forEach(it -> {
-                ItemStack oItem = this.getItem();
-                if (it.item == oItem.getItem() && it.meta == oItem.getMetadata()
-                    && source == it.damageSource) {
+                if (ItemStack.areItemStacksEqual(this.getItem(), it.item) && source == it.damageSource) {
                     cir.setReturnValue(false);
                 }
             });

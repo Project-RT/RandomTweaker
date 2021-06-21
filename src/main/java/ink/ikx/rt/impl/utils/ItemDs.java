@@ -7,13 +7,11 @@ import net.minecraft.util.DamageSource;
 
 public class ItemDs {
 
-    public final Item item;
-    public final int meta;
+    public final ItemStack item;
     public final DamageSource damageSource;
 
     public ItemDs(ItemStack item, DamageSource damageSource) {
-        this.item = item.getItem();
-        this.meta = item.getMetadata();
+        this.item = item;
         this.damageSource = damageSource;
     }
 
@@ -26,23 +24,12 @@ public class ItemDs {
             return false;
         }
         ItemDs itemDs = (ItemDs) o;
-        return meta == itemDs.meta && item == itemDs.item && Objects
-            .equals(damageSource.getDamageType(), itemDs.damageSource.getDamageType());
+        return ItemStack.areItemStacksEqual(this.item, itemDs.item);
     }
 
     @Override
     public int hashCode() {
-        return item.getDefaultInstance().getDisplayName().hashCode() + meta + damageSource
+        return item.getItem().getDefaultInstance().getDisplayName().hashCode() + item.getMetadata() + damageSource
             .getDamageType().hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "ItemDs{" +
-            "item=" + Objects.requireNonNull(item.getRegistryName()).getNamespace() + ":" + Objects
-            .requireNonNull(item.getRegistryName()).getPath() +
-            ", meta=" + meta +
-            ", damageSource=" + damageSource.getDamageType() +
-            '}';
     }
 }
