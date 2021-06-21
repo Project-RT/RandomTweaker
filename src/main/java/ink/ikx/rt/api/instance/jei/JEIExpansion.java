@@ -5,6 +5,7 @@ import crafttweaker.api.item.IIngredient;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIBackground;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
+import ink.ikx.rt.api.instance.jei.interfaces.element.JEIArrowElement;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIFluidElement;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIFontInfoElement;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIItemElement;
@@ -12,6 +13,7 @@ import ink.ikx.rt.api.instance.jei.interfaces.slots.JEIItemSlot;
 import ink.ikx.rt.impl.jei.impl.JEIBackgroundImpl;
 import ink.ikx.rt.impl.jei.impl.JEIPanelImpl;
 import ink.ikx.rt.impl.jei.impl.JEIRecipeImpl;
+import ink.ikx.rt.impl.jei.impl.element.JEIArrowElementImpl;
 import ink.ikx.rt.impl.jei.impl.element.JEIFluidElementImpl;
 import ink.ikx.rt.impl.jei.impl.element.JEIFontInfoElementImpl;
 import ink.ikx.rt.impl.jei.impl.element.JEIItemInputElementImpl;
@@ -89,5 +91,10 @@ public class JEIExpansion {
     @ZenMethodStatic
     public static JEIFontInfoElement createJEIFontInfoElement(int x, int y, String info, int color) {
         return new JEIFontInfoElementImpl(x, y, info, color);
+    }
+
+    @ZenMethodStatic
+    public static JEIArrowElement createJEIFontInfoElement(int x, int y, int direction) {
+        return new JEIArrowElementImpl(x, y, direction);
     }
 }
