@@ -41,7 +41,7 @@ public class IItemStackExpansionTBL {
         return CorrosionHelper.getCorrosionStage(CraftTweakerMC.getItemStack(stack));
     }
 
-    @ZenMethodStatic
+    @ZenMethod
     public static void addCorrosionPropertyOverrides(IItemStack stack) {
         CorrosionHelper.addCorrosionPropertyOverrides(CraftTweakerMC.getItem(stack.getDefinition()));
     }
