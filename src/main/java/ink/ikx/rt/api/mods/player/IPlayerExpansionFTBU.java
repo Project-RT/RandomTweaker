@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.instance.player;
+package ink.ikx.rt.api.mods.player;
 
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
