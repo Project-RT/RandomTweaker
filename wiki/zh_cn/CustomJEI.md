@@ -169,7 +169,7 @@ mods.randomtweaker.JEIArrowElement;
 
 | ZenGetter | 返回值 | 备注                              |
 | :-------- | :----- | --------------------------------- |
-| direction | int    | direaction参数为四个箭头，可填0-4 |
+| direction | int    | direaction参数为四个箭头，可填0-3 |
 
 ## JEIFluidElement
 
