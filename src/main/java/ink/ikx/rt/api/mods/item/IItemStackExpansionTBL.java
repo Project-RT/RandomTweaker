@@ -53,8 +53,7 @@ public class IItemStackExpansionTBL {
     }
 
     @ZenMethodStatic
-    public static boolean shouldCauseReequipAnimation(IItemStack oldStack, IItemStack newStack,
-        boolean slotChanged) {
+    public static boolean shouldCauseReequipAnimation(IItemStack oldStack, IItemStack newStack, boolean slotChanged) {
         return CorrosionHelper.shouldCauseReequipAnimation(CraftTweakerMC.getItemStack(oldStack), CraftTweakerMC.getItemStack(newStack), slotChanged);
     }
 
