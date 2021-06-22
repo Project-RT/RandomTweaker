@@ -17,7 +17,7 @@ public class SanityChangeEvent extends Event {
         this.originalSanity = originalSanity;
     }
 
-    public float getOriginalSanity() {
+    public int getOriginalSanity() {
         return originalSanity;
     }
 
