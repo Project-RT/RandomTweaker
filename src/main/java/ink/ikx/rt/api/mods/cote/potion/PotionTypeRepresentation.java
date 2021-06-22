@@ -17,7 +17,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
 public class PotionTypeRepresentation {
 
     @ZenProperty
-    public String name;
+    public String unlocalizedName;
     @ZenProperty
     public int duration = 3600;
     @ZenProperty
@@ -25,8 +25,8 @@ public class PotionTypeRepresentation {
     @ZenProperty
     public PotionRepresentation potion;
 
-    public PotionTypeRepresentation(String name, PotionRepresentation potion) {
-        this.name = name;
+    public PotionTypeRepresentation(String unlocalizedName, PotionRepresentation potion) {
+        this.unlocalizedName = unlocalizedName;
         this.potion = potion;
     }
 
@@ -52,12 +52,12 @@ public class PotionTypeRepresentation {
 
     @ZenMethod
     public String getName() {
-        return name;
+        return unlocalizedName;
     }
 
     @ZenMethod
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String unlocalizedName) {
+        this.unlocalizedName = unlocalizedName;
     }
 
     @ZenMethod
@@ -72,12 +72,12 @@ public class PotionTypeRepresentation {
 
     @ZenMethod
     public void register() {
-        if (RandomTweaker.potionTypeList.get(name) == null) {
-            RandomTweaker.potionTypeList.put(name,
-                new PotionType(ContentTweaker.MOD_ID + "." + this.name,
-                    new PotionEffect(potion.getInternal(), duration, amplifier)).setRegistryName(name));
+        if (RandomTweaker.potionTypeList.get(unlocalizedName) == null) {
+            RandomTweaker.potionTypeList.put(unlocalizedName,
+                new PotionType(ContentTweaker.MOD_ID + "." + this.unlocalizedName,
+                    new PotionEffect(potion.getInternal(), duration, amplifier)).setRegistryName(unlocalizedName));
         } else {
-            CraftTweakerAPI.logError(" All PotionTypes must be unique. Key: contenttweaker:" + name + " is not.", new UnsupportedOperationException());
+            CraftTweakerAPI.logError(" All PotionTypes must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
         }
     }
 }

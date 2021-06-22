@@ -1,9 +1,9 @@
 package ink.ikx.rt.api.mods.cote.potion;
 
-import ink.ikx.rt.RandomTweaker;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
+import ink.ikx.rt.RandomTweaker;
 import net.minecraft.potion.Potion;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -19,7 +19,7 @@ public class PotionRepresentation {
     @ZenProperty
     public int liquidColorIn;
     @ZenProperty
-    public String name;
+    public String unlocalizedName;
     @ZenProperty
     public boolean isBadEffectIn = false;
     @ZenProperty
@@ -29,9 +29,9 @@ public class PotionRepresentation {
     @ZenProperty
     public boolean shouldRenderHUD = true;
 
-    public PotionRepresentation(String name, int liquidColorIn) {
+    public PotionRepresentation(String unlocalizedName, int liquidColorIn) {
         this.liquidColorIn = liquidColorIn;
-        this.name = name;
+        this.unlocalizedName = unlocalizedName;
     }
 
     @ZenMethod
@@ -56,12 +56,12 @@ public class PotionRepresentation {
 
     @ZenMethod
     public String getName() {
-        return name;
+        return unlocalizedName;
     }
 
     @ZenMethod
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String unlocalizedName) {
+        this.unlocalizedName = unlocalizedName;
     }
 
     @ZenMethod
@@ -96,11 +96,11 @@ public class PotionRepresentation {
 
     @ZenMethod
     public void register() {
-        if (RandomTweaker.potionRegList.get(name) == null) {
+        if (RandomTweaker.potionRegList.get(unlocalizedName) == null) {
             potion = new PotionContent(this);
-            RandomTweaker.potionRegList.put(name, potion);
-        }else {
-            CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:"+ name +" is not.", new UnsupportedOperationException());
+            RandomTweaker.potionRegList.put(unlocalizedName, potion);
+        } else {
+            CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
         }
     }
 

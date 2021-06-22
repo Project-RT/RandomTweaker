@@ -1,9 +1,9 @@
 package ink.ikx.rt.api.mods.cote;
 
-import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
-import ink.ikx.rt.api.mods.cote.potion.PotionTypeRepresentation;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
+import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
+import ink.ikx.rt.api.mods.cote.potion.PotionTypeRepresentation;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
@@ -13,13 +13,13 @@ import stanhebben.zenscript.annotations.ZenMethodStatic;
 public class ExpandVanillaFactory {
 
     @ZenMethodStatic
-    public static PotionRepresentation createPotion(String name, int color) {
-        return new PotionRepresentation(name, color);
+    public static PotionRepresentation createPotion(String unlocalizedName, int color) {
+        return new PotionRepresentation(unlocalizedName, color);
     }
 
     @ZenMethodStatic
-    public static PotionTypeRepresentation cretePotionType(String name,
+    public static PotionTypeRepresentation cretePotionType(String unlocalizedName,
         PotionRepresentation potion) {
-        return new PotionTypeRepresentation(name, potion);
+        return new PotionTypeRepresentation(unlocalizedName, potion);
     }
 }
