@@ -22,14 +22,12 @@ public class IItemStackExpansionTBL {
     }
 
     @ZenMethod
-    public static float getDestroySpeed(IItemStack item, float normalStrength,
-        IBlockState blockState) {
+    public static float getDestroySpeed(IItemStack item, float normalStrength, IBlockState blockState) {
         return CorrosionHelper.getDestroySpeed(normalStrength, CraftTweakerMC.getItemStack(item), CraftTweakerMC.getBlockState(blockState));
     }
 
     @ZenMethod
-    public static void addCorrosionTooltips(IItemStack stack, List<String> lines,
-        boolean advancedItemTooltips) {
+    public static void addCorrosionTooltips(IItemStack stack, List<String> lines, boolean advancedItemTooltips) {
         CorrosionHelper.addCorrosionTooltips(CraftTweakerMC.getItemStack(stack), lines, advancedItemTooltips);
     }
 
