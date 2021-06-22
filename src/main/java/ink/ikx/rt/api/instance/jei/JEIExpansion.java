@@ -11,6 +11,7 @@ import ink.ikx.rt.api.instance.jei.interfaces.element.JEIFluidElement;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIFontInfoElement;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIItemElement;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEIItemSlot;
+import ink.ikx.rt.api.instance.jei.interfaces.slots.JEILiquidSlot;
 import ink.ikx.rt.impl.jei.impl.JEIBackgroundImpl;
 import ink.ikx.rt.impl.jei.impl.JEIPanelImpl;
 import ink.ikx.rt.impl.jei.impl.JEIRecipeImpl;
@@ -46,12 +47,12 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
-    public static JEILiquidSlotImpl createLiquidSlot(boolean isInput, int x, int y, int width, int heigh, int capacityMb, boolean showCapacity, @Optional(valueBoolean = true) boolean isBase) {
-        return new JEILiquidSlotImpl(isInput, x, y, width, heigh, capacityMb, showCapacity, isBase);
+    public static JEILiquidSlot createLiquidSlot(boolean isInput, int x, int y, int width, int heigh, int capacityMb, boolean showCapacity, @Optional(valueBoolean = true) boolean hasBase) {
+        return new JEILiquidSlotImpl(isInput, x, y, width, heigh, capacityMb, showCapacity, hasBase);
     }
 
     @ZenMethodStatic
-    public static JEILiquidSlotImpl createLiquidSlot(boolean isInput, int x, int y, @Optional(valueBoolean = true) boolean hasBase) {
+    public static JEILiquidSlot createLiquidSlot(boolean isInput, int x, int y, @Optional(valueBoolean = true) boolean hasBase) {
         return createLiquidSlot(isInput, x, y, 16, 16, 1000, false, hasBase);
     }
 
@@ -96,12 +97,12 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
-    public static JEIArrowElement createJEIFontInfoElement(int x, int y, int direction) {
+    public static JEIArrowElement createJEIArrowElement(int x, int y, int direction) {
         return new JEIArrowElementImpl(x, y, direction);
     }
 
     @ZenMethodStatic
-    public static JEICustomElement createJEIFontInfoElement(int x, int y, int width, int heigh, int u, int v, String texture) {
+    public static JEICustomElement createJEICustomElement(int x, int y, int width, int heigh, int u, int v, String texture) {
         return new JEICustomElementImpl(x, y, width, heigh, u, v, texture);
     }
 }
