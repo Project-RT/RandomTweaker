@@ -2,8 +2,8 @@ package ink.ikx.rt.impl.events;
 
 import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapability;
-import ink.ikx.rt.impl.utils.cap.PlayerSanityHelper;
 import ink.ikx.rt.impl.config.RTConfig;
+import ink.ikx.rt.impl.utils.cap.PlayerSanityHelper;
 import java.util.Objects;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
@@ -73,10 +73,13 @@ public class EventHandler {
         if (!event.getWorld().isRemote && entity instanceof EntityPlayer) {
             PlayerSanityCapability sanityCap = PlayerSanityHelper
                 .getPlayerSanity((EntityPlayer) entity);
-            if (sanityCap.getOriginalSanity() == 0 && RTConfig.RandomTweaker.OriginalSanity) {
-                double random = Math.random();
-                sanityCap.setOriginalSanity(
-                    (int) (random >= 0.75 ? random * 100 : (random + (random / 2)) * 100));
+            if (sanityCap.getOriginalSanity() == 0) {
+                if (RTConfig.RandomTweaker.OriginalSanity) {
+                    double random = Math.random();
+                    sanityCap.setOriginalSanity((int) (random >= 0.75 ? random * 100 : (random + (random / 2)) * 100));
+                } else {
+                    sanityCap.setOriginalSanity(100);
+                }
             }
             PlayerSanityHelper.sync(entity);
         }
