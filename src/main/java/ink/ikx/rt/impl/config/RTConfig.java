@@ -30,7 +30,7 @@ public class RTConfig {
         public String[] SanityPos = {"6.0", "1.152"};
 
         @RequiresMcRestart
-        @Comment("If true, when entering a world for the first time, it will generate a value of OriginalSanity randomly. [default : true]")
+        @Comment("If true, when entering a world for the first time, it will generate a value of OriginalSanity randomly. Otherwise, it is based on 100. [default : true]")
         public boolean OriginalSanity = true;
 
         @RequiresMcRestart

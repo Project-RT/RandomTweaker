@@ -10,13 +10,13 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public class IPlayerExpansionSanity {
 
     @ZenMethod
-    public static float getOriginalSanity(IPlayer player) {
+    public static int getOriginalSanity(IPlayer player) {
         return PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player)).getOriginalSanity();
     }
 
     @ZenMethod
-    public static void setOriginalSanity(IPlayer player, int sanity) {
-        PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player)).setOriginalSanity(sanity);
+    public static void setOriginalSanity(IPlayer player, int originalSanity) {
+        PlayerSanityHelper.getPlayerSanity(CraftTweakerMC.getPlayer(player)).setOriginalSanity(originalSanity);
         PlayerSanityHelper.sync(CraftTweakerMC.getPlayer(player));
     }
 
