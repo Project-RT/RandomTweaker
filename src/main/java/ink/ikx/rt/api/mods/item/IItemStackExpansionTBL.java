@@ -5,7 +5,7 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.block.IBlockState;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import java.util.List;
+import java.util.Arrays;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
@@ -27,8 +27,8 @@ public class IItemStackExpansionTBL {
     }
 
     @ZenMethod
-    public static void addCorrosionTooltips(IItemStack stack, List<String> lines, boolean advancedItemTooltips) {
-        CorrosionHelper.addCorrosionTooltips(CraftTweakerMC.getItemStack(stack), lines, advancedItemTooltips);
+    public static void addCorrosionTooltips(IItemStack stack, String[] lines, boolean advancedItemTooltips) {
+        CorrosionHelper.addCorrosionTooltips(CraftTweakerMC.getItemStack(stack), Arrays.asList(lines), advancedItemTooltips);
     }
 
     @ZenMethod
