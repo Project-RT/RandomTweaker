@@ -18,7 +18,7 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.lib.utils.InventoryUtils;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.ICRTweaker")
+@ZenClass("mods.randomtweaker.randomtweaker")
 public class RTGlobal {
 
     @ZenMethod
