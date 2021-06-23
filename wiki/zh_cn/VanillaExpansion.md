@@ -1,5 +1,5 @@
 # Vanilla Expansion
-添加了一些方法使其能快速使用crt
+暴露了一些方法给crt使用
 ## IBlockPos Expansion
 
 导包：
