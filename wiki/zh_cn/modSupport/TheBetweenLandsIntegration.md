@@ -1,5 +1,7 @@
 # TheBetweenLands Integration
+
 这是朋友需要的一个功能，我也只是调用其提供的API，如果你想用这些方法请自行尝试或查询源API提供的JavaDoc
+
 ## CircleGem Methods
 
 导包：
