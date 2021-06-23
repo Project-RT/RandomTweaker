@@ -15,8 +15,6 @@ import mods.randomtweaker.BLCircleGem;
 | getGem(IItemStack stack)                                  | void          |
 | setGem(IItemStack stack, String gemType)                  | String        |
 | addGem(IEntity entity, String gemType, String combatType) | void          |
-| getCircleGemType(String gemType)                          | CircleGemType |
-| getCombatType(String combatType)                          | CombatType    |
 
 ## IItemStack Expansion
 
