@@ -5,7 +5,7 @@
 导包：
 
 ~~~zenscript
-import crafttweaker.player.IPlayer;
+import crafttweaker.block.IBlock;
 ~~~
 
 | 方法                                             | 返回值      | 描述                               |
