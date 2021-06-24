@@ -1,4 +1,5 @@
 # AstralSorcery Integration
+星辉魔法的一些拓展支持
 
 ## IPlayer Expansion
 
