@@ -2,9 +2,10 @@ package ink.ikx.rt.api.instance.jei.interfaces.element;
 
 import crafttweaker.annotations.ZenRegister;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
-import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenRegister
 @ZenClass("mods.randomtweaker.JEIElement")
@@ -33,5 +34,6 @@ public interface JEIElement {
         return "randomtweaker:textures/gui/jei/jei_default.png";
     }
 
+    @SideOnly(Side.CLIENT)
     void Render(Minecraft minecraft);
 }

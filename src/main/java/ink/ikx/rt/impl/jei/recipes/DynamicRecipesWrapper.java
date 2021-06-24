@@ -4,11 +4,8 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.api.instance.jei.JEIExpansion;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
-import ink.ikx.rt.api.instance.jei.interfaces.element.JEIItemElement;
-import ink.ikx.rt.api.instance.jei.interfaces.slots.JEIItemSlot;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,10 +14,7 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 
 @SuppressWarnings("NullableProblems")
