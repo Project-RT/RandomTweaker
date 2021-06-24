@@ -32,6 +32,8 @@ import mods.randomtweaker.cote.Potion;
 | shouldRender    | Boolean | 是否在背包栏渲染               |
 | shouldRenderHUD | Boolean | 是否在HUD（右上角）渲染        |
 
+贴图位置：`"contenttweaker:textures/gui/" + unlocalizedName + ".png"`
+
 ## PotionType (eg : 药水瓶， 药水箭)
 
 导包：
