@@ -4,17 +4,21 @@
 
 ## CircleGem Methods
 
+可选gemType：`aqua`， `crimson`， `green` ，`none`
+
+可选combatType：`OFFENSIVE`， `DEFENSIVE`， `BOTH`
+
 导包：
 
 ~~~zenscript
 import mods.randomtweaker.BLCircleGem;
 ~~~
 
-| 方法                                                      | 返回值        |
-| :-------------------------------------------------------- | :------------ |
-| getGem(IItemStack stack)                                  | void          |
-| setGem(IItemStack stack, String gemType)                  | String        |
-| addGem(IEntity entity, String gemType, String combatType) | void          |
+| 方法                                                      | 返回值 |
+| :-------------------------------------------------------- | :----- |
+| getGem(IItemStack stack)                                  | void   |
+| setGem(IItemStack stack, String gemType)                  | String |
+| addGem(IEntity entity, String gemType, String combatType) | void   |
 
 ## IItemStack Expansion
 

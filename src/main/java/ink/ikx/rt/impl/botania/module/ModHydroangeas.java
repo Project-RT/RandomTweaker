@@ -18,7 +18,7 @@ public class ModHydroangeas {
     public static Block fluidFactor;
 
     public static List<HydroangeasHandler> handlerList = new ArrayList<>();
-    public static Map<IItemStack, Double> blockFactorList = new HashMap();
+    public static Map<IItemStack, Double> blockFactorList = new HashMap<>();
 
     public static void setBlockBelowFactor(IItemStack block, double factor) {
         if (block.isItemBlock()) {

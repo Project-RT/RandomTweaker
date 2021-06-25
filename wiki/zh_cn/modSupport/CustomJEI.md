@@ -213,7 +213,7 @@ keyJEI.addRecipeCatalyst(<minecraft:stone:3>);
 keyJEI.addRecipeCatalyst(<minecraft:stone:1>);
 keyJEI.addJEISlot(JEI.createItemSlot(true, 16, 18));
 keyJEI.addJEISlot(JEI.createItemSlot(false, 80, 18));
-keyJEI.addJEIElement(JEI.createJEIFontInfoElement(50, 18, 0));
+keyJEI.addJEIElement(JEI.createJEIFontInfoElement(50, 18,  "font", 0x000000));
 keyJEI.addJEIElement(JEI.createJEIFontInfoElement(100, 18, "fontInfo", 0x52575B));
 keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple>], [<minecraft:stone>]));
 keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:gold_ingot>], [<minecraft:stone>]));
@@ -222,7 +222,6 @@ keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 5], [<minecraft:sto
 keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 6], [<minecraft:stone>]));
 keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 7], [<minecraft:stone>]));
 keyJEI.register();
-
 
 var keyJEI1 as JEIPanel = JEI.createJEIPanel("keys1", "key1");
 keyJEI1.setJEIBackGroup(JEI.createJEIBackground(150, 50));
