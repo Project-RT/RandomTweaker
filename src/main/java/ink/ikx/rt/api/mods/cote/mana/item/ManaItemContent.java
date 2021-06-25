@@ -9,6 +9,10 @@ import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaTooltipDisplay;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
+/*
+ * @author : superhelo
+ */
+
 public class ManaItemContent extends ItemContent implements IManaItem, ICreativeManaProvider, IManaTooltipDisplay {
 
     private static final String TAG_MANA = "mana";

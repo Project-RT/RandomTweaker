@@ -3,12 +3,14 @@ package ink.ikx.rt.api.mods.cote.mana.item;
 import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemRepresentation;
-import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@ZenRegister
+/*
+ * @author : superhelo
+ */
+
 @ZenClass("mods.randomtweaker.ManaItem")
 public class ManaItemRepresentation extends ItemRepresentation {
 

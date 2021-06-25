@@ -13,7 +13,7 @@ import mods.mods.contenttweaker.VanillaFactory;
 | 方法                                                         | 返回值     | 描述                                   |
 | :----------------------------------------------------------- | :--------- | -------------------------------------- |
 | createPotion(String unlocalizedName, int color)              | Potion     | 创建一个Potion                         |
-| cretePotionType(String unlocalizedName, PotionRepresentation potion) | PotionType | 创建一个PotionType（药水瓶属于这一类） |
+| createPotionType(String unlocalizedName, PotionRepresentation potion) | PotionType | 创建一个PotionType（药水瓶属于这一类） |
 
 ## Potion
 

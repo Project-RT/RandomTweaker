@@ -20,7 +20,7 @@ public class ExpandVanillaFactory {
     }
 
     @ZenMethodStatic
-    public static PotionTypeRepresentation cretePotionType(String unlocalizedName,
+    public static PotionTypeRepresentation createPotionType(String unlocalizedName,
         PotionRepresentation potion) {
         return new PotionTypeRepresentation(unlocalizedName, potion);
     }
