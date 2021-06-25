@@ -2,19 +2,6 @@
 
 使CoT可以创建简单的药水
 
-## VanillaFactory Expansion
-
-导包：
-
-```zenscript
-import mods.mods.contenttweaker.VanillaFactory;
-```
-
-| 方法                                                         | 返回值     | 描述                                   |
-| :----------------------------------------------------------- | :--------- | -------------------------------------- |
-| createPotion(String unlocalizedName, int color)              | Potion     | 创建一个Potion                         |
-| createPotionType(String unlocalizedName, PotionRepresentation potion) | PotionType | 创建一个PotionType（药水瓶属于这一类） |
-
 ## Potion
 
 导包：
