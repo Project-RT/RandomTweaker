@@ -26,7 +26,7 @@ public class ExpandVanillaFactory {
     }
 
     @ZenMethodStatic
-    public static ManaItemRepresentation creteManaItem(String unlocalizedName, @Optional(valueLong = 500000) int maxMana) {
+    public static ManaItemRepresentation createManaItem(String unlocalizedName, @Optional(valueLong = 500000) int maxMana) {
         return new ManaItemRepresentation(unlocalizedName, maxMana);
     }
 }
