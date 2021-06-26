@@ -9,8 +9,10 @@
     "MixinBlockTFPortal",
     "MixinFTBUltimine",
     "MixinTemperatureHandler",
+    "MixinThirstHandler"
+  ],
+  "client": [
     "MixinTemperatureOverlayHandler",
-    "MixinThirstHandler",
     "MixinThirstOverlayHandler"
   ]
 }
