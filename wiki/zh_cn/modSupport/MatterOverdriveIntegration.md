@@ -1,31 +1,6 @@
 # MatterOverdrive Integration
 
-## IPlayer Expansion
-
-导包：
-
-```zenscript
-import crafttweaker.player.IPlayer;
-```
-
-| 方法                                                               | 返回值   | 描述
-| :---------------------------------------------------------------- | :------ |:----------------------------------- 
-| isUnlocked(int id, int level)                                     | boolean | 获取对应id的技能是否达到等级
-| getUnlockedLevel(int id)                                          | int     | 获取对应id的技能等级
-| unlockSkill(int id, @Optional int level, @Optional boolean admin) | void    | 解锁对应id的技能的对应等级(默认满级),设置admin为true将无视任何限制(默认false)
-| setAndroid(@Optional boolean animation)                           | void    | 设置玩家为机器人,设置animation为true将启用转变过程动画(默认false)
-| removeAndroid()                                                   | void    | 移除玩家的机器人身份
-| resetSkills(@Optional boolean giveBackXP)                         | void    | 重置机器人所有技能,设置giveBackXP为true将返还升级消耗的经验(默认false)
-| receiveEnergy(int energy)                                         | int     | 向机器人身份的玩家充能,返回成功补充的能量值
-
-| Getter       | 返回值    | 描述
-| :----------- | :------ | :---------------------------------------------
-| isAndroid    | boolean | 判断玩家是否为机器人,true为机器人
-| isTurning    | boolean | 判断玩家是否正在转变为机器人,true为玩家正在播放转变动画
-| energy    | int     | 返回玩家当前能量
-| maxEnergy | int     | 返回玩家能量上限
-
-##**技能-id对照表**
+## 技能 - id 对照表
 | 技能名 | id | 内部名(无需使用) |
 | :----- | :---- | :----
 | 行走辅助 | 0  | step_assist
