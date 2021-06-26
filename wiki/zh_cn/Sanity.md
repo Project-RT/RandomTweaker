@@ -11,7 +11,7 @@ import mods.randomtweaker.PlayerSanityChangeEvent;
 
 | Getter  | 类型    |
 | :------------- | :------ |
-| player         | IPlayer |
+| player         | [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/) |
 | sanity         | float   |
 | originalSanity | int     |
 

@@ -16,6 +16,6 @@ import mods.randomtweaker.BLCircleGem;
 
 | 方法                                                      | 返回值 |
 | :-------------------------------------------------------- | :----- |
-| getGem(IItemStack stack)                                  | void   |
-| setGem(IItemStack stack, String gemType)                  | String |
-| addGem(IEntity entity, String gemType, String combatType) | void   |
+| getGem(stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/))                                  | void   |
+| setGem(stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), gemType as string)                  | string |
+| addGem(entity as [IEntity](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntity/), gemType as string, combatType as string) | void   |
