@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.mana.item;
+package ink.ikx.rt.api.mods.cote.manaItem;
 
 import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
@@ -7,10 +7,9 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-/*
+/**
  * @author : superhelo
  */
-
 @ZenClass("mods.randomtweaker.ManaItem")
 public class ManaItemRepresentation extends ItemRepresentation {
 
@@ -35,60 +34,50 @@ public class ManaItemRepresentation extends ItemRepresentation {
         this.setMaxStackSize(1);
     }
 
-
     @ZenMethod
     public int getMaxMana() {
         return maxMana;
     }
-
 
     @ZenMethod
     public boolean isNoExport() {
         return isNoExport;
     }
 
-
     @ZenMethod
     public void setNoExport(boolean isNoExport) {
         this.isNoExport = isNoExport;
     }
-
 
     @ZenMethod
     public boolean isCreative() {
         return isCreative;
     }
 
-
     @ZenMethod
     public void setCreative(boolean isCreative) {
         this.isCreative = isCreative;
     }
-
 
     @ZenMethod
     public boolean isCanReceiveManaFromPool() {
         return canReceiveManaFromPool;
     }
 
-
     @ZenMethod
     public void setCanReceiveManaFromPool(boolean canReceiveManaFromPool) {
         this.canReceiveManaFromPool = canReceiveManaFromPool;
     }
-
 
     @ZenMethod
     public boolean isCanReceiveManaFromItem() {
         return canReceiveManaFromItem;
     }
 
-
     @ZenMethod
     public void setCanReceiveManaFromItem(boolean canReceiveManaFromItem) {
         this.canReceiveManaFromItem = canReceiveManaFromItem;
     }
-
 
     @ZenMethod
     public boolean isCanExportManaToPool() {
@@ -101,24 +90,20 @@ public class ManaItemRepresentation extends ItemRepresentation {
         this.canExportManaToPool = canExportManaToPool;
     }
 
-
     @ZenMethod
     public boolean isCanExportManaToItem() {
         return canExportManaToItem;
     }
-
 
     @ZenMethod
     public void setCanExportManaToItem(boolean canExportManaToItem) {
         this.canExportManaToItem = canExportManaToItem;
     }
 
-
     @Override
     public String getTypeName() {
         return "ManaItem";
     }
-
 
     @Override
     public void register() {

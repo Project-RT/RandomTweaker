@@ -2,7 +2,7 @@ package ink.ikx.rt.api.mods.cote;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
-import ink.ikx.rt.api.mods.cote.mana.item.ManaItemRepresentation;
+import ink.ikx.rt.api.mods.cote.manaItem.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionTypeRepresentation;
 import stanhebben.zenscript.annotations.Optional;

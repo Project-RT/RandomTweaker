@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.mana.item;
+package ink.ikx.rt.api.mods.cote.manaItem;
 
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemContent;
 import net.minecraft.item.ItemStack;
@@ -9,10 +9,9 @@ import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaTooltipDisplay;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
-/*
+/**
  * @author : superhelo
  */
-
 public class ManaItemContent extends ItemContent implements IManaItem, ICreativeManaProvider, IManaTooltipDisplay {
 
     private static final String TAG_MANA = "mana";
@@ -51,36 +50,30 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
         }
     }
 
-
     @Override
     public boolean canReceiveManaFromPool(ItemStack stack, TileEntity pool) {
         return !isCreative(stack) && canReceiveManaFromPool;
     }
-
 
     @Override
     public boolean canReceiveManaFromItem(ItemStack stack, ItemStack otherStack) {
         return !isCreative(stack) && canReceiveManaFromItem;
     }
 
-
     @Override
     public boolean canExportManaToPool(ItemStack stack, TileEntity pool) {
         return canExportManaToPool;
     }
-
 
     @Override
     public boolean canExportManaToItem(ItemStack stack, ItemStack otherStack) {
         return canExportManaToItem;
     }
 
-
     @Override
     public boolean isNoExport(ItemStack stack) {
         return isNoExport;
     }
-
 
     @Override
     public boolean isCreative(ItemStack stack) {
