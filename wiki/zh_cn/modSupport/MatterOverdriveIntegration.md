@@ -2,7 +2,7 @@
 
 ## IPlayer Expansion
 
-导入：
+导包：
 
 ```zenscript
 import crafttweaker.player.IPlayer;
@@ -22,8 +22,8 @@ import crafttweaker.player.IPlayer;
 | :----------- | :------ | :---------------------------------------------
 | isAndroid    | boolean | 判断玩家是否为机器人,true为机器人
 | isTurning    | boolean | 判断玩家是否正在转变为机器人,true为玩家正在播放转变动画
-| getEnergy    | int     | 返回玩家当前能量
-| getMaxEnergy | int     | 返回玩家能量上限
+| energy    | int     | 返回玩家当前能量
+| maxEnergy | int     | 返回玩家能量上限
 
 ##**技能-id对照表**
 | 技能名 | id | 内部名(无需使用) |

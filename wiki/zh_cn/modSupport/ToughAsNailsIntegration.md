@@ -2,7 +2,7 @@
 
 ## IPlayer Expansion
 
-导入：
+导包：
 
 ```zenscript
 import crafttweaker.player.IPlayer;

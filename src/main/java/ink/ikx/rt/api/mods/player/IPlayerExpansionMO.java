@@ -31,13 +31,13 @@ public class IPlayerExpansionMO {
         return IMatterOverdriveAndroid.isPlayerAndroidTurning(mcPlayer);
     }
 
-    @ZenGetter("getEnergy")
+    @ZenGetter("energy")
     public static int getEnergy(IPlayer player) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         return IMatterOverdriveAndroid.getEnergy(mcPlayer);
     }
 
-    @ZenGetter("getMaxEnergy")
+    @ZenGetter("maxEnergy")
     public static int getMaxEnergy(IPlayer player) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         return IMatterOverdriveAndroid.getMaxEnergy(mcPlayer);
