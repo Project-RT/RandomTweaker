@@ -22,7 +22,7 @@ import mods.randomtweaker.ManaItem;
 
 以上字段除了 maxItem 都有 getter 和 setter 方法 (maxItem 有 getter 方法)
 
-```zenscrtip
+```zenscript
 import mods.mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.ManaItem;
 
