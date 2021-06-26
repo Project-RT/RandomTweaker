@@ -1,17 +1,13 @@
 # Botania Modified
 
-## 水绣球
+允许水绣球消耗其他流体 (需在配置文件开启后才可使用)
 
-允许水绣球消耗其他流体（需在配置文件开启后才可使用）
-
-导包：
-
-~~~zenscript
+```zenscript
 import mods.randomtweaker.Hydroangeas;
-~~~
+```
 
-| 方法                                                         | 返回值 | 描述                                             |
-| :----------------------------------------------------------- | :----- | ------------------------------------------------ |
-| addManaRecipe(ILiquidStack inputFluid, int mana, @Optional(2.0d) double factor) | void   | 添加流体配方，并指定在Factor存在时的产魔增加倍数 |
-| setFactor(ILiquidStack inputFluid)                           | void   | 设置Factor，存在水绣球的工作区域时则可提升产魔量 |
-| setBlockBelowFactor(IItemStack block, @Optional(2.0d) double factor) | void   | 设置方块Factor，存在水绣球的下方时则可提升产魔量 |
+| 方法                                                         | 返回值 | 描述 |
+| :----------------------------------------------------------- | :----- | ----------- |
+| setFactor(factor as ILiquidStack) | void   | 设置流体类型的 Factor |
+| setBlockBelowFactor(factor as IItemStack, @Optional(2.0d) factor as double) | void | 设置方块类型的 Factor, 当其在水绣球的下方则可提升水绣球的产魔量 |
+| addManaRecipe(factor as ILiquidStack, mana as int, @Optional(2.0d) extraMana as double) | void | 添加增加产魔配方, 当流体类型的 Factor 存在时, 水绣球的产魔量将乘于 extraMana |

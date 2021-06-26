@@ -1,6 +1,6 @@
 # BracketHandler
 
-或许应该给crt发个PR而不是新增个Class（？）
+或许应该给 CrT 发个 PR 而不是新增个 Class (?)
 
 导包：
 
@@ -8,7 +8,7 @@
 import mods.randomtweaker.BracketHandler;
 ~~~
 
-## Methons
+## Methods
 
 | 方法                   | 返回值  |
 | :--------------------- | :------ |
