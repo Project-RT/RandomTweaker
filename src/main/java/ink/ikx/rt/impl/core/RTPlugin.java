@@ -21,10 +21,10 @@ public class RTPlugin implements IFMLLoadingPlugin {
 
     public RTPlugin() {
         MixinBootstrap.init();
-        LogManager.getLogger("RandomTweaker Mixins").info("registering core mixins...");
-        Mixins.addConfiguration("mixins.randomtweaker.core.json");
         LogManager.getLogger("RandomTweaker Mixins").info("registering Mod Loader mixins...");
         Mixins.addConfiguration("mixins.randomtweaker.init.json");
+        LogManager.getLogger("RandomTweaker Mixins").info("registering core mixins...");
+        Mixins.addConfiguration("mixins.randomtweaker.core.json");
 
         CodeSource codeSource = this.getClass().getProtectionDomain().getCodeSource();
         if (codeSource != null) {

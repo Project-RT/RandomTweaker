@@ -34,6 +34,12 @@ minecraft {
 
     clientJvmArgs.addAll(args)
     serverJvmArgs.addAll(args)
+    makeObfSourceJar = false
+}
+
+configurations {
+    embed
+    implementation.extendsFrom(embed)
 }
 
 dependencies {
@@ -45,6 +51,7 @@ dependencies {
     deobfCompile "curse.maven:toughasnails-246391:2710969"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
     deobfCompile "curse.maven:thebetweenlands-243363:3248202"
+    deobfCompile "curse.maven:matteroverdrive-legacy-308192:2699215"
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
 
@@ -54,10 +61,14 @@ dependencies {
     runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
     runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
 
-    compile('org.spongepowered:mixin:0.8') {
-        exclude module: 'guava'
-        exclude module: 'commons-io'
-        exclude module: 'gson'
+    embed ("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
+        exclude module: "asm-commons"
+        exclude module: "asm-tree"
+        exclude module: "launchwrapper"
+        exclude module: "guava"
+        exclude module: "log4j-core"
+        exclude module: "gson"
+        exclude module: "commons-io"
     }
 }
 
@@ -87,8 +98,8 @@ repositories {
         url = 'https://maven.blamejared.com'
     }
     maven {
-        name 'tterrag maven'
-        url "https://maven.tterrag.com/"
+        name = 'tterrag maven'
+        url = "https://maven.tterrag.com/"
     }
     maven {
         name = "CurseMaven"
@@ -98,9 +109,16 @@ repositories {
         name = "CoFH Maven"
         url = "https://maven.covers1624.net"
     }
+    maven {
+        name = "sponge"
+        url = "https://repo.spongepowered.org/maven"
+    }
 }
 
 jar {
+    from (configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude 'LICENSE.txt', 'META-INF/MANIFSET.MF', 'META-INF/maven/**', 'META-INF/*.RSA', 'META-INF/*.SF'
+    }
     manifest {
         attributes([
                 'TweakClass' : 'org.spongepowered.asm.launch.MixinTweaker',

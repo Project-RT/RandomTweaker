@@ -15,22 +15,20 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = Loader.class, remap = false, priority = 800)
-public abstract class MixinLoader {
+public abstract class   MixinLoader {
 
     @Shadow
     private List<ModContainer> mods;
 
     @Inject(method = "loadMods", at = @At(value = "INVOKE", target = "Lnet/minecraftforge/fml/common/LoadController;transition(Lnet/minecraftforge/fml/common/LoaderState;Z)V", ordinal = 1), remap = false)
-    private void initMixins(List<String> injectedModContainers, CallbackInfo ci) {
+    private void beforeConstructingMods(List<String> injectedModContainers, CallbackInfo ci) {
         LogManager.getLogger("RandomTweaker Mixins").info("registering mod mixins...");
-        Mixins.addConfiguration("mixins.randomtweaker.json");
+        Mixins.addConfiguration("mixins.randomtweaker.mods.json");
     }
 
     @Inject(method = "identifyMods", at = @At(value = "INVOKE", target = "Lnet/minecraftforge/fml/common/Loader;identifyDuplicates(Ljava/util/List;)V"), remap = false)
-    private void injectIdentifyMods(List<String> additionalContainers,
-        CallbackInfoReturnable<ModDiscoverer> cir) {
-        if (mods.stream().filter(modContainer -> "randomtweaker".equals(modContainer.getModId()))
-            .count() <= 1) {
+    private void injectIdentifyMods(List<String> additionalContainers, CallbackInfoReturnable<ModDiscoverer> cir) {
+        if (mods.stream().filter(modContainer -> "randomtweaker".equals(modContainer.getModId())).count() <= 1) {
             return;
         }
         final Iterator<ModContainer> each = mods.iterator();

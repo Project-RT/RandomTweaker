@@ -2,14 +2,10 @@
   "package": "ink.ikx.rt.impl.mixins.core",
   "required": true,
   "refmap": "mixins.randomtweaker.refmap.json",
-  "minVersion": "0.7.11",
+  "minVersion": "0.8",
+  "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MixinEntityItem"
-  ],
-  "client": [
-  ],
-  "injectors": {
-    "maxShiftBy": 10
-  }
+  ]
 }

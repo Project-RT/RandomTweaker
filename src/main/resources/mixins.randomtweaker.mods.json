@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "ink.ikx.rt.impl.mixins.mods",
+  "minVersion": "0.8",
+  "target": "@env(DEFAULT)",
+  "refmap": "mixins.randomtweaker.refmap.json",
+  "mixins": [
+    "MixinBlockTFPortal",
+    "MixinFTBUltimine",
+    "MixinTemperatureHandler",
+    "MixinThirstHandler"
+  ],
+  "client": [
+    "MixinTemperatureOverlayHandler",
+    "MixinThirstOverlayHandler"
+  ]
+}
