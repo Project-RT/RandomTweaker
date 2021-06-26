@@ -9,6 +9,7 @@ import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.instance.utils.RTGlobal;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
+import ink.ikx.rt.api.mods.cote.manaItem.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
 import ink.ikx.rt.impl.botania.subtitle.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
@@ -74,6 +75,11 @@ public class RandomTweaker {
             }
             GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
         }
+
+        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
+            CraftTweakerAPI.registerClass(ManaItemRepresentation.class);
+        }
+
         if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
             CraftTweakerAPI.registerClass(Hydroangeas.class);
         }
