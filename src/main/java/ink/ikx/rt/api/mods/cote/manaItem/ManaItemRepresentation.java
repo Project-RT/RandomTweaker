@@ -14,11 +14,13 @@ import stanhebben.zenscript.annotations.ZenProperty;
 public class ManaItemRepresentation extends ItemRepresentation {
 
     @ZenProperty
-    final int maxMana;
+    int maxMana;
+    @ZenProperty
+    boolean hasFull = false;
     @ZenProperty
     boolean isNoExport = false;
     @ZenProperty
-    boolean isCreative = false;
+    boolean hasCreative = false;
     @ZenProperty
     boolean canExportManaToPool = true;
     @ZenProperty
@@ -30,13 +32,38 @@ public class ManaItemRepresentation extends ItemRepresentation {
 
     public ManaItemRepresentation(String unlocalizedName, int maxMana) {
         setUnlocalizedName(unlocalizedName);
-        this.maxMana = maxMana;
+        this.setMaxMana(maxMana);
         this.setMaxStackSize(1);
+    }
+
+    @ZenMethod
+    public boolean hasCreative() {
+        return hasCreative;
+    }
+
+    @ZenMethod
+    public void setHasCreative(boolean hasCreative) {
+        this.hasCreative = hasCreative;
+    }
+
+    @ZenMethod
+    public boolean hasFull() {
+        return hasFull;
+    }
+
+    @ZenMethod
+    public void setHasFull(boolean hasFull) {
+        this.hasFull = hasFull;
     }
 
     @ZenMethod
     public int getMaxMana() {
         return maxMana;
+    }
+
+    @ZenMethod
+    public void setMaxMana(int maxMana) {
+        this.maxMana = maxMana;
     }
 
     @ZenMethod
@@ -50,17 +77,7 @@ public class ManaItemRepresentation extends ItemRepresentation {
     }
 
     @ZenMethod
-    public boolean isCreative() {
-        return isCreative;
-    }
-
-    @ZenMethod
-    public void setCreative(boolean isCreative) {
-        this.isCreative = isCreative;
-    }
-
-    @ZenMethod
-    public boolean isCanReceiveManaFromPool() {
+    public boolean canReceiveManaFromPool() {
         return canReceiveManaFromPool;
     }
 
@@ -70,7 +87,7 @@ public class ManaItemRepresentation extends ItemRepresentation {
     }
 
     @ZenMethod
-    public boolean isCanReceiveManaFromItem() {
+    public boolean canReceiveManaFromItem() {
         return canReceiveManaFromItem;
     }
 
@@ -80,10 +97,9 @@ public class ManaItemRepresentation extends ItemRepresentation {
     }
 
     @ZenMethod
-    public boolean isCanExportManaToPool() {
+    public boolean canExportManaToPool() {
         return canExportManaToPool;
     }
-
 
     @ZenMethod
     public void setCanExportManaToPool(boolean canExportManaToPool) {
@@ -91,7 +107,7 @@ public class ManaItemRepresentation extends ItemRepresentation {
     }
 
     @ZenMethod
-    public boolean isCanExportManaToItem() {
+    public boolean canExportManaToItem() {
         return canExportManaToItem;
     }
 
