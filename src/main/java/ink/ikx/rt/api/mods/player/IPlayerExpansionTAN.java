@@ -4,6 +4,7 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
+import java.util.Objects;
 import net.minecraft.entity.player.EntityPlayer;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -48,7 +49,7 @@ public class IPlayerExpansionTAN {
     public static void addExhaustion(IPlayer player, float exhaustion) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         ThirstHandler thirstHandler = (ThirstHandler) mcPlayer.getCapability(TANCapabilities.THIRST, null);
-        thirstHandler.addExhaustion(exhaustion);
+        Objects.requireNonNull(thirstHandler).addExhaustion(exhaustion);
     }
 
     @ZenMethod

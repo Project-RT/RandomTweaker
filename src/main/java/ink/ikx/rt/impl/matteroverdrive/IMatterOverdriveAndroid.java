@@ -18,19 +18,19 @@ public class IMatterOverdriveAndroid {
 
     public static void setPlayerAndroid(EntityPlayer entityPlayer, boolean b, boolean animation) {
         AndroidPlayer androidPlayer = MOPlayerCapabilityProvider.GetAndroidCapability(entityPlayer);
-        if (!animation){
+        if (!animation) {
             androidPlayer.setAndroid(b);
-        } else if (animation && b) {
+        } else if (b) {
             androidPlayer.startConversion();
-        } else if (animation && !b){
-            androidPlayer.setAndroid(b);
+        } else {
+            androidPlayer.setAndroid(false);
         }
     }
 
     public static void resetPlayerAndroidSkills(EntityPlayer entityPlayer, boolean b) {
         AndroidPlayer androidPlayer = MOPlayerCapabilityProvider.GetAndroidCapability(entityPlayer);
         int xpLevels = androidPlayer.resetUnlocked();
-        if (b){
+        if (b) {
             entityPlayer.addExperienceLevel(xpLevels);
         }
     }
@@ -43,16 +43,16 @@ public class IMatterOverdriveAndroid {
     public static void unlock(EntityPlayer entityPlayer, int id, int level, boolean admin) {
         AndroidPlayer androidPlayer = MOPlayerCapabilityProvider.GetAndroidCapability(entityPlayer);
         IBioticStat bioticStat = getIBioticStat(id);
-        if (level < bioticStat.maxLevel() && level != 0){
+        if (level < bioticStat.maxLevel() && level != 0) {
             if (!admin) {
                 androidPlayer.tryUnlock(bioticStat, level);
-            } else if (admin) {
+            } else {
                 androidPlayer.unlock(bioticStat, level);
             }
         } else if (level == 0 || level >= bioticStat.maxLevel()) {
             if (!admin) {
                 androidPlayer.tryUnlock(bioticStat, bioticStat.maxLevel());
-            } else if (admin) {
+            } else {
                 androidPlayer.unlock(bioticStat, bioticStat.maxLevel());
             }
         }

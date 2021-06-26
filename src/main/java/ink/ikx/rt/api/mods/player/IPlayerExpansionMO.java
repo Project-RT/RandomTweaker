@@ -4,8 +4,8 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
-import net.minecraft.entity.player.EntityPlayer;
 import ink.ikx.rt.impl.matteroverdrive.IMatterOverdriveAndroid;
+import net.minecraft.entity.player.EntityPlayer;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenGetter;
@@ -95,11 +95,7 @@ public class IPlayerExpansionMO {
     public static void resetSkills(IPlayer player, @Optional boolean giveBackXP) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         if (!IMatterOverdriveAndroid.isPlayerAndroidTurning(mcPlayer) && IMatterOverdriveAndroid.isPlayerAndroid(mcPlayer)){
-            if (giveBackXP) {
-                IMatterOverdriveAndroid.resetPlayerAndroidSkills(mcPlayer, true);
-            } else if (!giveBackXP) {
-                IMatterOverdriveAndroid.resetPlayerAndroidSkills(mcPlayer, false);
-            }
+            IMatterOverdriveAndroid.resetPlayerAndroidSkills(mcPlayer, giveBackXP);
         }
     }
 

@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.mixins;
+package ink.ikx.rt.impl.mixins.mods;
 
 import ink.ikx.rt.impl.config.RTConfig;
 import ink.ikx.rt.impl.matteroverdrive.IMatterOverdriveAndroid;
