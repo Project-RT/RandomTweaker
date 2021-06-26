@@ -9,6 +9,7 @@ import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.instance.utils.RTGlobal;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
+import ink.ikx.rt.api.mods.cote.manaItem.ManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.cote.manaItem.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
 import ink.ikx.rt.impl.botania.subtitle.SubTileHydroangeasModified;
@@ -78,6 +79,7 @@ public class RandomTweaker {
 
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             CraftTweakerAPI.registerClass(ManaItemRepresentation.class);
+            CraftTweakerAPI.registerClass(ManaBaubleRepresentation.class);
         }
 
         if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
