@@ -4,10 +4,13 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
+import net.minecraft.entity.player.EntityPlayer;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
+import toughasnails.api.TANCapabilities;
 import toughasnails.api.stat.capability.IThirst;
 import toughasnails.api.thirst.ThirstHelper;
+import toughasnails.thirst.ThirstHandler;
 
 @ZenRegister
 @ModOnly("toughasnails")
@@ -28,8 +31,9 @@ public class IPlayerExpansionTAN {
 
     @ZenMethod
     public void setExhaustion(IPlayer player, float exhaustion) {
-        IThirst cap = ThirstHelper.getThirstData(CraftTweakerMC.getPlayer(player));
-        cap.setExhaustion(exhaustion);
+        EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
+        ThirstHandler thirstHandler = (ThirstHandler) mcPlayer.getCapability(TANCapabilities.THIRST, null);
+        thirstHandler.addExhaustion(exhaustion);
     }
 
     @ZenMethod

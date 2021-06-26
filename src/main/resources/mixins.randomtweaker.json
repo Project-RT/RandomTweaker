@@ -7,7 +7,11 @@
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
     "MixinBlockTFPortal",
-    "MixinFTBUltimine"
+    "MixinFTBUltimine",
+    "MixinTemperatureHandler",
+    "MixinTemperatureOverlayHandler",
+    "MixinThirstHandler",
+    "MixinThirstOverlayHandler"
   ],
   "client": [],
   "injectors": {
