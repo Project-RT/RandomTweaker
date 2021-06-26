@@ -19,6 +19,8 @@ public class RTConfig {
 
     public static FTBUltimine FTBUltimine = new FTBUltimine();
 
+    public static ToughAsNails ToughAsNails = new ToughAsNails();
+
     public static class RandomTweakerC {
 
         @Comment({
@@ -76,5 +78,25 @@ public class RTConfig {
         @RequiresMcRestart
         @Comment("How much mana is max of hydroangeas? [Valid only for modified results | default: 18000]")
         public int HydroangeasMaxMana = 18000;
+    }
+
+    public static class ToughAsNails {
+        @Comment("If true, cancel Thirst when the player transforms into a android. [default: true]")
+        public boolean AndroidThirst = true;
+
+        @Comment("If true, enable 'B: SelectedStatThirst'. [default: true]")
+        public boolean SelectedStatsThirst = false;
+
+        @Comment("If 'B: AndroidThirst' false, Select the skill you need to unlock to cancel your Thirst. [default: 6 [0-21]]")
+        public int SelectedStatThirst = 6;
+
+        @Comment("If true, cancel Temperature when the player transforms into a android. [default: true]")
+        public boolean AndroidTemperature = true;
+
+        @Comment("If true, enable 'B: SelectedStatTemperature'. [default: true]")
+        public boolean SelectedStatsTemperature = false;
+
+        @Comment("If 'B: AndroidThirst' false, Select the skill you need to unlock to cancel your Temperature. [default: 14 [0-21]]")
+        public int SelectedStatTemperature = 14;
     }
 }
