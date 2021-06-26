@@ -1,16 +1,12 @@
 {
   "required": true,
   "compatibilityLevel": "JAVA_8",
-  "package": "ink.ikx.rt.impl.mixins",
-  "minVersion": "0.7.11",
-  "setSourceFile": true,
+  "package": "ink.ikx.rt.impl.mixins.mods",
+  "minVersion": "0.8",
+  "target": "@env(DEFAULT)",
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
     "MixinBlockTFPortal",
     "MixinFTBUltimine"
-  ],
-  "client": [],
-  "injectors": {
-    "maxShiftBy": 10
-  }
+  ]
 }

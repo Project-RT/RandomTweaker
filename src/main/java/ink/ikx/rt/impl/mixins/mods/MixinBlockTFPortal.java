@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.mixins;
+package ink.ikx.rt.impl.mixins.mods;
 
 import ink.ikx.rt.impl.config.RTConfig;
 import crafttweaker.api.block.IBlock;
@@ -38,8 +38,7 @@ public class MixinBlockTFPortal extends BlockBreakable {
      */
     @Deprecated
     @Overwrite
-    public void func_189540_a(IBlockState state, World world, BlockPos pos, Block notUsed,
-        BlockPos fromPos) {
+    public void func_189540_a(IBlockState state, World world, BlockPos pos, Block notUsed, BlockPos fromPos) {
         boolean good = world.getBlockState(pos.down()).isFullCube();
 
         for (EnumFacing facing : EnumFacing.HORIZONTALS) {
@@ -64,14 +63,12 @@ public class MixinBlockTFPortal extends BlockBreakable {
      */
     @Overwrite(remap = false)
     public boolean canFormPortal(IBlockState state) {
-        return state == getLiquidState(RTConfig.TwilightForest.TFPortalLiquid) || state.getBlock() == this && state
-            .getValue(DISALLOW_RETURN);
+        return state == getLiquidState(RTConfig.TwilightForest.TFPortalLiquid) || state.getBlock() == this && state.getValue(DISALLOW_RETURN);
     }
 
     private static IBlockState getLiquidState(String liquidName) {
         if (BracketHandlerLiquid.getLiquid(liquidName) != null) {
-            IBlock liquidIBlock = BracketHandlerLiquid.getLiquid(liquidName).getDefinition()
-                .getBlock();
+            IBlock liquidIBlock = BracketHandlerLiquid.getLiquid(liquidName).getDefinition().getBlock();
             return CraftTweakerMC.getBlock(liquidIBlock).getDefaultState();
         } else {
             return Blocks.WATER.getDefaultState();
