@@ -92,7 +92,7 @@ public class IPlayerExpansionMO {
     }
 
     @ZenMethod
-    public static void resetSkills(IPlayer player, boolean giveBackXP) {
+    public static void resetSkills(IPlayer player, @Optional boolean giveBackXP) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         if (!IMatterOverdriveAndroid.isPlayerAndroidTurning(mcPlayer) && IMatterOverdriveAndroid.isPlayerAndroid(mcPlayer)){
             if (giveBackXP) {
@@ -104,8 +104,8 @@ public class IPlayerExpansionMO {
     }
 
     @ZenMethod
-    public static int receiveEnergy(IPlayer player, int energy, @Optional boolean receive) {
+    public static int receiveEnergy(IPlayer player, int energy) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
-        return IMatterOverdriveAndroid.receiveEnergy(mcPlayer, energy, receive);
+        return IMatterOverdriveAndroid.receiveEnergy(mcPlayer, energy, false);
     }
 }
