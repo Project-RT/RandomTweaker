@@ -2,6 +2,8 @@
 
 这是朋友需要的一个功能, 我也只是调用其提供的 API, 如果你想使用这些方法请自行尝试或查询源 API 提供的 JavaDoc
 
+更多请看 [IPlayerExpansion](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/IPlayerExpansion.md)
+
 ## CircleGem Methods
 
 可选 gemType : `aqua`， `crimson`， `green` ，`none`

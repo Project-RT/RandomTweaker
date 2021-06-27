@@ -9,8 +9,14 @@ import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.instance.utils.RTGlobal;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
-import ink.ikx.rt.api.mods.cote.manaItem.ManaBaubleRepresentation;
+import ink.ikx.rt.api.mods.cote.function.CanEquip;
+import ink.ikx.rt.api.mods.cote.function.CanUnequip;
+import ink.ikx.rt.api.mods.cote.function.OnEquipped;
+import ink.ikx.rt.api.mods.cote.function.OnUnequipped;
+import ink.ikx.rt.api.mods.cote.function.OnWornTick;
+import ink.ikx.rt.api.mods.cote.function.WillAutoSync;
 import ink.ikx.rt.api.mods.cote.manaItem.ManaItemRepresentation;
+import ink.ikx.rt.api.mods.cote.manaItem.ManaRingRepresentation;
 import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
 import ink.ikx.rt.impl.botania.subtitle.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
@@ -79,7 +85,13 @@ public class RandomTweaker {
 
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             CraftTweakerAPI.registerClass(ManaItemRepresentation.class);
-            CraftTweakerAPI.registerClass(ManaBaubleRepresentation.class);
+            CraftTweakerAPI.registerClass(ManaRingRepresentation.class);
+            CraftTweakerAPI.registerClass(CanEquip.class);
+            CraftTweakerAPI.registerClass(CanUnequip.class);
+            CraftTweakerAPI.registerClass(OnEquipped.class);
+            CraftTweakerAPI.registerClass(OnUnequipped.class);
+            CraftTweakerAPI.registerClass(OnWornTick.class);
+            CraftTweakerAPI.registerClass(WillAutoSync.class);
         }
 
         if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {

@@ -3,6 +3,8 @@
 一个理智值的检测, 会在副手的左侧显示理智值的图片, 分为四个等级去检测玩家的理智值并显现出不同的图片, 同时也添加了一个检测理智值的水晶物品, 配合 CrT 的事件功能,
 你完全可以自定义各种想要的实现 (需要在配置文件开启)
 
+更多请看 [IPlayerExpansion](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/IPlayerExpansion.md)
+
 ## 导包
 
 ~~~zenscript

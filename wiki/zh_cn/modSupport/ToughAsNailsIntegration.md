@@ -1,5 +1,7 @@
 # ToughAsNails Integration
 
+更多请看 [IPlayerExpansion](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/IPlayerExpansion.md)
+
 ## Config
 
 ### 你可以在config中设置的选项
