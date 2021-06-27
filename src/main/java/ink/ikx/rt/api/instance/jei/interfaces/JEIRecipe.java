@@ -11,8 +11,8 @@ import stanhebben.zenscript.annotations.ZenGetter;
 public interface JEIRecipe {
 
     @ZenGetter("input")
-    List<IIngredient> getInput();
+    List<IIngredient> getInputs();
 
     @ZenGetter("output")
-    List<IIngredient> getOutput();
+    List<IIngredient> getOutputs();
 }

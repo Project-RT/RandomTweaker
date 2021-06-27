@@ -8,7 +8,7 @@
 import mods.randomtweaker.JEIRecipe
 ```
 
-| 方法 | 返回值 |
+| Getter | 返回值 |
 |:---- | ---- |
-| getInput | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) |
-| getOutput | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) |
+| getInputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) |
+| getOutputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) |
