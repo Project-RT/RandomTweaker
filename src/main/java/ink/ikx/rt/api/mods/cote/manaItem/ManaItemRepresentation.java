@@ -14,24 +14,24 @@ import stanhebben.zenscript.annotations.ZenProperty;
 public class ManaItemRepresentation extends ItemRepresentation {
 
     @ZenProperty
-    int maxMana;
+    public int maxMana;
     @ZenProperty
-    boolean hasFull = false;
+    public boolean hasFull = false;
     @ZenProperty
-    boolean isNoExport = false;
+    public boolean isNoExport = false;
     @ZenProperty
-    boolean hasCreative = false;
+    public boolean hasCreative = false;
     @ZenProperty
-    boolean canExportManaToPool = true;
+    public boolean canExportManaToPool = true;
     @ZenProperty
-    boolean canExportManaToItem = true;
+    public boolean canExportManaToItem = true;
     @ZenProperty
-    boolean canReceiveManaFromPool = true;
+    public boolean canReceiveManaFromPool = true;
     @ZenProperty
-    boolean canReceiveManaFromItem = true;
+    public boolean canReceiveManaFromItem = true;
 
     public ManaItemRepresentation(String unlocalizedName, int maxMana) {
-        setUnlocalizedName(unlocalizedName);
+        this.setUnlocalizedName(unlocalizedName);
         this.setMaxMana(maxMana);
         this.setMaxStackSize(1);
     }

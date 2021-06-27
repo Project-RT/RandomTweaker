@@ -10,10 +10,12 @@ import mods.randomtweaker.cote.PotionType;
 
 | 字段            | 类型   | 描述                          |
 | --------------- | :----- | --------------------------- |
-| unlocalizedName | String | 本地化键值                    |
-| duration        | int    | 持续时间 （Tick，默认：3600）   |
-| amplifier       | int    | 药水等级 （默认 0）            |
-| potion          | Potion | 指定药水                     |
+| unlocalizedName | string | 本地化键值                    |
+| duration        | int    | 持续时间 (Tick，默认：3600)    |
+| amplifier       | int    | 药水等级 (默认 0)             |
+| potion          | [Potion](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/Potion.md) | 指定药水                     |
+
+## 例子
 
 ~~~zenscript
 #loader contenttweaker

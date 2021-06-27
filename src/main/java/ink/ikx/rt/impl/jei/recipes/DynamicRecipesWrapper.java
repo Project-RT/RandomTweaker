@@ -38,7 +38,7 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
         List<List<FluidStack>> outputFluidStack = new ArrayList<>();
         List<List<ItemStack>> outputItemStack = new ArrayList<>();
 
-        for (IIngredient i : JEIRecipe.getInput()) {
+        for (IIngredient i : JEIRecipe.getInputs()) {
             if (i.getLiquids().isEmpty()) {
                 inputItemStack.add(getItemStacks(i.getItems()));
             } else {
@@ -48,8 +48,8 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
         ingredients.setInputLists(VanillaTypes.ITEM, inputItemStack);
         ingredients.setInputLists(VanillaTypes.FLUID, inputFluidStack);
 
-        if (!JEIRecipe.getOutput().isEmpty()) {
-            for (IIngredient o : JEIRecipe.getOutput()) {
+        if (!JEIRecipe.getOutputs().isEmpty()) {
+            for (IIngredient o : JEIRecipe.getOutputs()) {
                 if (o.getLiquids().isEmpty()) {
                     outputItemStack.add(getItemStacks(o.getItems()));
                 } else {

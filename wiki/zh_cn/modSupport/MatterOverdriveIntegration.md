@@ -1,6 +1,9 @@
 # MatterOverdrive Integration
 
+更多请看 [IPlayerExpansion](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/IPlayerExpansion.md)
+
 ## 技能 - id 对照表
+
 | 技能名 | id | 内部名(无需使用) |
 | :----- | :---- | :----
 | 行走辅助 | 0  | step_assist

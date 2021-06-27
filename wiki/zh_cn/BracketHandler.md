@@ -12,5 +12,5 @@ import mods.randomtweaker.BracketHandler;
 
 | 方法                   | 返回值  |
 | :--------------------- | :------ |
-| getPotion(String name) | IPotion |
-| getBiome(String name)  | IBiome  |
+| getPotion(String name) | [IPotion](https://docs.blamejared.com/1.12/en/Vanilla/Potions/IPotion/) |
+| getBiome(String name)  | [IBiome](https://docs.blamejared.com/1.12/en/Vanilla/Biomes/IBiome/)  |

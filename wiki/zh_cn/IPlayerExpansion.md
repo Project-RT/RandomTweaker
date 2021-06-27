@@ -9,9 +9,9 @@
 | getPerkPercentToNextLevel() | float    | 获取星能力升到下一集需要多少经验     |
 | getPerkLevel()              | int      | 获取星能力等级                       |
 | getPerkExp()                | double   | 获取星能力经验值                     |
-| modifyPerkExp()             | void     | 修改经验值（添加）                   |
-| setPerkExp()                | void     | 设置经验值（不推荐）                 |
-| getAttunedConstellation()   | string   | 获取星能力共鸣的星座，没有则返回Null |
+| modifyPerkExp()             | void     | 修改经验值 (添加)                   |
+| setPerkExp()                | void     | 设置经验值 (不推荐)                 |
+| getAttunedConstellation()   | string   | 获取星能力共鸣的星座, 没有则返回Null |
 | getKnownConstellations()    | string[] | 获取已学习的的星座                   |
 | getSeenConstellations()     | string[] | 获取已看见的星座                     |
 
@@ -25,12 +25,12 @@
 
 | 方法                                                               | 返回值   | 描述 |
 | :---------------------------------------------------------------- | :------ |:----------------------------------- |
-| isUnlocked(id as int, level as int) | bool | 获取对应id的技能是否达到等级 |
-| getUnlockedLevel(id as int) | int | 获取对应id的技能等级 | 
-| unlockSkill(id as int, @Optional level as int, @Optional admin as bool) | void    | 解锁对应id的技能的对应等级 (默认满级) , 设置admin为true将无视任何限制 (默认 false) |
-| setAndroid(@Optional animation as bool) | void | 设置玩家为机器人, 设置animation为true将启用转变过程动画 (默认 false) |
+| isUnlocked(id as int, level as int) | bool | 获取对应 id 的技能是否达到等级 |
+| getUnlockedLevel(id as int) | int | 获取对应 id 的技能等级 | 
+| unlockSkill(id as int, @Optional level as int, @Optional admin as bool) | void    | 解锁对应 id 的技能的对应等级 (默认满级) , 设置 admin 为 true 将无视任何限制 (默认 false) |
+| setAndroid(@Optional animation as bool) | void | 设置玩家为机器人, 设置 animation 为t rue 将启用转变过程动画 (默认 false) |
 | removeAndroid() | void | 移除玩家的机器人身份 |
-| resetSkills(@Optional giveBackXP as bool) | void | 重置机器人所有技能,设置giveBackXP为true将返还升级消耗的经验 (默认 false) |
+| resetSkills(@Optional giveBackXP as bool) | void | 重置机器人所有技能,设置 giveBackXP 为 true 将返还升级消耗的经验 (默认 false) |
 | receiveEnergy(energy as int) | int | 向机器人身份的玩家充能, 返回成功补充的能量值 |
 
 | Getter       | 返回值    | 描述 |
