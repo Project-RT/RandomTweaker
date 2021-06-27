@@ -4,6 +4,8 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.api.mods.cote.function.PotionIsReady;
+import ink.ikx.rt.api.mods.cote.function.PotionPerformEffect;
 import net.minecraft.potion.Potion;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -21,13 +23,19 @@ public class PotionRepresentation {
     @ZenProperty
     public String unlocalizedName;
     @ZenProperty
-    public boolean isBadEffectIn = false;
+    public boolean badEffectIn = false;
     @ZenProperty
-    public boolean isInstant = false;
+    public boolean beneficial = true;
+    @ZenProperty
+    public boolean instant = false;
     @ZenProperty
     public boolean shouldRender = true;
     @ZenProperty
     public boolean shouldRenderHUD = true;
+    @ZenProperty
+    public PotionPerformEffect performEffect = null;
+    @ZenProperty
+    public PotionIsReady isReady = null;
 
     public PotionRepresentation(String unlocalizedName, int liquidColorIn) {
         this.liquidColorIn = liquidColorIn;
@@ -36,12 +44,12 @@ public class PotionRepresentation {
 
     @ZenMethod
     public boolean isBadEffectIn() {
-        return isBadEffectIn;
+        return badEffectIn;
     }
 
     @ZenMethod
     public void setBadEffectIn(boolean badEffectIn) {
-        isBadEffectIn = badEffectIn;
+        this.badEffectIn = badEffectIn;
     }
 
     @ZenMethod
@@ -66,12 +74,22 @@ public class PotionRepresentation {
 
     @ZenMethod
     public boolean isInstant() {
-        return isInstant;
+        return instant;
     }
 
     @ZenMethod
     public void setInstant(boolean instant) {
-        isInstant = instant;
+        this.instant = instant;
+    }
+
+    @ZenMethod
+    public boolean isBeneficial() {
+        return beneficial;
+    }
+
+    @ZenMethod
+    public void setBeneficial(boolean beneficial) {
+        this.beneficial = beneficial;
     }
 
     @ZenMethod
