@@ -1,19 +1,23 @@
 package ink.ikx.rt.api.mods.cote.potion;
 
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
+import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.EntityHelper;
+import java.util.Objects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 
+@SuppressWarnings("NullableProblems")
 public class PotionContent extends Potion {
 
     public final PotionRepresentation potionRepresentation;
     public final ResourceLocation textureResourceLocation;
 
     protected PotionContent(PotionRepresentation potionRepresentation) {
-        super(potionRepresentation.isBadEffectIn, potionRepresentation.liquidColorIn);
+        super(potionRepresentation.isBadEffectIn(), potionRepresentation.getLiquidColorIn());
         this.potionRepresentation = potionRepresentation;
         this.textureResourceLocation = new ResourceLocation("contenttweaker:textures/gui/" + potionRepresentation.getName() + ".png");
         this.setPotionName("effect." + ContentTweaker.MOD_ID + "." + potionRepresentation.unlocalizedName);
@@ -25,12 +29,14 @@ public class PotionContent extends Potion {
         return false;
     }
 
-    /**
-     * @return true if the potion has an instant effect instead of a continuous one (eg Harming)
-     */
     @Override
     public boolean isInstant() {
         return potionRepresentation.isInstant();
+    }
+
+    @Override
+    public boolean isBeneficial() {
+        return potionRepresentation.isBeneficial();
     }
 
     @Override
@@ -58,5 +64,21 @@ public class PotionContent extends Potion {
     public void renderHUDEffect(int x, int y, PotionEffect effect, Minecraft mc, float alpha) {
         mc.getTextureManager().bindTexture(textureResourceLocation);
         Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
+    }
+
+    @Override
+    public boolean isReady(int duration, int amplifier) {
+        if (Objects.nonNull(potionRepresentation.isReady)) {
+            return potionRepresentation.isReady.call(duration, amplifier);
+        } else {
+            return Objects.nonNull(potionRepresentation.performEffect);
+        }
+    }
+
+    @Override
+    public void performEffect(EntityLivingBase living, int amplifier) {
+        if (Objects.nonNull(potionRepresentation.performEffect)) {
+            potionRepresentation.performEffect.call(EntityHelper.getIEntityLivingBase(living), amplifier);
+        }
     }
 }
