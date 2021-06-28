@@ -3,7 +3,7 @@
 ## 导包
 
 ~~~zenscript
-import mods.randomtweaker.JEIElement;
+import mods.randomtweaker.jei.JEIElement;
 ~~~
 
 渲染在 JEI 上的元素, 流体槽, 物品槽的框都是自此渲染

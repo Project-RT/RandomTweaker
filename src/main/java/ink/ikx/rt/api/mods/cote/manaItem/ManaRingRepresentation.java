@@ -15,7 +15,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
  * @author : superhelo
  */
 
-@ZenClass("mods.randomtweaker.ManaRing")
+@ZenClass("mods.randomtweaker.cote.ManaRing")
 public class ManaRingRepresentation extends ManaItemRepresentation {
 
     @ZenProperty

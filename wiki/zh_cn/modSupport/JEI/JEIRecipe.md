@@ -5,7 +5,7 @@
 ## 导包
 
 ```zenscript
-import mods.randomtweaker.JEIRecipe
+import mods.randomtweaker.jei.JEIRecipe
 ```
 
 | Getter | 返回值 |

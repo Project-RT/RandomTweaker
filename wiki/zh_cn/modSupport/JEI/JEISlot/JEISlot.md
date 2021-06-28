@@ -5,7 +5,7 @@
 ## 导包
 
 ~~~zenscript
-import mods.randomtweaker.JEISlot;
+import mods.randomtweaker.jei.JEISlot;
 ~~~
 
 | ZenGetter | 返回值   |

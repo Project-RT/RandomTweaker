@@ -13,7 +13,7 @@
 导包：
 
 ~~~zenscript
-import mods.randomtweaker.BLCircleGem;
+import mods.randomtweaker.tbl.BLCircleGem;
 ~~~
 
 | 方法                                                      | 返回值 |

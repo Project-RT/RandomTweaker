@@ -7,7 +7,7 @@ hasCreative 为 true**)
 ## 导包
 
 ```zenscrtpt
-import mods.randomtweaker.ManaRing;
+import mods.randomtweaker.cote.ManaRing;
 ```
 
 | 函数 | 写法 | 返回值 | 描述 |
@@ -22,9 +22,9 @@ import mods.randomtweaker.ManaRing;
 ## 例子
 
 ```zenscript
-import mods.mods.contenttweaker.VanillaFactory;
+import mods.contenttweaker.VanillaFactory;
 import crafttweaker.player.IPlayer;
-import mods.randomtweaker.ManaRing;
+import mods.randomtweaker.cote.ManaRing;
 
 var manaRing as ManaRing = VanillaFactory.createManaRing("test_1", 500000);
 manaRing.onWornTick = function(bauble, wearer) {

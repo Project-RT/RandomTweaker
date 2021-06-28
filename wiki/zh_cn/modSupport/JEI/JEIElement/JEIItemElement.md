@@ -5,5 +5,5 @@
 ## 导包
 
 ~~~zenscript
-import mods.randomtweaker.JEIItemElement;
+import mods.randomtweaker.jei.JEIItemElement;
 ~~~

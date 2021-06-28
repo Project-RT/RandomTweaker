@@ -5,7 +5,7 @@
 ## 导包
 
 ~~~zenscript
-import mods.randomtweaker.JEIArrowElement;
+import mods.randomtweaker.jei.JEIArrowElement;
 ~~~
 
 | ZenGetter | 返回值 | 备注                             |

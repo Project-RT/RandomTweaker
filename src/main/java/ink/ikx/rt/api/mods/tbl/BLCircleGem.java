@@ -14,7 +14,7 @@ import thebetweenlands.common.capability.circlegem.CircleGemType;
 
 @ZenRegister
 @ModOnly("thebetweenlands")
-@ZenClass("mods.randomtweaker.BLCircleGem")
+@ZenClass("mods.randomtweaker.tbl.BLCircleGem")
 public class BLCircleGem {
 
     @ZenMethod

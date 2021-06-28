@@ -5,7 +5,7 @@
 ## 导包
 
 ~~~zenscript
-import mods.randomtweaker.JEIFontInfoElement;
+import mods.randomtweaker.jei.JEIFontInfoElement;
 ~~~
 
 | ZenGetter | 返回值 |
