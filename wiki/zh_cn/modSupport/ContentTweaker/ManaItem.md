@@ -1,6 +1,7 @@
 # ManaItem
 
-当同时加载了植物魔法和 CoT 时可以使 CoT 可以创建具有魔力 (Mana) 的物品
+当同时加载了植物魔法和 CoT 时可以使 CoT 可以创建具有魔力 (Mana) 的物品  
+因为 `ManaItem` 类继承 `Item` 类所以 `Item` 对象可用的所有功能也可用于 `ManaItem` 对象上
 
 ## 导包
 
@@ -19,6 +20,8 @@ import mods.randomtweaker.ManaItem;
 | canReceiveManaFromPool | bool (默认 true) | 是否接受来自魔力池的魔力   |
 | canReceiveManaFromItem | bool (默认 true) | 是否接受来自物品的魔力    |
 | register               | void  | 注册此魔力物品           |
+
+## 例子
 
 ```zenscript
 import mods.mods.contenttweaker.VanillaFactory;

@@ -10,9 +10,9 @@ import stanhebben.zenscript.annotations.ZenGetter;
 @ZenClass("mods.randomtweaker.jei.JEIRecipe")
 public interface JEIRecipe {
 
-    @ZenGetter("input")
-    List<IIngredient> getInput();
+    @ZenGetter("inputs")
+    List<IIngredient> getInputs();
 
-    @ZenGetter("output")
-    List<IIngredient> getOutput();
+    @ZenGetter("outputs")
+    List<IIngredient> getOutputs();
 }

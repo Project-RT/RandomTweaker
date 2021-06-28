@@ -23,18 +23,18 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
  */
 public class ManaItemContent extends ItemContent implements IManaItem, ICreativeManaProvider, IManaTooltipDisplay {
 
-    private static final String TAG_ONE_USE = "oneUse";
-    private static final String TAG_CREATIVE = "creative";
     public int maxMana;
     public boolean hasFull;
     public boolean isNoExport;
     public boolean hasCreative;
     public boolean canExportManaToPool;
     public boolean canExportManaToItem;
-
-    private static final String TAG_MANA = "mana";
     public boolean canReceiveManaFromPool;
     public boolean canReceiveManaFromItem;
+
+    private static final String TAG_MANA = "mana";
+    private static final String TAG_ONE_USE = "oneUse";
+    private static final String TAG_CREATIVE = "creative";
 
     public ManaItemContent(ManaItemRepresentation manaItem) {
         super(manaItem);

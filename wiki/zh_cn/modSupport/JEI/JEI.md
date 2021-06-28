@@ -1,0 +1,60 @@
+# Custom JEI
+
+## 导包
+
+~~~zenscript
+import mods.jei.JEI;
+~~~
+
+| 方法                                                         | 返回值             | 备注                                                         |
+| :----------------------------------------------------------- | :----------------- | ------------------------------------------------------------ |
+| createJEIPanel(uid as string, localizationKey as string)           | JEIPanel           |                                                              |
+| createJEIBackground(width as int, height as int)                    | JEIBackground      |                                                              |
+| createJEIBackground(resourceName as string, u as int, v as int, width as int, height as int) | JEIBackground      |                                                              |
+| createLiquidSlot(isInput as bool, x as int, y as int, width as int, height as int, capacityMb as int, showCapacity as bool, @Optional(valueBoolean = true) hasBase as bool) | JEILiquidSlotImpl  | hasBase 为是否创建那个固定的流体槽, 但流体槽必须要根据固定的宽高创建 (eg：16 * 16，43 * 16， 16 * 34) |
+| createLiquidSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | JEILiquidSlotImpl  | hasBase 为是否创建那个固定的流体槽, 但流体槽必须要根据固定的宽高创建 |
+| createItemSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | JEIItemSlot        | hasBase 为是否创建那个固定的物品槽                          |
+| createJEIRecipe(inputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/), outputs as IIngredient[]) | JEIRecipe          |                                                              |
+| createJEIRecipe(inputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/))                        | JEIRecipe          |                                                              |
+| createJEIItemInputElement(x as int, y as int)                      | JEIItemElement     |                                                              |
+| createJEIItemOutputElement(x as int, y as int)                     | JEIItemElement     |                                                              |
+| createJEIFluidElement(x as int, y as int, width as int, height as int)    | JEIFluidElement    |                                                              |
+| createJEIFontInfoElement(x as int, y as int, info as string, color as int) | JEIFontInfoElement |                                                              |
+| createJEIArrowElement(x as int, y as int, direction as int)           | JEIArrowElement    | direction 参数为四个箭头，可填 0-3                            |
+| createJEICustomElement(x as int, y as int, width as int, height as int, u as int, v as int, texture as string) | JEICustomElement   | texture 的格式为 modid:路径                                    |
+
+## 例子
+
+```zenscript
+import mods.jei.JEI;
+import mods.randomtweaker.JEIPanel;
+
+var keyJEI as JEIPanel = JEI.createJEIPanel("keys", "key");
+keyJEI.setJEIBackGroup(JEI.createJEIBackground(150, 50));
+keyJEI.addRecipeCatalyst(<minecraft:stone:3>);
+keyJEI.addRecipeCatalyst(<minecraft:stone:1>);
+keyJEI.addJEISlot(JEI.createItemSlot(true, 16, 18));
+keyJEI.addJEISlot(JEI.createItemSlot(false, 80, 18));
+keyJEI.addJEIElement(JEI.createJEIFontInfoElement(50, 18,  "font", 0x000000));
+keyJEI.addJEIElement(JEI.createJEIFontInfoElement(100, 18, "fontInfo", 0x52575B));
+keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple>], [<minecraft:stone>]));
+keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:gold_ingot>], [<minecraft:stone>]));
+keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 4], [<minecraft:stone>]));
+keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 5], [<minecraft:stone>]));
+keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 6], [<minecraft:stone>]));
+keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 7], [<minecraft:stone>]));
+keyJEI.register();
+
+var keyJEI1 as JEIPanel = JEI.createJEIPanel("keys1", "key1");
+keyJEI1.setJEIBackGroup(JEI.createJEIBackground(150, 50));
+keyJEI1.addRecipeCatalyst(<minecraft:apple>);
+keyJEI1.addRecipeCatalyst(<minecraft:stick>);
+keyJEI1.addJEISlot(JEI.createItemSlot(true, 16, 18));
+keyJEI1.addJEISlot(JEI.createItemSlot(false, 50, 18));
+keyJEI1.addJEISlot(JEI.createLiquidSlot(true, 100, 18, 16, 34, 1000, false));
+keyJEI1.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 3, <liquid:water> * 100], [<minecraft:stick> * 20]));
+keyJEI1.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 3, <liquid:lava> * 100], [<minecraft:stick> * 20]));
+keyJEI1.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 3, <liquid:purified_water> * 100], [<minecraft:stick> * 20]));
+keyJEI1.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 3, <liquid:rubber> * 100], [<minecraft:stick> * 20]));
+keyJEI1.register();
+```
