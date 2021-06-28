@@ -11,6 +11,12 @@
 import mods.randomtweaker.PlayerSanityChangeEvent;
 ~~~
 
+## PlayerSanityChangeEvent
+
+`PlayerSanityChangeEvent` 事件实现了以下接口, 所以他们的 `methods` `getters` `setters` 都可以被调用
+
+[IEventCancelable](https://docs.blamejared.com/1.12/en/Vanilla/Events/Events/IEventCancelable/)
+
 | Getter  | 类型    |
 | :------------- | :------ |
 | player         | [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/) |
@@ -21,10 +27,4 @@ import mods.randomtweaker.PlayerSanityChangeEvent;
 
 | 事件                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| onPlayerSanityChange(function(event as PlayerSanityChangeEvent) {}); | 当玩家的理智值被修改的时候触发（原始理智值被修改不会被触发！！！） |
-
-## PlayerSanityChangeEvent
-
-`PlayerSanityChangeEvent` 事件实现了以下接口, 所以他们的 `methods` `getters` `setters` 都可以被调用
-
-[IEventCancelable](https://docs.blamejared.com/1.12/en/Vanilla/Events/Events/IEventCancelable/)
+| onPlayerSanityChange(function(event as PlayerSanityChangeEvent) {}) | 当玩家的理智值被修改的时候触发 (原始理智值被修改不会被触发 ! ! !) |

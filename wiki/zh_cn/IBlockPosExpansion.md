@@ -4,7 +4,7 @@
 
 | 方法                                             | 返回值      | 描述                               |
 | :----------------------------------------------- | :---------- | ---------------------------------- |
-| static getAllInBox(from as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/), to as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/)) | [IBlockPos[]](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) | 给出参数 IBlockPos 所框选中的所有位置 |
+| static getAllInBox(from as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/), to as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/)) | [IBlockPos[]](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) | 给出两个 pos 所框选中的所有位置 |
 | add(x as double, y as double, z as double)                | [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/)   | 将 pos 偏移指定的 xyz     |
 | add(x as int, y as int, z as int)                         | [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/)   | 将 pos 偏移指定的 xyz     |
 | up(Optional(1) n as int)                            | [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/)   | 将 pos 偏移至上方 n 格    |
