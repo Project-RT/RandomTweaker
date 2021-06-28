@@ -5,7 +5,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEIArrowElement")
+@ZenClass("mods.randomtweaker.jei.JEIArrowElement")
 public interface JEIArrowElement extends JEIElement {
 
     @ZenGetter("direction")

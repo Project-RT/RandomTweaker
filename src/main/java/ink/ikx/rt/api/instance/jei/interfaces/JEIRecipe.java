@@ -7,7 +7,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEIRecipe")
+@ZenClass("mods.randomtweaker.jei.JEIRecipe")
 public interface JEIRecipe {
 
     @ZenGetter("input")

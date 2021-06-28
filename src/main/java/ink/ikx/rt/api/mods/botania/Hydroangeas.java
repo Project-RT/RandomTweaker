@@ -9,7 +9,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author niyan
  */
-@ZenClass("mods.randomtweaker.Hydroangeas")
+@ZenClass("mods.randomtweaker.botania.Hydroangeas")
 public class Hydroangeas {
 
     @ZenMethod

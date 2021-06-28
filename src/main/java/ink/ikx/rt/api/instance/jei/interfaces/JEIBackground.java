@@ -5,7 +5,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEIBackground")
+@ZenClass("mods.randomtweaker.jei.JEIBackground")
 public interface JEIBackground {
 
     @ZenGetter("resourceName")

@@ -8,7 +8,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEISlot")
+@ZenClass("mods.randomtweaker.jei.JEISlot")
 public interface JEISlot {
 
     @ZenGetter("isInput")

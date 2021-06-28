@@ -5,7 +5,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEIFontInfoElement")
+@ZenClass("mods.randomtweaker.jei.JEIFontInfoElement")
 public interface JEIFontInfoElement extends JEIElement {
 
     @ZenGetter("info")

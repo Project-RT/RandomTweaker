@@ -6,7 +6,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEILiquidSlot")
+@ZenClass("mods.randomtweaker.jei.JEILiquidSlot")
 public interface JEILiquidSlot extends JEISlot {
 
     @ZenGetter("width")

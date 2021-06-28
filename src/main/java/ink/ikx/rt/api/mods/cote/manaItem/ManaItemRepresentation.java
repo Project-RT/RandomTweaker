@@ -10,7 +10,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
 /**
  * @author : superhelo
  */
-@ZenClass("mods.randomtweaker.ManaItem")
+@ZenClass("mods.randomtweaker.cote.ManaItem")
 public class ManaItemRepresentation extends ItemRepresentation {
 
     @ZenProperty

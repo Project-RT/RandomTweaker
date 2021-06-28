@@ -6,6 +6,6 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEIItemSlot")
+@ZenClass("mods.randomtweaker.jei.JEIItemSlot")
 public interface JEIItemSlot extends JEISlot {
 }

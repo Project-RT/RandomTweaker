@@ -9,7 +9,7 @@ import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.JEIPanel")
+@ZenClass("mods.randomtweaker.jei.JEIPanel")
 public interface JEIPanel {
 
     @ZenGetter("uid")

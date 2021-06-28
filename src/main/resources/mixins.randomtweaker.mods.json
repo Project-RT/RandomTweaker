@@ -6,6 +6,7 @@
   "target": "@env(DEFAULT)",
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
+    "MixinBlockAltar",
     "MixinBlockTFPortal",
     "MixinFTBUltimine",
     "MixinTemperatureHandler",
