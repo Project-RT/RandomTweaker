@@ -15,7 +15,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
  * @author : superhelo
  */
 
-@ZenClass("mods.randomtweaker.ManaBauble")
+@ZenClass("mods.randomtweaker.cote.ManaBauble")
 public class ManaBaubleRepresentation extends ManaItemRepresentation {
 
     @ZenProperty
@@ -52,6 +52,6 @@ public class ManaBaubleRepresentation extends ManaItemRepresentation {
 
     @Override
     public void register() {
-        ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleBContent(this));
+        ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this));
     }
 }

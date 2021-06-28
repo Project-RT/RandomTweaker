@@ -30,7 +30,7 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
  * @author : superhelo
  */
 @EventBusSubscriber(modid = RandomTweaker.MODID)
-public class ManaBaubleBContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable {
+public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable {
 
     public final OnWornTick onWornTick;
     public final OnEquipped onEquipped;
@@ -42,7 +42,7 @@ public class ManaBaubleBContent extends ManaItemContent implements IBauble, ICos
     private static final String TAG_PHANTOM_INK = "phantomInk";
     private static final String TAG_COSMETIC_ITEM = "cosmeticItem";
 
-    public ManaBaubleBContent(ManaBaubleRepresentation manaBauble) {
+    public ManaBaubleContent(ManaBaubleRepresentation manaBauble) {
         super(manaBauble);
         this.canEquip = manaBauble.canEquip;
         this.canUnequip = manaBauble.canUnequip;
@@ -62,7 +62,7 @@ public class ManaBaubleBContent extends ManaItemContent implements IBauble, ICos
             for (int i = 0; i < inv.getSlots(); i++) {
                 ItemStack stack = inv.getStackInSlot(i);
                 if (!stack.isEmpty() && stack.getItem().getRegistryName().getNamespace().equals("contenttweaker")) {
-                    ((ManaBaubleBContent) stack.getItem()).onUnequipped(stack, evt.getEntityLiving());
+                    ((ManaBaubleContent) stack.getItem()).onUnequipped(stack, evt.getEntityLiving());
                 }
             }
         }

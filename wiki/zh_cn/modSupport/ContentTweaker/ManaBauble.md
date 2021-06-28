@@ -7,7 +7,7 @@ hasCreative 为 true**)
 ## 导包
 
 ```zenscrtpt
-import mods.randomtweaker.ManaBauble;
+import mods.randomtweaker.cote.ManaBauble;
 ```
 
 | 函数 | 写法 | 返回值 | 描述 |
@@ -23,7 +23,7 @@ import mods.randomtweaker.ManaBauble;
 
 ```zenscript
 import mods.mods.contenttweaker.VanillaFactory;
-import mods.randomtweaker.ManaBauble;
+import mods.randomtweaker.cote.ManaBauble;
 import crafttweaker.player.IPlayer;
 
 var manaBauble as ManaBauble = VanillaFactory.createManaBauble("test_1", 500000);

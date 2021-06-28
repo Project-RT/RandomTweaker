@@ -6,7 +6,7 @@
 ## 导包
 
 ```zenscrtpt
-import mods.randomtweaker.ManaItem;
+import mods.randomtweaker.cote.ManaItem;
 ```
 
 | 字段        | 类型        | 描述         |
@@ -25,7 +25,7 @@ import mods.randomtweaker.ManaItem;
 
 ```zenscript
 import mods.mods.contenttweaker.VanillaFactory;
-import mods.randomtweaker.ManaItem;
+import mods.randomtweaker.cote.ManaItem;
 
 var manaItem as ManaItem = VanillaFactory.createManaItem("mana_item", 50000);
 manaItem.register();
