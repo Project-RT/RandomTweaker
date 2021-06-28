@@ -117,7 +117,7 @@ public class RandomTweaker {
 
     @EventHandler
     public void onInit(FMLInitializationEvent event) {
-        if (RTConfig.Botania.HydroangeasModified) {
+        if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
             registryHydroangeasModified();
             HydroangeasJEI.init();
         }
