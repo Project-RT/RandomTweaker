@@ -8,20 +8,20 @@ import mods.jei.JEI;
 
 | 方法                                                         | 返回值             | 备注                                                         |
 | :----------------------------------------------------------- | :----------------- | ------------------------------------------------------------ |
-| createJEIPanel(uid as string, localizationKey as string)           | JEIPanel           |                                                              |
-| createJEIBackground(width as int, height as int)                    | JEIBackground      |                                                              |
-| createJEIBackground(resourceName as string, u as int, v as int, width as int, height as int) | JEIBackground      |                                                              |
-| createLiquidSlot(isInput as bool, x as int, y as int, width as int, height as int, capacityMb as int, showCapacity as bool, @Optional(valueBoolean = true) hasBase as bool) | JEILiquidSlotImpl  | hasBase 为是否创建那个固定的流体槽, 但流体槽必须要根据固定的宽高创建 (eg：16 * 16，43 * 16， 16 * 34) |
-| createLiquidSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | JEILiquidSlotImpl  | hasBase 为是否创建那个固定的流体槽, 但流体槽必须要根据固定的宽高创建 |
-| createItemSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | JEIItemSlot        | hasBase 为是否创建那个固定的物品槽                          |
-| createJEIRecipe(inputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/), outputs as IIngredient[]) | JEIRecipe          |                                                              |
-| createJEIRecipe(inputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/))                        | JEIRecipe          |                                                              |
-| createJEIItemInputElement(x as int, y as int)                      | JEIItemElement     |                                                              |
-| createJEIItemOutputElement(x as int, y as int)                     | JEIItemElement     |                                                              |
-| createJEIFluidElement(x as int, y as int, width as int, height as int)    | JEIFluidElement    |                                                              |
-| createJEIFontInfoElement(x as int, y as int, info as string, color as int) | JEIFontInfoElement |                                                              |
-| createJEIArrowElement(x as int, y as int, direction as int)           | JEIArrowElement    | direction 参数为四个箭头，可填 0-3                            |
-| createJEICustomElement(x as int, y as int, width as int, height as int, u as int, v as int, texture as string) | JEICustomElement   | texture 的格式为 modid:路径                                    |
+| createJEIPanel(uid as string, localizationKey as string) | [JEIPanel](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIPanel.md) | |
+| createJEIBackground(width as int, height as int) | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIBackground.md) | |
+| createJEIBackground(resourceName as string, u as int, v as int, width as int, height as int) | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIBackground.md) |                                                              |
+| createLiquidSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | [JEILiquidSlot](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEISlot/JEILiquidSlot.md) | hasBase 为是否创建那个固定的流体槽 |
+| createLiquidSlot(isInput as bool, x as int, y as int, width as int, height as int, capacityMb as int, showCapacity as bool, @Optional(valueBoolean = true) hasBase as bool) | [JEILiquidSlot](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEISlot/JEILiquidSlot.md)  | hasBase 同上, 但流体槽必须要根据固定的宽高创建 (eg：16 * 16，43 * 16， 16 * 34) |
+| createItemSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | [JEIItemSlot](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEISlot/JEIItemSlot.md) | hasBase 为是否创建那个固定的物品槽 |
+| createJEIRecipe(inputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/), outputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)) | [JEIRecipe](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIRecipe.md) | |
+| createJEIRecipe(inputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)) | [JEIRecipe](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIRecipe.md) | |
+| createJEIItemInputElement(x as int, y as int) | [JEIItemElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIItemElement.md) | |
+| createJEIItemOutputElement(x as int, y as int) | [JEIItemElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIItemElement.md) | |
+| createJEIFluidElement(x as int, y as int, width as int, height as int) | [JEIFluidElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIFluidElement.md) | |
+| createJEIFontInfoElement(x as int, y as int, info as string, color as int) | [JEIFontInfoElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIFontInfoElement.md) | |
+| createJEIArrowElement(x as int, y as int, direction as int) | [JEIArrowElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIArrowElement.md) | direction 参数为四个箭头，可填 0-3 |
+| createJEICustomElement(x as int, y as int, width as int, height as int, u as int, v as int, texture as string) | [JEICustomElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEICustomElement.md) | texture 的格式为 modid:路径 |
 
 ## 例子
 
