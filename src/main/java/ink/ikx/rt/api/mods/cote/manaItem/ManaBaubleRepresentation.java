@@ -47,7 +47,7 @@ public class ManaBaubleRepresentation extends ManaItemRepresentation {
 
     @Override
     public String getTypeName() {
-        return "ManaRing";
+        return "ManaBauble";
     }
 
     @Override
