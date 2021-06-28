@@ -15,8 +15,8 @@ import stanhebben.zenscript.annotations.ZenProperty;
  * @author : superhelo
  */
 
-@ZenClass("mods.randomtweaker.cote.ManaRing")
-public class ManaRingRepresentation extends ManaItemRepresentation {
+@ZenClass("mods.randomtweaker.cote.ManaBauble")
+public class ManaBaubleRepresentation extends ManaItemRepresentation {
 
     @ZenProperty
     public OnWornTick onWornTick = null;
@@ -31,7 +31,7 @@ public class ManaRingRepresentation extends ManaItemRepresentation {
     @ZenProperty
     public WillAutoSync willAutoSync = null;
 
-    public ManaRingRepresentation(String unlocalizedName, int maxMana) {
+    public ManaBaubleRepresentation(String unlocalizedName, int maxMana) {
         super(unlocalizedName, maxMana);
     }
 
@@ -47,11 +47,11 @@ public class ManaRingRepresentation extends ManaItemRepresentation {
 
     @Override
     public String getTypeName() {
-        return "ManaRing";
+        return "ManaBauble";
     }
 
     @Override
     public void register() {
-        ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaRingContent(this));
+        ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this));
     }
 }
