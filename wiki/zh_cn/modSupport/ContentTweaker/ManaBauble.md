@@ -1,13 +1,13 @@
-# ManaRing
+# ManaBauble
 
 当同时加载了植物魔法和 CoT 时可以使 CoT 可以创建具有魔力 (Mana) 的饰品  
-因为 `ManaRing` 类继承 `ManaItem` 类所以 `ManaItem` 对象可用的所有功能也可用于 `ManaRing` 对象上 (**但是不会创建创造型戒指, 即使
+因为 `ManaBauble` 类继承 `ManaItem` 类所以 `ManaItem` 对象可用的所有功能也可用于 `ManaRing` 对象上 (**但是不会创建创造型饰品, 即使
 hasCreative 为 true**)
 
 ## 导包
 
 ```zenscrtpt
-import mods.randomtweaker.ManaRing;
+import mods.randomtweaker.ManaBauble;
 ```
 
 | 函数 | 写法 | 返回值 | 描述 |
@@ -23,17 +23,17 @@ import mods.randomtweaker.ManaRing;
 
 ```zenscript
 import mods.mods.contenttweaker.VanillaFactory;
+import mods.randomtweaker.ManaBauble;
 import crafttweaker.player.IPlayer;
-import mods.randomtweaker.ManaRing;
 
-var manaRing as ManaRing = VanillaFactory.createManaRing("test_1", 500000);
-manaRing.onWornTick = function(bauble, wearer) {
+var manaBauble as ManaBauble = VanillaFactory.createManaBauble("test_1", 500000);
+manaBauble.onWornTick = function(bauble, wearer) {
    if(wearer instanceof IPlayer) {
           var player as IPlayer = wearer;
           player.sendChat("1");
       }
 };
-manaRing.register();
+manaBauble.register();
 ```
 
 ## 本地化

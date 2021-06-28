@@ -39,7 +39,7 @@ public class ExpandVanillaFactory {
     }
 
     @ZenMethodStatic
-    public static ManaBaubleRepresentation createManaRing(String unlocalizedName, @Optional(valueLong = 500000) int maxMana) {
+    public static ManaBaubleRepresentation createManaBauble(String unlocalizedName, @Optional(valueLong = 500000) int maxMana) {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             return new ManaBaubleRepresentation(unlocalizedName, maxMana);
         } else {
