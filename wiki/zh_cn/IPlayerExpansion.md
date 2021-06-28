@@ -16,10 +16,11 @@
 | getSeenConstellations()     | string[] | 获取已看见的星座                     |
 
 ## FTBUltimine
+需在配置文件开启
 
-| 方法                                | 返回值 |
-| :---------------------------------- | :----- |
-| isAllowFTBUltimine(isAllow as bool) | void   |
+| 方法                                | 返回值 |描述|
+| :---------------------------------- | :----- |-----------------------------------|
+| isAllowFTBUltimine(isAllow as bool) | void   |是否允许玩家使用ftbu连锁|
 
 ## MatterOverdrive
 
