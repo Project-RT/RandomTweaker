@@ -3,8 +3,8 @@ package ink.ikx.rt.api.mods.cote;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
+import ink.ikx.rt.api.mods.cote.manaItem.ManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.cote.manaItem.ManaItemRepresentation;
-import ink.ikx.rt.api.mods.cote.manaItem.ManaRingRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionTypeRepresentation;
 import net.minecraftforge.fml.common.Loader;
@@ -39,9 +39,9 @@ public class ExpandVanillaFactory {
     }
 
     @ZenMethodStatic
-    public static ManaRingRepresentation createManaRing(String unlocalizedName, @Optional(valueLong = 500000) int maxMana) {
+    public static ManaBaubleRepresentation createManaRing(String unlocalizedName, @Optional(valueLong = 500000) int maxMana) {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
-            return new ManaRingRepresentation(unlocalizedName, maxMana);
+            return new ManaBaubleRepresentation(unlocalizedName, maxMana);
         } else {
             CraftTweakerAPI.logError("You can only create a manaitem when both Botania and ContentTweaker installed！");
             return null;
