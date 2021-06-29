@@ -6,6 +6,7 @@ import crafttweaker.api.player.IPlayer;
 import crafttweaker.zenscript.GlobalRegistry;
 import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
+import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.instance.utils.RTGlobal;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
@@ -28,8 +29,10 @@ import ink.ikx.rt.impl.jei.HydroangeasJEI;
 import ink.ikx.rt.impl.utils.ItemDs;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import net.minecraft.potion.Potion;
@@ -71,6 +74,7 @@ public class RandomTweaker {
     public static Logger logger;
     public static Set<ItemDs> itemDsSet = new HashSet<>();
     public static Set<JEIPanel> JEIPanelList = new HashSet<>();
+    public static List<JEIRecipe> JEIRecipeList = new ArrayList<>();
     public static Map<String, Potion> potionRegList = new HashMap<>();
     public static Map<String, PotionType> potionTypeList = new HashMap<>();
 

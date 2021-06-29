@@ -1,7 +1,6 @@
 package ink.ikx.rt.api.instance.jei;
 
 import crafttweaker.annotations.ZenRegister;
-import crafttweaker.api.item.IIngredient;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIBackground;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
@@ -62,13 +61,8 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
-    public static JEIRecipe createJEIRecipe(IIngredient[] inputs, IIngredient[] outputs) {
-        return new JEIRecipeImpl(inputs, outputs);
-    }
-
-    @ZenMethodStatic
-    public static JEIRecipe createJEIRecipe(IIngredient[] inputs) {
-        return new JEIRecipeImpl(inputs);
+    public static JEIRecipe createJEIRecipe(String uid) {
+        return new JEIRecipeImpl(uid);
     }
 
     //-------------------------------------------------------------------------------------------

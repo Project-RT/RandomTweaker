@@ -43,13 +43,21 @@ public class JEIPlugins implements IModPlugin {
         if (!RandomTweaker.JEIPanelList.isEmpty()) {
             for (JEIPanel p : RandomTweaker.JEIPanelList) {
                 List<DynamicRecipesWrapper> recipes = new ArrayList<>();
+                List<JEIRecipe> jeiRecipeList = new ArrayList<>();
                 for (IItemStack c : p.getRecipeCatalysts()) {
                     registry.addRecipeCatalyst(CraftTweakerMC.getItemStack(c), p.getUid());
                 }
-                for (JEIRecipe r : p.getJEIRecipes()) {
+                for (JEIRecipe jeiRecipe : RandomTweaker.JEIRecipeList) {
+                    if (jeiRecipe.getUid().equals(p.getUid())) {
+                        jeiRecipeList.add(jeiRecipe);
+                    }
+                }
+                for (JEIRecipe r : jeiRecipeList) {
                     recipes.add(new DynamicRecipesWrapper(r, p.getJEISlots(), p.getJEIElements()));
                 }
-                registry.addRecipes(recipes, p.getUid());
+                if (!jeiRecipeList.isEmpty()) {
+                    registry.addRecipes(recipes, p.getUid());
+                }
             }
         }
 

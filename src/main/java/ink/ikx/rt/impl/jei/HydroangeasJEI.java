@@ -1,6 +1,5 @@
 package ink.ikx.rt.impl.jei;
 
-import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.instance.jei.JEIExpansion;
@@ -8,8 +7,6 @@ import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
 import ink.ikx.rt.impl.botania.module.ModHydroangeas;
 import ink.ikx.rt.impl.jei.impl.JEIRecipeImpl;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -35,14 +32,13 @@ public class HydroangeasJEI {
         JH.addJEISlot(JEIExpansion.createItemSlot(true, 5, 33, false));
         JH.addJEISlot(JEIExpansion.createLiquidSlot(true, 77, 9, false));
         JH.addJEISlot(JEIExpansion.createLiquidSlot(true, 77, 34, false));
-        JH.setJEIRecipes(getHydroangeasRecipes().toArray(new JEIRecipe[0]));
+        getHydroangeasRecipes();
         if (!ModHydroangeas.blockFactorList.isEmpty()) {
             JH.register();
         }
     }
 
-    private static List<JEIRecipeImpl> getHydroangeasRecipes() {
-        List<JEIRecipeImpl> jeiRecipes = new ArrayList<>();
+    private static void getHydroangeasRecipes() {
         for (Map.Entry<IItemStack, Double> entry : ModHydroangeas.blockFactorList.entrySet()) {
             for (ModHydroangeas.HydroangeasHandler handler : ModHydroangeas.handlerList) {
                 IItemStack blockBelow = entry.getKey();
@@ -50,15 +46,14 @@ public class HydroangeasJEI {
                     FluidRegistry.lookupFluidForBlock(handler.getBlockLiquid()), 1000);
                 FluidStack fluidFactor = new FluidStack(
                     FluidRegistry.lookupFluidForBlock(ModHydroangeas.fluidFactor), 1000);
-                IIngredient[] input = new IIngredient[]{
-                    CraftTweakerMC.getIIngredient(blockInput),
-                    CraftTweakerMC.getIIngredient(fluidFactor),
-                    blockBelow
-                };
-                jeiRecipes.add(new JEIRecipeImpl(input));
+
+                JEIRecipe jeiRecipe = new JEIRecipeImpl("randomtweaker.jei_hydroangeas");
+                jeiRecipe.addInput(CraftTweakerMC.getIIngredient(blockInput))
+                    .addInput(CraftTweakerMC.getIIngredient(fluidFactor))
+                    .addInput(blockBelow)
+                    .build();
             }
         }
-        return jeiRecipes;
     }
 
 }

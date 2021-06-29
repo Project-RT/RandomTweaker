@@ -33,9 +33,6 @@ public interface JEIPanel {
     @ZenGetter("JEISlots")
     JEISlot[] getJEISlots();
 
-    @ZenGetter("JEIRecipes")
-    JEIRecipe[] getJEIRecipes();
-
     @ZenGetter("JEIElements")
     JEIElement[] getJEIElements();
 
@@ -58,9 +55,6 @@ public interface JEIPanel {
     void setJEISlots(JEISlot[] JEISlots);
 
     @ZenMethod
-    void setJEIRecipes(JEIRecipe[] JEIRecipes);
-
-    @ZenMethod
     void setJEIElements(JEIElement[] JEIElements);
 
     @ZenMethod
@@ -68,9 +62,6 @@ public interface JEIPanel {
 
     @ZenMethod
     void addRecipeCatalyst(IItemStack recipeCatalyst);
-
-    @ZenMethod
-    void addJEIRecipe(JEIRecipe JEIRecipe);
 
     @ZenMethod
     void addJEIElement(JEIElement JEIElement);
