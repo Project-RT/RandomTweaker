@@ -36,7 +36,6 @@ keyJEI.addJEISlot(JEI.createItemSlot(true, 16, 18));
 keyJEI.addJEISlot(JEI.createItemSlot(false, 80, 18));
 keyJEI.addJEIElement(JEI.createJEIFontInfoElement(50, 18,  "font", 0x000000));
 keyJEI.addJEIElement(JEI.createJEIFontInfoElement(100, 18, "fontInfo", 0x52575B));
-keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple>], [<minecraft:stone>]));
 keyJEI.register();
 
 var keyJEI1 as JEIPanel = JEI.createJEIPanel("keys1", "key1");
