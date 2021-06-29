@@ -22,10 +22,10 @@ public interface JEIRecipe {
     @ZenMethod
     void setOutputs(IIngredient[] outputs);
 
-    @ZenGetter
+    @ZenGetter("uid")
     String getUid();
 
-    @ZenGetter
+    @ZenMethod
     void setUid(String uid);
 
     @ZenMethod

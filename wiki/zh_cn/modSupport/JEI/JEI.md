@@ -14,8 +14,7 @@ import mods.jei.JEI;
 | createLiquidSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | [JEILiquidSlot](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEISlot/JEILiquidSlot.md) | hasBase 为是否创建那个固定的流体槽 |
 | createLiquidSlot(isInput as bool, x as int, y as int, width as int, height as int, capacityMb as int, showCapacity as bool, @Optional(valueBoolean = true) hasBase as bool) | [JEILiquidSlot](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEISlot/JEILiquidSlot.md)  | hasBase 同上, 但流体槽必须要根据固定的宽高创建 (eg：16 * 16，43 * 16， 16 * 34) |
 | createItemSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | [JEIItemSlot](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEISlot/JEIItemSlot.md) | hasBase 为是否创建那个固定的物品槽 |
-| createJEIRecipe(inputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/), outputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)) | [JEIRecipe](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIRecipe.md) | |
-| createJEIRecipe(inputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)) | [JEIRecipe](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIRecipe.md) | |
+| createJEIRecipe(uid as string) | [JEIRecipe](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIRecipe.md) | |
 | createJEIItemInputElement(x as int, y as int) | [JEIItemElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIItemElement.md) | |
 | createJEIItemOutputElement(x as int, y as int) | [JEIItemElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIItemElement.md) | |
 | createJEIFluidElement(x as int, y as int, width as int, height as int) | [JEIFluidElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIFluidElement.md) | |
@@ -38,11 +37,6 @@ keyJEI.addJEISlot(JEI.createItemSlot(false, 80, 18));
 keyJEI.addJEIElement(JEI.createJEIFontInfoElement(50, 18,  "font", 0x000000));
 keyJEI.addJEIElement(JEI.createJEIFontInfoElement(100, 18, "fontInfo", 0x52575B));
 keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple>], [<minecraft:stone>]));
-keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:gold_ingot>], [<minecraft:stone>]));
-keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 4], [<minecraft:stone>]));
-keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 5], [<minecraft:stone>]));
-keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 6], [<minecraft:stone>]));
-keyJEI.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 7], [<minecraft:stone>]));
 keyJEI.register();
 
 var keyJEI1 as JEIPanel = JEI.createJEIPanel("keys1", "key1");
@@ -52,9 +46,5 @@ keyJEI1.addRecipeCatalyst(<minecraft:stick>);
 keyJEI1.addJEISlot(JEI.createItemSlot(true, 16, 18));
 keyJEI1.addJEISlot(JEI.createItemSlot(false, 50, 18));
 keyJEI1.addJEISlot(JEI.createLiquidSlot(true, 100, 18, 16, 34, 1000, false));
-keyJEI1.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 3, <liquid:water> * 100], [<minecraft:stick> * 20]));
-keyJEI1.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 3, <liquid:lava> * 100], [<minecraft:stick> * 20]));
-keyJEI1.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 3, <liquid:purified_water> * 100], [<minecraft:stick> * 20]));
-keyJEI1.addJEIRecipe(JEI.createJEIRecipe([<minecraft:apple> * 3, <liquid:rubber> * 100], [<minecraft:stick> * 20]));
 keyJEI1.register();
 ```
