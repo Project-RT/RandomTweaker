@@ -2,12 +2,7 @@ package ink.ikx.rt.api.mods.cote.manaItem;
 
 import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
-import ink.ikx.rt.api.mods.cote.function.CanEquip;
-import ink.ikx.rt.api.mods.cote.function.CanUnequip;
-import ink.ikx.rt.api.mods.cote.function.OnEquipped;
-import ink.ikx.rt.api.mods.cote.function.OnUnequipped;
-import ink.ikx.rt.api.mods.cote.function.OnWornTick;
-import ink.ikx.rt.api.mods.cote.function.WillAutoSync;
+import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
@@ -19,17 +14,17 @@ import stanhebben.zenscript.annotations.ZenProperty;
 public class ManaBaubleRepresentation extends ManaItemRepresentation {
 
     @ZenProperty
-    public OnWornTick onWornTick = null;
+    public BaubleFunction onWornTick = null;
     @ZenProperty
-    public OnEquipped onEquipped = null;
+    public BaubleFunction onEquipped = null;
     @ZenProperty
-    public OnUnequipped onUnequipped = null;
+    public BaubleFunction onUnequipped = null;
     @ZenProperty
-    public CanEquip canEquip = null;
+    public BaubleFunction canEquip = null;
     @ZenProperty
-    public CanUnequip canUnequip = null;
+    public BaubleFunction canUnequip = null;
     @ZenProperty
-    public WillAutoSync willAutoSync = null;
+    public BaubleFunction willAutoSync = null;
 
     public ManaBaubleRepresentation(String unlocalizedName, int maxMana) {
         super(unlocalizedName, maxMana);

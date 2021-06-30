@@ -5,12 +5,8 @@ import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.RandomTweaker;
-import ink.ikx.rt.api.mods.cote.function.CanEquip;
-import ink.ikx.rt.api.mods.cote.function.CanUnequip;
-import ink.ikx.rt.api.mods.cote.function.OnEquipped;
-import ink.ikx.rt.api.mods.cote.function.OnUnequipped;
-import ink.ikx.rt.api.mods.cote.function.OnWornTick;
-import ink.ikx.rt.api.mods.cote.function.WillAutoSync;
+import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
+import java.util.Objects;
 import javax.annotation.Nonnull;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -32,12 +28,12 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 @EventBusSubscriber(modid = RandomTweaker.MODID)
 public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable {
 
-    public final OnWornTick onWornTick;
-    public final OnEquipped onEquipped;
-    public final OnUnequipped onUnequipped;
-    public final CanEquip canEquip;
-    public final CanUnequip canUnequip;
-    public final WillAutoSync willAutoSync;
+    public final BaubleFunction onWornTick;
+    public final BaubleFunction onEquipped;
+    public final BaubleFunction onUnequipped;
+    public final BaubleFunction canEquip;
+    public final BaubleFunction canUnequip;
+    public final BaubleFunction willAutoSync;
 
     private static final String TAG_PHANTOM_INK = "phantomInk";
     private static final String TAG_COSMETIC_ITEM = "cosmeticItem";
@@ -61,7 +57,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
             IItemHandler inv = BaublesApi.getBaublesHandler((EntityPlayer) evt.getEntityLiving());
             for (int i = 0; i < inv.getSlots(); i++) {
                 ItemStack stack = inv.getStackInSlot(i);
-                if (!stack.isEmpty() && stack.getItem().getRegistryName().getNamespace().equals("contenttweaker")) {
+                if (!stack.isEmpty() && Objects.requireNonNull(stack.getItem().getRegistryName()).getNamespace().equals("contenttweaker")) {
                     ((ManaBaubleContent) stack.getItem()).onUnequipped(stack, evt.getEntityLiving());
                 }
             }
@@ -152,11 +148,9 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
     @Override
     public void setCosmeticItem(ItemStack stack, ItemStack cosmetic) {
-        NBTTagCompound cmp = new NBTTagCompound();
         if (!cosmetic.isEmpty()) {
-            cmp = cosmetic.writeToNBT(cmp);
+            ItemNBTHelper.setCompound(stack, TAG_COSMETIC_ITEM, cosmetic.writeToNBT(new NBTTagCompound()));
         }
-        ItemNBTHelper.setCompound(stack, TAG_COSMETIC_ITEM, cmp);
     }
 
     @Override
