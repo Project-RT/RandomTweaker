@@ -11,6 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -25,7 +26,7 @@ public class Render {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void onRenderGameOverlayPost(RenderGameOverlayEvent.Post event) {
-        if (RTConfig.RandomTweaker.PlayerSanity) {
+        if (RTConfig.RandomTweaker.PlayerSanity && ElementType.ALL.equals(event.getType())) {
             Minecraft mc = Minecraft.getMinecraft();
             Entity entity = mc.getRenderViewEntity();
             if (entity instanceof EntityPlayer) {
@@ -34,28 +35,19 @@ public class Render {
                 float result = sanityCap.getSanity() / sanityCap.getOriginalSanity();
 
                 ScaledResolution resolution = event.getResolution();
-                float width = getWidth(resolution.getScaledWidth()), height = getHeigh(
-                    resolution.getScaledHeight());
+                float width = getWidth(resolution.getScaledWidth()), height = getHeigh(resolution.getScaledHeight());
 
                 GlStateManager.enableBlend();
                 mc.getTextureManager().bindTexture(TEXTURE);
 
                 if (result <= 0.25f || sanityCap.getSanity() == 0) {
-                    mc.ingameGUI
-                        .drawTexturedModalRect(width, height, 0, 0,
-                            32, 32);
+                    mc.ingameGUI.drawTexturedModalRect(width, height, 0, 0, 32, 32);
                 } else if (result <= 0.5f) {
-                    mc.ingameGUI
-                        .drawTexturedModalRect(width, height, 0, 32,
-                            32, 32);
+                    mc.ingameGUI.drawTexturedModalRect(width, height, 0, 32, 32, 32);
                 } else if (result <= 0.75f) {
-                    mc.ingameGUI
-                        .drawTexturedModalRect(width, height, 0, 64,
-                            32, 32);
+                    mc.ingameGUI.drawTexturedModalRect(width, height, 0, 64, 32, 32);
                 } else {
-                    mc.ingameGUI
-                        .drawTexturedModalRect(width, height, 0, 96,
-                            32, 32);
+                    mc.ingameGUI.drawTexturedModalRect(width, height, 0, 96, 32, 32);
                 }
             }
         }
