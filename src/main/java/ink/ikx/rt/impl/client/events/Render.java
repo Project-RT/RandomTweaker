@@ -20,8 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @EventBusSubscriber(modid = RandomTweaker.MODID)
 public class Render {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(
-        RandomTweaker.MODID + ":textures/gui/player_sanity.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(RandomTweaker.MODID + ":textures/gui/player_sanity.png");
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
@@ -30,8 +29,7 @@ public class Render {
             Minecraft mc = Minecraft.getMinecraft();
             Entity entity = mc.getRenderViewEntity();
             if (entity instanceof EntityPlayer) {
-                PlayerSanityCapability sanityCap = PlayerSanityHelper
-                    .getPlayerSanity((EntityPlayer) entity);
+                PlayerSanityCapability sanityCap = PlayerSanityHelper.getPlayerSanity((EntityPlayer) entity);
                 float result = sanityCap.getSanity() / sanityCap.getOriginalSanity();
 
                 ScaledResolution resolution = event.getResolution();
