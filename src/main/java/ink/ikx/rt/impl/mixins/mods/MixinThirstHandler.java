@@ -19,7 +19,7 @@ import toughasnails.thirst.ThirstHandler;
 @Mixin(value = ThirstHandler.class, remap = false)
 public class MixinThirstHandler {
 
-    @Inject(method = "update", at = @At(value = "HEAD", target = "Ltoughasnails/thirst/ThirstHandler;update(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/world/World;Lnet/minecraftforge/fml/common/gameevent/TickEvent$Phase;)V"), cancellable = true)
+    @Inject(method = "update", at = @At(value = "HEAD"), cancellable = true)
     public void injectUpdate(EntityPlayer player, World world, TickEvent.Phase phase, CallbackInfo ci) {
         if (IMatterOverdriveAndroid.isPlayerAndroid(player)) {
             if (RTConfig.ToughAsNails.AndroidThirst && !RTConfig.ToughAsNails.SelectedStatsThirst) {

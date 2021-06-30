@@ -23,7 +23,7 @@ public abstract class MixinEntityItem extends Entity {
         super(worldIn);
     }
 
-    @Inject(method = "attackEntityFrom", at = @At(value = "HEAD", target = "Lnet/minecraft/entity/item/EntityItem;attackEntityFrom(Lnet/minecraft/util/DamageSource;F)Z"), cancellable = true)
+    @Inject(method = "attackEntityFrom", at = @At(value = "HEAD"), cancellable = true)
     public void injectAttackEntityFrom(DamageSource source, float amount,
         CallbackInfoReturnable<Boolean> cir) {
         if (!this.world.isRemote && !this.isDead && !this.isEntityInvulnerable(source)) {

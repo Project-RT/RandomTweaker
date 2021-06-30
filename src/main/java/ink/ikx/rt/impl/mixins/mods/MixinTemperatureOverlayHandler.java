@@ -18,7 +18,7 @@ import toughasnails.handler.temperature.TemperatureOverlayHandler;
 @Mixin(value = TemperatureOverlayHandler.class, remap = false)
 public class MixinTemperatureOverlayHandler {
 
-    @Inject(method = "onPostRenderOverlay", at = @At(value = "HEAD", target = "Ltoughasnails/handler/temperature/TemperatureOverlayHandler;onPostRenderOverlay(Lnet/minecraftforge/client/event/RenderGameOverlayEvent$Post;)V"), cancellable = true)
+    @Inject(method = "onPostRenderOverlay", at = @At(value = "HEAD"), cancellable = true)
     public void injectOnPreRenderOverlay(RenderGameOverlayEvent.Post event, CallbackInfo ci) {
         if (IMatterOverdriveAndroid.isPlayerAndroid(Minecraft.getMinecraft().player)) {
             if (RTConfig.ToughAsNails.AndroidTemperature && !RTConfig.ToughAsNails.SelectedStatsTemperature) {

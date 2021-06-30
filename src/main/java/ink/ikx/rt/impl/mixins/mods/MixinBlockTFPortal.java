@@ -1,9 +1,9 @@
 package ink.ikx.rt.impl.mixins.mods;
 
-import ink.ikx.rt.impl.config.RTConfig;
 import crafttweaker.api.block.IBlock;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.mc1120.brackets.BracketHandlerLiquid;
+import ink.ikx.rt.impl.config.RTConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
@@ -61,7 +61,7 @@ public class MixinBlockTFPortal extends BlockBreakable {
      * @author ikexing
      * @reason Modify this portal to support other liquids
      */
-    @Overwrite(remap = false)
+    @Overwrite
     public boolean canFormPortal(IBlockState state) {
         return state == getLiquidState(RTConfig.TwilightForest.TFPortalLiquid) || state.getBlock() == this && state.getValue(DISALLOW_RETURN);
     }

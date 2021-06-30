@@ -19,7 +19,7 @@ import toughasnails.temperature.TemperatureHandler;
 @Mixin(value = TemperatureHandler.class, remap = false)
 public class MixinTemperatureHandler {
 
-    @Inject(method = "update", at = @At(value = "HEAD", target = "Ltoughasnails/temperature/TemperatureHandler;update(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/world/World;Lnet/minecraftforge/fml/common/gameevent/TickEvent$Phase;)V"), cancellable = true)
+    @Inject(method = "update", at = @At(value = "HEAD"), cancellable = true)
     public void injectUpdate(EntityPlayer player, World world, TickEvent.Phase phase, CallbackInfo ci) {
         if (IMatterOverdriveAndroid.isPlayerAndroid(player)) {
             if (RTConfig.ToughAsNails.AndroidTemperature && !RTConfig.ToughAsNails.SelectedStatsTemperature) {

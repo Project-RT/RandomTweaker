@@ -13,10 +13,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = FTBUltimine.class, remap = false)
 public class MixinFTBUltimine {
 
-    @Inject(method = "blockBroken", at = @At(value = "HEAD", target = "Lcom/feed_the_beast/mods/ftbultimine/FTBUltimine;blockBroken(Lnet/minecraftforge/event/world/BlockEvent$BreakEvent;)V"), cancellable = true)
+    @Inject(method = "blockBroken", at = @At(value = "HEAD"), cancellable = true)
     public void injectBlockBroken(BreakEvent event, CallbackInfo ci) {
-        if (!event.getPlayer().getTags().contains("allowFTBUltimine")
-            && RTConfig.FTBUltimine.AllowCrTControl) {
+        if (!event.getPlayer().getTags().contains("allowFTBUltimine") && RTConfig.FTBUltimine.AllowCrTControl) {
             ci.cancel();
         }
     }

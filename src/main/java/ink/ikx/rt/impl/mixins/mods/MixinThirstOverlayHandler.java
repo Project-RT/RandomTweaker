@@ -16,9 +16,9 @@ import toughasnails.handler.thirst.ThirstOverlayHandler;
  */
 @Pseudo
 @Mixin(value = ThirstOverlayHandler.class, remap = false)
-public class MixinThirstOverlayHandler {
+public class  MixinThirstOverlayHandler {
 
-    @Inject(method = "onPreRenderOverlay", at = @At(value = "HEAD", target = "Ltoughasnails/handler/thirst/ThirstOverlayHandler;onPreRenderOverlay(Lnet/minecraftforge/client/event/RenderGameOverlayEvent$Pre;)V"), cancellable = true)
+    @Inject(method = "onPreRenderOverlay", at = @At(value = "HEAD"), cancellable = true)
     public void injectOnPreRenderOverlay(RenderGameOverlayEvent.Pre event, CallbackInfo ci) {
         if (IMatterOverdriveAndroid.isPlayerAndroid(Minecraft.getMinecraft().player)) {
             if (RTConfig.ToughAsNails.AndroidThirst && !RTConfig.ToughAsNails.SelectedStatsThirst) {
