@@ -24,6 +24,10 @@ import mods.randomtweaker.jei.JEIRecipe
 |addInput | [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | 添加输入配方|
 |addOutput | [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | 添加输出配方|
 
+| 函数 | 写法 | 返回值 | 描述 |
+|:--- |:------- |---- | ------|
+| onJEITooltip | function(mouseX as int, mouseY as int)) | string[] | 为指定的地方添加新的提示, 此函数仅在当前配方被调用 (不会覆盖Item和Fluid)
+
 ## 例子
 
 ```zenscript
@@ -31,14 +35,19 @@ import mods.jei.JEI;
 import mods.randomtweaker.jei.JEIRecipe;
 
 JEI.createJEIRecipe("keys1")
-    .addInput(<ore:oreIron>)
-    .addInput(<liquid:water> * 1000)
-    .addOutput(<minecraft:stick>)
-    .build();
-
-JEI.createJEIRecipe("keys1")
     .addInput(<minecraft:apple>)
     .addInput(<liquid:lava> * 1000)
     .addOutput(<minecraft:diamond>)
-    .build();    
+    .build();
+
+// ZenSetter的返回值必须为void，用链式调用会很难看，所以我建议如下
+var recipe as JEIRecipe = JEI.createJEIRecipe("keys1");
+recipe.addInput(<ore:oreIron>)
+recipe.addInput(<liquid:water> * 1000)
+recipe.addOutput(<minecraft:stick>);
+recipe.onJEITooltip = function(mouseX, mouseY){
+   var arr as string[] = ["test"];
+   return arr;
+};
+recipe.build();
 ```

@@ -37,9 +37,6 @@ public interface JEIPanel {
     @ZenGetter("JEIElements")
     JEIElement[] getJEIElements();
 
-    @ZenGetter("JEITooltip")
-    JEITooltip getJEITooltip();
-
     @ZenSetter("onJEITooltip")
     void setJEITooltip(JEITooltip JEITooltip);
 
@@ -75,5 +72,7 @@ public interface JEIPanel {
 
     @ZenMethod
     void register();
+
+    JEITooltip getJEITooltip();
 
 }

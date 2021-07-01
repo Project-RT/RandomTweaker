@@ -45,5 +45,11 @@ keyJEI1.addRecipeCatalyst(<minecraft:stick>);
 keyJEI1.addJEISlot(JEI.createItemSlot(true, 16, 18));
 keyJEI1.addJEISlot(JEI.createItemSlot(false, 50, 18));
 keyJEI1.addJEISlot(JEI.createLiquidSlot(true, 100, 18, 16, 34, 1000, false));
+keyJEI1.onJEITooltip = function(mouseX, mouseY){
+    var arr as string[] = ["test"];
+    if (mouseX == 50 && mouseY == 50){
+        return arr;
+    }
+};
 keyJEI1.register();
 ```

@@ -7,6 +7,7 @@
 ~~~zenscript
 import mods.randomtweaker.jei.JEIPanel;
 ~~~
+例子请参考 [Custom JEI](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEI.md)
 
 | ZenGetter       | 返回值        |
 | :-------------- | :------------ |
@@ -35,3 +36,7 @@ import mods.randomtweaker.jei.JEIPanel;
 | addJEIRecipe(JEIRecipe as [JEIRecipe](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIRecipe/JEIRecipe.md))                | void   | 添加配方                                               |
 | addJEIElement(JEIElement as [JEIElement](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md))             | void   | 添加元素                                               |
 | register()                                       | void   | 注册                                                   |
+
+| 函数 | 写法 | 返回值 | 描述 |
+|:--- |:------- |---- | ------|
+| onJEITooltip | function(mouseX as int, mouseY as int)) | string[] | 为指定的地方添加新的提示 (不会覆盖Item和Fluid)

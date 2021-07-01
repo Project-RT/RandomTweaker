@@ -11,9 +11,6 @@ import stanhebben.zenscript.annotations.ZenSetter;
 @ZenClass("mods.randomtweaker.jei.JEIRecipe")
 public interface JEIRecipe {
 
-    @ZenGetter("JEITooltip")
-    JEITooltip getJEITooltip();
-
     @ZenGetter("uid")
     String getUid();
 
@@ -43,4 +40,7 @@ public interface JEIRecipe {
 
     @ZenMethod
     void build();
+
+    JEITooltip getJEITooltip();
+
 }
