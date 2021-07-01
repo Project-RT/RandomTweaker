@@ -39,4 +39,4 @@ import mods.randomtweaker.jei.JEIPanel;
 
 | 函数 | 写法 | 返回值 | 描述 |
 |:--- |:------- |---- | ------|
-| onJEITooltip | function(mouseX as int, mouseY as int)) | string[] | 为指定的地方添加新的提示 (不会覆盖Item和Fluid)
+| onJEITooltip | function(mouseX as int, mouseY as int) | string[] | 为指定的地方添加新的提示 (不会覆盖Item和Fluid) |
