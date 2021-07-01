@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.instance.jei.interfaces;
+package ink.ikx.rt.api.instance.jei.interfaces.other;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
@@ -7,6 +7,7 @@ import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.ZenSetter;
 
 @ZenRegister
 @ZenClass("mods.randomtweaker.jei.JEIPanel")
@@ -35,6 +36,12 @@ public interface JEIPanel {
 
     @ZenGetter("JEIElements")
     JEIElement[] getJEIElements();
+
+    @ZenGetter("JEITooltip")
+    JEITooltip getJEITooltip();
+
+    @ZenSetter("onJEITooltip")
+    void setJEITooltip(JEITooltip JEITooltip);
 
     @ZenMethod
     void setModID(String modid);

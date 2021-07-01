@@ -1,12 +1,13 @@
-package ink.ikx.rt.impl.jei.impl;
+package ink.ikx.rt.impl.jei.impl.other;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.mc1120.brackets.BracketHandlerItem;
 import ink.ikx.rt.RandomTweaker;
-import ink.ikx.rt.api.instance.jei.interfaces.JEIBackground;
-import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
+import ink.ikx.rt.api.instance.jei.interfaces.other.JEIBackground;
+import ink.ikx.rt.api.instance.jei.interfaces.other.JEIPanel;
+import ink.ikx.rt.api.instance.jei.interfaces.other.JEITooltip;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +18,7 @@ public class JEIPanelImpl implements JEIPanel {
     public String uid;
     public String localizationKey;
     public JEIBackground JEIBackground;
+    public JEITooltip JEITooltip = null;
     public String modid = RandomTweaker.MODID;
     public List<JEISlot> JEISlots = new ArrayList<>();
     public List<JEIElement> JEIElements = new ArrayList<>();
@@ -66,6 +68,16 @@ public class JEIPanelImpl implements JEIPanel {
     @Override
     public JEIElement[] getJEIElements() {
         return this.JEIElements.toArray(new JEIElement[0]);
+    }
+
+    @Override
+    public JEITooltip getJEITooltip() {
+        return this.JEITooltip;
+    }
+
+    @Override
+    public void setJEITooltip(JEITooltip JEITooltip) {
+        this.JEITooltip = JEITooltip;
     }
 
     @Override

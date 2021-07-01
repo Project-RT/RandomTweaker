@@ -28,7 +28,7 @@ import mods.randomtweaker.jei.JEIRecipe
 
 ```zenscript
 import mods.jei.JEI;
-import mods.randomtweaker.jei.JEIRecipe
+import mods.randomtweaker.jei.JEIRecipe;
 
 JEI.createJEIRecipe("keys1")
     .addInput(<ore:oreIron>)

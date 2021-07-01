@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = Loader.class, remap = false, priority = 800)
-public abstract class   MixinLoader {
+public abstract class MixinLoader {
 
     @Shadow
     private List<ModContainer> mods;

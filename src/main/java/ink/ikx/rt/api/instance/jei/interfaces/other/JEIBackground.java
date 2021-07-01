@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.instance.jei.interfaces;
+package ink.ikx.rt.api.instance.jei.interfaces.other;
 
 import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;

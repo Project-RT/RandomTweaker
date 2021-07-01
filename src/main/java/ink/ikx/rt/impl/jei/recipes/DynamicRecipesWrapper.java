@@ -4,12 +4,13 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.api.instance.jei.interfaces.JEIRecipe;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
+import ink.ikx.rt.api.instance.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -24,6 +25,9 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
     private final JEISlot[] JEISlots;
     private final JEIElement[] JEIElements;
 
+    public List<List<FluidStack>> fluidStack = new ArrayList<>();
+    public List<List<ItemStack>> itemStack = new ArrayList<>();
+
     public DynamicRecipesWrapper(JEIRecipe JEIRecipe, JEISlot[] JEISlots, JEIElement[] JEIElements) {
         this.JEIElements = JEIElements;
         this.JEISlots = JEISlots;
@@ -32,32 +36,32 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
 
     @Override
     public void getIngredients(IIngredients ingredients) {
-        List<List<FluidStack>> inputFluidStack = new ArrayList<>();
-        List<List<ItemStack>> inputItemStack = new ArrayList<>();
-
-        List<List<FluidStack>> outputFluidStack = new ArrayList<>();
-        List<List<ItemStack>> outputItemStack = new ArrayList<>();
+        itemStack.clear();
+        fluidStack.clear();
 
         for (IIngredient i : JEIRecipe.getInputs()) {
             if (i.getLiquids().isEmpty()) {
-                inputItemStack.add(getItemStacks(i.getItems()));
+                itemStack.add(getItemStacks(i.getItems()));
             } else {
-                inputFluidStack.add(getFluidStacks(i.getLiquids()));
+                fluidStack.add(getFluidStacks(i.getLiquids()));
             }
         }
-        ingredients.setInputLists(VanillaTypes.ITEM, inputItemStack);
-        ingredients.setInputLists(VanillaTypes.FLUID, inputFluidStack);
+        ingredients.setInputLists(VanillaTypes.ITEM, itemStack);
+        ingredients.setInputLists(VanillaTypes.FLUID, fluidStack);
+
+        fluidStack.clear();
+        itemStack.clear();
 
         if (!(JEIRecipe.getOutputs().length == 0)) {
             for (IIngredient o : JEIRecipe.getOutputs()) {
                 if (o.getLiquids().isEmpty()) {
-                    outputItemStack.add(getItemStacks(o.getItems()));
+                    itemStack.add(getItemStacks(o.getItems()));
                 } else {
-                    outputFluidStack.add(getFluidStacks(o.getLiquids()));
+                    fluidStack.add(getFluidStacks(o.getLiquids()));
                 }
             }
-            ingredients.setOutputLists(VanillaTypes.ITEM, outputItemStack);
-            ingredients.setOutputLists(VanillaTypes.FLUID, outputFluidStack);
+            ingredients.setOutputLists(VanillaTypes.ITEM, itemStack);
+            ingredients.setOutputLists(VanillaTypes.FLUID, fluidStack);
         }
     }
 
@@ -71,6 +75,14 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
         for (JEIElement JEIElement : JEIElements) {
             JEIElement.Render(minecraft);
         }
+    }
+
+    @Override
+    public List<String> getTooltipStrings(int mouseX, int mouseY) {
+        if (Objects.nonNull(JEIRecipe.getJEITooltip())) {
+            return Arrays.asList(JEIRecipe.getJEITooltip().handler(mouseX, mouseY));
+        }
+        return IRecipeWrapper.super.getTooltipStrings(mouseX, mouseY);
     }
 
     private List<ItemStack> getItemStacks(List<IItemStack> stacks) {

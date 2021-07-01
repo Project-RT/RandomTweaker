@@ -2,13 +2,15 @@ package ink.ikx.rt.impl.jei.recipes;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.api.instance.jei.interfaces.JEIBackground;
-import ink.ikx.rt.api.instance.jei.interfaces.JEIPanel;
+import ink.ikx.rt.api.instance.jei.interfaces.other.JEIBackground;
+import ink.ikx.rt.api.instance.jei.interfaces.other.JEIPanel;
+import ink.ikx.rt.api.instance.jei.interfaces.other.JEITooltip;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEIItemSlot;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEILiquidSlot;
 import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -17,7 +19,6 @@ import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
-import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 
@@ -29,11 +30,13 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
     private final IDrawable BACKGROUND;
     private final IDrawable ICON;
     private final List<JEISlot> JEISlotList;
+    private final JEITooltip JEITooltip;
 
     public DynamicRecipesCategory(IGuiHelper guiHelper, JEIPanel JEIPanel) {
         JEIBackground JEIBackground = JEIPanel.getJEIBackground();
         UID = JEIPanel.getUid();
 
+        this.JEITooltip = JEIPanel.getJEITooltip();
         this.JEISlotList = Arrays.asList(JEIPanel.getJEISlots());
         this.JEI_PANEL = JEIPanel;
         this.ICON = guiHelper
@@ -99,5 +102,13 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         }
         group.set(ingredients);
         fGroup.set(ingredients);
+    }
+
+    @Override
+    public List<String> getTooltipStrings(int mouseX, int mouseY) {
+        if (Objects.nonNull(JEITooltip)) {
+            return Arrays.asList(JEITooltip.handler(mouseX, mouseY));
+        }
+        return IRecipeCategory.super.getTooltipStrings(mouseX, mouseY);
     }
 }
