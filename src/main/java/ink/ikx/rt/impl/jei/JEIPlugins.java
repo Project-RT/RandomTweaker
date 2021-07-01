@@ -53,7 +53,7 @@ public class JEIPlugins implements IModPlugin {
                     }
                 }
                 for (JEIRecipe r : jeiRecipeList) {
-                    recipes.add(new DynamicRecipesWrapper(r, p.getJEISlots(), p.getJEIElements()));
+                    recipes.add(new DynamicRecipesWrapper(r));
                 }
                 if (!jeiRecipeList.isEmpty()) {
                     registry.addRecipes(recipes, p.getUid());

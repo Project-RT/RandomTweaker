@@ -2,6 +2,7 @@ package ink.ikx.rt.impl.jei.recipes;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEIBackground;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEITooltip;
@@ -19,6 +20,7 @@ import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 
@@ -39,17 +41,13 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         this.JEITooltip = JEIPanel.getJEITooltip();
         this.JEISlotList = Arrays.asList(JEIPanel.getJEISlots());
         this.JEI_PANEL = JEIPanel;
-        this.ICON = guiHelper
-            .createDrawableIngredient(CraftTweakerMC.getItemStack(JEIPanel.getIcon()));
+        this.ICON = guiHelper.createDrawableIngredient(CraftTweakerMC.getItemStack(JEIPanel.getIcon()));
 
         if (null == JEIBackground.getResourceName() || JEIBackground.getResourceName().isEmpty()) {
-            this.BACKGROUND = guiHelper
-                .createBlankDrawable(JEIBackground.getWidth(), JEIBackground.getHeight());
+            this.BACKGROUND = guiHelper.createBlankDrawable(JEIBackground.getWidth(), JEIBackground.getHeight());
         } else {
             ResourceLocation location = new ResourceLocation(JEIBackground.getResourceName());
-            this.BACKGROUND = guiHelper
-                .createDrawable(location, JEIBackground.getU(), JEIBackground.getV(),
-                    JEIBackground.getWidth(), JEIBackground.getHeight());
+            this.BACKGROUND = guiHelper.createDrawable(location, JEIBackground.getU(), JEIBackground.getV(), JEIBackground.getWidth(), JEIBackground.getHeight());
         }
     }
 
@@ -110,5 +108,15 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
             return Arrays.asList(JEITooltip.handler(mouseX, mouseY));
         }
         return IRecipeCategory.super.getTooltipStrings(mouseX, mouseY);
+    }
+
+    @Override
+    public void drawExtras(Minecraft minecraft) {
+        for (JEISlot JEISlot : JEISlotList) {
+            JEISlot.Render(minecraft);
+        }
+        for (JEIElement JEIElement : JEI_PANEL.getJEIElements()) {
+            JEIElement.Render(minecraft);
+        }
     }
 }

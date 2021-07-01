@@ -6,7 +6,6 @@ import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEIRecipe;
-import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,15 +21,11 @@ import net.minecraftforge.fluids.FluidStack;
 public class DynamicRecipesWrapper implements IRecipeWrapper {
 
     private final JEIRecipe JEIRecipe;
-    private final JEISlot[] JEISlots;
-    private final JEIElement[] JEIElements;
 
     public List<List<FluidStack>> fluidStack = new ArrayList<>();
     public List<List<ItemStack>> itemStack = new ArrayList<>();
 
-    public DynamicRecipesWrapper(JEIRecipe JEIRecipe, JEISlot[] JEISlots, JEIElement[] JEIElements) {
-        this.JEIElements = JEIElements;
-        this.JEISlots = JEISlots;
+    public DynamicRecipesWrapper(JEIRecipe JEIRecipe) {
         this.JEIRecipe = JEIRecipe;
     }
 
@@ -66,13 +61,8 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
     }
 
     @Override
-    public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX,
-        int mouseY) {
-
-        for (JEISlot JEISlot : JEISlots) {
-            JEISlot.Render(minecraft);
-        }
-        for (JEIElement JEIElement : JEIElements) {
+    public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
+        for (JEIElement JEIElement : JEIRecipe.getJEIElements()) {
             JEIElement.Render(minecraft);
         }
     }

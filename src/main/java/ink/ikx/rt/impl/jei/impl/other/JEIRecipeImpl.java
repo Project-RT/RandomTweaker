@@ -3,6 +3,7 @@ package ink.ikx.rt.impl.jei.impl.other;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IIngredient;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEITooltip;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class JEIRecipeImpl implements JEIRecipe {
     public JEITooltip JEITooltip = null;
     public List<IIngredient> inputs = new ArrayList<>();
     public List<IIngredient> outputs = new ArrayList<>();
+    public List<JEIElement> JEIElements = new ArrayList<>();
 
     public JEIRecipeImpl(String uid) {
         this.uid = uid;
@@ -28,6 +30,11 @@ public class JEIRecipeImpl implements JEIRecipe {
     @Override
     public IIngredient[] getOutputs() {
         return outputs.toArray(new IIngredient[0]);
+    }
+
+    @Override
+    public JEIElement[] getJEIElements() {
+        return JEIElements.toArray(new JEIElement[0]);
     }
 
     @Override
@@ -55,6 +62,18 @@ public class JEIRecipeImpl implements JEIRecipe {
     @Override
     public JEIRecipe setUid(String uid) {
         this.uid = uid;
+        return this;
+    }
+
+    @Override
+    public JEIRecipe addJEIElement(JEIElement JEIElement) {
+        this.JEIElements.add(JEIElement);
+        return this;
+    }
+
+    @Override
+    public JEIRecipe setJEIElements(JEIElement[] JEIElements) {
+        this.JEIElements = Arrays.asList(JEIElements);
         return this;
     }
 
