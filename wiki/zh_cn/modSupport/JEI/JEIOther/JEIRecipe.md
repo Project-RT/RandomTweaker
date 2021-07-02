@@ -17,19 +17,16 @@ import mods.randomtweaker.jei.JEIRecipe
 | outputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | 获取当前配方的全部输出 |
 | JEIElements | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md) | 获取当前配方的渲染元素 |
 
-| 方法 | 形参 | 描述 | 
-|:---- | ---- | -----|
-|setUid | string | 修改创建时候的UID (但我想你基本用不到这个功能)|
-|setInputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | 设置配方的全部输入|
-|setOutputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | 设置配方的全部输出|
-|addInput | [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | 添加输入配方|
-|addOutput | [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | 添加输出配方|
-|addJEIElement | [JEIElement](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md) | 添加渲染元素 |
-|setJEIElements | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md) | 直接修改当前配方的渲染元素 |
-
-| 函数 | 写法 | 返回值 | 描述 |
-|:--- |:------- |---- | ------|
-| onJEITooltip | function(mouseX as int, mouseY as int) | string[] | 为指定的地方添加新的提示, 此函数仅在当前配方被调用 (不会覆盖Item和Fluid) |
+| 方法 | 形参 | 返回值| 描述 | 
+|:---- | ---- | -----| -----|
+|setUid | string | ``this`` | 修改创建时候的UID (但我想你基本用不到这个功能)|
+|setInputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | ``this`` | 设置配方的全部输入|
+|setOutputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | ``this`` | 设置配方的全部输出|
+|addInput | [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | ``this`` | 添加输入配方|
+|addOutput | [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)  | ``this``| 添加输出配方|
+|addJEIElement | [JEIElement](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md) | ``this`` | 添加渲染元素 |
+|setJEIElements | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md) | ``this`` | 直接修改当前配方的渲染元素 |
+|onJEITooltip | function(mouseX as int, mouseY as int) | string[] | 为指定的地方添加新的提示, 此函数仅在当前配方被调用 (不会覆盖Item和Fluid) |
 
 ## 例子
 
@@ -41,18 +38,16 @@ JEI.createJEIRecipe("keys1")
     .addInput(<minecraft:apple>)
     .addInput(<liquid:lava> * 1000)
     .addOutput(<minecraft:diamond>)
-    .addOutput(<minecraft:diamond>)
-    .addJEIElement(JEI.createJEIFontInfoElement(100, 18, "fontInfo", 0x52575B))
+    .addJEIElement(JEI.createJEIFontInfoElement(100, 8, "fontInfo", 0x52575B))
     .build();
 
-// ZenSetter的返回值必须为void，用链式调用会很难看，所以我建议如下
-var recipe as JEIRecipe = JEI.createJEIRecipe("keys1");
-recipe.addInput(<ore:oreIron>)
-recipe.addInput(<liquid:water> * 1000)
-recipe.addOutput(<minecraft:stick>);
-recipe.onJEITooltip = function(mouseX, mouseY){
-   var arr as string[] = ["test"];
-   return arr;
-};
-recipe.build();
+JEI.createJEIRecipe("keys1")
+    .addInput(<ore:oreIron>)
+    .addInput(<liquid:water> * 1000)
+    .addOutput(<minecraft:stick>)
+    .onJEITooltip(function(mouseX, mouseY){
+       var arr as string[] = ["test"];
+       return arr;
+    })
+    .build();
 ```

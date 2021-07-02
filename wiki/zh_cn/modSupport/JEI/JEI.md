@@ -18,7 +18,7 @@ import mods.jei.JEI;
 | createJEIItemInputElement(x as int, y as int) | [JEIItemElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIItemElement.md) | |
 | createJEIItemOutputElement(x as int, y as int) | [JEIItemElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIItemElement.md) | |
 | createJEIFluidElement(x as int, y as int, width as int, height as int) | [JEIFluidElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIFluidElement.md) | |
-| createJEIFontInfoElement(x as int, y as int, info as string, color as int) | [JEIFontInfoElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIFontInfoElement.md) | |
+| createJEIFontInfoElement(x as int, y as int, info as string, color as int, @Optional width as int, @Optional height as int) | [JEIFontInfoElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIFontInfoElement.md) | |
 | createJEIArrowElement(x as int, y as int, direction as int) | [JEIArrowElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIArrowElement.md) | direction 参数为四个箭头，可填 0-3 |
 | createJEICustomElement(x as int, y as int, width as int, height as int, u as int, v as int, texture as string) | [JEICustomElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEICustomElement.md) | texture 的格式为 modid:路径 |
 

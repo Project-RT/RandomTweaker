@@ -9,8 +9,8 @@ public class JEIFontInfoElementImpl extends JEIElementImpl implements JEIFontInf
     public String info;
     public int color;
 
-    public JEIFontInfoElementImpl(int x, int y, String info, int color) {
-        super(x, y, 0, 0);
+    public JEIFontInfoElementImpl(int x, int y, String info, int color, int width, int height) {
+        super(x, y, width, height);
         this.color = color;
         this.info = info;
     }

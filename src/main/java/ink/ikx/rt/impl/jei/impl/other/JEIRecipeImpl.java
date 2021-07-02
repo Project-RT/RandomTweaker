@@ -78,8 +78,9 @@ public class JEIRecipeImpl implements JEIRecipe {
     }
 
     @Override
-    public void setJEIRecipe(JEITooltip JEITooltip) {
+    public JEIRecipe onJEITooltip(JEITooltip JEITooltip) {
         this.JEITooltip = JEITooltip;
+        return this;
     }
 
     @Override

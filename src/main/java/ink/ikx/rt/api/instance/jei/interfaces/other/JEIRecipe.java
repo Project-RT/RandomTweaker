@@ -6,7 +6,6 @@ import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
-import stanhebben.zenscript.annotations.ZenSetter;
 
 @ZenRegister
 @ZenClass("mods.randomtweaker.jei.JEIRecipe")
@@ -30,8 +29,8 @@ public interface JEIRecipe {
     @ZenMethod
     JEIRecipe setUid(String uid);
 
-    @ZenSetter("onJEITooltip")
-    void setJEIRecipe(JEITooltip JEITooltip);
+    @ZenMethod
+    JEIRecipe onJEITooltip(JEITooltip JEITooltip);
 
     @ZenMethod
     JEIRecipe addJEIElement(JEIElement JEIElement);

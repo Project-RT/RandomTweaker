@@ -86,8 +86,8 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
-    public static JEIFontInfoElement createJEIFontInfoElement(int x, int y, String info, int color) {
-        return new JEIFontInfoElementImpl(x, y, info, color);
+    public static JEIFontInfoElement createJEIFontInfoElement(int x, int y, String info, int color, @Optional int width, @Optional int height) {
+        return new JEIFontInfoElementImpl(x, y, info, color, width, height);
     }
 
     @ZenMethodStatic
