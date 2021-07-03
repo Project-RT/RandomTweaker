@@ -2,17 +2,15 @@ package ink.ikx.rt;
 
 import com.google.common.collect.BiMap;
 import crafttweaker.CraftTweakerAPI;
-import crafttweaker.api.player.IPlayer;
-import crafttweaker.zenscript.GlobalRegistry;
 import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
-import ink.ikx.rt.api.instance.utils.RTGlobal;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
-import ink.ikx.rt.api.mods.cote.manaItem.ManaBaubleRepresentation;
-import ink.ikx.rt.api.mods.cote.manaItem.ManaItemRepresentation;
+import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
+import ink.ikx.rt.api.mods.cote.item.ManaBaubleRepresentation;
+import ink.ikx.rt.api.mods.cote.item.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
 import ink.ikx.rt.impl.botania.subtitle.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
@@ -79,13 +77,13 @@ public class RandomTweaker {
             if (RTConfig.Thaumcraft.DreamJournal) {
                 MinecraftForge.EVENT_BUS.register(DreamJournal.class);
             }
-            GlobalRegistry.registerGlobal("giverDreamJournl", GlobalRegistry.getStaticFunction(RTGlobal.class, "giverDreamJournl", IPlayer.class));
         }
 
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             CraftTweakerAPI.registerClass(ManaItemRepresentation.class);
             CraftTweakerAPI.registerClass(ManaBaubleRepresentation.class);
             CraftTweakerAPI.registerClass(BaubleFunction.class);
+            CraftTweakerAPI.registerClass(BaubleFunctionWithReturn.class);
         }
 
         if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {

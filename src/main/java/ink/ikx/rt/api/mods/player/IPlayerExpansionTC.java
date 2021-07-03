@@ -1,5 +1,6 @@
-package ink.ikx.rt.api.instance.utils;
+package ink.ikx.rt.api.mods.player;
 
+import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
@@ -10,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
-import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
@@ -18,8 +19,9 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.lib.utils.InventoryUtils;
 
 @ZenRegister
-@ZenClass("mods.randomtweaker.randomtweaker")
-public class RTGlobal {
+@ModOnly("thaumcraft")
+@ZenExpansion("crafttweaker.player.IPlayer")
+public class IPlayerExpansionTC {
 
     @ZenMethod
     public static void giverDreamJournl(IPlayer player) {

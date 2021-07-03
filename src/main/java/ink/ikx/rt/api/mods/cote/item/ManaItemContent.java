@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.manaItem;
+package ink.ikx.rt.api.mods.cote.item;
 
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemContent;
 import java.util.List;
@@ -57,6 +57,26 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
 
     public static boolean isStackCreative(ItemStack stack) {
         return ItemNBTHelper.getBoolean(stack, TAG_CREATIVE, false);
+    }
+
+    @Override
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> stacks) {
+        if (isInCreativeTab(tab)) {
+            stacks.add(new ItemStack(this));
+
+            if (this.hasCreative) {
+                ItemStack creative = new ItemStack(this);
+                setMana(creative, maxMana);
+                setStackCreative(creative);
+                stacks.add(creative);
+            }
+
+            if (this.hasFull) {
+                ItemStack fullPower = new ItemStack(this);
+                setMana(fullPower, maxMana);
+                stacks.add(fullPower);
+            }
+        }
     }
 
     @Override
@@ -146,25 +166,5 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
     @Override
     public int getRGBDurabilityForDisplay(ItemStack stack) {
         return MathHelper.hsvToRGB(getManaFractionForDisplay(stack) / 3.0F, 1.0F, 1.0F);
-    }
-
-    @Override
-    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> stacks) {
-        if (isInCreativeTab(tab)) {
-            stacks.add(new ItemStack(this));
-
-            if (this.hasCreative) {
-                ItemStack creative = new ItemStack(this);
-                setMana(creative, maxMana);
-                setStackCreative(creative);
-                stacks.add(creative);
-            }
-
-            if (this.hasFull) {
-                ItemStack fullPower = new ItemStack(this);
-                setMana(fullPower, maxMana);
-                stacks.add(fullPower);
-            }
-        }
     }
 }

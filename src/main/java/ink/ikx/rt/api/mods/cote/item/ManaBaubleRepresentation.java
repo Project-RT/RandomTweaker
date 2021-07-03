@@ -1,30 +1,32 @@
-package ink.ikx.rt.api.mods.cote.manaItem;
+package ink.ikx.rt.api.mods.cote.item;
 
 import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
+import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 /**
  * @author : superhelo
  */
-
 @ZenClass("mods.randomtweaker.cote.ManaBauble")
 public class ManaBaubleRepresentation extends ManaItemRepresentation {
 
     @ZenProperty
-    public BaubleFunction onWornTick = null;
+    public String baubleType;
     @ZenProperty
-    public BaubleFunction onEquipped = null;
+    public BaubleFunction onWornTick;
     @ZenProperty
-    public BaubleFunction onUnequipped = null;
+    public BaubleFunction onEquipped;
     @ZenProperty
-    public BaubleFunction canEquip = null;
+    public BaubleFunction onUnequipped;
     @ZenProperty
-    public BaubleFunction canUnequip = null;
+    public BaubleFunctionWithReturn canEquip;
     @ZenProperty
-    public BaubleFunction willAutoSync = null;
+    public BaubleFunctionWithReturn canUnEquip;
+    @ZenProperty
+    public BaubleFunctionWithReturn willAutoSync;
 
     public ManaBaubleRepresentation(String unlocalizedName, int maxMana) {
         super(unlocalizedName, maxMana);
