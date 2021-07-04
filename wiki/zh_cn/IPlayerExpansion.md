@@ -81,3 +81,10 @@
 | getSanity()                                   | float  | 获取现存理智值       |
 | setSanity(sanity as float, playSound as bool)    | void   | 修改理智值           |
 | updateSanity(sanity as float, playSound as bool) | void   | 更新理智值 (添加)   |
+
+## Thaumcraft
+
+| 方法                             | 返回值 | 描述             | 备注                                                |
+| :------------------------------- | :----- | ---------------- | --------------------------------------------------- |
+| giverDreamJournl() | void   | 给予玩家一本异梦 | 可配合 Config 选项和覆写 langkey 实现全新的神秘开局方式 |
+

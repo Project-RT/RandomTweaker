@@ -4,10 +4,10 @@ import crafttweaker.api.entity.IEntityLivingBase;
 import crafttweaker.api.item.IItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 
-@ZenClass("mods.randomtweaker.baubleFunction")
+@ZenClass("mods.randomtweaker.baubleFunctionWithReturn")
 @FunctionalInterface
-public interface BaubleFunction {
+public interface BaubleFunctionWithReturn {
 
-    void handle(IItemStack bauble, IEntityLivingBase wearer);
+    boolean handle(IItemStack bauble, IEntityLivingBase wearer);
 
 }

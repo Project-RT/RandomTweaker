@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.manaItem;
+package ink.ikx.rt.api.mods.cote.item;
 
 import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
@@ -16,11 +16,11 @@ public class ManaItemRepresentation extends ItemRepresentation {
     @ZenProperty
     public int maxMana;
     @ZenProperty
-    public boolean hasFull = false;
+    public boolean hasFull;
     @ZenProperty
-    public boolean isNoExport = false;
+    public boolean isNoExport;
     @ZenProperty
-    public boolean hasCreative = false;
+    public boolean hasCreative;
     @ZenProperty
     public boolean canExportManaToPool = true;
     @ZenProperty

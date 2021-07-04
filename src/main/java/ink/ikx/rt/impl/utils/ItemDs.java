@@ -1,7 +1,5 @@
 package ink.ikx.rt.impl.utils;
 
-import java.util.Objects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 

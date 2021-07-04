@@ -3,8 +3,8 @@ package ink.ikx.rt.api.mods.cote;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
-import ink.ikx.rt.api.mods.cote.manaItem.ManaBaubleRepresentation;
-import ink.ikx.rt.api.mods.cote.manaItem.ManaItemRepresentation;
+import ink.ikx.rt.api.mods.cote.item.ManaBaubleRepresentation;
+import ink.ikx.rt.api.mods.cote.item.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionTypeRepresentation;
 import net.minecraftforge.fml.common.Loader;
@@ -39,11 +39,13 @@ public class ExpandVanillaFactory {
     }
 
     @ZenMethodStatic
-    public static ManaBaubleRepresentation createManaBauble(String unlocalizedName, @Optional(valueLong = 500000) int maxMana) {
+    public static ManaBaubleRepresentation createManaBauble(String unlocalizedName, @Optional(valueLong = 500000) int maxMana, @Optional(value = "RING") String baubleType) {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
-            return new ManaBaubleRepresentation(unlocalizedName, maxMana);
+            ManaBaubleRepresentation manaBauble = new ManaBaubleRepresentation(unlocalizedName, maxMana);
+            manaBauble.baubleType = baubleType;
+            return manaBauble;
         } else {
-            CraftTweakerAPI.logError("You can only create a manaitem when both Botania and ContentTweaker installed！");
+            CraftTweakerAPI.logError("You can only create a manabauble when both Botania and ContentTweaker installed！");
             return null;
         }
     }
