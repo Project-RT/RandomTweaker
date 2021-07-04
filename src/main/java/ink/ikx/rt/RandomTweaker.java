@@ -17,6 +17,7 @@ import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
 import ink.ikx.rt.impl.client.network.PlayerSanityNetWork;
 import ink.ikx.rt.impl.config.RTConfig;
 import ink.ikx.rt.impl.events.DreamJournal;
+import ink.ikx.rt.impl.events.ManaBaubleEvent;
 import ink.ikx.rt.impl.item.SanityGem;
 import ink.ikx.rt.impl.jei.HydroangeasJEI;
 import ink.ikx.rt.impl.utils.ItemDs;
@@ -84,6 +85,7 @@ public class RandomTweaker {
             CraftTweakerAPI.registerClass(ManaBaubleRepresentation.class);
             CraftTweakerAPI.registerClass(BaubleFunction.class);
             CraftTweakerAPI.registerClass(BaubleFunctionWithReturn.class);
+            MinecraftForge.EVENT_BUS.register(ManaBaubleEvent.class);
         }
 
         if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
