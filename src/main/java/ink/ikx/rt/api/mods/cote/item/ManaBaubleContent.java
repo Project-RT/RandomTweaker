@@ -1,24 +1,16 @@
 package ink.ikx.rt.api.mods.cote.item;
 
 import baubles.api.BaubleType;
-import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
-import java.util.Objects;
 import javax.annotation.Nonnull;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.items.IItemHandler;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
@@ -26,7 +18,6 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 /**
  * @author : superhelo
  */
-@EventBusSubscriber(modid = RandomTweaker.MODID)
 public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable {
 
     public final BaubleType baubleType;
@@ -49,22 +40,6 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
         this.onUnequipped = manaBauble.onUnequipped;
         this.willAutoSync = manaBauble.willAutoSync;
         this.baubleType = BaubleType.valueOf(manaBauble.baubleType);
-    }
-
-    @SubscribeEvent
-    public static void onDeath(LivingDeathEvent evt) {
-        if (!evt.getEntityLiving().world.isRemote
-            && evt.getEntityLiving() instanceof EntityPlayer
-            && !evt.getEntityLiving().world.getGameRules().getBoolean("keepInventory")
-            && !((EntityPlayer) evt.getEntityLiving()).isSpectator()) {
-            IItemHandler inv = BaublesApi.getBaublesHandler((EntityPlayer) evt.getEntityLiving());
-            for (int i = 0; i < inv.getSlots(); i++) {
-                ItemStack stack = inv.getStackInSlot(i);
-                if (!stack.isEmpty() && Objects.requireNonNull(stack.getItem().getRegistryName()).getNamespace().equals("contenttweaker")) {
-                    ((ManaBaubleContent) stack.getItem()).onUnequipped(stack, evt.getEntityLiving());
-                }
-            }
-        }
     }
 
     @Override
