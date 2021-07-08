@@ -92,14 +92,6 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
     }
 
     @Override
-    public boolean canReceiveManaFromItem(ItemStack stack, ItemStack otherStack) {
-        if (baubleType != BaubleType.RING) {
-            return false;
-        }
-        return super.canReceiveManaFromItem(stack, otherStack);
-    }
-
-    @Override
     public void onWornTick(ItemStack baubleItem, EntityLivingBase wearer) {
         if (Objects.nonNull(onWornTick)) {
             onWornTick.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
