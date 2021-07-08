@@ -43,7 +43,7 @@ public class ClientProxy implements CommonProxy {
     }
 
     @Override
-    public void renderItem(IItemStack renderStack, String transformType) {
+    public void renderTrinket(IItemStack renderStack, String transformType) {
         GlStateManager.pushMatrix();
         Minecraft.getMinecraft().getRenderItem().renderItem(CraftTweakerMC.getItemStack(renderStack), ItemCameraTransforms.TransformType.valueOf(transformType));
         GlStateManager.popMatrix();

@@ -31,7 +31,7 @@ public class SeverProxy implements CommonProxy {
     }
 
     @Override
-    public void renderItem(IItemStack renderStack, String transformType) {
+    public void renderTrinket(IItemStack renderStack, String transformType) {
         throwException();
     }
 

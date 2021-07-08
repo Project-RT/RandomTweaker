@@ -20,7 +20,7 @@ public interface CommonProxy {
 
     void translateToChest();
 
-    void renderItem(IItemStack renderStack, String transformType);
+    void renderTrinket(IItemStack renderStack, String transformType);
 
     void bindTexture();
 
