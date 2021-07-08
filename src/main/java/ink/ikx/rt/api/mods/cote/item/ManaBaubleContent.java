@@ -186,7 +186,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
         @Override
         public boolean usesMana(ItemStack stack) {
-            if (!(this.getMana(stack) > 0)) {
+            if (this.getMana(stack) > 0) {
                 return false;
             }
             return useMana;
