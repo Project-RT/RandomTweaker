@@ -1,13 +1,14 @@
 # JEIArrowElement
 
-继承 `JEIElement`, 因此 `JEISlot` 的全部可用 `Getter` 都可被使用
+JEIArrowElement extends from `JEIElement`, so all available `Getters` of `JEISlot` can be used
 
-## 导包
+## Import
 
 ~~~zenscript
 import mods.randomtweaker.jei.JEIArrowElement;
 ~~~
 
-| ZenGetter | 返回值 | 备注                             |
+| ZenGetter | Return | Remarks                      |
 | :-------- | :----- | ------------------------------ |
-| direction | int    | direction 参数为四个箭头，可填 0-3 |
+| direction | int    | direction is four arrows, can be filled with 0-3 |
+

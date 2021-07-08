@@ -1,14 +1,14 @@
 # JEIFontInfoElement
 
-继承 `JEIElement`, 因此 `JEISlot` 的全部可用 `Getter` 都可被使用
+JEIFontInfoElement extends `JEIElement`, so that all available `Getters` of `JEISlot` can be used
 
-## 导包
+## Import
 
 ~~~zenscript
 import mods.randomtweaker.jei.JEIFontInfoElement;
 ~~~
 
-| ZenGetter | 返回值 |
+| ZenGetter | Return |
 | :-------- | :----- |
 | info      | string |
 | color     | int    |

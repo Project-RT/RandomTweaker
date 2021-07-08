@@ -1,13 +1,14 @@
 # Botania Modified
 
-允许水绣球消耗其他流体 (需在配置文件开启后才可使用)
+Allow hroangeas to consume other fluids (needs to be enabled in the configuration file).
 
 ```zenscript
 import mods.randomtweaker.botania.Hydroangeas;
 ```
 
-| 方法                                                         | 返回值 | 描述 |
+| Method                                                   | Return | Description |
 | :----------------------------------------------------------- | :----- | ----------- |
-| setFactor(factor as [ILiquidStack](https://docs.blamejared.com/1.12/en/Vanilla/Liquids/ILiquidStack/)) | void   | 设置流体类型的 Factor |
-| setBlockBelowFactor(factor as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), @Optional(2.0d) factor as double) | void | 设置方块类型的 Factor, 当其在水绣球的下方则可提升水绣球的产魔量 |
-| addManaRecipe(factor as [ILiquidStack](https://docs.blamejared.com/1.12/en/Vanilla/Liquids/ILiquidStack/), mana as int, @Optional(2.0d) extraMana as double) | void | 添加增加产魔配方, 当流体类型的 Factor 存在时, 水绣球的产魔量将乘以 extraMana |
+| setFactor(factor as [ILiquidStack](https://docs.blamejared.com/1.12/en/Vanilla/Liquids/ILiquidStack/)) | void   | Set the Factor of fluid |
+| setBlockBelowFactor(factor as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), @Optional(2.0d) factor as double) | void | Set the Factor of the block, when it‘s below hroangeas it will increase the 产魔量. |
+| addManaRecipe(factor as [ILiquidStack](https://docs.blamejared.com/1.12/en/Vanilla/Liquids/ILiquidStack/), mana as int, @Optional(2.0d) extraMana as double) | void | 添加增加产魔配方,When the factor of fluid is present, the 产魔量 of hroangeas will be multiplied by extraMana |
+

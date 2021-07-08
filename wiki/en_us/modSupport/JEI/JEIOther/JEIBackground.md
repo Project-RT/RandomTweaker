@@ -1,14 +1,14 @@
 # JEIBackground
 
-JEI 的背景设置, 可以只设置宽高
+JEI's background settings, you can set only the width and height
 
-导包：
+Import：
 
 ~~~zenscript
 import mods.randomtweaker.jei.JEIBackground;
 ~~~
 
-| ZenGetter    | 返回值 |
+| ZenGetter    | Return |
 | :----------- | :----- |
 | resourceName | string |
 | u            | int    |

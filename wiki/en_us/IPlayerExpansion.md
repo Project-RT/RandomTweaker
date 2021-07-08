@@ -1,6 +1,6 @@
 # IPlayer Expansion
 
-Extend the `IPlayer` class so that the `IPlayer` object can use the following fields and  `Method`.
+Extend `IPlayer` so that the `IPlayer` object can use the following fields and  `Method`.
 
 ## AstralSorcery
 

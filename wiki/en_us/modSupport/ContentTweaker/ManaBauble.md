@@ -12,7 +12,7 @@ import mods.randomtweaker.cote.ManaBauble;
 
 | 函数 | 写法 | 返回值 | 描述 |
 |:--- |:------- |---- | ------|
-| onWornTick | function(bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), wearer as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)) | void | 佩戴戒指之后每 Tick 调用
+| onWornTick | function(bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), wearer as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)) | void | 佩戴戒指之后每 Tick 调用  |
 | canEquip | function(bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), wearer as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)) | bool | 确认戒指是否可以佩戴 |
 | canUnequip | function(bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), wearer as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)) | bool | 确认戒指是否可以取消佩戴 |
 | onEquipped | function(bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), wearer as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)) | void | 佩戴戒指时调用 |
