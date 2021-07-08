@@ -4,6 +4,7 @@ import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
+import ink.ikx.rt.api.mods.cote.function.BaubleRender;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -30,6 +31,8 @@ public class ManaBaubleRepresentation extends ManaItemRepresentation {
     public BaubleFunctionWithReturn canUnEquip;
     @ZenProperty
     public BaubleFunctionWithReturn willAutoSync;
+    @ZenProperty
+    public BaubleRender onPlayerBaubleRender;
 
     public ManaBaubleRepresentation(String unlocalizedName, int maxMana, String baubleType) {
         super(unlocalizedName, maxMana);
@@ -78,8 +81,10 @@ public class ManaBaubleRepresentation extends ManaItemRepresentation {
     public void register() {
         if (baubleType.equals("TRINKET")) {
             ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this).new ManaTrinketContent(this));
-        } else {
+        } else if (baubleType.equals("RING")) {
             ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this));
+        } else {
+            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this).new ManaUsingItem(this));
         }
     }
 }

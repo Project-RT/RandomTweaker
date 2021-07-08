@@ -1,9 +1,32 @@
 package ink.ikx.rt.proxy;
 
-import net.minecraft.item.ItemStack;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.player.IPlayer;
+import ink.ikx.rt.api.mods.cote.function.BaubleRender;
 
-public class CommonProxy {
+public interface CommonProxy {
 
-    public void renderTrinket(ItemStack renderStack, double[] toScale, float[] toTranslate) {
-    }
+    void onPlayerBaubleRender(BaubleRender render, IItemStack stack, IPlayer player, String renderType, float partialTicks);
+
+    void rotateIfSneaking(IPlayer player);
+
+    void applySneakingRotation();
+
+    void translateToHeadLevel(IPlayer player);
+
+    void translateToFace();
+
+    void defaultTransforms();
+
+    void translateToChest();
+
+    void renderTrinket(IItemStack renderStack, String transformType);
+
+    void bindTexture();
+
+    void scale(double x, double y, double z);
+
+    void rotate(float angle, float x, float y, float z);
+
+    void translate(double x, double y, double z);
 }

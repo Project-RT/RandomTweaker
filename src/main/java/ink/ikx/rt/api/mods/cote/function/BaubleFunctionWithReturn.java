@@ -4,7 +4,7 @@ import crafttweaker.api.entity.IEntityLivingBase;
 import crafttweaker.api.item.IItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 
-@ZenClass("mods.randomtweaker.baubleFunctionWithReturn")
+@ZenClass("mods.randomtweaker.cote.BaubleFunctionWithReturn")
 @FunctionalInterface
 public interface BaubleFunctionWithReturn {
 
