@@ -2,7 +2,7 @@ package ink.ikx.rt.api.instance.render;
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
-import ink.ikx.rt.proxy.CommonProxy;
+import ink.ikx.rt.impl.proxy.CommonProxy;
 import net.minecraftforge.fml.common.SidedProxy;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -11,8 +11,8 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenClass("mods.randomtweaker.render.BaubleRenderHelper")
 public class BaubleRenderHelper {
 
-    @SidedProxy(clientSide = "ink.ikx.rt.proxy.ClientProxy",
-        serverSide = "ink.ikx.rt.proxy.SeverProxy")
+    @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy",
+        serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")
     public static CommonProxy proxy;
 
     @ZenMethod
