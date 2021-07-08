@@ -41,9 +41,7 @@ public class ExpandVanillaFactory {
     @ZenMethodStatic
     public static ManaBaubleRepresentation createManaBauble(String unlocalizedName, @Optional(valueLong = 500000) int maxMana, @Optional(value = "RING") String baubleType) {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
-            ManaBaubleRepresentation manaBauble = new ManaBaubleRepresentation(unlocalizedName, maxMana);
-            manaBauble.baubleType = baubleType;
-            return manaBauble;
+            return new ManaBaubleRepresentation(unlocalizedName, maxMana, baubleType);
         } else {
             CraftTweakerAPI.logError("You can only create a manabauble when both Botania and ContentTweaker installed！");
             return null;

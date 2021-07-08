@@ -57,7 +57,7 @@ dependencies {
     deobfCompile "curse.maven:Baubles-227083:2518667"
 
     runtime "curse.maven:mixin-booter-419286:3321174"
-    runtime "curse.maven:zenutils-401178:3303426"
+    runtime "curse.maven:zenutils-401178:3366128"
     runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
     runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
 

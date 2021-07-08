@@ -5,22 +5,31 @@ import baubles.api.IBauble;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
+import ink.ikx.rt.proxy.CommonProxy;
 import javax.annotation.Nonnull;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.fml.common.SidedProxy;
+import vazkii.botania.api.item.IBaubleRender;
 import vazkii.botania.api.item.ICosmeticAttachable;
+import vazkii.botania.api.item.ICosmeticBauble;
 import vazkii.botania.api.item.IPhantomInkable;
+import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
 /**
  * @author : superhelo
  */
-public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable {
+public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable, IManaUsingItem, IBaubleRender {
 
-    public final BaubleType baubleType;
+    @SidedProxy(clientSide = "ink.ikx.rt.proxy.ClientProxy",
+        serverSide = "ink.ikx.rt.proxy.SeverProxy")
+    public static CommonProxy proxy;
+    public boolean useMana;
     public final BaubleFunction onWornTick;
     public final BaubleFunction onEquipped;
     public final BaubleFunction onUnequipped;
@@ -30,9 +39,11 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
     private static final String TAG_PHANTOM_INK = "phantomInk";
     private static final String TAG_COSMETIC_ITEM = "cosmeticItem";
+    public BaubleType baubleType;
 
     public ManaBaubleContent(ManaBaubleRepresentation manaBauble) {
         super(manaBauble);
+        this.useMana = manaBauble.isUseMana();
         this.canEquip = manaBauble.canEquip;
         this.canUnEquip = manaBauble.canUnEquip;
         this.onWornTick = manaBauble.onWornTick;
@@ -53,6 +64,54 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
                 stacks.add(full);
             }
         }
+    }
+
+    @Override
+    public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
+        proxy.renderTrinket(stack, new double[]{1.25, 1.25, 1.25}, new float[]{0F, -0.085F, 0.045F});
+        /*
+        if(type == RenderType.HEAD) {
+            Helper.translateToHeadLevel(player);
+            Helper.translateToFace();
+            Helper.defaultTransforms();
+        } else {
+            Helper.rotateIfSneaking(player);
+            Helper.translateToChest();
+            Helper.defaultTransforms();
+        }
+         */
+    }
+
+    @Override
+    public BaubleType getBaubleType(ItemStack var1) {
+        if (baubleType != null) {
+            return baubleType;
+        }
+        return BaubleType.RING;
+    }
+
+    @Override
+    public boolean usesMana(ItemStack stack) {
+        if (!(this.getMana(stack) > 0)) {
+            return false;
+        }
+        return useMana;
+    }
+
+    @Override
+    public boolean canExportManaToItem(ItemStack stack, ItemStack otherStack) {
+        if (baubleType != BaubleType.RING) {
+            return false;
+        }
+        return super.canExportManaToItem(stack, otherStack);
+    }
+
+    @Override
+    public boolean canReceiveManaFromItem(ItemStack stack, ItemStack otherStack) {
+        if (baubleType != BaubleType.RING) {
+            return false;
+        }
+        return super.canReceiveManaFromItem(stack, otherStack);
     }
 
     @Override
@@ -101,11 +160,6 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
     }
 
     @Override
-    public BaubleType getBaubleType(ItemStack var1) {
-        return baubleType;
-    }
-
-    @Override
     public boolean hasPhantomInk(ItemStack stack) {
         return ItemNBTHelper.getBoolean(stack, TAG_PHANTOM_INK, false);
     }
@@ -142,5 +196,13 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
     @Override
     public ItemStack getContainerItem(@Nonnull ItemStack itemStack) {
         return getCosmeticItem(itemStack);
+    }
+
+    public class ManaTrinketContent extends ManaBaubleContent implements ICosmeticBauble {
+
+        public ManaTrinketContent(ManaBaubleRepresentation manaBauble) {
+            super(manaBauble);
+            this.baubleType = BaubleType.TRINKET;
+        }
     }
 }

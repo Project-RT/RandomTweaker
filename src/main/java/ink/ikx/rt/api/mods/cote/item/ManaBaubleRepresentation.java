@@ -5,6 +5,7 @@ import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
 import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 /**
@@ -13,6 +14,8 @@ import stanhebben.zenscript.annotations.ZenProperty;
 @ZenClass("mods.randomtweaker.cote.ManaBauble")
 public class ManaBaubleRepresentation extends ManaItemRepresentation {
 
+    @ZenProperty
+    public boolean useMana;
     @ZenProperty
     public String baubleType;
     @ZenProperty
@@ -28,8 +31,32 @@ public class ManaBaubleRepresentation extends ManaItemRepresentation {
     @ZenProperty
     public BaubleFunctionWithReturn willAutoSync;
 
-    public ManaBaubleRepresentation(String unlocalizedName, int maxMana) {
+    public ManaBaubleRepresentation(String unlocalizedName, int maxMana, String baubleType) {
         super(unlocalizedName, maxMana);
+        this.setBaubleType(baubleType);
+    }
+
+    @ZenMethod
+    public String getBaubleType() {
+        return baubleType;
+    }
+
+    @ZenMethod
+    public void setBaubleType(String baubleType) {
+        this.baubleType = baubleType;
+    }
+
+    @ZenMethod
+    public boolean isUseMana() {
+        if (baubleType.equals("RING") || baubleType.equals("TRINKET")) {
+            return false;
+        }
+        return useMana;
+    }
+
+    @ZenMethod
+    public void setUseMana(boolean useMana) {
+        this.useMana = useMana;
     }
 
     @Override
@@ -49,6 +76,10 @@ public class ManaBaubleRepresentation extends ManaItemRepresentation {
 
     @Override
     public void register() {
-        ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this));
+        if (baubleType.equals("TRINKET")) {
+            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this).new ManaTrinketContent(this));
+        } else {
+            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this));
+        }
     }
 }
