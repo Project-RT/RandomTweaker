@@ -4,6 +4,7 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.proxy.CommonProxy;
 import net.minecraftforge.fml.common.SidedProxy;
+import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -20,13 +21,8 @@ public class BaubleRenderHelper {
     }
 
     @ZenMethod
-    public static void renderTrinket(IItemStack renderStack) {
-        proxy.renderTrinket(renderStack, "NONE");
-    }
-
-    @ZenMethod
-    public static void renderTrinket(IItemStack renderStack, String transformType) {
-        proxy.renderTrinket(renderStack, transformType);
+    public static void renderItem(IItemStack renderStack, @Optional(value = "NONE") String transformType) {
+        proxy.renderItem(renderStack, transformType);
     }
 
     @ZenMethod
