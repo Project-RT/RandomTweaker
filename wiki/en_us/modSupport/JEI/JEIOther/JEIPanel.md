@@ -1,42 +1,43 @@
 # JEIPanel
 
-自定义 JEI 面板
+Custom JEI Panel
 
-## 导包
+## Import
 
 ~~~zenscript
 import mods.randomtweaker.jei.JEIPanel;
 ~~~
-例子请参考 [Custom JEI](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEI.md)
+For examples, please refer to [Custom JEI](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEI.md)
 
-| ZenGetter       | 返回值        |
-| :-------------- | :------------ |
-| uid             | string        |
-| localizationKey | string        |
-| modid           | string        |
-| icon            | [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)    |
+| ZenGetter       | Return                                                       |
+| :-------------- | :----------------------------------------------------------- |
+| uid             | string                                                       |
+| localizationKey | string                                                       |
+| modid           | string                                                       |
+| icon            | [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) |
 | JEIBackground   | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIBackground.md) |
-| recipeCatalysts | [IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)  |
-| JEISlots        | [JEISlot[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEISlot/JEISlot.md)     |
-| JEIRecipes      | [JEIRecipe[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIRecipe/JEIRecipe.md)   |
-| JEIElements     | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md)  |
+| recipeCatalysts | [IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) |
+| JEISlots        | [JEISlot[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEISlot/JEISlot.md) |
+| JEIRecipes      | [JEIRecipe[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIRecipe/JEIRecipe.md) |
+| JEIElements     | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md) |
 
-| 方法                                             | 返回值 | 备注                                                   |
-| :----------------------------------------------- | :----- | ------------------------------------------------------ |
-| setModID(modid as string)                           | void   | 显示的模组名                                           |
-| setIcon(icon as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/))                         | void   | 显示在最上面的物品                                     |
-| setJEIBackGroup(JEIBackground as [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIBackground.md))     | void   | 设置背景 (可以自定义图片)                             |
-| setJEIBackGroup(width as int, height as int)            | void   | 设置背景 (基本)                                       |
-| setRecipeCatalysts(recipeCatalysts as [IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | void   | 设置左侧显示的全部物品                                 |
-| setJEISlots(JEISlots as [JEISlot[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEISlot/JEISlot.md))                  | void   | 设置槽位                                               |
-| setJEIRecipes(JEIRecipes as [JEIRecipe[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIRecipe/JEIRecipe.md))            | void   | 设置配方 (必须要和配方对应，否则出任何问题不给予修复) |
-| setJEIElements(JEIElements as [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md))         | void   | 设置元素                                               |
-| addJEISlot(JEIISlot as [JEISlot](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEISlot/JEISlot.md))                     | void   | 添加槽位                                               |
-| addRecipeCatalyst(recipeCatalyst as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/))     | void   | 添加显示在左侧的物品                                   |
-| addJEIRecipe(JEIRecipe as [JEIRecipe](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIRecipe/JEIRecipe.md))                | void   | 添加配方                                               |
-| addJEIElement(JEIElement as [JEIElement](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md))             | void   | 添加元素                                               |
-| register()                                       | void   | 注册                                                   |
+| Method                                                       | Return | Remark                                                       |
+| :----------------------------------------------------------- | :----- | ------------------------------------------------------------ |
+| setModID(modid as string)                                    | void   | As the name implies                                          |
+| setIcon(icon as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | void   | As the name implies                                          |
+| setJEIBackGroup(JEIBackground as [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIBackground.md)) | void   | As the name implies (Customizable image)                     |
+| setJEIBackGroup(width as int, height as int)                 | void   | As the name implies(Height and width only)                   |
+| setRecipeCatalysts(recipeCatalysts as [IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | void   | Set all items displayed on the left                          |
+| setJEISlots(JEISlots as [JEISlot[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEISlot/JEISlot.md)) | void   | As the name implies                                          |
+| setJEIRecipes(JEIRecipes as [JEIRecipe[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIRecipe/JEIRecipe.md)) | void   | As the name implies (Must correspond with the recipe, otherwise any problems will not be given to repair) |
+| setJEIElements(JEIElements as [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md)) | void   | As the name implies                                          |
+| addJEISlot(JEIISlot as [JEISlot](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEISlot/JEISlot.md)) | void   | As the name implies                                          |
+| addRecipeCatalyst(recipeCatalyst as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | void   | Add items displayed on the left                              |
+| addJEIRecipe(JEIRecipe as [JEIRecipe](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIRecipe/JEIRecipe.md)) | void   | As the name implies                                          |
+| addJEIElement(JEIElement as [JEIElement](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIELement/JEIELement.md)) | void   | As the name implies                                          |
+| register()                                                   | void   | As the name implies                                          |
 
-| 函数 | 写法 | 返回值 | 描述 |
+| function | 写法 | Retrun | Description |
 |:--- |:------- |---- | ------|
-| onJEITooltip | function(mouseX as int, mouseY as int) | string[] | 为指定的地方添加新的提示 (不会覆盖Item和Fluid) |
+| onJEITooltip | function(mouseX as int, mouseY as int) | string[] | Add a new tip for the specified place |
+

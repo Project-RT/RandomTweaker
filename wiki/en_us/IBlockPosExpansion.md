@@ -1,6 +1,6 @@
 # IBlockPos Expansion
 
-Extend the `IBlockPos` class so that the `IBlockPos` object can use the following methods
+Extend `IBlockPos` so that the `IBlockPos` object can use the following methods
 
 | Method                                     | Return                                                       | Description                    |
 | :----------------------------------------------- | :---------- | ---------------------------------- |

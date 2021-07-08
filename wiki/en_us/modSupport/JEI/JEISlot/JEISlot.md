@@ -1,14 +1,14 @@
 # JEISlot
 
-在 JEI 上存放数据的槽位, 目前仅支持流体和物品槽的渲染
+Slots for storing data on JEI, currently only fluid and item slot are supported for rendering
 
-## 导包
+## Import
 
 ~~~zenscript
 import mods.randomtweaker.jei.JEISlot;
 ~~~
 
-| ZenGetter | 返回值   |
+| ZenGetter | Return |
 | :-------- | :------ |
 | isInput   | bool    |
 | x         | int     |

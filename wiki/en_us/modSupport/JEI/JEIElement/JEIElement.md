@@ -1,19 +1,20 @@
 # JEIElement
 
-## 导包
+## Import
 
 ~~~zenscript
 import mods.randomtweaker.jei.JEIElement;
 ~~~
 
-渲染在 JEI 上的元素, 流体槽, 物品槽的框都是自此渲染
+Elements rendered on the JEI, fluid slots, and item slot boxes are rendered from this
 
-| ZenGetter                                                    | 返回值 |
+| ZenGetter                                                    | Return |
 | :----------------------------------------------------------- | :----- |
 | u                                                            | int    |
 | v                                                            | int    |
 | x                                                            | int    |
 | y                                                            | int    |
 | width                                                        | int    |
-| height                                                        | int    |
-| texture (默认 : "randomtweaker:textures/gui/jei/jei_default.png") | string |
+| height                                                       | int    |
+| texture (Default : "randomtweaker:textures/gui/jei/jei_default.png") | string |
+

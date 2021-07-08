@@ -1,6 +1,6 @@
 # IItemStack Expansion
 
-Extending the `IItemStack` class so that the `IItemStack` object can use the following methods
+Extend `IItemStack` so that the `IItemStack` object can use the following methods
 
 | Method                                                       | Return |
 | :----------------------------------------------------------- | :----- |
