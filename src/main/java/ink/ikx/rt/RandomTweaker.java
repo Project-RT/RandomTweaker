@@ -3,6 +3,9 @@ package ink.ikx.rt;
 import com.google.common.collect.BiMap;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.api.instance.file.Prop;
+import ink.ikx.rt.api.instance.item.ManaBauble;
+import ink.ikx.rt.api.instance.item.ManaHelper;
+import ink.ikx.rt.api.instance.item.ManaItem;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
@@ -83,13 +86,16 @@ public class RandomTweaker {
         }
 
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
+            CraftTweakerAPI.registerClass(ManaItem.class);
+            CraftTweakerAPI.registerClass(ManaBauble.class);
+            CraftTweakerAPI.registerClass(ManaHelper.class);
+            CraftTweakerAPI.registerClass(BaubleRender.class);
+            CraftTweakerAPI.registerClass(BaubleFunction.class);
+            CraftTweakerAPI.registerClass(BaubleRenderHelper.class);
+            MinecraftForge.EVENT_BUS.register(ManaBaubleEvent.class);
             CraftTweakerAPI.registerClass(ManaItemRepresentation.class);
             CraftTweakerAPI.registerClass(ManaBaubleRepresentation.class);
-            CraftTweakerAPI.registerClass(BaubleFunction.class);
             CraftTweakerAPI.registerClass(BaubleFunctionWithReturn.class);
-            MinecraftForge.EVENT_BUS.register(ManaBaubleEvent.class);
-            CraftTweakerAPI.registerClass(BaubleRenderHelper.class);
-            CraftTweakerAPI.registerClass(BaubleRender.class);
         }
 
         if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {

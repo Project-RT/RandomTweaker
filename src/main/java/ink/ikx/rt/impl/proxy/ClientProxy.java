@@ -1,4 +1,4 @@
-package ink.ikx.rt.proxy;
+package ink.ikx.rt.impl.proxy;
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;

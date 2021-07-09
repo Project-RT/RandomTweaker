@@ -6,7 +6,7 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
 import ink.ikx.rt.api.mods.cote.function.BaubleRender;
-import ink.ikx.rt.proxy.CommonProxy;
+import ink.ikx.rt.impl.proxy.CommonProxy;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 import net.minecraft.creativetab.CreativeTabs;
@@ -28,8 +28,8 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
  */
 public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable, IBaubleRender {
 
-    @SidedProxy(clientSide = "ink.ikx.rt.proxy.ClientProxy",
-        serverSide = "ink.ikx.rt.proxy.SeverProxy")
+    @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy",
+        serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")
     public static CommonProxy proxy;
     public final BaubleRender onPlayerBaubleRender;
     public final BaubleFunction onWornTick;
