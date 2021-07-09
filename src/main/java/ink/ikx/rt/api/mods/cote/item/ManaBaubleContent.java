@@ -95,18 +95,12 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
     @Override
     public boolean canEquip(ItemStack baubleItem, EntityLivingBase wearer) {
-        if (Objects.nonNull(this.manaBauble.canEquip)) {
-            return this.manaBauble.canEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
-        }
-        return true;
+        return Objects.nonNull(this.manaBauble.canEquip) && this.manaBauble.canEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
     }
 
     @Override
     public boolean canUnequip(ItemStack baubleItem, EntityLivingBase wearer) {
-        if (Objects.nonNull(this.manaBauble.canUnEquip)) {
-            return this.manaBauble.canUnEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
-        }
-        return true;
+        return Objects.nonNull(this.manaBauble.canUnEquip) && this.manaBauble.canUnEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
     }
 
     @Override
