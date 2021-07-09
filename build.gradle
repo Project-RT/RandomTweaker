@@ -45,20 +45,22 @@ configurations {
 dependencies {
     compile files('libs/')
 
-    deobfCompile "mezz.jei:jei_1.12.2:4.16.1.301"
+    deobfCompile "curse.maven:Baubles-227083:2518667"
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
+    deobfCompile "curse.maven:ftb-ultimine-386134:3078750"
     deobfCompile "curse.maven:toughasnails-246391:2710969"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
     deobfCompile "curse.maven:thebetweenlands-243363:3248202"
+    deobfCompile "curse.maven:the-twilight-forest-227639:3051450"
     deobfCompile "curse.maven:matteroverdrive-legacy-308192:2699215"
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.652"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
-    deobfCompile "curse.maven:Baubles-227083:2518667"
 
     runtime "curse.maven:zenutils-401178:3366128"
-    runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
     runtime "curse.maven:mixin-booter-419286:3321174"
+    runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
     runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
 
     embed ("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
