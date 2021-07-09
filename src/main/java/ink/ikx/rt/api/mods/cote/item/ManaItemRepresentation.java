@@ -8,7 +8,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 /**
- * @author : superhelo
+ * @author superhelo
  */
 @ZenClass("mods.randomtweaker.cote.ManaItem")
 public class ManaItemRepresentation extends ItemRepresentation {

@@ -5,6 +5,9 @@ import ink.ikx.rt.api.mods.cote.item.ManaItemContent;
 import net.minecraft.item.ItemStack;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
+/**
+ * @author superhelo
+ */
 public class ManaItemImpl implements ManaItem {
 
     public final ItemStack stack;
@@ -45,31 +48,31 @@ public class ManaItemImpl implements ManaItem {
 
     @Override
     public boolean hasFull() {
-        return itemIn.hasFull;
+        return itemIn.manaItem.hasFull();
     }
 
     @Override
     public boolean hasCreative() {
-        return itemIn.hasCreative;
+        return itemIn.manaItem.hasCreative();
     }
 
     @Override
     public boolean canExportManaToPool() {
-        return itemIn.canExportManaToPool;
+        return itemIn.canExportManaToPool();
     }
 
     @Override
     public boolean canExportManaToItem() {
-        return itemIn.canExportManaToItem;
+        return itemIn.canExportManaToItem(stack, stack);
     }
 
     @Override
     public boolean canReceiveManaFromPool() {
-        return !ItemNBTHelper.getBoolean(stack, "oneUse", false) && itemIn.canReceiveManaFromPool;
+        return itemIn.canReceiveManaFromPool(stack);
     }
 
     @Override
     public boolean canReceiveManaFromItem() {
-        return !itemIn.isCreative(stack) && itemIn.canReceiveManaFromItem;
+        return itemIn.canReceiveManaFromItem(stack, stack);
     }
 }

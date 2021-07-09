@@ -4,6 +4,9 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.api.mods.cote.function.BaubleRender;
 
+/**
+ * @author superhelo
+ */
 public interface CommonProxy {
 
     void onPlayerBaubleRender(BaubleRender render, IItemStack stack, IPlayer player, String renderType, float partialTicks);

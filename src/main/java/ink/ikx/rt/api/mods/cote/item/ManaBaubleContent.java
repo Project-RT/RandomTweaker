@@ -14,13 +14,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import vazkii.botania.api.item.IBaubleRender;
 import vazkii.botania.api.item.ICosmeticAttachable;
-import vazkii.botania.api.item.ICosmeticBauble;
 import vazkii.botania.api.item.IPhantomInkable;
-import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
 /**
- * @author : superhelo
+ * @author superhelo
  */
 public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable, IBaubleRender {
 
@@ -33,7 +31,11 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
     public ManaBaubleContent(ManaBaubleRepresentation manaBauble) {
         super(manaBauble);
         this.manaBauble = manaBauble;
-        this.baubleType = BaubleType.valueOf(manaBauble.baubleType);
+        this.baubleType = BaubleType.valueOf(manaBauble.getBaubleType());
+    }
+
+    public ManaBaubleRepresentation getRepresentation() {
+        return manaBauble;
     }
 
     @Override
@@ -41,7 +43,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
         if (isInCreativeTab(tab)) {
             stacks.add(new ItemStack(this));
 
-            if (this.hasFull) {
+            if (this.manaBauble.hasFull()) {
                 ItemStack full = new ItemStack(this);
                 setMana(full, this.getMaxMana(full));
                 stacks.add(full);
@@ -58,7 +60,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
     @Override
     public BaubleType getBaubleType(ItemStack var1) {
-        if (Objects.nonNull(baubleType)) {
+        if (Objects.nonNull(this.baubleType)) {
             return baubleType;
         }
         return BaubleType.RING;
@@ -66,10 +68,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
     @Override
     public boolean canExportManaToItem(ItemStack stack, ItemStack otherStack) {
-        if (baubleType != BaubleType.RING) {
-            return false;
-        }
-        return super.canExportManaToItem(stack, otherStack);
+        return this.baubleType != BaubleType.TRINKET && super.canExportManaToItem(stack, otherStack);
     }
 
     @Override
@@ -95,20 +94,17 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
     @Override
     public boolean canEquip(ItemStack baubleItem, EntityLivingBase wearer) {
-        return Objects.nonNull(this.manaBauble.canEquip) && this.manaBauble.canEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        return !Objects.nonNull(this.manaBauble.canEquip) || this.manaBauble.canEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
     }
 
     @Override
     public boolean canUnequip(ItemStack baubleItem, EntityLivingBase wearer) {
-        return Objects.nonNull(this.manaBauble.canUnEquip) && this.manaBauble.canUnEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        return !Objects.nonNull(this.manaBauble.canUnEquip) || this.manaBauble.canUnEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
     }
 
     @Override
     public boolean willAutoSync(ItemStack baubleItem, EntityLivingBase wearer) {
-        if (Objects.nonNull(this.manaBauble.willAutoSync)) {
-            return this.manaBauble.willAutoSync.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
-        }
-        return false;
+        return Objects.nonNull(this.manaBauble.willAutoSync) && this.manaBauble.willAutoSync.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
     }
 
     @Override
@@ -148,30 +144,5 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
     @Override
     public ItemStack getContainerItem(@Nonnull ItemStack itemStack) {
         return getCosmeticItem(itemStack);
-    }
-
-    public static class ManaUsingItem extends ManaBaubleContent implements IManaUsingItem {
-
-        public boolean useMana;
-
-        public ManaUsingItem(ManaBaubleRepresentation manaBauble) {
-            super(manaBauble);
-            this.useMana = manaBauble.isUseMana();
-        }
-
-        @Override
-        public boolean usesMana(ItemStack stack) {
-            if (this.getMana(stack) > 0) {
-                return false;
-            }
-            return useMana;
-        }
-    }
-
-    public static class ManaTrinketContent extends ManaBaubleContent implements ICosmeticBauble {
-
-        public ManaTrinketContent(ManaBaubleRepresentation manaBauble) {
-            super(manaBauble);
-        }
     }
 }

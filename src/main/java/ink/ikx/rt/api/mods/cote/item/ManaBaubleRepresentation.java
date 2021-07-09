@@ -5,14 +5,12 @@ import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
 import ink.ikx.rt.api.mods.cote.function.BaubleRender;
-import ink.ikx.rt.api.mods.cote.item.ManaBaubleContent.ManaTrinketContent;
-import ink.ikx.rt.api.mods.cote.item.ManaBaubleContent.ManaUsingItem;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 /**
- * @author : superhelo
+ * @author superhelo
  */
 @ZenClass("mods.randomtweaker.cote.ManaBauble")
 public class ManaBaubleRepresentation extends ManaItemRepresentation {
@@ -86,7 +84,7 @@ public class ManaBaubleRepresentation extends ManaItemRepresentation {
         } else if (baubleType.equals("RING")) {
             ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this));
         } else {
-            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaUsingItem(this));
+            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaUsingContent(this));
         }
     }
 }
