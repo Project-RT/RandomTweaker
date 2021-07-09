@@ -2,7 +2,9 @@ package ink.ikx.rt.api.mods.cote.item;
 
 import net.minecraft.item.ItemStack;
 import vazkii.botania.api.mana.IManaUsingItem;
+import youyihj.zenutils.api.annotation.ExpandContentTweakerEntry;
 
+@ExpandContentTweakerEntry
 public class ManaUsingContent extends ManaBaubleContent implements IManaUsingItem {
 
     public boolean useMana;

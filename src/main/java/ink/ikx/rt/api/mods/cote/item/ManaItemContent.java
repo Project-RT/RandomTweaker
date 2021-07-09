@@ -17,10 +17,12 @@ import vazkii.botania.api.mana.ICreativeManaProvider;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaTooltipDisplay;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
+import youyihj.zenutils.api.annotation.ExpandContentTweakerEntry;
 
 /**
  * @author superhelo
  */
+@ExpandContentTweakerEntry
 public class ManaItemContent extends ItemContent implements IManaItem, ICreativeManaProvider, IManaTooltipDisplay {
 
     public final ManaItemRepresentation manaItem;
@@ -34,6 +36,7 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
         this.manaItem = manaItem;
     }
 
+    @ExpandContentTweakerEntry.RepresentationGetter
     public ManaItemRepresentation getRepresentation() {
         return manaItem;
     }

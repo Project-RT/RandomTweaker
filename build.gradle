@@ -46,6 +46,7 @@ dependencies {
     compile files('libs/')
 
     deobfCompile "curse.maven:Baubles-227083:2518667"
+    deobfCompile "curse.maven:zenutils-401178:3382337"
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
     deobfCompile "curse.maven:ftb-ultimine-386134:3078750"
@@ -58,7 +59,6 @@ dependencies {
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.652"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
 
-    runtime "curse.maven:zenutils-401178:3366128"
     runtime "curse.maven:mixin-booter-419286:3321174"
     runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
     runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"

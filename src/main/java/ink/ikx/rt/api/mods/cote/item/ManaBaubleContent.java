@@ -16,10 +16,12 @@ import vazkii.botania.api.item.IBaubleRender;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
+import youyihj.zenutils.api.annotation.ExpandContentTweakerEntry;
 
 /**
  * @author superhelo
  */
+@ExpandContentTweakerEntry
 public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable, IBaubleRender {
 
     public BaubleType baubleType;
@@ -34,6 +36,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
         this.baubleType = BaubleType.valueOf(manaBauble.getBaubleType());
     }
 
+    @ExpandContentTweakerEntry.RepresentationGetter
     public ManaBaubleRepresentation getRepresentation() {
         return manaBauble;
     }
