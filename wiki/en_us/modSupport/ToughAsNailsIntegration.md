@@ -1,6 +1,6 @@
 # ToughAsNails Integration
 
-For more please see [IPlayerExpansion](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/IPlayerExpansion.md)
+For more please see [IPlayerExpansion](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/IPlayerExpansion.md)
 
 ## Config
 
