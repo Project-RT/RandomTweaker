@@ -2,9 +2,9 @@ package ink.ikx.rt.impl.jei;
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.api.instance.jei.JEIExpansion;
-import ink.ikx.rt.api.instance.jei.interfaces.other.JEIPanel;
-import ink.ikx.rt.api.instance.jei.interfaces.other.JEIRecipe;
+import ink.ikx.rt.api.mods.jei.JEIExpansion;
+import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
+import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.impl.botania.module.ModHydroangeas;
 import ink.ikx.rt.impl.jei.impl.other.JEIRecipeImpl;
 import java.util.Map;

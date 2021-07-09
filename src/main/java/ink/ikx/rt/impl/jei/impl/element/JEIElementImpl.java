@@ -1,6 +1,6 @@
 package ink.ikx.rt.impl.jei.impl.element;
 
-import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIElement;
 
 public abstract class JEIElementImpl implements JEIElement {
 

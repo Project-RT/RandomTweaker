@@ -1,7 +1,7 @@
 package ink.ikx.rt.impl.jei.impl.slots;
 
-import ink.ikx.rt.api.instance.jei.JEIExpansion;
-import ink.ikx.rt.api.instance.jei.interfaces.slots.JEIItemSlot;
+import ink.ikx.rt.api.mods.jei.JEIExpansion;
+import ink.ikx.rt.api.mods.jei.interfaces.slots.JEIItemSlot;
 import net.minecraft.client.Minecraft;
 
 public class JEIItemSlotImpl extends JEISlotImpl implements JEIItemSlot {

@@ -1,7 +1,6 @@
-package ink.ikx.rt.api.instance.jei.interfaces.slots;
+package ink.ikx.rt.api.mods.jei.interfaces.slots;
 
 import crafttweaker.annotations.ZenRegister;
-import crafttweaker.api.liquid.ILiquidStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 

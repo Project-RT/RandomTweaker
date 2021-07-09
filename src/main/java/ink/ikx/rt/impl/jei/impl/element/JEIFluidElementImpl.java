@@ -1,6 +1,6 @@
 package ink.ikx.rt.impl.jei.impl.element;
 
-import ink.ikx.rt.api.instance.jei.interfaces.element.JEIFluidElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIFluidElement;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;

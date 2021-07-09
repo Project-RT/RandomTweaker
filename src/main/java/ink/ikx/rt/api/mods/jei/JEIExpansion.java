@@ -1,16 +1,16 @@
-package ink.ikx.rt.api.instance.jei;
+package ink.ikx.rt.api.mods.jei;
 
 import crafttweaker.annotations.ZenRegister;
-import ink.ikx.rt.api.instance.jei.interfaces.element.JEIArrowElement;
-import ink.ikx.rt.api.instance.jei.interfaces.element.JEICustomElement;
-import ink.ikx.rt.api.instance.jei.interfaces.element.JEIFluidElement;
-import ink.ikx.rt.api.instance.jei.interfaces.element.JEIFontInfoElement;
-import ink.ikx.rt.api.instance.jei.interfaces.element.JEIItemElement;
-import ink.ikx.rt.api.instance.jei.interfaces.other.JEIBackground;
-import ink.ikx.rt.api.instance.jei.interfaces.other.JEIPanel;
-import ink.ikx.rt.api.instance.jei.interfaces.other.JEIRecipe;
-import ink.ikx.rt.api.instance.jei.interfaces.slots.JEIItemSlot;
-import ink.ikx.rt.api.instance.jei.interfaces.slots.JEILiquidSlot;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIArrowElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEICustomElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIFluidElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIFontInfoElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIItemElement;
+import ink.ikx.rt.api.mods.jei.interfaces.other.JEIBackground;
+import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
+import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
+import ink.ikx.rt.api.mods.jei.interfaces.slots.JEIItemSlot;
+import ink.ikx.rt.api.mods.jei.interfaces.slots.JEILiquidSlot;
 import ink.ikx.rt.impl.jei.impl.element.JEIArrowElementImpl;
 import ink.ikx.rt.impl.jei.impl.element.JEICustomElementImpl;
 import ink.ikx.rt.impl.jei.impl.element.JEIFluidElementImpl;

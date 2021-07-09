@@ -1,9 +1,9 @@
-package ink.ikx.rt.api.instance.jei.interfaces.other;
+package ink.ikx.rt.api.mods.jei.interfaces.other;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
-import ink.ikx.rt.api.instance.jei.interfaces.element.JEIElement;
-import ink.ikx.rt.api.instance.jei.interfaces.slots.JEISlot;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIElement;
+import ink.ikx.rt.api.mods.jei.interfaces.slots.JEISlot;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;

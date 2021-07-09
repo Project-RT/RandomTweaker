@@ -1,7 +1,7 @@
 package ink.ikx.rt.impl.jei.impl.slots;
 
-import ink.ikx.rt.api.instance.jei.JEIExpansion;
-import ink.ikx.rt.api.instance.jei.interfaces.slots.JEILiquidSlot;
+import ink.ikx.rt.api.mods.jei.JEIExpansion;
+import ink.ikx.rt.api.mods.jei.interfaces.slots.JEILiquidSlot;
 import net.minecraft.client.Minecraft;
 
 public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {

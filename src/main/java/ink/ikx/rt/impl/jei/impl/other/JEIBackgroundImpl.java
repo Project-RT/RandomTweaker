@@ -1,6 +1,6 @@
 package ink.ikx.rt.impl.jei.impl.other;
 
-import ink.ikx.rt.api.instance.jei.interfaces.other.JEIBackground;
+import ink.ikx.rt.api.mods.jei.interfaces.other.JEIBackground;
 
 public class JEIBackgroundImpl implements JEIBackground {
 
