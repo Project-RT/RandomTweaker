@@ -48,12 +48,12 @@ public class ManaItemImpl implements ManaItem {
 
     @Override
     public boolean hasFull() {
-        return itemIn.getRepresentation().hasFull();
+        return itemIn.manaItem.hasFull();
     }
 
     @Override
     public boolean hasCreative() {
-        return itemIn.getRepresentation().hasCreative();
+        return itemIn.manaItem.hasCreative();
     }
 
     @Override

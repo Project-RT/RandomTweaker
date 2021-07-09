@@ -34,6 +34,10 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
         this.manaItem = manaItem;
     }
 
+    public ManaItemRepresentation getRepresentation() {
+        return manaItem;
+    }
+
     public static void setMana(ItemStack stack, int mana) {
         ItemNBTHelper.setInt(stack, TAG_MANA, mana);
     }
@@ -51,31 +55,27 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
         if (isInCreativeTab(tab)) {
             stacks.add(new ItemStack(this));
 
-            if (this.getRepresentation().hasCreative) {
+            if (this.manaItem.hasCreative()) {
                 ItemStack creative = new ItemStack(this);
-                setMana(creative, this.getRepresentation().maxMana);
+                setMana(creative, this.manaItem.getMaxMana());
                 setStackCreative(creative);
                 stacks.add(creative);
             }
 
-            if (this.getRepresentation().hasFull) {
+            if (this.manaItem.hasFull()) {
                 ItemStack fullPower = new ItemStack(this);
-                setMana(fullPower, this.getRepresentation().maxMana);
+                setMana(fullPower, this.manaItem.getMaxMana());
                 stacks.add(fullPower);
             }
         }
     }
 
     public boolean canReceiveManaFromPool(ItemStack stack) {
-        return !ItemNBTHelper.getBoolean(stack, TAG_ONE_USE, false) && this.getRepresentation().canReceiveManaFromPool();
+        return !ItemNBTHelper.getBoolean(stack, TAG_ONE_USE, false) && this.manaItem.canReceiveManaFromPool();
     }
 
     public boolean canExportManaToPool() {
-        return this.getRepresentation().canExportManaToPool();
-    }
-
-    public ManaItemRepresentation getRepresentation() {
-        return this.manaItem;
+        return this.manaItem.canExportManaToPool();
     }
 
     @Override
@@ -85,39 +85,39 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
 
     @Override
     public int getMaxMana(ItemStack stack) {
-        return this.getRepresentation().getMaxMana();
+        return this.manaItem.getMaxMana();
     }
 
     @Override
     public void addMana(ItemStack stack, int mana) {
         if (!isStackCreative(stack)) {
-            setMana(stack, Math.min(this.getMana(stack) + mana, this.getRepresentation().getMaxMana()));
+            setMana(stack, Math.min(this.getMana(stack) + mana, this.manaItem.getMaxMana()));
         }
     }
 
     @Override
     public boolean canReceiveManaFromPool(ItemStack stack, TileEntity pool) {
-        return canReceiveManaFromPool(stack);
+        return this.canReceiveManaFromPool(stack);
     }
 
     @Override
     public boolean canReceiveManaFromItem(ItemStack stack, ItemStack otherStack) {
-        return !isCreative(stack) && this.getRepresentation().canReceiveManaFromItem();
+        return !isCreative(stack) && this.manaItem.canReceiveManaFromItem();
     }
 
     @Override
     public boolean canExportManaToPool(ItemStack stack, TileEntity pool) {
-        return canExportManaToPool();
+        return this.canExportManaToPool();
     }
 
     @Override
     public boolean canExportManaToItem(ItemStack stack, ItemStack otherStack) {
-        return this.getRepresentation().canExportManaToItem();
+        return this.manaItem.canExportManaToItem();
     }
 
     @Override
     public boolean isNoExport(ItemStack stack) {
-        return this.getRepresentation().isNoExport();
+        return this.manaItem.isNoExport();
     }
 
     @Override
@@ -140,7 +140,6 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
         if (super.getDamage(stack) != 0) {
             super.setDamage(stack, 0);
         }
-
         return 0;
     }
 

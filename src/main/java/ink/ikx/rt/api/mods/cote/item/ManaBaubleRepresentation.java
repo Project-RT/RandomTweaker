@@ -5,8 +5,6 @@ import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
 import ink.ikx.rt.api.mods.cote.function.BaubleRender;
-import ink.ikx.rt.api.mods.cote.item.ManaBaubleContent.ManaTrinketContent;
-import ink.ikx.rt.api.mods.cote.item.ManaBaubleContent.ManaUsingItem;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -83,10 +81,10 @@ public class ManaBaubleRepresentation extends ManaItemRepresentation {
     public void register() {
         if (baubleType.equals("TRINKET")) {
             ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaTrinketContent(this));
-        } else if (!baubleType.equals("RING")) {
-            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaUsingItem(this));
-        } else {
+        } else if (baubleType.equals("RING")) {
             ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this));
+        } else {
+            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaUsingContent(this));
         }
     }
 }
