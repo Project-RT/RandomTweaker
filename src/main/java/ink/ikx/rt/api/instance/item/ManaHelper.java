@@ -9,6 +9,9 @@ import ink.ikx.rt.impl.item.ManaItemImpl;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+/**
+ * @author superhelo
+ */
 @ZenExpansion("crafttweaker.item.IMutableItemStack")
 public class ManaHelper {
 

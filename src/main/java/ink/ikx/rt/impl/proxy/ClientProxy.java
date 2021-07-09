@@ -10,6 +10,9 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.TextureMap;
 import vazkii.botania.api.item.IBaubleRender.Helper;
 
+/**
+ * @author superhelo
+ */
 public class ClientProxy implements CommonProxy {
 
     @Override

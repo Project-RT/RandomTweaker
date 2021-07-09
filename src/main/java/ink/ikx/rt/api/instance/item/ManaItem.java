@@ -4,6 +4,9 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+/**
+ * @author superhelo
+ */
 @ZenClass("mods.randomtweaker.item.IManaItem")
 public interface ManaItem {
 

@@ -12,7 +12,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 /**
- * @author : superhelo
+ * @author superhelo
  */
 @ZenClass("mods.randomtweaker.cote.ManaBauble")
 public class ManaBaubleRepresentation extends ManaItemRepresentation {
@@ -83,10 +83,10 @@ public class ManaBaubleRepresentation extends ManaItemRepresentation {
     public void register() {
         if (baubleType.equals("TRINKET")) {
             ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaTrinketContent(this));
-        } else if (baubleType.equals("RING")) {
-            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this));
-        } else {
+        } else if (!baubleType.equals("RING")) {
             ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaUsingItem(this));
+        } else {
+            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this));
         }
     }
 }

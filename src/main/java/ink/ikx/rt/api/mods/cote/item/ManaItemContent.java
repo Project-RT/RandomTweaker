@@ -19,18 +19,11 @@ import vazkii.botania.api.mana.IManaTooltipDisplay;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
 /**
- * @author : superhelo
+ * @author superhelo
  */
 public class ManaItemContent extends ItemContent implements IManaItem, ICreativeManaProvider, IManaTooltipDisplay {
 
-    public int maxMana;
-    public boolean hasFull;
-    public boolean isNoExport;
-    public boolean hasCreative;
-    public boolean canExportManaToPool;
-    public boolean canExportManaToItem;
-    public boolean canReceiveManaFromPool;
-    public boolean canReceiveManaFromItem;
+    public final ManaItemRepresentation manaItem;
 
     private static final String TAG_MANA = "mana";
     private static final String TAG_ONE_USE = "oneUse";
@@ -38,13 +31,7 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
 
     public ManaItemContent(ManaItemRepresentation manaItem) {
         super(manaItem);
-        this.hasFull = manaItem.hasFull();
-        this.maxMana = manaItem.getMaxMana();
-        this.isNoExport = manaItem.isNoExport();
-        this.hasCreative = manaItem.hasCreative();
-        this.canExportManaToPool = manaItem.canExportManaToPool();
-        this.canExportManaToItem = manaItem.canExportManaToItem();
-        this.canReceiveManaFromPool = manaItem.canReceiveManaFromPool();
+        this.manaItem = manaItem;
     }
 
     public static void setMana(ItemStack stack, int mana) {
@@ -64,19 +51,31 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
         if (isInCreativeTab(tab)) {
             stacks.add(new ItemStack(this));
 
-            if (this.hasCreative) {
+            if (this.getRepresentation().hasCreative) {
                 ItemStack creative = new ItemStack(this);
-                setMana(creative, maxMana);
+                setMana(creative, this.getRepresentation().maxMana);
                 setStackCreative(creative);
                 stacks.add(creative);
             }
 
-            if (this.hasFull) {
+            if (this.getRepresentation().hasFull) {
                 ItemStack fullPower = new ItemStack(this);
-                setMana(fullPower, maxMana);
+                setMana(fullPower, this.getRepresentation().maxMana);
                 stacks.add(fullPower);
             }
         }
+    }
+
+    public boolean canReceiveManaFromPool(ItemStack stack) {
+        return !ItemNBTHelper.getBoolean(stack, TAG_ONE_USE, false) && this.getRepresentation().canReceiveManaFromPool();
+    }
+
+    public boolean canExportManaToPool() {
+        return this.getRepresentation().canExportManaToPool();
+    }
+
+    public ManaItemRepresentation getRepresentation() {
+        return this.manaItem;
     }
 
     @Override
@@ -86,39 +85,39 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
 
     @Override
     public int getMaxMana(ItemStack stack) {
-        return maxMana;
+        return this.getRepresentation().getMaxMana();
     }
 
     @Override
     public void addMana(ItemStack stack, int mana) {
         if (!isStackCreative(stack)) {
-            setMana(stack, Math.min(getMana(stack) + mana, maxMana));
+            setMana(stack, Math.min(this.getMana(stack) + mana, this.getRepresentation().getMaxMana()));
         }
     }
 
     @Override
     public boolean canReceiveManaFromPool(ItemStack stack, TileEntity pool) {
-        return !ItemNBTHelper.getBoolean(stack, TAG_ONE_USE, false) && canReceiveManaFromPool;
+        return canReceiveManaFromPool(stack);
     }
 
     @Override
     public boolean canReceiveManaFromItem(ItemStack stack, ItemStack otherStack) {
-        return !isCreative(stack) && canReceiveManaFromItem;
+        return !isCreative(stack) && this.getRepresentation().canReceiveManaFromItem();
     }
 
     @Override
     public boolean canExportManaToPool(ItemStack stack, TileEntity pool) {
-        return canExportManaToPool;
+        return canExportManaToPool();
     }
 
     @Override
     public boolean canExportManaToItem(ItemStack stack, ItemStack otherStack) {
-        return canExportManaToItem;
+        return this.getRepresentation().canExportManaToItem();
     }
 
     @Override
     public boolean isNoExport(ItemStack stack) {
-        return isNoExport;
+        return this.getRepresentation().isNoExport();
     }
 
     @Override
@@ -128,7 +127,7 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
 
     @Override
     public float getManaFractionForDisplay(ItemStack stack) {
-        return (float) getMana(stack) / (float) getMaxMana(stack);
+        return (float) this.getMana(stack) / (float) this.getMaxMana(stack);
     }
 
     @Override
@@ -148,7 +147,7 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack par1ItemStack, World world, List<String> stacks, ITooltipFlag flags) {
-        if (isCreative(par1ItemStack)) {
+        if (this.isCreative(par1ItemStack)) {
             stacks.add(I18n.format("botaniamisc.creative"));
         }
     }
@@ -160,11 +159,11 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
 
     @Override
     public double getDurabilityForDisplay(ItemStack stack) {
-        return 1.0 - getManaFractionForDisplay(stack);
+        return 1.0 - this.getManaFractionForDisplay(stack);
     }
 
     @Override
     public int getRGBDurabilityForDisplay(ItemStack stack) {
-        return MathHelper.hsvToRGB(getManaFractionForDisplay(stack) / 3.0F, 1.0F, 1.0F);
+        return MathHelper.hsvToRGB(this.getManaFractionForDisplay(stack) / 3.0F, 1.0F, 1.0F);
     }
 }

@@ -20,7 +20,7 @@ import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
 /**
- * @author : superhelo
+ * @author superhelo
  */
 public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable, IBaubleRender {
 
@@ -36,12 +36,16 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
         this.baubleType = BaubleType.valueOf(manaBauble.baubleType);
     }
 
+    public ManaBaubleRepresentation getRepresentation() {
+        return this.manaBauble;
+    }
+
     @Override
     public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> stacks) {
         if (isInCreativeTab(tab)) {
             stacks.add(new ItemStack(this));
 
-            if (this.hasFull) {
+            if (this.getRepresentation().hasFull) {
                 ItemStack full = new ItemStack(this);
                 setMana(full, this.getMaxMana(full));
                 stacks.add(full);
@@ -66,10 +70,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
     @Override
     public boolean canExportManaToItem(ItemStack stack, ItemStack otherStack) {
-        if (baubleType != BaubleType.RING) {
-            return false;
-        }
-        return super.canExportManaToItem(stack, otherStack);
+        return baubleType != BaubleType.TRINKET && super.canExportManaToItem(stack, otherStack);
     }
 
     @Override
@@ -105,10 +106,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
     @Override
     public boolean willAutoSync(ItemStack baubleItem, EntityLivingBase wearer) {
-        if (Objects.nonNull(this.manaBauble.willAutoSync)) {
-            return this.manaBauble.willAutoSync.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
-        }
-        return false;
+        return Objects.nonNull(this.manaBauble.willAutoSync) && this.manaBauble.willAutoSync.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
     }
 
     @Override
