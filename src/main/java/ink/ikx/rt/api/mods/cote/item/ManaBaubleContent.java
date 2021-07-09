@@ -3,10 +3,7 @@ package ink.ikx.rt.api.mods.cote.item;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
-import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
-import ink.ikx.rt.api.mods.cote.function.BaubleRender;
-import ink.ikx.rt.impl.proxy.CommonProxy;
+import ink.ikx.rt.RandomTweaker;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,7 +12,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
-import net.minecraftforge.fml.common.SidedProxy;
 import vazkii.botania.api.item.IBaubleRender;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.ICosmeticBauble;
@@ -28,31 +24,16 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
  */
 public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable, IBaubleRender {
 
-    @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy",
-        serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")
-    public static CommonProxy proxy;
-    public final BaubleRender onPlayerBaubleRender;
-    public final BaubleFunction onWornTick;
-    public final BaubleFunction onEquipped;
-    public final BaubleFunction onUnequipped;
     public BaubleType baubleType;
-    public final BaubleFunctionWithReturn canEquip;
-    public final BaubleFunctionWithReturn canUnEquip;
-    public final BaubleFunctionWithReturn willAutoSync;
+    public final ManaBaubleRepresentation manaBauble;
 
     private static final String TAG_PHANTOM_INK = "phantomInk";
     private static final String TAG_COSMETIC_ITEM = "cosmeticItem";
 
     public ManaBaubleContent(ManaBaubleRepresentation manaBauble) {
         super(manaBauble);
-        this.canEquip = manaBauble.canEquip;
-        this.canUnEquip = manaBauble.canUnEquip;
-        this.onWornTick = manaBauble.onWornTick;
-        this.onEquipped = manaBauble.onEquipped;
-        this.onUnequipped = manaBauble.onUnequipped;
-        this.willAutoSync = manaBauble.willAutoSync;
+        this.manaBauble = manaBauble;
         this.baubleType = BaubleType.valueOf(manaBauble.baubleType);
-        this.onPlayerBaubleRender = manaBauble.onPlayerBaubleRender;
     }
 
     @Override
@@ -70,8 +51,8 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
     @Override
     public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
-        if (Objects.nonNull(onPlayerBaubleRender)) {
-            proxy.onPlayerBaubleRender(onPlayerBaubleRender, CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIPlayer(player), type.toString(), partialTicks);
+        if (Objects.nonNull(this.manaBauble.onPlayerBaubleRender)) {
+            RandomTweaker.proxy.onPlayerBaubleRender(this.manaBauble.onPlayerBaubleRender, CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIPlayer(player), type.toString(), partialTicks);
         }
     }
 
@@ -93,45 +74,45 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
 
     @Override
     public void onWornTick(ItemStack baubleItem, EntityLivingBase wearer) {
-        if (Objects.nonNull(onWornTick)) {
-            onWornTick.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        if (Objects.nonNull(this.manaBauble.onWornTick)) {
+            this.manaBauble.onWornTick.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
         }
     }
 
     @Override
     public void onEquipped(ItemStack baubleItem, EntityLivingBase wearer) {
-        if (Objects.nonNull(onEquipped)) {
-            onEquipped.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        if (Objects.nonNull(this.manaBauble.onEquipped)) {
+            this.manaBauble.onEquipped.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
         }
     }
 
     @Override
     public void onUnequipped(ItemStack baubleItem, EntityLivingBase wearer) {
-        if (Objects.nonNull(onUnequipped)) {
-            onUnequipped.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        if (Objects.nonNull(this.manaBauble.onUnequipped)) {
+            this.manaBauble.onUnequipped.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
         }
     }
 
     @Override
     public boolean canEquip(ItemStack baubleItem, EntityLivingBase wearer) {
-        if (Objects.nonNull(canEquip)) {
-            return canEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        if (Objects.nonNull(this.manaBauble.canEquip)) {
+            return this.manaBauble.canEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
         }
         return true;
     }
 
     @Override
     public boolean canUnequip(ItemStack baubleItem, EntityLivingBase wearer) {
-        if (Objects.nonNull(canUnEquip)) {
-            return canUnEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        if (Objects.nonNull(this.manaBauble.canUnEquip)) {
+            return this.manaBauble.canUnEquip.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
         }
         return true;
     }
 
     @Override
     public boolean willAutoSync(ItemStack baubleItem, EntityLivingBase wearer) {
-        if (Objects.nonNull(willAutoSync)) {
-            return willAutoSync.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        if (Objects.nonNull(this.manaBauble.willAutoSync)) {
+            return this.manaBauble.willAutoSync.handle(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
         }
         return false;
     }
@@ -159,7 +140,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
     public void setCosmeticItem(ItemStack stack, ItemStack cosmetic) {
         NBTTagCompound cmp = new NBTTagCompound();
         if (!cosmetic.isEmpty()) {
-            cmp = cosmetic.writeToNBT(cmp);
+            cosmetic.writeToNBT(cmp);
         }
         ItemNBTHelper.setCompound(stack, TAG_COSMETIC_ITEM, cmp);
     }
@@ -175,7 +156,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
         return getCosmeticItem(itemStack);
     }
 
-    public class ManaUsingItem extends ManaBaubleContent implements IManaUsingItem {
+    public static class ManaUsingItem extends ManaBaubleContent implements IManaUsingItem {
 
         public boolean useMana;
 
@@ -193,7 +174,7 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
         }
     }
 
-    public class ManaTrinketContent extends ManaBaubleContent implements ICosmeticBauble {
+    public static class ManaTrinketContent extends ManaBaubleContent implements ICosmeticBauble {
 
         public ManaTrinketContent(ManaBaubleRepresentation manaBauble) {
             super(manaBauble);

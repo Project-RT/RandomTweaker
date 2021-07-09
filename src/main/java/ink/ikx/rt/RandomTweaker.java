@@ -9,7 +9,7 @@ import ink.ikx.rt.api.instance.item.ManaItem;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.instance.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
-import ink.ikx.rt.api.instance.render.BaubleRenderHelper;
+import ink.ikx.rt.api.mods.render.BaubleRenderHelper;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
@@ -25,6 +25,7 @@ import ink.ikx.rt.impl.events.DreamJournal;
 import ink.ikx.rt.impl.events.ManaBaubleEvent;
 import ink.ikx.rt.impl.item.SanityGem;
 import ink.ikx.rt.impl.jei.HydroangeasJEI;
+import ink.ikx.rt.impl.proxy.CommonProxy;
 import ink.ikx.rt.impl.utils.ItemDs;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -42,6 +43,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -76,6 +78,23 @@ public class RandomTweaker {
     public static List<JEIRecipe> JEIRecipeList = new ArrayList<>();
     public static Map<String, Potion> potionRegList = new HashMap<>();
     public static Map<String, PotionType> potionTypeList = new HashMap<>();
+    @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")
+    public static CommonProxy proxy;
+
+    @EventHandler
+    public void onPreInit(FMLPreInitializationEvent event) {
+        logger = event.getModLog();
+        PlayerSanityNetWork.register();
+        PlayerSanityCapabilityHandler.register();
+    }
+
+    @EventHandler
+    public void onInit(FMLInitializationEvent event) {
+        if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
+            registryHydroangeasModified();
+            HydroangeasJEI.init();
+        }
+    }
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) throws IOException {
@@ -112,20 +131,6 @@ public class RandomTweaker {
         }
     }
 
-    @EventHandler
-    public void onPreInit(FMLPreInitializationEvent event) {
-        logger = event.getModLog();
-        PlayerSanityNetWork.register();
-        PlayerSanityCapabilityHandler.register();
-    }
-
-    @EventHandler
-    public void onInit(FMLInitializationEvent event) {
-        if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
-            registryHydroangeasModified();
-            HydroangeasJEI.init();
-        }
-    }
 
     private void registryHydroangeasModified() {
         final BiMap<String, Class<? extends SubTileEntity>> subTiles;
