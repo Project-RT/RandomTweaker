@@ -1,7 +1,7 @@
 # ManaBauble
 
 当同时加载了植物魔法和 CoT 时可以使 CoT 可以创建具有魔力 (Mana) 的饰品  
-因为 `ManaBauble` 类继承 `ManaItem` 类所以 `ManaItem` 可用的所有功能也可用于 `ManaBauble` 对象上 (**但是无论如何都不会注册创造型饰品**)
+因为 `ManaBauble` 类继承 `ManaItem` 类所以 `ManaItem` 可用的所有功能也可用于 `ManaBauble` 对象上
 
 ## 导包
 
@@ -11,7 +11,7 @@ import mods.randomtweaker.cote.ManaBauble;
 
 | 字段 | 类型 | 描述 |
 |:--- | --- | ---- |
-| useMana | bool | 除 `RING` 和 `TRINKET` 类型的饰品此字段都有效果, 另外如果饰品的魔力大于 0 会返回 false |
+| useMana | bool | 除 `RING` 和 `TRINKET` 类型的饰品此字段都有效果, 另外如果饰品的魔力大于 0 仍然会返回 false |
 | baubleType | string | 指定饰品的类型 (必须一致, 默认为 `RING`) , 有 `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM`|
 
 ## 例子
