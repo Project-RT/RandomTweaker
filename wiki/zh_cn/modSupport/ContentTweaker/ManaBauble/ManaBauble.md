@@ -17,7 +17,7 @@ import mods.randomtweaker.cote.ManaBauble;
 ## 例子
 
 ```zenscript
-import mods.randomtweaker.render.BaubleRenderHelper;
+import mods.randomtweaker.RenderHelper;
 import mods.mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.cote.ManaBauble;
 import crafttweaker.player.IPlayer;
@@ -30,15 +30,15 @@ manaBauble.onWornTick = function(bauble, wearer) {
       }
 };
 manaBauble.onPlayerBaubleRender = function(stack, player, renderType, partialTicks) {
-    BaubleRenderHelper.bindTexture();
+    RenderHelper.bindTexture();
     if(renderType == "HEAD") {
-        BaubleRenderHelper.translateToHeadLevel(player);
-        BaubleRenderHelper.translateToFace();
-        BaubleRenderHelper.defaultTransforms();
-        BaubleRenderHelper.rotate(180.0F, 0.0F, 1.0F, 0.0F);
-        BaubleRenderHelper.scale(1.5, 1.5, 1);
-        BaubleRenderHelper.translate(0, -0.05, 0);
-        BaubleRenderHelper.renderItem(stack);
+        RenderHelper.translateToHeadLevel(player);
+        RenderHelper.translateToFace();
+        RenderHelper.defaultTransforms();
+        RenderHelper.rotate(180.0F, 0.0F, 1.0F, 0.0F);
+        RenderHelper.scale(1.5, 1.5, 1);
+        RenderHelper.translate(0, -0.05, 0);
+        RenderHelper.renderItem(stack);
     }
 };
 manaBauble.register();

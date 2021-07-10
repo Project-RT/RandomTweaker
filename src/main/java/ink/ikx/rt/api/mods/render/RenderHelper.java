@@ -1,5 +1,6 @@
 package ink.ikx.rt.api.mods.render;
 
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.RandomTweaker;
@@ -10,8 +11,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author superhelo
  */
-@ZenClass("mods.randomtweaker.render.BaubleRenderHelper")
-public class BaubleRenderHelper {
+@ZenRegister
+@ZenClass("mods.randomtweaker.RenderHelper")
+public class RenderHelper {
 
     @ZenMethod
     public static void bindTexture(@Optional(value = "textures/atlas/blocks.png") String resourceLocation) {

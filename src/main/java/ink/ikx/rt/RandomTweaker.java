@@ -16,7 +16,6 @@ import ink.ikx.rt.api.mods.cote.item.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
-import ink.ikx.rt.api.mods.render.BaubleRenderHelper;
 import ink.ikx.rt.impl.botania.subtitle.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
 import ink.ikx.rt.impl.client.network.PlayerSanityNetWork;
@@ -110,11 +109,11 @@ public class RandomTweaker {
             CraftTweakerAPI.registerClass(ManaHelper.class);
             CraftTweakerAPI.registerClass(BaubleRender.class);
             CraftTweakerAPI.registerClass(BaubleFunction.class);
-            CraftTweakerAPI.registerClass(BaubleRenderHelper.class);
-            MinecraftForge.EVENT_BUS.register(ManaBaubleEvent.class);
             CraftTweakerAPI.registerClass(ManaItemRepresentation.class);
             CraftTweakerAPI.registerClass(ManaBaubleRepresentation.class);
             CraftTweakerAPI.registerClass(BaubleFunctionWithReturn.class);
+
+            MinecraftForge.EVENT_BUS.register(ManaBaubleEvent.class);
         }
 
         if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
