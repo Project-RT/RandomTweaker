@@ -29,7 +29,7 @@ public class SeverProxy implements CommonProxy {
     }
 
     @Override
-    public void bindTexture() {
+    public void bindTexture(String resourceLocation) {
         throwException();
     }
 
@@ -45,11 +45,6 @@ public class SeverProxy implements CommonProxy {
 
     @Override
     public void rotateIfSneaking(IPlayer player) {
-        throwException();
-    }
-
-    @Override
-    public void applySneakingRotation() {
         throwException();
     }
 

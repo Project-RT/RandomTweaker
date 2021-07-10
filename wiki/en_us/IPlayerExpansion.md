@@ -16,6 +16,7 @@ Extend `IPlayer` so that the `IPlayer` object can use the following fields and  
 | getSeenConstellations()     | string[] | Get seen constellations |
 
 ## FTBUltimine
+
 Need to be enabled in the configuration file
 
 | Method                          | Return |Description|

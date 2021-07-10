@@ -13,8 +13,6 @@ public interface CommonProxy {
 
     void rotateIfSneaking(IPlayer player);
 
-    void applySneakingRotation();
-
     void translateToHeadLevel(IPlayer player);
 
     void translateToFace();
@@ -25,7 +23,7 @@ public interface CommonProxy {
 
     void renderItem(IItemStack renderStack, String transformType);
 
-    void bindTexture();
+    void bindTexture(String resourceLocation);
 
     void scale(double x, double y, double z);
 

@@ -7,7 +7,7 @@ import ink.ikx.rt.api.mods.cote.function.BaubleRender;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.util.ResourceLocation;
 import vazkii.botania.api.item.IBaubleRender.Helper;
 
 /**
@@ -23,11 +23,6 @@ public class ClientProxy implements CommonProxy {
     @Override
     public void rotateIfSneaking(IPlayer player) {
         Helper.rotateIfSneaking(CraftTweakerMC.getPlayer(player));
-    }
-
-    @Override
-    public void applySneakingRotation() {
-        Helper.applySneakingRotation();
     }
 
     @Override
@@ -58,8 +53,8 @@ public class ClientProxy implements CommonProxy {
     }
 
     @Override
-    public void bindTexture() {
-        Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+    public void bindTexture(String resourceLocation) {
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(resourceLocation));
     }
 
     @Override

@@ -15,4 +15,3 @@ import mods.randomtweaker.Prop;
 | read(key as string)                | string   | Read     |
 | write(key as string, value as string) | bool  | Write |
 | getAllKeys()                    | string[] | Read all Keys in the file |
-

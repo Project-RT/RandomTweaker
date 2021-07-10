@@ -17,4 +17,3 @@ Elements rendered on the JEI, fluid slots, and item slot boxes are rendered from
 | width                                                        | int    |
 | height                                                       | int    |
 | texture (Default : "randomtweaker:textures/gui/jei/jei_default.png") | string |
-

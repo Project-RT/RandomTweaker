@@ -7,4 +7,3 @@ JEICustomElement extends `JEIElement`, so that all available `Getters` of `JEISl
 ~~~zenscript
 import mods.randomtweaker.jei.JEICustomElement;
 ~~~
-
