@@ -17,6 +17,7 @@ import mods.randomtweaker.cote.ManaBauble;
 ## 例子
 
 ```zenscript
+import mods.randomtweaker.RenderHelper;
 import mods.mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.cote.ManaBauble;
 import crafttweaker.player.IPlayer;
