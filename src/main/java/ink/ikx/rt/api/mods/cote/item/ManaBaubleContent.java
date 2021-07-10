@@ -6,12 +6,10 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.RandomTweaker;
 import java.util.Objects;
 import javax.annotation.Nonnull;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.NonNullList;
 import vazkii.botania.api.item.IBaubleRender;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.IPhantomInkable;
@@ -39,19 +37,6 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
     @ExpandContentTweakerEntry.RepresentationGetter
     public ManaBaubleRepresentation getRepresentation() {
         return manaBauble;
-    }
-
-    @Override
-    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> stacks) {
-        if (isInCreativeTab(tab)) {
-            stacks.add(new ItemStack(this));
-
-            if (this.manaBauble.hasFull()) {
-                ItemStack full = new ItemStack(this);
-                setMana(full, this.getMaxMana(full));
-                stacks.add(full);
-            }
-        }
     }
 
     @Override

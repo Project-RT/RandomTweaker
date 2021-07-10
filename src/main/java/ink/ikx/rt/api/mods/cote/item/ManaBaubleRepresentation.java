@@ -63,16 +63,6 @@ public class ManaBaubleRepresentation extends ManaItemRepresentation {
     }
 
     @Override
-    public void setHasCreative(boolean hasCreative) {
-        this.hasCreative = false;
-    }
-
-    @Override
-    public boolean hasCreative() {
-        return false;
-    }
-
-    @Override
     public String getTypeName() {
         return "ManaBauble";
     }

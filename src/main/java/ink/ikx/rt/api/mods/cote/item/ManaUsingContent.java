@@ -4,6 +4,9 @@ import net.minecraft.item.ItemStack;
 import vazkii.botania.api.mana.IManaUsingItem;
 import youyihj.zenutils.api.annotation.ExpandContentTweakerEntry;
 
+/**
+ * @author superhelo
+ */
 @ExpandContentTweakerEntry
 public class ManaUsingContent extends ManaBaubleContent implements IManaUsingItem {
 
