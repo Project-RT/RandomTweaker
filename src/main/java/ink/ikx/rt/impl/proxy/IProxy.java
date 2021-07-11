@@ -7,7 +7,7 @@ import ink.ikx.rt.api.mods.cote.function.BaubleRender;
 /**
  * @author superhelo
  */
-public interface CommonProxy {
+public interface IProxy {
 
     void onPlayerBaubleRender(BaubleRender render, IItemStack stack, IPlayer player, String renderType, float partialTicks);
 

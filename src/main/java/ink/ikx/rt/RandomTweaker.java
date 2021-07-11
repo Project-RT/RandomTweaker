@@ -24,7 +24,7 @@ import ink.ikx.rt.impl.events.DreamJournal;
 import ink.ikx.rt.impl.events.ManaBaubleEvent;
 import ink.ikx.rt.impl.item.SanityGem;
 import ink.ikx.rt.impl.jei.HydroangeasJEI;
-import ink.ikx.rt.impl.proxy.CommonProxy;
+import ink.ikx.rt.impl.proxy.IProxy;
 import ink.ikx.rt.impl.utils.ItemDs;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -78,7 +78,7 @@ public class RandomTweaker {
     public static Map<String, Potion> potionRegList = new HashMap<>();
     public static Map<String, PotionType> potionTypeList = new HashMap<>();
     @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")
-    public static CommonProxy proxy;
+    public static IProxy proxy;
 
     @EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {

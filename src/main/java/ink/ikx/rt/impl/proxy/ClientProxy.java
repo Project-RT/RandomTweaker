@@ -13,7 +13,7 @@ import vazkii.botania.api.item.IBaubleRender.Helper;
 /**
  * @author superhelo
  */
-public class ClientProxy implements CommonProxy {
+public class ClientProxy implements IProxy {
 
     @Override
     public void onPlayerBaubleRender(BaubleRender render, IItemStack stack, IPlayer player, String renderType, float partialTicks) {

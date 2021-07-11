@@ -7,64 +7,38 @@ import ink.ikx.rt.api.mods.cote.function.BaubleRender;
 /**
  * @author superhelo
  */
-public class SeverProxy implements CommonProxy {
-
-    private void throwException() {
-        throw new IllegalStateException("This is only run in clent");
-    }
+public class SeverProxy implements IProxy {
 
     @Override
-    public void scale(double x, double y, double z) {
-        throwException();
-    }
+    public void scale(double x, double y, double z) { }
 
     @Override
-    public void rotate(float angle, float x, float y, float z) {
-        throwException();
-    }
+    public void rotate(float angle, float x, float y, float z) { }
 
     @Override
-    public void translate(double x, double y, double z) {
-        throwException();
-    }
+    public void translate(double x, double y, double z) { }
 
     @Override
-    public void bindTexture(String resourceLocation) {
-        throwException();
-    }
+    public void bindTexture(String resourceLocation) { }
 
     @Override
-    public void renderItem(IItemStack renderStack, String transformType) {
-        throwException();
-    }
+    public void renderItem(IItemStack renderStack, String transformType) { }
 
     @Override
-    public void onPlayerBaubleRender(BaubleRender render, IItemStack stack, IPlayer player, String renderType, float partialTicks) {
-        throwException();
-    }
+    public void onPlayerBaubleRender(BaubleRender render, IItemStack stack, IPlayer player, String renderType, float partialTicks) { }
 
     @Override
-    public void rotateIfSneaking(IPlayer player) {
-        throwException();
-    }
+    public void rotateIfSneaking(IPlayer player) { }
 
     @Override
-    public void translateToFace() {
-        throwException();
-    }
+    public void translateToFace() { }
 
     @Override
-    public void translateToHeadLevel(IPlayer player) {
-        throwException();
-    }
+    public void translateToHeadLevel(IPlayer player) { }
 
     @Override
-    public void defaultTransforms() {
-        throwException();
-    }
+    public void defaultTransforms() { }
 
     @Override
-    public void translateToChest() {
-        throwException();
-    }
+    public void translateToChest() { }
 }
