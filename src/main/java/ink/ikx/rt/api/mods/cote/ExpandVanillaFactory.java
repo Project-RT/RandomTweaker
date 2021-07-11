@@ -7,7 +7,6 @@ import ink.ikx.rt.api.mods.cote.item.ManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.cote.item.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionTypeRepresentation;
-import ink.ikx.rt.api.mods.cote.tile.TileEntityRepresentation;
 import net.minecraftforge.fml.common.Loader;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -34,7 +33,7 @@ public class ExpandVanillaFactory {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             return new ManaItemRepresentation(unlocalizedName, maxMana);
         } else {
-            CraftTweakerAPI.logError("You can only create a manaItem when both Botania and ContentTweaker installed！");
+            CraftTweakerAPI.logError("You can only create a manaitem when both Botania and ContentTweaker installed！");
             return null;
         }
     }
@@ -44,13 +43,8 @@ public class ExpandVanillaFactory {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             return new ManaBaubleRepresentation(unlocalizedName, maxMana, baubleType);
         } else {
-            CraftTweakerAPI.logError("You can only create a manaBauble when both Botania and ContentTweaker installed！");
+            CraftTweakerAPI.logError("You can only create a manabauble when both Botania and ContentTweaker installed！");
             return null;
         }
-    }
-
-    @ZenMethodStatic
-    public static TileEntityRepresentation createActualTileEntity(String name) {
-        return new TileEntityRepresentation(name);
     }
 }
