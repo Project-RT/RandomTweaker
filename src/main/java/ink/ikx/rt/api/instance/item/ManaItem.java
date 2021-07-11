@@ -19,7 +19,7 @@ public interface ManaItem {
     @ZenGetter("maxMana")
     int getMaxMana();
 
-    @ZenGetter("isNoExport")
+    @ZenGetter("noExport")
     boolean isNoExport();
 
     @ZenGetter("hasFull")
@@ -28,16 +28,22 @@ public interface ManaItem {
     @ZenGetter("hasCreative")
     boolean hasCreative();
 
-    @ZenGetter("canExportManaToPool")
+    @ZenGetter("creative")
+    boolean isCreative();
+
+    @ZenGetter("full")
+    boolean isFull();
+
+    @ZenMethod
     boolean canExportManaToPool(IWorld world, IBlockPos pos);
 
-    @ZenGetter("canExportManaToItem")
+    @ZenMethod
     boolean canExportManaToItem(IItemStack otherStack);
 
-    @ZenGetter("canReceiveManaFromPool")
+    @ZenMethod
     boolean canReceiveManaFromPool(IWorld world, IBlockPos pos);
 
-    @ZenGetter("canReceiveManaFromItem")
+    @ZenMethod
     boolean canReceiveManaFromItem(IItemStack otherStack);
 
     @ZenMethod

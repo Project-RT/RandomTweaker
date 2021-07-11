@@ -6,6 +6,7 @@ import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
 import ink.ikx.rt.api.instance.item.ManaItem;
 import ink.ikx.rt.api.mods.cote.item.ManaItemContent;
+import java.util.Objects;
 import net.minecraft.item.ItemStack;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 
@@ -36,6 +37,16 @@ public class ManaItemImpl implements ManaItem {
     }
 
     @Override
+    public boolean isCreative() {
+        return itemIn.isCreative(stack);
+    }
+
+    @Override
+    public boolean isFull() {
+        return this.getMana() == this.getMaxMana();
+    }
+
+    @Override
     public int getMana() {
         return itemIn.getMana(stack);
     }
@@ -62,21 +73,21 @@ public class ManaItemImpl implements ManaItem {
 
     @Override
     public boolean canExportManaToPool(IWorld world, IBlockPos pos) {
-        return itemIn.manaItem.canExportManaToPool.handle(CraftTweakerMC.getIItemStack(stack), world, pos);
+        return !Objects.nonNull(itemIn.manaItem.canExportManaToPool) || itemIn.manaItem.canExportManaToPool.handle(CraftTweakerMC.getIItemStack(stack), world, pos);
     }
 
     @Override
     public boolean canExportManaToItem(IItemStack otherStack) {
-        return itemIn.manaItem.canExportManaToItem.handle(CraftTweakerMC.getIItemStack(stack), otherStack);
+        return !Objects.nonNull(itemIn.manaItem.canExportManaToItem) || itemIn.manaItem.canExportManaToItem.handle(CraftTweakerMC.getIItemStack(stack), otherStack);
     }
 
     @Override
     public boolean canReceiveManaFromPool(IWorld world, IBlockPos pos) {
-        return itemIn.manaItem.canReceiveManaFromPool.handle(CraftTweakerMC.getIItemStack(stack), world, pos);
+        return !ItemNBTHelper.getBoolean(stack, "oneUse", false) && (!Objects.nonNull(itemIn.manaItem.canReceiveManaFromPool) || itemIn.manaItem.canReceiveManaFromPool.handle(CraftTweakerMC.getIItemStack(stack), world, pos));
     }
 
     @Override
     public boolean canReceiveManaFromItem(IItemStack otherStack) {
-        return itemIn.manaItem.canReceiveManaFromItem.handle(CraftTweakerMC.getIItemStack(stack), otherStack);
+        return !itemIn.isCreative(stack) && (!Objects.nonNull(itemIn.manaItem.canReceiveManaFromItem) || itemIn.manaItem.canReceiveManaFromItem.handle(CraftTweakerMC.getIItemStack(stack), otherStack));
     }
 }
