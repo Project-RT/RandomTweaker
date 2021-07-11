@@ -3,6 +3,8 @@ package ink.ikx.rt.api.mods.cote.item;
 import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemRepresentation;
+import ink.ikx.rt.api.mods.cote.function.mana.ManaItemForItemFunction;
+import ink.ikx.rt.api.mods.cote.function.mana.ManaItemForPoolFunction;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -22,18 +24,58 @@ public class ManaItemRepresentation extends ItemRepresentation {
     @ZenProperty
     public boolean hasCreative;
     @ZenProperty
-    public boolean canExportManaToPool = true;
+    public ManaItemForPoolFunction canExportManaToPool;
     @ZenProperty
-    public boolean canExportManaToItem = true;
+    public ManaItemForItemFunction canExportManaToItem;
     @ZenProperty
-    public boolean canReceiveManaFromPool = true;
+    public ManaItemForPoolFunction canReceiveManaFromPool;
     @ZenProperty
-    public boolean canReceiveManaFromItem = true;
+    public ManaItemForItemFunction canReceiveManaFromItem;
 
     public ManaItemRepresentation(String unlocalizedName, int maxMana) {
         this.setUnlocalizedName(unlocalizedName);
         this.setMaxMana(maxMana);
         this.setMaxStackSize(1);
+    }
+
+    @ZenMethod
+    public ManaItemForPoolFunction getCanExportManaToPool() {
+        return canExportManaToPool;
+    }
+
+    @ZenMethod
+    public void setCanExportManaToPool(ManaItemForPoolFunction canExportManaToPool) {
+        this.canExportManaToPool = canExportManaToPool;
+    }
+
+    @ZenMethod
+    public ManaItemForItemFunction getCanExportManaToItem() {
+        return canExportManaToItem;
+    }
+
+    @ZenMethod
+    public void setCanExportManaToItem(ManaItemForItemFunction canExportManaToItem) {
+        this.canExportManaToItem = canExportManaToItem;
+    }
+
+    @ZenMethod
+    public ManaItemForPoolFunction getCanReceiveManaFromPool() {
+        return canReceiveManaFromPool;
+    }
+
+    @ZenMethod
+    public void setCanReceiveManaFromPool(ManaItemForPoolFunction canReceiveManaFromPool) {
+        this.canReceiveManaFromPool = canReceiveManaFromPool;
+    }
+
+    @ZenMethod
+    public ManaItemForItemFunction getCanReceiveManaFromItem() {
+        return canReceiveManaFromItem;
+    }
+
+    @ZenMethod
+    public void setCanReceiveManaFromItem(ManaItemForItemFunction canReceiveManaFromItem) {
+        this.canReceiveManaFromItem = canReceiveManaFromItem;
     }
 
     @ZenMethod
@@ -74,46 +116,6 @@ public class ManaItemRepresentation extends ItemRepresentation {
     @ZenMethod
     public void setNoExport(boolean isNoExport) {
         this.isNoExport = isNoExport;
-    }
-
-    @ZenMethod
-    public boolean canReceiveManaFromPool() {
-        return canReceiveManaFromPool;
-    }
-
-    @ZenMethod
-    public void setCanReceiveManaFromPool(boolean canReceiveManaFromPool) {
-        this.canReceiveManaFromPool = canReceiveManaFromPool;
-    }
-
-    @ZenMethod
-    public boolean canReceiveManaFromItem() {
-        return canReceiveManaFromItem;
-    }
-
-    @ZenMethod
-    public void setCanReceiveManaFromItem(boolean canReceiveManaFromItem) {
-        this.canReceiveManaFromItem = canReceiveManaFromItem;
-    }
-
-    @ZenMethod
-    public boolean canExportManaToPool() {
-        return canExportManaToPool;
-    }
-
-    @ZenMethod
-    public void setCanExportManaToPool(boolean canExportManaToPool) {
-        this.canExportManaToPool = canExportManaToPool;
-    }
-
-    @ZenMethod
-    public boolean canExportManaToItem() {
-        return canExportManaToItem;
-    }
-
-    @ZenMethod
-    public void setCanExportManaToItem(boolean canExportManaToItem) {
-        this.canExportManaToItem = canExportManaToItem;
     }
 
     @Override

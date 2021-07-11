@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.function;
+package ink.ikx.rt.api.mods.cote.function.mana;
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;

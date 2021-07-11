@@ -33,7 +33,7 @@ public class ExpandVanillaFactory {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             return new ManaItemRepresentation(unlocalizedName, maxMana);
         } else {
-            CraftTweakerAPI.logError("You can only create a manaitem when both Botania and ContentTweaker installed！");
+            CraftTweakerAPI.logError("You can only create a manaItem when both Botania and ContentTweaker installed！");
             return null;
         }
     }
@@ -43,7 +43,7 @@ public class ExpandVanillaFactory {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             return new ManaBaubleRepresentation(unlocalizedName, maxMana, baubleType);
         } else {
-            CraftTweakerAPI.logError("You can only create a manabauble when both Botania and ContentTweaker installed！");
+            CraftTweakerAPI.logError("You can only create a manaBauble when both Botania and ContentTweaker installed！");
             return null;
         }
     }

@@ -2,7 +2,7 @@ package ink.ikx.rt.impl.proxy;
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
-import ink.ikx.rt.api.mods.cote.function.BaubleRender;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleRender;
 
 /**
  * @author superhelo
