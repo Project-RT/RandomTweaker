@@ -83,7 +83,7 @@ public class ManaItemImpl implements ManaItem {
 
     @Override
     public boolean canReceiveManaFromPool(IWorld world, IBlockPos pos) {
-        return !ItemNBTHelper.getBoolean(stack, "oneUse", false) && (!Objects.nonNull(itemIn.manaItem.canReceiveManaFromItem) || itemIn.manaItem.canReceiveManaFromPool.handle(CraftTweakerMC.getIItemStack(stack), world, pos));
+        return !ItemNBTHelper.getBoolean(stack, "oneUse", false) && (!Objects.nonNull(itemIn.manaItem.canReceiveManaFromPool) || itemIn.manaItem.canReceiveManaFromPool.handle(CraftTweakerMC.getIItemStack(stack), world, pos));
     }
 
     @Override
