@@ -19,7 +19,7 @@ public interface ManaItem {
     @ZenGetter("maxMana")
     int getMaxMana();
 
-    @ZenGetter("isNoExport")
+    @ZenGetter("noExport")
     boolean isNoExport();
 
     @ZenGetter("hasFull")
@@ -28,10 +28,10 @@ public interface ManaItem {
     @ZenGetter("hasCreative")
     boolean hasCreative();
 
-    @ZenGetter("isCreative")
+    @ZenGetter("creative")
     boolean isCreative();
 
-    @ZenGetter("isFull")
+    @ZenGetter("full")
     boolean isFull();
 
     @ZenMethod

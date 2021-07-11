@@ -56,7 +56,7 @@ dependencies {
     deobfCompile "curse.maven:the-twilight-forest-227639:3051450"
     deobfCompile "curse.maven:matteroverdrive-legacy-308192:2699215"
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.652"
+    //deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.653"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
 
     runtime "curse.maven:mixin-booter-419286:3321174"
