@@ -28,16 +28,22 @@ public interface ManaItem {
     @ZenGetter("hasCreative")
     boolean hasCreative();
 
-    @ZenGetter("canExportManaToPool")
+    @ZenGetter("isCreative")
+    boolean isCreative();
+
+    @ZenGetter("isFull")
+    boolean isFull();
+
+    @ZenMethod
     boolean canExportManaToPool(IWorld world, IBlockPos pos);
 
-    @ZenGetter("canExportManaToItem")
+    @ZenMethod
     boolean canExportManaToItem(IItemStack otherStack);
 
-    @ZenGetter("canReceiveManaFromPool")
+    @ZenMethod
     boolean canReceiveManaFromPool(IWorld world, IBlockPos pos);
 
-    @ZenGetter("canReceiveManaFromItem")
+    @ZenMethod
     boolean canReceiveManaFromItem(IItemStack otherStack);
 
     @ZenMethod
