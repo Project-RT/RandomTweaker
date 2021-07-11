@@ -3,7 +3,7 @@ package ink.ikx.rt.impl.proxy;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
-import ink.ikx.rt.api.mods.cote.function.BaubleRender;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleRender;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;

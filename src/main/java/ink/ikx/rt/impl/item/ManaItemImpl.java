@@ -1,5 +1,9 @@
 package ink.ikx.rt.impl.item;
 
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.minecraft.CraftTweakerMC;
+import crafttweaker.api.world.IBlockPos;
+import crafttweaker.api.world.IWorld;
 import ink.ikx.rt.api.instance.item.ManaItem;
 import ink.ikx.rt.api.mods.cote.item.ManaItemContent;
 import net.minecraft.item.ItemStack;
@@ -57,22 +61,22 @@ public class ManaItemImpl implements ManaItem {
     }
 
     @Override
-    public boolean canExportManaToPool() {
-        return itemIn.canExportManaToPool();
+    public boolean canExportManaToPool(IWorld world, IBlockPos pos) {
+        return itemIn.manaItem.canExportManaToPool.handle(CraftTweakerMC.getIItemStack(stack), world, pos);
     }
 
     @Override
-    public boolean canExportManaToItem() {
-        return itemIn.canExportManaToItem(stack, stack);
+    public boolean canExportManaToItem(IItemStack otherStack) {
+        return itemIn.manaItem.canExportManaToItem.handle(CraftTweakerMC.getIItemStack(stack), otherStack);
     }
 
     @Override
-    public boolean canReceiveManaFromPool() {
-        return itemIn.canReceiveManaFromPool(stack);
+    public boolean canReceiveManaFromPool(IWorld world, IBlockPos pos) {
+        return itemIn.manaItem.canReceiveManaFromPool.handle(CraftTweakerMC.getIItemStack(stack), world, pos);
     }
 
     @Override
-    public boolean canReceiveManaFromItem() {
-        return itemIn.canReceiveManaFromItem(stack, stack);
+    public boolean canReceiveManaFromItem(IItemStack otherStack) {
+        return itemIn.manaItem.canReceiveManaFromItem.handle(CraftTweakerMC.getIItemStack(stack), otherStack);
     }
 }

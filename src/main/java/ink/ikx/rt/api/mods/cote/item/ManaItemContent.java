@@ -1,7 +1,9 @@
 package ink.ikx.rt.api.mods.cote.item;
 
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemContent;
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nonnull;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -73,14 +75,6 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
         }
     }
 
-    public boolean canReceiveManaFromPool(ItemStack stack) {
-        return !ItemNBTHelper.getBoolean(stack, TAG_ONE_USE, false) && this.manaItem.canReceiveManaFromPool();
-    }
-
-    public boolean canExportManaToPool() {
-        return this.manaItem.canExportManaToPool();
-    }
-
     @Override
     public int getMana(ItemStack stack) {
         return ItemNBTHelper.getInt(stack, TAG_MANA, 0);
@@ -100,22 +94,22 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
 
     @Override
     public boolean canReceiveManaFromPool(ItemStack stack, TileEntity pool) {
-        return this.canReceiveManaFromPool(stack);
+        return !ItemNBTHelper.getBoolean(stack, TAG_ONE_USE, false) && (!Objects.nonNull(this.manaItem.canReceiveManaFromPool) || this.manaItem.canReceiveManaFromPool.handle(CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIWorld(pool.getWorld()), CraftTweakerMC.getIBlockPos(pool.getPos())));
     }
 
     @Override
     public boolean canReceiveManaFromItem(ItemStack stack, ItemStack otherStack) {
-        return !isCreative(stack) && this.manaItem.canReceiveManaFromItem();
+        return !isCreative(stack) && (!Objects.nonNull(this.manaItem.canReceiveManaFromItem) || this.manaItem.canReceiveManaFromItem.handle(CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIItemStack(otherStack)));
     }
 
     @Override
     public boolean canExportManaToPool(ItemStack stack, TileEntity pool) {
-        return this.canExportManaToPool();
+        return !Objects.nonNull(this.manaItem.canExportManaToPool) || this.manaItem.canExportManaToPool.handle(CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIWorld(pool.getWorld()), CraftTweakerMC.getIBlockPos(pool.getPos()));
     }
 
     @Override
     public boolean canExportManaToItem(ItemStack stack, ItemStack otherStack) {
-        return this.manaItem.canExportManaToItem();
+        return !Objects.nonNull(this.manaItem.canExportManaToItem) || this.manaItem.canExportManaToItem.handle(CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIItemStack(otherStack));
     }
 
     @Override

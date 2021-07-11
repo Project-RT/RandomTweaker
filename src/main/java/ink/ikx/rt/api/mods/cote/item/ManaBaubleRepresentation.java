@@ -2,9 +2,9 @@ package ink.ikx.rt.api.mods.cote.item;
 
 import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
-import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
-import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
-import ink.ikx.rt.api.mods.cote.function.BaubleRender;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunction;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunctionWithReturn;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleRender;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;

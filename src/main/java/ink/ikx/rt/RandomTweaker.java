@@ -8,9 +8,11 @@ import ink.ikx.rt.api.instance.item.ManaHelper;
 import ink.ikx.rt.api.instance.item.ManaItem;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
-import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
-import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
-import ink.ikx.rt.api.mods.cote.function.BaubleRender;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunction;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunctionWithReturn;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleRender;
+import ink.ikx.rt.api.mods.cote.function.mana.ManaItemForItemFunction;
+import ink.ikx.rt.api.mods.cote.function.mana.ManaItemForPoolFunction;
 import ink.ikx.rt.api.mods.cote.item.ManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.cote.item.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
@@ -110,6 +112,8 @@ public class RandomTweaker {
             CraftTweakerAPI.registerClass(BaubleRender.class);
             CraftTweakerAPI.registerClass(BaubleFunction.class);
             CraftTweakerAPI.registerClass(ManaItemRepresentation.class);
+            CraftTweakerAPI.registerClass(ManaItemForPoolFunction.class);
+            CraftTweakerAPI.registerClass(ManaItemForItemFunction.class);
             CraftTweakerAPI.registerClass(ManaBaubleRepresentation.class);
             CraftTweakerAPI.registerClass(BaubleFunctionWithReturn.class);
 

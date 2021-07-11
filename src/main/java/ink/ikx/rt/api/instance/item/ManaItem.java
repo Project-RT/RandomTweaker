@@ -1,5 +1,8 @@
 package ink.ikx.rt.api.instance.item;
 
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.world.IBlockPos;
+import crafttweaker.api.world.IWorld;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -26,16 +29,16 @@ public interface ManaItem {
     boolean hasCreative();
 
     @ZenGetter("canExportManaToPool")
-    boolean canExportManaToPool();
+    boolean canExportManaToPool(IWorld world, IBlockPos pos);
 
     @ZenGetter("canExportManaToItem")
-    boolean canExportManaToItem();
+    boolean canExportManaToItem(IItemStack otherStack);
 
     @ZenGetter("canReceiveManaFromPool")
-    boolean canReceiveManaFromPool();
+    boolean canReceiveManaFromPool(IWorld world, IBlockPos pos);
 
     @ZenGetter("canReceiveManaFromItem")
-    boolean canReceiveManaFromItem();
+    boolean canReceiveManaFromItem(IItemStack otherStack);
 
     @ZenMethod
     int updateMana(int mana);

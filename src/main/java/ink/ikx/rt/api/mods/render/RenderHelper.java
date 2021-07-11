@@ -1,5 +1,6 @@
 package ink.ikx.rt.api.mods.render;
 
+import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
@@ -12,6 +13,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
  * @author superhelo
  */
 @ZenRegister
+@ModOnly("botania")
 @ZenClass("mods.randomtweaker.RenderHelper")
 public class RenderHelper {
 
