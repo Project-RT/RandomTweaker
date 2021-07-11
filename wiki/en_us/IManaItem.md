@@ -15,7 +15,7 @@ import mods.randomtweaker.item.IManaItem;
 | :----- | ---- | ----- |
 | mana | int | 当前 Mana 值|
 | maxMana | int | 能容纳的最大 Mana |
-| nExport | bool | 是否真正输出 Mana |
+| noExport | bool | 是否真正输出 Mana |
 | hasFull | bool | 是否同时有填满 Mana 的物品 |
 | hasCreative | bool | 是否同时有创造型物品 |
 | creative | bool | 物品是否是创造性物品 |
