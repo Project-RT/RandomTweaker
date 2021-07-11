@@ -38,5 +38,5 @@ public interface ManaItem {
     boolean canReceiveManaFromItem();
 
     @ZenMethod
-    int updateMana(int amount);
+    int updateMana(int mana);
 }
