@@ -11,6 +11,7 @@ import ink.ikx.rt.api.mods.botania.Hydroangeas;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.BaubleFunctionWithReturn;
 import ink.ikx.rt.api.mods.cote.function.BaubleRender;
+import ink.ikx.rt.api.mods.cote.function.TileEntityTick;
 import ink.ikx.rt.api.mods.cote.item.ManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.cote.item.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
@@ -70,6 +71,7 @@ public class RandomTweaker {
     public static final SoundEvent SOUND_SAN = new SoundEvent(
         new ResourceLocation(RandomTweaker.MODID, "san"))
         .setRegistryName(new ResourceLocation(RandomTweaker.MODID, "san"));
+    public static final Map<String, TileEntityTick> TILE_ENTITY_TICKS = new HashMap<>();
 
     public static Logger logger;
     public static Set<ItemDs> itemDsSet = new HashSet<>();
