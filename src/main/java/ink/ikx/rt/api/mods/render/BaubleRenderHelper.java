@@ -1,7 +1,5 @@
 package ink.ikx.rt.api.mods.render;
 
-import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.RandomTweaker;
@@ -12,10 +10,8 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author superhelo
  */
-@ZenRegister
-@ModOnly("botania")
-@ZenClass("mods.randomtweaker.RenderHelper")
-public class RenderHelper {
+@ZenClass("mods.randomtweaker.BaubleRenderHelper")
+public class BaubleRenderHelper {
 
     @ZenMethod
     public static void bindTexture(@Optional(value = "textures/atlas/blocks.png") String resourceLocation) {
