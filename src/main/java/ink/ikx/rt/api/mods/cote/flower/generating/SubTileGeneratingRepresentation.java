@@ -1,6 +1,8 @@
 package ink.ikx.rt.api.mods.cote.flower.generating;
 
+import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ZenRegister;
+import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.function.botania.BindToOrCanSelect;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockActivated;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockAdded;
@@ -9,6 +11,7 @@ import ink.ikx.rt.api.mods.cote.function.botania.BlockPlacedBy;
 import ink.ikx.rt.api.mods.cote.function.botania.CanGeneratePassively;
 import ink.ikx.rt.api.mods.cote.function.botania.PopulateDropStackNBTs;
 import ink.ikx.rt.api.mods.cote.function.botania.UpdateWithGenerating;
+import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -20,7 +23,7 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public int color;
     @ZenProperty
-    public String name;
+    public String unlocalizedName;
 
     @ZenProperty
     public int range = 1;
@@ -33,11 +36,11 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public BindToOrCanSelect bindTo = null;
     @ZenProperty
-    public BindToOrCanSelect canSelect = null;
-    @ZenProperty
     public boolean acceptsRedstone = false;
     @ZenProperty
     public int valueForPassiveGeneration = 1;
+    @ZenProperty
+    public BindToOrCanSelect canSelect = null;
     @ZenProperty
     public boolean overgrowthAffected = false;
     @ZenProperty
@@ -55,9 +58,9 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public PopulateDropStackNBTs populateDropStackNBTs = null;
 
-    private SubTileGeneratingRepresentation(int color, String name) {
+    private SubTileGeneratingRepresentation(int color, String unlocalizedName) {
         this.color = color;
-        this.name = name;
+        this.unlocalizedName = unlocalizedName;
     }
 
     @ZenMethod
@@ -73,16 +76,6 @@ public class SubTileGeneratingRepresentation {
     @ZenMethod
     public void setColor(int color) {
         this.color = color;
-    }
-
-    @ZenMethod
-    public String getName() {
-        return name;
-    }
-
-    @ZenMethod
-    public void setName(String name) {
-        this.name = name;
     }
 
     @ZenMethod
@@ -103,6 +96,16 @@ public class SubTileGeneratingRepresentation {
     @ZenMethod
     public void setAcceptsRedstone(boolean acceptsRedstone) {
         this.acceptsRedstone = acceptsRedstone;
+    }
+
+    @ZenMethod
+    public String getUnlocalizedName() {
+        return unlocalizedName;
+    }
+
+    @ZenMethod
+    public void setUnlocalizedName(String unlocalizedName) {
+        this.unlocalizedName = unlocalizedName;
     }
 
     @ZenMethod
@@ -157,6 +160,8 @@ public class SubTileGeneratingRepresentation {
 
     @ZenMethod
     public void register() {
-
+        if (Objects.nonNull(RandomTweaker.subTileGeneratingMap.putIfAbsent(getUnlocalizedName(), this))) {
+            CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
+        }
     }
 }

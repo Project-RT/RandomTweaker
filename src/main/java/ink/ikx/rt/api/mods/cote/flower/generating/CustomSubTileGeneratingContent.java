@@ -27,10 +27,10 @@ import vazkii.botania.api.subtile.RadiusDescriptor;
 
 public class CustomSubTileGeneratingContent extends SubTileGeneratingContent {
 
-    public static final String TAG_CUSTOM_DATA = "CustomData";
     private static final String TAG_NAME = "SubTileName";
     private final TileData customData = new TileData();
-    private final SubTileGeneratingRepresentation subtile;
+    public static final String TAG_CUSTOM_DATA = "CustomData";
+    public final SubTileGeneratingRepresentation subtile;
 
     public String name;
 

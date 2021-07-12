@@ -8,6 +8,7 @@ import ink.ikx.rt.api.instance.item.ManaHelper;
 import ink.ikx.rt.api.instance.item.ManaItem;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
+import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
 import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunctionWithReturn;
 import ink.ikx.rt.api.mods.cote.function.mana.BaubleRender;
@@ -80,6 +81,7 @@ public class RandomTweaker {
     public static List<JEIRecipe> JEIRecipeList = new ArrayList<>();
     public static Map<String, Potion> potionRegList = new HashMap<>();
     public static Map<String, PotionType> potionTypeList = new HashMap<>();
+    public static Map<String, SubTileGeneratingRepresentation> subTileGeneratingMap = new HashMap<>();
     @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")
     public static IProxy proxy;
 
