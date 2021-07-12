@@ -1,6 +1,7 @@
 package ink.ikx.rt;
 
 import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.instance.item.ManaBauble;
@@ -81,7 +82,7 @@ public class RandomTweaker {
     public static List<JEIRecipe> JEIRecipeList = new ArrayList<>();
     public static Map<String, Potion> potionRegList = new HashMap<>();
     public static Map<String, PotionType> potionTypeList = new HashMap<>();
-    public static Map<String, SubTileGeneratingRepresentation> subTileGeneratingMap = new HashMap<>();
+    public static BiMap<String, SubTileGeneratingRepresentation> subTileGeneratingMap = HashBiMap.create();
     @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")
     public static IProxy proxy;
 
