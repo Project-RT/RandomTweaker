@@ -3,6 +3,7 @@ package ink.ikx.rt.api.mods.cote;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
+import ink.ikx.rt.api.mods.cote.aspect.AspectRepresentation;
 import ink.ikx.rt.api.mods.cote.item.ManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.cote.item.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
@@ -42,9 +43,17 @@ public class ExpandVanillaFactory {
     public static ManaBaubleRepresentation createManaBauble(String unlocalizedName, @Optional(valueLong = 500000) int maxMana, @Optional(value = "RING") String baubleType) {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             return new ManaBaubleRepresentation(unlocalizedName, maxMana, baubleType);
-        } else {
-            CraftTweakerAPI.logError("You can only create a manaBauble when both Botania and ContentTweaker installed！");
-            return null;
         }
+        CraftTweakerAPI.logError("You can only create a manaBauble when both Botania and ContentTweaker installed！");
+        return null;
+    }
+
+    @ZenMethodStatic
+    public static AspectRepresentation createAspect(String tag, int color) {
+        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
+            return new AspectRepresentation(tag, color);
+        }
+        CraftTweakerAPI.logError("You can only create a manaBauble when both ThaumCraft and ContentTweaker installed！");
+        return null;
     }
 }

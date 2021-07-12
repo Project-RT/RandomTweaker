@@ -9,6 +9,7 @@ import ink.ikx.rt.api.instance.item.ManaHelper;
 import ink.ikx.rt.api.instance.item.ManaItem;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
+import ink.ikx.rt.api.mods.cote.aspect.AspectRepresentation;
 import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
 import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunctionWithReturn;
@@ -123,6 +124,10 @@ public class RandomTweaker {
             CraftTweakerAPI.registerClass(BaubleFunctionWithReturn.class);
 
             MinecraftForge.EVENT_BUS.register(ManaBaubleEvent.class);
+        }
+
+        if (Loader.isModLoaded("thaumcraft") && Loader.isModLoaded("contenttweaker")) {
+            CraftTweakerAPI.registerClass(AspectRepresentation.class);
         }
 
         if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
