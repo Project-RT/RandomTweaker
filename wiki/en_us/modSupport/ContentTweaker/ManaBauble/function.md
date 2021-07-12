@@ -1,11 +1,11 @@
-# ManaBauble 具有的函数
+# Function
 
 ## 导包 (返回值不为 void 的函数导第二个包, 渲染的导第三个包)
 
 ```zenscript
 import mods.randomtweaker.cote.BaubleFunction;
 import mods.randomtweaker.cote.BaubleFunctionWithReturn;
-import mods.mods.randomtweaker.cote.PlayerBaubleRender;
+import mods.randomtweaker.cote.PlayerBaubleRender;
 ```
 
 ## onWornTick
@@ -115,7 +115,7 @@ manaBaubleObj.willAutoSync = function((bauble, wearer) {
 此函数用于当饰品处于玩家的饰品栏时该如何渲染
 
 目前只可进行简单的渲染,
-具体方法请看 [RenderHelper](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/RenderHelper.md)
+具体的渲染方法请看 [BaubleRenderHelper](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/BaubleRenderHelper.md)
 
 * stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 饰品
 * player as [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/) 佩戴饰品的玩家

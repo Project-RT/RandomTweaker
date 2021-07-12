@@ -1,11 +1,11 @@
-# RenderHelper
+# BaubleRenderHelper
 
 本章节内容十分推荐玩家自己上手测试一下
 
 ## 导包
 
 ```zenscript
-import mods.randomtweaker.RenderHelper;
+import mods.randomtweaker.BaubleRenderHelper;
 ```
 
 | 静态方法| 描述 |
@@ -29,4 +29,4 @@ import mods.randomtweaker.RenderHelper;
 | 静态方法| 描述 |
 |:------ | --- |
 | translateToFace() | 将饰品正确渲染到玩家的脸部 (通常调用在 `translateToHeadLevel` 方法之后) |
-| translateToHeadLevel(player as [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/))) | 将饰品正确渲染到玩家的头部 (包括潜行时) |
+| translateToHeadLevel(player as [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/)) | 将饰品正确渲染到玩家的头部 (包括潜行时) |
