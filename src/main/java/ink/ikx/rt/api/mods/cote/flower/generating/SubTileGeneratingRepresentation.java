@@ -7,7 +7,7 @@ import ink.ikx.rt.api.mods.cote.function.botania.BlockHarvested;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockPlacedBy;
 import ink.ikx.rt.api.mods.cote.function.botania.CanGeneratePassively;
 import ink.ikx.rt.api.mods.cote.function.botania.PopulateDropStackNBTs;
-import ink.ikx.rt.api.mods.cote.function.botania.Update;
+import ink.ikx.rt.api.mods.cote.function.botania.UpdateWithGenerating;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -26,15 +26,19 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public int maxMana = 1000;
     @ZenProperty
-    public Update onUpdate = null;
-    @ZenProperty
     public boolean PassiveFlower = true;
     @ZenProperty
     public BlockAdded onBlockAdded = null;
     @ZenProperty
     public boolean acceptsRedstone = false;
     @ZenProperty
+    public int valueForPassiveGeneration = 1;
+    @ZenProperty
     public BlockPlacedBy onBlockPlaceBy = null;
+    @ZenProperty
+    public UpdateWithGenerating onUpdate = null;
+    @ZenProperty
+    public int delayBetweenPassiveGeneration = 20;
     @ZenProperty
     public BlockHarvested onBlockHarvested = null;
     @ZenProperty
@@ -112,6 +116,26 @@ public class SubTileGeneratingRepresentation {
     @ZenMethod
     public void setMaxMana(int maxMana) {
         this.maxMana = maxMana;
+    }
+
+    @ZenMethod
+    public int getValueForPassiveGeneration() {
+        return valueForPassiveGeneration;
+    }
+
+    @ZenMethod
+    public void setValueForPassiveGeneration(int valueForPassiveGeneration) {
+        this.valueForPassiveGeneration = valueForPassiveGeneration;
+    }
+
+    @ZenMethod
+    public int getDelayBetweenPassiveGeneration() {
+        return delayBetweenPassiveGeneration;
+    }
+
+    @ZenMethod
+    public void setDelayBetweenPassiveGeneration(int delayBetweenPassiveGeneration) {
+        this.delayBetweenPassiveGeneration = delayBetweenPassiveGeneration;
     }
 
     @ZenMethod

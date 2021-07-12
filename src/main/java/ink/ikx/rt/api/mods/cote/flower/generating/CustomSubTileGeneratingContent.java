@@ -11,7 +11,6 @@ import crafttweaker.mc1120.data.NBTConverter;
 import crafttweaker.mc1120.entity.MCEntityLivingBase;
 import crafttweaker.mc1120.item.MCItemStack;
 import crafttweaker.mc1120.world.MCFacing;
-import ink.ikx.rt.api.mods.cote.flower.SubTileManager;
 import ink.ikx.rt.impl.utils.TileData;
 import java.util.List;
 import java.util.Objects;
@@ -33,14 +32,15 @@ public class CustomSubTileGeneratingContent extends SubTileGeneratingContent {
     private static final String TAG_NAME = "SubTileName";
     private final TileData customData = new TileData();
     private final SubTileGeneratingRepresentation subtile;
-    private String name;
+
+    public String name;
 
     public CustomSubTileGeneratingContent(SubTileGeneratingRepresentation subtile) {
         this.subtile = subtile;
     }
 
     @Override
-    public boolean canGeneratePassively() { // 能否被动产魔，不确定.
+    public boolean canGeneratePassively() {
         return Objects.nonNull(subtile.canGeneratePassively) && subtile.canGeneratePassively.call(new MCBlockPos(getPos()), new MCWorld(getWorld()));
     }
 
@@ -103,10 +103,20 @@ public class CustomSubTileGeneratingContent extends SubTileGeneratingContent {
     }
 
     @Override
+    public int getDelayBetweenPassiveGeneration() {
+        return subtile.getDelayBetweenPassiveGeneration();
+    }
+
+    @Override
+    public int getValueForPassiveGeneration() {
+        return subtile.getValueForPassiveGeneration();
+    }
+
+    @Override
     public void onUpdate() {
         super.onUpdate();
         if (Objects.nonNull(subtile.onUpdate)) {
-            SubTileManager.getTickFunction(name).call(this, new MCWorld(getWorld()), new MCBlockPos(getPos()));
+            subtile.onUpdate.call(this, new MCWorld(getWorld()), new MCBlockPos(getPos()));
         }
     }
 

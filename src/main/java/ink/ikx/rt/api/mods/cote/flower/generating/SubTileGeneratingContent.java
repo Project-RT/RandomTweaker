@@ -74,8 +74,8 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating {
     public abstract void updateCustomData(IData data);
 
     @Override
-    @ZenMethod
-    public int getDelayBetweenPassiveGeneration() {
-        return super.getDelayBetweenPassiveGeneration();
-    }
+    public abstract int getDelayBetweenPassiveGeneration();
+
+    @Override
+    public abstract int getValueForPassiveGeneration();
 }
