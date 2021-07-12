@@ -65,9 +65,9 @@ manaItemObj.canExportManaToItem = function(stack, otherStack) {
 
 需要返回一个 bool
 
-* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 待输出魔力的物品
+* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 待接受魔力的物品
 
-* otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 需求魔力的物品
+* otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 输出魔力的物品
 
 ```zenscript
 manaItemObj.canReceiveManaFromItem = function(stack, otherStack) {

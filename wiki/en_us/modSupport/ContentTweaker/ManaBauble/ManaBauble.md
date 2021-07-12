@@ -1,7 +1,7 @@
 # ManaBauble
 
 当同时加载了植物魔法和 CoT 时可以使 CoT 可以创建具有魔力 (Mana) 的饰品  
-因为 `ManaBauble` 类继承 `ManaItem` 类所以 `ManaItem` 可用的所有功能也可用于 `ManaBauble` 对象上
+因为 `ManaBauble` 类继承 [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md) 类所以 `ManaItem` 所有可用的功能也可用于 `ManaBauble` 上
 
 ## 导包
 
@@ -17,8 +17,9 @@ import mods.randomtweaker.cote.ManaBauble;
 ## 例子
 
 ```zenscript
-import mods.randomtweaker.RenderHelper;
-import mods.mods.contenttweaker.VanillaFactory;
+#loader contenttweaker
+import mods.randomtweaker.BaubleRenderHelper;
+import mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.cote.ManaBauble;
 import crafttweaker.player.IPlayer;
 
@@ -30,15 +31,15 @@ manaBauble.onWornTick = function(bauble, wearer) {
       }
 };
 manaBauble.onPlayerBaubleRender = function(stack, player, renderType, partialTicks) {
-    RenderHelper.bindTexture();
+    BaubleRenderHelper.bindTexture();
     if(renderType == "HEAD") {
-        RenderHelper.translateToHeadLevel(player);
-        RenderHelper.translateToFace();
-        RenderHelper.defaultTransforms();
-        RenderHelper.rotate(180.0F, 0.0F, 1.0F, 0.0F);
-        RenderHelper.scale(1.5, 1.5, 1);
-        RenderHelper.translate(0, -0.05, 0);
-        RenderHelper.renderItem(stack);
+        BaubleRenderHelper.translateToHeadLevel(player);
+        BaubleRenderHelper.translateToFace();
+        BaubleRenderHelper.defaultTransforms();
+        BaubleRenderHelper.rotate(180.0F, 0.0F, 1.0F, 0.0F);
+        BaubleRenderHelper.scale(1.5, 1.5, 1);
+        BaubleRenderHelper.translate(0, -0.05, 0);
+        BaubleRenderHelper.renderItem(stack);
     }
 };
 manaBauble.register();
@@ -46,4 +47,4 @@ manaBauble.register();
 
 ## 本地化
 
-本地化和 CoT 创建的物品的本地化方法一致
+item.contenttweaker.物品ID.name
