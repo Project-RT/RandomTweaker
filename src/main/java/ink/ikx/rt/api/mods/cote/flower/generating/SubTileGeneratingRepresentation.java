@@ -5,7 +5,9 @@ import ink.ikx.rt.api.mods.cote.function.botania.BlockActivated;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockAdded;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockHarvested;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockPlacedBy;
+import ink.ikx.rt.api.mods.cote.function.botania.CanGeneratePassively;
 import ink.ikx.rt.api.mods.cote.function.botania.PopulateDropStackNBTs;
+import ink.ikx.rt.api.mods.cote.function.botania.Update;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -24,6 +26,8 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public int maxMana = 1000;
     @ZenProperty
+    public Update onUpdate = null;
+    @ZenProperty
     public boolean PassiveFlower = true;
     @ZenProperty
     public BlockAdded onBlockAdded = null;
@@ -35,6 +39,8 @@ public class SubTileGeneratingRepresentation {
     public BlockHarvested onBlockHarvested = null;
     @ZenProperty
     public BlockActivated onBlockActivated = null;
+    @ZenProperty
+    public CanGeneratePassively canGeneratePassively = null;
     @ZenProperty
     public PopulateDropStackNBTs populateDropStackNBTs = null;
 

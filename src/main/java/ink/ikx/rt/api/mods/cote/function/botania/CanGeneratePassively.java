@@ -2,12 +2,11 @@ package ink.ikx.rt.api.mods.cote.function.botania;
 
 import com.teamacronymcoders.contenttweaker.api.ctobjects.blockpos.IBlockPos;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.world.IWorld;
-import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingContent;
 import stanhebben.zenscript.annotations.ZenClass;
 
 @FunctionalInterface
-@ZenClass("mods.randomtweaker.cote.Update")
-public interface Update {
+@ZenClass("mods.randomtweaker.cote.populateDropStackNBTs")
+public interface CanGeneratePassively {
 
-    void call(SubTileGeneratingContent subtile, IWorld world, IBlockPos pos);
+    boolean call(IBlockPos pos, IWorld world);
 }
