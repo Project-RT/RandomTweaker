@@ -78,4 +78,35 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating {
 
     @Override
     public abstract int getValueForPassiveGeneration();
+
+    @Override
+    @ZenMethod
+    public void sync() {
+        super.sync();
+    }
+
+    @Override
+    public abstract boolean canSelect(EntityPlayer player, ItemStack wand, BlockPos pos, EnumFacing side);
+
+    @Override
+    public abstract boolean bindTo(EntityPlayer player, ItemStack wand, BlockPos pos, EnumFacing side);
+
+    @Override
+    public abstract boolean isOvergrowthAffected();
+
+    @Override
+    @ZenMethod
+    public void addMana(int mana) {
+        super.addMana(mana);
+    }
+
+    @ZenMethod
+    public int getMana() {
+        return mana;
+    }
+
+    @ZenMethod
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
 }

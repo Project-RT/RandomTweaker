@@ -25,7 +25,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 
-// this class need Dynamic generation, dont try modify
 public class CustomSubTileGeneratingContent extends SubTileGeneratingContent {
 
     public static final String TAG_CUSTOM_DATA = "CustomData";
@@ -113,6 +112,26 @@ public class CustomSubTileGeneratingContent extends SubTileGeneratingContent {
     }
 
     @Override
+    public void addMana(int mana) {
+        super.addMana(mana);
+    }
+
+    @Override
+    public boolean isOvergrowthAffected() {
+        return subtile.isOvergrowthAffected();
+    }
+
+    @Override
+    public boolean canSelect(EntityPlayer player, ItemStack wand, BlockPos pos, EnumFacing side) {
+        return Objects.nonNull(subtile.canSelect) && subtile.canSelect.call(new CTPlayer(player), new MCItemStack(wand), new MCBlockPos(pos), new MCFacing(side));
+    }
+
+    @Override
+    public boolean bindTo(EntityPlayer player, ItemStack wand, BlockPos pos, EnumFacing side) {
+        return Objects.nonNull(subtile.bindTo) && subtile.bindTo.call(new CTPlayer(player), new MCItemStack(wand), new MCBlockPos(pos), new MCFacing(side));
+    }
+
+    @Override
     public void onUpdate() {
         super.onUpdate();
         if (Objects.nonNull(subtile.onUpdate)) {
@@ -161,4 +180,8 @@ public class CustomSubTileGeneratingContent extends SubTileGeneratingContent {
         }
     }
 
+    @Override
+    public void sync() {
+        super.sync();
+    }
 }

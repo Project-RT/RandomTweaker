@@ -1,6 +1,7 @@
 package ink.ikx.rt.api.mods.cote.flower.generating;
 
 import crafttweaker.annotations.ZenRegister;
+import ink.ikx.rt.api.mods.cote.function.botania.BindToOrCanSelect;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockActivated;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockAdded;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockHarvested;
@@ -30,9 +31,15 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public BlockAdded onBlockAdded = null;
     @ZenProperty
+    public BindToOrCanSelect bindTo = null;
+    @ZenProperty
+    public BindToOrCanSelect canSelect = null;
+    @ZenProperty
     public boolean acceptsRedstone = false;
     @ZenProperty
     public int valueForPassiveGeneration = 1;
+    @ZenProperty
+    public boolean overgrowthAffected = false;
     @ZenProperty
     public BlockPlacedBy onBlockPlaceBy = null;
     @ZenProperty
@@ -136,6 +143,16 @@ public class SubTileGeneratingRepresentation {
     @ZenMethod
     public void setDelayBetweenPassiveGeneration(int delayBetweenPassiveGeneration) {
         this.delayBetweenPassiveGeneration = delayBetweenPassiveGeneration;
+    }
+
+    @ZenMethod
+    public boolean isOvergrowthAffected() {
+        return overgrowthAffected;
+    }
+
+    @ZenMethod
+    public void setOvergrowthAffected(boolean overgrowthAffected) {
+        this.overgrowthAffected = overgrowthAffected;
     }
 
     @ZenMethod
