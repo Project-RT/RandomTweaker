@@ -164,4 +164,23 @@ public class SubTileGeneratingRepresentation {
             CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        SubTileGeneratingRepresentation that = (SubTileGeneratingRepresentation) o;
+
+        return unlocalizedName.equals(that.unlocalizedName);
+    }
+
+    @Override
+    public int hashCode() {
+        return unlocalizedName.hashCode();
+    }
 }
