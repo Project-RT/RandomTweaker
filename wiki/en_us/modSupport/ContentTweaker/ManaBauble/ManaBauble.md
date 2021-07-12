@@ -14,6 +14,12 @@ import mods.randomtweaker.cote.ManaBauble;
 | useMana | bool | 除 `RING` 和 `TRINKET` 类型的饰品此字段都有效果, 另外如果饰品的魔力大于 0 仍然会返回 false |
 | baubleType | string | 指定饰品的类型 (必须一致, 默认为 `RING`) , 有 `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM`|
 
+## Method
+
+| 方法 | 类型 | 描述 |
+|:---- |:---- |---- |
+| register() | void | 注册此魔力饰品 |
+
 ## 例子
 
 ```zenscript

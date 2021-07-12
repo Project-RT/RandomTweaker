@@ -15,7 +15,12 @@ import mods.randomtweaker.cote.ManaItem;
 | isNoExport | bool (默认 false) | 是否真正的输出魔力 |
 | hasFull | bool (默认 false) | 是否创建填满魔力的魔力物品 |
 | hasCreative | bool (默认 false) | 是否创建类似创造魔力石板的魔力物品 |
-| register | void  | 注册此魔力物品 |
+
+## Method
+
+| 方法 | 类型 | 描述 |
+|:---- |:---- |---- |
+| register() | void | 注册此魔力物品 |
 
 ## 例子
 
