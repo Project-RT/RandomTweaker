@@ -50,7 +50,7 @@ public class ExpandVanillaFactory {
 
     @ZenMethodStatic
     public static AspectRepresentation createAspect(String tag, int color) {
-        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
+        if (Loader.isModLoaded("thaumcraft") && Loader.isModLoaded("contenttweaker")) {
             return new AspectRepresentation(tag, color);
         }
         CraftTweakerAPI.logError("You can only create a manaBauble when both ThaumCraft and ContentTweaker installed！");
