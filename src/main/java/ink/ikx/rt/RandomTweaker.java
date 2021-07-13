@@ -84,7 +84,6 @@ public class RandomTweaker {
 
     @EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
-        proxy.botaniaReg();
         logger = event.getModLog();
         PlayerSanityNetWork.register();
         PlayerSanityCapabilityHandler.register();
@@ -158,7 +157,6 @@ public class RandomTweaker {
                     JarEntry entry = entries.nextElement();
                     if (entry.getName().endsWith(".class")) {
                         String className = entry.getName().substring(0, entry.getName().length() - 6).replace('/', '.');
-                        System.out.println(className);
                         if (!className.contains("Mixin") && className.contains("ink.ikx.rt") && !className.contains("RTConfigGuiFactory")) {
                             Class<?> clazz = Class.forName(className);
                             if (AnnotationUtil.hasAnnotation(clazz, RTRegisterClass.class)) {

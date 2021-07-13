@@ -51,6 +51,7 @@ dependencies {
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
     deobfCompile "curse.maven:ftb-ultimine-386134:3078750"
     deobfCompile "curse.maven:toughasnails-246391:2710969"
+    deobfCompile "curse.maven:mixin-booter-419286:3321174"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
     deobfCompile "curse.maven:thebetweenlands-243363:3248202"
     deobfCompile "curse.maven:the-twilight-forest-227639:3051450"
@@ -58,13 +59,7 @@ dependencies {
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.652"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
-
-    runtime "curse.maven:mixin-booter-419286:3321174"
-    runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
-    runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
-
-    embed 'cn.hutool:hutool-core:5.7.4'
-    embed ("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
+    deobfCompile ("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
         exclude module: "asm-commons"
         exclude module: "asm-tree"
         exclude module: "launchwrapper"
@@ -73,6 +68,11 @@ dependencies {
         exclude module: "gson"
         exclude module: "commons-io"
     }
+
+    runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
+    runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
+
+    embed 'cn.hutool:hutool-core:5.7.4'
 }
 
 processResources {

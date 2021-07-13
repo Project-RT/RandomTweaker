@@ -1,6 +1,8 @@
 package ink.ikx.rt.impl.events;
 
+import cn.hutool.core.compiler.CompilerUtil;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.api.mods.cote.flower.JAVATextContent;
 import ink.ikx.rt.impl.config.RTConfig;
 import java.util.Objects;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -15,7 +17,12 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import vazkii.botania.api.BotaniaAPI;
+import vazkii.botania.api.BotaniaAPIClient;
+import vazkii.botania.api.subtile.SubTileEntity;
+import vazkii.botania.api.subtile.signature.BasicSignature;
 
+@SuppressWarnings("unchecked")
 @EventBusSubscriber
 public class RegEventHandler {
 
@@ -25,6 +32,25 @@ public class RegEventHandler {
         if (RTConfig.RandomTweaker.PlayerSanity) {
             registry.register(RandomTweaker.SANITY_GEM);
         }
+        if (RandomTweaker.subTileGeneratingMap.isEmpty()) {
+            return;
+        }
+        RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
+            String Generating = JAVATextContent.Generating.replace("{$name}", k);
+            String className = "ink.ikx.rt.api.mods.cote.flower.generating.CustomSubTileGeneratingContent_" + k;
+            ClassLoader classLoader = CompilerUtil.getCompiler(null)
+                .addSource(className, Generating)
+                .compile();
+
+            try {
+                Class<? extends SubTileEntity> clazz = (Class<? extends SubTileEntity>) classLoader.loadClass(className);
+                BotaniaAPI.registerSubTile(k, clazz);
+                BotaniaAPI.registerSubTileSignature(clazz, new BasicSignature(k));
+                BotaniaAPI.addSubTileToCreativeMenu(k);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @SubscribeEvent
@@ -35,6 +61,12 @@ public class RegEventHandler {
                     Objects.requireNonNull(RandomTweaker.SANITY_GEM.getRegistryName()),
                     "inventory"));
         }
+        if (RandomTweaker.subTileGeneratingMap.isEmpty()) {
+            return;
+        }
+        RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
+            BotaniaAPIClient.registerSubtileModel(k, new ModelResourceLocation("contenttweaker:" + k));
+        });
     }
 
     @SubscribeEvent

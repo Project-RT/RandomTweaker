@@ -30,6 +30,4 @@ public interface IProxy {
     void rotate(float angle, float x, float y, float z);
 
     void translate(double x, double y, double z);
-
-    void botaniaReg();
 }
