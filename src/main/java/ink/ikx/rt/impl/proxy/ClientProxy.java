@@ -3,11 +3,14 @@ package ink.ikx.rt.impl.proxy;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
+import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.function.mana.BaubleRender;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.util.ResourceLocation;
+import vazkii.botania.api.BotaniaAPIClient;
 import vazkii.botania.api.item.IBaubleRender.Helper;
 
 /**
@@ -70,5 +73,12 @@ public class ClientProxy implements IProxy {
     @Override
     public void translate(double x, double y, double z) {
         GlStateManager.translate(x, y, z);
+    }
+
+    @Override
+    public void botaniaReg() {
+        RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
+            BotaniaAPIClient.registerSubtileModel(k, new ModelResourceLocation("contenttweaker:" + k));
+        });
     }
 }
