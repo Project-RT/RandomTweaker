@@ -3,6 +3,7 @@ package ink.ikx.rt.api.instance.item;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
+import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -10,6 +11,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author superhelo
  */
+@RTRegisterClass({"zenutils", "botania"})
 @ZenClass("mods.randomtweaker.item.IManaItem")
 public interface ManaItem {
 

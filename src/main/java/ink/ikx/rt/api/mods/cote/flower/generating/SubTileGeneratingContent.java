@@ -1,6 +1,7 @@
 package ink.ikx.rt.api.mods.cote.flower.generating;
 
 import crafttweaker.api.data.IData;
+import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import java.util.List;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,6 +18,7 @@ import stanhebben.zenscript.annotations.ZenSetter;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileGenerating;
 
+@RTRegisterClass({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.CustomSubTileGeneratingContent")
 public abstract class SubTileGeneratingContent extends SubTileGenerating {
 

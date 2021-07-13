@@ -1,7 +1,6 @@
 package ink.ikx.rt.api.mods.cote.flower.generating;
 
 import crafttweaker.CraftTweakerAPI;
-import crafttweaker.annotations.ZenRegister;
 import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.function.botania.BindToOrCanSelect;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockActivated;
@@ -11,12 +10,13 @@ import ink.ikx.rt.api.mods.cote.function.botania.BlockPlacedBy;
 import ink.ikx.rt.api.mods.cote.function.botania.CanGeneratePassively;
 import ink.ikx.rt.api.mods.cote.function.botania.PopulateDropStackNBTs;
 import ink.ikx.rt.api.mods.cote.function.botania.UpdateWithGenerating;
+import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@ZenRegister
+@RTRegisterClass({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.SubTileGenerating")
 public class SubTileGeneratingRepresentation {
 

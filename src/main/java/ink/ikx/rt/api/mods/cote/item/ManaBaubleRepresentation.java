@@ -5,6 +5,7 @@ import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunction;
 import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunctionWithReturn;
 import ink.ikx.rt.api.mods.cote.function.mana.BaubleRender;
+import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -12,6 +13,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
 /**
  * @author superhelo
  */
+@RTRegisterClass({"zenutils", "botania"})
 @ZenClass("mods.randomtweaker.cote.ManaBauble")
 public class ManaBaubleRepresentation extends ManaItemRepresentation {
 

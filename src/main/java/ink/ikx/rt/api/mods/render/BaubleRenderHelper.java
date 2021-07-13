@@ -3,6 +3,7 @@ package ink.ikx.rt.api.mods.render;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -10,6 +11,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author superhelo
  */
+@RTRegisterClass({"zenutils", "botania"})
 @ZenClass("mods.randomtweaker.BaubleRenderHelper")
 public class BaubleRenderHelper {
 

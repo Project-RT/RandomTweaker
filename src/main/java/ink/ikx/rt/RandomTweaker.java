@@ -1,27 +1,16 @@
 package ink.ikx.rt;
 
+import cn.hutool.core.annotation.AnnotationUtil;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.api.instance.file.Prop;
-import ink.ikx.rt.api.instance.item.ManaBauble;
-import ink.ikx.rt.api.instance.item.ManaHelper;
-import ink.ikx.rt.api.instance.item.ManaItem;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
-import ink.ikx.rt.api.mods.cote.aspect.AspectRepresentation;
 import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
-import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunction;
-import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunctionWithReturn;
-import ink.ikx.rt.api.mods.cote.function.mana.BaubleRender;
-import ink.ikx.rt.api.mods.cote.function.mana.ManaItemForItemFunction;
-import ink.ikx.rt.api.mods.cote.function.mana.ManaItemForPoolFunction;
-import ink.ikx.rt.api.mods.cote.item.ManaBaubleRepresentation;
-import ink.ikx.rt.api.mods.cote.item.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
-import ink.ikx.rt.api.mods.render.BaubleRenderHelper;
 import ink.ikx.rt.impl.botania.subtitle.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
 import ink.ikx.rt.impl.client.network.PlayerSanityNetWork;
@@ -32,14 +21,18 @@ import ink.ikx.rt.impl.item.SanityGem;
 import ink.ikx.rt.impl.jei.HydroangeasJEI;
 import ink.ikx.rt.impl.proxy.IProxy;
 import ink.ikx.rt.impl.utils.ItemDs;
+import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
@@ -48,6 +41,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -103,45 +97,9 @@ public class RandomTweaker {
     }
 
     @EventHandler
-    public void onConstruct(FMLConstructionEvent event) throws IOException {
-        if (Loader.isModLoaded("thaumcraft")) {
-            if (RTConfig.Thaumcraft.DreamJournal) {
-                MinecraftForge.EVENT_BUS.register(DreamJournal.class);
-            }
-        }
-
-        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
-            CraftTweakerAPI.registerClass(ManaItem.class);
-            CraftTweakerAPI.registerClass(ManaBauble.class);
-            CraftTweakerAPI.registerClass(ManaHelper.class);
-            CraftTweakerAPI.registerClass(BaubleRender.class);
-            CraftTweakerAPI.registerClass(BaubleFunction.class);
-            CraftTweakerAPI.registerClass(BaubleRenderHelper.class);
-            CraftTweakerAPI.registerClass(ManaItemRepresentation.class);
-            CraftTweakerAPI.registerClass(ManaItemForPoolFunction.class);
-            CraftTweakerAPI.registerClass(ManaItemForItemFunction.class);
-            CraftTweakerAPI.registerClass(ManaBaubleRepresentation.class);
-            CraftTweakerAPI.registerClass(BaubleFunctionWithReturn.class);
-
-            MinecraftForge.EVENT_BUS.register(ManaBaubleEvent.class);
-        }
-
-        if (Loader.isModLoaded("thaumcraft") && Loader.isModLoaded("contenttweaker")) {
-            CraftTweakerAPI.registerClass(AspectRepresentation.class);
-        }
-
-        if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
-            CraftTweakerAPI.registerClass(Hydroangeas.class);
-        }
-        if (RTConfig.RandomTweaker.PlayerSanity) {
-            CraftTweakerAPI.registerClass(IPlayerExpansionSanity.class);
-        }
-        if (RTConfig.FTBUltimine.AllowCrTControl) {
-            CraftTweakerAPI.registerClass(IPlayerExpansionFTBU.class);
-        }
-        if (Prop.createOrDelete(RTConfig.RandomTweaker.Prop)) {
-            CraftTweakerAPI.registerClass(Prop.class);
-        }
+    public void onConstruct(FMLConstructionEvent event) throws Exception {
+        hashCheck();
+        registerOtherClass();
     }
 
 
@@ -159,6 +117,59 @@ public class RandomTweaker {
 
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void registerOtherClass() throws IOException {
+        if (Loader.isModLoaded("thaumcraft")) {
+            if (RTConfig.Thaumcraft.DreamJournal) {
+                MinecraftForge.EVENT_BUS.register(DreamJournal.class);
+            }
+        }
+        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
+            MinecraftForge.EVENT_BUS.register(ManaBaubleEvent.class);
+        }
+        if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
+            CraftTweakerAPI.registerClass(Hydroangeas.class);
+        }
+        if (RTConfig.RandomTweaker.PlayerSanity) {
+            CraftTweakerAPI.registerClass(IPlayerExpansionSanity.class);
+        }
+        if (RTConfig.FTBUltimine.AllowCrTControl) {
+            CraftTweakerAPI.registerClass(IPlayerExpansionFTBU.class);
+        }
+        if (Prop.createOrDelete(RTConfig.RandomTweaker.Prop)) {
+            CraftTweakerAPI.registerClass(Prop.class);
+        }
+    }
+
+    private void hashCheck() throws Exception {
+        for (ModContainer mod : Loader.instance().getActiveModList()) {
+            if (mod.getModId().equals(RandomTweaker.MODID)) {
+                JarFile jarFile = new JarFile(mod.getSource());
+                Enumeration<JarEntry> entries = jarFile.entries();
+                while (entries.hasMoreElements()) {
+                    JarEntry entry = entries.nextElement();
+                    if (entry.getName().endsWith(".class")) {
+                        String className = entry.getName().substring(0, entry.getName().length() - 6).replace('/', '.');
+                        if (!className.contains("Mixin") && className.contains("ink.ikx.rt")) {
+                            Class<?> clazz = Class.forName(className);
+                            if (AnnotationUtil.hasAnnotation(clazz, RTRegisterClass.class)) {
+                                boolean flag = true;
+                                String[] value = AnnotationUtil.getAnnotationValue(clazz, RTRegisterClass.class);
+                                for (String s : value) {
+                                    if (!Loader.isModLoaded(s)) {
+                                        flag = false;
+                                    }
+                                }
+                                if (flag) {
+                                    CraftTweakerAPI.registerClass(clazz);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

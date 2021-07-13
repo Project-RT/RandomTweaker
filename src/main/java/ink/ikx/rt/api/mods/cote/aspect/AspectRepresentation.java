@@ -1,6 +1,7 @@
 package ink.ikx.rt.api.mods.cote.aspect;
 
 import crafttweaker.CraftTweakerAPI;
+import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import java.util.ArrayList;
 import java.util.Objects;
 import net.minecraft.util.ResourceLocation;
@@ -9,6 +10,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 import thaumcraft.api.aspects.Aspect;
 
+@RTRegisterClass({"thaumcraft", "contenttweaker"})
 @ZenClass("mods.randomtweaker.cote.Aspect")
 public class AspectRepresentation {
 

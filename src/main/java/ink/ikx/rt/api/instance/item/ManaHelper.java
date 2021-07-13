@@ -6,12 +6,14 @@ import ink.ikx.rt.api.mods.cote.item.ManaBaubleContent;
 import ink.ikx.rt.api.mods.cote.item.ManaItemContent;
 import ink.ikx.rt.impl.item.ManaBaubleImpl;
 import ink.ikx.rt.impl.item.ManaItemImpl;
+import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 /**
  * @author superhelo
  */
+@RTRegisterClass({"zenutils", "botania"})
 @ZenExpansion("crafttweaker.item.IMutableItemStack")
 public class ManaHelper {
 
