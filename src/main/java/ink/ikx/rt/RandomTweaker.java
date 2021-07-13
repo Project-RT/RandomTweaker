@@ -1,12 +1,14 @@
 package ink.ikx.rt;
 
 import cn.hutool.core.annotation.AnnotationUtil;
+import cn.hutool.core.compiler.CompilerUtil;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
+import ink.ikx.rt.api.mods.cote.flower.JAVATextContent;
 import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
@@ -33,6 +35,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
@@ -48,9 +51,11 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 import vazkii.botania.api.BotaniaAPI;
+import vazkii.botania.api.BotaniaAPIClient;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
 
+@SuppressWarnings("unchecked")
 @Mod(
     modid = RandomTweaker.MODID,
     name = RandomTweaker.NAME,
@@ -84,6 +89,7 @@ public class RandomTweaker {
     @EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
+        botaniaReg();
         PlayerSanityNetWork.register();
         PlayerSanityCapabilityHandler.register();
     }
@@ -108,7 +114,6 @@ public class RandomTweaker {
         try {
             Field field = BotaniaAPI.class.getDeclaredField("subTiles");
             field.setAccessible(true);
-            //noinspection unchecked
             subTiles = (BiMap<String, Class<? extends SubTileEntity>>) field.get(null);
 
             if (subTiles != null) {
@@ -118,6 +123,27 @@ public class RandomTweaker {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    private void botaniaReg() {
+        if (subTileGeneratingMap.isEmpty()) {
+            return;
+        }
+        subTileGeneratingMap.forEach((k, v) -> {
+            String Generating = JAVATextContent.Generating.replace("{$name}", k);
+            String className = "ink.ikx.rt.api.mods.cote.flower.generating.CustomSubTileGeneratingContent_" + k;
+            ClassLoader classLoader = CompilerUtil.getCompiler(null)
+                .addSource(className, Generating)
+                .compile();
+
+            try {
+                Class<? extends SubTileEntity> clazz = (Class<? extends SubTileEntity>) classLoader.loadClass(className);
+                BotaniaAPI.registerSubTile(k, clazz);
+                BotaniaAPIClient.registerSubtileModel(clazz, new ModelResourceLocation("contenttweaker:" + k));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void registerOtherClass() throws IOException {

@@ -9,8 +9,8 @@ import stanhebben.zenscript.annotations.ZenClass;
 
 @FunctionalInterface
 @RTRegisterClass({"contenttweaker", "botania"})
-@ZenClass("mods.randomtweaker.cote.BlockPlacedBy")
-public interface BindToOrCanSelect {
+@ZenClass("mods.randomtweaker.cote.CanSelect")
+public interface CanSelect {
 
     boolean call(CTPlayer player, IItemStack wand, IBlockPos pos, IFacing side);
 }

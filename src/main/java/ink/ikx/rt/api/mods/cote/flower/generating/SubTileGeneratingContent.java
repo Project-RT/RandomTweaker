@@ -19,7 +19,7 @@ import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileGenerating;
 
 @RTRegisterClass({"contenttweaker", "botania"})
-@ZenClass("mods.randomtweaker.cote.CustomSubTileGeneratingContent")
+@ZenClass("mods.randomtweaker.cote.JAVATextContent")
 public abstract class SubTileGeneratingContent extends SubTileGenerating {
 
     @Override
@@ -89,9 +89,6 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating {
 
     @Override
     public abstract boolean canSelect(EntityPlayer player, ItemStack wand, BlockPos pos, EnumFacing side);
-
-    @Override
-    public abstract boolean bindTo(EntityPlayer player, ItemStack wand, BlockPos pos, EnumFacing side);
 
     @Override
     public abstract boolean isOvergrowthAffected();

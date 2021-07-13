@@ -2,12 +2,12 @@ package ink.ikx.rt.api.mods.cote.flower.generating;
 
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.RandomTweaker;
-import ink.ikx.rt.api.mods.cote.function.botania.BindToOrCanSelect;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockActivated;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockAdded;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockHarvested;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockPlacedBy;
 import ink.ikx.rt.api.mods.cote.function.botania.CanGeneratePassively;
+import ink.ikx.rt.api.mods.cote.function.botania.CanSelect;
 import ink.ikx.rt.api.mods.cote.function.botania.PopulateDropStackNBTs;
 import ink.ikx.rt.api.mods.cote.function.botania.UpdateWithGenerating;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
@@ -34,13 +34,11 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public BlockAdded onBlockAdded = null;
     @ZenProperty
-    public BindToOrCanSelect bindTo = null;
-    @ZenProperty
     public boolean acceptsRedstone = false;
     @ZenProperty
     public int valueForPassiveGeneration = 1;
     @ZenProperty
-    public BindToOrCanSelect canSelect = null;
+    public CanSelect canSelect = null;
     @ZenProperty
     public boolean overgrowthAffected = false;
     @ZenProperty
@@ -65,7 +63,7 @@ public class SubTileGeneratingRepresentation {
 
     @ZenMethod
     public static SubTileGeneratingRepresentation of(int s, String b) {
-        return new SubTileGeneratingRepresentation(123, "123");
+        return new SubTileGeneratingRepresentation(s, b);
     }
 
     @ZenMethod
