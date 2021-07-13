@@ -13,7 +13,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
 /**
  * @author superhelo
  */
-@RTRegisterClass({"zenutils", "botania"})
+@RTRegisterClass({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.ManaBauble")
 public class ManaBaubleRepresentation extends ManaItemRepresentation {
 

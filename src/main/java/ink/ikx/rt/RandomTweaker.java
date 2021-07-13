@@ -99,9 +99,14 @@ public class RandomTweaker {
     }
 
     @EventHandler
-    public void onConstruct(FMLConstructionEvent event) throws Exception {
-        hashCheck();
-        registerOtherClass();
+    public void onConstruct(FMLConstructionEvent event) {
+
+        try {
+            hashCheck();
+            registerOtherClass();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -144,7 +149,7 @@ public class RandomTweaker {
         }
     }
 
-    private void hashCheck() throws Exception {
+    private void hashCheck() throws IOException, ClassNotFoundException {
         for (ModContainer mod : Loader.instance().getActiveModList()) {
             if (mod.getModId().equals(RandomTweaker.MODID)) {
                 JarFile jarFile = new JarFile(mod.getSource());
