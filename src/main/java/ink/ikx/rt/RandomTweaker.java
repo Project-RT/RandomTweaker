@@ -104,6 +104,7 @@ public class RandomTweaker {
             hashCheck();
             registerOtherClass();
         } catch (IOException | ClassNotFoundException e) {
+            CraftTweakerAPI.logError("The fail occurs inside RT, see latest.log and report it.");
             e.printStackTrace();
         }
     }
