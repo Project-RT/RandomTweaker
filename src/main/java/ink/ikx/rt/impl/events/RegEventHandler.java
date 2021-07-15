@@ -5,6 +5,7 @@ import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.flower.JAVATextContent;
 import ink.ikx.rt.impl.config.RTConfig;
 import java.util.Objects;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
@@ -32,6 +33,10 @@ public class RegEventHandler {
         if (RTConfig.RandomTweaker.PlayerSanity) {
             registry.register(RandomTweaker.SANITY_GEM);
         }
+    }
+
+    @SubscribeEvent
+    public static void onBlockRegistry(Register<Block> event) {
         if (RandomTweaker.subTileGeneratingMap.isEmpty()) {
             return;
         }
@@ -64,9 +69,7 @@ public class RegEventHandler {
         if (RandomTweaker.subTileGeneratingMap.isEmpty()) {
             return;
         }
-        RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
-            BotaniaAPIClient.registerSubtileModel(k, new ModelResourceLocation("contenttweaker:" + k));
-        });
+        RandomTweaker.subTileGeneratingMap.forEach((k, v) -> BotaniaAPIClient.registerSubtileModel(k, new ModelResourceLocation("contenttweaker:" + k)));
     }
 
     @SubscribeEvent
