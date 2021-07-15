@@ -33,14 +33,14 @@ public class MixinBlockTFPortal extends BlockBreakable {
     }
 
     @Inject(method = "canFormPortal", at = @At(value = "HEAD"), cancellable = true)
-    private void canFormPortal(IBlockState state, CallbackInfoReturnable<Boolean> cir) {
+    private void injectCanFormPortal(IBlockState state, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(state == getLiquidState(RTConfig.TwilightForest.TFPortalLiquid) || state.getBlock() == this && state.getValue(DISALLOW_RETURN));
     }
 
-    @ModifyArgs(method = "func_189540_a",
+    @ModifyArgs(method = "neighborChanged",
         at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/state/IBlockState;I)Z")
     )
-    private void redirectFunc_189540_a(Args args) {
+    private void modifyArgsNeighborChanged(Args args) {
         args.set(1, getLiquidState(RTConfig.TwilightForest.TFPortalLiquid));
     }
 
