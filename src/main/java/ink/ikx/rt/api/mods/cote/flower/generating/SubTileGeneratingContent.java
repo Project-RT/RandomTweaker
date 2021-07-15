@@ -108,4 +108,10 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating {
     public void setMana(int mana) {
         this.mana = mana;
     }
+
+    // 返回自身周围的红石信号强度。
+    @ZenMethod
+    public int getRedstoneSignal() {
+        return this.redstoneSignal;
+    }
 }
