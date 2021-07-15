@@ -3,6 +3,7 @@ package ink.ikx.rt.impl.mixins.mods;
 import crafttweaker.api.block.IBlock;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.mc1120.brackets.BracketHandlerLiquid;
+import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.impl.config.RTConfig;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
@@ -49,6 +50,7 @@ public class MixinBlockTFPortal extends BlockBreakable {
             IBlock liquidIBlock = BracketHandlerLiquid.getLiquid(liquidName).getDefinition().getBlock();
             return CraftTweakerMC.getBlock(liquidIBlock).getDefaultState();
         } else {
+            RandomTweaker.logger.error("This " + liquidName + " was not found and has been replaced with the default water.");
             return Blocks.WATER.getDefaultState();
         }
     }
