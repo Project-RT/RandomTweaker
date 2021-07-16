@@ -70,7 +70,8 @@ import mods.randomtweaker.cote.BlockPlacedBy;
   as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)
   放置产魔花的实体
 
-* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)
+* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 手上的物品 (
+  也就是你放下的那朵产魔花)
 
 ```zenscript
 subTileGeneratingObj.onBlockPlaceBy = function(world, pos, state, entity, stack) {
