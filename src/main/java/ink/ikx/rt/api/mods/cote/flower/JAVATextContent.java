@@ -183,6 +183,7 @@ public class JAVATextContent {
         + "    public void sync() {\n"
         + "        super.sync();\n"
         + "    }\n"
+        + "\n"
+        + "\n"
         + "}\n";
-
 }

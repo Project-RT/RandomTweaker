@@ -1,7 +1,7 @@
 package ink.ikx.rt.api.mods.cote.flower.generating;
 
 import crafttweaker.api.data.IData;
-import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
+import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
 import java.util.List;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,16 +11,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import stanhebben.zenscript.annotations.ZenClass;
-import stanhebben.zenscript.annotations.ZenGetter;
-import stanhebben.zenscript.annotations.ZenMethod;
-import stanhebben.zenscript.annotations.ZenSetter;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileGenerating;
 
-@RTRegisterClass({"contenttweaker", "botania"})
-@ZenClass("mods.randomtweaker.cote.JAVATextContent")
-public abstract class SubTileGeneratingContent extends SubTileGenerating {
+public abstract class SubTileGeneratingContent extends SubTileGenerating implements SubTileEntityInGame {
 
     @Override
     public void onUpdate() {
@@ -64,28 +58,11 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating {
         super.populateDropStackNBTs(drops);
     }
 
-    @ZenMethod
-    @ZenGetter("data")
-    public abstract IData getCustomData();
-
-    @ZenMethod
-    @ZenSetter("data")
-    public abstract void setCustomData(IData data);
-
-    @ZenMethod
-    public abstract void updateCustomData(IData data);
-
     @Override
     public abstract int getDelayBetweenPassiveGeneration();
 
     @Override
     public abstract int getValueForPassiveGeneration();
-
-    @Override
-    @ZenMethod
-    public void sync() {
-        super.sync();
-    }
 
     @Override
     public abstract boolean canSelect(EntityPlayer player, ItemStack wand, BlockPos pos, EnumFacing side);
@@ -94,24 +71,51 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating {
     public abstract boolean isOvergrowthAffected();
 
     @Override
-    @ZenMethod
+    public abstract void updateCustomData(IData data);
+
+    @Override
+    public abstract IData getCustomData();
+
+    @Override
+    public abstract void setCustomData(IData data);
+
+    @Override
+    public void sync() {
+        super.sync();
+    }
+
+    @Override
     public void addMana(int mana) {
         super.addMana(mana);
     }
 
-    @ZenMethod
+    @Override
     public int getMana() {
         return mana;
     }
 
-    @ZenMethod
+    @Override
     public void setMana(int mana) {
         this.mana = mana;
     }
 
-    // 返回自身周围的红石信号强度。
-    @ZenMethod
+    @Override
     public int getRedstoneSignal() {
         return this.redstoneSignal;
+    }
+
+    @Override
+    public int getKnownMana() {
+        return this.knownMana;
+    }
+
+    @Override
+    public int getPassiveDecayTicks() {
+        return this.passiveDecayTicks;
+    }
+
+    @Override
+    public String typeOf() {
+        return "generating";
     }
 }

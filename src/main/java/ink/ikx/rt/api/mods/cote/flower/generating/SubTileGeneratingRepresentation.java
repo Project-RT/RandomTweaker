@@ -9,7 +9,7 @@ import ink.ikx.rt.api.mods.cote.function.botania.BlockPlacedBy;
 import ink.ikx.rt.api.mods.cote.function.botania.CanGeneratePassively;
 import ink.ikx.rt.api.mods.cote.function.botania.CanSelect;
 import ink.ikx.rt.api.mods.cote.function.botania.PopulateDropStackNBTs;
-import ink.ikx.rt.api.mods.cote.function.botania.UpdateWithGenerating;
+import ink.ikx.rt.api.mods.cote.function.botania.Update;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -39,13 +39,13 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public int delayBetweenPassiveGeneration = 20;
     @ZenProperty
-    public BlockAdded onBlockAdded = null;
+    public Update onUpdate = null;
     @ZenProperty
     public CanSelect canSelect = null;
     @ZenProperty
-    public BlockPlacedBy onBlockPlaceBy = null;
+    public BlockAdded onBlockAdded = null;
     @ZenProperty
-    public UpdateWithGenerating onUpdate = null;
+    public BlockPlacedBy onBlockPlaceBy = null;
     @ZenProperty
     public BlockHarvested onBlockHarvested = null;
     @ZenProperty
