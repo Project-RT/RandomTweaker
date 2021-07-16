@@ -30,8 +30,9 @@ import mods.randomtweaker.cote.SubTileGenerating;
 
 ```zenscript
 #loader contenttweaker
-
+import mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.cote.SubTileGenerating;
 
-SubTileGenerating.of(0xFFFFFF, "test").register();
+var subTileGenerating as SubTileGenerating = VanillaFactory.createSubTileGenerating("test", 0xFFFFFF);
+subTileGenerating.register();
 ```
