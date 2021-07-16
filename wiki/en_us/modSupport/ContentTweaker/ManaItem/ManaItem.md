@@ -26,7 +26,7 @@ import mods.randomtweaker.cote.ManaItem;
 
 ```zenscript
 #loader contenttweaker
-import mods.mods.contenttweaker.VanillaFactory;
+import mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.cote.ManaItem;
 
 var manaItem as ManaItem = VanillaFactory.createManaItem("mana_item", 50000);
