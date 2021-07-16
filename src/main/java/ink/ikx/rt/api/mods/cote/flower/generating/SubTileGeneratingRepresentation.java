@@ -24,29 +24,28 @@ public class SubTileGeneratingRepresentation {
     public int color;
     @ZenProperty
     public String unlocalizedName;
-
     @ZenProperty
     public int range = 1;
     @ZenProperty
     public int maxMana = 1000;
     @ZenProperty
-    public boolean PassiveFlower = true;
+    public boolean PassiveFlower;
     @ZenProperty
-    public BlockAdded onBlockAdded = null;
+    public boolean overgrowthAffected;
     @ZenProperty
     public boolean acceptsRedstone = false;
     @ZenProperty
     public int valueForPassiveGeneration = 1;
     @ZenProperty
-    public CanSelect canSelect = null;
+    public int delayBetweenPassiveGeneration = 20;
     @ZenProperty
-    public boolean overgrowthAffected = false;
+    public BlockAdded onBlockAdded = null;
+    @ZenProperty
+    public CanSelect canSelect = null;
     @ZenProperty
     public BlockPlacedBy onBlockPlaceBy = null;
     @ZenProperty
     public UpdateWithGenerating onUpdate = null;
-    @ZenProperty
-    public int delayBetweenPassiveGeneration = 20;
     @ZenProperty
     public BlockHarvested onBlockHarvested = null;
     @ZenProperty
