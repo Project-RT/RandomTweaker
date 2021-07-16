@@ -162,7 +162,7 @@ public class RandomTweaker {
                     continue;
                 }
                 String className = entry.getName().substring(0, entry.getName().length() - 6).replace('/', '.');
-                if (className.contains("Mixin") && !className.contains("ink.ikx.rt") && className.contains("RTConfigGuiFactory")) {
+                if (!className.contains("ink.ikx.rt") || className.contains("Mixin") || className.contains("RTConfigGuiFactory")) {
                     continue;
                 }
                 Class<?> clazz = Class.forName(className);
