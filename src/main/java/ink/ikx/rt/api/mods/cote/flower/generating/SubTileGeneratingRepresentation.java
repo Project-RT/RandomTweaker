@@ -31,7 +31,7 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public boolean PassiveFlower;
     @ZenProperty
-    public boolean overgrowthAffected;
+    public boolean overgrowthAffected = true;
     @ZenProperty
     public boolean acceptsRedstone;
     @ZenProperty
@@ -39,30 +39,25 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public int delayBetweenPassiveGeneration = 20;
     @ZenProperty
-    public Update onUpdate = null;
+    public Update onUpdate;
     @ZenProperty
-    public CanSelect canSelect = null;
+    public CanSelect canSelect;
     @ZenProperty
-    public BlockAdded onBlockAdded = null;
+    public BlockAdded onBlockAdded;
     @ZenProperty
-    public BlockPlacedBy onBlockPlaceBy = null;
+    public BlockPlacedBy onBlockPlaceBy;
     @ZenProperty
-    public BlockHarvested onBlockHarvested = null;
+    public BlockHarvested onBlockHarvested;
     @ZenProperty
-    public BlockActivated onBlockActivated = null;
+    public BlockActivated onBlockActivated;
     @ZenProperty
-    public CanGeneratePassively canGeneratePassively = null;
+    public CanGeneratePassively canGeneratePassively;
     @ZenProperty
-    public PopulateDropStackNBTs populateDropStackNBTs = null;
+    public PopulateDropStackNBTs populateDropStackNBTs;
 
-    private SubTileGeneratingRepresentation(int color, String unlocalizedName) {
+    public SubTileGeneratingRepresentation(int color, String unlocalizedName) {
         this.color = color;
         this.unlocalizedName = unlocalizedName;
-    }
-
-    @ZenMethod
-    public static SubTileGeneratingRepresentation of(int s, String b) {
-        return new SubTileGeneratingRepresentation(s, b);
     }
 
     @ZenMethod
