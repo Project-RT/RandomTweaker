@@ -1,6 +1,6 @@
 # IManaItem
 
-同时加载了 `Botania` 和 `CoT` 时此类的才会注册进 CrT
+同时加载了 `Botania` 和 `CoT` 时此类才会注册进 CrT
 
 ## 导包
 
