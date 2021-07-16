@@ -33,7 +33,7 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public boolean overgrowthAffected;
     @ZenProperty
-    public boolean acceptsRedstone = false;
+    public boolean acceptsRedstone;
     @ZenProperty
     public int valueForPassiveGeneration = 1;
     @ZenProperty

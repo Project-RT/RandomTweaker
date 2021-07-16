@@ -105,11 +105,6 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating impleme
     }
 
     @Override
-    public int getKnownMana() {
-        return this.knownMana;
-    }
-
-    @Override
     public int getPassiveDecayTicks() {
         return this.passiveDecayTicks;
     }

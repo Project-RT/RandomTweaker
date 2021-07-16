@@ -41,8 +41,5 @@ public interface SubTileEntityInGame {
     int getRedstoneSignal();
 
     @ZenMethod
-    int getKnownMana();
-
-    @ZenMethod
     int getPassiveDecayTicks();
 }
