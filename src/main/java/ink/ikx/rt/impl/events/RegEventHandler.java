@@ -41,7 +41,7 @@ public class RegEventHandler {
             return;
         }
         RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
-            String Generating = JAVATextContent.Generating.replace("{$name}", k);
+            String Generating = JAVATextContent.Generating.replace("${name}", k);
             String className = "ink.ikx.rt.api.mods.cote.flower.generating.CustomSubTileGeneratingContent_" + k;
             ClassLoader classLoader = CompilerUtil.getCompiler(null)
                 .addSource(className, Generating)
