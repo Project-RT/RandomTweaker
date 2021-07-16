@@ -151,29 +151,33 @@ public class RandomTweaker {
 
     private void hashCheck() throws IOException, ClassNotFoundException {
         for (ModContainer mod : Loader.instance().getActiveModList()) {
-            if (mod.getModId().equals(RandomTweaker.MODID)) {
-                JarFile jarFile = new JarFile(mod.getSource());
-                Enumeration<JarEntry> entries = jarFile.entries();
-                while (entries.hasMoreElements()) {
-                    JarEntry entry = entries.nextElement();
-                    if (entry.getName().endsWith(".class")) {
-                        String className = entry.getName().substring(0, entry.getName().length() - 6).replace('/', '.');
-                        if (!className.contains("Mixin") && className.contains("ink.ikx.rt") && !className.contains("RTConfigGuiFactory")) {
-                            Class<?> clazz = Class.forName(className);
-                            if (AnnotationUtil.hasAnnotation(clazz, RTRegisterClass.class)) {
-                                boolean flag = true;
-                                String[] value = AnnotationUtil.getAnnotationValue(clazz, RTRegisterClass.class);
-                                for (String s : value) {
-                                    if (!Loader.isModLoaded(s)) {
-                                        flag = false;
-                                    }
-                                }
-                                if (flag) {
-                                    CraftTweakerAPI.registerClass(clazz);
-                                }
-                            }
-                        }
+            if (!mod.getModId().equals(RandomTweaker.MODID)) {
+                continue;
+            }
+            JarFile jarFile = new JarFile(mod.getSource());
+            Enumeration<JarEntry> entries = jarFile.entries();
+            while (entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
+                if (!entry.getName().endsWith(".class")) {
+                    continue;
+                }
+                String className = entry.getName().substring(0, entry.getName().length() - 6).replace('/', '.');
+                if (className.contains("Mixin") && !className.contains("ink.ikx.rt") && className.contains("RTConfigGuiFactory")) {
+                    continue;
+                }
+                Class<?> clazz = Class.forName(className);
+                if (!AnnotationUtil.hasAnnotation(clazz, RTRegisterClass.class)) {
+                    continue;
+                }
+                boolean flag = true;
+                String[] value = AnnotationUtil.getAnnotationValue(clazz, RTRegisterClass.class);
+                for (String s : value) {
+                    if (!Loader.isModLoaded(s)) {
+                        flag = false;
                     }
+                }
+                if (flag) {
+                    CraftTweakerAPI.registerClass(clazz);
                 }
             }
         }
