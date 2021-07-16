@@ -73,7 +73,7 @@ import mods.randomtweaker.cote.BlockPlacedBy;
 * stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)
 
 ```zenscript
-subTileGeneratingObj.canSelect = function(world, pos, state, entity, stack) {
+subTileGeneratingObj.onBlockPlaceBy = function(world, pos, state, entity, stack) {
 
 }
 ```
