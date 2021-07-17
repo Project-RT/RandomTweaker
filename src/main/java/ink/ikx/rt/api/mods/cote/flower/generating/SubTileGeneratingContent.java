@@ -59,6 +59,9 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating impleme
     }
 
     @Override
+    public abstract boolean shouldSyncPassiveGeneration();
+
+    @Override
     public abstract int getDelayBetweenPassiveGeneration();
 
     @Override

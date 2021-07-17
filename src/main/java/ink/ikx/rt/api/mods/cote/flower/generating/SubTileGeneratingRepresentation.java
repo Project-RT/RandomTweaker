@@ -31,13 +31,15 @@ public class SubTileGeneratingRepresentation {
     @ZenProperty
     public boolean PassiveFlower;
     @ZenProperty
-    public boolean overgrowthAffected = true;
-    @ZenProperty
     public boolean acceptsRedstone;
+    @ZenProperty
+    public boolean overgrowthAffected = true;
     @ZenProperty
     public int valueForPassiveGeneration = 1;
     @ZenProperty
     public int delayBetweenPassiveGeneration = 20;
+    @ZenProperty
+    public boolean shouldSyncPassiveGeneration;
     @ZenProperty
     public Update onUpdate;
     @ZenProperty
@@ -58,6 +60,16 @@ public class SubTileGeneratingRepresentation {
     public SubTileGeneratingRepresentation(int color, String unlocalizedName) {
         this.color = color;
         this.unlocalizedName = unlocalizedName;
+    }
+
+    @ZenMethod
+    public boolean isShouldSyncPassiveGeneration() {
+        return shouldSyncPassiveGeneration;
+    }
+
+    @ZenMethod
+    public void setShouldSyncPassiveGeneration(boolean shouldSyncPassiveGeneration) {
+        this.shouldSyncPassiveGeneration = shouldSyncPassiveGeneration;
     }
 
     @ZenMethod
