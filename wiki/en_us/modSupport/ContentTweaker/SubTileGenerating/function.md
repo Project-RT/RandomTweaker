@@ -19,7 +19,7 @@ import mods.randomtweaker.cote.BlockAdded;
 ```zenscript
 subTileGeneratingObj.onBlockAdded = function(world, pos, state) {
 
-}
+};
 ```
 
 ## canSelect
@@ -40,14 +40,14 @@ import mods.randomtweaker.cote.CanSelect;
 
 * wand as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 玩家手持的法杖
 
-* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) 绑定的方块的坐标
+* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) 产魔花的坐标
 
-* side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) 玩家的方向
+* side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) 产魔花面对你的方向
 
 ```zenscript
 subTileGeneratingObj.canSelect = function(player, wand, pos, side) {
     return true;
-}
+};
 ```
 
 ## onBlockPlaceBy
@@ -76,7 +76,7 @@ import mods.randomtweaker.cote.BlockPlacedBy;
 ```zenscript
 subTileGeneratingObj.onBlockPlaceBy = function(world, pos, state, entity, stack) {
 
-}
+};
 ```
 
 ## onUpdate
@@ -89,7 +89,9 @@ subTileGeneratingObj.onBlockPlaceBy = function(world, pos, state, entity, stack)
 import mods.randomtweaker.cote.Update;
 ```
 
-* subtile as [SubTileEntityInGame]() 产魔花的 TileEntity
+* subtile
+  as [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileGenerating/SubTileEntityInGame.md)
+  产魔花的 TileEntity
 
 * world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) 产魔花所在的世界
 
@@ -98,7 +100,7 @@ import mods.randomtweaker.cote.Update;
 ```zenscript
 subTileGeneratingObj.onUpdate = function(subtile, world, pos) {
 
-}
+};
 ```
 
 ## onBlockHarvested
@@ -124,12 +126,14 @@ import mods.randomtweaker.cote.BlockHarvested;
 ```zenscript
 subTileGeneratingObj.onBlockHarvested = function(world, pos, state, player) {
 
-}
+};
 ```
 
 ## onBlockActivated
 
 当玩家右键产魔花时调用
+
+需要返回一个 bool
 
 ### 导包
 
@@ -152,16 +156,16 @@ import mods.randomtweaker.cote.BlockActivated;
 
 * side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) 玩家的方向
 
-* hitX as float
+* hitX as float 玩家跟产魔花的相对坐标
 
-* hitY as float
+* hitY as float 玩家跟产魔花的相对坐标
 
-* hitZ as float
+* hitZ as float 玩家跟产魔花的相对坐标
 
 ```zenscript
 subTileGeneratingObj.onBlockActivated = function(world, pos, state, player, hand, side, hitX, hitY, hitZ) {
-
-}
+    return true;
+};
 ```
 
 ## canGeneratePassively
@@ -181,7 +185,7 @@ import mods.randomtweaker.cote.CanGeneratePassively;
 ```zenscript
 subTileGeneratingObj.canGeneratePassively = function(pos, world) {
 
-}
+};
 ```
 
 ## populateDropStackNBTs
@@ -199,5 +203,5 @@ import mods.randomtweaker.cote.PopulateDropStackNBTs;
 ```zenscript
 subTileGeneratingObj.populateDropStackNBTs = function(drops) {
 
-}
+};
 ```
