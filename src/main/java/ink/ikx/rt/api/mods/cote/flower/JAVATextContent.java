@@ -119,7 +119,7 @@ public class JAVATextContent {
         + "\n"
         + "    @Override\n"
         + "    public boolean shouldSyncPassiveGeneration() {\n"
-        + "        return subtile.isShouldSyncPassiveGeneration()\n"
+        + "        return subtile.isShouldSyncPassiveGeneration();\n"
         + "    }\n"
         + "\n"
         + "    @Override\n"

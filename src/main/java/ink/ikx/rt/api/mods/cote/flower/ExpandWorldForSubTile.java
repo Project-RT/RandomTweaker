@@ -18,9 +18,10 @@ public class ExpandWorldForSubTile {
     public static SubTileEntityInGame getSubTileEntityInGame(IWorld world, IBlockPos pos) {
         TileEntity te = CraftTweakerMC.getWorld(world).getTileEntity(CraftTweakerMC.getBlockPos(pos));
         if (te instanceof ISubTileContainer) {
-            ISubTileContainer container = (ISubTileContainer) te;
-            SubTileEntity subtile = container.getSubTile();
-            return (SubTileEntityInGame) subtile;
+            SubTileEntity subtile = ((ISubTileContainer) te).getSubTile();
+            if (subtile instanceof SubTileEntityInGame) {
+                return (SubTileEntityInGame) subtile;
+            }
         }
         return null;
     }
