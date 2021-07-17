@@ -22,3 +22,36 @@ import mods.randomtweaker.cote.SubTileEntityInGame;
 | setMana(mana as int) | void | 设置产魔花的 Mana |
 | getRedstoneSignal() | int | 获取产魔花的红石信号 |
 | getPassiveDecayTicks() | int | 获取产魔的冷却时间 |
+
+## 获取 SubTileEntityInGame
+
+你可以用 `worldObj.getSubTileEntityInGame(posObj)` 来获取 [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileGenerating/SubTileEntityInGame.md)
+
+## 热重载
+
+在 CoT 脚本内
+
+```zenscript
+#loader contenttweaker
+import mods.contenttweaker.VanillaFactory;
+import mods.randomtweaker.cote.SubTileGenerating;
+
+var subTileGenerating as SubTileGenerating = VanillaFactory.createSubTileGenerating("test", 0xFFFFFF);
+subTileGenerating.register();
+```
+
+在 CrT 脚本内
+
+```zenscript
+#loader crafttweaker reloadableevents
+<cotSubTileG:test>.onUpdate = function(subtile, world, pos) {
+    if(!world.remote) {
+        if(isNull(subtile.data.time))
+            subtile.updateCustomData({time : 0});
+        
+        if(!isNull(subtile.data.time)) {
+            subtile.updateCustomData({time : subtile.data.time.asInt() + 1});
+        }
+    }
+};
+```

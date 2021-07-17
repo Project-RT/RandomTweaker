@@ -14,6 +14,17 @@ import mods.randomtweaker.cote.ManaBauble;
 | useMana | bool | 除 `RING` 和 `TRINKET` 类型的饰品此字段都有效果, 另外如果饰品的魔力大于 0 仍然会返回 false |
 | baubleType | string | 指定饰品的类型 (必须一致, 默认为 `RING`) , 有 `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM`|
 
+## 热重载
+
+更多请看 [LateSetCoTFunction](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction)
+
+```zenscript
+#loader crafttweaker reloadableevents
+<cotItem:unlocalizedName>.onWornTick = function((bauble, wearer) {
+
+};
+```
+
 ## Method
 
 | 方法 | 类型 | 描述 |

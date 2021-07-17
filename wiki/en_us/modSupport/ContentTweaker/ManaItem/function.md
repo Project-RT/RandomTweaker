@@ -22,7 +22,7 @@ import mods.randomtweaker.cote.ManaItemForPoolFunction;
 ```zenscript
 manaItemObj.canExportManaToPool = function(stack, world, pos) {
     return true;
-}
+};
 ```
 
 ## canReceiveManaFromPool
@@ -40,7 +40,7 @@ manaItemObj.canExportManaToPool = function(stack, world, pos) {
 ```zenscript
 manaItemObj.canReceiveManaFromPool = function(stack, world, pos) {
     return true;
-}
+};
 ```
 
 ## canExportManaToItem
@@ -56,7 +56,7 @@ manaItemObj.canReceiveManaFromPool = function(stack, world, pos) {
 ```zenscript
 manaItemObj.canExportManaToItem = function(stack, otherStack) {
     return true;
-}
+};
 ```
 
 ## canReceiveManaFromItem
@@ -72,5 +72,5 @@ manaItemObj.canExportManaToItem = function(stack, otherStack) {
 ```zenscript
 manaItemObj.canReceiveManaFromItem = function(stack, otherStack) {
     return true;
-}
+};
 ```
