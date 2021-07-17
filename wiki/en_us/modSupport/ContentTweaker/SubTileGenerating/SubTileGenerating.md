@@ -19,7 +19,7 @@ import mods.randomtweaker.cote.SubTileGenerating;
 | valueForPassiveGeneration | int | 为被动产能花时每 Tick 产出多少魔力 |
 | overgrowthAffected | bool | 是否受蕴魔土的影响 |
 | delayBetweenPassiveGeneration | int | 为被动产魔花时每次工作的冷却 Tick |
-| shouldSyncPassiveGeneration | bool | 被动产魔时是否同步 TileEntity |
+| shouldSyncPassiveGeneration | bool | 被动产魔时是否同步 TileEntity (为被动产魔花才生效) |
 
 ## ZenMethod
 
