@@ -1,10 +1,13 @@
 package ink.ikx.rt.api.mods.cote.bracket;
 
+import cn.hutool.core.lang.Pair;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.BracketHandler;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.zenscript.IBracketHandler;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
+import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalRepresentation;
 import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import java.util.List;
@@ -15,14 +18,28 @@ import stanhebben.zenscript.parser.Token;
 import stanhebben.zenscript.symbols.IZenSymbol;
 import stanhebben.zenscript.type.natives.IJavaMethod;
 
-@RTRegisterClass({"botania", "contenttweaker"})
 @SuppressWarnings("ALL")
 @ModOnly("contenttweaker")
 @BracketHandler(priority = 100)
-public class BracketHandlerCoTSubTileG implements IBracketHandler {
+@RTRegisterClass({"botania", "contenttweaker"})
+public class BracketHandlerCoTSubTile implements IBracketHandler {
 
-    public static SubTileGeneratingRepresentation getSubTileG(String name) {
-        return RandomTweaker.subTileGeneratingMap.get(name);
+    public static SubTileRepresentation getSubTile(String name) {
+        if (RandomTweaker.subTileGeneratingMap.containsKey(name)) {
+            Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
+            return (SubTileGeneratingRepresentation) subtilePair.getValue();
+        }
+        return null;
+    }
+
+    public static SubTileFunctionalRepresentation getSubTileG(String name) {
+        Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
+        return (SubTileFunctionalRepresentation) subtilePair.getValue();
+    }
+
+    public static SubTileGeneratingRepresentation getSubTileF(String name) {
+        Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
+        return (SubTileGeneratingRepresentation) subtilePair.getValue();
     }
 
     @Override
@@ -37,7 +54,7 @@ public class BracketHandlerCoTSubTileG implements IBracketHandler {
 
     @Override
     public String getRegexMatchingString() {
-        return "cotSubTileG:.*";
+        return "cotSubTile:.*";
     }
 
     @Override
@@ -48,8 +65,10 @@ public class BracketHandlerCoTSubTileG implements IBracketHandler {
     private IZenSymbol find(IEnvironmentGlobal environment, List<Token> tokens) {
         String name = tokens.get(2).getValue();
         IJavaMethod method;
-        if (getSubTileG(name) instanceof SubTileGeneratingRepresentation) {
-            method = CraftTweakerAPI.getJavaMethod(BracketHandlerCoTSubTileG.class, "getSubTileG", String.class);
+        if (getSubTile(name) instanceof SubTileGeneratingRepresentation) {
+            method = CraftTweakerAPI.getJavaMethod(BracketHandlerCoTSubTile.class, "getSubTileG", String.class);
+        } else if (getSubTile(name) instanceof SubTileFunctionalRepresentation) {
+            method = CraftTweakerAPI.getJavaMethod(BracketHandlerCoTSubTile.class, "getSubTileF", String.class);
         } else {
             method = null;
         }
