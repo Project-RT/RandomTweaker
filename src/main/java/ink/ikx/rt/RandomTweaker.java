@@ -9,6 +9,7 @@ import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
 import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
+import ink.ikx.rt.api.mods.cote.potion.PotionContent;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
@@ -34,7 +35,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -77,7 +77,7 @@ public class RandomTweaker {
     public static Set<ItemDs> itemDsSet = new HashSet<>();
     public static Set<JEIPanel> JEIPanelList = new HashSet<>();
     public static List<JEIRecipe> JEIRecipeList = new ArrayList<>();
-    public static Map<String, Potion> potionRegMap = new HashMap<>();
+    public static Map<String, PotionContent> potionRegMap = new HashMap<>();
     public static Map<String, PotionType> potionTypeMap = new HashMap<>();
     public static BiMap<String, Pair<String, SubTileRepresentation>> subTileGeneratingMap = HashBiMap.create();
     @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")

@@ -16,7 +16,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
 @ZenClass("mods.randomtweaker.cote.Potion")
 public class PotionRepresentation {
 
-    private Potion potion;
+    private PotionContent potion;
 
     @ZenProperty
     public int liquidColorIn;
