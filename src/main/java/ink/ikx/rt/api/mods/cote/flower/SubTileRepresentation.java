@@ -18,7 +18,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 @RTRegisterClass({"contenttweaker", "botania"})
-@ZenClass("mods.randomtweaker.cote.SubTile")
+@ZenClass("mods.randomtweaker.cote.SubTileEntity")
 public class SubTileRepresentation {
 
     @ZenProperty
