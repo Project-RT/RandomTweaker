@@ -59,7 +59,7 @@ public class BracketHandlerCoTSubTile implements IBracketHandler {
 
     @Override
     public Class<?> getReturnedClass() {
-        return SubTileGeneratingRepresentation.class;
+        return SubTileRepresentation.class;
     }
 
     private IZenSymbol find(IEnvironmentGlobal environment, List<Token> tokens) {
