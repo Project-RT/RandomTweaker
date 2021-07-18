@@ -110,7 +110,7 @@ public class SubTileRepresentation {
         this.overgrowthAffected = overgrowthAffected;
     }
 
-    public void register(String typeName, SubTileRepresentation subtile) {
+    protected void register(String typeName, SubTileRepresentation subtile) {
         if (Objects.nonNull(RandomTweaker.subTileGeneratingMap.putIfAbsent(getUnlocalizedName(), Pair.of(typeName, subtile)))) {
             CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
         }

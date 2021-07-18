@@ -9,7 +9,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenClass("mods.randomtweaker.cote.SubTileFunctional")
 public class SubTileFunctionalRepresentation extends SubTileRepresentation {
 
-    public static final String TYPE_NAME = "functional";
+    private static final String TYPE_NAME = "functional";
 
     public SubTileFunctionalRepresentation(int color, String unlocalizedName) {
         super(color, unlocalizedName);

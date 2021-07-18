@@ -12,7 +12,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
 @ZenClass("mods.randomtweaker.cote.SubTileGenerating")
 public class SubTileGeneratingRepresentation extends SubTileRepresentation {
 
-    public static final String TYPE_NAME = "generating";
+    private static final String TYPE_NAME = "generating";
 
     @ZenProperty
     public boolean PassiveFlower;
