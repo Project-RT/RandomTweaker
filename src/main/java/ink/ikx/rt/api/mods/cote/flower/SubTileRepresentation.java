@@ -8,7 +8,6 @@ import ink.ikx.rt.api.mods.cote.function.botania.BlockActivated;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockAdded;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockHarvested;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockPlacedBy;
-import ink.ikx.rt.api.mods.cote.function.botania.CanGeneratePassively;
 import ink.ikx.rt.api.mods.cote.function.botania.CanSelect;
 import ink.ikx.rt.api.mods.cote.function.botania.Update;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
@@ -45,8 +44,6 @@ public class SubTileRepresentation {
     public BlockHarvested onBlockHarvested;
     @ZenProperty
     public BlockActivated onBlockActivated;
-    @ZenProperty
-    public CanGeneratePassively canGeneratePassively;
 
     public SubTileRepresentation(int color, String unlocalizedName) {
         this.color = color;

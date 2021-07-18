@@ -1,6 +1,7 @@
 package ink.ikx.rt.api.mods.cote.flower.generating;
 
 import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
+import ink.ikx.rt.api.mods.cote.function.botania.CanGeneratePassively;
 import ink.ikx.rt.api.mods.cote.function.botania.PopulateDropStackNBTs;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -23,6 +24,8 @@ public class SubTileGeneratingRepresentation extends SubTileRepresentation {
     public boolean shouldSyncPassiveGeneration;
     @ZenProperty
     public PopulateDropStackNBTs populateDropStackNBTs;
+    @ZenProperty
+    public CanGeneratePassively canGeneratePassively;
 
     public SubTileGeneratingRepresentation(int color, String unlocalizedName) {
         super(color, unlocalizedName);

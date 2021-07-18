@@ -37,6 +37,7 @@ public class JAVATextContent {
         + "\n"
         + "    @Override\n"
         + "    public boolean canGeneratePassively() {\n"
+        + "        SubTileGeneratingRepresentation subtile = (SubTileGeneratingRepresentation) this.subtile;\n"
         + "        return Objects.nonNull(subtile.canGeneratePassively) && subtile.canGeneratePassively.call(CraftTweakerMC.getIBlockPos(getPos()), CraftTweakerMC.getIWorld(getWorld()));\n"
         + "    }\n"
         + "\n"
