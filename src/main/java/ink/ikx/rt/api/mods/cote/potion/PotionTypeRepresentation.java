@@ -72,8 +72,8 @@ public class PotionTypeRepresentation {
 
     @ZenMethod
     public void register() {
-        if (RandomTweaker.potionTypeList.get(unlocalizedName) == null) {
-            RandomTweaker.potionTypeList.put(unlocalizedName,
+        if (RandomTweaker.potionTypeMap.get(unlocalizedName) == null) {
+            RandomTweaker.potionTypeMap.put(unlocalizedName,
                 new PotionType(ContentTweaker.MOD_ID + "." + this.unlocalizedName,
                     new PotionEffect(potion.getInternal(), duration, amplifier)).setRegistryName(unlocalizedName));
         } else {

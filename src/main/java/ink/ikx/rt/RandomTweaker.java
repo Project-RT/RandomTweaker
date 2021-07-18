@@ -77,8 +77,8 @@ public class RandomTweaker {
     public static Set<ItemDs> itemDsSet = new HashSet<>();
     public static Set<JEIPanel> JEIPanelList = new HashSet<>();
     public static List<JEIRecipe> JEIRecipeList = new ArrayList<>();
-    public static Map<String, Potion> potionRegList = new HashMap<>();
-    public static Map<String, PotionType> potionTypeList = new HashMap<>();
+    public static Map<String, Potion> potionRegMap = new HashMap<>();
+    public static Map<String, PotionType> potionTypeMap = new HashMap<>();
     public static BiMap<String, Pair<String, SubTileRepresentation>> subTileGeneratingMap = HashBiMap.create();
     @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")
     public static IProxy proxy;
