@@ -12,6 +12,8 @@ import mods.randomtweaker.cote.SubTileGenerating;
 
 ## ZenProperty
 
+请看 [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+
 | 字段 | 类型 | 描述 |
 |:---- |:--- |----- |
 | PassiveFlower | bool | 是否为被动产魔花 |

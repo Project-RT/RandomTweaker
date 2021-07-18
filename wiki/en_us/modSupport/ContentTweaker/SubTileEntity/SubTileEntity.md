@@ -1,6 +1,12 @@
 # SubTileEntity
 
-不建议玩家用这个类创建自定义花
+同时安装了 `BoT` 和 `CoT` 时可以使 `CoT` 可以自定义产魔或者功能花
+
+CrT 获取不到这个类, 只能获取到它的子类
+
+记得在 `resource/contenttweaker/blockstates` 目录下放置自定义花的方块状态
+
+记得在 `resource/contenttweaker/models/block` 目录下放置自定义花的模型
 
 这个类主要让代码方便维护
 
@@ -24,12 +30,6 @@ import mods.randomtweaker.cote.SubTileEntity;
 | maxMana | int | 最大魔力容量 |
 | acceptsRedstone | bool | 是否接受红石信号 |
 | overgrowthAffected | bool | 是否受蕴魔土的影响 |
-
-## ZenMethod
-
-| 方法 | 类型 | 描述 |
-|:---- |:--- |----- |
-| register(typeName as string, subTileEntity as [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)) | void | 注册此自定义花 (同样, 玩家尽量不要使用这个方法注册自定义花) |
 
 ## 本地化
 
