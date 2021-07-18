@@ -27,17 +27,17 @@ public class BracketHandlerCoTSubTile implements IBracketHandler {
     public static SubTileRepresentation getSubTile(String name) {
         if (RandomTweaker.subTileGeneratingMap.containsKey(name)) {
             Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
-            return (SubTileGeneratingRepresentation) subtilePair.getValue();
+            return subtilePair.getValue();
         }
         return null;
     }
 
-    public static SubTileFunctionalRepresentation getSubTileG(String name) {
+    public static SubTileFunctionalRepresentation getSubTileF(String name) {
         Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
         return (SubTileFunctionalRepresentation) subtilePair.getValue();
     }
 
-    public static SubTileGeneratingRepresentation getSubTileF(String name) {
+    public static SubTileGeneratingRepresentation getSubTileG(String name) {
         Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
         return (SubTileGeneratingRepresentation) subtilePair.getValue();
     }
