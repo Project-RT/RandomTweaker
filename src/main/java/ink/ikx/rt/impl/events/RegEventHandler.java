@@ -103,8 +103,8 @@ public class RegEventHandler {
     @SubscribeEvent
     public static void onPotionTypeRegistry(Register<PotionType> event) {
         IForgeRegistry<PotionType> registry = event.getRegistry();
-        if (!RandomTweaker.potionRegMap.isEmpty()) {
-            RandomTweaker.potionRegMap.forEach((k, v) -> registry.register(v));
+        if (!RandomTweaker.potionTypeMap.isEmpty()) {
+            RandomTweaker.potionTypeMap.forEach((k, v) -> registry.register(v));
         }
     }
 }
