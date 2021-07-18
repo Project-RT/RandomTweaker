@@ -17,7 +17,7 @@ import mods.randomtweaker.cote.BlockAdded;
 * state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) 产魔花的方块状态
 
 ```zenscript
-subTileGeneratingObj.onBlockAdded = function(world, pos, state) {
+subTileEntityObj.onBlockAdded = function(world, pos, state) {
 
 };
 ```
@@ -45,7 +45,7 @@ import mods.randomtweaker.cote.CanSelect;
 * side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) 产魔花面对你的方向
 
 ```zenscript
-subTileGeneratingObj.canSelect = function(player, wand, pos, side) {
+subTileEntityObj.canSelect = function(player, wand, pos, side) {
     return true;
 };
 ```
@@ -74,7 +74,7 @@ import mods.randomtweaker.cote.BlockPlacedBy;
   也就是你放下的那朵产魔花)
 
 ```zenscript
-subTileGeneratingObj.onBlockPlaceBy = function(world, pos, state, entity, stack) {
+subTileEntityObj.onBlockPlaceBy = function(world, pos, state, entity, stack) {
 
 };
 ```
@@ -90,7 +90,7 @@ import mods.randomtweaker.cote.Update;
 ```
 
 * subtile
-  as [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/SubTileGenerating/SubTileEntityInGame.md)
+  as [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileEntityInGame.md)
   产魔花的 TileEntity
 
 * world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) 产魔花所在的世界
@@ -98,7 +98,7 @@ import mods.randomtweaker.cote.Update;
 * pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) 产魔花的坐标
 
 ```zenscript
-subTileGeneratingObj.onUpdate = function(subtile, world, pos) {
+subTileEntityObj.onUpdate = function(subtile, world, pos) {
 
 };
 ```
@@ -124,7 +124,7 @@ import mods.randomtweaker.cote.BlockHarvested;
   挖掘产魔花的玩家
 
 ```zenscript
-subTileGeneratingObj.onBlockHarvested = function(world, pos, state, player) {
+subTileEntityObj.onBlockHarvested = function(world, pos, state, player) {
 
 };
 ```
@@ -163,14 +163,16 @@ import mods.randomtweaker.cote.BlockActivated;
 * hitZ as float 玩家跟产魔花的相对坐标
 
 ```zenscript
-subTileGeneratingObj.onBlockActivated = function(world, pos, state, player, hand, side, hitX, hitY, hitZ) {
+subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, side, hitX, hitY, hitZ) {
     return true;
 };
 ```
 
 ## canGeneratePassively
 
-产魔花是否被动产能
+产魔花是否被动产能 (
+仅 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+对象具有此函数)
 
 ### 导包
 
@@ -190,7 +192,9 @@ subTileGeneratingObj.canGeneratePassively = function(pos, world) {
 
 ## populateDropStackNBTs
 
-决定挖掘完产魔花的掉落物
+决定挖掘完产魔花的掉落物 (
+仅 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+对象具有此函数)
 
 ### 导包
 

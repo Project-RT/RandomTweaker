@@ -1,5 +1,9 @@
 # SubTileGenerating
 
+因为 `SubTileGenerating`
+类继承 [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+类所以 `SubTileEntity` 所有可用的功能 `SubTileGenerating` 类都能用
+
 ## 导包
 
 ```zenscript
@@ -10,15 +14,9 @@ import mods.randomtweaker.cote.SubTileGenerating;
 
 | 字段 | 类型 | 描述 |
 |:---- |:--- |----- |
-| unlocalizedName | string | 未本地化名 |
-| range | int | 产魔范围 |
-| color | int | 产魔花的颜色 |
-| maxMana | int | 最大魔力容量 |
-| PassiveFlower | bool | 是否为被动产能花 |
-| acceptsRedstone | bool | 是否接受红石信号 |
-| valueForPassiveGeneration | int | 为被动产能花时每 Tick 产出多少魔力 |
-| overgrowthAffected | bool | 是否受蕴魔土的影响 |
-| delayBetweenPassiveGeneration | int | 为被动产魔花时每次工作的冷却 Tick |
+| PassiveFlower | bool | 是否为被动产魔花 |
+| valueForPassiveGeneration | int | 为被动产魔花时每 Tick 产出多少魔力 |
+| delayBetweenPassiveGeneration | int | 为被动产魔花时每次产魔后的冷却时间 (单位 : Tick) |
 | shouldSyncPassiveGeneration | bool | 被动产魔时是否同步 TileEntity (为被动产魔花才生效) |
 
 ## ZenMethod

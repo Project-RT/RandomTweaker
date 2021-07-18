@@ -16,6 +16,8 @@ import mods.randomtweaker.cote.ManaBauble;
 
 ## 热重载
 
+请安装 `ZenUtils` Mod
+
 更多请看 [LateSetCoTFunction](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction)
 
 ```zenscript
