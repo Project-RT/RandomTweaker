@@ -28,7 +28,7 @@ public class BracketHandlerCotPotion implements IBracketHandler {
     @Override
     public IZenSymbol resolve(IEnvironmentGlobal environment, List<Token> tokens) {
         if (tokens.size() > 2) {
-            if (tokens.get(0).getValue().equals("cotSubTileG") && tokens.get(1).getValue().equals(":")) {
+            if (tokens.get(0).getValue().equals("cotPotion") && tokens.get(1).getValue().equals(":")) {
                 return find(environment, tokens);
             }
         }
