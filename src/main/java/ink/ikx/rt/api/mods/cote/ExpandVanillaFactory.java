@@ -4,6 +4,7 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import ink.ikx.rt.api.mods.cote.aspect.AspectRepresentation;
+import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalRepresentation;
 import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
 import ink.ikx.rt.api.mods.cote.item.ManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.cote.item.ManaItemRepresentation;
@@ -62,6 +63,15 @@ public class ExpandVanillaFactory {
     public static SubTileGeneratingRepresentation createSubTileGenerating(String unlocalizedName, int color) {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             return new SubTileGeneratingRepresentation(color, unlocalizedName);
+        }
+        CraftTweakerAPI.logError("You can only create a manaBauble when both Botania and ContentTweaker installed！");
+        return null;
+    }
+
+    @ZenMethodStatic
+    public static SubTileFunctionalRepresentation createSubTileFunctional(String unlocalizedName, int color) {
+        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
+            return new SubTileFunctionalRepresentation(color, unlocalizedName);
         }
         CraftTweakerAPI.logError("You can only create a manaBauble when both Botania and ContentTweaker installed！");
         return null;

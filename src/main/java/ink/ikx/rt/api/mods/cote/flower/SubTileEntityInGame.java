@@ -2,6 +2,7 @@ package ink.ikx.rt.api.mods.cote.flower;
 
 import crafttweaker.api.data.IData;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
+import net.minecraft.util.math.BlockPos;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -42,4 +43,10 @@ public interface SubTileEntityInGame {
 
     @ZenMethod
     int getPassiveDecayTicks();
+
+    @ZenMethod
+    boolean isValidBinding();
+
+    @ZenMethod
+    BlockPos getBinding();
 }

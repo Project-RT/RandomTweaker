@@ -1,13 +1,14 @@
 package ink.ikx.rt;
 
 import cn.hutool.core.annotation.AnnotationUtil;
+import cn.hutool.core.lang.Pair;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
-import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
+import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
@@ -78,7 +79,7 @@ public class RandomTweaker {
     public static List<JEIRecipe> JEIRecipeList = new ArrayList<>();
     public static Map<String, Potion> potionRegList = new HashMap<>();
     public static Map<String, PotionType> potionTypeList = new HashMap<>();
-    public static BiMap<String, SubTileGeneratingRepresentation> subTileGeneratingMap = HashBiMap.create();
+    public static BiMap<String, Pair<String, SubTileRepresentation>> subTileGeneratingMap = HashBiMap.create();
     @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")
     public static IProxy proxy;
 
@@ -99,7 +100,6 @@ public class RandomTweaker {
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) {
-
         try {
             hashCheck();
             registerOtherClass();

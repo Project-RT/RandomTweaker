@@ -1,6 +1,7 @@
 package ink.ikx.rt.impl.events;
 
 import cn.hutool.core.compiler.CompilerUtil;
+import cn.hutool.core.io.FileUtil;
 import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.flower.JAVATextContent;
 import ink.ikx.rt.impl.config.RTConfig;
@@ -41,11 +42,24 @@ public class RegEventHandler {
             return;
         }
         RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
-            String Generating = JAVATextContent.Generating.replace("${name}", k);
-            String className = "ink.ikx.rt.api.mods.cote.flower.generating.CustomSubTileGeneratingContent_" + k;
-            ClassLoader classLoader = CompilerUtil.getCompiler(null)
-                .addSource(className, Generating)
-                .compile();
+            String className;
+            ClassLoader classLoader;
+            int i = 0;
+            if (v.getKey().equals("generating")) {
+                String Generating = JAVATextContent.GENERATING.replace("${name}", k);
+                className = "ink.ikx.rt.api.mods.cote.flower.generating.CustomSubTileGeneratingContent_" + k;
+                FileUtil.writeUtf8String(Generating, "D:\\" + i + ".java");
+                classLoader = CompilerUtil.getCompiler(null)
+                    .addSource(className, Generating)
+                    .compile();
+            } else {
+                String Functional = JAVATextContent.FUNCTIONAL.replace("${name}", k);
+                className = "ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalContentContent_" + k;
+                FileUtil.writeUtf8String(Functional, "D:\\" + i + ".java");
+                classLoader = CompilerUtil.getCompiler(null)
+                    .addSource(className, Functional)
+                    .compile();
+            }
 
             try {
                 Class<? extends SubTileEntity> clazz = (Class<? extends SubTileEntity>) classLoader.loadClass(className);

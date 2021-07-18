@@ -1,8 +1,7 @@
-package ink.ikx.rt.api.mods.cote.flower.generating;
+package ink.ikx.rt.api.mods.cote.flower.functional;
 
 import crafttweaker.api.data.IData;
 import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
-import java.util.List;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,32 +11,17 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import vazkii.botania.api.subtile.RadiusDescriptor;
-import vazkii.botania.api.subtile.SubTileGenerating;
+import vazkii.botania.api.subtile.SubTileFunctional;
 
-public abstract class SubTileGeneratingContent extends SubTileGenerating implements SubTileEntityInGame {
-
-    @Override
-    public void onUpdate() {
-        super.onUpdate();
-    }
-
-    @Override
-    public abstract boolean canGeneratePassively();
-
-    @Override
-    public abstract int getColor();
+public abstract class SubTileFunctionalContent extends SubTileFunctional implements SubTileEntityInGame {
 
     @Override
     public abstract RadiusDescriptor getRadius();
 
     @Override
-    public abstract int getMaxMana();
-
-    @Override
-    public abstract boolean isPassiveFlower();
-
-    @Override
-    public abstract boolean acceptsRedstone();
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack stack) {
+        super.onBlockPlacedBy(world, pos, state, entity, stack);
+    }
 
     @Override
     public abstract boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ);
@@ -49,29 +33,16 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating impleme
     public abstract void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player);
 
     @Override
-    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack stack) {
-        super.onBlockPlacedBy(world, pos, state, entity, stack);
-    }
+    public abstract boolean isOvergrowthAffected();
 
     @Override
-    public void populateDropStackNBTs(List<ItemStack> drops) {
-        super.populateDropStackNBTs(drops);
-    }
+    public abstract int getMaxMana();
 
     @Override
-    public abstract boolean shouldSyncPassiveGeneration();
-
-    @Override
-    public abstract int getDelayBetweenPassiveGeneration();
-
-    @Override
-    public abstract int getValueForPassiveGeneration();
+    public abstract int getColor();
 
     @Override
     public abstract boolean canSelect(EntityPlayer player, ItemStack wand, BlockPos pos, EnumFacing side);
-
-    @Override
-    public abstract boolean isOvergrowthAffected();
 
     @Override
     public abstract void updateCustomData(IData data);
@@ -81,11 +52,6 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating impleme
 
     @Override
     public abstract void setCustomData(IData data);
-
-    @Override
-    public void sync() {
-        super.sync();
-    }
 
     @Override
     public void addMana(int mana) {
@@ -109,7 +75,22 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating impleme
 
     @Override
     public int getPassiveDecayTicks() {
-        return this.passiveDecayTicks;
+        return 0;
+    }
+
+    @Override
+    public void sync() {
+        super.sync();
+    }
+
+    @Override
+    public boolean acceptsRedstone() {
+        return super.acceptsRedstone();
+    }
+
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
     }
 
     @Override
@@ -124,6 +105,6 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating impleme
 
     @Override
     public String typeOf() {
-        return "generating";
+        return "functional";
     }
 }
