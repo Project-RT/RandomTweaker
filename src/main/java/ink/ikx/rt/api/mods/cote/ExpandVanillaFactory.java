@@ -64,7 +64,7 @@ public class ExpandVanillaFactory {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             return new SubTileGeneratingRepresentation(color, unlocalizedName);
         }
-        CraftTweakerAPI.logError("You can only create a manaBauble when both Botania and ContentTweaker installed！");
+        CraftTweakerAPI.logError("You can only create a subTileGenerating when both Botania and ContentTweaker installed！");
         return null;
     }
 
@@ -73,7 +73,7 @@ public class ExpandVanillaFactory {
         if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
             return new SubTileFunctionalRepresentation(color, unlocalizedName);
         }
-        CraftTweakerAPI.logError("You can only create a manaBauble when both Botania and ContentTweaker installed！");
+        CraftTweakerAPI.logError("You can only create a subTileFunctional when both Botania and ContentTweaker installed！");
         return null;
     }
 }
