@@ -27,12 +27,6 @@ import mods.randomtweaker.cote.SubTileGenerating;
 |:---- |:--- |----- |
 | register() | void | 注册此产魔花 |
 
-## 本地化
-
-`tile.botania:flower.产魔花的名字.name` 本地化产魔花的名字
-
-`tile.botania:flower.产魔花的名字.reference` 本地化产魔花的 tooltip
-
 ## 示例
 
 ```zenscript

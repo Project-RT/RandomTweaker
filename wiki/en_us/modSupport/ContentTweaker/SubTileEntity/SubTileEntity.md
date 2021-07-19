@@ -4,9 +4,7 @@
 
 CrT 获取不到这个类, 只能获取到它的子类
 
-记得在 `resource/contenttweaker/blockstates` 目录下放置自定义花的方块状态
-
-记得在 `resource/contenttweaker/models/block` 目录下放置自定义花的模型
+记得在 `contenttweaker/textures/blocks` 目录下存放自定义花的贴图
 
 这个类主要让代码方便维护
 
@@ -25,17 +23,17 @@ import mods.randomtweaker.cote.SubTileEntity;
 | 字段 | 类型 | 描述 |
 |:---- |:--- |----- |
 | unlocalizedName | string | 注册 |
-| range | int | 产魔范围 |
-| color | int | 产魔花的颜色 |
+| range | int | 自定义花的工作范围 |
+| color | int | 自定义花的颜色 |
 | maxMana | int | 最大魔力容量 |
 | acceptsRedstone | bool | 是否接受红石信号 |
 | overgrowthAffected | bool | 是否受蕴魔土的影响 |
 
 ## 本地化
 
-`tile.botania:flower.产魔花的名字.name` 本地化产魔花的名字
+`tile.botania:flower.自定义花的名字.name` 本地化自定义花的名字
 
-`tile.botania:flower.产魔花的名字.reference` 本地化产魔花的 tooltip
+`tile.botania:flower.自定义花的名字.reference` 本地化自定义花的 tooltip
 
 ## 热重载
 
