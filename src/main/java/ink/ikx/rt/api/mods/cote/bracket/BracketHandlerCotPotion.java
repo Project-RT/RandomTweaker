@@ -1,9 +1,11 @@
 package ink.ikx.rt.api.mods.cote.bracket;
 
 import crafttweaker.CraftTweakerAPI;
+import crafttweaker.annotations.BracketHandler;
 import crafttweaker.zenscript.IBracketHandler;
 import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
+import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import java.util.List;
 import stanhebben.zenscript.compiler.IEnvironmentGlobal;
 import stanhebben.zenscript.expression.ExpressionCallStatic;
@@ -13,6 +15,8 @@ import stanhebben.zenscript.symbols.IZenSymbol;
 import stanhebben.zenscript.type.natives.IJavaMethod;
 
 @SuppressWarnings("ALL")
+@BracketHandler(priority = 100)
+@RTRegisterClass({"botania", "contenttweaker"})
 public class BracketHandlerCotPotion implements IBracketHandler {
 
     @Override

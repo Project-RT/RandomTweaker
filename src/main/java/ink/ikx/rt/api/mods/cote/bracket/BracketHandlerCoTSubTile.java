@@ -3,7 +3,6 @@ package ink.ikx.rt.api.mods.cote.bracket;
 import cn.hutool.core.lang.Pair;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.BracketHandler;
-import crafttweaker.annotations.ModOnly;
 import crafttweaker.zenscript.IBracketHandler;
 import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
@@ -19,7 +18,6 @@ import stanhebben.zenscript.symbols.IZenSymbol;
 import stanhebben.zenscript.type.natives.IJavaMethod;
 
 @SuppressWarnings("ALL")
-@ModOnly("contenttweaker")
 @BracketHandler(priority = 100)
 @RTRegisterClass({"botania", "contenttweaker"})
 public class BracketHandlerCoTSubTile implements IBracketHandler {
