@@ -1,7 +1,7 @@
 package ink.ikx.rt.api.mods.cote.item;
 
 import vazkii.botania.api.item.ICosmeticBauble;
-import youyihj.zenutils.api.annotation.ExpandContentTweakerEntry;
+import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
 
 /**
  * @author superhelo
