@@ -14,8 +14,6 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenClass("mods.randomtweaker.Prop")
 public class Prop {
 
-    private static final boolean ISWINDOWS = System.getProperties().getProperty("os.name").startsWith("Windows");
-    private static final String MARK = ISWINDOWS ? "\\" : "/";
     private static final String FILE = getPath(System.getProperty("user.dir"), RandomTweaker.MODID + ".prop");
 
     @ZenMethod
@@ -68,7 +66,7 @@ public class Prop {
     public static String getPath(String... path) {
         StringBuilder sb = new StringBuilder();
         for (String s1 : path) {
-            sb.append(sb.toString().endsWith(MARK) ? s1 : (MARK + s1));
+            sb.append(sb.toString().endsWith(File.separator) ? s1 : (File.separator + s1));
         }
         return sb.toString();
     }
