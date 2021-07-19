@@ -4,7 +4,7 @@
 
 CrT 获取不到这个类, 只能获取到它的子类
 
-记得在 `contenttweaker/textures/blocks` 目录下存放自定义花的贴图
+记得在 `resources/contenttweaker/textures/blocks` 目录下存放自定义花的贴图 (贴图名 : unlocalizedName.png)
 
 这个类主要让代码方便维护
 
