@@ -24,6 +24,14 @@ import ink.ikx.rt.impl.jei.HydroangeasJEI;
 import ink.ikx.rt.impl.proxy.IProxy;
 import ink.ikx.rt.impl.utils.ItemDs;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -40,10 +48,6 @@ import org.apache.logging.log4j.Logger;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
-
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.*;
 
 @SuppressWarnings("unchecked")
 @Mod(
@@ -82,8 +86,8 @@ public class RandomTweaker {
         PlayerSanityNetWork.register();
         PlayerSanityCapabilityHandler.register();
         for (ASMDataTable.ASMData asmData : event.getAsmData().getAll(RTRegisterClass.class.getCanonicalName())) {
-            String[] modids = (String[]) asmData.getAnnotationInfo().get("value");
-            if (Arrays.stream(modids).allMatch(Loader::isModLoaded)) {
+            List<String> modids = (List<String>) asmData.getAnnotationInfo().get("value");
+            if (modids.stream().allMatch(Loader::isModLoaded)) {
                 try {
                     CraftTweakerAPI.registerClass(Class.forName(asmData.getClassName(), false, CraftTweaker.class.getClassLoader()));
                 } catch (ClassNotFoundException e) {
