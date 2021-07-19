@@ -1,10 +1,13 @@
 package ink.ikx.rt.impl.events;
 
 import cn.hutool.core.compiler.CompilerUtil;
+import cn.hutool.core.io.FileUtil;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.mods.cote.flower.JAVATextContent;
 import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalRepresentation;
 import ink.ikx.rt.impl.config.RTConfig;
+import java.io.File;
 import java.util.Objects;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -63,7 +66,10 @@ public class RegEventHandler {
                 BotaniaAPI.addSubTileToCreativeMenu(k);
                 for (Class innerClazz : clazz.getDeclaredClasses()) {
                     if (innerClazz.getSimpleName().equals("Mini")) {
-                        BotaniaAPI.registerMiniSubTile(k + "Chibi", innerClazz, k);
+                        SubTileFunctionalRepresentation v1 = (SubTileFunctionalRepresentation) v.getValue();
+                        if (v1.isHasMini()) {
+                            BotaniaAPI.registerMiniSubTile(k + "Chibi", innerClazz, k);
+                        }
                     }
                 }
             } catch (ClassNotFoundException e) {
@@ -85,10 +91,12 @@ public class RegEventHandler {
         }
         RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
             BotaniaAPIClient.registerSubtileModel(k, new ModelResourceLocation("contenttweaker:" + k));
+            createFlowerBlockState(k);
             if (v.getValue() instanceof SubTileFunctionalRepresentation) {
                 SubTileFunctionalRepresentation v1 = (SubTileFunctionalRepresentation) v.getValue();
                 if (v1.isHasMini()) {
                     BotaniaAPIClient.registerSubtileModel(k + "Chibi", new ModelResourceLocation("contenttweaker:" + k + "Chibi"));
+                    createFlowerBlockState(k + "Chibi");
                 }
             }
         });
@@ -113,6 +121,15 @@ public class RegEventHandler {
         IForgeRegistry<PotionType> registry = event.getRegistry();
         if (!RandomTweaker.potionTypeMap.isEmpty()) {
             RandomTweaker.potionTypeMap.forEach((k, v) -> registry.register(v));
+        }
+    }
+
+    private static void createFlowerBlockState(String name) {
+        String nameL = name.toLowerCase();
+        String path = Prop.getPath(System.getProperty("user.dir"), "resources", "contenttweaker", "blockstates", nameL + ".json");
+        File file = new File(path);
+        if (!FileUtil.exist(file)) {
+            FileUtil.writeUtf8String(JAVATextContent.FLOWER_BLOCKSTATE.replace("${name}", nameL), file);
         }
     }
 }
