@@ -14,6 +14,11 @@ import mods.randomtweaker.cote.SubTileFunctional;
 
 请看 [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
 
+| 字段 | 类型 | 描述 |
+|:---- |:--- |----- |
+| hasMini | bool | 是否创建小型功能花 |
+| miniRange | int | 小型功能花的工作范围 |
+
 ## ZenMethod
 
 | 方法 | 类型 | 描述 |
