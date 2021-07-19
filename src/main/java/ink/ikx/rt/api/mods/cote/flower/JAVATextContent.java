@@ -189,11 +189,11 @@ public class JAVATextContent {
 
     public static final String FUNCTIONAL = "package ink.ikx.rt.api.mods.cote.flower.functional;\n"
         + "\n"
-        + "import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.player.CTPlayer;\n"
         + "import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.EntityHelper;\n"
+        + "import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.player.CTPlayer;\n"
         + "import com.teamacronymcoders.contenttweaker.api.ctobjects.enums.Hand;\n"
-        + "import crafttweaker.api.minecraft.CraftTweakerMC;\n"
         + "import crafttweaker.api.data.IData;\n"
+        + "import crafttweaker.api.minecraft.CraftTweakerMC;\n"
         + "import crafttweaker.mc1120.data.NBTConverter;\n"
         + "import ink.ikx.rt.RandomTweaker;\n"
         + "import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;\n"
@@ -305,6 +305,13 @@ public class JAVATextContent {
         + "        customData.writeToNBT(compound.getCompoundTag(TAG_NAME));\n"
         + "        customData.writeToNBT(compound.getCompoundTag(TAG_CUSTOM_DATA));\n"
         + "        super.writeToPacketNBT(compound);\n"
+        + "    }\n"
+        + "\n"
+        + "    public static class Mini extends SubTileFunctionalContentContent_${name} {\n"
+        + "        @Override\n"
+        + "        public RadiusDescriptor getRadius() {\n"
+        + "            return new RadiusDescriptor.Square(toBlockPos(), ((SubTileFunctionalRepresentation) subtile).getMiniRange());\n"
+        + "        }\n"
         + "    }\n"
         + "}\n";
 }

@@ -3,6 +3,7 @@ package ink.ikx.rt.impl.events;
 import cn.hutool.core.compiler.CompilerUtil;
 import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.flower.JAVATextContent;
+import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalRepresentation;
 import ink.ikx.rt.impl.config.RTConfig;
 import java.util.Objects;
 import net.minecraft.block.Block;
@@ -21,7 +22,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.BotaniaAPIClient;
 import vazkii.botania.api.subtile.SubTileEntity;
-import vazkii.botania.api.subtile.signature.BasicSignature;
 
 @SuppressWarnings("unchecked")
 @EventBusSubscriber
@@ -43,7 +43,6 @@ public class RegEventHandler {
         RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
             String className;
             ClassLoader classLoader;
-            int i = 0;
             if (v.getKey().equals("generating")) {
                 String Generating = JAVATextContent.GENERATING.replace("${name}", k);
                 className = "ink.ikx.rt.api.mods.cote.flower.generating.CustomSubTileGeneratingContent_" + k;
@@ -61,8 +60,12 @@ public class RegEventHandler {
             try {
                 Class<? extends SubTileEntity> clazz = (Class<? extends SubTileEntity>) classLoader.loadClass(className);
                 BotaniaAPI.registerSubTile(k, clazz);
-                BotaniaAPI.registerSubTileSignature(clazz, new BasicSignature(k));
                 BotaniaAPI.addSubTileToCreativeMenu(k);
+                for (Class innerClazz : clazz.getDeclaredClasses()) {
+                    if (innerClazz.getSimpleName().equals("Mini")) {
+                        BotaniaAPI.registerMiniSubTile(k + "Chibi", innerClazz, k);
+                    }
+                }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -80,7 +83,15 @@ public class RegEventHandler {
         if (RandomTweaker.subTileGeneratingMap.isEmpty()) {
             return;
         }
-        RandomTweaker.subTileGeneratingMap.forEach((k, v) -> BotaniaAPIClient.registerSubtileModel(k, new ModelResourceLocation("contenttweaker:" + k)));
+        RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
+            BotaniaAPIClient.registerSubtileModel(k, new ModelResourceLocation("contenttweaker:" + k));
+            if (v.getValue() instanceof SubTileFunctionalRepresentation) {
+                SubTileFunctionalRepresentation v1 = (SubTileFunctionalRepresentation) v.getValue();
+                if (v1.isHasMini()) {
+                    BotaniaAPIClient.registerSubtileModel(k + "Chibi", new ModelResourceLocation("contenttweaker:" + k + "Chibi"));
+                }
+            }
+        });
     }
 
     @SubscribeEvent
