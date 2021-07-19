@@ -46,7 +46,7 @@ dependencies {
     compile files('libs/')
 
     deobfCompile "curse.maven:Baubles-227083:2518667"
-    deobfCompile "curse.maven:zenutils-401178:3382337"
+    deobfCompile "youyihj:zenutils:1.9.1"
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
     deobfCompile "curse.maven:ftb-ultimine-386134:3078750"
@@ -115,6 +115,10 @@ repositories {
     maven {
         name = "sponge"
         url = "https://repo.spongepowered.org/maven"
+    }
+    maven {
+        name = "youyihj"
+        url = "https://friendlyhj.github.io/maven"
     }
 }
 
