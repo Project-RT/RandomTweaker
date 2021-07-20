@@ -51,11 +51,11 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 @SuppressWarnings("unchecked")
 @Mod(
-        modid = RandomTweaker.MODID,
-        name = RandomTweaker.NAME,
-        version = RandomTweaker.VERSION,
-        guiFactory = RandomTweaker.GUI_FACTORY,
-        dependencies = RandomTweaker.DESPENDENCIES
+    modid = RandomTweaker.MODID,
+    name = RandomTweaker.NAME,
+    version = RandomTweaker.VERSION,
+    guiFactory = RandomTweaker.GUI_FACTORY,
+    dependencies = RandomTweaker.DESPENDENCIES
 )
 public class RandomTweaker {
 
@@ -67,8 +67,8 @@ public class RandomTweaker {
 
     public static final SanityGem SANITY_GEM = new SanityGem();
     public static final SoundEvent SOUND_SAN = new SoundEvent(
-            new ResourceLocation(RandomTweaker.MODID, "san"))
-            .setRegistryName(new ResourceLocation(RandomTweaker.MODID, "san"));
+        new ResourceLocation(RandomTweaker.MODID, "san"))
+        .setRegistryName(new ResourceLocation(RandomTweaker.MODID, "san"));
 
     public static Logger logger;
     public static Set<ItemDs> itemDsSet = new HashSet<>();
@@ -85,16 +85,6 @@ public class RandomTweaker {
         logger = event.getModLog();
         PlayerSanityNetWork.register();
         PlayerSanityCapabilityHandler.register();
-        for (ASMDataTable.ASMData asmData : event.getAsmData().getAll(RTRegisterClass.class.getCanonicalName())) {
-            List<String> modids = (List<String>) asmData.getAnnotationInfo().get("value");
-            if (modids.stream().allMatch(Loader::isModLoaded)) {
-                try {
-                    CraftTweakerAPI.registerClass(Class.forName(asmData.getClassName(), false, CraftTweaker.class.getClassLoader()));
-                } catch (ClassNotFoundException e) {
-                    CraftTweaker.LOG.catching(e);
-                }
-            }
-        }
     }
 
     @EventHandler
@@ -109,9 +99,17 @@ public class RandomTweaker {
     public void onConstruct(FMLConstructionEvent event) {
         try {
             registerOtherClass();
+            for (ASMDataTable.ASMData asmData : event.getASMHarvestedData().getAll(RTRegisterClass.class.getCanonicalName())) {
+                List<String> modIDS = (List<String>) asmData.getAnnotationInfo().get("value");
+                if (modIDS.stream().allMatch(Loader::isModLoaded)) {
+                    CraftTweakerAPI.registerClass(Class.forName(asmData.getClassName(), false, CraftTweaker.class.getClassLoader()));
+                }
+            }
         } catch (IOException e) {
             CraftTweakerAPI.logError("The fail occurs inside RT, see latest.log and report it.");
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            CraftTweaker.LOG.catching(e);
         }
     }
 
