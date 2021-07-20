@@ -15,10 +15,9 @@ import net.minecraft.block.Block;
  */
 public class ModHydroangeas {
 
-    public static Block fluidFactor;
-
     public static List<HydroangeasHandler> handlerList = new ArrayList<>();
     public static Map<IItemStack, Double> blockFactorList = new HashMap<>();
+    public static Map<ILiquidStack, Double> fluidFactorList = new HashMap<>();
 
     public static void setBlockBelowFactor(IItemStack block, double factor) {
         if (block.isItemBlock()) {
@@ -28,20 +27,18 @@ public class ModHydroangeas {
         }
     }
 
-    public static void setFluidFactor(ILiquidStack inputFluid) {
-        fluidFactor = getBlock(inputFluid);
+    public static void setFluidFactor(ILiquidStack inputFluid, double factor) {
+        fluidFactorList.put(inputFluid, factor);
     }
 
     public static class HydroangeasHandler {
 
         ILiquidStack liquidConsume;
         int manaGen;
-        double factor;
 
         public HydroangeasHandler(ILiquidStack input, int manaGen, double factor) {
             this.liquidConsume = input;
             this.manaGen = manaGen;
-            this.factor = factor;
         }
 
         public Block getBlockLiquid() {
@@ -50,10 +47,6 @@ public class ModHydroangeas {
 
         public int getManaGen() {
             return this.manaGen;
-        }
-
-        public double getManaFactor() {
-            return this.factor;
         }
 
     }

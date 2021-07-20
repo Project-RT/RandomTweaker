@@ -1,11 +1,12 @@
 package ink.ikx.rt.impl.botania.subtitle;
 
-import ink.ikx.rt.impl.botania.module.ModHydroangeas;
-import ink.ikx.rt.impl.config.RTConfig;
 import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import ink.ikx.rt.impl.botania.module.ModHydroangeas;
 import ink.ikx.rt.impl.botania.module.ModHydroangeas.HydroangeasHandler;
-import java.util.List;
+import ink.ikx.rt.impl.config.RTConfig;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.IBlockState;
@@ -23,6 +24,8 @@ import vazkii.botania.api.subtile.SubTileGenerating;
 import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.lexicon.LexiconData;
+
+import java.util.List;
 
 /**
  * @author niyan
@@ -77,7 +80,6 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
                             || supertile.getWorld().getBlockState(posCheck).getValue(prop) == 0)) {
                             supertile.getWorld().setBlockToAir(posCheck);
                             manaGen = handler.getManaGen();
-                            manaFactorFluid = handler.getManaFactor();
 
                             if (cooldown == 0) {
                                 burnTime += getBurnTime();
@@ -100,16 +102,19 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
             }
             burnTime--;
 
-            double t = manaFactorFluid;
             manaFactorFluid = 1;
             for (BlockPos.MutableBlockPos posCheck : BlockPos.getAllInBoxMutable(
                 pos.add(-RANGE, -RANGE_Y, -RANGE),
                 pos.add(RANGE, RANGE_Y, RANGE))) {
 
-                if (supertile.getWorld().getBlockState(posCheck).getBlock()
-                    == ModHydroangeas.fluidFactor) {
-                    manaFactorFluid = t;
-                    break;
+                for (ILiquidStack fluid: ModHydroangeas.fluidFactorList.keySet()) {
+                    Block fluidFactor = CraftTweakerMC.getLiquidStack(fluid).getFluid().getBlock();
+                    if (supertile.getWorld().getBlockState(posCheck).getBlock()
+                            == fluidFactor) {
+                        // 采用全部所有流体的因子乘起来的方法。
+                        manaFactorFluid *= ModHydroangeas.fluidFactorList.get(fluid);
+                        break;
+                    }
                 }
             }
             IItemStack block = CraftTweakerMC.getIItemStack(

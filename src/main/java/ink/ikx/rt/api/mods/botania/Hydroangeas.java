@@ -23,8 +23,8 @@ public class Hydroangeas {
     }
 
     @ZenMethod
-    public static void setFactor(ILiquidStack inputFluid) {
-        ModHydroangeas.setFluidFactor(inputFluid);
+    public static void setFactor(ILiquidStack inputFluid, double factor) {
+        ModHydroangeas.setFluidFactor(inputFluid, factor);
     }
 
     @ZenMethod
