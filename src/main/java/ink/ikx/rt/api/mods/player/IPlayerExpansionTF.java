@@ -20,7 +20,7 @@ import twilightforest.TFConfig;
 public class IPlayerExpansionTF {
 
     @ZenMethod
-    public static void teleportPlayer(IPlayer playerIn) {
+    public static void teleportTwilight(IPlayer playerIn) {
         int destination = TFConfig.dimension.dimensionID;
 
         EntityPlayer player = CraftTweakerMC.getPlayer(playerIn);
