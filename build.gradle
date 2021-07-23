@@ -44,6 +44,7 @@ configurations {
 
 dependencies {
     compile files('libs/')
+    compile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.655"
 
     deobfCompile "curse.maven:Baubles-227083:2518667"
     deobfCompile "youyihj:zenutils:1.9.1"
@@ -57,7 +58,6 @@ dependencies {
     deobfCompile "curse.maven:the-twilight-forest-227639:3051450"
     deobfCompile "curse.maven:matteroverdrive-legacy-308192:2699215"
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.655"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
     deobfCompile ("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
         exclude module: "asm-commons"
