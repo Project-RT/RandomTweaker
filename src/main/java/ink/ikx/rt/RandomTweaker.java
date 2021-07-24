@@ -1,6 +1,7 @@
 package ink.ikx.rt;
 
 import cn.hutool.core.lang.Pair;
+import cn.hutool.core.util.ReflectUtil;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import crafttweaker.CraftTweakerAPI;
@@ -8,12 +9,15 @@ import crafttweaker.mc1120.CraftTweaker;
 import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
+import ink.ikx.rt.api.mods.botania.Orechid;
 import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionContent;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
+import ink.ikx.rt.impl.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.botania.subtitle.SubTileHydroangeasModified;
+import ink.ikx.rt.impl.botania.subtitle.SubTileOrechidModifyed;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
 import ink.ikx.rt.impl.client.network.PlayerSanityNetWork;
 import ink.ikx.rt.impl.config.RTConfig;
@@ -31,7 +35,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import net.minecraft.init.Blocks;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -49,7 +55,7 @@ import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("all")
 @Mod(
     modid = RandomTweaker.MODID,
     name = RandomTweaker.NAME,
@@ -89,8 +95,8 @@ public class RandomTweaker {
 
     @EventHandler
     public void onInit(FMLInitializationEvent event) {
-        if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
-            registryHydroangeasModified();
+        if (Loader.isModLoaded("botania")) {
+            registryFlowerModified();
             HydroangeasJEI.init();
         }
     }
@@ -113,43 +119,39 @@ public class RandomTweaker {
         }
     }
 
-
-    private void registryHydroangeasModified() {
+    private void registryFlowerModified() {
         final BiMap<String, Class<? extends SubTileEntity>> subTiles;
+        Field field = ReflectUtil.getField(BotaniaAPI.class, "subTiles");
         try {
-            Field field = BotaniaAPI.class.getDeclaredField("subTiles");
-            field.setAccessible(true);
-            subTiles = (BiMap<String, Class<? extends SubTileEntity>>) field.get(null);
+            subTiles = (BiMap<String, Class<? extends SubTileEntity>>) ReflectUtil.setAccessible(field).get(null);
+            if (Objects.nonNull(subTiles)) {
+                if (RTConfig.Botania.HydroangeasModified) {
+                    CraftTweakerAPI.registerClass(Hydroangeas.class);
+                    subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
+                }
 
-            if (subTiles != null) {
-                subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
+                if (RTConfig.Botania.OrechidModified) {
+                    CraftTweakerAPI.registerClass(Orechid.class);
+                    subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModifyed.class);
+                    if (RTConfig.Botania.OrechidHasDefault)
+                        SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), BotaniaAPI.oreWeights);
+                }
             }
-
-        } catch (NoSuchFieldException | IllegalAccessException e) {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
     }
 
     private void registerOtherClass() throws IOException {
-        if (Loader.isModLoaded("thaumcraft")) {
-            if (RTConfig.Thaumcraft.DreamJournal) {
-                MinecraftForge.EVENT_BUS.register(DreamJournal.class);
-            }
-        }
-        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
+        if (Loader.isModLoaded("thaumcraft") && RTConfig.Thaumcraft.DreamJournal)
+            MinecraftForge.EVENT_BUS.register(DreamJournal.class);
+        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker"))
             MinecraftForge.EVENT_BUS.register(ManaBaubleEvent.class);
-        }
-        if (RTConfig.Botania.HydroangeasModified && Loader.isModLoaded("botania")) {
-            CraftTweakerAPI.registerClass(Hydroangeas.class);
-        }
-        if (RTConfig.RandomTweaker.PlayerSanity) {
+        if (RTConfig.RandomTweaker.PlayerSanity)
             CraftTweakerAPI.registerClass(IPlayerExpansionSanity.class);
-        }
-        if (RTConfig.FTBUltimine.AllowCrTControl) {
+        if (RTConfig.FTBUltimine.AllowCrTControl)
             CraftTweakerAPI.registerClass(IPlayerExpansionFTBU.class);
-        }
-        if (Prop.createOrDelete(RTConfig.RandomTweaker.Prop)) {
+        if (Prop.createOrDelete(RTConfig.RandomTweaker.Prop))
             CraftTweakerAPI.registerClass(Prop.class);
-        }
     }
 }
