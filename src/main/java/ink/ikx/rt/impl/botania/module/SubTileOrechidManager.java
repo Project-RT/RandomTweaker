@@ -14,7 +14,12 @@ public class SubTileOrechidManager {
     public static final Map<IBlockState, Map<String, Integer>> oreWeights = new HashMap<>();
 
     public static void addOreWeight(IBlockState state, String ore, Integer weight) {
-        oreWeights.put(state, (Map<String, Integer>) Dict.create().put(ore, weight));
+        if (oreWeights.containsKey(state)) {
+            Map<String, Integer> dict = (Map<String, Integer>) Dict.create().put(ore, weight);
+            Objects.requireNonNull(dict).putAll(oreWeights.get(state));
+            oreWeights.put(state, dict);
+        } else
+            oreWeights.put(state, (Map<String, Integer>) Dict.create().put(ore, weight));
     }
 
     public static String[] getOreWeight(IBlockState state) {

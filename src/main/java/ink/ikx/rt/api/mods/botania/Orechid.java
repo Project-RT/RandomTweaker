@@ -11,7 +11,7 @@ import net.minecraft.block.Block;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@ZenClass("mods.atutils.Orechid")
+@ZenClass("mods.randomtweaker.botania.Orechid")
 public class Orechid {
 
     @ZenMethod
