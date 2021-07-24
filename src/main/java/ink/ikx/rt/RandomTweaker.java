@@ -6,6 +6,7 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.mc1120.CraftTweaker;
+import crafttweaker.mods.jei.JEI;
 import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.instance.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
@@ -130,6 +131,7 @@ public class RandomTweaker {
                     subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
                 }
                 if (RTConfig.Botania.OrechidModified) {
+                    JEI.hideCategory("botania.orechid");
                     CraftTweakerAPI.registerClass(Orechid.class);
                     subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModifyed.class);
                     if (RTConfig.Botania.OrechidHasDefault)
