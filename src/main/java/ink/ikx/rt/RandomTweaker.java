@@ -97,7 +97,6 @@ public class RandomTweaker {
     public void onInit(FMLInitializationEvent event) {
         if (Loader.isModLoaded("botania")) {
             registryFlowerModified();
-            HydroangeasJEI.init();
         }
     }
 
@@ -126,10 +125,10 @@ public class RandomTweaker {
             subTiles = (BiMap<String, Class<? extends SubTileEntity>>) ReflectUtil.setAccessible(field).get(null);
             if (Objects.nonNull(subTiles)) {
                 if (RTConfig.Botania.HydroangeasModified) {
+                    HydroangeasJEI.init();
                     CraftTweakerAPI.registerClass(Hydroangeas.class);
                     subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
                 }
-
                 if (RTConfig.Botania.OrechidModified) {
                     CraftTweakerAPI.registerClass(Orechid.class);
                     subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModifyed.class);
