@@ -128,12 +128,10 @@ public class RandomTweaker {
             if (Objects.nonNull(subTiles)) {
                 if (RTConfig.Botania.HydroangeasModified) {
                     HydroangeasJEI.init();
-                    CraftTweakerAPI.registerClass(Hydroangeas.class);
                     subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
                 }
                 if (RTConfig.Botania.OrechidModified) {
                     JEI.hideCategory("botania.orechid");
-                    CraftTweakerAPI.registerClass(Orechid.class);
                     subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModifyed.class);
                     if (RTConfig.Botania.OrechidHasDefault)
                         SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), (HashMap<String, Integer>) BotaniaAPI.oreWeights);
@@ -156,5 +154,10 @@ public class RandomTweaker {
             CraftTweakerAPI.registerClass(IPlayerExpansionFTBU.class);
         if (Prop.createOrDelete(RTConfig.RandomTweaker.Prop))
             CraftTweakerAPI.registerClass(Prop.class);
+        // this's need this event or earlier to reg
+        if (RTConfig.Botania.OrechidModified)
+            CraftTweakerAPI.registerClass(Orechid.class);
+        if (RTConfig.Botania.HydroangeasModified)
+            CraftTweakerAPI.registerClass(Hydroangeas.class);
     }
 }

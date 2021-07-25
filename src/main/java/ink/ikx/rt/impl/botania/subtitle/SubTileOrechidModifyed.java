@@ -4,6 +4,7 @@ import com.google.common.base.Predicate;
 import ink.ikx.rt.impl.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.config.RTConfig;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -68,6 +69,7 @@ public class SubTileOrechidModifyed extends SubTileFunctional {
         String ore = ((StringRandomItem) WeightedRandom.getRandomItem(supertile.getWorld().rand, values)).s;
 
         List<ItemStack> ores = OreDictionary.getOres(ore);
+        Collections.shuffle(ores); // Random Get
 
         for (ItemStack stack : ores) {
             Item item = stack.getItem();

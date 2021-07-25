@@ -18,13 +18,22 @@ public class Orechid {
 
     @ZenMethod
     public static void addOreWeight(IItemStack block, IOreDictEntry ore, int weight) {
-        if (!ore.isEmpty()) {
+        if (ore.isEmpty()) {
             CraftTweakerAPI.logError("This ore was empty!");
             return;
         }
         if (Objects.nonNull(getState(block))) {
             SubTileOrechidManager.addOreWeight(getState(block), ore.getName(), weight);
         }
+    }
+
+    @ZenMethod
+    public static void addOreWeight(crafttweaker.api.block.IBlockState block, IOreDictEntry ore, int weight) {
+        if (ore.isEmpty()) {
+            CraftTweakerAPI.logError("This ore was empty!");
+            return;
+        }
+        SubTileOrechidManager.addOreWeight(CraftTweakerMC.getBlockState(block), ore.getName(), weight);
     }
 
     @ZenMethod
@@ -44,6 +53,14 @@ public class Orechid {
     }
 
     @ZenMethod
+    public static boolean delOreWeight(IItemStack block, IOreDictEntry oreName) {
+        if (Objects.nonNull(getState(block))) {
+            return SubTileOrechidManager.delOreWeight(getState(block), oreName.getName(), false);
+        }
+        return false;
+    }
+
+    @ZenMethod
     public static IOreDictEntry[] getOreWeight(IItemStack block) {
         if (Objects.nonNull(getState(block))) {
             return Arrays.stream(SubTileOrechidManager.getOreWeight(getState(block)))
@@ -56,9 +73,9 @@ public class Orechid {
     private static boolean isItemBlock(IItemStack block) {
         if (!block.isItemBlock()) {
             CraftTweakerAPI.logError("This is not ItemBlock");
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     private static IBlockState getState(IItemStack block) {
