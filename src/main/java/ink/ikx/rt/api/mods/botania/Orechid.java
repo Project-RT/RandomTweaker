@@ -45,6 +45,11 @@ public class Orechid {
     }
 
     @ZenMethod
+    public static boolean delOreWeight(crafttweaker.api.block.IBlockState block) {
+        return SubTileOrechidManager.delOreWeight(CraftTweakerMC.getBlockState(block), "", true);
+    }
+
+    @ZenMethod
     public static boolean delOreWeight(IItemStack block, String oreName) {
         if (Objects.nonNull(getState(block))) {
             return SubTileOrechidManager.delOreWeight(getState(block), oreName, false);
@@ -53,17 +58,38 @@ public class Orechid {
     }
 
     @ZenMethod
-    public static boolean delOreWeight(IItemStack block, IOreDictEntry oreName) {
+    public static boolean delOreWeight(IItemStack block, IOreDictEntry ore) {
         if (Objects.nonNull(getState(block))) {
-            return SubTileOrechidManager.delOreWeight(getState(block), oreName.getName(), false);
+            return SubTileOrechidManager.delOreWeight(getState(block), ore.getName(), false);
         }
         return false;
+    }
+
+    @ZenMethod
+    public static boolean delOreWeight(crafttweaker.api.block.IBlockState block, String oreName) {
+        return SubTileOrechidManager.delOreWeight(CraftTweakerMC.getBlockState(block), oreName, false);
+    }
+
+    @ZenMethod
+    public static boolean delOreWeight(crafttweaker.api.block.IBlockState block, IOreDictEntry ore) {
+        return SubTileOrechidManager.delOreWeight(CraftTweakerMC.getBlockState(block), ore.getName(), false);
     }
 
     @ZenMethod
     public static IOreDictEntry[] getOreWeight(IItemStack block) {
         if (Objects.nonNull(getState(block))) {
             return Arrays.stream(SubTileOrechidManager.getOreWeight(getState(block)))
+                .map(BracketHandlerOre::getOre)
+                .toArray(IOreDictEntry[]::new);
+        }
+        return null;
+    }
+
+
+    @ZenMethod
+    public static IOreDictEntry[] getOreWeight(crafttweaker.api.block.IBlockState block) {
+        if (Objects.nonNull(block)) {
+            return Arrays.stream(SubTileOrechidManager.getOreWeight(CraftTweakerMC.getBlockState(block)))
                 .map(BracketHandlerOre::getOre)
                 .toArray(IOreDictEntry[]::new);
         }
