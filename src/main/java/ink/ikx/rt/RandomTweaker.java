@@ -26,6 +26,7 @@ import ink.ikx.rt.impl.events.DreamJournal;
 import ink.ikx.rt.impl.events.ManaBaubleEvent;
 import ink.ikx.rt.impl.item.SanityGem;
 import ink.ikx.rt.impl.jei.HydroangeasJEI;
+import ink.ikx.rt.impl.jei.OrechidJEI;
 import ink.ikx.rt.impl.proxy.IProxy;
 import ink.ikx.rt.impl.utils.ItemDs;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
@@ -135,7 +136,8 @@ public class RandomTweaker {
                     CraftTweakerAPI.registerClass(Orechid.class);
                     subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModifyed.class);
                     if (RTConfig.Botania.OrechidHasDefault)
-                        SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), BotaniaAPI.oreWeights);
+                        SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), (HashMap<String, Integer>) BotaniaAPI.oreWeights);
+                    OrechidJEI.init();
                 }
             }
         } catch (IllegalAccessException e) {
