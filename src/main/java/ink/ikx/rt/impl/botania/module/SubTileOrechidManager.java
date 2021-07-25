@@ -1,6 +1,5 @@
 package ink.ikx.rt.impl.botania.module;
 
-import cn.hutool.core.lang.Dict;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -15,11 +14,14 @@ public class SubTileOrechidManager {
 
     public static void addOreWeight(IBlockState state, String ore, Integer weight) {
         if (oreWeights.containsKey(state)) {
-            Map<String, Integer> dict = (Map<String, Integer>) Dict.create().put(ore, weight);
-            Objects.requireNonNull(dict).putAll(oreWeights.get(state));
-            oreWeights.put(state, dict);
+            Map<String, Integer> map = new HashMap<>();
+            map.put(ore, weight);
+            Objects.requireNonNull(map).putAll(oreWeights.get(state));
+            oreWeights.put(state, map);
         } else
-            oreWeights.put(state, (Map<String, Integer>) Dict.create().put(ore, weight));
+            oreWeights.put(state, new HashMap<String, Integer>() {{
+                put(ore, weight);
+            }});
     }
 
     public static String[] getOreWeight(IBlockState state) {
