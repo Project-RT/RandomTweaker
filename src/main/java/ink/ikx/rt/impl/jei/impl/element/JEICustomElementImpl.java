@@ -16,6 +16,7 @@ public class JEICustomElementImpl extends JEIElementImpl implements JEICustomEle
         super(x, y, width, heigh);
         this.u = u;
         this.v = v;
+        this.texture = texture;
     }
 
     @Override
