@@ -6,13 +6,13 @@
   "target": "@env(DEFAULT)",
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
-    "MixinBlockTFPortal",
-    "MixinFTBUltimine",
-    "MixinTemperatureHandler",
-    "MixinThirstHandler"
+    "ftbutimine.MixinFTBUltimine",
+    "matteroverdrive.MixinTemperatureHandler",
+    "matteroverdrive.MixinThirstHandler",
+    "twilightforest.MixinBlockTFPortal"
   ],
   "client": [
-    "MixinTemperatureOverlayHandler",
-    "MixinThirstOverlayHandler"
+    "matteroverdrive.MixinTemperatureOverlayHandler",
+    "matteroverdrive.MixinThirstOverlayHandler"
   ]
 }

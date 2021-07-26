@@ -12,6 +12,8 @@ import mods.mods.contenttweaker.VanillaFactory;
 | createPotionType(unlocalizedName as string, potion as Potion) | [PotionType](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/PotionType.md) | 创建一个 PotionType 药水瓶属于这一类 |
 | createManaItem(unlocalizedName as string, @Optional(500000) manxMana as int) | [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaItem.md) | 创建一个魔力物品 |
 | createManaBauble(unlocalizedName as string, @Optional(500000) manxMana as int, @Optional("RING") baubleType as string) | [ManaBauble](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaBauble/ManaBauble.md) | 创建一个魔力饰品
+| createSubTileGenerating(unlocalizedName, color as int) | [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md) | 创建一朵产魔花 |
+| createSubTileFunctional(unlocalizedName, color as int) | [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md) | 创建一朵功能花花 |
 
 ~~别问我为什么没有实例~~  
 ~~你怎么用原版加工厂 (VanillaFactory) 创建物品就怎么创建上面那些~~

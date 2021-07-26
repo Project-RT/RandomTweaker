@@ -16,7 +16,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
 @ZenClass("mods.randomtweaker.cote.Potion")
 public class PotionRepresentation {
 
-    private Potion potion;
+    private PotionContent potion;
 
     @ZenProperty
     public int liquidColorIn;
@@ -114,9 +114,9 @@ public class PotionRepresentation {
 
     @ZenMethod
     public void register() {
-        if (RandomTweaker.potionRegList.get(unlocalizedName) == null) {
+        if (RandomTweaker.potionRegMap.get(unlocalizedName) == null) {
             potion = new PotionContent(this);
-            RandomTweaker.potionRegList.put(unlocalizedName, potion);
+            RandomTweaker.potionRegMap.put(unlocalizedName, potion);
         } else {
             CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
         }

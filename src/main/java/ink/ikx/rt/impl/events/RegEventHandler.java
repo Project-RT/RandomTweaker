@@ -1,9 +1,13 @@
 package ink.ikx.rt.impl.events;
 
 import cn.hutool.core.compiler.CompilerUtil;
+import cn.hutool.core.io.FileUtil;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.api.instance.file.Prop;
 import ink.ikx.rt.api.mods.cote.flower.JAVATextContent;
+import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalRepresentation;
 import ink.ikx.rt.impl.config.RTConfig;
+import java.io.File;
 import java.util.Objects;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -21,7 +25,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.BotaniaAPIClient;
 import vazkii.botania.api.subtile.SubTileEntity;
-import vazkii.botania.api.subtile.signature.BasicSignature;
 
 @SuppressWarnings("unchecked")
 @EventBusSubscriber
@@ -41,17 +44,34 @@ public class RegEventHandler {
             return;
         }
         RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
-            String Generating = JAVATextContent.Generating.replace("{$name}", k);
-            String className = "ink.ikx.rt.api.mods.cote.flower.generating.CustomSubTileGeneratingContent_" + k;
-            ClassLoader classLoader = CompilerUtil.getCompiler(null)
-                .addSource(className, Generating)
-                .compile();
+            String className;
+            ClassLoader classLoader;
+            if (v.getKey().equals("generating")) {
+                String Generating = JAVATextContent.GENERATING.replace("${name}", k);
+                className = "ink.ikx.rt.api.mods.cote.flower.generating.CustomSubTileGeneratingContent_" + k;
+                classLoader = CompilerUtil.getCompiler(null)
+                    .addSource(className, Generating)
+                    .compile();
+            } else {
+                String Functional = JAVATextContent.FUNCTIONAL.replace("${name}", k);
+                className = "ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalContentContent_" + k;
+                classLoader = CompilerUtil.getCompiler(null)
+                    .addSource(className, Functional)
+                    .compile();
+            }
 
             try {
                 Class<? extends SubTileEntity> clazz = (Class<? extends SubTileEntity>) classLoader.loadClass(className);
                 BotaniaAPI.registerSubTile(k, clazz);
-                BotaniaAPI.registerSubTileSignature(clazz, new BasicSignature(k));
                 BotaniaAPI.addSubTileToCreativeMenu(k);
+                for (Class innerClazz : clazz.getDeclaredClasses()) {
+                    if (innerClazz.getSimpleName().equals("Mini")) {
+                        SubTileFunctionalRepresentation v1 = (SubTileFunctionalRepresentation) v.getValue();
+                        if (v1.isHasMini()) {
+                            BotaniaAPI.registerMiniSubTile(k + "Chibi", innerClazz, k);
+                        }
+                    }
+                }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -69,7 +89,17 @@ public class RegEventHandler {
         if (RandomTweaker.subTileGeneratingMap.isEmpty()) {
             return;
         }
-        RandomTweaker.subTileGeneratingMap.forEach((k, v) -> BotaniaAPIClient.registerSubtileModel(k, new ModelResourceLocation("contenttweaker:" + k)));
+        RandomTweaker.subTileGeneratingMap.forEach((k, v) -> {
+            BotaniaAPIClient.registerSubtileModel(k, new ModelResourceLocation("contenttweaker:" + k));
+            createFlowerBlockState(k);
+            if (v.getValue() instanceof SubTileFunctionalRepresentation) {
+                SubTileFunctionalRepresentation v1 = (SubTileFunctionalRepresentation) v.getValue();
+                if (v1.isHasMini()) {
+                    BotaniaAPIClient.registerSubtileModel(k + "Chibi", new ModelResourceLocation("contenttweaker:" + k + "Chibi"));
+                    createFlowerBlockState(k + "Chibi");
+                }
+            }
+        });
     }
 
     @SubscribeEvent
@@ -81,16 +111,25 @@ public class RegEventHandler {
     @SubscribeEvent
     public static void onPotionRegistry(Register<Potion> event) {
         IForgeRegistry<Potion> registry = event.getRegistry();
-        if (!RandomTweaker.potionRegList.isEmpty()) {
-            RandomTweaker.potionRegList.forEach((k, v) -> registry.register(v));
+        if (!RandomTweaker.potionRegMap.isEmpty()) {
+            RandomTweaker.potionRegMap.forEach((k, v) -> registry.register(v));
         }
     }
 
     @SubscribeEvent
     public static void onPotionTypeRegistry(Register<PotionType> event) {
         IForgeRegistry<PotionType> registry = event.getRegistry();
-        if (!RandomTweaker.potionTypeList.isEmpty()) {
-            RandomTweaker.potionTypeList.forEach((k, v) -> registry.register(v));
+        if (!RandomTweaker.potionTypeMap.isEmpty()) {
+            RandomTweaker.potionTypeMap.forEach((k, v) -> registry.register(v));
+        }
+    }
+
+    private static void createFlowerBlockState(String name) {
+        String nameL = name.toLowerCase();
+        String path = Prop.getPath(System.getProperty("user.dir"), "resources", "contenttweaker", "blockstates", nameL + ".json");
+        File file = new File(path);
+        if (!FileUtil.exist(file)) {
+            FileUtil.writeUtf8String(JAVATextContent.FLOWER_BLOCKSTATE.replace("${name}", nameL), file);
         }
     }
 }

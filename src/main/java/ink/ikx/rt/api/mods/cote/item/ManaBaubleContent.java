@@ -14,7 +14,7 @@ import vazkii.botania.api.item.IBaubleRender;
 import vazkii.botania.api.item.ICosmeticAttachable;
 import vazkii.botania.api.item.IPhantomInkable;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
-import youyihj.zenutils.api.annotation.ExpandContentTweakerEntry;
+import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
 
 /**
  * @author superhelo

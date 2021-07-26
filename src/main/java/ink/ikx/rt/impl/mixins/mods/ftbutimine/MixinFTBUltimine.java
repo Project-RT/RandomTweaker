@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.mixins.mods;
+package ink.ikx.rt.impl.mixins.mods.ftbutimine;
 
 import com.feed_the_beast.mods.ftbultimine.FTBUltimine;
 import ink.ikx.rt.impl.config.RTConfig;

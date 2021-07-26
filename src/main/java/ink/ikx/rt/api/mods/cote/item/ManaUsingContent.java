@@ -2,7 +2,7 @@ package ink.ikx.rt.api.mods.cote.item;
 
 import net.minecraft.item.ItemStack;
 import vazkii.botania.api.mana.IManaUsingItem;
-import youyihj.zenutils.api.annotation.ExpandContentTweakerEntry;
+import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
 
 /**
  * @author superhelo

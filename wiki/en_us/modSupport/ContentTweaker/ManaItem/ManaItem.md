@@ -11,7 +11,8 @@ import mods.randomtweaker.cote.ManaItem;
 
 | 字段 | 类型 | 描述 |
 |:---------- |:---------- |----------- |
-| maxItem | int (默认为 5w) | 最大魔力容量 |
+| unlocalizedName | string | 未本地化名 |
+| maxMana | int (默认为 5w) | 最大魔力容量 |
 | isNoExport | bool (默认 false) | 是否真正的输出魔力 |
 | hasFull | bool (默认 false) | 是否创建填满魔力的魔力物品 |
 | hasCreative | bool (默认 false) | 是否创建类似创造魔力石板的魔力物品 |
@@ -22,11 +23,24 @@ import mods.randomtweaker.cote.ManaItem;
 |:---- |:---- |---- |
 | register() | void | 注册此魔力物品 |
 
+## 热重载
+
+请安装 `ZenUtils` Mod
+
+更多请看 [LateSetCoTFunction](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction)
+
+```zenscript
+#loader crafttweaker reloadableevents
+<cotItem:unlocalizedName>.canExportManaToItem = function(stack, otherStack) {
+    return true;
+};
+```
+
 ## 例子
 
 ```zenscript
 #loader contenttweaker
-import mods.mods.contenttweaker.VanillaFactory;
+import mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.cote.ManaItem;
 
 var manaItem as ManaItem = VanillaFactory.createManaItem("mana_item", 50000);

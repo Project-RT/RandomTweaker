@@ -19,7 +19,7 @@ import vazkii.botania.api.mana.ICreativeManaProvider;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaTooltipDisplay;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
-import youyihj.zenutils.api.annotation.ExpandContentTweakerEntry;
+import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
 
 /**
  * @author superhelo

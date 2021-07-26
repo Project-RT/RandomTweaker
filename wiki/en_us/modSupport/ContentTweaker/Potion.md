@@ -10,7 +10,7 @@ import mods.randomtweaker.cote.Potion;
 
 | 字段 | 类型 | 描述 |
 | ---- | :-- | --- |
-| unlocalizedName | string | 本地化键值 |
+| unlocalizedName | string | 注册名 |
 | liquidColorIn | int | 药水颜色 |
 | badEffectIn | bool | 药水给予的是否是坏的效果 |
 | beneficial | bool | 药水对玩家是否有益，有益的药水会放在第一格 |
@@ -27,9 +27,25 @@ import mods.randomtweaker.cote.Potion;
 **贴图必须是 18 * 18 大小**  
 ~~不要傻傻填 unlocalizedName~~
 
+## 热重载
+
+请安装 `ZenUtils` Mod
+
+[事件热重载](https://github.com/friendlyhj/ZenUtils/wiki/ReloadEvents)
+和 [CoT 函数热重载](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) 都是此 Mod 提供的
+
+```zenscript
+<cotPotion:unlocalizedName>.isReady = function(duration, amplifier){
+	if (duration % 40 == 0){
+		return true;
+	}
+	return false;
+};
+```
+
 ## 例子
 
-~~~zenscript
+```zenscript
 #loader contenttweaker
 
 import mods.contenttweaker.VanillaFactory;
@@ -44,10 +60,10 @@ potion.isReady = function(duration, amplifier){
 	return false;
 };
 potion.performEffect = function(living, amplifier){
-	if(!living.world.remote && living instanceof Player){
+ 	if(!living.world.remote && living instanceof Player){
 		var player as Player = living;
 		player.sendChat("didiidid~~~");
 	}
 };
 potion.register();
-~~~
+```

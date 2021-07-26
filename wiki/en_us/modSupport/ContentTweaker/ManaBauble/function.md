@@ -120,7 +120,7 @@ manaBaubleObj.willAutoSync = function((bauble, wearer) {
 * stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 饰品
 * player as [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/) 佩戴饰品的玩家
 * renderType as string 分别是 `HEAD` 和 `BODY`
-* partialTicks as float
+* partialTicks as float 距离下个 Tick 还剩多少 Tick (一般小于 1)
 
 ```zenscript
 manaBaubleObj.onPlayerBaubleRender = function((stack, player, renderType, partialTicks) {

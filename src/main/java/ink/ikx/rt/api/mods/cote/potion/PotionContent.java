@@ -66,6 +66,10 @@ public class PotionContent extends Potion {
         Gui.drawModalRectWithCustomSizedTexture(x + 3, y + 3, 0, 0, 18, 18, 18, 18);
     }
 
+    public PotionRepresentation getRepresentation() {
+        return potionRepresentation;
+    }
+
     @Override
     public boolean isReady(int duration, int amplifier) {
         if (Objects.nonNull(potionRepresentation.isReady)) {

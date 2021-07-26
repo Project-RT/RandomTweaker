@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.mixins.mods;
+package ink.ikx.rt.impl.mixins.mods.twilightforest;
 
 import crafttweaker.api.block.IBlock;
 import crafttweaker.api.minecraft.CraftTweakerMC;
