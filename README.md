@@ -30,6 +30,7 @@
 
 ## 参与人员
 
-开发人员 ： [ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315), [NiYanhhhhh](https://github.com/NiYanhhhhh) <br /><br />
-Wiki编辑 ： [ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315) <br /><br />
-特别感谢 ： [friendlyhj](https://github.com/friendlyhj)
+开发人员 ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315), [skyraah](https://github.com/skyraah), [NiYanhhhhh](https://github.com/NiYanhhhhh) <br /><br />
+Wiki编辑 ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315), [skyraah](https://github.com/skyraah) <br /><br />
+英文翻译 : [liuseniubi](https://github.com/liuseniubi), [FaulknerWu](https://github.com/FaulknerWu) <br /><br />
+特别感谢 ：[friendlyhj](https://github.com/friendlyhj)
