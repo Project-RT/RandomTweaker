@@ -1,38 +1,38 @@
 # Potion
 
-使 CoT 可以创建简单的药水效果
+Enables ContentTweaker to create simple potion effects
 
-## 导包
+## Import
 
 ```zenscrtip
 import mods.randomtweaker.cote.Potion;
 ```
 
-| 字段 | 类型 | 描述 |
+| Feild | Type| Description |
 | ---- | :-- | --- |
-| unlocalizedName | string | 注册名 |
-| liquidColorIn | int | 药水颜色 |
-| badEffectIn | bool | 药水给予的是否是坏的效果 |
-| beneficial | bool | 药水对玩家是否有益，有益的药水会放在第一格 |
-| instant | bool | 药水是即刻生效的还是持续生效的 |
-| shouldRender | bool | 是否在背包栏渲染 |
-| shouldRenderHUD | bool | 是否在 HUD (在右上角) 渲染 |
+| unlocalizedName | string | Unlocalized name |
+| liquidColorIn | int | Color of potion |
+| badEffectIn | bool | Is the potion giving a bad effect |
+| beneficial | bool | Whether the potion is beneficial to the player or not, beneficial potions will be placed in the first row |
+| instant | bool | Is the potion effective instantly or continuously? |
+| shouldRender | bool | Whether to render in the backpack |
+| shouldRenderHUD | bool | Whether to render in the HUD (in the upper right corner) |
 
-| 函数 | 写法 | 返回值 | 描述 |
+| Fuction | Use | Return | Description |
 | --- | :--- | ------- | ---- |
-| isReady | function(duration as int, amplifier as int) | void | 决定是否在当前 Tick 是否触发 `performEffect` 函数 |
-| performEffect | function(living as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/), amplifier as int) | bool | 药水每 Tick 都会执行此事件 |
+| isReady | function(duration as int, amplifier as int) | void | Determines whether the `performEffect` function is triggered at the current Tick |
+| performEffect | function(living as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/), amplifier as int) | bool | The potion performs this event every Tick |
 
-贴图位置 : `"contenttweaker:textures/gui/unlocalizedName.png"`  
-**贴图必须是 18 * 18 大小**  
-~~不要傻傻填 unlocalizedName~~
+Texture location : `"contenttweaker:textures/gui/unlocalizedName.png"`  
+**The texture must be 18 * 18 pixels size**  
+~~Don't fill in unlocalizedName foolishly XD~~
 
-## 热重载
+## Hot reload
 
-请安装 `ZenUtils` Mod
+Please install `ZenUtils` Mod
 
-[事件热重载](https://github.com/friendlyhj/ZenUtils/wiki/ReloadEvents)
-和 [CoT 函数热重载](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) 都是此 Mod 提供的
+Both [Event hot reload](https://github.com/friendlyhj/ZenUtils/wiki/ReloadEvents)
+and [ContentTweaker fuction hot reload](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) provided by this mod
 
 ```zenscript
 <cotPotion:unlocalizedName>.isReady = function(duration, amplifier){
@@ -43,7 +43,7 @@ import mods.randomtweaker.cote.Potion;
 };
 ```
 
-## 例子
+## Example
 
 ```zenscript
 #loader contenttweaker

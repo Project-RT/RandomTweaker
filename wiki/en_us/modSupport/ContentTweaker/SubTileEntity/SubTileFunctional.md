@@ -1,12 +1,12 @@
 # SubTileFunctional
 
-因为 `SubTileFunctional`
-类继承 [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
-类所以 `SubTileEntity` 所有可用的功能 `SubTileFunctional` 类都能用
+Because the `SubTileFunctional`
+class extends [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+class, all the functions available in the `SubTileEntity` class can be used by the `SubTileFunctional` class.
 
-如果有小功能花, 记得在 `resources/contenttweaker/textures/blocks` 目录下存放一张单独的贴图给小功能花 (贴图名 : unlocalizedName + chibi.png)
+If you have a mini functional flower, remember to store a separate texture for the small functional flower in the `resources/contenttweaker/textures/blocks` directory (texture name : unlocalizedName + chibi.png)
 
-## 导包
+## Import
 
 ```zenscript
 import mods.randomtweaker.cote.SubTileFunctional;
@@ -14,20 +14,20 @@ import mods.randomtweaker.cote.SubTileFunctional;
 
 ## ZenProperty
 
-请看 [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+See [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
 
-| 字段 | 类型 | 描述 |
+| Feild | Type | Description |
 |:---- |:--- |----- |
-| hasMini | bool | 是否创建小型功能花 |
-| miniRange | int | 小型功能花的工作范围 |
+| hasMini | bool | Whether to create mini functional flowers |
+| miniRange | int | Range of work for mini functional flowers |
 
 ## ZenMethod
 
-| 方法 | 类型 | 描述 |
+| Method | Type | Description |
 |:---- |:--- |----- |
-| register() | void | 注册此功能花 |
+| register() | void | Register this flower |
 
-## 示例
+## Example
 
 ```zenscript
 #loader contenttweaker

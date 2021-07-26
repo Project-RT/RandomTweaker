@@ -31,9 +31,9 @@ import mods.randomtweaker.cote.SubTileEntity;
 
 ## 本地化
 
-`tile.botania:flower.自定义花的名字.name` 本地化自定义花的名字
+`tile.botania:flower.自定义花的名字.name` = 本地化自定义花的名字
 
-`tile.botania:flower.自定义花的名字.reference` 本地化自定义花的 tooltip
+`tile.botania:flower.自定义花的名字.reference` = 本地化自定义花的 tooltip
 
 ## 热重载
 

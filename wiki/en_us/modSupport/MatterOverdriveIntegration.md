@@ -4,7 +4,7 @@ For more please see [IPlayerExpansion](https://github.com/ikexing-cn/RandomTweak
 
 ## Skills - id comparison table
 
-| Skill | id | 内部名(无需使用) |
+| Skill | id | Internal name (not required) |
 | :----- | :---- | :----  |
 | Step Assist | 0  | step_assist  |
 | Item Magnet | 1  | item_magnet  |

@@ -1,19 +1,20 @@
 # VanillaFactory Expansion
 
-## 导包
+## Import
 
 ```zenscript
 import mods.mods.contenttweaker.VanillaFactory;
 ```
 
-| 方法                                                           | 返回值      | 描述 |
+| Methods                                                           | Reture | Description |
 | :------------------------------------------------------------ | :--------- | ---- |
-| createPotion(unlocalizedName as string, color as int)         | [Potion](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/Potion.md) | 创建一个 Potion |
-| createPotionType(unlocalizedName as string, potion as Potion) | [PotionType](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/PotionType.md) | 创建一个 PotionType 药水瓶属于这一类 |
-| createManaItem(unlocalizedName as string, @Optional(500000) manxMana as int) | [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaItem.md) | 创建一个魔力物品 |
-| createManaBauble(unlocalizedName as string, @Optional(500000) manxMana as int, @Optional("RING") baubleType as string) | [ManaBauble](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaBauble/ManaBauble.md) | 创建一个魔力饰品
-| createSubTileGenerating(unlocalizedName, color as int) | [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md) | 创建一朵产魔花 |
-| createSubTileFunctional(unlocalizedName, color as int) | [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md) | 创建一朵功能花花 |
+| createPotion(unlocalizedName as string, color as int)         | [Potion](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/Potion.md) | Create a Potion |
+| createPotionType(unlocalizedName as string, potion as Potion) | [PotionType](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/PotionType.md) | Create a PotionType potion bottle belonging to this category |
+| createManaItem(unlocalizedName as string, @Optional(500000) manxMana as int) | [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaItem.md) | Create a ManaItem |
+| createManaBauble(unlocalizedName as string, @Optional(500000) manxMana as int, @Optional("RING") baubleType as string) | [ManaBauble](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaBauble/ManaBauble.md) | Create a ManaBauble
+| createSubTileGenerating(unlocalizedName, color as int) | [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md) | Create a flower that produce mana |
+| createSubTileFunctional(unlocalizedName, color as int) | [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md) | Create a functional flower |
 
-~~别问我为什么没有实例~~  
-~~你怎么用原版加工厂 (VanillaFactory) 创建物品就怎么创建上面那些~~
+~~Don't ask me why there are no examples~~
+
+~~How you create items with the original way (VanillaFactory) is how you create those above~~

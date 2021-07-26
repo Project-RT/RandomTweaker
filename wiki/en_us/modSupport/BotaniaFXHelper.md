@@ -1,14 +1,14 @@
 # BotaniaFXHelper
 
-允许CrT调用植魔库的粒子 (本章节内容十分推荐玩家自己上手测试一下)<br />
-[具体实现](https://github.com/Vazkii/Botania/tree/1.12-final) ->
+Allow CraftTweaker to call the particles of the Botania library (This section is highly recommended for players to test it by themselves)<br />
+[Specific implementation](https://github.com/Vazkii/Botania/tree/1.12-final) ->
 vazkii.botania.client.core.proxy.ClientProxy
 
 ```zenscript
 import mods.randomtweaker.botania.BotaniaFXHelper;
 ```
 
-| 方法 | 返回值 |
+| Methods | return |
 |:------ | :---- |
 | sparkleFX(x as double, y as double, z as double, r as float, g as float, b as float, size as float, m as int) | void |
 | sparkleFX(x as double, y as double, z as double, r as float, g as float, b as float, size as float, m as int, fake as bool) | void |

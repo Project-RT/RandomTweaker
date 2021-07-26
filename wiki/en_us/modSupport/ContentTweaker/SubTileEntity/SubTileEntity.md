@@ -1,18 +1,18 @@
 # SubTileEntity
 
-同时安装了 `BoT` 和 `CoT` 时可以使 `CoT` 可以自定义产魔或者功能花
+When both `BoT` and `CoT` are installed, `CoT` can be customized flowers to produce mana or functional flowers.
 
-CrT 获取不到这个类, 只能获取到它的子类
+CraftTweaker can't get this class, only its subclasses
 
-记得在 `resources/contenttweaker/textures/blocks` 目录下存放自定义花的贴图 (贴图名 : unlocalizedName.png)
+Remember to store the custom flower texture in the `resources/contenttweaker/textures/blocks` directory (Texture name : unlocalizedName.png)
 
-这个类主要让代码方便维护
+This class mainly makes the code easy to maintain
 
-想创建产魔花请看 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+To create flowers that produces mana, please see [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
 
-想创建功能花请看 [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md)
+To create functional flowers, please see [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md)
 
-## 导包
+## Import
 
 ```zenscript
 import mods.randomtweaker.cote.SubTileEntity;
@@ -20,29 +20,29 @@ import mods.randomtweaker.cote.SubTileEntity;
 
 ## ZenProperty
 
-| 字段 | 类型 | 描述 |
+| Feild | Type | Description |
 |:---- |:--- |----- |
-| unlocalizedName | string | 注册 |
-| range | int | 自定义花的工作范围 |
-| color | int | 自定义花的颜色 |
-| maxMana | int | 最大魔力容量 |
-| acceptsRedstone | bool | 是否接受红石信号 |
-| overgrowthAffected | bool | 是否受蕴魔土的影响 |
+| unlocalizedName | string | Unlocalized name |
+| range | int | Range of work of the flower |
+| color | int | Color of the flower |
+| maxMana | int | Maximum Mana Capacity |
+| acceptsRedstone | bool | Whether to accept the redstone signal |
+| overgrowthAffected | bool | Whether it is influenced by the Enchanted Soil |
 
-## 本地化
+## Localization
 
-`tile.botania:flower.自定义花的名字.name` 本地化自定义花的名字
+`tile.botania:flower.Unlocalized name of custom flower.name` = Localization of custom flower
 
-`tile.botania:flower.自定义花的名字.reference` 本地化自定义花的 tooltip
+`tile.botania:flower.Unlocalized name of custom flower.reference` = Localization of custom flower's tooltip
 
-## 热重载
+## Hot reload
 
-请安装 `ZenUtils` Mod
+Please install `ZenUtils` Mod
 
-[事件热重载](https://github.com/friendlyhj/ZenUtils/wiki/ReloadEvents)
-和 [CoT 函数热重载](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) 都是此 Mod 提供的
+Both [Event hot reload](https://github.com/friendlyhj/ZenUtils/wiki/ReloadEvents)
+and [ContentTweaker fuction hot reload](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) provided by this mod
 
-在 CoT 脚本内
+In the ContentTweaker script
 
 ```zenscript
 #loader contenttweaker
@@ -53,14 +53,14 @@ import mods.randomtweaker.cote.SubTileFunctional;
 var subTileGenerating as SubTileGenerating = VanillaFactory.createSubTileGenerating("test", 0xFFFFFF);
 subTileGenerating.register();
 
-// 即使不是同一类型自定义花, 注册名也不能相同!
-// 也不能和植魔或其扩展中已有的自定义花的注册名相同
+// Even if it is not the same type of custom flower, the registration name cannot be the same!
+// Nor can it be the same as the registration name of a custom flower that already exists in Botania or its extensions
 
 var subTileFunctional as SubTileFunctional = VanillaFactory.createSubTileFunctional("test_1", 0xFFFFFF);
 subTileFunctional.register();
 ```
 
-在 CrT 脚本内
+In the CraftTweaker script
 
 ```zenscript
 #loader crafttweaker reloadableevents
