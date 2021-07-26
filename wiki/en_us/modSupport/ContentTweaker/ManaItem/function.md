@@ -27,11 +27,11 @@ manaItemObj.canExportManaToPool = function(stack, world, pos) {
 
 ## canReceiveManaFromPool
 
-决定物品是否接受魔力池的魔力
+Determines whether the item receives mana from the Mana Pool
 
 Need to return a bool
 
-* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 待接受魔力的物品
+* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Items to be input Mana
 
 * world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) The world where the Mana Pool is
 
@@ -45,13 +45,13 @@ manaItemObj.canReceiveManaFromPool = function(stack, world, pos) {
 
 ## canExportManaToItem
 
-决定魔力是否输出到需求魔力的物品上
+Determines whether mana is output to items that require mana
 
 Need to return a bool
 
-* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 待输出魔力的物品
+* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Items to be output Mana
 
-* otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 需求魔力的物品
+* otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Item that needs Mana
 
 ```zenscript
 manaItemObj.canExportManaToItem = function(stack, otherStack) {
@@ -61,13 +61,13 @@ manaItemObj.canExportManaToItem = function(stack, otherStack) {
 
 ## canReceiveManaFromItem
 
-决定物品是否接受其他物品输出的魔力
+Determines whether the item accepts mana output from other items
 
 Need to return a bool
 
-* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 待接受魔力的物品
+* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Items to be output Mana 
 
-* otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 输出魔力的物品
+* otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Item that outputs Mana
 
 ```zenscript
 manaItemObj.canReceiveManaFromItem = function(stack, otherStack) {
