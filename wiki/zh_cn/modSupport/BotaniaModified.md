@@ -25,11 +25,11 @@ import mods.randomtweaker.botania.Orechid;
 | :----------------------------------------------------------- | :----- | ----------- |
 | addOreWeight(block as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), ore as [IOreDictEntry](https://docs.blamejared.com/1.12/en/Vanilla/OreDict/IOreDictEntry/), weight as int) | void | 添加凝矿兰配方，第一个参数为需转换的方块，第二个参数为转换后的矿辞，第三个参数为权重 |
 | addOreWeight(block as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/Blocks/IBlockState/), ore as [IOreDictEntry](https://docs.blamejared.com/1.12/en/Vanilla/OreDict/IOreDictEntry/), weight as int) | void | 同上 |
-| delOreWeight(block as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | boolean | 删除此方块下的全部配方 |
-| delOreWeight(block as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/Blocks/IBlockState/)) | boolean | 同上 |
-| delOreWeight(block as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), string oreName) | boolean | 删除此方块下指定的输出物 |
-| delOreWeight(block as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), ore as [IOreDictEntry](https://docs.blamejared.com/1.12/en/Vanilla/OreDict/IOreDictEntry/)) | boolean | 同上 |
-| delOreWeight(block as block as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/Blocks/IBlockState/), ore as [IOreDictEntry](https://docs.blamejared.com/1.12/en/Vanilla/OreDict/IOreDictEntry/)) | boolean | 同上 |
-| delOreWeight(block as block as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/Blocks/IBlockState/), ore as [IOreDictEntry](https://docs.blamejared.com/1.12/en/Vanilla/OreDict/IOreDictEntry/)) | boolean | 同上 |
+| delOreWeight(block as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | void | 删除此方块下的全部配方 |
+| delOreWeight(block as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/Blocks/IBlockState/)) | void | 同上 |
+| delOreWeight(block as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), string oreName) | void | 删除此方块下指定的输出物 |
+| delOreWeight(block as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), ore as [IOreDictEntry](https://docs.blamejared.com/1.12/en/Vanilla/OreDict/IOreDictEntry/)) | void | 同上 |
+| delOreWeight(block as block as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/Blocks/IBlockState/), string oreName) | void | 同上 |
+| delOreWeight(block as block as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/Blocks/IBlockState/), ore as [IOreDictEntry](https://docs.blamejared.com/1.12/en/Vanilla/OreDict/IOreDictEntry/)) | void | 同上 |
 | getOreWeight(block as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | IOreDictEntry[] | 获取此方块下的全部输出物 (不包含权重) |
 | getOreWeight(block as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/Blocks/IBlockState/)) | IOreDictEntry[] | 同上 |

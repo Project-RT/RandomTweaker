@@ -37,42 +37,39 @@ public class Orechid {
     }
 
     @ZenMethod
-    public static boolean delOreWeight(IItemStack block) {
-        if (Objects.nonNull(getState(block))) {
-            return SubTileOrechidManager.delOreWeight(getState(block), "", true);
-        }
-        return false;
+    public static void delOreWeight(IItemStack block) {
+        if (Objects.nonNull(getState(block)))
+            SubTileOrechidManager.delOreWeight(getState(block), "", true);
+
     }
 
     @ZenMethod
-    public static boolean delOreWeight(crafttweaker.api.block.IBlockState block) {
-        return SubTileOrechidManager.delOreWeight(CraftTweakerMC.getBlockState(block), "", true);
+    public static void delOreWeight(crafttweaker.api.block.IBlockState block) {
+        SubTileOrechidManager.delOreWeight(CraftTweakerMC.getBlockState(block), "", true);
     }
 
     @ZenMethod
-    public static boolean delOreWeight(IItemStack block, String oreName) {
-        if (Objects.nonNull(getState(block))) {
-            return SubTileOrechidManager.delOreWeight(getState(block), oreName, false);
-        }
-        return false;
+    public static void delOreWeight(IItemStack block, String oreName) {
+        if (Objects.nonNull(getState(block)))
+            SubTileOrechidManager.delOreWeight(getState(block), oreName, false);
+
     }
 
     @ZenMethod
-    public static boolean delOreWeight(IItemStack block, IOreDictEntry ore) {
-        if (Objects.nonNull(getState(block))) {
-            return SubTileOrechidManager.delOreWeight(getState(block), ore.getName(), false);
-        }
-        return false;
+    public static void delOreWeight(IItemStack block, IOreDictEntry ore) {
+        if (Objects.nonNull(getState(block)))
+            SubTileOrechidManager.delOreWeight(getState(block), ore.getName(), false);
+
     }
 
     @ZenMethod
-    public static boolean delOreWeight(crafttweaker.api.block.IBlockState block, String oreName) {
-        return SubTileOrechidManager.delOreWeight(CraftTweakerMC.getBlockState(block), oreName, false);
+    public static void delOreWeight(crafttweaker.api.block.IBlockState block, String oreName) {
+        SubTileOrechidManager.delOreWeight(CraftTweakerMC.getBlockState(block), oreName, false);
     }
 
     @ZenMethod
-    public static boolean delOreWeight(crafttweaker.api.block.IBlockState block, IOreDictEntry ore) {
-        return SubTileOrechidManager.delOreWeight(CraftTweakerMC.getBlockState(block), ore.getName(), false);
+    public static void delOreWeight(crafttweaker.api.block.IBlockState block, IOreDictEntry ore) {
+        SubTileOrechidManager.delOreWeight(CraftTweakerMC.getBlockState(block), ore.getName(), false);
     }
 
     @ZenMethod

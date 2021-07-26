@@ -93,6 +93,10 @@ public class RandomTweaker {
         logger = event.getModLog();
         PlayerSanityNetWork.register();
         PlayerSanityCapabilityHandler.register();
+        if (Loader.isModLoaded("botania")
+            && RTConfig.Botania.OrechidHasDefault
+            && RTConfig.Botania.OrechidModified)
+            SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), (HashMap<String, Integer>) BotaniaAPI.oreWeights);
     }
 
     @EventHandler
@@ -133,8 +137,6 @@ public class RandomTweaker {
                 if (RTConfig.Botania.OrechidModified) {
                     JEI.hideCategory("botania.orechid");
                     subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModifyed.class);
-                    if (RTConfig.Botania.OrechidHasDefault)
-                        SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), (HashMap<String, Integer>) BotaniaAPI.oreWeights);
                     OrechidJEI.init();
                 }
             }
