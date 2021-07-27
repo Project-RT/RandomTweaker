@@ -23,7 +23,10 @@ import mods.randomtweaker.cote.ManaBauble;
 ```zenscript
 #loader crafttweaker reloadableevents
 <cotItem:unlocalizedName>.onWornTick = function((bauble, wearer) {
-
+   if(wearer instanceof IPlayer) {
+          var player as IPlayer = wearer;
+          player.sendChat("1");
+      }
 };
 ```
 

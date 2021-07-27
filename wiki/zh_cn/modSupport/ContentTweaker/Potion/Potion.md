@@ -4,7 +4,7 @@
 
 ## 导包
 
-```zenscrtip
+```zenscript
 import mods.randomtweaker.cote.Potion;
 ```
 
@@ -18,11 +18,6 @@ import mods.randomtweaker.cote.Potion;
 | shouldRender | bool | 是否在背包栏渲染 |
 | shouldRenderHUD | bool | 是否在 HUD (在右上角) 渲染 |
 
-| 函数 | 写法 | 返回值 | 描述 |
-| --- | :--- | ------- | ---- |
-| isReady | function(duration as int, amplifier as int) | void | 决定是否在当前 Tick 是否触发 `performEffect` 函数 |
-| performEffect | function(living as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/), amplifier as int) | bool | 药水每 Tick 都会执行此事件 |
-
 贴图位置 : `"contenttweaker:textures/gui/unlocalizedName.png"`  
 **贴图必须是 18 * 18 大小**  
 ~~不要傻傻填 unlocalizedName~~
@@ -35,8 +30,9 @@ import mods.randomtweaker.cote.Potion;
 和 [CoT 函数热重载](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) 都是此 Mod 提供的
 
 ```zenscript
-<cotPotion:unlocalizedName>.isReady = function(duration, amplifier){
-	if (duration % 40 == 0){
+#loader crafttweaker reloadableevents
+<cotPotion:unlocalizedName>.isReady = function(duration, amplifier) {
+	if (duration % 40 == 0) {
 		return true;
 	}
 	return false;
@@ -53,14 +49,14 @@ import mods.randomtweaker.cote.Potion;
 import mods.contenttweaker.Player;
 
 var potion as Potion = VanillaFactory.createPotion("lhhd", 0xF7D575);
-potion.isReady = function(duration, amplifier){
-	if (duration % 20 == 0){
+potion.isReady = function(duration, amplifier) {
+	if (duration % 20 == 0) {
 		return true;
 	}
 	return false;
 };
-potion.performEffect = function(living, amplifier){
- 	if(!living.world.remote && living instanceof Player){
+potion.performEffect = function(living, amplifier) {
+ 	if(!living.world.remote && living instanceof Player) {
 		var player as Player = living;
 		player.sendChat("didiidid~~~");
 	}
