@@ -13,6 +13,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+/**
+ * @author friendlyHj <br /> https://github.com/ProjectHDS/HerodotusUtils/blob/main/src/main/java/youyihj/herodotusutils/mixins/init/MixinLoader.java
+ */
 @Mixin(value = Loader.class, remap = false, priority = 800)
 public class MixinLoader {
 
