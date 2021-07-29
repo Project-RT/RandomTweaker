@@ -170,9 +170,8 @@ subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, si
 
 ## canGeneratePassively
 
-产魔花是否被动产能 (
-仅 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
-对象具有此函数)
+产魔花是否被动产能 (仅 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+类具有此函数)
 
 ### 导包
 
@@ -194,7 +193,7 @@ subTileGeneratingObj.canGeneratePassively = function(pos, world) {
 
 决定挖掘完产魔花的掉落物 (
 仅 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
-对象具有此函数)
+类具有此函数)
 
 ### 导包
 

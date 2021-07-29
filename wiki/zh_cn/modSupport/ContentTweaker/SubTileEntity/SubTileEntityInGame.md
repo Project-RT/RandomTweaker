@@ -12,7 +12,7 @@ import mods.randomtweaker.cote.SubTileEntityInGame;
 
 | Method | 类型 | 描述 |
 | :----- | ---- | --- |
-| sync() | void | 同步 TileEntity 数据 |
+| sync() | void | 同步 TileEntity 数据 (遇到什么奇奇怪怪的问题试试调用这个方法) |
 | typeOf() | string | 返回自定义花的类型 |
 | getCustomData() | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | 获取自定义花的 Data |
 | setCustomData(data as [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/)) | void | 设置自定义花的 Data |

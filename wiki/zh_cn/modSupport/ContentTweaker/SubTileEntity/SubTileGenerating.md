@@ -17,9 +17,9 @@ import mods.randomtweaker.cote.SubTileGenerating;
 | 字段 | 类型 | 描述 |
 |:---- |:--- |----- |
 | PassiveFlower | bool | 是否为被动产魔花 |
-| valueForPassiveGeneration | int | 为被动产魔花时每 Tick 产出多少魔力 |
-| delayBetweenPassiveGeneration | int | 为被动产魔花时每次产魔后的冷却时间 (单位 : Tick) |
-| shouldSyncPassiveGeneration | bool | 被动产魔时是否同步 TileEntity (为被动产魔花才生效) |
+| valueForPassiveGeneration | int | 每 Tick 被动产出多少魔力 (受 `canGeneratePassively` 函数影响, 主动产魔花是此函数返回 true 时就根据这个字段的值被动产魔, 而不是通过 `onUpdate` 函数产魔) |
+| delayBetweenPassiveGeneration | int | 每 Tick 被动产魔后的冷却时间 |
+| shouldSyncPassiveGeneration | bool | 被动产魔时是否同步 TileEntity |
 
 ## ZenMethod
 
