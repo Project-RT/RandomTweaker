@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.item;
+package ink.ikx.rt.api.mods.cote.mana;
 
 import net.minecraft.item.ItemStack;
 import vazkii.botania.api.mana.IManaUsingItem;

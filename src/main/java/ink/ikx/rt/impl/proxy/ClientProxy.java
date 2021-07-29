@@ -17,7 +17,7 @@ public class ClientProxy implements IProxy {
 
     @Override
     public void onPlayerBaubleRender(BaubleRender render, IItemStack stack, IPlayer player, String renderType, float partialTicks) {
-        render.onPlayerBaubleRender(stack, player, renderType, partialTicks);
+        render.handle(stack, player, renderType, partialTicks);
     }
 
     @Override

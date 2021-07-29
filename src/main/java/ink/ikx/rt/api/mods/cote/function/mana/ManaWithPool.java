@@ -7,9 +7,9 @@ import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.ZenClass;
 
 @RTRegisterClass({"contenttweaker", "botania"})
-@ZenClass("mods.randomtweaker.cote.ManaItemForPoolFunction")
+@ZenClass("mods.randomtweaker.cote.ManaWithPool")
 @FunctionalInterface
-public interface ManaItemForPoolFunction {
+public interface ManaWithPool {
 
     boolean handle(IItemStack stack, IWorld world, IBlockPos pos);
 

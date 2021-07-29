@@ -1,7 +1,7 @@
 package ink.ikx.rt.impl.events;
 
 import baubles.api.BaublesApi;
-import ink.ikx.rt.api.mods.cote.item.ManaBaubleContent;
+import ink.ikx.rt.api.mods.cote.mana.ManaBaubleContent;
 import java.util.Objects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

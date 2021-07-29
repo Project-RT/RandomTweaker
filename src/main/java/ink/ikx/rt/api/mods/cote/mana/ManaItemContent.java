@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.item;
+package ink.ikx.rt.api.mods.cote.mana;
 
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemContent;
 import crafttweaker.api.minecraft.CraftTweakerMC;

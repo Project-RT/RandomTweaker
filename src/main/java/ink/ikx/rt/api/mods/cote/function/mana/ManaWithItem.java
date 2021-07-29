@@ -5,9 +5,9 @@ import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.ZenClass;
 
 @RTRegisterClass({"contenttweaker", "botania"})
-@ZenClass("mods.randomtweaker.cote.ManaItemForItemFunction")
+@ZenClass("mods.randomtweaker.cote.ManaWithItem")
 @FunctionalInterface
-public interface ManaItemForItemFunction {
+public interface ManaWithItem {
 
     boolean handle(IItemStack stack, IItemStack otherStack);
 

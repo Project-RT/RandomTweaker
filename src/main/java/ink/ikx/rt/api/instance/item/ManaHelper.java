@@ -2,8 +2,8 @@ package ink.ikx.rt.api.instance.item;
 
 import crafttweaker.api.item.IMutableItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.api.mods.cote.item.ManaBaubleContent;
-import ink.ikx.rt.api.mods.cote.item.ManaItemContent;
+import ink.ikx.rt.api.mods.cote.mana.ManaBaubleContent;
+import ink.ikx.rt.api.mods.cote.mana.ManaItemContent;
 import ink.ikx.rt.impl.item.ManaBaubleImpl;
 import ink.ikx.rt.impl.item.ManaItemImpl;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;

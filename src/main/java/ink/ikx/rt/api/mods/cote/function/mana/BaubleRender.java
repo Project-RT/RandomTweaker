@@ -13,6 +13,6 @@ import stanhebben.zenscript.annotations.ZenClass;
 @FunctionalInterface
 public interface BaubleRender {
 
-    void onPlayerBaubleRender(IItemStack stack, IPlayer player, String renderType, float partialTicks);
+    void handle(IItemStack stack, IPlayer player, String renderType, float partialTicks);
 
 }

@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.item;
+package ink.ikx.rt.api.mods.cote.mana;
 
 import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
