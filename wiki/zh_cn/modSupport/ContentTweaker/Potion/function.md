@@ -7,7 +7,7 @@
 ### 导包
 
 ```zenscript
-import mods.randomtweaker.cotx.PotionIsReady
+import mods.randomtweaker.cotx.PotionIsReady;
 ```
 
 * duration as int 药水时间
@@ -30,7 +30,7 @@ potionObj.isReady = function(duration, amplifier) {
 ### 导包
 
 ```zenscript
-import mods.randomtweaker.cotx.PotionPerformEffect
+import mods.randomtweaker.cotx.PotionPerformEffect;
 ```
 
 * living as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/) 具有此药水效果的有生命实体
