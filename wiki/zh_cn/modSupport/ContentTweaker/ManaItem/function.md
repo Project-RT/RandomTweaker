@@ -3,8 +3,8 @@
 ## 导包 (两个参数的函数导第一个包其他导第二个)
 
 ```zenscript
-import mods.randomtweaker.cote.ManaItemForItemFunction;
-import mods.randomtweaker.cote.ManaItemForPoolFunction;
+import mods.randomtweaker.cote.ManaWithItem;
+import mods.randomtweaker.cote.ManaWithPool;
 ```
 
 ## canExportManaToPool
