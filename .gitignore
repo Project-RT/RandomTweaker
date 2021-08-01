@@ -18,3 +18,4 @@ build
 eclipse
 run
 logs/
+src/main/resources/assets/base/models/item/wrench.json
