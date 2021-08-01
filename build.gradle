@@ -70,6 +70,8 @@ dependencies {
 
     runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
     runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
+    runtime "curse.maven:JustEnoughCharacters-250702:3299405"
+    runtime "curse.maven:SmoothFont-285742:2949817"
 
     embed 'cn.hutool:hutool-core:5.7.4'
 }
