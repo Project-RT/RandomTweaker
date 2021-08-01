@@ -17,7 +17,7 @@ See [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki
 | Deild | Type | Description |
 |:---- |:--- |----- |
 | PassiveFlower | bool | Whether it is a passive flower |
-| valueForPassiveGeneration | int | How much mana is passively produced per Tick (affected by the `canGeneratePassively` function, this function returns true before the flower will passively produce mana based on the value of this field, just to mention one more thing, Botania has already rubbed the mana wheel for you, there is no need to write the mana wheel again in the `onUpdate` function, of course, special needs are not included.
+| valueForPassiveGeneration | int | 阿巴阿巴 |
 
 Translated with www.DeepL.com/Translator (free version) |
 | delayBetweenPassiveGeneration | int | Cooldown time after each time mana produced (Unit : Tick) |
