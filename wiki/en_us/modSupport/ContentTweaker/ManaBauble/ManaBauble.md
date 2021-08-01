@@ -1,7 +1,7 @@
 # ManaBauble
 
 When Botania and ContentTweaker are loaded at the same time, it allows ContentTweaker to create baubles with mana 
-Because the `ManaBauble` class extends the [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md) class, all available functions of `ManaItem` are also available for `ManaBauble`.
+The `ManaBauble` class extends the [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md) class, all available functions of `ManaItem` are also available for `ManaBauble`.
 
 ## Import
 
@@ -12,7 +12,7 @@ import mods.randomtweaker.cote.ManaBauble;
 | Feild | Type | Description |
 |:--- | --- | ---- |
 | useMana | bool | This field has effect except for `RING` and `TRINKET` type bauble, also if the mana of the bauble is greater than 0 it will still return false |
-| baubleType | string | Specify the type of the bauble (must be the same, default is `RING`), there are `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM`|
+| baubleType | string | Specify the type of the bauble (must be the same, default is `RING`), there are only `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM` available.|
 
 ## Hot reload
 

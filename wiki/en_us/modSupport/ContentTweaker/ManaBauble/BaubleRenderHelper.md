@@ -1,6 +1,6 @@
 # BaubleRenderHelper
 
-The content of this chapter is highly recommended for players to test it on their own.
+The content of this chapter is highly recommended for players to test it on your own.
 
 ## Import
 

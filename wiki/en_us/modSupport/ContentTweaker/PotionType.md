@@ -1,6 +1,6 @@
 # PotionType (e.g. : Potion Bottle, Potion Arrow)
 
-Enables ContentTweaker to create potions like different potion bottles
+Enables ContentTweaker to create potions like different types of potion bottles
 
 ## Import
 

@@ -9,7 +9,7 @@ import mods.randomtweaker.cote.ManaItemForPoolFunction;
 
 ## canExportManaToPool
 
-Decide whether mana is output to the Mana Pool
+Decide whether mana can be exported to the Mana Pool
 
 Need to return a bool
 
@@ -27,7 +27,7 @@ manaItemObj.canExportManaToPool = function(stack, world, pos) {
 
 ## canReceiveManaFromPool
 
-Determines whether the item receives mana from the Mana Pool
+Decide whether the item receives mana from the Mana Pool
 
 Need to return a bool
 
@@ -45,7 +45,7 @@ manaItemObj.canReceiveManaFromPool = function(stack, world, pos) {
 
 ## canExportManaToItem
 
-Determines whether mana is output to items that require mana
+Decide whether mana is output to items that require mana
 
 Need to return a bool
 
@@ -61,7 +61,7 @@ manaItemObj.canExportManaToItem = function(stack, otherStack) {
 
 ## canReceiveManaFromItem
 
-Determines whether the item accepts mana output from other items
+Decide whether the item accepts mana output from other items
 
 Need to return a bool
 

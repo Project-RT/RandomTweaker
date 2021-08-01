@@ -2,7 +2,7 @@
 
 ## onBlockAdded
 
-Called when the mana-producing flowers are added to the world
+Called when the generation flowers are added to the world
 
 ### Import
 
@@ -24,7 +24,7 @@ subTileEntityObj.onBlockAdded = function(world, pos, state) {
 
 ## canSelect
 
-Can the Wand of the Forest be selected to flower and bound to block
+Can the Wand of the Forest select this flower and bind it to a block
 
 Need to return a bool
 
@@ -52,7 +52,7 @@ subTileEntityObj.canSelect = function(player, wand, pos, side) {
 
 ## onBlockPlaceBy
 
-Called when the mana-producing flowers are placed to the world
+Called when the generation flowers are placed to the world
 
 ### Import
 
@@ -105,7 +105,7 @@ subTileEntityObj.onUpdate = function(subtile, world, pos) {
 
 ## onBlockHarvested
 
-Called when the mana-producing flowers are harvested
+Called when the generation flowers are harvested
 
 ### Import
 
@@ -152,7 +152,7 @@ import mods.randomtweaker.cote.BlockActivated;
   The player who right clicks flower
 
 * hand as [Hand](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Types/Player/Hand/)
-  The hand of player who right clicks flower
+  Which hand the player uses when clicking the flower
 
 * side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) Direction of the player
 
@@ -170,7 +170,7 @@ subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, si
 
 ## canGeneratePassively
 
-Is the flower a passive flower ((Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+Is the flower a passive generation flower ((Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
 object has this function)
 
 ### Import

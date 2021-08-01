@@ -1,14 +1,14 @@
 # SubTileEntity
 
-When both `BoT` and `CoT` are installed, `CoT` can be customized flowers to produce mana or functional flowers.
+When both `BoT` and `CoT` are installed, `CoT` can be customized generation flowers or functional flowers.
 
 CraftTweaker can't get this class, only its subclasses
 
-Remember to store the custom flower texture in the `resources/contenttweaker/textures/blocks` directory (Texture name : unlocalizedName.png)
+Remember to put the custom flower texture in the `resources/contenttweaker/textures/blocks` directory (Texture name : unlocalizedName.png)
 
 This class mainly makes the code easy to maintain
 
-To create flowers that produces mana, please see [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+To create generation flowers, please see [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
 
 To create functional flowers, please see [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md)
 
@@ -23,7 +23,7 @@ import mods.randomtweaker.cote.SubTileEntity;
 | Feild | Type | Description |
 |:---- |:--- |----- |
 | unlocalizedName | string | Unlocalized name |
-| range | int | Range of work of the flower |
+| range | int | Radius of work of the flower |
 | color | int | Color of the flower |
 | maxMana | int | Maximum Mana Capacity |
 | acceptsRedstone | bool | Whether to accept the redstone signal |
@@ -40,7 +40,7 @@ import mods.randomtweaker.cote.SubTileEntity;
 Please install `ZenUtils` Mod
 
 Both [Event hot reload](https://github.com/friendlyhj/ZenUtils/wiki/ReloadEvents)
-and [ContentTweaker fuction hot reload](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) provided by this mod
+and [ContentTweaker fuction hot reload](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) are provided by this mod
 
 In the ContentTweaker script
 

@@ -1,10 +1,10 @@
 # SubTileFunctional
 
-Because the `SubTileFunctional`
+The `SubTileFunctional`
 class extends [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
-class, all the functions available in the `SubTileEntity` class can be used by the `SubTileFunctional` class.
+class, that means all the functions available in the `SubTileEntity` class can be used by the `SubTileFunctional` class.
 
-If you have a mini functional flower, remember to store a separate texture for the small functional flower in the `resources/contenttweaker/textures/blocks` directory (texture name : unlocalizedName + chibi.png)
+If there is a mini functional flower, remember to put a separate texture for the small functional flower in the `resources/contenttweaker/textures/blocks` directory (texture name : unlocalizedName + chibi.png)
 
 ## Import
 
@@ -19,7 +19,7 @@ See [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki
 | Feild | Type | Description |
 |:---- |:--- |----- |
 | hasMini | bool | Whether to create mini functional flowers |
-| miniRange | int | Range of work for mini functional flowers |
+| miniRange | int | Radius of work for mini functional flowers |
 
 ## ZenMethod
 

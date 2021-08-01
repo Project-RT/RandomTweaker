@@ -1,7 +1,7 @@
 # ManaItem
 
 Enables ContentTweaker to create items with Mana when Botania and ContentTweaker are loaded at the same time  
-Because the `ManaItem` class extends the [Item](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Item/) class, all the functions available in the `Item` class can also be be used on the `ManaItem` class
+The `ManaItem` class extends the [Item](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Item/) class, that means all the functions available in the `Item` class can also be be used on the `ManaItem` class
 
 ## Import
 
@@ -15,7 +15,7 @@ import mods.randomtweaker.cote.ManaItem;
 | maxMana | int (Default: 5w) | Max mana capacity |
 | isNoExport | bool (Default: false) | Does it really output mana |
 | hasFull | bool (Default: false) | Whether to create mana items full with mana |
-| hasCreative | bool (Default: false) | Whether to create mana items similar to the Creative Mana Tablets |
+| hasCreative | bool (Default: false) | Whether to create Creative item(similar to Creative Mana Tablets) |
 
 ## Method
 

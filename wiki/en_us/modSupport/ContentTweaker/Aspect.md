@@ -12,8 +12,8 @@ import mods.randomtweaker.cote.Aspect;
 | :--- | ---- | --- |
 | tag | string | Unique name of this aspect |
 | color | int | Color of this aspect |
-| image | string | Path to aspect texture (default contenttweaker:textures/aspects/all-lowercase tag.png, create one yourself if you don't have a folder, use `:` to split the main file name and path if you want to fill in another path) |
-| components | string[] | Which two aspects does this aspect craft from (fill in only two aspects) |
+| image | string | Default path contenttweaker:textures/aspects/(all-lowercase)tag.png, create a aspects folder manually if there isn't one, use `:` to split the main file name and path if you want to use another path) |
+| components | string[] | Which two aspects does this aspect craft from (fill in two aspects) |
 | blend | int |  |
 
 ## Method

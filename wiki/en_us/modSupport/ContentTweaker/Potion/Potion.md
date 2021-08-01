@@ -12,7 +12,7 @@ import mods.randomtweaker.cote.Potion;
 | ---- | :-- | --- |
 | unlocalizedName | string | Unlocalized name |
 | liquidColorIn | int | Color of potion |
-| badEffectIn | bool | Is the potion giving a bad effect |
+| badEffectIn | bool | Is the potion giving a debuff |
 | beneficial | bool | Whether the potion is beneficial to the player or not, beneficial potions will be placed in the first row |
 | instant | bool | Is the potion effective instantly or continuously? (true for instantly, false for continuously)|
 | shouldRender | bool | Whether to render in the backpack |
@@ -27,7 +27,7 @@ Texture location : `"contenttweaker:textures/gui/unlocalizedName.png"`
 Please install `ZenUtils` Mod
 
 Both [Event hot reload](https://github.com/friendlyhj/ZenUtils/wiki/ReloadEvents)
-and [ContentTweaker fuction hot reload](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) provided by this mod
+and [ContentTweaker function hot reload](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) are provided by this mod
 
 ```zenscript
 <cotPotion:unlocalizedName>.isReady = function(duration, amplifier){

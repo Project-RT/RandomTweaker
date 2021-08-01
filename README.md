@@ -27,13 +27,12 @@
 ## 后续计划
 1. 自定义单方块机器
 2. 更多模组 / 原版拓展支持
-3. 支持 1.16.5
 
 ## 参与人员
 
 开发人员 ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315), [skyraah](https://github.com/skyraah), [NiYanhhhhh](https://github.com/NiYanhhhhh) <br /><br />
 Wiki编辑 ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315), [skyraah](https://github.com/skyraah) <br /><br />
-英文翻译 : [liuseniubi](https://github.com/liuseniubi), [FaulknerWu](https://github.com/FaulknerWu) <br /><br />
+英文翻译 : [liuseniubi](https://github.com/liuseniubi), [FaulknerWu](https://github.com/FaulknerWu), [Seleclipse](https://github.com/lunareclipse-64) <br /><br />
 特别感谢 ：[friendlyhj](https://github.com/friendlyhj)
 
 <div align="center">
@@ -64,5 +63,5 @@ Wiki编辑 ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://gith
 
 Developers ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315), [skyraah](https://github.com/skyraah), [NiYanhhhhh](https://github.com/NiYanhhhhh) <br /><br />
 Wiki Editors ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315), [skyraah](https://github.com/skyraah) <br /><br />
-English Translation : [liuseniubi](https://github.com/liuseniubi), [FaulknerWu](https://github.com/FaulknerWu) <br /><br />
+English Translation : [liuseniubi](https://github.com/liuseniubi), [FaulknerWu](https://github.com/FaulknerWu),[Seleclipse](https://github.com/lunareclipse-64) <br /><br />
 Special Thanks ：[friendlyhj](https://github.com/friendlyhj)
