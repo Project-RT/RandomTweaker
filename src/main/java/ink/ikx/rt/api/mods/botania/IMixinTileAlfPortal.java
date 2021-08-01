@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.utils;
+package ink.ikx.rt.api.mods.botania;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;

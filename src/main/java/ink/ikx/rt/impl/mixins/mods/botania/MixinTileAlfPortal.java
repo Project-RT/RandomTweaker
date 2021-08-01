@@ -4,7 +4,7 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.events.AlfPortalDroppedEvent;
 import ink.ikx.rt.impl.events.ElvenTradeEvent;
-import ink.ikx.rt.impl.utils.IMixinTileAlfPortal;
+import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;

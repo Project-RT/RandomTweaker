@@ -11,10 +11,10 @@ import ink.ikx.rt.impl.events.AlfPortalDroppedEvent;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 
-public @ZenRegister
+@ZenRegister
 @ModOnly("botania")
 @ZenClass("mods.randomtweaker.AlfPortalDroppedEvent")
-class CTAlfPortalDroppedEvent implements IEventCancelable {
+public class CTAlfPortalDroppedEvent implements IEventCancelable {
 
     private final AlfPortalDroppedEvent event;
 
