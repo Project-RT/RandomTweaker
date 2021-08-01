@@ -42,21 +42,11 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
 
     private List<ItemStack> allInput = new ArrayList<>();
 
-    private static <T> T[] getArray(List<T> t) {
-        return (T[]) t.toArray();
-    }
-
     @Shadow
     protected abstract void spawnItem(ItemStack stack);
 
     @Shadow
     public abstract boolean consumeMana(@Nullable List<BlockPos> pylons, int totalCost, boolean close);
-
-    @Inject(method = "update", at = @At("HEAD"))
-    private void injectUpdate(CallbackInfo ci) {
-        if (!allInput.isEmpty())
-            allInput.clear();
-    }
 
     // why the fucking need all the variable to parameter ????????????
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;validateItemUsage(Lnet/minecraft/item/ItemStack;)Z"), locals = LocalCapture.CAPTURE_FAILHARD)
@@ -74,6 +64,10 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
             Arrays.stream(event.getOutput()).forEach(this::spawnItem);
         }
         ci.cancel();
+    }
+
+    private static <T> T[] getArray(List<T> t) {
+        return (T[]) t.toArray();
     }
 
     @Override
