@@ -14,14 +14,9 @@ import mods.randomtweaker.cote.Potion;
 | liquidColorIn | int | Color of potion |
 | badEffectIn | bool | Is the potion giving a bad effect |
 | beneficial | bool | Whether the potion is beneficial to the player or not, beneficial potions will be placed in the first row |
-| instant | bool | Is the potion effective instantly or continuously? |
+| instant | bool | Is the potion effective instantly or continuously? (true for instantly, false for continuously)|
 | shouldRender | bool | Whether to render in the backpack |
 | shouldRenderHUD | bool | Whether to render in the HUD (in the upper right corner) |
-
-| Fuction | Use | Return | Description |
-| --- | :--- | ------- | ---- |
-| isReady | function(duration as int, amplifier as int) | void | Determines whether the `performEffect` function is triggered at the current Tick |
-| performEffect | function(living as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/), amplifier as int) | bool | The potion performs this event every Tick |
 
 Texture location : `"contenttweaker:textures/gui/unlocalizedName.png"`  
 **The texture must be 18 * 18 pixels size**  

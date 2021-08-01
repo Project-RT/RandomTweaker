@@ -12,7 +12,7 @@ import mods.randomtweaker.cote.SubTileEntityInGame;
 
 | Method | Type | Description |
 | :----- | ---- | --- |
-| sync() | void | Sync TileEntity data |
+| sync() | void | Sync TileEntity data (Try calling this method when you encounter any problems)|
 | typeOf() | string | Return the type of the custom flower |
 | getCustomData() | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | Get the Data of the custom flower |
 | setCustomData(data as [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/)) | void | Set the Data of the custom flower |

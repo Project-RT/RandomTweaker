@@ -11,6 +11,7 @@ import mods.randomtweaker.cote.BlockAdded;
 ```
 
 * world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) The world of the flower
+
 * pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) The pos of the flower
 
 * state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) The blockstate of the flower
@@ -169,8 +170,7 @@ subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, si
 
 ## canGeneratePassively
 
-Is the flower a passive flower (
-(Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+Is the flower a passive flower ((Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
 object has this function)
 
 ### Import
@@ -192,7 +192,7 @@ subTileGeneratingObj.canGeneratePassively = function(pos, world) {
 ## populateDropStackNBTs
 
 Decide the drop after harvested flowers (Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
-object has this function)
+class has this function)
 
 ### Import
 
