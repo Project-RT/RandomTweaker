@@ -10,6 +10,8 @@ import crafttweaker.api.world.IWorld;
 import ink.ikx.rt.impl.events.ElvenTradeEvent;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
+import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.ZenSetter;
 
 @ZenRegister
 @ModOnly("botania")
@@ -40,6 +42,12 @@ public class CTElvenTradeEvent implements IEventCancelable {
     @ZenGetter("output")
     public IItemStack[] getOutput() {
         return CraftTweakerMC.getIItemStacks(event.getOutput());
+    }
+
+    @ZenSetter("output")
+    @ZenMethod
+    public void setOutput(IItemStack[] output) {
+        event.setOutput(CraftTweakerMC.getItemStacks(output));
     }
 
     @Override

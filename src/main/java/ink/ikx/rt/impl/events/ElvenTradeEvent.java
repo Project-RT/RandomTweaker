@@ -12,7 +12,7 @@ public class ElvenTradeEvent extends Event {
     private final World world;
     private final BlockPos pos;
     private final ItemStack[] input;
-    private final ItemStack[] output;
+    private ItemStack[] output;
 
     public ElvenTradeEvent(World world, BlockPos pos, ItemStack[] input, ItemStack[] output) {
         this.world = world;
@@ -35,6 +35,10 @@ public class ElvenTradeEvent extends Event {
 
     public ItemStack[] getOutput() {
         return output;
+    }
+
+    public void setOutput(ItemStack[] stacks) {
+        this.output = stacks;
     }
 }
 

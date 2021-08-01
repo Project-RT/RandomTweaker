@@ -62,15 +62,18 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;validateItemUsage(Lnet/minecraft/item/ItemStack;)Z"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void injectUpdate_(CallbackInfo ci, IBlockState iBlockState, AlfPortalState state, AlfPortalState newState, AxisAlignedBB aabb, boolean open, ElvenPortalUpdateEvent event, List items, Iterator var8, EntityItem item, ItemStack stack, boolean consume) { // validateItemUsage
         boolean res = MinecraftForge.EVENT_BUS.post(new AlfPortalDroppedEvent(getWorld(), getPos(), stack));
-        if (!res)
+        if (!res) {
             allInput.add(stack);
+        }
     }
 
     @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", shift = Shift.AFTER, ordinal = 1), locals = LocalCapture.PRINT, cancellable = true)
     private void injectResolveRecipes(CallbackInfo ci, int i, Iterator var2, RecipeElvenTrade recipe) {
-        boolean res = MinecraftForge.EVENT_BUS.post(new ElvenTradeEvent(getWorld(), getPos(), getArray(stacksIn), getArray(recipe.getOutputs())));
-        if (res)
-            ci.cancel();
+        ElvenTradeEvent event = new ElvenTradeEvent(getWorld(), getPos(), getArray(stacksIn), getArray(recipe.getOutputs()));
+        if (!MinecraftForge.EVENT_BUS.post(event)) {
+            Arrays.stream(event.getOutput()).forEach(this::spawnItem);
+        }
+        ci.cancel();
     }
 
     @Override
@@ -96,5 +99,10 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Override
     public void clearAllInput() {
         this.allInput.clear();
+    }
+
+    @Override
+    public boolean consumeMana(int totalCost) {
+        return this.consumeMana(null, totalCost, false);
     }
 }
