@@ -29,12 +29,12 @@ public class CTEventManager {
     }
 
     @ZenMethod
-    public static IEventHandle onElvenTradeEvent(IEventManager manager, IEventHandler<CTElvenTradeEvent> event) {
+    public static IEventHandle onElvenTrade(IEventManager manager, IEventHandler<CTElvenTradeEvent> event) {
         return elvenTradeEvent.add(event);
     }
 
     @ZenMethod
-    public static IEventHandle onAlfPortalDroppedEvent(IEventManager manager, IEventHandler<CTAlfPortalDroppedEvent> event) {
+    public static IEventHandle onAlfPortalDropped(IEventManager manager, IEventHandler<CTAlfPortalDroppedEvent> event) {
         return alfPortalDroppedEvent.add(event);
     }
 
