@@ -49,14 +49,14 @@ public class CTEventManager {
         }
 
         @SubscribeEvent
-        public static void onElvenTradeEvent(ElvenTradeEvent event) {
+        public static void onElvenTrade(ElvenTradeEvent event) {
             if (elvenTradeEvent.hasHandlers()) {
                 elvenTradeEvent.publish(new CTElvenTradeEvent(event));
             }
         }
 
         @SubscribeEvent
-        public static void onAlfPortalDroppedEvent(AlfPortalDroppedEvent event) {
+        public static void onAlfPortalDropped(AlfPortalDroppedEvent event) {
             if (alfPortalDroppedEvent.hasHandlers()) {
                 alfPortalDroppedEvent.publish(new CTAlfPortalDroppedEvent(event));
             }
