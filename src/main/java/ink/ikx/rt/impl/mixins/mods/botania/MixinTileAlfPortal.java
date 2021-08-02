@@ -116,4 +116,9 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     public void clearInputList() {
         inputMap.clear();
     }
+
+    @Override
+    public void spawnItem(IItemStack stack) {
+        spawnItem(CraftTweakerMC.getItemStack(stack));
+    }
 }

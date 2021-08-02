@@ -28,4 +28,7 @@ public interface IMixinTileAlfPortal {
 
     @ZenMethod
     boolean consumeMana(int totalCost);
+
+    @ZenMethod
+    void spawnItem(IItemStack stack);
 }
