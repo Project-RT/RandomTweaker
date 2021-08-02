@@ -25,7 +25,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
@@ -63,9 +62,10 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
         }
     }
 
-    @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", shift = Shift.AFTER, ordinal = 1), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
+    @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", ordinal = 1), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
     private void injectResolveRecipes(CallbackInfo ci, int i, Iterator var2, RecipeElvenTrade recipe) {
         ElvenTradeEvent event = new ElvenTradeEvent(getWorld(), getPos(), asItemStackArray(stacksIn), asItemStackArray(recipe.getOutputs()));
+        recipe.matches(stacksIn, true);
         if (!event.post()) {
             Arrays.stream(event.getOutput()).forEach(this::spawnItem);
         }
@@ -103,6 +103,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
         if (!inputMap.isEmpty() && inputMap.get(item) != null) {
             int amount = inputMap.get(item).getValue() + stack.getAmount();
             inputMap.put(item, Pair.of(stack.getMetadata(), Math.min(amount, 64)));
+            return;
         }
         inputMap.put(item, Pair.of(stack.getMetadata(), stack.getAmount()));
     }
