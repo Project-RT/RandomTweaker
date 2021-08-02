@@ -68,11 +68,10 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", shift = Shift.AFTER, ordinal = 1), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
     private void injectResolveRecipes(CallbackInfo ci, int i, Iterator var2, RecipeElvenTrade recipe) {
         ElvenTradeEvent event = new ElvenTradeEvent(getWorld(), getPos(), asItemStackArray(stacksIn), asItemStackArray(recipe.getOutputs()));
-        if (MinecraftForge.EVENT_BUS.post(event)) {
-            ci.cancel();
-            return;
+        if (!MinecraftForge.EVENT_BUS.post(event)) {
+            Arrays.stream(event.getOutput()).forEach(this::spawnItem);
         }
-        Arrays.stream(event.getOutput()).forEach(this::spawnItem);
+        ci.cancel();
     }
 
     @Override
