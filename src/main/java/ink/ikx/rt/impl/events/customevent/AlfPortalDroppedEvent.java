@@ -1,13 +1,12 @@
-package ink.ikx.rt.impl.events;
+package ink.ikx.rt.impl.events.customevent;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
-import net.minecraftforge.fml.common.eventhandler.Event;
 
 @Cancelable
-public class AlfPortalDroppedEvent extends Event {
+public class AlfPortalDroppedEvent extends BaseEvent {
 
     private final World world;
     private final ItemStack input;

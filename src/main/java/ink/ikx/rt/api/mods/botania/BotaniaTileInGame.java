@@ -12,7 +12,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenRegister
 @ModOnly("botania")
 @ZenExpansion("crafttweaker.world.IWorld")
-public class AlfPortalInGame {
+public class BotaniaTileInGame {
 
     @ZenMethod
     public static IMixinTileAlfPortal getAlfPortalInGame(IWorld world, IBlockPos blockPos) {

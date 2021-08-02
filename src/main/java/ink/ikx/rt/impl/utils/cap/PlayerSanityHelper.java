@@ -4,11 +4,10 @@ import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapability;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
 import ink.ikx.rt.impl.client.network.PlayerSanityNetWork;
-import ink.ikx.rt.impl.events.SanityChangeEvent;
+import ink.ikx.rt.impl.events.customevent.SanityChangeEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.SoundCategory;
-import net.minecraftforge.common.MinecraftForge;
 
 public class PlayerSanityHelper {
 
@@ -22,10 +21,7 @@ public class PlayerSanityHelper {
     }
 
     public static void setSanity(EntityPlayer player, float sanity, boolean playSound) {
-        boolean res = MinecraftForge.EVENT_BUS.post(new SanityChangeEvent(
-            sanity, PlayerSanityHelper.getPlayerSanity(player).getOriginalSanity(), player));
-
-        if (!res) {
+        if (!new SanityChangeEvent(sanity, PlayerSanityHelper.getPlayerSanity(player).getOriginalSanity(), player).post()) {
             if (playSound) {
                 PlayerSanityHelper.playSound(player);
             }

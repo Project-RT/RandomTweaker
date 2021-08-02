@@ -1,11 +1,10 @@
-package ink.ikx.rt.impl.events;
+package ink.ikx.rt.impl.events.customevent;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
-import net.minecraftforge.fml.common.eventhandler.Event;
 
 @Cancelable
-public class SanityChangeEvent extends Event {
+public class SanityChangeEvent extends BaseEvent {
 
     private final EntityPlayer player;
     private final float sanity;

@@ -8,7 +8,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenRegister
 @ModOnly("botania")
-@ZenClass("mods.randomtweaker.AlfPortalInGame")
+@ZenClass("mods.randomtweaker.BotaniaTileInGame")
 public interface IMixinTileAlfPortal {
 
     @ZenMethod

@@ -7,7 +7,7 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
-import ink.ikx.rt.impl.events.AlfPortalDroppedEvent;
+import ink.ikx.rt.impl.events.customevent.AlfPortalDroppedEvent;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 

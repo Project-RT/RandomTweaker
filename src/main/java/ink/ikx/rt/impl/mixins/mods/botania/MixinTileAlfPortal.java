@@ -5,8 +5,8 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.mc1120.item.MCItemStack;
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
-import ink.ikx.rt.impl.events.AlfPortalDroppedEvent;
-import ink.ikx.rt.impl.events.ElvenTradeEvent;
+import ink.ikx.rt.impl.events.customevent.AlfPortalDroppedEvent;
+import ink.ikx.rt.impl.events.customevent.ElvenTradeEvent;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,7 +20,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.common.MinecraftForge;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
@@ -59,8 +58,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     // why the fucking need all the variable to parameter ????????????
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;validateItemUsage(Lnet/minecraft/item/ItemStack;)Z"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void injectUpdate_(CallbackInfo ci, IBlockState iBlockState, AlfPortalState state, AlfPortalState newState, AxisAlignedBB aabb, boolean open, ElvenPortalUpdateEvent event, List items, Iterator var8, EntityItem item, ItemStack stack, boolean consume) { // validateItemUsage
-        boolean res = MinecraftForge.EVENT_BUS.post(new AlfPortalDroppedEvent(getWorld(), getPos(), stack));
-        if (!res) {
+        if (!new AlfPortalDroppedEvent(getWorld(), getPos(), stack).post()) {
             addInput(CraftTweakerMC.getIItemStack(stack));
         }
     }
@@ -68,7 +66,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", shift = Shift.AFTER, ordinal = 1), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
     private void injectResolveRecipes(CallbackInfo ci, int i, Iterator var2, RecipeElvenTrade recipe) {
         ElvenTradeEvent event = new ElvenTradeEvent(getWorld(), getPos(), asItemStackArray(stacksIn), asItemStackArray(recipe.getOutputs()));
-        if (!MinecraftForge.EVENT_BUS.post(event)) {
+        if (!event.post()) {
             Arrays.stream(event.getOutput()).forEach(this::spawnItem);
         }
         ci.cancel();
