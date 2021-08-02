@@ -37,6 +37,7 @@ public abstract class MixinTilePool extends TileMod {
             recieveMana(-event.getMana());
             stack.shrink(1);
             EntityItem outputItem = new EntityItem(world, pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5, event.getOutput());
+            outputItem.age = 105;
             world.spawnEntity(outputItem);
             cir.setReturnValue(tileEntityInvalid);
         }

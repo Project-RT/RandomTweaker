@@ -130,6 +130,7 @@ jar {
                 "ForceLoadAsMod" : true,
                 "FMLCorePlugin": "ink.ikx.rt.impl.core.RTPlugin",
                 "FMLCorePluginContainsFMLMod": true,
+                'FMLAT': 'randomtweaker_at.cfg'
         ])
     }
 }
