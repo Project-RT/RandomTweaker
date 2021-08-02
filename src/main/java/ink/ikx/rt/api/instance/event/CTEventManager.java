@@ -7,8 +7,10 @@ import crafttweaker.util.EventList;
 import crafttweaker.util.IEventHandler;
 import ink.ikx.rt.api.mods.botania.events.CTAlfPortalDroppedEvent;
 import ink.ikx.rt.api.mods.botania.events.CTElvenTradeEvent;
+import ink.ikx.rt.api.mods.botania.events.CTPoolTradeEvent;
 import ink.ikx.rt.impl.events.customevent.AlfPortalDroppedEvent;
 import ink.ikx.rt.impl.events.customevent.ElvenTradeEvent;
+import ink.ikx.rt.impl.events.customevent.PoolTradeEvent;
 import ink.ikx.rt.impl.events.customevent.SanityChangeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -20,8 +22,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public class CTEventManager {
 
     private static final EventList<CTPlayerSanityChangeEvent> playerSanityChangeEventList = new EventList<>();
-    private static final EventList<CTElvenTradeEvent> elvenTradeEvent = new EventList<>();
-    private static final EventList<CTAlfPortalDroppedEvent> alfPortalDroppedEvent = new EventList<>();
+    private static final EventList<CTElvenTradeEvent> elvenTradeEventList = new EventList<>();
+    private static final EventList<CTAlfPortalDroppedEvent> alfPortalDroppedEventList = new EventList<>();
+    private static final EventList<CTPoolTradeEvent> poolTradeEventList = new EventList<>();
 
     @ZenMethod
     public static IEventHandle onPlayerSanityChange(IEventManager manager, IEventHandler<CTPlayerSanityChangeEvent> event) {
@@ -30,12 +33,17 @@ public class CTEventManager {
 
     @ZenMethod
     public static IEventHandle onElvenTrade(IEventManager manager, IEventHandler<CTElvenTradeEvent> event) {
-        return elvenTradeEvent.add(event);
+        return elvenTradeEventList.add(event);
     }
 
     @ZenMethod
     public static IEventHandle onAlfPortalDropped(IEventManager manager, IEventHandler<CTAlfPortalDroppedEvent> event) {
-        return alfPortalDroppedEvent.add(event);
+        return alfPortalDroppedEventList.add(event);
+    }
+
+    @ZenMethod
+    public static IEventHandle onPoolTrade(IEventManager manager, IEventHandler<CTPoolTradeEvent> event) {
+        return poolTradeEventList.add(event);
     }
 
     @EventBusSubscriber
@@ -50,15 +58,22 @@ public class CTEventManager {
 
         @SubscribeEvent
         public static void onElvenTrade(ElvenTradeEvent event) {
-            if (elvenTradeEvent.hasHandlers()) {
-                elvenTradeEvent.publish(new CTElvenTradeEvent(event));
+            if (elvenTradeEventList.hasHandlers()) {
+                elvenTradeEventList.publish(new CTElvenTradeEvent(event));
             }
         }
 
         @SubscribeEvent
         public static void onAlfPortalDropped(AlfPortalDroppedEvent event) {
-            if (alfPortalDroppedEvent.hasHandlers()) {
-                alfPortalDroppedEvent.publish(new CTAlfPortalDroppedEvent(event));
+            if (alfPortalDroppedEventList.hasHandlers()) {
+                alfPortalDroppedEventList.publish(new CTAlfPortalDroppedEvent(event));
+            }
+        }
+
+        @SubscribeEvent
+        public static void onPoolTrade(PoolTradeEvent event) {
+            if (poolTradeEventList.hasHandlers()) {
+                poolTradeEventList.publish(new CTPoolTradeEvent(event));
             }
         }
 

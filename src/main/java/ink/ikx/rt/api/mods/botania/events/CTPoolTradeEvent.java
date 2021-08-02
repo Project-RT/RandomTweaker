@@ -1,0 +1,99 @@
+package ink.ikx.rt.api.mods.botania.events;
+
+import crafttweaker.annotations.ModOnly;
+import crafttweaker.annotations.ZenRegister;
+import crafttweaker.api.event.IEventCancelable;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.minecraft.CraftTweakerMC;
+import crafttweaker.api.world.IBlockPos;
+import crafttweaker.api.world.IWorld;
+import ink.ikx.rt.impl.events.customevent.PoolTradeEvent;
+import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenGetter;
+import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.ZenSetter;
+
+@ZenRegister
+@ModOnly("botania")
+@ZenClass("mods.randomtweaker.PoolTradeEvent")
+public class CTPoolTradeEvent implements IEventCancelable {
+
+    private final PoolTradeEvent event;
+
+    public CTPoolTradeEvent(PoolTradeEvent event) {
+        this.event = event;
+    }
+
+    @ZenGetter("mana")
+    public int getMana() {
+        return event.getMana();
+    }
+
+    @ZenMethod
+    @ZenSetter("mana")
+    public void setMana(int mana) {
+        event.setMana(mana);
+    }
+
+    @ZenGetter("output")
+    public IItemStack getOutput() {
+        return CraftTweakerMC.getIItemStack(event.getOutput());
+    }
+
+    @ZenMethod
+    @ZenSetter("output")
+    public void setOutput(IItemStack output) {
+        event.setOutput(CraftTweakerMC.getItemStack(output));
+    }
+
+    @ZenGetter("allowExceed")
+    public boolean isAllowExceed() {
+        return event.isAllowExceed();
+    }
+
+    @ZenMethod
+    @ZenSetter("allowExceed")
+    public void setAllowExceed(boolean allowExceed) {
+        event.setAllowExceed(allowExceed);
+    }
+
+    @ZenGetter("currentMana")
+    public int getCurrentMana() {
+        return event.getCurrentMana();
+    }
+
+    @ZenGetter("input")
+    public IItemStack getInput() {
+        return CraftTweakerMC.getIItemStack(event.getInput());
+    }
+
+    @ZenGetter("world")
+    public IWorld getWorld() {
+        return CraftTweakerMC.getIWorld(event.getWorld());
+    }
+
+    @ZenGetter("blockPos")
+    public IBlockPos getBlockPos() {
+        return CraftTweakerMC.getIBlockPos(event.getBlockPos());
+    }
+
+    @ZenGetter("alchemy")
+    public boolean isAlchemy() {
+        return event.isAlchemy();
+    }
+
+    @ZenGetter("conjuration")
+    public boolean isConjuration() {
+        return event.isConjuration();
+    }
+
+    @Override
+    public boolean isCanceled() {
+        return event.isCanceled();
+    }
+
+    @Override
+    public void setCanceled(boolean canceled) {
+        event.setCanceled(canceled);
+    }
+}
