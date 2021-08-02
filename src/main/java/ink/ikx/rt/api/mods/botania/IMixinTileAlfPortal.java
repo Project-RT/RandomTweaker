@@ -12,19 +12,19 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public interface IMixinTileAlfPortal {
 
     @ZenMethod
-    IItemStack[] getAllInput();
+    IItemStack[] getInputList();
 
     @ZenMethod
-    void setAllInput(IItemStack[] newList);
+    void setInputList(IItemStack[] newList);
 
     @ZenMethod
-    void clearAllInput();
+    void clearInputList();
 
     @ZenMethod
-    void delAllInput(IItemStack stack);
+    void delInput(IItemStack stack);
 
     @ZenMethod
-    void addAllInput(IItemStack stack);
+    void addInput(IItemStack stack);
 
     @ZenMethod
     boolean consumeMana(int totalCost);

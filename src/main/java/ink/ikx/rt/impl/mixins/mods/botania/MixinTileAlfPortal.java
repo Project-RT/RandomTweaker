@@ -1,18 +1,22 @@
 package ink.ikx.rt.impl.mixins.mods.botania;
 
+import cn.hutool.core.lang.Pair;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import crafttweaker.mc1120.item.MCItemStack;
+import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import ink.ikx.rt.impl.events.AlfPortalDroppedEvent;
 import ink.ikx.rt.impl.events.ElvenTradeEvent;
-import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -40,7 +44,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Final
     private List<ItemStack> stacksIn;
 
-    private List<ItemStack> allInput = new ArrayList<>();
+    private final Map<Item, Pair<Integer, Integer>> inputMap = new HashMap<>();
 
     @Shadow
     protected abstract void spawnItem(ItemStack stack);
@@ -48,55 +52,71 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Shadow
     public abstract boolean consumeMana(@Nullable List<BlockPos> pylons, int totalCost, boolean close);
 
+    private static ItemStack[] asItemStackArray(List<ItemStack> stacksIn) {
+        return stacksIn.toArray(new ItemStack[0]);
+    }
+
     // why the fucking need all the variable to parameter ????????????
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;validateItemUsage(Lnet/minecraft/item/ItemStack;)Z"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void injectUpdate_(CallbackInfo ci, IBlockState iBlockState, AlfPortalState state, AlfPortalState newState, AxisAlignedBB aabb, boolean open, ElvenPortalUpdateEvent event, List items, Iterator var8, EntityItem item, ItemStack stack, boolean consume) { // validateItemUsage
         boolean res = MinecraftForge.EVENT_BUS.post(new AlfPortalDroppedEvent(getWorld(), getPos(), stack));
         if (!res) {
-            allInput.add(stack);
+            addInput(CraftTweakerMC.getIItemStack(stack));
         }
     }
 
-    @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", shift = Shift.AFTER, ordinal = 1), locals = LocalCapture.PRINT, cancellable = true)
+    @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", shift = Shift.AFTER, ordinal = 1), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
     private void injectResolveRecipes(CallbackInfo ci, int i, Iterator var2, RecipeElvenTrade recipe) {
-        ElvenTradeEvent event = new ElvenTradeEvent(getWorld(), getPos(), getArray(stacksIn), getArray(recipe.getOutputs()));
-        if (!MinecraftForge.EVENT_BUS.post(event)) {
-            Arrays.stream(event.getOutput()).forEach(this::spawnItem);
+        ElvenTradeEvent event = new ElvenTradeEvent(getWorld(), getPos(), asItemStackArray(stacksIn), asItemStackArray(recipe.getOutputs()));
+        if (MinecraftForge.EVENT_BUS.post(event)) {
+            ci.cancel();
+            return;
         }
-        ci.cancel();
-    }
-
-    private static <T> T[] getArray(List<T> t) {
-        return (T[]) t.toArray();
+        Arrays.stream(event.getOutput()).forEach(this::spawnItem);
     }
 
     @Override
-    public IItemStack[] getAllInput() {
-        return this.allInput.stream().map(CraftTweakerMC::getIItemStack).toArray(IItemStack[]::new);
+    public IItemStack[] getInputList() {
+        return inputMap.entrySet().stream()
+            .map(m -> new ItemStack(m.getKey(), m.getValue().getValue(), m.getValue().getKey()))
+            .map(MCItemStack::new)
+            .toArray(MCItemStack[]::new);
     }
 
     @Override
-    public void setAllInput(IItemStack[] newList) {
-        this.allInput = Arrays.stream(newList).map(CraftTweakerMC::getItemStack).collect(Collectors.toList());
+    public void setInputList(IItemStack[] newList) {
+        clearInputList();
+        Arrays.stream(newList)
+            .map(CraftTweakerMC::getItemStack)
+            .collect(Collectors.toList())
+            .forEach(l -> inputMap.put(l.getItem(), Pair.of(l.getMetadata(), l.getCount())));
     }
 
     @Override
-    public void delAllInput(IItemStack stack) {
-        this.allInput.remove(CraftTweakerMC.getItemStack(stack));
+    public void delInput(IItemStack stack) {
+        Item item = CraftTweakerMC.getItemStack(stack).getItem();
+        if (!inputMap.isEmpty() && inputMap.get(item) != null) {
+            inputMap.remove(item);
+        }
     }
 
     @Override
-    public void addAllInput(IItemStack stack) {
-        this.allInput.add(CraftTweakerMC.getItemStack(stack));
-    }
-
-    @Override
-    public void clearAllInput() {
-        this.allInput.clear();
+    public void addInput(IItemStack stack) {
+        Item item = CraftTweakerMC.getItemStack(stack).getItem();
+        if (!inputMap.isEmpty() && inputMap.get(item) != null) {
+            int amount = inputMap.get(item).getValue() + stack.getAmount();
+            inputMap.put(item, Pair.of(stack.getMetadata(), Math.min(amount, 64)));
+        }
+        inputMap.put(item, Pair.of(stack.getMetadata(), stack.getAmount()));
     }
 
     @Override
     public boolean consumeMana(int totalCost) {
         return this.consumeMana(null, totalCost, false);
+    }
+
+    @Override
+    public void clearInputList() {
+        inputMap.clear();
     }
 }
