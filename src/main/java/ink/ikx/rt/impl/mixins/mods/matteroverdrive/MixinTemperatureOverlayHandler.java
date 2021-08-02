@@ -16,7 +16,7 @@ import toughasnails.handler.temperature.TemperatureOverlayHandler;
  */
 @Pseudo
 @Mixin(value = TemperatureOverlayHandler.class, remap = false)
-public class MixinTemperatureOverlayHandler {
+public abstract class MixinTemperatureOverlayHandler {
 
     @Inject(method = "onPostRenderOverlay", at = @At(value = "HEAD"), cancellable = true)
     public void injectOnPreRenderOverlay(RenderGameOverlayEvent.Post event, CallbackInfo ci) {

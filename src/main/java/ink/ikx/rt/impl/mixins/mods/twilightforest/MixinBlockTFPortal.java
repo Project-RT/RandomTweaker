@@ -23,7 +23,7 @@ import twilightforest.block.BlockTFPortal;
 
 @Pseudo
 @Mixin(value = BlockTFPortal.class, remap = false)
-public class MixinBlockTFPortal extends BlockBreakable {
+public abstract class MixinBlockTFPortal extends BlockBreakable {
 
     @Shadow
     @Final

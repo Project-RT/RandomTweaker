@@ -16,7 +16,7 @@ import toughasnails.handler.thirst.ThirstOverlayHandler;
  */
 @Pseudo
 @Mixin(value = ThirstOverlayHandler.class, remap = false)
-public class  MixinThirstOverlayHandler {
+public abstract class MixinThirstOverlayHandler {
 
     @Inject(method = "onPreRenderOverlay", at = @At(value = "HEAD"), cancellable = true)
     public void injectOnPreRenderOverlay(RenderGameOverlayEvent.Pre event, CallbackInfo ci) {

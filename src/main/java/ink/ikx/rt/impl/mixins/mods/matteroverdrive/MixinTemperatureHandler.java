@@ -17,7 +17,7 @@ import toughasnails.temperature.TemperatureHandler;
  */
 @Pseudo
 @Mixin(value = TemperatureHandler.class, remap = false)
-public class MixinTemperatureHandler {
+public abstract class MixinTemperatureHandler {
 
     @Inject(method = "update", at = @At(value = "HEAD"), cancellable = true)
     public void injectUpdate(EntityPlayer player, World world, TickEvent.Phase phase, CallbackInfo ci) {

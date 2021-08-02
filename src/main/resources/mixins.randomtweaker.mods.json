@@ -7,6 +7,7 @@
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
     "botania.MixinTileAlfPortal",
+    "botania.MixinTilePool",
     "ftbutimine.MixinFTBUltimine",
     "matteroverdrive.MixinTemperatureHandler",
     "matteroverdrive.MixinThirstHandler",

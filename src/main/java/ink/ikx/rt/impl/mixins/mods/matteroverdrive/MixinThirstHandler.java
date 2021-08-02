@@ -17,7 +17,7 @@ import toughasnails.thirst.ThirstHandler;
  */
 @Pseudo
 @Mixin(value = ThirstHandler.class, remap = false)
-public class MixinThirstHandler {
+public abstract class MixinThirstHandler {
 
     @Inject(method = "update", at = @At(value = "HEAD"), cancellable = true)
     public void injectUpdate(EntityPlayer player, World world, TickEvent.Phase phase, CallbackInfo ci) {
