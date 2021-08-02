@@ -1,22 +1,18 @@
 package ink.ikx.rt.impl.mixins.mods.botania;
 
-import cn.hutool.core.lang.Pair;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import crafttweaker.mc1120.item.MCItemStack;
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import ink.ikx.rt.impl.events.customevent.AlfPortalDroppedEvent;
 import ink.ikx.rt.impl.events.customevent.ElvenTradeEvent;
+import ink.ikx.rt.impl.utils.ItemStackList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -42,7 +38,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Final
     private List<ItemStack> stacksIn;
 
-    private final Map<Item, Pair<Integer, Integer>> inputMap = new HashMap<>();
+    private final ItemStackList inputList = new ItemStackList();
 
     @Shadow
     protected abstract void spawnItem(ItemStack stack);
@@ -74,48 +70,32 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
 
     @Override
     public IItemStack[] getInputList() {
-        return inputMap.entrySet().stream()
-            .map(m -> new ItemStack(m.getKey(), m.getValue().getValue(), m.getValue().getKey()))
-            .map(MCItemStack::new)
-            .toArray(MCItemStack[]::new);
+        return inputList.getItemStackList().stream().map(CraftTweakerMC::getIItemStack).toArray(IItemStack[]::new);
     }
 
     @Override
     public void setInputList(IItemStack[] newList) {
-        clearInputList();
-        Arrays.stream(newList)
-            .map(CraftTweakerMC::getItemStack)
-            .collect(Collectors.toList())
-            .forEach(l -> inputMap.put(l.getItem(), Pair.of(l.getMetadata(), l.getCount())));
+        inputList.setItemStackList(Arrays.stream(newList).map(CraftTweakerMC::getItemStack).collect(Collectors.toList()));
     }
 
     @Override
     public void delInput(IItemStack stack) {
-        Item item = CraftTweakerMC.getItemStack(stack).getItem();
-        if (!inputMap.isEmpty() && inputMap.get(item) != null) {
-            inputMap.remove(item);
-        }
+        inputList.remove(CraftTweakerMC.getItemStack(stack));
     }
 
     @Override
     public void addInput(IItemStack stack) {
-        Item item = CraftTweakerMC.getItemStack(stack).getItem();
-        if (!inputMap.isEmpty() && inputMap.get(item) != null) {
-            int amount = inputMap.get(item).getValue() + stack.getAmount();
-            inputMap.put(item, Pair.of(stack.getMetadata(), Math.min(amount, 64)));
-            return;
-        }
-        inputMap.put(item, Pair.of(stack.getMetadata(), stack.getAmount()));
+        inputList.add(CraftTweakerMC.getItemStack(stack));
+    }
+
+    @Override
+    public void clearInputList() {
+        inputList.clear();
     }
 
     @Override
     public boolean consumeMana(int totalCost) {
         return this.consumeMana(null, totalCost, false);
-    }
-
-    @Override
-    public void clearInputList() {
-        inputMap.clear();
     }
 
     @Override

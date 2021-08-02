@@ -1,5 +1,7 @@
 package ink.ikx.rt.impl.events.customevent;
 
+import java.util.Arrays;
+import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -38,6 +40,12 @@ public class ElvenTradeEvent extends BaseEvent {
 
     public void setOutput(ItemStack[] stacks) {
         this.output = stacks;
+    }
+
+    public void addOutput(ItemStack stack) {
+        List<ItemStack> itemStacks = Arrays.asList(output);
+        itemStacks.add(stack);
+        this.output = itemStacks.toArray(new ItemStack[0]);
     }
 }
 

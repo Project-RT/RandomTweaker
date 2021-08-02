@@ -50,6 +50,11 @@ public class CTElvenTradeEvent implements IEventCancelable {
         event.setOutput(CraftTweakerMC.getItemStacks(output));
     }
 
+    @ZenMethod
+    public void addOutput(IItemStack stack) {
+        event.addOutput(CraftTweakerMC.getItemStack(stack));
+    }
+
     @Override
     public boolean isCanceled() {
         return event.isCanceled();
