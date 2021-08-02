@@ -22,5 +22,4 @@ public class BotaniaTileInGame {
         }
         return null;
     }
-
 }
