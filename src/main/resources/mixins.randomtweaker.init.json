@@ -6,6 +6,6 @@
   "target": "@env(INIT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinLoader"
+    "FixServerError"
   ]
 }
