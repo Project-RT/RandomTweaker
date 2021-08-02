@@ -52,7 +52,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     public abstract boolean consumeMana(@Nullable List<BlockPos> pylons, int totalCost, boolean close);
 
     private static ItemStack[] asItemStackArray(List<ItemStack> stacksIn) {
-        return stacksIn.toArray(new ItemStack[0]);
+        return stacksIn.stream().map(ItemStack::copy).toArray(ItemStack[]::new);
     }
 
     // why the fucking need all the variable to parameter ????????????
