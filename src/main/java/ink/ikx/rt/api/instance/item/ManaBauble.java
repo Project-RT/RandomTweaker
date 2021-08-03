@@ -7,7 +7,7 @@ import stanhebben.zenscript.annotations.ZenGetter;
 /**
  * @author superhelo
  */
-@RTRegisterClass({"zenutils", "botania"})
+@RTRegisterClass({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.item.IManaBauble")
 public interface ManaBauble extends ManaItem {
 

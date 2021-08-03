@@ -11,7 +11,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author superhelo
  */
-@RTRegisterClass({"zenutils", "botania"})
+@RTRegisterClass({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.BaubleRenderHelper")
 public class BaubleRenderHelper {
 
