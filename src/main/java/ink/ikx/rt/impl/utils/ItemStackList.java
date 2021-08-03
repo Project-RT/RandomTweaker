@@ -22,10 +22,10 @@ public class ItemStackList {
             return false;
         } else if (stackA.getItemDamage() != stackB.getItemDamage()) {
             return false;
-        } else if (stackA.stackTagCompound == null && stackB.stackTagCompound != null) {
+        } else if (stackA.getTagCompound() == null && stackB.getTagCompound() != null) {
             return false;
         } else {
-            return (stackA.stackTagCompound == null || stackA.stackTagCompound.equals(stackB.stackTagCompound)) && stackA.areCapsCompatible(stackB);
+            return (stackA.getTagCompound() == null || stackA.getTagCompound().equals(stackB.getTagCompound())) && stackA.areCapsCompatible(stackB);
         }
     }
 
