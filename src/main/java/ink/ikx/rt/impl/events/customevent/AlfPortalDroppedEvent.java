@@ -12,6 +12,8 @@ public class AlfPortalDroppedEvent extends BaseEvent {
     private final ItemStack input;
     private final BlockPos blockPos;
 
+    private ItemStack output = null;
+
     public AlfPortalDroppedEvent(World world, BlockPos blockPos, ItemStack input) {
         this.world = world;
         this.input = input;
@@ -28,5 +30,13 @@ public class AlfPortalDroppedEvent extends BaseEvent {
 
     public BlockPos getBlockPos() {
         return blockPos;
+    }
+
+    public ItemStack getOutput() {
+        return output;
+    }
+
+    public void setOutput(ItemStack output) {
+        this.output = output;
     }
 }

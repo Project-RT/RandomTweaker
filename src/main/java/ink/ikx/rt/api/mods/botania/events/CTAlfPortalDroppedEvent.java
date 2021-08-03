@@ -10,6 +10,8 @@ import crafttweaker.api.world.IWorld;
 import ink.ikx.rt.impl.events.customevent.AlfPortalDroppedEvent;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
+import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.ZenSetter;
 
 @ZenRegister
 @ModOnly("botania")
@@ -27,14 +29,25 @@ public class CTAlfPortalDroppedEvent implements IEventCancelable {
         return CraftTweakerMC.getIWorld(event.getWorld());
     }
 
-    @ZenGetter("pos")
-    public IBlockPos getPos() {
+    @ZenGetter("blockPos")
+    public IBlockPos getBlockPos() {
         return CraftTweakerMC.getIBlockPos(event.getBlockPos());
     }
 
     @ZenGetter("input")
     public IItemStack getInput() {
         return CraftTweakerMC.getIItemStack(event.getInput());
+    }
+
+    @ZenGetter("output")
+    public IItemStack getOutput() {
+        return CraftTweakerMC.getIItemStack(event.getOutput());
+    }
+
+    @ZenMethod
+    @ZenSetter("output")
+    public void IItemStack(IItemStack output) {
+        event.setOutput(CraftTweakerMC.getItemStack(output));
     }
 
     @Override

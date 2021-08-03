@@ -11,11 +11,11 @@ public class ItemStackList {
     public void add(ItemStack stack) {
         if (isInclude(stack) == null) {
             itemStackList.add(stack);
-            return;
+        } else {
+            itemStackList.stream()
+                .filter(l -> Utils.areItemStacksEqual(l, stack))
+                .forEach(stack1 -> stack1.setCount(Math.min(stack1.getCount() + stack.getCount(), 64)));
         }
-        itemStackList.stream()
-            .filter(l -> Utils.areItemStacksEqual(l, stack))
-            .forEach(stack1 -> stack1.setCount(Math.min(stack1.getCount() + stack.getCount(), 64)));
     }
 
     public void clear() {

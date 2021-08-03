@@ -60,11 +60,16 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;validateItemUsage(Lnet/minecraft/item/ItemStack;)Z"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void injectUpdate(CallbackInfo ci, IBlockState iBlockState, AlfPortalState state, AlfPortalState newState, AxisAlignedBB aabb, boolean open, ElvenPortalUpdateEvent eventU, List items, Iterator var8, EntityItem item, ItemStack stack, boolean consume) { // validateItemUsage
         stacksCopy = stack.copy();
-        eventExec = new AlfPortalDroppedEvent(getWorld(), getPos(), stacksCopy).post();
+        AlfPortalDroppedEvent event = new AlfPortalDroppedEvent(getWorld(), getPos(), stacksCopy);
+        eventExec = event.post();
         if (!eventExec) {
             addInput(CraftTweakerMC.getIItemStack(stacksCopy));
         } else {
-            spawnItem(stacksCopy);
+            if (event.getOutput() != null) {
+                spawnItem(event.getOutput());
+            } else {
+                spawnItem(stacksCopy);
+            }
         }
     }
 
