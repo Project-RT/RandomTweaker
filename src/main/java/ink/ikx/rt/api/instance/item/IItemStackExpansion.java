@@ -28,7 +28,7 @@ public class IItemStackExpansion {
     }
 
     @ZenMethod
-    public static int getKeySize(IItemStack stack) {
+    public static int getTagSize(IItemStack stack) {
         ItemStack itemStack = CraftTweakerMC.getItemStack(stack);
 
         if (itemStack.hasTagCompound()) {

@@ -15,7 +15,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
  */
 @RTRegisterClass({"zenutils", "botania"})
 @ZenExpansion("crafttweaker.item.IMutableItemStack")
-public class ManaHelper {
+public class IMutableItemStackExpansion {
 
     @ZenMethod
     public static boolean isIManaItem(IMutableItemStack stack) {
