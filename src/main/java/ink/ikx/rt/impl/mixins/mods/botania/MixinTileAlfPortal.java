@@ -6,9 +6,11 @@ import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import ink.ikx.rt.impl.events.customevent.AlfPortalDroppedEvent;
 import ink.ikx.rt.impl.events.customevent.ElvenTradeEvent;
 import ink.ikx.rt.impl.utils.ItemStackList;
+import ink.ikx.rt.impl.utils.Utils;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import net.minecraft.block.state.IBlockState;
@@ -21,6 +23,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
@@ -40,6 +43,9 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
 
     private final ItemStackList inputList = new ItemStackList();
 
+    private ItemStack stacksCopy;
+    private boolean eventExec;
+
     @Shadow
     protected abstract void spawnItem(ItemStack stack);
 
@@ -52,9 +58,28 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
 
     // why the fucking need all the variable to parameter ????????????
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;validateItemUsage(Lnet/minecraft/item/ItemStack;)Z"), locals = LocalCapture.CAPTURE_FAILHARD)
-    private void injectUpdate_(CallbackInfo ci, IBlockState iBlockState, AlfPortalState state, AlfPortalState newState, AxisAlignedBB aabb, boolean open, ElvenPortalUpdateEvent event, List items, Iterator var8, EntityItem item, ItemStack stack, boolean consume) { // validateItemUsage
-        if (!new AlfPortalDroppedEvent(getWorld(), getPos(), stack).post()) {
-            addInput(CraftTweakerMC.getIItemStack(stack));
+    private void injectUpdate(CallbackInfo ci, IBlockState iBlockState, AlfPortalState state, AlfPortalState newState, AxisAlignedBB aabb, boolean open, ElvenPortalUpdateEvent eventU, List items, Iterator var8, EntityItem item, ItemStack stack, boolean consume) { // validateItemUsage
+        stacksCopy = stack.copy();
+        eventExec = new AlfPortalDroppedEvent(getWorld(), getPos(), stacksCopy).post();
+        if (!eventExec) {
+            addInput(CraftTweakerMC.getIItemStack(stacksCopy));
+        } else {
+            spawnItem(stacksCopy);
+        }
+    }
+
+    @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;addItem(Lnet/minecraft/item/ItemStack;)V", shift = Shift.AFTER))
+    private void injectUpdate_(CallbackInfo ci) {
+        AtomicInteger count = new AtomicInteger(1);
+        if (eventExec) {
+            stacksIn.removeIf(a -> {
+                if (count.get() <= stacksCopy.getCount()) {
+                    Utils.areItemStacksEqual(stacksCopy, a);
+                    count.getAndIncrement();
+                    return true;
+                }
+                return false;
+            });
         }
     }
 
