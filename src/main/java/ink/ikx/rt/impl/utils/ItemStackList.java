@@ -2,7 +2,6 @@ package ink.ikx.rt.impl.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import net.minecraft.item.ItemStack;
 
 public class ItemStackList {
@@ -25,7 +24,7 @@ public class ItemStackList {
         } else if (stackA.getTagCompound() == null && stackB.getTagCompound() != null) {
             return false;
         } else {
-            return (stackA.getTagCompound() == null || stackA.getTagCompound().equals(stackB.getTagCompound())) && stackA.areCapsCompatible(stackB);
+            return (stackA.getTagCompound() == null || stackB.getTagCompound() == null || stackA.getTagCompound().equals(stackB.getTagCompound())) && stackA.areCapsCompatible(stackB);
         }
     }
 
@@ -36,9 +35,7 @@ public class ItemStackList {
         }
         itemStackList.stream()
             .filter(l -> areItemStacksEqual(l, stack))
-            .peek(stack1 -> stack1.setCount(Math.min(stack1.getCount() + stack.getCount(), 64)))
-            .collect(Collectors.toList())
-            .stream();
+            .forEach(stack1 -> stack1.setCount(Math.min(stack1.getCount() + stack.getCount(), 64)));
     }
 
     public void clear() {
@@ -48,8 +45,8 @@ public class ItemStackList {
     public void remove(ItemStack stack) {
         itemStackList.stream()
             .filter(l -> areItemStacksEqual(l, stack))
-            .peek(stack1 -> stack1.setCount(Math.max(stack1.getCount() - stack.getCount(), 0)))
-            .collect(Collectors.toList());
+            .forEach(stack1 -> stack1.setCount(Math.max(stack1.getCount() - stack.getCount(), 0)));
+        delZeroCount();
     }
 
     public List<ItemStack> getItemStackList() {
@@ -65,5 +62,14 @@ public class ItemStackList {
             .filter(l -> areItemStacksEqual(l, stack))
             .findFirst()
             .orElse(null);
+    }
+
+    private void delZeroCount() {
+        for (int i = 0; i < itemStackList.size(); i++) {
+            if (itemStackList.get(i).getCount() == 0) {
+                itemStackList.remove(i);
+                break;
+            }
+        }
     }
 }
