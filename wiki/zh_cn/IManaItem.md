@@ -8,7 +8,7 @@
 import mods.randomtweaker.item.IManaItem;
 ```
 
-你可以对 [IMutableItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IMutableItemStack/)
+你可以对 [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)
 类的实例使用 `isIManaItem()` 方法判断其是否为 IManaItem 类的实例, 如果是即可用 `asIManaItem()` 方法将其转换
 
 | Getter | 返回值 | 描述 |
