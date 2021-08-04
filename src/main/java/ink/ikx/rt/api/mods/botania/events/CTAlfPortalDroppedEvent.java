@@ -45,6 +45,17 @@ public class CTAlfPortalDroppedEvent implements IEventCancelable {
         event.setOutput(CraftTweakerMC.getItemStack(output));
     }
 
+    @ZenGetter("dead")
+    public boolean isDead() {
+        return event.isDead();
+    }
+
+    @ZenMethod
+    @ZenSetter("dead")
+    public void setDead(boolean dead) {
+        event.setDead(dead);
+    }
+
     @Override
     public boolean isCanceled() {
         return event.isCanceled();

@@ -73,9 +73,9 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
         stacksCopy = event.getInput().getItem();
         if (!eventExec) {
             addInput(CraftTweakerMC.getIItemStack(stacksCopy));
-            if (!item.isDead) {
+            item.isDead = event.isDead();
+            if (!item.isDead)
                 item.getEntityData().setBoolean(TAG_PORTAL_FLAG, true);
-            }
         } else {
             if (event.getOutput() != null) {
                 spawnItem(event.getOutput());

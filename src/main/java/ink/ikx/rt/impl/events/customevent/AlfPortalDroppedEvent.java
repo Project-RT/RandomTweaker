@@ -11,6 +11,7 @@ public class AlfPortalDroppedEvent extends BaseEvent {
     private final EntityItem input;
     private final IMixinTileAlfPortal alfPortal;
 
+    private boolean isDead = true;
     private ItemStack output = null;
 
     public AlfPortalDroppedEvent(EntityItem input, IMixinTileAlfPortal alfPortal) {
@@ -28,6 +29,14 @@ public class AlfPortalDroppedEvent extends BaseEvent {
 
     public ItemStack getOutput() {
         return output;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
     }
 
     public void setOutput(ItemStack output) {
