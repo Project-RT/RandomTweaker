@@ -41,6 +41,10 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Final
     private List<ItemStack> stacksIn;
 
+    @Shadow
+    @Final
+    private static String TAG_PORTAL_FLAG;
+
     private final ItemStackList inputList = new ItemStackList();
 
     private ItemStack stacksCopy;
@@ -59,11 +63,14 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     // why the fucking need all the variable to parameter ????????????
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;validateItemUsage(Lnet/minecraft/item/ItemStack;)Z"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void injectUpdate(CallbackInfo ci, IBlockState iBlockState, AlfPortalState state, AlfPortalState newState, AxisAlignedBB aabb, boolean open, ElvenPortalUpdateEvent eventU, List items, Iterator var8, EntityItem item, ItemStack stack, boolean consume) { // validateItemUsage
-        stacksCopy = stack.copy();
-        AlfPortalDroppedEvent event = new AlfPortalDroppedEvent(getWorld(), getPos(), stacksCopy);
+        AlfPortalDroppedEvent event = new AlfPortalDroppedEvent(item, this);
         eventExec = event.post();
+        stacksCopy = event.getInput().getItem();
         if (!eventExec) {
             addInput(CraftTweakerMC.getIItemStack(stacksCopy));
+            if (!item.isDead) {
+                item.getEntityData().setBoolean(TAG_PORTAL_FLAG, true);
+            }
         } else {
             if (event.getOutput() != null) {
                 spawnItem(event.getOutput());

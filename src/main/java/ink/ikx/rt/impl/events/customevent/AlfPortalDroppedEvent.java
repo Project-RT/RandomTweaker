@@ -1,35 +1,29 @@
 package ink.ikx.rt.impl.events.customevent;
 
+import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
 
 @Cancelable
 public class AlfPortalDroppedEvent extends BaseEvent {
 
-    private final World world;
-    private final ItemStack input;
-    private final BlockPos blockPos;
+    private final EntityItem input;
+    private final IMixinTileAlfPortal alfPortal;
 
     private ItemStack output = null;
 
-    public AlfPortalDroppedEvent(World world, BlockPos blockPos, ItemStack input) {
-        this.world = world;
+    public AlfPortalDroppedEvent(EntityItem input, IMixinTileAlfPortal alfPortal) {
         this.input = input;
-        this.blockPos = blockPos;
+        this.alfPortal = alfPortal;
     }
 
-    public World getWorld() {
-        return world;
-    }
-
-    public ItemStack getInput() {
+    public EntityItem getInput() {
         return input;
     }
 
-    public BlockPos getBlockPos() {
-        return blockPos;
+    public IMixinTileAlfPortal getAlfPortal() {
+        return alfPortal;
     }
 
     public ItemStack getOutput() {
