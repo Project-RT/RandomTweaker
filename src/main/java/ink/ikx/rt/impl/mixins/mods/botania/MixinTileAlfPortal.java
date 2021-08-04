@@ -1,7 +1,11 @@
 package ink.ikx.rt.impl.mixins.mods.botania;
 
+import crafttweaker.CraftTweakerAPI;
+import crafttweaker.api.data.DataMap;
+import crafttweaker.api.data.IData;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import crafttweaker.mc1120.data.NBTConverter;
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import ink.ikx.rt.impl.events.customevent.AlfPortalDroppedEvent;
 import ink.ikx.rt.impl.events.customevent.ElvenTradeEvent;
@@ -16,6 +20,7 @@ import javax.annotation.Nullable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Final;
@@ -139,5 +144,25 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Override
     public void spawnItem(IItemStack stack) {
         spawnItem(CraftTweakerMC.getItemStack(stack));
+    }
+
+    @Override
+    public boolean isEmpty(IData data) {
+        return this.getTileData().getCompoundTag("ForgeData").isEmpty();
+    }
+
+    @Override
+    public IData getData() {
+        return NBTConverter.from(this.getTileData(), true);
+    }
+
+    @Override
+    public void updateForgeData(IData data) {
+        if (data instanceof DataMap) {
+            this.getTileData().getCompoundTag("ForgeData").merge((NBTTagCompound) NBTConverter.from(data));
+            this.markDirty();
+        } else {
+            CraftTweakerAPI.logError("data argument must be DataMap", new IllegalArgumentException());
+        }
     }
 }

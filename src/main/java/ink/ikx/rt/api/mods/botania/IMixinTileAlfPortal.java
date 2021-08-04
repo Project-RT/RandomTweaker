@@ -2,8 +2,10 @@ package ink.ikx.rt.api.mods.botania;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
+import crafttweaker.api.data.IData;
 import crafttweaker.api.item.IItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenRegister
@@ -31,4 +33,13 @@ public interface IMixinTileAlfPortal {
 
     @ZenMethod
     void spawnItem(IItemStack stack);
+
+    @ZenGetter("data")
+    IData getData();
+
+    @ZenMethod
+    boolean isEmpty(IData data);
+
+    @ZenMethod
+    void updateForgeData(IData data);
 }
