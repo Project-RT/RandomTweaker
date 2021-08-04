@@ -5,6 +5,8 @@ import crafttweaker.api.data.DataMap;
 import crafttweaker.api.data.IData;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import crafttweaker.api.world.IBlockPos;
+import crafttweaker.api.world.IWorld;
 import crafttweaker.mc1120.data.NBTConverter;
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import ink.ikx.rt.impl.events.customevent.AlfPortalDroppedEvent;
@@ -103,7 +105,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
 
     @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", ordinal = 1), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
     private void injectResolveRecipes(CallbackInfo ci, int i, Iterator var2, RecipeElvenTrade recipe) {
-        ElvenTradeEvent event = new ElvenTradeEvent(getWorld(), getPos(), asItemStackArray(stacksIn), asItemStackArray(recipe.getOutputs()));
+        ElvenTradeEvent event = new ElvenTradeEvent(this, asItemStackArray(stacksIn), asItemStackArray(recipe.getOutputs()));
         recipe.matches(stacksIn, true);
         if (!event.post()) {
             Arrays.stream(event.getOutput()).forEach(this::spawnItem);
@@ -147,8 +149,18 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     }
 
     @Override
+    public IBlockPos getBlockPos() {
+        return CraftTweakerMC.getIBlockPos(this.getPos());
+    }
+
+    @Override
+    public IWorld getIWorrld() {
+        return CraftTweakerMC.getIWorld(this.getWorld());
+    }
+
+    @Override
     public boolean isEmpty(IData data) {
-        return this.getTileData().getCompoundTag("ForgeData").isEmpty();
+        return this.getTileData().isEmpty();
     }
 
     @Override

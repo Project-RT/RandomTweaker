@@ -4,6 +4,8 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.data.IData;
 import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.world.IBlockPos;
+import crafttweaker.api.world.IWorld;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -33,6 +35,12 @@ public interface IMixinTileAlfPortal {
 
     @ZenMethod
     void spawnItem(IItemStack stack);
+
+    @ZenGetter("pos")
+    IBlockPos getBlockPos();
+
+    @ZenGetter("world")
+    IWorld getIWorrld();
 
     @ZenGetter("data")
     IData getData();

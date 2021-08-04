@@ -5,8 +5,7 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.event.IEventCancelable;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import crafttweaker.api.world.IBlockPos;
-import crafttweaker.api.world.IWorld;
+import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import ink.ikx.rt.impl.events.customevent.ElvenTradeEvent;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
@@ -24,14 +23,9 @@ public class CTElvenTradeEvent implements IEventCancelable {
         this.event = event;
     }
 
-    @ZenGetter("world")
-    public IWorld getWorld() {
-        return CraftTweakerMC.getIWorld(event.getWorld());
-    }
-
-    @ZenGetter("pos")
-    public IBlockPos getPos() {
-        return CraftTweakerMC.getIBlockPos(event.getBlockPos());
+    @ZenGetter("alfPortal")
+    public IMixinTileAlfPortal getAlfPortal() {
+        return event.getAlfPortal();
     }
 
     @ZenGetter("input")

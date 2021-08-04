@@ -1,33 +1,26 @@
 package ink.ikx.rt.impl.events.customevent;
 
+import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import java.util.Arrays;
 import java.util.List;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
 
 @Cancelable
 public class ElvenTradeEvent extends BaseEvent {
 
-    private final World world;
-    private final BlockPos pos;
+    private final IMixinTileAlfPortal alfPortal;
     private final ItemStack[] input;
     private ItemStack[] output;
 
-    public ElvenTradeEvent(World world, BlockPos pos, ItemStack[] input, ItemStack[] output) {
-        this.world = world;
-        this.pos = pos;
+    public ElvenTradeEvent(IMixinTileAlfPortal alfPortal, ItemStack[] input, ItemStack[] output) {
+        this.alfPortal = alfPortal;
         this.input = input;
         this.output = output;
     }
 
-    public World getWorld() {
-        return world;
-    }
-
-    public BlockPos getBlockPos() {
-        return pos;
+    public IMixinTileAlfPortal getAlfPortal() {
+        return alfPortal;
     }
 
     public ItemStack[] getInput() {
