@@ -75,7 +75,8 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
             if (event.getOutput() != null) {
                 spawnItem(event.getOutput());
             } else {
-                spawnItem(stacksCopy);
+                if (item.isDead)
+                    spawnItem(stacksCopy);
             }
         }
     }
