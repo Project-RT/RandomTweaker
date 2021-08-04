@@ -157,9 +157,9 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     }
 
     @Override
-    public void updateForgeData(IData data) {
+    public void updateData(IData data) {
         if (data instanceof DataMap) {
-            this.getTileData().getCompoundTag("ForgeData").merge((NBTTagCompound) NBTConverter.from(data));
+            this.getTileData().merge((NBTTagCompound) NBTConverter.from(data));
             this.markDirty();
         } else {
             CraftTweakerAPI.logError("data argument must be DataMap", new IllegalArgumentException());

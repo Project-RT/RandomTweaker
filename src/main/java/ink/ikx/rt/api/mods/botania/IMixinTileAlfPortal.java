@@ -41,5 +41,5 @@ public interface IMixinTileAlfPortal {
     boolean isEmpty(IData data);
 
     @ZenMethod
-    void updateForgeData(IData data);
+    void updateData(IData data);
 }
