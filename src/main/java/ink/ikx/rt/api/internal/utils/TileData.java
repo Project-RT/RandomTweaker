@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.utils;
+package ink.ikx.rt.api.internal.utils;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;

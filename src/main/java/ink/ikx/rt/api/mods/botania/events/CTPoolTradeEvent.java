@@ -2,6 +2,7 @@ package ink.ikx.rt.api.mods.botania.events;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
+import crafttweaker.api.entity.IEntityItem;
 import crafttweaker.api.event.IEventCancelable;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -63,8 +64,8 @@ public class CTPoolTradeEvent implements IEventCancelable {
     }
 
     @ZenGetter("input")
-    public IItemStack getInput() {
-        return CraftTweakerMC.getIItemStack(event.getInput());
+    public IEntityItem getInput() {
+        return CraftTweakerMC.getIEntityItem(event.getInput());
     }
 
     @ZenGetter("world")

@@ -29,7 +29,7 @@ public abstract class MixinTilePool extends TileMod {
     @Inject(method = "collideEntityItem", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeManaInfusion;getManaToConsume()I", shift = Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
     public void injectCollideEntityItem(EntityItem item, CallbackInfoReturnable<Boolean> cir, ItemStack stack, RecipeManaInfusion recipe) {
         int mana = recipe.getManaToConsume();
-        PoolTradeEvent event = new PoolTradeEvent(mana, recipe.getOutput().copy(), getCurrentMana(), stack, recipe.isAlchemy(), recipe.isConjuration(), getWorld(), getPos());
+        PoolTradeEvent event = new PoolTradeEvent(mana, getCurrentMana(), recipe.getOutput().copy(), item, recipe.isAlchemy(), recipe.isConjuration(), getWorld(), getPos());
         if (!event.post()) {
             if (event.getMana() > getCurrentMana() && !event.isAllowExceed()) {
                 cir.setReturnValue(false);

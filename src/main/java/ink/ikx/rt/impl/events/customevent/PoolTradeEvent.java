@@ -1,5 +1,6 @@
 package ink.ikx.rt.impl.events.customevent;
 
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -9,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.Cancelable;
 public class PoolTradeEvent extends BaseEvent {
 
     private final int currentMana;
-    private final ItemStack input;
+    private final EntityItem input;
     private final boolean isAlchemy;
     private final boolean isConjuration;
     private final World world;
@@ -18,7 +19,7 @@ public class PoolTradeEvent extends BaseEvent {
     private ItemStack output;
     private boolean isAllowExceed;
 
-    public PoolTradeEvent(int mana, ItemStack output, int currentMana, ItemStack input,
+    public PoolTradeEvent(int mana, int currentMana, ItemStack output, EntityItem input,
         boolean isAlchemy, boolean isConjuration, World world, BlockPos blockPos) {
         this.mana = mana;
         this.output = output;
@@ -66,7 +67,7 @@ public class PoolTradeEvent extends BaseEvent {
         return currentMana;
     }
 
-    public ItemStack getInput() {
+    public EntityItem getInput() {
         return input;
     }
 

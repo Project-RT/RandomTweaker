@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.transformer.MixinProcessor;
 import org.spongepowered.asm.mixin.transformer.Proxy;
 
 @Mixin(value = LoadController.class, remap = false)
-public class MixinLoader {
+public abstract class MixinLoader {
 
     @Shadow
     private Loader loader;

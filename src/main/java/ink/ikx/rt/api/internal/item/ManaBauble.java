@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.instance.item;
+package ink.ikx.rt.api.internal.item;
 
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.ZenClass;

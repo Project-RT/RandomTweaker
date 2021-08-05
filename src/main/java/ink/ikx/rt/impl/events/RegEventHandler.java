@@ -3,7 +3,7 @@ package ink.ikx.rt.impl.events;
 import cn.hutool.core.compiler.CompilerUtil;
 import cn.hutool.core.io.FileUtil;
 import ink.ikx.rt.RandomTweaker;
-import ink.ikx.rt.api.instance.file.Prop;
+import ink.ikx.rt.api.internal.file.Prop;
 import ink.ikx.rt.api.mods.cote.flower.JAVATextContent;
 import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalRepresentation;
 import ink.ikx.rt.impl.config.RTConfig;

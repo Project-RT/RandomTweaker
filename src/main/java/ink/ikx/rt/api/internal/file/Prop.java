@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.instance.file;
+package ink.ikx.rt.api.internal.file;
 
 import ink.ikx.rt.RandomTweaker;
 import java.io.File;
