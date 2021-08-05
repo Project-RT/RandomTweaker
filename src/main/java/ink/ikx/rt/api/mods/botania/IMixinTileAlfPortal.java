@@ -41,7 +41,7 @@ public interface IMixinTileAlfPortal {
     IBlockPos getBlockPos();
 
     @ZenGetter("world")
-    IWorld getIWorrld();
+    IWorld getIWorld();
 
     @ZenGetter("data")
     IData getData();

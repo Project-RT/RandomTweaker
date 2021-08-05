@@ -154,7 +154,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     }
 
     @Override
-    public IWorld getIWorrld() {
+    public IWorld getIWorld() {
         return CraftTweakerMC.getIWorld(this.getWorld());
     }
 
