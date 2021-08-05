@@ -9,6 +9,7 @@ import crafttweaker.api.world.IWorld;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.ZenSetter;
 
 @ZenRegister
 @ModOnly("botania")
@@ -44,6 +45,9 @@ public interface IMixinTileAlfPortal {
 
     @ZenGetter("data")
     IData getData();
+
+    @ZenSetter("data")
+    void setData(IData data);
 
     @ZenMethod
     boolean isEmpty(IData data);

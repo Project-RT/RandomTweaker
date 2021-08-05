@@ -169,7 +169,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     }
 
     @Override
-    public void updateData(IData data) {
+    public void setData(IData data) {
         if (data instanceof DataMap) {
             this.getTileData().merge((NBTTagCompound) NBTConverter.from(data));
             this.markDirty();
@@ -177,4 +177,10 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
             CraftTweakerAPI.logError("data argument must be DataMap", new IllegalArgumentException());
         }
     }
+
+    @Override
+    public void updateData(IData data) {
+        this.setData(this.getData().add(data));
+    }
+
 }
