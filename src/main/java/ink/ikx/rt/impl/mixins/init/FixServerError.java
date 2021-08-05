@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * @author friendlyHj <br /> https://github.com/ProjectHDS/HerodotusUtils/blob/main/src/main/java/youyihj/herodotusutils/mixins/init/MixinLoader.java
  */
 @Mixin(value = Loader.class, remap = false, priority = 800)
-public class FixServerError {
+public abstract class FixServerError {
 
     @Shadow
     private List<ModContainer> mods;
