@@ -1,7 +1,6 @@
 package ink.ikx.rt.impl.events.customevent;
 
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
-import java.util.Arrays;
 import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
@@ -11,9 +10,10 @@ public class ElvenTradeEvent extends BaseEvent {
 
     private final IMixinTileAlfPortal alfPortal;
     private final ItemStack[] input;
-    private ItemStack[] output;
 
-    public ElvenTradeEvent(IMixinTileAlfPortal alfPortal, ItemStack[] input, ItemStack[] output) {
+    private List<ItemStack> output;
+
+    public ElvenTradeEvent(IMixinTileAlfPortal alfPortal, ItemStack[] input, List<ItemStack> output) {
         this.alfPortal = alfPortal;
         this.input = input;
         this.output = output;
@@ -27,18 +27,16 @@ public class ElvenTradeEvent extends BaseEvent {
         return input;
     }
 
-    public ItemStack[] getOutput() {
+    public List<ItemStack> getOutput() {
         return output;
     }
 
-    public void setOutput(ItemStack[] stacks) {
+    public void setOutput(List<ItemStack> stacks) {
         this.output = stacks;
     }
 
     public void addOutput(ItemStack stack) {
-        List<ItemStack> itemStacks = Arrays.asList(output);
-        itemStacks.add(stack);
-        this.output = itemStacks.toArray(new ItemStack[0]);
+        this.output.add(stack);
     }
 }
 

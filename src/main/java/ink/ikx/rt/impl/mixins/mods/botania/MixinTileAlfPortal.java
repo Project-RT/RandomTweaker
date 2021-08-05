@@ -63,10 +63,6 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     @Shadow
     public abstract boolean consumeMana(@Nullable List<BlockPos> pylons, int totalCost, boolean close);
 
-    private static ItemStack[] asItemStackArray(List<ItemStack> stacksIn) {
-        return stacksIn.stream().map(ItemStack::copy).toArray(ItemStack[]::new);
-    }
-
     // why the fucking need all the variable to parameter ????????????
     @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;validateItemUsage(Lnet/minecraft/item/ItemStack;)Z"), locals = LocalCapture.CAPTURE_FAILHARD)
     private void injectUpdate(CallbackInfo ci, IBlockState iBlockState, AlfPortalState state, AlfPortalState newState, AxisAlignedBB aabb, boolean open, ElvenPortalUpdateEvent eventU, List items, Iterator var8, EntityItem item, ItemStack stack, boolean consume) { // validateItemUsage
@@ -105,10 +101,10 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
 
     @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", ordinal = 1), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
     private void injectResolveRecipes(CallbackInfo ci, int i, Iterator var2, RecipeElvenTrade recipe) {
-        ElvenTradeEvent event = new ElvenTradeEvent(this, asItemStackArray(stacksIn), asItemStackArray(recipe.getOutputs()));
+        ElvenTradeEvent event = new ElvenTradeEvent(this, stacksIn.stream().map(ItemStack::copy).toArray(ItemStack[]::new), recipe.getOutputs());
         recipe.matches(stacksIn, true);
         if (!event.post()) {
-            Arrays.stream(event.getOutput()).forEach(this::spawnItem);
+            event.getOutput().forEach(this::spawnItem);
         }
         ci.cancel();
     }

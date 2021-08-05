@@ -46,6 +46,7 @@ public interface IMixinTileAlfPortal {
     @ZenGetter("data")
     IData getData();
 
+    @ZenMethod
     @ZenSetter("data")
     void setData(IData data);
 
