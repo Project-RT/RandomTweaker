@@ -9,11 +9,11 @@ import net.minecraftforge.fml.common.eventhandler.Cancelable;
 public class ElvenTradeEvent extends BaseEvent {
 
     private final IMixinTileAlfPortal alfPortal;
-    private final ItemStack[] input;
+    private final List<ItemStack> input;
 
     private List<ItemStack> output;
 
-    public ElvenTradeEvent(IMixinTileAlfPortal alfPortal, ItemStack[] input, List<ItemStack> output) {
+    public ElvenTradeEvent(IMixinTileAlfPortal alfPortal, List<ItemStack> input, List<ItemStack> output) {
         this.alfPortal = alfPortal;
         this.input = input;
         this.output = output;
@@ -23,7 +23,7 @@ public class ElvenTradeEvent extends BaseEvent {
         return alfPortal;
     }
 
-    public ItemStack[] getInput() {
+    public List<ItemStack> getInput() {
         return input;
     }
 
