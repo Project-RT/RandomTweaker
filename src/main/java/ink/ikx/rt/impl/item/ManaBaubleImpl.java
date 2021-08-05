@@ -1,7 +1,7 @@
 package ink.ikx.rt.impl.item;
 
 import baubles.api.BaubleType;
-import ink.ikx.rt.api.instance.item.ManaBauble;
+import ink.ikx.rt.api.internal.item.ManaBauble;
 import ink.ikx.rt.api.mods.cote.mana.ManaBaubleContent;
 import ink.ikx.rt.api.mods.cote.mana.ManaUsingContent;
 import net.minecraft.item.ItemStack;

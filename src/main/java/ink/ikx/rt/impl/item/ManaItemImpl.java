@@ -4,7 +4,7 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
-import ink.ikx.rt.api.instance.item.ManaItem;
+import ink.ikx.rt.api.internal.item.ManaItem;
 import ink.ikx.rt.api.mods.cote.mana.ManaItemContent;
 import java.util.Objects;
 import net.minecraft.item.ItemStack;

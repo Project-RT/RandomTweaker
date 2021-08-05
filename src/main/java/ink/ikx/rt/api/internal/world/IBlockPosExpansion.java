@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.instance.world;
+package ink.ikx.rt.api.internal.world;
 
 import com.google.common.collect.Lists;
 import crafttweaker.annotations.ZenRegister;

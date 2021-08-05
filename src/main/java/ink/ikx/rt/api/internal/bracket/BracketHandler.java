@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.instance.bracket;
+package ink.ikx.rt.api.internal.bracket;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.potions.IPotion;

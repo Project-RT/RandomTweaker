@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.instance.event;
+package ink.ikx.rt.api.internal.event;
 
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.event.IEventHandle;

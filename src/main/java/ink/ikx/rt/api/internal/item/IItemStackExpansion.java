@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.instance.item;
+package ink.ikx.rt.api.internal.item;
 
 import static ink.ikx.rt.RandomTweaker.itemDsSet;
 
