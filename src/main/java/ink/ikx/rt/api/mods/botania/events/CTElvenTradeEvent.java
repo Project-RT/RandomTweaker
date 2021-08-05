@@ -8,6 +8,7 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import ink.ikx.rt.impl.events.customevent.ElvenTradeEvent;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -42,7 +43,7 @@ public class CTElvenTradeEvent implements IEventCancelable {
     @ZenSetter("output")
     @ZenMethod
     public void setOutput(IItemStack[] output) {
-        event.setOutput(Arrays.asList(CraftTweakerMC.getItemStacks(output)));
+        event.setOutput(Arrays.stream(CraftTweakerMC.getItemStacks(output)).collect(Collectors.toList()));
     }
 
     @ZenMethod
