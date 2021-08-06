@@ -1,5 +1,7 @@
 package ink.ikx.rt.impl.utils;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import net.minecraft.item.ItemStack;
 
 public class Utils {
@@ -22,5 +24,9 @@ public class Utils {
         } else {
             return (stackA.getTagCompound() == null || stackB.getTagCompound() == null || stackA.getTagCompound().equals(stackB.getTagCompound())) && stackA.areCapsCompatible(stackB);
         }
+    }
+
+    public static List<ItemStack> getItemStackListCopy(List<ItemStack> items) {
+        return items.stream().map(ItemStack::copy).collect(Collectors.toList());
     }
 }

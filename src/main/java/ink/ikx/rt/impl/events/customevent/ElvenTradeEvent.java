@@ -1,6 +1,7 @@
 package ink.ikx.rt.impl.events.customevent;
 
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
+import ink.ikx.rt.impl.utils.Utils;
 import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
@@ -15,8 +16,8 @@ public class ElvenTradeEvent extends BaseEvent {
 
     public ElvenTradeEvent(IMixinTileAlfPortal alfPortal, List<ItemStack> input, List<ItemStack> output) {
         this.alfPortal = alfPortal;
-        this.input = input;
-        this.output = output;
+        this.input = Utils.getItemStackListCopy(input);
+        this.output = Utils.getItemStackListCopy(output);
     }
 
     public IMixinTileAlfPortal getAlfPortal() {
