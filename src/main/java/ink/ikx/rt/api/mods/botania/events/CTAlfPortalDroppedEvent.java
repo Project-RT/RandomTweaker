@@ -8,6 +8,8 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import ink.ikx.rt.impl.events.customevent.AlfPortalDroppedEvent;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -35,14 +37,13 @@ public class CTAlfPortalDroppedEvent implements IEventCancelable {
     }
 
     @ZenGetter("output")
-    public IItemStack getOutput() {
-        return CraftTweakerMC.getIItemStack(event.getOutput());
+    public IItemStack[] getOutput() {
+        return CraftTweakerMC.getIItemStacks(event.getOutput());
     }
 
     @ZenMethod
-    @ZenSetter("output")
-    public void setOutput(IItemStack output) {
-        event.setOutput(CraftTweakerMC.getItemStack(output));
+    public void setOutput(IItemStack[] output) {
+        event.setOutput(Arrays.stream(CraftTweakerMC.getItemStacks(output)).collect(Collectors.toList()));
     }
 
     @ZenGetter("isDead")
@@ -66,4 +67,3 @@ public class CTAlfPortalDroppedEvent implements IEventCancelable {
         event.setCanceled(canceled);
     }
 }
-

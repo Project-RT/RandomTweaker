@@ -1,6 +1,7 @@
 package ink.ikx.rt.impl.events.customevent;
 
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
+import java.util.List;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
@@ -12,7 +13,7 @@ public class AlfPortalDroppedEvent extends BaseEvent {
     private final IMixinTileAlfPortal alfPortal;
 
     private boolean isDead = true;
-    private ItemStack output = null;
+    private List<ItemStack> output = null;
 
     public AlfPortalDroppedEvent(EntityItem input, IMixinTileAlfPortal alfPortal) {
         this.input = input;
@@ -27,7 +28,7 @@ public class AlfPortalDroppedEvent extends BaseEvent {
         return alfPortal;
     }
 
-    public ItemStack getOutput() {
+    public List<ItemStack> getOutput() {
         return output;
     }
 
@@ -39,7 +40,7 @@ public class AlfPortalDroppedEvent extends BaseEvent {
         isDead = dead;
     }
 
-    public void setOutput(ItemStack output) {
+    public void setOutput(List<ItemStack> output) {
         this.output = output;
     }
 }
