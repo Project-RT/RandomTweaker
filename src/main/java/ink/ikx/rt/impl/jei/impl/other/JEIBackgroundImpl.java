@@ -8,43 +8,68 @@ public class JEIBackgroundImpl implements JEIBackground {
     public int u;
     public int v;
     public int width;
-    public int heigh;
+    public int height;
 
-    public JEIBackgroundImpl(String resourceName, int u, int v, int width, int heigh) {
+    public JEIBackgroundImpl(String resourceName, int u, int v, int width, int height) {
         this.resourceName = resourceName;
         this.u = u;
         this.v = v;
         this.width = width;
-        this.heigh = heigh;
+        this.height = height;
     }
 
-    public JEIBackgroundImpl(int width, int heigh) {
+    public JEIBackgroundImpl(int width, int height) {
         this.width = width;
-        this.heigh = heigh;
+        this.height = height;
     }
 
     @Override
     public String getResourceName() {
-        return this.resourceName;
+        return resourceName;
+    }
+
+    @Override
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
     }
 
     @Override
     public int getU() {
-        return this.u;
+        return u;
+    }
+
+    @Override
+    public void setU(int u) {
+        this.u = u;
     }
 
     @Override
     public int getV() {
-        return this.v;
+        return v;
+    }
+
+    @Override
+    public void setV(int v) {
+        this.v = v;
     }
 
     @Override
     public int getWidth() {
-        return this.width;
+        return width;
+    }
+
+    @Override
+    public void setWidth(int width) {
+        this.width = width;
     }
 
     @Override
     public int getHeight() {
-        return this.heigh;
+        return height;
+    }
+
+    @Override
+    public void setHeight(int height) {
+        this.height = height;
     }
 }
