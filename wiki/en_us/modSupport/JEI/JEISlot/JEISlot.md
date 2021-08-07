@@ -8,9 +8,9 @@ Slots for storing data on JEI, currently only fluid and item slot are supported 
 import mods.randomtweaker.jei.JEISlot;
 ~~~
 
-| ZenGetter | Return |
+| ZenGetter / ZenSetter | Return |
 | :-------- | :------ |
-| isInput   | bool    |
+| input   | bool    |
 | x         | int     |
 | y         | int     |
 | hasBase   | bool    |

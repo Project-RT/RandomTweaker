@@ -36,6 +36,17 @@ public class JEIFontInfoElementImpl extends JEIElementImpl implements JEIFontInf
     }
 
     @Override
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    @Override
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+
+    @Override
     public void Render(Minecraft minecraft) {
         FontRenderer fontRenderer = minecraft.fontRenderer;
         fontRenderer.drawString(this.info, this.x, this.y, this.color);

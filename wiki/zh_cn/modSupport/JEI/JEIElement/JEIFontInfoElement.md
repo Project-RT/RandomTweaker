@@ -8,7 +8,7 @@
 import mods.randomtweaker.jei.JEIFontInfoElement;
 ~~~
 
-| ZenGetter | 返回值 |
+| ZenGetter / ZenSetter | 返回值 |
 | :-------- | :----- |
 | info      | string |
 | color     | int    |

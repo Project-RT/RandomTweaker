@@ -8,6 +8,6 @@
 import mods.randomtweaker.jei.JEIArrowElement;
 ~~~
 
-| ZenGetter | 返回值 | 备注                             |
+| ZenGetter / ZenSetter  | 返回值 | 备注                             |
 | :-------- | :----- | ------------------------------ |
 | direction | int    | direction 参数为四个箭头，可填 0-3 |

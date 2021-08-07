@@ -6,8 +6,7 @@ import net.minecraft.client.Minecraft;
 
 public class JEIItemSlotImpl extends JEISlotImpl implements JEIItemSlot {
 
-    public JEIItemSlotImpl(boolean isInput,
-        int x, int y, boolean hasBase) {
+    public JEIItemSlotImpl(boolean isInput, int x, int y, boolean hasBase) {
         super(hasBase, isInput, x, y);
     }
 

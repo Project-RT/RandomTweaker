@@ -8,7 +8,7 @@ JEILiquidSlot extends `JEISlot`, so that all available `Getters` of `JEISlot` ca
 import mods.randomtweaker.jei.JEILiquidSlot;
 ~~~
 
-| ZenGetter  | Return |
+| ZenGetter / ZenSetter   | Return |
 | :----------- | :------ |
 | width        | int     |
 | height       | int     |

@@ -8,7 +8,7 @@
 import mods.randomtweaker.jei.JEILiquidSlot;
 ~~~
 
-| ZenGetter    | 返回值   |
+| ZenGetter / ZenSetter   | 返回值   |
 | :----------- | :------ |
 | width        | int     |
 | height       | int     |

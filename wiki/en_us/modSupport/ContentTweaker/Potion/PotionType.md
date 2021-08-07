@@ -23,13 +23,13 @@ import mods.randomtweaker.cote.PotionType;
 import mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.cote.PotionType;
 
-VanillaFactory.cretePotionType("lhhdOne", potion).register();
+VanillaFactory.createPotionType("lhhdOne", potion).register();
 
-var Two as PotionType = VanillaFactory.cretePotionType("lhhdTwo", potion);
+var Two as PotionType = VanillaFactory.createPotionType("lhhdTwo", potion);
 Two.setAmplifier(9600);
 Two.register();
 
-var Three as PotionType = VanillaFactory.cretePotionType("lhhdThree", potion);
+var Three as PotionType = VanillaFactory.createPotionType("lhhdThree", potion);
 Three.setDuration(1800);
 Three.setAmplifier(1);
 Three.register();

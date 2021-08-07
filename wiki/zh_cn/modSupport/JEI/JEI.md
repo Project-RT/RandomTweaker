@@ -12,7 +12,7 @@ import mods.jei.JEI;
 | createJEIBackground(width as int, height as int)             | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIBackground.md) |                                                              |
 | createJEIBackground(resourceName as string, u as int, v as int, width as int, height as int) | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIBackground.md) |                                                              |
 | createLiquidSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | [JEILiquidSlot](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEISlot/JEILiquidSlot.md) | hasBase为是否渲染默认的流体槽（需对比宽高）                  |
-| createLiquidSlot(isInput as bool, x as int, y as int, width as int, height as int, capacityMb as int, showCapacity as bool, @Optional(valueBoolean = true) hasBase as bool) | [JEILiquidSlot](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEISlot/JEILiquidSlot.md) | hasBase 同上, 但流体槽必须要根据固定的宽高创建 (eg：16 * 16, 43 * 16,  16 * 34) |
+| createLiquidSlot(isInput as bool, x as int, y as int, width as int, height as int, capacityMb as int, showCapacity as bool, @Optional(valueBoolean = true) hasBase as bool) | [JEILiquidSlot](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEISlot/JEILiquidSlot.md) | hasBase 同上, 但流体槽必须要根据固定的宽高创建 (eg：16 * 16, 43 * 16, 16 * 34) |
 | createItemSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | [JEIItemSlot](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEISlot/JEIItemSlot.md) | hasBase为是否渲染固定的物品槽                                |
 | createJEIRecipe(uid as string)                               | [JEIRecipe](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIRecipe.md) | 创建JEI的配方，uid为定义JEI的uid                             |
 | createJEIItemInputElement(x as int, y as int)                | [JEIItemElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIItemElement.md) |                                                              |
@@ -21,6 +21,18 @@ import mods.jei.JEI;
 | createJEIFontInfoElement(x as int, y as int, info as string, color as int, @Optional width as int, @Optional height as int) | [JEIFontInfoElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIFontInfoElement.md) |                                                              |
 | createJEIArrowElement(x as int, y as int, direction as int)  | [JEIArrowElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEIArrowElement.md) | direction 参数为四个箭头，可填 0-3                           |
 | createJEICustomElement(x as int, y as int, width as int, height as int, u as int, v as int, texture as string) | [JEICustomElement](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIElement/JEICustomElement.md) | texture 的格式为 modid:路径                                  |
+
+## 热重载
+
+请安装 `ZenUtils` Mod
+
+[事件热重载](https://github.com/friendlyhj/ZenUtils/wiki/ReloadEvents)
+和 [CoT 函数热重载](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) 都是此 Mod 提供的
+
+```zenscript
+#loader crafttweaker reloadableevents
+<jei:uid>.getJEISlots()[0].x = 10;
+```
 
 ## 例子
 

@@ -6,6 +6,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
+import stanhebben.zenscript.annotations.ZenSetter;
 
 @ZenRegister
 @ZenClass("mods.randomtweaker.jei.JEIElement")
@@ -30,9 +31,28 @@ public interface JEIElement {
     int getHeigh();
 
     @ZenGetter("texture")
-    default String getTexture() {
-        return "randomtweaker:textures/gui/jei/jei_default.png";
-    }
+    String getTexture();
+
+    @ZenSetter("texture")
+    void setTexture(String texture);
+
+    @ZenSetter("u")
+    void setU(int u);
+
+    @ZenSetter("v")
+    void setV(int v);
+
+    @ZenSetter("x")
+    void setX(int x);
+
+    @ZenSetter("y")
+    void setY(int y);
+
+    @ZenSetter("width")
+    void setWidth(int width);
+
+    @ZenSetter("heigh")
+    void setHeigh(int heigh);
 
     @SideOnly(Side.CLIENT)
     void Render(Minecraft minecraft);

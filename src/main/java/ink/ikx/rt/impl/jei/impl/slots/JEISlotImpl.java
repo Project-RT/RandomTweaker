@@ -32,5 +32,27 @@ public abstract class JEISlotImpl implements JEISlot {
     }
 
     @Override
-    public boolean hasBase() { return this.hasBase; }
+    public boolean isHasBase() {
+        return this.hasBase;
+    }
+
+    @Override
+    public void setHasBase(boolean hasBase) {
+        this.hasBase = hasBase;
+    }
+
+    @Override
+    public void setInput(boolean input) {
+        isInput = input;
+    }
+
+    @Override
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    @Override
+    public void setY(int y) {
+        this.y = y;
+    }
 }

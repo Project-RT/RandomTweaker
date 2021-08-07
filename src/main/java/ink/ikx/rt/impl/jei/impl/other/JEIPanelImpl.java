@@ -158,8 +158,7 @@ public class JEIPanelImpl implements JEIPanel {
             CraftTweakerAPI.getLogger().logError("Parameters mustn't be empty !!!");
             return;
         } else if (icon.matches(BracketHandlerItem.getItem("minecraft:bedrock", 0))) {
-            CraftTweakerAPI.getLogger()
-                .logWarning("Please modify icon, even though this is not a requirement");
+            CraftTweakerAPI.getLogger().logWarning("Please modify icon, even though this is not a requirement");
         }
 
         RandomTweaker.JEIPanelList.add(this);

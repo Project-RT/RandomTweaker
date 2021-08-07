@@ -8,7 +8,7 @@
 import mods.randomtweaker.jei.JEISlot;
 ~~~
 
-| ZenGetter | 返回值   |
+| ZenGetter / ZenSetter | 返回值   |
 | :-------- | :------ |
 | isInput   | bool    |
 | x         | int     |

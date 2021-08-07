@@ -22,6 +22,11 @@ public class JEIArrowElementImpl extends JEIElementImpl implements JEIArrowEleme
     }
 
     @Override
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
+    @Override
     public int getU() {
         return 0;
     }

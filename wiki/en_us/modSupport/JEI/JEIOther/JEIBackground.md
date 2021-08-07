@@ -8,7 +8,7 @@ Import：
 import mods.randomtweaker.jei.JEIBackground;
 ~~~
 
-| ZenGetter    | Return |
+| ZenGetter / ZenSetter    | Return |
 | :----------- | :----- |
 | resourceName | string |
 | u            | int    |
