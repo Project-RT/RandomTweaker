@@ -3,6 +3,7 @@ package ink.ikx.rt.api.mods.cote.bracket;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.BracketHandler;
 import crafttweaker.annotations.ModOnly;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.zenscript.IBracketHandler;
 import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
@@ -17,6 +18,7 @@ import stanhebben.zenscript.type.natives.IJavaMethod;
 @SuppressWarnings("ALL")
 @BracketHandler(priority = 100)
 @ModOnly("contenttweaker")
+@ZenRegister
 public class BracketHandlerCotPotion implements IBracketHandler {
 
     @Override
