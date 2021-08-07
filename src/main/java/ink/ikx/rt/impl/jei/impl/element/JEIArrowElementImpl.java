@@ -51,7 +51,7 @@ public class JEIArrowElementImpl extends JEIElementImpl implements JEIArrowEleme
                 Gui.drawModalRectWithCustomSizedTexture(this.getX(), this.getY(), 64, 0, 15, 22, 256, 256);
                 break;
             case 3:
-                Gui.drawModalRectWithCustomSizedTexture(this.getX(), this.getY(), 64, 32, 22, 15, 256, 256);
+                Gui.drawModalRectWithCustomSizedTexture(this.getX(), this.getY(), 64, 32, 15, 22, 256, 256);
                 break;
             default:
                 CraftTweakerAPI.getLogger().logError("Direction is not supported and you shouldn't goto in here");
