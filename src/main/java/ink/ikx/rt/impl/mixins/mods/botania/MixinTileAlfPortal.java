@@ -161,7 +161,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
 
     @Override
     public IData getData() {
-        return NBTConverter.from(this.getTileData(), true);
+        return NBTConverter.from(this.getTileData(), false);
     }
 
     @Override
