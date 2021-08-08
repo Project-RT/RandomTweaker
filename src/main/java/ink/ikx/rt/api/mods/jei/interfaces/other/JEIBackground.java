@@ -21,7 +21,7 @@ public interface JEIBackground {
     @ZenGetter("width")
     int getWidth();
 
-    @ZenGetter("heigh")
+    @ZenGetter("height")
     int getHeight();
 
     @ZenSetter("resourceName")

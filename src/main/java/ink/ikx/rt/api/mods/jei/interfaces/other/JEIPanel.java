@@ -50,7 +50,7 @@ public interface JEIPanel {
     void setJEIBackGroup(JEIBackground JEIBackground);
 
     @ZenMethod
-    void setJEIBackGroup(int width, int heigh);
+    void setJEIBackGroup(int width, int height);
 
     @ZenMethod
     void setRecipeCatalysts(IItemStack[] recipeCatalysts);

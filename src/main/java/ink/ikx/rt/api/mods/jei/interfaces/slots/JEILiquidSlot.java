@@ -15,11 +15,11 @@ public interface JEILiquidSlot extends JEISlot {
     @ZenSetter("width")
     void setWidth(int width);
 
-    @ZenGetter("heigh")
-    int getHeigh();
+    @ZenGetter("height")
+    int getHeight();
 
-    @ZenSetter("heigh")
-    void setHeigh(int heigh);
+    @ZenSetter("height")
+    void setHeight(int height);
 
     @ZenGetter("capacityMb")
     int getCapacityMb();
@@ -30,7 +30,7 @@ public interface JEILiquidSlot extends JEISlot {
     @ZenGetter("showCapacity")
     boolean isShowCapacity();
 
-    @ZenGetter("showCapacity")
+    @ZenSetter("showCapacity")
     void setShowCapacity(boolean isShowCapacity);
 
 }

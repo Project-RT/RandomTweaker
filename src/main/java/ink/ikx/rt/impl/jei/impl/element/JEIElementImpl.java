@@ -7,13 +7,13 @@ public abstract class JEIElementImpl implements JEIElement {
     public int x;
     public int y;
     public int width;
-    public int heigh;
+    public int height;
 
     public JEIElementImpl(int x, int y, int width, int heigh) {
         this.x = x;
         this.y = y;
         this.width = width;
-        this.heigh = heigh;
+        this.height = heigh;
     }
 
     @Override
@@ -32,8 +32,8 @@ public abstract class JEIElementImpl implements JEIElement {
     }
 
     @Override
-    public int getHeigh() {
-        return this.heigh;
+    public int getHeight() {
+        return this.height;
     }
 
     @Override
@@ -52,8 +52,8 @@ public abstract class JEIElementImpl implements JEIElement {
     }
 
     @Override
-    public void setHeigh(int heigh) {
-        this.heigh = heigh;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     @Override

@@ -7,7 +7,7 @@ import net.minecraft.client.Minecraft;
 public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {
 
     public int width;
-    public int heigh;
+    public int height;
     public int capacityMb;
     public boolean showCapacity;
 
@@ -16,7 +16,7 @@ public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {
         super(hasBase, isInput, x, y);
 
         this.width = width;
-        this.heigh = heigh;
+        this.height = heigh;
         this.capacityMb = capacityMb;
         this.showCapacity = showCapacity;
     }
@@ -27,8 +27,8 @@ public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {
     }
 
     @Override
-    public int getHeigh() {
-        return heigh;
+    public int getHeight() {
+        return height;
     }
 
     @Override
@@ -47,8 +47,8 @@ public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {
     }
 
     @Override
-    public void setHeigh(int heigh) {
-        this.heigh = heigh;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class JEILiquidSlotImpl extends JEISlotImpl implements JEILiquidSlot {
     @Override
     public void Render(Minecraft minecraft) {
         if (this.hasBase) {
-            JEIExpansion.createJEIFluidElement(this.x, this.y, this.width, this.heigh).Render(minecraft);
+            JEIExpansion.createJEIFluidElement(this.x, this.y, this.width, this.height).Render(minecraft);
         }
     }
 }

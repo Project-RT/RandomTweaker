@@ -27,8 +27,8 @@ public interface JEIElement {
     @ZenGetter("width")
     int getWidth();
 
-    @ZenGetter("heigh")
-    int getHeigh();
+    @ZenGetter("height")
+    int getHeight();
 
     @ZenGetter("texture")
     String getTexture();
@@ -51,8 +51,8 @@ public interface JEIElement {
     @ZenSetter("width")
     void setWidth(int width);
 
-    @ZenSetter("heigh")
-    void setHeigh(int heigh);
+    @ZenSetter("height")
+    void setHeight(int heigh);
 
     @SideOnly(Side.CLIENT)
     void Render(Minecraft minecraft);
