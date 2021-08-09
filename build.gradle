@@ -61,7 +61,8 @@ dependencies {
     runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
     runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
 
-    embed 'cn.hutool:hutool-core:5.7.5'
+    embed 'cn.hutool:hutool-http:5.7.7'
+    embed 'cn.hutool:hutool-core:5.7.7'
     embed ("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
         exclude module: "asm-commons"
         exclude module: "asm-tree"
