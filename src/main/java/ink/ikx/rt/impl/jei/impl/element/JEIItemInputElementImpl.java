@@ -31,7 +31,7 @@ public class JEIItemInputElementImpl extends JEIElementImpl implements JEIItemEl
         minecraft.getTextureManager()
             .bindTexture(new ResourceLocation(this.getTexture()));
         Gui.drawModalRectWithCustomSizedTexture(this.getX(), this.getY(),
-            this.getU(), this.getV(), this.getWidth(), this.getHeigh(), 256, 256);
+            this.getU(), this.getV(), this.getWidth(), this.getHeight(), 256, 256);
         GlStateManager.disableAlpha();
     }
 }

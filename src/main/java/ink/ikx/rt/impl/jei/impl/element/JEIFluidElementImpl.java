@@ -24,11 +24,11 @@ public class JEIFluidElementImpl extends JEIElementImpl implements JEIFluidEleme
 
     @Override
     public void Render(Minecraft minecraft) {
-        if (this.getWidth() == 16 && this.getHeigh() == 16) {
+        if (this.getWidth() == 16 && this.getHeight() == 16) {
             this.Render(minecraft, 18, 0);
-        } else if (this.getWidth() == 34 && this.getHeigh() == 16) {
+        } else if (this.getWidth() == 34 && this.getHeight() == 16) {
             this.Render(minecraft, 0, 18);
-        } else if (this.getWidth() == 16 && this.getHeigh() == 34) {
+        } else if (this.getWidth() == 16 && this.getHeight() == 34) {
             this.Render(minecraft, 0, 36);
         }
     }
@@ -38,7 +38,7 @@ public class JEIFluidElementImpl extends JEIElementImpl implements JEIFluidEleme
         minecraft.getTextureManager()
             .bindTexture(new ResourceLocation(this.getTexture()));
         Gui.drawModalRectWithCustomSizedTexture(this.getX() - 1, this.getY() - 1,
-            u, v, this.getWidth() + 2, this.getHeigh() + 2, 256, 256);
+            u, v, this.getWidth() + 2, this.getHeight() + 2, 256, 256);
         GlStateManager.disableAlpha();
     }
 }

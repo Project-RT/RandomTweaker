@@ -92,7 +92,7 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
                 group.init(index, i.isInput(), i.getX(), i.getY());
             } else if (s instanceof JEILiquidSlot) {
                 JEILiquidSlot f = ((JEILiquidSlot) s);
-                fGroup.init(index, f.isInput(), f.getX(), f.getY(), f.getWidth(), f.getHeigh(), f.getCapacityMb(), f.isShowCapacity(), null);
+                fGroup.init(index, f.isInput(), f.getX(), f.getY(), f.getWidth(), f.getHeight(), f.getCapacityMb(), f.isShowCapacity(), null);
             } else {
                 CraftTweakerAPI.logError("Type is not supported and you shouldn't goto in here");
             }
