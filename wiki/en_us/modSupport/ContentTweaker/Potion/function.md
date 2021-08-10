@@ -33,7 +33,7 @@ This function is called every Tick
 import mods.randomtweaker.cotx.PotionPerformEffect;
 ```
 
-* living as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/) 具有此药水效果的有生命实体
+* living as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/) IEntityLivingBase with this potion's effect
 
 * amplifier as int Potion's amplifier
 
