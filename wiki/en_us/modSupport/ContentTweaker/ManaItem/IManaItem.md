@@ -8,7 +8,7 @@ This class is only registered in CraftTweaker when both `Botania` and `CoT` are 
 import mods.randomtweaker.item.IManaItem;
 ```
 
-You can use the `isIManaItem()` method on an instance of the [IMutableItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IMutableItemStack/)
+You can use the `isIManaItem()` method on an instance of the [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)
 class using the `isIManaItem()` method to determine if it is an instance of the IManaItem class, and if so, use the `asIManaItem()` method to convert it
 
 | Getter | Return | Description |
