@@ -1,33 +1,33 @@
 # ManaItem
 
-当同时加载了植物魔法和 CoT 时可以使 CoT 可以创建具有魔力 (Mana) 的物品  
-因为 `ManaItem` 类继承 [Item](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Item/) 类所以 `Item` 类可用的所有功能也可用于 `ManaItem` 类上
+Enables ContentTweaker to create items with Mana when Botania and ContentTweaker are loaded at the same time  
+The `ManaItem` class extends the [Item](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Item/) class, that means all the functions available in the `Item` class can also be be used on the `ManaItem` class
 
-## 导包
+## Import
 
 ```zenscrtpt
 import mods.randomtweaker.cote.ManaItem;
 ```
 
-| 字段 | 类型 | 描述 |
+| Feild | Type | Description |
 |:---------- |:---------- |----------- |
-| unlocalizedName | string | 未本地化名 |
-| maxMana | int (默认为 5w) | 最大魔力容量 |
-| isNoExport | bool (默认 false) | 是否真正的输出魔力 |
-| hasFull | bool (默认 false) | 是否创建填满魔力的魔力物品 |
-| hasCreative | bool (默认 false) | 是否创建类似创造魔力石板的魔力物品 |
+| unlocalizedName | string | Unlocalized name |
+| maxMana | int (Default: 5w) | Max mana capacity |
+| isNoExport | bool (Default: false) | Does it really output mana |
+| hasFull | bool (Default: false) | Whether to create mana items full with mana |
+| hasCreative | bool (Default: false) | Whether to create Creative item(similar to Creative Mana Tablets) |
 
 ## Method
 
-| 方法 | 类型 | 描述 |
+| Method | Type | Description |
 |:---- |:---- |---- |
-| register() | void | 注册此魔力物品 |
+| register() | void | Register this item |
 
-## 热重载
+## Hot reload
 
-请安装 `ZenUtils` Mod
+Please install `ZenUtils` Mod
 
-更多请看 [LateSetCoTFunction](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction)
+See [LateSetCoTFunction](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) for more information.
 
 ```zenscript
 #loader crafttweaker reloadableevents
@@ -36,7 +36,7 @@ import mods.randomtweaker.cote.ManaItem;
 };
 ```
 
-## 例子
+## Example
 
 ```zenscript
 #loader contenttweaker
@@ -47,6 +47,6 @@ var manaItem as ManaItem = VanillaFactory.createManaItem("mana_item", 50000);
 manaItem.register();
 ```
 
-## 本地化
+## Localization
 
-item.contenttweaker.物品ID.name
+item.contenttweaker.ItemID.name

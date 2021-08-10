@@ -1,8 +1,8 @@
 # IManaBauble
 
-同时加载了 `Botania` 和 `CoT` 时此类的才会注册进 CrT
+同时加载了 `Botania` 和 `CoT` 时此类才会注册进 CrT
 
-因为 `IManaBauble` 类继承 [IManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/IManaItem.md) 类所以 `IManaBauble` 类可以使用 `IManaItem` 类所有可用的功能
+因为 `IManaBauble` 类继承 [IManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/1.12.2/wiki/zh_cn/IManaItem.md) 类所以 `IManaBauble` 类可以使用 `IManaItem` 类所有可用的功能
 
 ## 导包
 
@@ -10,7 +10,7 @@
 import mods.randomtweaker.item.IManaBauble;
 ```
 
-你可以对 [IMutableItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IMutableItemStack/)
+你可以对 [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)
 类的实例使用 `isIManaBauble()` 方法判断其是否为 IManaBauble 类的实例, 如果是即可用 `asIManaBauble()` 方法将其转换
 
 | Getter | 返回值 | 描述 |

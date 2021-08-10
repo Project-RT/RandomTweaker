@@ -1,28 +1,28 @@
 # Aspect
 
-同时安装了 `ThaumCraft` 和 `CoT` 时使 `CoT` 能够自定义要素
+Enables `CoT` to customize aspects when both `ThaumCraft` and `CoT` are installed
 
-## 导包
+## Import
 
 ```zenscript
 import mods.randomtweaker.cote.Aspect;
 ```
 
-| 字段 | 类型 | 描述 |
+| Feild | Type | Description |
 | :--- | ---- | --- |
-| tag | string | 要素的唯一名称 |
-| color | int | 要素的颜色 |
-| image | string | 要素贴图的路径 (默认 contenttweaker:textures/aspects/全小写 tag.png, 没有 aspects 文件夹就自己创建一个, 想填写其他的路径请用 `:` 分割主文件名和路径) |
-| components | string[] | 此要素由哪两种要素合成的 (只能填两种要素) |
+| tag | string | Unique name of this aspect |
+| color | int | Color of this aspect |
+| image | string | Default path contenttweaker:textures/aspects/(all-lowercase)tag.png, create a aspects folder manually if there isn't one, use `:` to split the main file name and path if you want to use another path) |
+| components | string[] | Which two aspects does this aspect craft from (fill in two aspects) |
 | blend | int |  |
 
 ## Method
 
-| 方法 | 类型 | 描述 |
+| Method | Type | Description |
 |:---- |:---- |---- |
-| register() | void | 注册此要素 |
+| register() | void | Register this aspect |
 
-## 例子
+## Example
 
 ```zenscript
 #loader contenttweaker

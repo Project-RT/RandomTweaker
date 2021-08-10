@@ -44,4 +44,8 @@ potionObj.performEffect = function(living, amplifier) {
 		player.sendChat("didiidid~~~");
 	}
 };
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> master

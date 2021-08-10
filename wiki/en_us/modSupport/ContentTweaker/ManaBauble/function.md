@@ -1,6 +1,6 @@
 # Function
 
-## 导包 (返回值不为 void 的函数导第二个包, 渲染的导第三个包)
+## Import (second packet for functions with return values other than void, third packet for rendering)
 
 ```zenscript
 import mods.randomtweaker.cote.BaubleFunction;
@@ -10,13 +10,13 @@ import mods.randomtweaker.cote.PlayerBaubleRender;
 
 ## onWornTick
 
-佩戴饰品后每 Tick 都调用
+After wearing the bauble every Tick is called
 
-* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 当前饰品
+* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Current bauble
 
 * wearer
   as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)
-  穿戴者
+  Wearer
 
 ```zenscript
 manaBaubleObj.onWornTick = function((bauble, wearer) {
@@ -26,15 +26,15 @@ manaBaubleObj.onWornTick = function((bauble, wearer) {
 
 ## canEquip
 
-决定饰品是否可以穿戴上
+Decide if the bauble can be worn on
 
-需要返回一个 bool
+Need to return a bool value
 
-* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 当前饰品
+* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Current bauble
 
 * wearer
   as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)
-  穿戴者
+  wearer
 
 ```zenscript
 manaBaubleObj.canEquip = function((bauble, wearer) {
@@ -44,15 +44,15 @@ manaBaubleObj.canEquip = function((bauble, wearer) {
 
 ## canUnEquip
 
-决定饰品饰品是否可以取消穿戴
+Decide whether or not the bauble can be unworn
 
-需要返回一个 bool
+Need to return a bool value
 
-* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 当前饰品
+* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Current bauble
 
 * wearer
   as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)
-  穿戴者
+  wearer
 
 ```zenscript
 manaBaubleObj.canUnEquip = function((bauble, wearer) {
@@ -62,13 +62,13 @@ manaBaubleObj.canUnEquip = function((bauble, wearer) {
 
 ## onEquipped
 
-当玩家佩戴饰品时调用
+Called when the player is wearing an bauble
 
-* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 当前饰品
+* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Current bauble
 
 * wearer
   as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)
-  穿戴者
+  wearer
 
 ```zenscript
 manaBaubleObj.onEquipped = function((bauble, wearer) {
@@ -78,13 +78,13 @@ manaBaubleObj.onEquipped = function((bauble, wearer) {
 
 ## onUnequipped
 
-当玩家未佩戴饰品时调用
+Called when the player is not wearing an bauble
 
-* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 当前饰品
+* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Current bauble
 
 * wearer
   as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)
-  穿戴者
+  wearer
 
 ```zenscript
 manaBaubleObj.onUnequipped = function((bauble, wearer) {
@@ -94,15 +94,15 @@ manaBaubleObj.onUnequipped = function((bauble, wearer) {
 
 ## willAutoSync
 
-当饰品的 NBT 或 Damage 发生了改变, 饰品是否自动同步到客户端 (10 Tick 同步一次)
+When the NBT or Damage of a bauble is changed, is the bauble automatically synced to the client (10 Tick sync once)
 
-需要返回一个 bool
+Need to return a bool value
 
-* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 当前饰品
+* bauble as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Current bauble
 
 * wearer
   as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)
-  穿戴者
+  wearer
 
 ```zenscript
 manaBaubleObj.willAutoSync = function((bauble, wearer) {
@@ -112,15 +112,19 @@ manaBaubleObj.willAutoSync = function((bauble, wearer) {
 
 ## onPlayerBaubleRender
 
-此函数用于当饰品处于玩家的饰品栏时该如何渲染
+This function is used to render the bauble when it is in the player's bauble bar
 
-目前只可进行简单的渲染,
-具体的渲染方法请看 [BaubleRenderHelper](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/BaubleRenderHelper.md)
+Only simple rendering is currently available,
+<<<<<<< HEAD
+For details of the rendering method, please see [BaubleRenderHelper](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/BaubleRenderHelper.md)
+=======
+For details of the rendering method, please see [BaubleRenderHelper](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/BaubleRenderHelper.md)
+>>>>>>> master
 
-* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 饰品
-* player as [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/) 佩戴饰品的玩家
-* renderType as string 分别是 `HEAD` 和 `BODY`
-* partialTicks as float 距离下个 Tick 还剩多少 Tick (一般小于 1)
+* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Bauble
+* player as [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/) Players who wear bauble
+* renderType as string `HEAD` or `BODY`
+* partialTicks as float How many Tick left until the next Tick (usually less than 1)
 
 ```zenscript
 manaBaubleObj.onPlayerBaubleRender = function((stack, player, renderType, partialTicks) {

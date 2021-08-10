@@ -1,21 +1,21 @@
-# PotionType (eg : 药水瓶, 药水箭)
+# PotionType (e.g. : Potion Bottle, Potion Arrow)
 
-使 CoT 可以创建类似药水瓶的药水
+Enables ContentTweaker to create potions like different types of potion bottles
 
-## 导包
+## Import
 
 ```zenscript
 import mods.randomtweaker.cote.PotionType;
 ```
 
-| 字段 | 类型| 描述 |
+| Feild | Type| Description |
 | ---- | :----- | ---- |
-| unlocalizedName | string | 本地化键值 |
-| duration | int | 持续时间 (单位 : Tick, 默认：3600) |
-| amplifier | int | 药水等级 (默认 0) |
-| potion | [Potion](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/Potion.md) | 指定药水 |
+| unlocalizedName | string | Unlocalized name |
+| duration | int | Duration (Unit : Tick, Default : 3600) |
+| amplifier | int | Potion level (default 0) |
+| potion | [Potion](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/Potion.md) | Specified potion |
 
-## 例子
+## Example
 
 ~~~zenscript
 #loader contenttweaker

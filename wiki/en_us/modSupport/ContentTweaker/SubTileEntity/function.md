@@ -2,19 +2,19 @@
 
 ## onBlockAdded
 
-当产魔花被添加到世界上时调用
+Called when the generation flowers are added to the world
 
-### 导包
+### Import
 
 ```zenscript
 import mods.randomtweaker.cote.BlockAdded;
 ```
 
-* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) 产魔花所在世界
+* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) The world of the flower
 
-* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) 产魔花所在坐标
+* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) The pos of the flower
 
-* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) 产魔花的方块状态
+* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) The blockstate of the flower
 
 ```zenscript
 subTileEntityObj.onBlockAdded = function(world, pos, state) {
@@ -24,11 +24,11 @@ subTileEntityObj.onBlockAdded = function(world, pos, state) {
 
 ## canSelect
 
-森林法杖是否可以选择此产魔花并绑定到方块上
+Can the Wand of the Forest select this flower and bind it to a block
 
-需要返回一个 bool
+Need to return a bool
 
-### 导包
+### Import
 
 ```zenscript
 import mods.randomtweaker.cote.CanSelect;
@@ -36,13 +36,13 @@ import mods.randomtweaker.cote.CanSelect;
 
 * player
   as [ICTPlayer](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Types/Player/ICTPlayer/)
-  玩家
+  Player
 
-* wand as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 玩家手持的法杖
+* wand as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Wand held by the player
 
-* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) 产魔花的坐标
+* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) The pos of the flower
 
-* side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) 产魔花面对你的方向
+* side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) The direction the flower faces you
 
 ```zenscript
 subTileEntityObj.canSelect = function(player, wand, pos, side) {
@@ -52,26 +52,26 @@ subTileEntityObj.canSelect = function(player, wand, pos, side) {
 
 ## onBlockPlaceBy
 
-当产魔花被一个实体放置在世界时调用
+Called when the generation flowers are placed to the world
 
-### 导包
+### Import
 
 ```zenscript
 import mods.randomtweaker.cote.BlockPlacedBy;
 ```
 
-* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) 产魔花所在世界
+* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) The world of the flower
 
-* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) 产魔花的坐标
+* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) The pos of the flower
 
-* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) 产魔花的方块状态
+* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) The blockstate of the flower
 
 * entity
   as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)
-  放置产魔花的实体
+  The entity who placed the flower
 
-* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 手上的物品 (
-  也就是你放下的那朵产魔花)
+* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Item on hand (
+  the placed flower)
 
 ```zenscript
 subTileEntityObj.onBlockPlaceBy = function(world, pos, state, entity, stack) {
@@ -81,21 +81,25 @@ subTileEntityObj.onBlockPlaceBy = function(world, pos, state, entity, stack) {
 
 ## onUpdate
 
-每 Tick 都会调用
+Called every tick
 
-### 导包
+### Import
 
 ```zenscript
 import mods.randomtweaker.cote.Update;
 ```
 
 * subtile
+<<<<<<< HEAD
+  as [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileGenerating/SubTileEntityInGame.md)
+=======
   as [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileGenerating/SubTileEntityInGame.md)
-  产魔花的 TileEntity
+>>>>>>> master
+  The TileEntity of the flower
 
-* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) 产魔花所在的世界
+* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) The world of the flower
 
-* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) 产魔花的坐标
+* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) The pos of the flower
 
 ```zenscript
 subTileEntityObj.onUpdate = function(subtile, world, pos) {
@@ -105,23 +109,23 @@ subTileEntityObj.onUpdate = function(subtile, world, pos) {
 
 ## onBlockHarvested
 
-当产魔花被挖掘完时调用
+Called when the generation flowers are harvested
 
-### 导包
+### Import
 
 ```zenscript
 import mods.randomtweaker.cote.BlockHarvested;
 ```
 
-* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) 产魔花所在的世界
+* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) The world of the flower
 
-* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) 产魔花的坐标
+* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) The pos of the flower
 
-* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) 产魔花的方块状态
+* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) The blockstate of the flower
 
 * player
   as [ICTPlayer](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Types/Player/ICTPlayer/)
-  挖掘产魔花的玩家
+  The player harvesting the flower
 
 ```zenscript
 subTileEntityObj.onBlockHarvested = function(world, pos, state, player) {
@@ -131,36 +135,36 @@ subTileEntityObj.onBlockHarvested = function(world, pos, state, player) {
 
 ## onBlockActivated
 
-当玩家右键产魔花时调用
+Called when a player right-clicks a mana-producing flower
 
-需要返回一个 bool
+Need to return a bool
 
-### 导包
+### Import
 
 ```zenscript
 import mods.randomtweaker.cote.BlockActivated;
 ```
 
-* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) 产魔花所在的世界
+* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) The world of the flower
 
-* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) 产魔花的坐标
+* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) The pos of the flower
 
-* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) 产魔花的方块状态
+* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) The blockstate of the flower
 
 * player
   as [ICTPlayer](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Types/Player/ICTPlayer/)
-  右键产魔花的玩家
+  The player who right clicks flower
 
 * hand as [Hand](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Types/Player/Hand/)
-  右键产魔花的玩家的手
+  Which hand the player uses when clicking the flower
 
-* side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) 玩家的方向
+* side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) Direction of the player
 
-* hitX as float 玩家跟产魔花的相对坐标
+* hitX as float Relative coordinates of the player and the flower
 
-* hitY as float 玩家跟产魔花的相对坐标
+* hitY as float Relative coordinates of the player and the flower
 
-* hitZ as float 玩家跟产魔花的相对坐标
+* hitZ as float Relative coordinates of the player and the flower
 
 ```zenscript
 subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, side, hitX, hitY, hitZ) {
@@ -170,19 +174,22 @@ subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, si
 
 ## canGeneratePassively
 
-产魔花是否被动产能 (
-仅 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
-对象具有此函数)
+<<<<<<< HEAD
+Is the flower a passive generation flower ((Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+=======
+Is the flower a passive generation flower ((Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+>>>>>>> master
+object has this function)
 
-### 导包
+### Import
 
 ```zenscript
 import mods.randomtweaker.cote.CanGeneratePassively;
 ```
 
-* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) 产魔花的坐标
+* pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) The pos of the flower
 
-* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) 产魔花所在的世界
+* world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) The world of the flower
 
 ```zenscript
 subTileGeneratingObj.canGeneratePassively = function(pos, world) {
@@ -192,18 +199,20 @@ subTileGeneratingObj.canGeneratePassively = function(pos, world) {
 
 ## populateDropStackNBTs
 
-决定挖掘完产魔花的掉落物 (
-仅 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
-对象具有此函数)
+<<<<<<< HEAD
+Decide the drop after harvested flowers (Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+=======
+Decide the drop after harvested flowers (Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+>>>>>>> master
+class has this function)
 
-### 导包
+### Import
 
 ```zenscript
 import mods.randomtweaker.cote.PopulateDropStackNBTs;
 ```
 
-* drops as [IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 掉落物列表
-
+* drops as [IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) List of drops
 ```zenscript
 subTileGeneratingObj.populateDropStackNBTs = function(drops) {
 

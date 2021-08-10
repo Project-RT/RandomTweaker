@@ -1,10 +1,14 @@
 # SubTileGenerating
 
-因为 `SubTileGenerating`
-类继承 [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
-类所以 `SubTileEntity` 所有可用的功能 `SubTileGenerating` 类都能用
+The `SubTileGenerating`
+<<<<<<< HEAD
+class extends [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+=======
+class extends [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+>>>>>>> master
+class, that means all the functions available in the `SubTileEntity` class can be used by the `SubTileGenerating` class.
 
-## 导包
+## Import
 
 ```zenscript
 import mods.randomtweaker.cote.SubTileGenerating;
@@ -12,22 +16,32 @@ import mods.randomtweaker.cote.SubTileGenerating;
 
 ## ZenProperty
 
-请看 [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+<<<<<<< HEAD
+See [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+=======
+See [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+>>>>>>> master
 
-| 字段 | 类型 | 描述 |
+| Deild | Type | Description |
 |:---- |:--- |----- |
-| PassiveFlower | bool | 是否为被动产魔花 |
-| valueForPassiveGeneration | int | 为被动产魔花时每 Tick 产出多少魔力 |
-| delayBetweenPassiveGeneration | int | 为被动产魔花时每次产魔后的冷却时间 (单位 : Tick) |
-| shouldSyncPassiveGeneration | bool | 被动产魔时是否同步 TileEntity (为被动产魔花才生效) |
+| PassiveFlower | bool | Whether it is a passive generation flower |
+<<<<<<< HEAD
+| valueForPassiveGeneration | int | How many amount of mana each time the mana produced|
+=======
+| valueForPassiveGeneration | int | 阿巴阿巴 |
+
+Translated with www.DeepL.com/Translator (free version) |
+>>>>>>> master
+| delayBetweenPassiveGeneration | int | Cooldown time after each time the mana produced (Unit : Tick) |
+| shouldSyncPassiveGeneration | bool | Whether or not to sync TileEntity when passively producing mana |
 
 ## ZenMethod
 
-| 方法 | 类型 | 描述 |
+| Method | Type | Description |
 |:---- |:--- |----- |
-| register() | void | 注册此产魔花 |
+| register() | void | Register this flower |
 
-## 示例
+## Example
 
 ```zenscript
 #loader contenttweaker
