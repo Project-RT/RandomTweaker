@@ -4,9 +4,9 @@
 
 ## 导包
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.jei.JEIPanel;
-~~~
+```
 
 例子请参考 [Custom JEI](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEI.md)
 

@@ -1,11 +1,9 @@
 # ManaBauble
 
-When Botania and ContentTweaker are loaded at the same time, it allows ContentTweaker to create baubles with mana 
-<<<<<<< HEAD
-The `ManaBauble` class extends the [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md) class, all available functions of `ManaItem` are also available for `ManaBauble`.
-=======
-The `ManaBauble` class extends the [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md) class, all available functions of `ManaItem` are also available for `ManaBauble`.
->>>>>>> master
+When Botania and ContentTweaker are loaded at the same time, it allows ContentTweaker to create baubles with mana.
+The `ManaBauble` class extends the 
+[ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md) class,
+so all available functions of `ManaItem` are also available for `ManaBauble`.
 
 ## Import
 
@@ -18,6 +16,12 @@ import mods.randomtweaker.cote.ManaBauble;
 | useMana | bool | This field has effect except for `RING` and `TRINKET` type bauble, also if the mana of the bauble is greater than 0 it will still return false |
 | baubleType | string | Specify the type of the bauble (must be the same, default is `RING`), there are only `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM` available.|
 
+## Method
+
+| Method | Type | Description |
+|:---- |:---- |---- |
+| register() | void | Register this Mana Bauble |
+
 ## Hot reload
 
 Please install `ZenUtils` Mod
@@ -26,8 +30,13 @@ See [LateSetCoTFunction](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTF
 
 ```zenscript
 #loader crafttweaker reloadableevents
-<cotItem:unlocalizedName>.onWornTick = function((bauble, wearer) {
+import crafttweaker.player.IPlayer;
 
+<cotItem:unlocalizedName>.onWornTick = function(bauble, wearer) {
+   if(wearer instanceof IPlayer) {
+        var player as IPlayer = wearer;
+        player.sendChat("1");
+    }
 };
 ```
 
@@ -49,9 +58,9 @@ import crafttweaker.player.IPlayer;
 var manaBauble as ManaBauble = VanillaFactory.createManaBauble("test_1", 500000, "TRINKET");
 manaBauble.onWornTick = function(bauble, wearer) {
    if(wearer instanceof IPlayer) {
-          var player as IPlayer = wearer;
-          player.sendChat("1");
-      }
+        var player as IPlayer = wearer;
+        player.sendChat("1");
+    }
 };
 manaBauble.onPlayerBaubleRender = function(stack, player, renderType, partialTicks) {
     BaubleRenderHelper.bindTexture();

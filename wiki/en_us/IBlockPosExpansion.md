@@ -15,4 +15,3 @@ Extend `IBlockPos` so that the `IBlockPos` object can use the following methods
 | east(@Optional(1) n as int)                         | [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/)   | Set pos how many blocks east |
 
 **with static requires class call** (e.g. `IBlockPos.getAllInBox(posOne, posTwo);` )
-

@@ -12,9 +12,9 @@
 
 导包：
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.tbl.BLCircleGem;
-~~~
+```
 
 | 方法                                                      | 返回值 |
 | :-------------------------------------------------------- | :----- |

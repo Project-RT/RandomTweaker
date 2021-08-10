@@ -4,9 +4,9 @@ JEIArrowElement extends from `JEIElement`, so all available `Getters` of `JEISlo
 
 ## Import
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.jei.JEIArrowElement;
-~~~
+```
 
 | ZenGetter | Return | Remarks                      |
 | :-------- | :----- | ------------------------------ |

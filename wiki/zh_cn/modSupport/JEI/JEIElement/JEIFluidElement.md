@@ -4,6 +4,6 @@
 
 ## 导包
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.jei.JEIFluidElement;
-~~~
+```

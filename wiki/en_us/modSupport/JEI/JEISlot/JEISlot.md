@@ -4,9 +4,9 @@ Slots for storing data on JEI, currently only fluid and item slot are supported 
 
 ## Import
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.jei.JEISlot;
-~~~
+```
 
 | ZenGetter / ZenSetter | Return |
 | :-------- | :------ |

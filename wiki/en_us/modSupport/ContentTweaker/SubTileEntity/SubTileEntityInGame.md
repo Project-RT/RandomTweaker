@@ -26,8 +26,4 @@ import mods.randomtweaker.cote.SubTileEntityInGame;
 ## Get SubTileEntityInGame
 
 You can use `worldObj.getSubTileEntityInGame(posObj)`
-<<<<<<< HEAD
 to get [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntityInGame.md)
-=======
-to get [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntityInGame.md)
->>>>>>> master

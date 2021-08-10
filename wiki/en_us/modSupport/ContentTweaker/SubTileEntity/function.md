@@ -90,11 +90,7 @@ import mods.randomtweaker.cote.Update;
 ```
 
 * subtile
-<<<<<<< HEAD
-  as [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileGenerating/SubTileEntityInGame.md)
-=======
-  as [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileGenerating/SubTileEntityInGame.md)
->>>>>>> master
+  as [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
   The TileEntity of the flower
 
 * world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) The world of the flower

@@ -2,9 +2,9 @@
 
 Import
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.BracketHandler;
-~~~
+```
 
 ## Methods
 

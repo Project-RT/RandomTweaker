@@ -17,7 +17,7 @@ import mods.randomtweaker.cote.PotionType;
 
 ## Example
 
-~~~zenscript
+```zenscript
 #loader contenttweaker
 
 import mods.contenttweaker.VanillaFactory;
@@ -33,4 +33,4 @@ var Three as PotionType = VanillaFactory.createPotionType("lhhdThree", potion);
 Three.setDuration(1800);
 Three.setAmplifier(1);
 Three.register();
-~~~
+```

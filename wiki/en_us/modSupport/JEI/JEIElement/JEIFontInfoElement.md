@@ -4,9 +4,9 @@ JEIFontInfoElement extends `JEIElement`, so that all available `Getters` of `JEI
 
 ## Import
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.jei.JEIFontInfoElement;
-~~~
+```
 
 | ZenGetter | Return |
 | :-------- | :----- |

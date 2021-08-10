@@ -2,17 +2,17 @@
 
 ## isReady
 
-决定当前 Tick 是否触发 `performEffect` 函数
+Determines whether the current Tick triggers the `performEffect` function
 
-### 导包
+### Import
 
 ```zenscript
 import mods.randomtweaker.cotx.PotionIsReady;
 ```
 
-* duration as int 药水时间
+* duration as int Potion's duration
 
-* amplifier as int 药水等级
+* amplifier as int Potion's amplifier
 
 ```zenscript
 potionObj.isReady = function(duration, amplifier) {
@@ -25,9 +25,9 @@ potionObj.isReady = function(duration, amplifier) {
 
 ## performEffect
 
-此函数每 Tick 都会调用
+This function is called every Tick
 
-### 导包
+### Import
 
 ```zenscript
 import mods.randomtweaker.cotx.PotionPerformEffect;
@@ -35,7 +35,7 @@ import mods.randomtweaker.cotx.PotionPerformEffect;
 
 * living as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/) 具有此药水效果的有生命实体
 
-* amplifier as int 药水等级
+* amplifier as int Potion's amplifier
 
 ```zenscript
 potionObj.performEffect = function(living, amplifier) {

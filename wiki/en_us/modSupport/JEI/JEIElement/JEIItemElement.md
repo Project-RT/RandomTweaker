@@ -4,6 +4,6 @@ JEIItemElement extends `JEIElement`, so that all available `Getters` of `JEISlot
 
 ## Import
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.jei.JEIItemElement;
-~~~
+```

@@ -1,6 +1,7 @@
 # BotaniaFXHelper
 
-Allow CraftTweaker to call the particles of the Botania library (This section is highly recommended for players to test it by themselves)<br />
+Allow CraftTweaker to call the particles of the Botania library (This section is highly recommended for players to test it by themselves)
+
 [Specific implementation](https://github.com/Vazkii/Botania/tree/1.12-final) ->
 vazkii.botania.client.core.proxy.ClientProxy
 
