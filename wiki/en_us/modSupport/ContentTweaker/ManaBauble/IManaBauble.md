@@ -2,7 +2,7 @@
 
 This class is only registered in CraftTweaker when both `Botania` and `CoT` are loaded.
 
-The `IManaBauble` class extends the [IManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/IManaItem.md) class, that means the `IManaBauble` class can use all the functions available in the `IManaItem` class
+The `IManaBauble` class extends the [IManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/ManaItem/IManaItem.md) class, that means the `IManaBauble` class can use all the functions available in the `IManaItem` class
 
 ## Import
 
