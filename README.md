@@ -2,7 +2,7 @@
     <a herf="https://github.com/ikexing-cn/RandomTweaker/issues"> <img src="https://img.shields.io/github/issues/ikexing-cn/RandomTweaker?color=orange&logo=github&style=flat-square"></a>
     <a herf="https://github.com/ikexing-cn/RandomTweaker/network/members"> <img src="https://img.shields.io/github/forks/ikexing-cn/RandomTweaker?color=red&logo=github&style=flat-square"></a>
     <a herf="https://github.com/ikexing-cn/RandomTweaker/stargazers"> <img src="https://img.shields.io/github/stars/ikexing-cn/RandomTweaker?logo=github&style=flat-square"></a>
-    <a herf="https://github.com/ikexing-cn/RandomTweaker/blob/1.12.2/LICENSE"> <img src="https://img.shields.io/github/license/ikexing-cn/RandomTweaker?color=green&logo=github&style=flat-square"></a>
+    <a herf="https://github.com/ikexing-cn/RandomTweaker/blob/1.12/LICENSE"> <img src="https://img.shields.io/github/license/ikexing-cn/RandomTweaker?color=green&logo=github&style=flat-square"></a>
 </div><br />
 
 <div align="center">
