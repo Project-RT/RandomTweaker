@@ -20,4 +20,3 @@ ItemDs allows you to control whether the set `IItemStack` is allowed to be destr
 
 **with static requires class call** (
 e.g. `IItemStack.shouldCauseBlockBreakReset(itemOne, itemTwo);`)
-
