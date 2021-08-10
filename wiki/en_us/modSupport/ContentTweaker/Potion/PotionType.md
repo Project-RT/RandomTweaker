@@ -13,7 +13,7 @@ import mods.randomtweaker.cote.PotionType;
 | unlocalizedName | string | Unlocalized name |
 | duration | int | Duration (Unit : Tick, Default : 3600) |
 | amplifier | int | Potion level (default 0) |
-| potion | [Potion](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/Potion/Potion.md) | Specified potion |
+| potion | [Potion](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/Potion.md) | Specified potion |
 
 ## Example
 
