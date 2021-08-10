@@ -4,9 +4,9 @@
 
 ## 导包
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.jei.JEIFontInfoElement;
-~~~
+```
 
 | ZenGetter / ZenSetter | 返回值 |
 | :-------- | :----- |

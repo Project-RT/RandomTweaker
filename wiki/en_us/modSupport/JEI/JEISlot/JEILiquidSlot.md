@@ -4,9 +4,9 @@ JEILiquidSlot extends `JEISlot`, so that all available `Getters` of `JEISlot` ca
 
 ## Import
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.jei.JEILiquidSlot;
-~~~
+```
 
 | ZenGetter / ZenSetter   | Return |
 | :----------- | :------ |

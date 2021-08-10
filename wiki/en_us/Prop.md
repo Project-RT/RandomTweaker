@@ -4,9 +4,9 @@ Allow manipulation of a file for Map-style input and output (needs to be enabled
 
 Import
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.Prop;
-~~~
+```
 
 ## Methods
 

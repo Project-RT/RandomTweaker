@@ -15,7 +15,7 @@ Must correspond with the recipe, otherwise any problems will not be given to rep
 | uid | string | UID filled in when creating |
 | inputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | Get all inputs for the current recipe |
 | outputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | Get all outputs for the current recipe |
-| JEIElements | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/en_us/modSupport/JEIELement/JEIELement.md) | Get the elements of the current recipe |
+| JEIElements | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEIELement/JEIELement.md) | Get the elements of the current recipe |
 
 | Method | Parameter | Return | Description |
 |:---- | ---- | -----| -----|
@@ -24,8 +24,8 @@ Must correspond with the recipe, otherwise any problems will not be given to rep
 |setOutputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | ``this`` | Set all outputs for the recipe |
 |addInput | [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | ``this`` | Add input recipe |
 |addOutput | [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)  | ``this``| Add output recipe |
-|addJEIElement | [JEIElement](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/en_us/modSupport/JEIELement/JEIELement.md) | ``this`` | Add elements |
-|setJEIElements | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/en_us/modSupport/JEIELement/JEIELement.md) | ``this`` | Set the elements of the current recipe |
+|addJEIElement | [JEIElement](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEIELement/JEIELement.md) | ``this`` | Add elements |
+|setJEIElements | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEIELement/JEIELement.md) | ``this`` | Set the elements of the current recipe |
 |onJEITooltip | function(mouseX as int, mouseY as int) | string[] | Add new tip to the specified place, this function is called only for the current recipe |
 
 ## Example

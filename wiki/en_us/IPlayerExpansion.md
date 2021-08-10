@@ -21,7 +21,7 @@ Need to be enabled in the configuration file
 
 | Method                          | Return |Description|
 | :---------------------------------- | :----- |-----------------------------------|
-| isAllowFTBUltimine(isAllow as bool) | void   |是否允许玩家使用ftbu连锁|
+| isAllowFTBUltimine(isAllow as bool) | void   |Whether to allow players to use FTB Ultimine|
 
 ## MatterOverdrive
 

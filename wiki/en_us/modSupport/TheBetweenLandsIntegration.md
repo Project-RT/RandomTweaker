@@ -12,9 +12,9 @@ Optional combatType : `OFFENSIVE`， `DEFENSIVE`， `BOTH`
 
 Import：
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.tbl.BLCircleGem;
-~~~
+```
 
 | Method                                                       | Return |
 | :----------------------------------------------------------- | :----- |

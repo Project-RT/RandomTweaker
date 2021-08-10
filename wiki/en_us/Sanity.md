@@ -6,9 +6,9 @@ For more, see [IPlayerExpansion](https://github.com/ikexing-cn/RandomTweaker/blo
 
 ## Import
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.PlayerSanityChangeEvent;
-~~~
+```
 
 ## PlayerSanityChangeEvent
 

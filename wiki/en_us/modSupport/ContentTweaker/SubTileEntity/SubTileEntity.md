@@ -1,10 +1,6 @@
 # SubTileEntity
 
-<<<<<<< HEAD
 When both `BoT` and `CoT` are installed, `CoT` can be used to create custom Generating/Functional Flowers.
-=======
-When both `BoT` and `CoT` are installed, `CoT` can be customized generation flowers or functional flowers.
->>>>>>> master
 
 CraftTweaker can't get this class, only its subclasses
 
@@ -12,15 +8,9 @@ Remember to put the custom flower texture in the `resources/contenttweaker/textu
 
 This class mainly makes the code easy to maintain
 
-<<<<<<< HEAD
 To create generation flowers, please see [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
 
 To create functional flowers, please see [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md)
-=======
-To create generation flowers, please see [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
-
-To create functional flowers, please see [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md)
->>>>>>> master
 
 ## Import
 

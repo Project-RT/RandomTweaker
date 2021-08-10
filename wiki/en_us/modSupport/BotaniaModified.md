@@ -1,5 +1,7 @@
 # Botania Modified
 
+## Hydroangeas
+
 Allow Hydroangeas to consume other fluids (needs to be enabled in the configuration file).
 
 ```zenscript
