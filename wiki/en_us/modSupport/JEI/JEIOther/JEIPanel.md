@@ -18,9 +18,9 @@ For examples, please refer to [Custom JEI](https://github.com/ikexing-cn/RandomT
 | icon            | [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) |
 | JEIBackground   | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEI/JEIBackground.md) |
 | recipeCatalysts | [IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) |
-| JEISlots        | [JEISlot[]](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEISlot/JEISlot.md) |
-| JEIRecipes      | [JEIRecipe[]](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEIRecipe/JEIRecipe.md) |
-| JEIElements     | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEIELement/JEIELement.md) |
+| JEISlots        | [JEISlot[]](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEI/JEISlot/JEISlot.md) |
+| JEIRecipes      | [JEIRecipe[]](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEI/JEIOther/JEIRecipe.md) |
+| JEIElements     | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEI/JEIElement/JEIElement.md) |
 
 | Method                                                       | Return | Remark                                                       |
 | :----------------------------------------------------------- | :----- | ------------------------------------------------------------ |
