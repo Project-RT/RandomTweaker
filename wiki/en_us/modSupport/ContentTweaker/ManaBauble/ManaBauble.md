@@ -1,24 +1,28 @@
 # ManaBauble
 
-当同时加载了植物魔法和 CoT 时可以使 CoT 可以创建具有魔力 (Mana) 的饰品  
-因为 `ManaBauble` 类继承 [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md) 类所以 `ManaItem` 所有可用的功能也可用于 `ManaBauble` 上
+When Botania and ContentTweaker are loaded at the same time, it allows ContentTweaker to create baubles with mana 
+<<<<<<< HEAD
+The `ManaBauble` class extends the [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md) class, all available functions of `ManaItem` are also available for `ManaBauble`.
+=======
+The `ManaBauble` class extends the [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md) class, all available functions of `ManaItem` are also available for `ManaBauble`.
+>>>>>>> master
 
-## 导包
+## Import
 
 ```zenscript
 import mods.randomtweaker.cote.ManaBauble;
 ```
 
-| 字段 | 类型 | 描述 |
+| Feild | Type | Description |
 |:--- | --- | ---- |
-| useMana | bool | 除 `RING` 和 `TRINKET` 类型的饰品此字段都有效果, 另外如果饰品的魔力大于 0 仍然会返回 false |
-| baubleType | string | 指定饰品的类型 (必须一致, 默认为 `RING`) , 有 `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM`|
+| useMana | bool | This field has effect except for `RING` and `TRINKET` type bauble, also if the mana of the bauble is greater than 0 it will still return false |
+| baubleType | string | Specify the type of the bauble (must be the same, default is `RING`), there are only `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM` available.|
 
-## 热重载
+## Hot reload
 
-请安装 `ZenUtils` Mod
+Please install `ZenUtils` Mod
 
-更多请看 [LateSetCoTFunction](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction)
+See [LateSetCoTFunction](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) for more information.
 
 ```zenscript
 #loader crafttweaker reloadableevents
@@ -29,11 +33,11 @@ import mods.randomtweaker.cote.ManaBauble;
 
 ## Method
 
-| 方法 | 类型 | 描述 |
+| Method | Type | Description |
 |:---- |:---- |---- |
-| register() | void | 注册此魔力饰品 |
+| register() | void | Register this bauble|
 
-## 例子
+## Example
 
 ```zenscript
 #loader contenttweaker

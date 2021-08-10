@@ -7,7 +7,7 @@
 ~~~zenscript
 import mods.randomtweaker.jei.JEIPanel;
 ~~~
-例子请参考 [Custom JEI](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEI.md)
+例子请参考 [Custom JEI](https://github.com/ikexing-cn/RandomTweaker/blob/1.12.2/wiki/zh_cn/modSupport/JEI/JEI.md)
 
 | ZenGetter       | 返回值        |
 | :-------------- | :------------ |
@@ -15,7 +15,7 @@ import mods.randomtweaker.jei.JEIPanel;
 | localizationKey | string        |
 | modid           | string        |
 | icon            | [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)    |
-| JEIBackground   | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/JEI/JEIBackground.md) |
+| JEIBackground   | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/1.12.2/wiki/zh_cn/modSupport/JEI/JEIBackground.md) |
 | recipeCatalysts | [IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)  |
 | JEISlots        | [JEISlot[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEISlot/JEISlot.md)     |
 | JEIRecipes      | [JEIRecipe[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/zh_cn/modSupport/JEIRecipe/JEIRecipe.md)   |

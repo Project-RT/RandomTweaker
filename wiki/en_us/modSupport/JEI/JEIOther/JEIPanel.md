@@ -8,7 +8,7 @@ Custom JEI Panel
 import mods.randomtweaker.jei.JEIPanel;
 ~~~
 
-For examples, please refer to [Custom JEI](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/JEI/JEI.md)
+For examples, please refer to [Custom JEI](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEI/JEI.md)
 
 | ZenGetter       | Return                                                       |
 | :-------------- | :----------------------------------------------------------- |
@@ -16,7 +16,7 @@ For examples, please refer to [Custom JEI](https://github.com/ikexing-cn/RandomT
 | localizationKey | string                                                       |
 | modid           | string                                                       |
 | icon            | [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) |
-| JEIBackground   | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/JEI/JEIBackground.md) |
+| JEIBackground   | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEI/JEIBackground.md) |
 | recipeCatalysts | [IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) |
 | JEISlots        | [JEISlot[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/en_us/modSupport/JEISlot/JEISlot.md) |
 | JEIRecipes      | [JEIRecipe[]](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/en_us/modSupport/JEIRecipe/JEIRecipe.md) |
@@ -38,6 +38,6 @@ For examples, please refer to [Custom JEI](https://github.com/ikexing-cn/RandomT
 | addJEIElement(JEIElement as [JEIElement](https://github.com/ikexing-cn/RandomTweaker/tree/master/wiki/en_us/modSupport/JEIELement/JEIELement.md)) | void   | As the name implies                                          |
 | register()                                                   | void   | As the name implies                                          |
 
-| function | 写法 | Retrun | Description |
+| function | Use | Retrun | Description |
 |:--- |:------- |---- | ------|
 | onJEITooltip | function(mouseX as int, mouseY as int) | string[] | Add a new tip for the specified place |

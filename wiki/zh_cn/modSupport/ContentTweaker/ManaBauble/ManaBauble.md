@@ -1,7 +1,7 @@
 # ManaBauble
 
 当同时加载了植物魔法和 CoT 时可以使 CoT 可以创建具有魔力 (Mana) 的饰品  
-因为 `ManaBauble` 类继承 [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/zh_cn/modSupport/ContentTweaker/ManaItem/ManaItem.md) 类所以 `ManaItem` 所有可用的功能也可用于 `ManaBauble` 上
+因为 `ManaBauble` 类继承 [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/1.12.2/wiki/zh_cn/modSupport/ContentTweaker/ManaItem/ManaItem.md) 类所以 `ManaItem` 所有可用的功能也可用于 `ManaBauble` 上
 
 ## 导包
 
@@ -23,7 +23,11 @@ import mods.randomtweaker.cote.ManaBauble;
 ```zenscript
 #loader crafttweaker reloadableevents
 <cotItem:unlocalizedName>.onWornTick = function((bauble, wearer) {
+<<<<<<< HEAD
    if(wearer instanceof IPlayer) {
+=======
+    if(wearer instanceof IPlayer) {
+>>>>>>> master
           var player as IPlayer = wearer;
           player.sendChat("1");
       }

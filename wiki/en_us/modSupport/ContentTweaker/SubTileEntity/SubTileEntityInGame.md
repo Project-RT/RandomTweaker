@@ -1,29 +1,33 @@
 # SubTileEntityInGame
 
-## 导包
+## Import
 
 ```zenscript
 import mods.randomtweaker.cote.SubTileEntityInGame;
 ```
 
-| Getter | 类型 | 是否有 Setter | 描述 |
+| Getter | Type | Have Setter | Description |
 | :----- | ---- | ------------ | ---- |
-| data | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | √ | 获取或者设置 (注意是设置不是更新) 自定义花的 Data |
+| data | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | √ | Get or set (note that it is set and not updated) the Data of the custom flower |
 
-| Method | 类型 | 描述 |
+| Method | Type | Description |
 | :----- | ---- | --- |
-| sync() | void | 同步 TileEntity 数据 |
-| typeOf() | string | 返回自定义花的类型 |
-| getCustomData() | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | 获取自定义花的 Data |
-| setCustomData(data as [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/)) | void | 设置自定义花的 Data |
-| updateCustomData(data as [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/)) | void | 更新自定义花的 Data |
-| getMana() | void | 获取自定义花的 Mana |
-| addMana(mana as int) | void | 增加自定义花的 Mana |
-| setMana(mana as int) | void | 设置自定义花的 Mana |
-| getRedstoneSignal() | int | 获取自定义花的红石信号 |
-| getPassiveDecayTicks() | int | 获取产魔的冷却时间 |
+| sync() | void | Sync TileEntity data (Try calling this method when you encounter any problems)|
+| typeOf() | string | Return the type of the custom flower |
+| getCustomData() | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | Get the Data of the custom flower |
+| setCustomData(data as [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/)) | void | Set the Data of the custom flower |
+| updateCustomData(data as [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/)) | void | Update the Data of the custom flower |
+| getMana() | void | Get the amount of mana of the custom flower |
+| addMana(mana as int) | void | Add the amount of mana of the custom flower |
+| setMana(mana as int) | void | Set the amount of mana of the custom flower |
+| getRedstoneSignal() | int | Get the redstone signal of a custom flower |
+| getPassiveDecayTicks() | int | Get cooldown time for last time of the custom generation flower |
 
-## 获取 SubTileEntityInGame
+## Get SubTileEntityInGame
 
-你可以用 `worldObj.getSubTileEntityInGame(posObj)`
-来获取 [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntityInGame.md)
+You can use `worldObj.getSubTileEntityInGame(posObj)`
+<<<<<<< HEAD
+to get [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntityInGame.md)
+=======
+to get [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntityInGame.md)
+>>>>>>> master
