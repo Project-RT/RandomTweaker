@@ -90,6 +90,7 @@ Need to be enabled in the configuration file
 | giverDreamJournl(player as [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/)) | void   | Give player a DreamJournl | A new mysterious opening can be achieved by modifying the configuration file and overwriting the langkey |
 
 ## TheTwilightForest
+
 | Method                             | Return  |Description             |
 | :------------------------------- | :----- | ---------------- |
 | teleportPlayer() | void   | Teleport player to Twilight |

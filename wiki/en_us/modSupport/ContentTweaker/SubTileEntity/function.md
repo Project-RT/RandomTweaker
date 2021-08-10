@@ -170,11 +170,7 @@ subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, si
 
 ## canGeneratePassively
 
-<<<<<<< HEAD
 Is the flower a passive generation flower ((Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
-=======
-Is the flower a passive generation flower ((Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
->>>>>>> master
 object has this function)
 
 ### Import
@@ -195,11 +191,7 @@ subTileGeneratingObj.canGeneratePassively = function(pos, world) {
 
 ## populateDropStackNBTs
 
-<<<<<<< HEAD
-Decide the drop after harvested flowers (Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
-=======
 Decide the drop after harvested flowers (Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
->>>>>>> master
 class has this function)
 
 ### Import
