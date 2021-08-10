@@ -115,7 +115,7 @@ manaBaubleObj.willAutoSync = function((bauble, wearer) {
 此函数用于当饰品处于玩家的饰品栏时该如何渲染
 
 目前只可进行简单的渲染,
-具体的渲染方法请看 [BaubleRenderHelper](https://github.com/ikexing-cn/RandomTweaker/blob/1.12.2/wiki/zh_cn/BaubleRenderHelper.md)
+具体的渲染方法请看 [BaubleRenderHelper](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/ManaBauble/BaubleRenderHelper.md)
 
 * stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) 饰品
 * player as [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/) 佩戴饰品的玩家

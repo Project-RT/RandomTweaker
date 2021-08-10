@@ -8,9 +8,9 @@ CrT 获取不到这个类, 只能获取到它的子类
 
 这个类主要让代码方便维护
 
-想创建产魔花请看 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12.2/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+想创建产魔花请看 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
 
-想创建功能花请看 [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/1.12.2/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md)
+想创建功能花请看 [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md)
 
 ## 导包
 

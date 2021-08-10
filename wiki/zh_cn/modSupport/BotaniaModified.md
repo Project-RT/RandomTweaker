@@ -1,6 +1,7 @@
 # Botania Modified
 
 ## 水锈球
+
 允许水绣球消耗其他流体 (需在配置文件开启后才可使用)
 
 ```zenscript

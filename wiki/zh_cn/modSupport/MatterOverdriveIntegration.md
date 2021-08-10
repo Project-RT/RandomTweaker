@@ -1,6 +1,6 @@
 # MatterOverdrive Integration
 
-更多请看 [IPlayerExpansion](https://github.com/ikexing-cn/RandomTweaker/blob/1.12.2/wiki/zh_cn/IPlayerExpansion.md)
+更多请看 [IPlayerExpansion](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/IPlayerExpansion.md)
 
 ## 技能 - id 对照表
 

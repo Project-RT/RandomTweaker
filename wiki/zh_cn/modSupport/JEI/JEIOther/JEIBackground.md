@@ -2,7 +2,7 @@
 
 JEI 的背景设置, 可以只设置宽高
 
-导包：
+## 导包
 
 ~~~zenscript
 import mods.randomtweaker.jei.JEIBackground;

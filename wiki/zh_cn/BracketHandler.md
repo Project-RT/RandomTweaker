@@ -4,9 +4,9 @@
 
 导包：
 
-~~~zenscript
+```zenscript
 import mods.randomtweaker.BracketHandler;
-~~~
+```
 
 ## Methods
 

@@ -13,11 +13,11 @@ import mods.randomtweaker.cote.PotionType;
 | unlocalizedName | string | 本地化键值 |
 | duration | int | 持续时间 (单位 : Tick, 默认：3600) |
 | amplifier | int | 药水等级 (默认 0) |
-| potion | [Potion](https://github.com/ikexing-cn/RandomTweaker/blob/1.12.2/wiki/zh_cn/modSupport/ContentTweaker/Potion.md) | 指定药水 |
+| potion | [Potion](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/Potion/Potion.md) | 指定药水 |
 
 ## 例子
 
-~~~zenscript
+```zenscript
 #loader contenttweaker
 
 import mods.contenttweaker.VanillaFactory;
@@ -33,4 +33,4 @@ var Three as PotionType = VanillaFactory.createPotionType("lhhdThree", potion);
 Three.setDuration(1800);
 Three.setAmplifier(1);
 Three.register();
-~~~
+```
