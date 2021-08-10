@@ -16,7 +16,7 @@ Extend `IItemStack` so that the `IItemStack` object can use the following method
 | static addItemDs (stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), damagesource as [IDamageSource](https://docs.blamejared.com/1.12/en/Vanilla/Damage/IDamageSource/)) | bool |
 | static removeItemDs (stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), damagesource as [IDamageSource](https://docs.blamejared.com/1.12/en/Vanilla/Damage/IDamageSource/)) | bool |
 
-ItemDs允许你操控设定的物品为物品实体时是否允许被特定的伤害摧毁。
+ItemDs allows you to control whether the set item is allowed to be destroyed by a specific damage when it is an item entity.
 
 **with static requires class call** (
 e.g. `IItemStack.shouldCauseBlockBreakReset(itemOne, itemTwo);`)
