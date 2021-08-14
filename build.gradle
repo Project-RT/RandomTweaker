@@ -44,7 +44,6 @@ configurations {
 
 dependencies {
     compile files('libs/')
-    compile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.652"
 
     deobfCompile "youyihj:zenutils:1.9.3"
     deobfCompile "curse.maven:Baubles-227083:2518667"
@@ -59,6 +58,7 @@ dependencies {
     deobfCompile "curse.maven:matteroverdrive-legacy-308192:2699215"
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.652"
 
     runtime "vazkii.patchouli:Patchouli:1.0-21.5"
     runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"

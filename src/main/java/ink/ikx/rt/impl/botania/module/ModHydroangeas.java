@@ -17,7 +17,7 @@ public class ModHydroangeas {
 
     public static List<HydroangeasHandler> handlerList = new ArrayList<>();
     public static Map<IItemStack, Double> blockFactorList = new HashMap<>();
-    public static Map<ILiquidStack, Double> fluidFactorList = new HashMap<>();
+    public static int burnTime = 40;
 
     public static void setBlockBelowFactor(IItemStack block, double factor) {
         if (block.isItemBlock()) {
@@ -27,18 +27,27 @@ public class ModHydroangeas {
         }
     }
 
-    public static void setFluidFactor(ILiquidStack inputFluid, double factor) {
-        fluidFactorList.put(inputFluid, factor);
+    public static void setFluidFactor(ILiquidStack inputFluid, ILiquidStack liquidCat, double factor) {
+        for (HydroangeasHandler handler : handlerList) {
+            if (handler.liquidConsume.equals(inputFluid)) {
+                handler.liquidCatalyst = liquidCat;
+                handler.fluidFactor = factor;
+            }
+        }
     }
 
     public static class HydroangeasHandler {
 
         ILiquidStack liquidConsume;
+        ILiquidStack liquidCatalyst;
+        double fluidFactor;
         int manaGen;
 
-        public HydroangeasHandler(ILiquidStack input, int manaGen, double factor) {
+        public HydroangeasHandler(ILiquidStack input, int manaGen, ILiquidStack liquidCatalyst, double factor) {
             this.liquidConsume = input;
             this.manaGen = manaGen;
+            this.fluidFactor = factor;
+            this.liquidCatalyst = liquidCatalyst;
         }
 
         public Block getBlockLiquid() {
@@ -47,6 +56,14 @@ public class ModHydroangeas {
 
         public int getManaGen() {
             return this.manaGen;
+        }
+
+        public double getFluidFactor() {
+            return this.fluidFactor;
+        }
+
+        public Block getBlockLiquidCatalyst() {
+            return getBlock(liquidCatalyst);
         }
 
     }

@@ -1,7 +1,6 @@
 package ink.ikx.rt.impl.botania.subtitle;
 
 import crafttweaker.api.item.IItemStack;
-import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.botania.module.ModHydroangeas;
 import ink.ikx.rt.impl.botania.module.ModHydroangeas.HydroangeasHandler;
@@ -42,6 +41,8 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
     double manaGen = 1;
     double manaFactorFluid = 2;
     double manaFactorBlock = 1;
+    Block fluidBurn = null;
+    Block fluidCat = null;
 
     @Override
     public void onUpdate() {
@@ -51,9 +52,9 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
             cooldown--;
             for (int i = 0; i < 3; i++) {
                 Botania.proxy.wispFX(supertile.getPos().getX() + 0.5 + Math.random() * 0.2 - 0.1,
-                    supertile.getPos().getY() + 0.5 + Math.random() * 0.2 - 0.1,
-                    supertile.getPos().getZ() + 0.5 + Math.random() * 0.2 - 0.1, 0.1F, 0.1F, 0.1F,
-                    (float) Math.random() / 6, (float) -Math.random() / 30);
+                        supertile.getPos().getY() + 0.5 + Math.random() * 0.2 - 0.1,
+                        supertile.getPos().getZ() + 0.5 + Math.random() * 0.2 - 0.1, 0.1F, 0.1F, 0.1F,
+                        (float) Math.random() / 6, (float) -Math.random() / 30);
             }
         }
 
@@ -64,22 +65,25 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
 
                 blockCheck:
                 for (BlockPos posCheck : BlockPos.getAllInBox(
-                    pos.add(-RANGE, -RANGE_Y, -RANGE),
-                    pos.add(RANGE, RANGE_Y, RANGE))) {
+                        pos.add(-RANGE, -RANGE_Y, -RANGE),
+                        pos.add(RANGE, RANGE_Y, RANGE))) {
 
                     PropertyInteger prop = supertile.getWorld().getBlockState(posCheck)
-                        .getBlock() instanceof BlockLiquid ? BlockLiquid.LEVEL :
-                        supertile.getWorld().getBlockState(posCheck)
-                            .getBlock() instanceof BlockFluidBase ? BlockFluidBase.LEVEL : null;
+                            .getBlock() instanceof BlockLiquid ? BlockLiquid.LEVEL :
+                            supertile.getWorld().getBlockState(posCheck)
+                                    .getBlock() instanceof BlockFluidBase ? BlockFluidBase.LEVEL : null;
 
                     for (HydroangeasHandler handler : ModHydroangeas.handlerList) {
 
                         if (getWorld().getBlockState(posCheck).getBlock() == handler
-                            .getBlockLiquid()
-                            && (prop == null
-                            || supertile.getWorld().getBlockState(posCheck).getValue(prop) == 0)) {
+                                .getBlockLiquid()
+                                && (prop == null
+                                || supertile.getWorld().getBlockState(posCheck).getValue(prop) == 0)) {
                             supertile.getWorld().setBlockToAir(posCheck);
                             manaGen = handler.getManaGen();
+                            fluidBurn = handler.getBlockLiquid();
+                            fluidCat = handler.getBlockLiquidCatalyst();
+                            manaFactorFluid = handler.getFluidFactor();
 
                             if (cooldown == 0) {
                                 burnTime += getBurnTime();
@@ -102,28 +106,22 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
             }
             burnTime--;
 
-            manaFactorFluid = 1;
             for (BlockPos.MutableBlockPos posCheck : BlockPos.getAllInBoxMutable(
-                pos.add(-RANGE, -RANGE_Y, -RANGE),
-                pos.add(RANGE, RANGE_Y, RANGE))) {
+                    pos.add(-RANGE, -RANGE_Y, -RANGE),
+                    pos.add(RANGE, RANGE_Y, RANGE))) {
 
-                for (ILiquidStack fluid: ModHydroangeas.fluidFactorList.keySet()) {
-                    Block fluidFactor = CraftTweakerMC.getLiquidStack(fluid).getFluid().getBlock();
-                    if (supertile.getWorld().getBlockState(posCheck).getBlock()
-                            == fluidFactor) {
-                        // 采用全部所有流体的因子乘起来的方法。
-                        manaFactorFluid *= ModHydroangeas.fluidFactorList.get(fluid);
-                        break;
-                    }
+                if (supertile.getWorld().getBlockState(posCheck).getBlock()
+                        == fluidCat) {
+                    manaGen *= manaFactorFluid;
                 }
             }
             IItemStack block = CraftTweakerMC.getIItemStack(
-                new ItemStack(supertile.getWorld().getBlockState(pos.down()).getBlock()));
+                    new ItemStack(supertile.getWorld().getBlockState(pos.down()).getBlock()));
             if (ModHydroangeas.blockFactorList.containsKey(block)) {
                 manaFactorBlock = ModHydroangeas.blockFactorList.get(block);
             }
 
-            addMana((int) (manaGen * manaFactorFluid * manaFactorBlock));
+            addMana((int) (manaGen * manaFactorBlock));
 
             if (burnTime == 0) {
                 cooldown = getCooldown();
@@ -134,18 +132,18 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
 
     public void doBurnParticles() {
         Botania.proxy.wispFX(supertile.getPos().getX() + 0.55 + Math.random() * 0.2 - 0.1,
-            supertile.getPos().getY() + 0.55 + Math.random() * 0.2 - 0.1,
-            supertile.getPos().getZ() + 0.5, 0.05F, 0.05F, 0.7F, (float) Math.random() / 6,
-            (float) -Math.random() / 60);
+                supertile.getPos().getY() + 0.55 + Math.random() * 0.2 - 0.1,
+                supertile.getPos().getZ() + 0.5, 0.05F, 0.05F, 0.7F, (float) Math.random() / 6,
+                (float) -Math.random() / 60);
     }
 
     public void playSound() {
         getWorld().playSound(null, supertile.getPos(), SoundEvents.ENTITY_GENERIC_DRINK,
-            SoundCategory.BLOCKS, 0.01F, 0.5F + (float) Math.random() * 0.5F);
+                SoundCategory.BLOCKS, 0.01F, 0.5F + (float) Math.random() * 0.5F);
     }
 
     public int getBurnTime() {
-        return 40;
+        return ModHydroangeas.burnTime;
     }
 
     @Override
@@ -199,7 +197,7 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
 
     @Override
     public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state,
-        EntityLivingBase entity, ItemStack stack) {
+                                EntityLivingBase entity, ItemStack stack) {
         super.onBlockPlacedBy(world, pos, state, entity, stack);
         cooldown = ItemNBTHelper.getInt(stack, TAG_COOLDOWN, 0);
     }

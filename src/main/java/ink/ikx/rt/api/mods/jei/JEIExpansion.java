@@ -1,22 +1,13 @@
 package ink.ikx.rt.api.mods.jei;
 
 import crafttweaker.annotations.ZenRegister;
-import ink.ikx.rt.api.mods.jei.interfaces.element.JEIArrowElement;
-import ink.ikx.rt.api.mods.jei.interfaces.element.JEICustomElement;
-import ink.ikx.rt.api.mods.jei.interfaces.element.JEIFluidElement;
-import ink.ikx.rt.api.mods.jei.interfaces.element.JEIFontInfoElement;
-import ink.ikx.rt.api.mods.jei.interfaces.element.JEIItemElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.*;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIBackground;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.mods.jei.interfaces.slots.JEIItemSlot;
 import ink.ikx.rt.api.mods.jei.interfaces.slots.JEILiquidSlot;
-import ink.ikx.rt.impl.jei.impl.element.JEIArrowElementImpl;
-import ink.ikx.rt.impl.jei.impl.element.JEICustomElementImpl;
-import ink.ikx.rt.impl.jei.impl.element.JEIFluidElementImpl;
-import ink.ikx.rt.impl.jei.impl.element.JEIFontInfoElementImpl;
-import ink.ikx.rt.impl.jei.impl.element.JEIItemInputElementImpl;
-import ink.ikx.rt.impl.jei.impl.element.JEIItemOutputElementImpl;
+import ink.ikx.rt.impl.jei.impl.element.*;
 import ink.ikx.rt.impl.jei.impl.other.JEIBackgroundImpl;
 import ink.ikx.rt.impl.jei.impl.other.JEIPanelImpl;
 import ink.ikx.rt.impl.jei.impl.other.JEIRecipeImpl;
@@ -93,6 +84,11 @@ public class JEIExpansion {
     @ZenMethodStatic
     public static JEIArrowElement createJEIArrowElement(int x, int y, int direction) {
         return new JEIArrowElementImpl(x, y, direction);
+    }
+
+    @ZenMethodStatic
+    public static JEIManaBarElement createJEIManaBarElement(int x, int y, int mana) {
+        return new JEIManaBarElementImpl(x, y, mana);
     }
 
     @ZenMethodStatic
