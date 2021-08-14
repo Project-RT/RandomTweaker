@@ -18,7 +18,7 @@ import stanhebben.zenscript.annotations.ZenSetter;
 
 @ZenRegister
 @ModOnly("botania")
-@ZenClass("mods.randomtweaker.AlfPortalDroppedEvent")
+@ZenClass("mods.randomtweaker.botania.AlfPortalDroppedEvent")
 public class CTAlfPortalDroppedEvent implements IEventCancelable {
 
     private final AlfPortalDroppedEvent event;

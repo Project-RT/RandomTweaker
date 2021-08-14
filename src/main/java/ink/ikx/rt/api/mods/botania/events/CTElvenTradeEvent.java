@@ -16,7 +16,7 @@ import stanhebben.zenscript.annotations.ZenSetter;
 
 @ZenRegister
 @ModOnly("botania")
-@ZenClass("mods.randomtweaker.ElvenTradeEvent")
+@ZenClass("mods.randomtweaker.botania.ElvenTradeEvent")
 public class CTElvenTradeEvent implements IEventCancelable {
 
     private final ElvenTradeEvent event;

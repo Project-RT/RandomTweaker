@@ -38,7 +38,7 @@ import mods.jei.JEI;
 
 ```zenscript
 import mods.jei.JEI;
-import mods.randomtweaker.JEIPanel;
+import mods.randomtweaker.jei.JEIPanel;
 
 var keyJEI as JEIPanel = JEI.createJEIPanel("keys", "key");
 keyJEI.setJEIBackGroup(JEI.createJEIBackground(150, 50));
