@@ -6,7 +6,6 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import net.minecraft.block.state.IBlockState;
 
@@ -36,12 +35,10 @@ public class SubTileOrechidManager {
                 .filter(entry -> entry.getKey() == state)
                 .map(Entry::getValue)
                 .filter(map -> map.containsKey(oreName))
-                .peek(e -> e.remove(oreName))
-                .collect(Collectors.toList());
+                .forEach(e -> e.remove(oreName));
         else
             Stream.of(oreWeights)
                 .filter(m -> m.containsKey(state))
-                .map(m -> m.remove(state))
-                .collect(Collectors.toList());
+                .forEach(m -> m.remove(state));
     }
 }
