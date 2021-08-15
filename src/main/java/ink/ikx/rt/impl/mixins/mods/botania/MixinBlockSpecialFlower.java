@@ -20,7 +20,7 @@ import vazkii.botania.common.block.BlockSpecialFlower;
 import vazkii.botania.common.block.tile.TileSpecialFlower;
 
 @Mixin(value = BlockSpecialFlower.class, remap = false)
-public class MixinBlockSpecialFlower {
+public abstract class MixinBlockSpecialFlower {
 
     @Inject(method = "getExtendedState", at = @At(value = "HEAD"), cancellable = true)
     private void injectGetSubTileStringMapping(IBlockState state, IBlockAccess world, BlockPos pos, CallbackInfoReturnable<IExtendedBlockState> cir) {
