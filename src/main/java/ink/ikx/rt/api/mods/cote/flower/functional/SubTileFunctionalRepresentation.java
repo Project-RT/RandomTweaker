@@ -43,6 +43,6 @@ public class SubTileFunctionalRepresentation extends SubTileRepresentation {
 
     @ZenMethod
     public void register() {
-        this.register(TYPE_NAME, this);
+        this.register(TYPE_NAME);
     }
 }

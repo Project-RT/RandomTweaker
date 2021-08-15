@@ -63,4 +63,6 @@ public interface SubTileEntityInGame {
 
     @ZenMethod
     BlockPos getBinding();
+
+    Object getInstance();
 }

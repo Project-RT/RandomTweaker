@@ -3,6 +3,8 @@ package ink.ikx.rt.api.mods.cote.flower;
 import cn.hutool.core.lang.Pair;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalContent;
+import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingContent;
 import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockActivated;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockAdded;
@@ -15,6 +17,7 @@ import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
+import vazkii.botania.api.BotaniaAPI;
 
 @RTRegisterClass({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.SubTileEntity")
@@ -110,9 +113,17 @@ public class SubTileRepresentation {
         this.overgrowthAffected = overgrowthAffected;
     }
 
-    protected void register(String typeName, SubTileRepresentation subtile) {
-        if (Objects.nonNull(RandomTweaker.subTileGeneratingMap.putIfAbsent(getUnlocalizedName(), Pair.of(typeName, subtile)))) {
-            CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
+    protected void register(String typeName) {
+        if (Objects.isNull(BotaniaAPI.getSubTileMapping(getUnlocalizedName()))) {
+            if (RandomTweaker.subTileGeneratingMap.containsKey(getUnlocalizedName())) {
+                CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
+            } else {
+                if (typeName.equals("functional")) {
+                    RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileFunctionalContent(this)));
+                } else {
+                    RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileGeneratingContent(this)));
+                }
+            }
         }
     }
 

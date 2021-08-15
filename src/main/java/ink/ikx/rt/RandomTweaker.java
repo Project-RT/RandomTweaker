@@ -11,7 +11,7 @@ import ink.ikx.rt.api.internal.file.Prop;
 import ink.ikx.rt.api.internal.player.IPlayerExpansionSanity;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
 import ink.ikx.rt.api.mods.botania.Orechid;
-import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
+import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
 import ink.ikx.rt.api.mods.cote.potion.PotionContent;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
@@ -84,7 +84,7 @@ public class RandomTweaker {
     public static List<JEIRecipe> JEIRecipeList = new ArrayList<>();
     public static Map<String, PotionContent> potionRegMap = new HashMap<>();
     public static Map<String, PotionType> potionTypeMap = new HashMap<>();
-    public static BiMap<String, Pair<String, SubTileRepresentation>> subTileGeneratingMap = HashBiMap.create();
+    public static BiMap<String, Pair<String, SubTileEntityInGame>> subTileGeneratingMap = HashBiMap.create();
     @SidedProxy(clientSide = "ink.ikx.rt.impl.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.proxy.SeverProxy")
     public static IProxy proxy;
 

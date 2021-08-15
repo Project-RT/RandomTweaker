@@ -20,5 +20,5 @@ public class JAVATextContent {
         + "    }]\n"
         + "  }\n"
         + "}";
-    
+
 }

@@ -4,7 +4,6 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.EntityHelper;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.player.CTPlayer;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.enums.Hand;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
 import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
 import java.util.List;
@@ -21,11 +20,14 @@ import net.minecraft.world.World;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileGenerating;
 
-public abstract class SubTileGeneratingContent extends SubTileGenerating implements SubTileEntityInGame {
-
-    public final SubTileRepresentation subtile = RandomTweaker.subTileGeneratingMap.get("aura_flower_g").getValue();
+public class SubTileGeneratingContent extends SubTileGenerating implements SubTileEntityInGame {
 
     public String name;
+    public final SubTileRepresentation subtile;
+
+    public SubTileGeneratingContent(SubTileRepresentation subtile) {
+        this.subtile = subtile;
+    }
 
     @Override
     public boolean canGeneratePassively() {
@@ -200,5 +202,10 @@ public abstract class SubTileGeneratingContent extends SubTileGenerating impleme
     @Override
     public String typeOf() {
         return "generating";
+    }
+
+    @Override
+    public Object getInstance() {
+        return subtile;
     }
 }

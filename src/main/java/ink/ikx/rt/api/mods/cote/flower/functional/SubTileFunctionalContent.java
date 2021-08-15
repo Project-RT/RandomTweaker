@@ -4,7 +4,6 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.EntityHelper;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.player.CTPlayer;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.enums.Hand;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
 import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
 import java.util.Objects;
@@ -22,8 +21,12 @@ import vazkii.botania.api.subtile.SubTileFunctional;
 
 public class SubTileFunctionalContent extends SubTileFunctional implements SubTileEntityInGame {
 
-    public final SubTileRepresentation subtile = RandomTweaker.subTileGeneratingMap.get("aura_flower_f").getValue();
     public String name;
+    public final SubTileRepresentation subtile;
+
+    public SubTileFunctionalContent(SubTileRepresentation subtile) {
+        this.subtile = subtile;
+    }
 
     @Override
     public RadiusDescriptor getRadius() {
@@ -153,7 +156,16 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
         return "functional";
     }
 
+    @Override
+    public Object getInstance() {
+        return subtile;
+    }
+
     public static class Mini extends SubTileFunctionalContent {
+
+        public Mini(SubTileRepresentation subtile) {
+            super(subtile);
+        }
 
         @Override
         public RadiusDescriptor getRadius() {

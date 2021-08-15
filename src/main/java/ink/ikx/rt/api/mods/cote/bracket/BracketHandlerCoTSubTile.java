@@ -5,6 +5,7 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.BracketHandler;
 import crafttweaker.zenscript.IBracketHandler;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
 import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
 import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalRepresentation;
 import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
@@ -24,20 +25,20 @@ public class BracketHandlerCoTSubTile implements IBracketHandler {
 
     public static SubTileRepresentation getSubTile(String name) {
         if (RandomTweaker.subTileGeneratingMap.containsKey(name)) {
-            Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
-            return subtilePair.getValue();
+            Pair<String, SubTileEntityInGame> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
+            return (SubTileRepresentation) subtilePair.getValue().getInstance();
         }
         return null;
     }
 
     public static SubTileFunctionalRepresentation getSubTileF(String name) {
-        Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
-        return (SubTileFunctionalRepresentation) subtilePair.getValue();
+        Pair<String, SubTileEntityInGame> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
+        return (SubTileFunctionalRepresentation) subtilePair.getValue().getInstance();
     }
 
     public static SubTileGeneratingRepresentation getSubTileG(String name) {
-        Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
-        return (SubTileGeneratingRepresentation) subtilePair.getValue();
+        Pair<String, SubTileEntityInGame> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
+        return (SubTileGeneratingRepresentation) subtilePair.getValue().getInstance();
     }
 
     @Override
