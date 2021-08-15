@@ -1,13 +1,16 @@
 package ink.ikx.rt.impl.events;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.lang.Pair;
+import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.internal.file.Prop;
 import ink.ikx.rt.api.mods.cote.flower.JAVATextContent;
+import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
 import ink.ikx.rt.impl.config.RTConfig;
 import java.io.File;
+import java.util.Map.Entry;
 import java.util.Objects;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
@@ -20,6 +23,7 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import vazkii.botania.api.BotaniaAPIClient;
 
 @EventBusSubscriber
 public class RegEventHandler {
@@ -33,17 +37,15 @@ public class RegEventHandler {
     }
 
     @SubscribeEvent
-    public static void onBlockRegistry(Register<Block> event) {
-
-    }
-
-    @SubscribeEvent
     public static void onModelRegistry(ModelRegistryEvent event) {
         if (RTConfig.RandomTweaker.PlayerSanity) {
             ModelLoader.setCustomModelResourceLocation(RandomTweaker.SANITY_GEM, 0,
                 new ModelResourceLocation(Objects.requireNonNull(RandomTweaker.SANITY_GEM.getRegistryName()), "inventory"));
         }
-
+        for (Entry<String, Pair<String, SubTileEntityInGame>> entries : RandomTweaker.subTileGeneratingMap.entrySet()) {
+            createFlowerBlockState(entries.getKey());
+            BotaniaAPIClient.registerSubtileModel(entries.getKey(), new ModelResourceLocation(ContentTweaker.MOD_ID + ":" + entries.getKey()));
+        }
     }
 
     @SubscribeEvent

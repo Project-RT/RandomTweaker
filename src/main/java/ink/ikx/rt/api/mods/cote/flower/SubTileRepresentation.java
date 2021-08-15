@@ -13,7 +13,6 @@ import ink.ikx.rt.api.mods.cote.function.botania.BlockPlacedBy;
 import ink.ikx.rt.api.mods.cote.function.botania.CanSelect;
 import ink.ikx.rt.api.mods.cote.function.botania.Update;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
-import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -114,18 +113,18 @@ public class SubTileRepresentation {
     }
 
     protected void register(String typeName) {
-        if (Objects.isNull(BotaniaAPI.getSubTileMapping(getUnlocalizedName()))) {
-            if (RandomTweaker.subTileGeneratingMap.containsKey(getUnlocalizedName())) {
-                CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
+        if (RandomTweaker.subTileGeneratingMap.containsKey(getUnlocalizedName())) {
+            CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
+        } else {
+            if (typeName.equals("functional")) {
+                RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileFunctionalContent(this)));
             } else {
-                if (typeName.equals("functional")) {
-                    RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileFunctionalContent(this)));
-                } else {
-                    RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileGeneratingContent(this)));
-                }
+                RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileGeneratingContent(this)));
             }
+            BotaniaAPI.subtilesForCreativeMenu.add(getUnlocalizedName());
         }
     }
+
 
     @Override
     public boolean equals(Object o) {

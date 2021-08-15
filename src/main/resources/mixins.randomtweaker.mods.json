@@ -6,8 +6,10 @@
   "target": "@env(DEFAULT)",
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
+    "botania.MixinBotaniaAPI",
     "botania.MixinTileAlfPortal",
     "botania.MixinTilePool",
+    "botania.MixinTileSpecialFlower",
     "ftbutimine.MixinFTBUltimine",
     "matteroverdrive.MixinTemperatureHandler",
     "matteroverdrive.MixinThirstHandler",
