@@ -43,7 +43,9 @@ configurations {
 }
 
 dependencies {
-    compile files('libs/')
+    compile files('libs/CraftTweaker2-MC1120-Mod-JEI-1.12-4.1.20.656-deobf.jar')
+
+    runtime files('TheBetweenlands-3.7.3-SNAPSHOT-core.jar')
 
     deobfCompile "youyihj:zenutils:1.9.3"
     deobfCompile "curse.maven:Baubles-227083:2518667"
@@ -58,11 +60,13 @@ dependencies {
     deobfCompile "curse.maven:matteroverdrive-legacy-308192:2699215"
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Mod-JEI:1.12-4.1.20.652"
 
     runtime "vazkii.patchouli:Patchouli:1.0-21.5"
     runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
     runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
+
+    compile "mezz.jei:jei_1.12.2:4.16.1.302"
+    compile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.656"
 
     embed 'cn.hutool:hutool-http:5.7.7'
     embed 'cn.hutool:hutool-core:5.7.7'
@@ -83,10 +87,10 @@ processResources {
 
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
+
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-        
+
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
