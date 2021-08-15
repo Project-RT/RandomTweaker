@@ -205,6 +205,11 @@ public class SubTileGeneratingContent extends SubTileGenerating implements SubTi
     }
 
     @Override
+    public String getUnlocalizedName() {
+        return subtile.getUnlocalizedName();
+    }
+
+    @Override
     public Object getInstance() {
         return subtile;
     }

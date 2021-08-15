@@ -100,7 +100,6 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
         super.writeToPacketNBT(compound);
     }
 
-
     @Override
     public void addMana(int mana) {
         super.addMana(mana);
@@ -154,6 +153,11 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
     @Override
     public String typeOf() {
         return "functional";
+    }
+
+    @Override
+    public String getUnlocalizedName() {
+        return subtile.getUnlocalizedName();
     }
 
     @Override

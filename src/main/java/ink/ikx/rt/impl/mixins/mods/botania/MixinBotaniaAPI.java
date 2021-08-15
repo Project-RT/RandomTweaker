@@ -1,7 +1,6 @@
 package ink.ikx.rt.impl.mixins.mods.botania;
 
 import ink.ikx.rt.RandomTweaker;
-import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
 import java.util.HashMap;
 import java.util.Map;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +15,6 @@ import vazkii.botania.api.subtile.signature.SubTileSignature;
 @Mixin(value = BotaniaAPI.class, remap = false)
 public abstract class MixinBotaniaAPI {
 
-    private static final Map<String, Class<?>> customSubTiles = new HashMap<>();
     private static final Map<String, SubTileSignature> customSubTileSignatures = new HashMap<>();
 
     @Inject(method = "getSignatureForName", at = @At(value = "HEAD"), cancellable = true)
@@ -31,11 +29,7 @@ public abstract class MixinBotaniaAPI {
     @Inject(method = "getSubTileMapping", at = @At(value = "HEAD"), cancellable = true)
     private static void injectGetSubTileMapping(String key, CallbackInfoReturnable<Class<? extends SubTileEntity>> cir) {
         if (RandomTweaker.subTileGeneratingMap.containsKey(key)) {
-            if (!customSubTiles.containsKey(key)) {
-                Class<? extends SubTileEntityInGame> clazz = RandomTweaker.subTileGeneratingMap.get(key).getValue().getClass();
-                customSubTiles.put(key, clazz);
-            }
-            cir.setReturnValue((Class<? extends SubTileEntity>) customSubTiles.get(key));
+            cir.setReturnValue((Class<? extends SubTileEntity>) RandomTweaker.subTileGeneratingMap.get(key).getValue().getClass());
         }
     }
 }
