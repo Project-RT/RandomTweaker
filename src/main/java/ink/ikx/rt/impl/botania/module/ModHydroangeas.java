@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 
 /**
  * @author niyan
@@ -63,6 +64,9 @@ public class ModHydroangeas {
         }
 
         public Block getBlockLiquidCatalyst() {
+            if (liquidCatalyst == null) {
+                return Blocks.AIR;
+            }
             return getBlock(liquidCatalyst);
         }
 

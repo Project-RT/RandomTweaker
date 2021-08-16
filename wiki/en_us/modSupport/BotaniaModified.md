@@ -10,9 +10,9 @@ import mods.randomtweaker.botania.Hydroangeas;
 
 | Method                                                   | Return | Description |
 | :----------------------------------------------------------- | :----- | ----------- |
-| setFactor(factor as [ILiquidStack](https://docs.blamejared.com/1.12/en/Vanilla/Liquids/ILiquidStack/)) | void   | Set the Factor of fluid |
+| setFactor(liquid as [ILiquidStack](https://docs.blamejared.com/1.12/en/Vanilla/Liquids/ILiquidStack/), catalyst as [ILiquidStack](https://docs.blamejared.com/1.12/en/Vanilla/Liquids/ILiquidStack/), factor as double) | void   | Set the Factor of fluid. The first parameter is liquid to consume |
 | setBlockBelowFactor(factor as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/), @Optional(2.0d) factor as double) | void | Set the Factor of the block, when it‘s below Hydroangeas it will increase the amount of mana it produces it produced. |
-| addManaRecipe(factor as [ILiquidStack](https://docs.blamejared.com/1.12/en/Vanilla/Liquids/ILiquidStack/), mana as int, @Optional(2.0d) extraMana as double) | void | Added recipes that produce extra mana, When the factor of fluid is present, the amount of mana it  produced by Hydroangeas will be multiplied by extraMana |
+| addManaRecipe(liquid as [ILiquidStack](https://docs.blamejared.com/1.12/en/Vanilla/Liquids/ILiquidStack/), mana as int, catalyst as [ILiquidStack](https://docs.blamejared.com/1.12/en/Vanilla/Liquids/ILiquidStack/), @Optional(2.0d) extraMana as double) | void | Added recipes that produce extra mana, When the catalyst of fluid is exist, the amount of mana it  produced by Hydroangeas will be multiplied by extraMana. The last two parameters can be omitted |
 
 ## Orechid
 

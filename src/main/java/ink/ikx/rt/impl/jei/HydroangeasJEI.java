@@ -5,7 +5,9 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.jei.JEIExpansion;
 import ink.ikx.rt.api.mods.jei.interfaces.element.JEIManaBarElement;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
+import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.impl.botania.module.ModHydroangeas;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -32,21 +34,23 @@ public class HydroangeasJEI {
     private static void getHydroangeasRecipes() {
         for (ModHydroangeas.HydroangeasHandler handler : ModHydroangeas.handlerList) {
             FluidStack blockInput = new FluidStack(
-                    FluidRegistry.lookupFluidForBlock(handler.getBlockLiquid()), 1000);
-            FluidStack fluidFactor = new FluidStack(
-                    FluidRegistry.lookupFluidForBlock(handler.getBlockLiquidCatalyst()), 1000);
+                FluidRegistry.lookupFluidForBlock(handler.getBlockLiquid()), 1000);
 
             JEIManaBarElement manaBar = JEIExpansion.createJEIManaBarElement(2, 60, handler.getManaGen() * ModHydroangeas.burnTime);
-            //            JEIFontInfoElement factorInfo = JEIExpansion.createJEIFontInfoElement(52, 32, "x" + handler.getFluidFactor(), 0x000000, 0, 0);
+            // JEIFontInfoElement factorInfo = JEIExpansion.createJEIFontInfoElement(52, 32, "x" + handler.getFluidFactor(), 0x000000, 0, 0);
             IIngredient iBlockInput = CraftTweakerMC.getIIngredient(blockInput);
-            IIngredient iFluidFactor = CraftTweakerMC.getIIngredient(fluidFactor);
 
-            JEIExpansion.createJEIRecipe("randomtweaker.jei_hydroangeas")
-                    .addInput(iBlockInput)
-                    .addInput(iFluidFactor)
-                    .addJEIElement(manaBar)
-                    //                    .addJEIElement(factorInfo)
-                    .build();
+            JEIRecipe recipe = JEIExpansion.createJEIRecipe("randomtweaker.jei_hydroangeas")
+                               .addInput(iBlockInput)
+                               .addJEIElement(manaBar);
+            // .addJEIElement(factorInfo)
+            if (handler.getBlockLiquidCatalyst() != Blocks.AIR) {
+                FluidStack fluidFactor = new FluidStack(FluidRegistry.lookupFluidForBlock(handler.getBlockLiquidCatalyst()), 1000);
+                IIngredient iFluidFactor = CraftTweakerMC.getIIngredient(fluidFactor);
+                recipe.addInput(iFluidFactor);
+            }
+
+            recipe.build();
         }
     }
 
