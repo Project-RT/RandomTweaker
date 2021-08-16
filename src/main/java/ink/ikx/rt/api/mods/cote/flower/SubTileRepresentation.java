@@ -3,6 +3,8 @@ package ink.ikx.rt.api.mods.cote.flower;
 import cn.hutool.core.lang.Pair;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalContent;
+import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingContent;
 import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockActivated;
 import ink.ikx.rt.api.mods.cote.function.botania.BlockAdded;
@@ -11,10 +13,11 @@ import ink.ikx.rt.api.mods.cote.function.botania.BlockPlacedBy;
 import ink.ikx.rt.api.mods.cote.function.botania.CanSelect;
 import ink.ikx.rt.api.mods.cote.function.botania.Update;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
-import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
+import vazkii.botania.api.BotaniaAPI;
+import vazkii.botania.api.recipe.RecipeMiniFlower;
 
 @RTRegisterClass({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.SubTileEntity")
@@ -110,11 +113,33 @@ public class SubTileRepresentation {
         this.overgrowthAffected = overgrowthAffected;
     }
 
-    protected void register(String typeName, SubTileRepresentation subtile) {
-        if (Objects.nonNull(RandomTweaker.subTileGeneratingMap.putIfAbsent(getUnlocalizedName(), Pair.of(typeName, subtile)))) {
+    protected void register(String typeName, boolean hasMini) {
+        if (RandomTweaker.subTileGeneratingMap.containsKey(getUnlocalizedName())) {
             CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
+        } else {
+            if (typeName.equals("functional")) {
+                RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileFunctionalContent(this)));
+                if (hasMini)
+                    registerMini(this);
+            } else {
+                RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileGeneratingContent(this)));
+            }
+            BotaniaAPI.subtilesForCreativeMenu.add(getUnlocalizedName());
         }
     }
+
+    private void registerMini(SubTileRepresentation subtile) {
+        String name = subtile.getUnlocalizedName();
+
+        RandomTweaker.subTileGeneratingMap.put(name + "Chibi", Pair.of("functional", new SubTileFunctionalContent.Mini(this)));
+        BotaniaAPI.subtilesForCreativeMenu.add(name + "Chibi");
+        BotaniaAPI.miniFlowers.put(name, name + "Chibi");
+
+        RecipeMiniFlower recipe = new RecipeMiniFlower(name + "Chibi", name, 2500);
+        BotaniaAPI.manaInfusionRecipes.add(recipe);
+        BotaniaAPI.miniFlowerRecipes.add(recipe);
+    }
+
 
     @Override
     public boolean equals(Object o) {
