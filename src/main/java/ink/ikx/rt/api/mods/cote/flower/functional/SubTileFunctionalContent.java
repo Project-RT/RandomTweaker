@@ -176,5 +176,9 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
             return new RadiusDescriptor.Square(toBlockPos(), ((SubTileFunctionalRepresentation) subtile).getMiniRange());
         }
 
+        @Override
+        public String getUnlocalizedName() {
+            return super.getUnlocalizedName() + "Chibi";
+        }
     }
 }

@@ -75,6 +75,9 @@ public class RegEventHandler {
         String path = Prop.getPath(System.getProperty("user.dir"), "resources", "contenttweaker", "blockstates", nameL + ".json");
         File file = new File(path);
         if (!FileUtil.exist(file)) {
+            if (nameL.contains("chibi")) {
+                nameL = nameL.replace("chibi", "_chibi");
+            }
             FileUtil.writeUtf8String(JAVATextContent.FLOWER_BLOCKSTATE.replace("${name}", nameL), file);
         }
     }

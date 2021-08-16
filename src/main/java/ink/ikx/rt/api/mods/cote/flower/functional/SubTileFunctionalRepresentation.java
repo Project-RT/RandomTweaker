@@ -22,12 +22,12 @@ public class SubTileFunctionalRepresentation extends SubTileRepresentation {
     }
 
     @ZenMethod
-    public boolean isHasMini() {
+    public boolean hasMini() {
         return hasMini;
     }
 
     @ZenMethod
-    public void setHasMini(boolean hasMini) {
+    public void hasMini(boolean hasMini) {
         this.hasMini = hasMini;
     }
 
@@ -43,6 +43,6 @@ public class SubTileFunctionalRepresentation extends SubTileRepresentation {
 
     @ZenMethod
     public void register() {
-        this.register(TYPE_NAME);
+        this.register(TYPE_NAME, hasMini);
     }
 }
