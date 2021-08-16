@@ -115,7 +115,7 @@ public class SubTileRepresentation {
 
     protected void register(String typeName, boolean hasMini) {
         if (RandomTweaker.subTileGeneratingMap.containsKey(getUnlocalizedName())) {
-            CraftTweakerAPI.logError("All Potions must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
+            CraftTweakerAPI.logError("All SubTileEntity must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
         } else {
             if (typeName.equals("functional")) {
                 RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileFunctionalContent(this)));
