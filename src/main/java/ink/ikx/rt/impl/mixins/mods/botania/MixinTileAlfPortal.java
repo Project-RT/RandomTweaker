@@ -155,7 +155,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements IMixinTileAl
     }
 
     @Override
-    public boolean isEmpty(IData data) {
+    public boolean isEmpty() {
         return this.getTileData().isEmpty();
     }
 
