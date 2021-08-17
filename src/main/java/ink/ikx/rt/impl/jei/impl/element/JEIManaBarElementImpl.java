@@ -11,7 +11,7 @@ public class JEIManaBarElementImpl extends JEIElementImpl implements JEIManaBarE
     public int mana;
     public int manaMax = TilePool.MAX_MANA_DILLUTED;
     public int multiplesLog = 0;
-    private int COLOR = 0x0000FF;
+    private final int COLOR = 0x0000FF;
 
     public JEIManaBarElementImpl(int x, int y, int mana) {
         super(x, y, 0, 0);
@@ -20,16 +20,6 @@ public class JEIManaBarElementImpl extends JEIElementImpl implements JEIManaBarE
             multiplesLog += 1;
         for (; (manaMax / mana > 50); manaMax /= 10)
             multiplesLog -= 1;
-    }
-
-    @Override
-    public int getU() {
-        return 0;
-    }
-
-    @Override
-    public int getV() {
-        return 0;
     }
 
     @Override

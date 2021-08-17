@@ -8,12 +8,22 @@ public abstract class JEIElementImpl implements JEIElement {
     public int y;
     public int width;
     public int height;
+    public String texture = "randomtweaker:textures/gui/jei/jei_default.png";
 
     public JEIElementImpl(int x, int y, int width, int heigh) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = heigh;
+    }
+
+    @Override
+    public int getU() {
+        return 0;
+    }
+
+    @Override
+    public void setU(int u) {
     }
 
     @Override
@@ -57,31 +67,21 @@ public abstract class JEIElementImpl implements JEIElement {
     }
 
     @Override
-    public String getTexture() {
-        return null;
-    }
-
-    @Override
-    public void setTexture(String texture) {
-    }
-
-    @Override
-    public int getU() {
-        return 0;
-    }
-
-    @Override
-    public void setU(int u) {
-
-    }
-
-    @Override
     public int getV() {
         return 0;
     }
 
     @Override
     public void setV(int v) {
+    }
 
+    @Override
+    public String getTexture() {
+        return this.texture;
+    }
+
+    @Override
+    public void setTexture(String texture) {
+        this.texture = texture;
     }
 }

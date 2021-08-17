@@ -30,6 +30,16 @@ public class JEICustomElementImpl extends JEIElementImpl implements JEICustomEle
     }
 
     @Override
+    public void setU(int u) {
+        this.u = u;
+    }
+
+    @Override
+    public void setV(int v) {
+        this.v = v;
+    }
+
+    @Override
     public String getTexture() {
         return this.texture;
     }

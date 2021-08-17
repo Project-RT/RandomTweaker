@@ -13,16 +13,6 @@ public class JEIFluidElementImpl extends JEIElementImpl implements JEIFluidEleme
     }
 
     @Override
-    public int getU() {
-        return 0;
-    }
-
-    @Override
-    public int getV() {
-        return 0;
-    }
-
-    @Override
     public void Render(Minecraft minecraft) {
         if (this.getWidth() == 16 && this.getHeight() == 16) {
             this.Render(minecraft, 18, 0);

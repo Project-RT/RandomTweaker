@@ -16,16 +16,6 @@ public class JEIFontInfoElementImpl extends JEIElementImpl implements JEIFontInf
     }
 
     @Override
-    public int getU() {
-        return 0;
-    }
-
-    @Override
-    public int getV() {
-        return 0;
-    }
-
-    @Override
     public String getInfo() {
         return this.info;
     }

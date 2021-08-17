@@ -60,6 +60,5 @@ public class JEIPlugins implements IModPlugin {
                 }
             }
         }
-
     }
 }

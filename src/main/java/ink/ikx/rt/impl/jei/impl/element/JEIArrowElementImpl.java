@@ -27,24 +27,13 @@ public class JEIArrowElementImpl extends JEIElementImpl implements JEIArrowEleme
     }
 
     @Override
-    public int getU() {
-        return 0;
-    }
-
-    @Override
-    public int getV() {
-        return 0;
-    }
-
-    @Override
     public void Render(Minecraft minecraft) {
         Render(minecraft, direction);
     }
 
     private void Render(Minecraft minecraft, int direction) {
         GlStateManager.enableAlpha();
-        minecraft.getTextureManager()
-            .bindTexture(new ResourceLocation(this.getTexture()));
+        minecraft.getTextureManager().bindTexture(new ResourceLocation(this.getTexture()));
         switch (direction) {
             case 0:
                 Gui.drawModalRectWithCustomSizedTexture(this.getX(), this.getY(), 36, 0, 22, 15, 256, 256);

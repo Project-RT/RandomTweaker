@@ -8,8 +8,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class JEIItemInputElementImpl extends JEIElementImpl implements JEIItemElement {
 
-    public final int U = 0;
-    public final int V = 0;
+    public final int u = 0;
+    public final int v = 0;
 
     public JEIItemInputElementImpl(int x, int y) {
         super(x, y, 18, 18);
@@ -17,12 +17,12 @@ public class JEIItemInputElementImpl extends JEIElementImpl implements JEIItemEl
 
     @Override
     public int getU() {
-        return this.U;
+        return this.u;
     }
 
     @Override
     public int getV() {
-        return this.V;
+        return this.v;
     }
 
     @Override
