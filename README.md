@@ -4,9 +4,9 @@
     <a herf="https://github.com/ikexing-cn/RandomTweaker/stargazers"> <img src="https://img.shields.io/github/stars/ikexing-cn/RandomTweaker?logo=github&style=flat-square"></a>
     <a herf="https://github.com/ikexing-cn/RandomTweaker/blob/1.12/LICENSE"> <img src="https://img.shields.io/github/license/ikexing-cn/RandomTweaker?color=green&logo=github&style=flat-square"></a>
 </div><br />
-
 <div align="center">
     <h3 align="center">Random Tweaker</h3>
+    <br />
 </div>
 
 ## Main contents ( For details, please see [wiki](https://github.com/ikexing-cn/RandomTweaker/wiki) )
