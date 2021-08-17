@@ -44,4 +44,9 @@ public class JEIManaBarElementImpl extends JEIElementImpl implements JEIManaBarE
         return multiplesLog;
     }
 
+    @Override
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
 }
