@@ -48,16 +48,14 @@ public abstract class MixinTileSpecialFlower {
         NBTTagCompound subCmp = cmp.getCompoundTag(TAG_SUBTILE_NAME);
 
         try {
-            if (!BotaniaAPI.getSubTileStringMapping(subTile.getClass()).equals(subTileName))
+            if (subTile == null || !BotaniaAPI.getSubTileStringMapping(subTile.getClass()).equals(subTileName))
                 provideSubTile(subTileName);
         } catch (NullPointerException e) {
             if (!RandomTweaker.subTileGeneratingMap.containsKey(subTileName))
                 provideSubTile(subTileName);
         }
 
-        if (subTile == null)
-            provideSubTile(subTileName);
-        else
+        if (subTile != null)
             subTile.readFromPacketNBTInternal(subCmp);
 
         ci.cancel();
