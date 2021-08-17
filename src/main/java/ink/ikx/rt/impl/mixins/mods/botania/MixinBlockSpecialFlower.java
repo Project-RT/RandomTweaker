@@ -10,6 +10,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -19,6 +20,7 @@ import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.block.BlockSpecialFlower;
 import vazkii.botania.common.block.tile.TileSpecialFlower;
 
+@Pseudo
 @Mixin(value = BlockSpecialFlower.class, remap = false)
 public abstract class MixinBlockSpecialFlower {
 

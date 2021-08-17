@@ -4,6 +4,7 @@ import ink.ikx.rt.RandomTweaker;
 import java.util.HashMap;
 import java.util.Map;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -12,6 +13,7 @@ import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.api.subtile.signature.BasicSignature;
 import vazkii.botania.api.subtile.signature.SubTileSignature;
 
+@Pseudo
 @Mixin(value = BotaniaAPI.class, remap = false)
 public abstract class MixinBotaniaAPI {
 
