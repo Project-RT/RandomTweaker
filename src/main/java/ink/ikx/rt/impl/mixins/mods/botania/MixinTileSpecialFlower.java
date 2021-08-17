@@ -43,7 +43,7 @@ public abstract class MixinTileSpecialFlower {
         }
     }
 
-    @Inject(method = "readPacketNBT", at = @At(value = "INVOKE", target = "Lnet/minecraft/nbt/NBTTagCompound;getString(Ljava/lang/String;)Ljava/lang/String;", shift = Shift.AFTER), cancellable = true)
+    @Inject(method = "readPacketNBT", at = @At(value = "INVOKE", target = "Lnet/minecraft/nbt/NBTTagCompound;getString(Ljava/lang/String;)Ljava/lang/String;", shift = Shift.AFTER), cancellable = true, remap = true)
     public void readPacketNBT(NBTTagCompound cmp, CallbackInfo ci) {
         NBTTagCompound subCmp = cmp.getCompoundTag(TAG_SUBTILE_NAME);
 
