@@ -7,7 +7,6 @@
 
 <div align="center">
     <h3 align="center">Random Tweaker</h3>
-    <i> New features can be suggested, I write or not is another matter, nevertheless, you are welcome to submit PR for your function. </i>
 </div>
 
 ## Main contents ( For details, please see [wiki](https://github.com/ikexing-cn/RandomTweaker/wiki) )
