@@ -52,7 +52,7 @@ public interface JEIElement {
     void setWidth(int width);
 
     @ZenSetter("height")
-    void setHeight(int heigh);
+    void setHeight(int height);
 
     @SideOnly(Side.CLIENT)
     void Render(Minecraft minecraft);

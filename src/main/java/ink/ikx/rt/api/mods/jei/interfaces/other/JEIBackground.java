@@ -36,7 +36,7 @@ public interface JEIBackground {
     @ZenSetter("width")
     void setWidth(int width);
 
-    @ZenSetter("heigh")
+    @ZenSetter("height")
     void setHeight(int height);
 
 }

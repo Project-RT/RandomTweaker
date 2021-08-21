@@ -9,6 +9,7 @@ import ink.ikx.rt.api.mods.jei.interfaces.other.JEIBackground;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEITooltip;
 import ink.ikx.rt.api.mods.jei.interfaces.slots.JEISlot;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -96,8 +97,8 @@ public class JEIPanelImpl implements JEIPanel {
     }
 
     @Override
-    public void setJEIBackGroup(int width, int heigh) {
-        this.JEIBackground = new JEIBackgroundImpl(width, heigh);
+    public void setJEIBackGroup(int width, int height) {
+        this.JEIBackground = new JEIBackgroundImpl(width, height);
     }
 
     @Override
