@@ -27,18 +27,18 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
-    public static JEIBackground createJEIBackground(int width, int heigh) {
-        return new JEIBackgroundImpl(width, heigh);
+    public static JEIBackground createJEIBackground(int width, int height) {
+        return new JEIBackgroundImpl(width, height);
     }
 
     @ZenMethodStatic
-    public static JEIBackground createJEIBackground(String resourceName, int u, int v, int width, int heigh) {
-        return new JEIBackgroundImpl(resourceName, u, v, width, heigh);
+    public static JEIBackground createJEIBackground(String resourceName, int u, int v, int width, int height) {
+        return new JEIBackgroundImpl(resourceName, u, v, width, height);
     }
 
     @ZenMethodStatic
-    public static JEILiquidSlot createLiquidSlot(boolean isInput, int x, int y, int width, int heigh, int capacityMb, boolean showCapacity, @Optional(valueBoolean = true) boolean hasBase) {
-        return new JEILiquidSlotImpl(isInput, x, y, width, heigh, capacityMb, showCapacity, hasBase);
+    public static JEILiquidSlot createLiquidSlot(boolean isInput, int x, int y, int width, int height, int capacityMb, boolean showCapacity, @Optional(valueBoolean = true) boolean hasBase) {
+        return new JEILiquidSlotImpl(isInput, x, y, width, height, capacityMb, showCapacity, hasBase);
     }
 
     @ZenMethodStatic
@@ -72,8 +72,8 @@ public class JEIExpansion {
 
     //Please make sure you really need this.
     @ZenMethodStatic
-    public static JEIFluidElement createJEIFluidElement(int x, int y, int width, int heigh) {
-        return new JEIFluidElementImpl(x, y, width, heigh);
+    public static JEIFluidElement createJEIFluidElement(int x, int y, int width, int height) {
+        return new JEIFluidElementImpl(x, y, width, height);
     }
 
     @ZenMethodStatic
@@ -92,7 +92,7 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
-    public static JEICustomElement createJEICustomElement(int x, int y, int width, int heigh, int u, int v, String texture) {
-        return new JEICustomElementImpl(x, y, width, heigh, u, v, texture);
+    public static JEICustomElement createJEICustomElement(int x, int y, int width, int height, int u, int v, String texture) {
+        return new JEICustomElementImpl(x, y, width, height, u, v, texture);
     }
 }

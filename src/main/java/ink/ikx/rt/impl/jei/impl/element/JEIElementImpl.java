@@ -10,11 +10,11 @@ public abstract class JEIElementImpl implements JEIElement {
     public int height;
     public String texture = "randomtweaker:textures/gui/jei/jei_default.png";
 
-    public JEIElementImpl(int x, int y, int width, int heigh) {
+    public JEIElementImpl(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
-        this.height = heigh;
+        this.height = height;
     }
 
     @Override

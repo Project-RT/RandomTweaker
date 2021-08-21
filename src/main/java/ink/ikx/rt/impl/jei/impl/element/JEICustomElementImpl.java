@@ -12,8 +12,8 @@ public class JEICustomElementImpl extends JEIElementImpl implements JEICustomEle
     public int v;
     public String texture;
 
-    public JEICustomElementImpl(int x, int y, int width, int heigh, int u, int v, String texture) {
-        super(x, y, width, heigh);
+    public JEICustomElementImpl(int x, int y, int width, int height, int u, int v, String texture) {
+        super(x, y, width, height);
         this.u = u;
         this.v = v;
         this.texture = texture;

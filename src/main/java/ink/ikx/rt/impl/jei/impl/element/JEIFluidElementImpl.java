@@ -8,8 +8,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class JEIFluidElementImpl extends JEIElementImpl implements JEIFluidElement {
 
-    public JEIFluidElementImpl(int x, int y, int width, int heigh) {
-        super(x, y, width, heigh);
+    public JEIFluidElementImpl(int x, int y, int width, int height) {
+        super(x, y, width, height);
     }
 
     @Override

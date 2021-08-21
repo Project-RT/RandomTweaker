@@ -33,7 +33,7 @@ public class Render {
                 float result = sanityCap.getSanity() / sanityCap.getOriginalSanity();
 
                 ScaledResolution resolution = event.getResolution();
-                float width = getWidth(resolution.getScaledWidth()), height = getHeigh(resolution.getScaledHeight());
+                float width = getWidth(resolution.getScaledWidth()), height = getHeight(resolution.getScaledHeight());
 
                 GlStateManager.enableBlend();
                 mc.getTextureManager().bindTexture(TEXTURE);
@@ -59,12 +59,12 @@ public class Render {
         return width / Float.parseFloat(widthC);
     }
 
-    private static float getHeigh(int heigh) {
+    private static float getHeight(int height) {
         String heightC = RTConfig.RandomTweaker.SanityPos[1];
 
         if (heightC.contains("px")) {
             heightC = heightC.substring(0, heightC.length() - 2);
         }
-        return heigh / Float.parseFloat(heightC);
+        return height / Float.parseFloat(heightC);
     }
 }
