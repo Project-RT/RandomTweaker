@@ -68,8 +68,8 @@ dependencies {
     compile "mezz.jei:jei_1.12.2:4.16.1.302"
     compile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.656"
 
-    embed 'cn.hutool:hutool-http:5.7.7'
-    embed 'cn.hutool:hutool-core:5.7.7'
+    embed 'cn.hutool:hutool-http:5.7.9'
+    embed 'cn.hutool:hutool-core:5.7.9'
     embed ("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
         exclude module: "asm-commons"
         exclude module: "asm-tree"
