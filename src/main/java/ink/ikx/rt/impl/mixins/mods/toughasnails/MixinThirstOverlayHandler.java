@@ -1,9 +1,10 @@
-package ink.ikx.rt.impl.mixins.mods.matteroverdrive;
+package ink.ikx.rt.impl.mixins.mods.toughasnails;
 
 import ink.ikx.rt.impl.config.RTConfig;
 import ink.ikx.rt.impl.matteroverdrive.IMatterOverdriveAndroid;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.fml.common.Loader;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,7 +21,7 @@ public abstract class MixinThirstOverlayHandler {
 
     @Inject(method = "onPreRenderOverlay", at = @At(value = "HEAD"), cancellable = true)
     public void injectOnPreRenderOverlay(RenderGameOverlayEvent.Pre event, CallbackInfo ci) {
-        if (IMatterOverdriveAndroid.isPlayerAndroid(Minecraft.getMinecraft().player)) {
+        if (Loader.isModLoaded("matteroverdrive") && IMatterOverdriveAndroid.isPlayerAndroid(Minecraft.getMinecraft().player)) {
             if (RTConfig.ToughAsNails.AndroidThirst && !RTConfig.ToughAsNails.SelectedStatsThirst) {
                 ci.cancel();
             } else if (RTConfig.ToughAsNails.SelectedStatsThirst && !RTConfig.ToughAsNails.AndroidThirst) {

@@ -12,12 +12,12 @@
     "botania.MixinTilePool",
     "botania.MixinTileSpecialFlower",
     "ftbutimine.MixinFTBUltimine",
-    "matteroverdrive.MixinTemperatureHandler",
-    "matteroverdrive.MixinThirstHandler",
+    "toughasnails.MixinTemperatureHandler",
+    "toughasnails.MixinThirstHandler",
     "twilightforest.MixinBlockTFPortal"
   ],
   "client": [
-    "matteroverdrive.MixinTemperatureOverlayHandler",
-    "matteroverdrive.MixinThirstOverlayHandler"
+    "toughasnails.MixinTemperatureOverlayHandler",
+    "toughasnails.MixinThirstOverlayHandler"
   ]
 }
