@@ -18,7 +18,7 @@ import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
 import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
 import ink.ikx.rt.impl.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.botania.subtitle.SubTileHydroangeasModified;
-import ink.ikx.rt.impl.botania.subtitle.SubTileOrechidModifyed;
+import ink.ikx.rt.impl.botania.subtitle.SubTileOrechidModified;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
 import ink.ikx.rt.impl.client.network.PlayerSanityNetWork;
 import ink.ikx.rt.impl.config.RTConfig;
@@ -30,15 +30,6 @@ import ink.ikx.rt.impl.jei.OrechidJEI;
 import ink.ikx.rt.impl.proxy.IProxy;
 import ink.ikx.rt.impl.utils.ItemDs;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 import net.minecraft.init.Blocks;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
@@ -57,13 +48,17 @@ import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
 
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.*;
+
 @SuppressWarnings("all")
 @Mod(
-    modid = RandomTweaker.MODID,
-    name = RandomTweaker.NAME,
-    version = RandomTweaker.VERSION,
-    guiFactory = RandomTweaker.GUI_FACTORY,
-    dependencies = RandomTweaker.DESPENDENCIES
+        modid = RandomTweaker.MODID,
+        name = RandomTweaker.NAME,
+        version = RandomTweaker.VERSION,
+        guiFactory = RandomTweaker.GUI_FACTORY,
+        dependencies = RandomTweaker.DESPENDENCIES
 )
 public class RandomTweaker {
 
@@ -136,7 +131,7 @@ public class RandomTweaker {
                 }
                 if (RTConfig.Botania.OrechidModified) {
                     JEI.hideCategory("botania.orechid");
-                    subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModifyed.class);
+                    subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModified.class);
                     OrechidJEI.init();
                 }
             }

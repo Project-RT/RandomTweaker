@@ -1,13 +1,7 @@
 package ink.ikx.rt.impl.botania.subtitle;
 
-import com.google.common.base.Predicate;
 import ink.ikx.rt.impl.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.config.RTConfig;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
@@ -25,7 +19,10 @@ import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.core.handler.ModSounds;
 import vazkii.botania.common.lexicon.LexiconData;
 
-public class SubTileOrechidModifyed extends SubTileFunctional {
+import java.util.*;
+import java.util.function.Predicate;
+
+public class SubTileOrechidModified extends SubTileFunctional {
 
     private static final int COST = RTConfig.Botania.OrechidCost;
     private static final int DELAY = RTConfig.Botania.OrechidDelay;
@@ -88,7 +85,7 @@ public class SubTileOrechidModifyed extends SubTileFunctional {
 
         for (BlockPos pos : BlockPos.getAllInBox(getPos().add(-RANGE, -RANGE_Y, -RANGE), getPos().add(RANGE, RANGE_Y, RANGE))) {
             IBlockState state = supertile.getWorld().getBlockState(pos);
-            if (state.getBlock().isReplaceableOreGen(state, supertile.getWorld(), pos, getReplaceMatcher()))
+            if (state.getBlock().isReplaceableOreGen(state, supertile.getWorld(), pos, getReplaceMatcher()::test))
                 possibleCoords.add(pos);
         }
 
