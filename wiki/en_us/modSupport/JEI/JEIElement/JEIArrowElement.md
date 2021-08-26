@@ -1,6 +1,7 @@
 # JEIArrowElement
 
-JEIArrowElement extends from `JEIElement`, so all available `Getters` of `JEISlot` can be used
+JEIArrowElement extends [JEIElement](JEIElement.md), so all available `Getters` and `Setter`
+of `JEIElement` can be used
 
 ## Import
 
@@ -8,6 +9,8 @@ JEIArrowElement extends from `JEIElement`, so all available `Getters` of `JEISlo
 import mods.randomtweaker.jei.JEIArrowElement;
 ```
 
-| ZenGetter | Return | Remarks                      |
-| :-------- | :----- | ------------------------------ |
+## ZenGetterAndZenSetter
+
+| ZenGetter | Return Type | Remarks |
+| :-------- | :----- | ---------------- |
 | direction | int    | direction is four arrows, can be filled with 0-3 |

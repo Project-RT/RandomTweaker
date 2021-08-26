@@ -8,9 +8,9 @@
 import mods.randomtweaker.jei.JEISlot;
 ```
 
-| ZenGetter / ZenSetter | 返回值   |
+| ZenGetter / ZenSetter | 返回类型 |
 | :-------- | :------ |
-| isInput   | bool    |
+| input     | bool    |
 | x         | int     |
 | y         | int     |
 | hasBase   | bool    |

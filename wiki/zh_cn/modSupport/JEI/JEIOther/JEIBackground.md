@@ -8,7 +8,7 @@ JEI 的背景设置, 可以只设置宽高
 import mods.randomtweaker.jei.JEIBackground;
 ```
 
-| ZenGetter / ZenSetter     | 返回值 |
+| ZenGetter / ZenSetter | 返回类型 |
 | :----------- | :----- |
 | resourceName | string |
 | u            | int    |

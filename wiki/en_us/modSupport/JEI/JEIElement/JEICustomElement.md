@@ -1,6 +1,7 @@
 # JEICustomElement
 
-JEICustomElement extends `JEIElement`, so that all available `Getters` of `JEISlot` can be used
+JEICustomElement extends [JEIElement](JEIElement.md), so that all available `Getters`
+of `JEIElement` can be used
 
 ## Import
 

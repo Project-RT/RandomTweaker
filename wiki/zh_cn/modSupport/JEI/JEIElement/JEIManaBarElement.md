@@ -1,15 +1,16 @@
 # JEIManaBarElement
 
-¼Ì³Ğ `JEIElement`, Òò´Ë `JEISlot` µÄÈ«²¿¿ÉÓÃ `Getter` ¶¼¿É±»Ê¹ÓÃ
+ç»§æ‰¿ [JEIElement](JEIElement.md), å› æ­¤ `JEIElement` çš„å…¨éƒ¨å¯ç”¨ `Getter` å’Œ `Setter` éƒ½å¯è¢«ä½¿ç”¨
 
-## µ¼°ü
+## å¯¼åŒ…
 
 ```zenscript
 import mods.randomtweaker.jei.JEIManaBarElement;
 ```
 
-| ZenGetter / ZenSetter  | ·µ»ØÖµ | ±¸×¢ |
-| :-------- | :----- | ------------------------------ |
-| mana      | int    | mana ²ÎÊıÎªÄ§Á¦ÌõµÄÄ§Á¦Öµ |
-| log_multiple£¨ÎŞZenSetter£© | int | Ä§Á¦ÌõÄ¬ÈÏµÄ×î´óÄ§Á¦ÖµÓëÏ¡ÊÍÄ§Á¦³ØµÄ×ÜÄ§Á¦ÖµÏàÍ¬£¬¸ÃÖµÎªµÄÒÔ10Îªµ××ÜÄ§Á¦ÖµÀ©´ó±¶ÊıµÄ¶ÔÊı |
+## ZenGetterAndZenSetter
 
+| ZenGetter / ZenSetter  | è¿”å›ç±»å‹ | æè¿° |
+| :-------- | :----- | ------------------------------ |
+| mana      | int    | é­”åŠ›æ¡çš„é­”åŠ›Öµ |
+| log_multiple (no ZenSetter) | int | default max mana value is equal to the max mana value of dilute mana poolï¿½ï¿½it takes logarithm to the base 10 of max mana value |

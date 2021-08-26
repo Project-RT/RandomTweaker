@@ -6,21 +6,23 @@
 import mods.jei.JEI;
 ```
 
-| 方法                                                         | 返回值                                                       | 备注                                                         |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| createJEIPanel(uid as string, localizationKey as string)     | [JEIPanel](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEIOther/JEIPanel.md) |                                                              |
-| createJEIBackground(width as int, height as int)             | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEIOther/JEIBackground.md) |                                                              |
-| createJEIBackground(resourceName as string, u as int, v as int, width as int, height as int) | [JEIBackground](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEIOther/JEIBackground.md) |                                                              |
-| createLiquidSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | [JEILiquidSlot](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEISlot/JEILiquidSlot.md) | hasBase为是否渲染默认的流体槽（需对比宽高）                  |
-| createLiquidSlot(isInput as bool, x as int, y as int, width as int, height as int, capacityMb as int, showCapacity as bool, @Optional(valueBoolean = true) hasBase as bool) | [JEILiquidSlot](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEISlot/JEILiquidSlot.md) | hasBase 同上, 但流体槽必须要根据固定的宽高创建 (eg：16 * 16, 43 * 16, 16 * 34) |
-| createItemSlot(isInput as bool, x as int, y as int, @Optional(valueBoolean = true) hasBase as bool) | [JEIItemSlot](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEISlot/JEIItemSlot.md) | hasBase为是否渲染固定的物品槽                                |
-| createJEIRecipe(uid as string)                               | [JEIRecipe](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEIOther/JEIRecipe.md) | 创建JEI的配方，uid为定义JEI的uid                             |
-| createJEIItemInputElement(x as int, y as int)                | [JEIItemElement](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEIElement/JEIItemElement.md) |                                                              |
-| createJEIItemOutputElement(x as int, y as int)               | [JEIItemElement](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEIElement/JEIItemElement.md) |                                                              |
-| createJEIFluidElement(x as int, y as int, width as int, height as int) | [JEIFluidElement](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEIElement/JEIFluidElement.md) |                                                              |
-| createJEIFontInfoElement(x as int, y as int, info as string, color as int, @Optional width as int, @Optional height as int) | [JEIFontInfoElement](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEIElement/JEIFontInfoElement.md) |                                                              |
-| createJEIArrowElement(x as int, y as int, direction as int)  | [JEIArrowElement](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEIElement/JEIArrowElement.md) | direction 参数为四个箭头，可填 0-3                           |
-| createJEICustomElement(x as int, y as int, width as int, height as int, u as int, v as int, texture as string) | [JEICustomElement](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/JEI/JEIElement/JEICustomElement.md) | texture 的格式为 modid:路径                                  |
+## Methods
+
+| 方法 | 返回类型 | 备注 |
+| :----------------------- | :----------------------- | :----------------------- |
+| createJEIPanel(uid as string, localizationKey as string) | [JEIPanel](JEIOther/JEIPanel.md)|  |
+| createJEIBackground(width as int, height as int) | [JEIBackground](JEIOther/JEIBackground.md) |  |
+| createJEIBackground(resourceName as string, u as int, v as int, width as int, height as int) | [JEIBackground](JEIOther/JEIBackground.md) |  |
+| createLiquidSlot(isInput as bool, x as int, y as int, @Optional(true) hasBase as bool) | [JEILiquidSlot](JEISlot/JEILiquidSlot.md) | hasBase 为是否渲染默认的流体槽 (需对比宽高) |
+| createLiquidSlot(isInput as bool, x as int, y as int, width as int, height as int, capacityMb as int, showCapacity as bool, @Optional(true) hasBase as bool) | [JEILiquidSlot](JEISlot/JEILiquidSlot.md) | hasBase 同上, 但流体槽必须要根据固定的宽高创建 (eg：16 * 16, 43 * 16, 16 * 34) |
+| createItemSlot(isInput as bool, x as int, y as int, @Optional(true) hasBase as bool) | [JEIItemSlot](JEISlot/JEIItemSlot.md) | hasBase 为是否渲染固定的物品槽 |
+| createJEIRecipe(uid as string) | [JEIRecipe](JEIOther/JEIRecipe.md) | 创建JEI的配方, uid 为定义 JEI 的 uid |
+| createJEIItemInputElement(x as int, y as int) | [JEIItemElement](JEIElement/JEIItemElement.md) |  |
+| createJEIItemOutputElement(x as int, y as int) | [JEIItemElement](JEIElement/JEIItemElement.md) |  |
+| createJEIFluidElement(x as int, y as int, width as int, height as int) | [JEIFluidElement](JEIElement/JEIFluidElement.md) |  |
+| createJEIFontInfoElement(x as int, y as int, info as string, color as int, @Optional width as int, @Optional height as int) | [JEIFontInfoElement](JEIElement/JEIFontInfoElement.md) |  |
+| createJEIArrowElement(x as int, y as int, direction as int) | [JEIArrowElement](JEIElement/JEIArrowElement.md) | direction 参数为四个箭头, 可填 0, 1, 2, 3 |
+| createJEICustomElement(x as int, y as int, width as int, height as int, u as int, v as int, texture as string) | [JEICustomElement](JEIElement/JEICustomElement.md) | texture 的格式为 modid:path |
 
 ## 热重载
 
@@ -31,6 +33,7 @@ import mods.jei.JEI;
 
 ```zenscript
 #loader crafttweaker reloadableevents
+
 <jei:uid>.getJEISlots()[0].x = 10;
 ```
 

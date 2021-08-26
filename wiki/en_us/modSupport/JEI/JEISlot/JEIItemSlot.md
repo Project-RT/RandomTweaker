@@ -1,6 +1,7 @@
 # JEIItemSlot
 
-JEIItemSlot extends `JEISlot`, so that all available `Getters` of `JEISlot` can be used
+JEIItemSlot extends [JEISlot](JEISlot.md), so that all available `Getters` and `Setter` of `JEISlot`
+can be used
 
 ## Import
 

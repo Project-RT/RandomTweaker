@@ -10,7 +10,7 @@ import mods.randomtweaker.BracketHandler;
 
 ## Methods
 
-| 方法                   | 返回值  |
+| 方法                    | 返回类型 |
 | :--------------------- | :------ |
-| getPotion(String name) | [IPotion](https://docs.blamejared.com/1.12/en/Vanilla/Potions/IPotion/) |
-| getBiome(String name)  | [IBiome](https://docs.blamejared.com/1.12/en/Vanilla/Biomes/IBiome/)  |
+| getPotion(name as string) | [IPotion](https://docs.blamejared.com/1.12/en/Vanilla/Potions/IPotion/) |
+| getBiome(name as string)  | [IBiome](https://docs.blamejared.com/1.12/en/Vanilla/Biomes/IBiome/) |

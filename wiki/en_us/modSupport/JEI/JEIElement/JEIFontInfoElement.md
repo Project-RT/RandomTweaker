@@ -1,6 +1,7 @@
 # JEIFontInfoElement
 
-JEIFontInfoElement extends `JEIElement`, so that all available `Getters` of `JEISlot` can be used
+JEIFontInfoElement extends [JEIElement](JEIElement.md), so that all available `Getters` and `Setter`
+of `JEIElement` can be used
 
 ## Import
 

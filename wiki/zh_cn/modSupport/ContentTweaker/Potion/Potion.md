@@ -8,17 +8,12 @@
 import mods.randomtweaker.cote.Potion;
 ```
 
-| 字段 | 类型 | 描述 |
-| ---- | :-- | --- |
-| unlocalizedName | string | 注册名 |
-| liquidColorIn | int | 药水颜色 |
-| badEffectIn | bool | 药水给予的是否是坏的效果 |
-| beneficial | bool | 药水对玩家是否有益，有益的药水会放在第一格 |
-| instant | bool | 药水是即刻生效的还是持续生效的 (true 为即刻, false 为持续) |
-| shouldRender | bool | 是否在背包栏渲染 |
-| shouldRenderHUD | bool | 是否在 HUD (在右上角) 渲染 |
+| 字段 | 类型 | 描述 | | ---- | :-- | --- | | unlocalizedName | string | 注册名 | | liquidColorIn | int |
+药水颜色 | | badEffectIn | bool | 药水给予的是否是坏的效果 | | beneficial | bool | 药水对玩家是否有益, 有益的药水会放在第一格 | |
+instant | bool | 药水是即刻生效的还是持续生效的 (true 为即刻, false 为持续) | | shouldRender | bool | 是否在背包栏渲染 | |
+shouldRenderHUD | bool | 是否在 HUD (在右上角) 渲染 |
 
-贴图位置 : `"contenttweaker:textures/gui/unlocalizedName.png"`  
+贴图位置 : `contenttweaker:textures/gui/unlocalizedName.png`  
 **贴图必须是 18 * 18 大小**  
 ~~不要傻傻填 unlocalizedName~~
 

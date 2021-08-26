@@ -1,17 +1,17 @@
 # BotaniaFXHelper
 
-允许CrT调用植魔库的粒子 (本章节内容十分推荐玩家自己上手测试一下)
+允许 CrT 调用植魔库的粒子 (本章节内容十分推荐玩家自己上手测试一下)
 
 [具体实现](https://github.com/Vazkii/Botania/tree/1.12-final) ->
 vazkii.botania.client.core.proxy.ClientProxy
+
+## 导包
 
 ```zenscript
 import mods.randomtweaker.botania.BotaniaFXHelper;
 ```
 
-set 开头的方法貌似没有具体效果 (源码是有关联的但是实际游戏没看出效果)
-
-| 方法 | 返回值 | 描述 |
+| 方法 | 返回类型 | 描述 |
 |:---- | :--- | :---- |
 | setWispFXDistanceLimit(limit as bool) | void | ? |
 | setWispFXDepthTest(depth as bool) | void | ? |

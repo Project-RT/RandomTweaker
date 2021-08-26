@@ -1,9 +1,9 @@
 # ManaBauble
 
-When Botania and ContentTweaker are loaded at the same time, it allows ContentTweaker to create baubles with mana.
-The `ManaBauble` class extends the 
-[ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md) class,
-so all available functions of `ManaItem` are also available for `ManaBauble`.
+When Botania and ContentTweaker are loaded at the same time, it allows ContentTweaker to create
+baubles with mana. The `ManaBauble` class extends
+the [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md)
+class, so all available functions of `ManaItem` are also available for `ManaBauble`.
 
 ## Import
 

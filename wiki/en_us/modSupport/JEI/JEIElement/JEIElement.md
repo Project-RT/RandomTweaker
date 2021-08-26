@@ -8,7 +8,7 @@ import mods.randomtweaker.jei.JEIElement;
 
 Elements rendered on the JEI, fluid slots, and item slot boxes are rendered from this
 
-| ZenGetter                                                    | Return |
+| ZenGetter / ZenSetter                                        | Return Type|
 | :----------------------------------------------------------- | :----- |
 | u                                                            | int    |
 | v                                                            | int    |

@@ -1,6 +1,9 @@
 # JEIRecipe
 
-Custom JEI Display RecipeMust correspond with the recipe, otherwise any problems will not be given to repair
+Custom JEI Display RecipeMust correspond with the recipe, otherwise any problems will not be given
+to repair
+
+Must correspond with the recipe, otherwise any problems will not be given to repair
 
 ## Import
 
@@ -8,25 +11,27 @@ Custom JEI Display RecipeMust correspond with the recipe, otherwise any problems
 import mods.randomtweaker.jei.JEIRecipe
 ```
 
-Must correspond with the recipe, otherwise any problems will not be given to repair
+## Getter
 
-| Getter | Return | Description |
+| Getter | Return Type | Description |
 |:---- | ---- | -----|
 | uid | string | UID filled in when creating |
 | inputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | Get all inputs for the current recipe |
 | outputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | Get all outputs for the current recipe |
-| JEIElements | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEI/JEIElement/JEIElement.md) | Get the elements of the current recipe |
+| JEIElements | [JEIElement[]](../JEIElement/JEIElement.md) | Get the elements of the current recipe |
 
-| Method | Parameter | Return | Description |
-|:---- | ---- | -----| -----|
-|setUid | string | ``this`` | Set  the UID at the time of creation |
-|setInputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | ``this`` | Set all inputs for the recipe |
-|setOutputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | ``this`` | Set all outputs for the recipe |
-|addInput | [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | ``this`` | Add input recipe |
-|addOutput | [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)  | ``this``| Add output recipe |
-|addJEIElement | [JEIElement](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEI/JEIElement/JEIElement.md) | ``this`` | Add elements |
-|setJEIElements | [JEIElement[]](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/JEI/JEIElement/JEIElement.md) | ``this`` | Set the elements of the current recipe |
-|onJEITooltip | function(mouseX as int, mouseY as int) | string[] | Add new tip to the specified place, this function is called only for the current recipe |
+## Methods
+
+| Method | Return Type | Description |
+|:------ | :------ | :------ |
+| setUid(uid as string) | ``this`` | Set  the UID at the time of creation |
+| setInputs(inputs as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)) | ``this`` | Set all inputs for the recipe |
+| setOutputs(output as [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)) | ``this`` | Set all outputs for the recipe |
+| addInput(input as [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)) | ``this`` | Add input recipe |
+| addOutput(output as [IIngredient](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/)) | ``this``| Add output recipe |
+| addJEIElement(JEIElement as [JEIElement](../JEIElement/JEIElement.md)) | ``this`` | Add elements |
+| setJEIElements(JEIElements as [JEIElement[]](../JEIElement/JEIElement.md)) | ``this`` | Set the elements of the current recipe |
+| onJEITooltip(function(mouseX as int, mouseY as int) {}) | string[] | Add new tip to the specified place, this function is called only for the current recipe |
 
 ## Example
 

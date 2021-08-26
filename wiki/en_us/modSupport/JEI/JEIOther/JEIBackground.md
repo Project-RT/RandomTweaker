@@ -2,13 +2,13 @@
 
 JEI's background settings, you can set only the width and height
 
-Import：
+## Import
 
 ```zenscript
 import mods.randomtweaker.jei.JEIBackground;
 ```
 
-| ZenGetter / ZenSetter    | Return |
+| ZenGetter / ZenSetter | Return Type |
 | :----------- | :----- |
 | resourceName | string |
 | u            | int    |

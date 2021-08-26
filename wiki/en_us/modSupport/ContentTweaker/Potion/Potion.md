@@ -8,17 +8,14 @@ Enables ContentTweaker to create simple potion effects
 import mods.randomtweaker.cote.Potion;
 ```
 
-| Feild | Type| Description |
-| ---- | :-- | --- |
-| unlocalizedName | string | Unlocalized name |
-| liquidColorIn | int | Color of potion |
-| badEffectIn | bool | Is the potion giving a debuff |
-| beneficial | bool | Whether the potion is beneficial to the player or not, beneficial potions will be placed in the first row |
-| instant | bool | Is the potion effective instantly or continuously? (true for instantly, false for continuously)|
-| shouldRender | bool | Whether to render in the backpack |
-| shouldRenderHUD | bool | Whether to render in the HUD (in the upper right corner) |
+| Feild | Type| Description | | ---- | :-- | --- | | unlocalizedName | string | Unlocalized name | |
+liquidColorIn | int | Color of potion | | badEffectIn | bool | Is the potion giving a debuff | |
+beneficial | bool | Whether the potion is beneficial to the player or not, beneficial potions will
+be placed in the first row | | instant | bool | Is the potion effective instantly or continuously? (
+true for instantly, false for continuously)| | shouldRender | bool | Whether to render in the
+backpack | | shouldRenderHUD | bool | Whether to render in the HUD (in the upper right corner) |
 
-Texture location : `"contenttweaker:textures/gui/unlocalizedName.png"`  
+Texture location : `contenttweaker:textures/gui/unlocalizedName.png`  
 **The texture must be 18 * 18 pixels size**  
 ~~Don't fill in unlocalizedName foolishly XD~~
 

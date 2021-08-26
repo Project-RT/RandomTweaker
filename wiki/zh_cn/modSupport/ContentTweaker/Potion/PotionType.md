@@ -11,9 +11,9 @@ import mods.randomtweaker.cote.PotionType;
 | 字段 | 类型| 描述 |
 | ---- | :----- | ---- |
 | unlocalizedName | string | 本地化键值 |
-| duration | int | 持续时间 (单位 : Tick, 默认：3600) |
+| duration | int | 持续时间 (单位 : Tick, 默认 3600 Tick) |
 | amplifier | int | 药水等级 (默认 0) |
-| potion | [Potion](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/Potion/Potion.md) | 指定药水 |
+| potion | [Potion](Potion.md) | 指定药水 |
 
 ## 例子
 

@@ -1,17 +1,18 @@
 # BotaniaFXHelper
 
-Allow CraftTweaker to call the particles of the Botania library (This section is highly recommended for players to test it by themselves)
+Allow CraftTweaker to call the particles of the Botania library (This section is highly recommended
+for players to test it by themselves)
 
 [Specific implementation](https://github.com/Vazkii/Botania/tree/1.12-final) ->
 vazkii.botania.client.core.proxy.ClientProxy
+
+## Import
 
 ```zenscript
 import mods.randomtweaker.botania.BotaniaFXHelper;
 ```
 
-set the beginning of the method does not seem to have a specific effect (the source code is related but the actual game does not see the effect)
-
-| Methods | Return | Description |
+| Methods | Return Type | Description |
 |:---- | :--- | :---- |
 | setWispFXDistanceLimit(limit as bool) | void | ? |
 | setWispFXDepthTest(depth as bool) | void | ? |

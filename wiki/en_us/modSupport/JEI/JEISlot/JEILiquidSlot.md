@@ -1,6 +1,7 @@
 # JEILiquidSlot
 
-JEILiquidSlot extends `JEISlot`, so that all available `Getters` of `JEISlot` can be used
+JEILiquidSlot extends [JEISlot](JEISlot.md), so that all available `Getters` and `Setter`
+of `JEISlot` can be used
 
 ## Import
 
@@ -8,7 +9,9 @@ JEILiquidSlot extends `JEISlot`, so that all available `Getters` of `JEISlot` ca
 import mods.randomtweaker.jei.JEILiquidSlot;
 ```
 
-| ZenGetter / ZenSetter   | Return |
+## ZenGetterAndZenSetter
+
+| ZenGetter / ZenSetter   | Return Type |
 | :----------- | :------ |
 | width        | int     |
 | height       | int     |
