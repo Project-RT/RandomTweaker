@@ -36,6 +36,8 @@ public class PotionRepresentation {
     public PotionPerformEffect performEffect = null;
     @ZenProperty
     public PotionIsReady isReady = null;
+    @ZenProperty
+    public PotionPerformEffect affectEntity = null;
 
     public PotionRepresentation(String unlocalizedName, int liquidColorIn) {
         this.liquidColorIn = liquidColorIn;

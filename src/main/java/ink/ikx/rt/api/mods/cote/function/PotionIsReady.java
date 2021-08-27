@@ -7,7 +7,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 @FunctionalInterface
 @ZenRegister
 @ModOnly("contenttweaker")
-@ZenClass("mods.randomtweaker.cotx.PotionIsReady")
+@ZenClass("mods.randomtweaker.cote.PotionIsReady")
 public interface PotionIsReady {
     boolean call(int duration, int amplifier);
 }

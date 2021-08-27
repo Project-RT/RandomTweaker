@@ -45,3 +45,26 @@ potionObj.performEffect = function(living, amplifier) {
 	}
 };
 ```
+## affectEntity
+
+The function is triggered only when the `instant` of `potion` is `true`
+
+### 导包
+
+```zenscript
+// This is not a error.
+import mods.randomtweaker.cotx.PotionPerformEffect; 
+```
+
+* living as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/) IEntityLivingBase with this potion's effect
+
+* amplifier as int Potion's amplifier
+
+```zenscript
+potionObj.affectEntity = function(living, amplifier) {
+ 	if(!living.world.remote && living instanceof Player) {
+		var player as Player = living;
+		player.sendChat("didiidid~~~");
+	}
+};
+```

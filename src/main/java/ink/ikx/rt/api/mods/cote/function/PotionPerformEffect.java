@@ -8,8 +8,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 @FunctionalInterface
 @ZenRegister
 @ModOnly("contenttweaker")
-@ZenClass("mods.randomtweaker.cotx.PotionPerformEffect")
+@ZenClass("mods.randomtweaker.cote.PotionPerformEffect")
 public interface PotionPerformEffect {
-
     void call(IEntityLivingBase living, int amplifier);
 }

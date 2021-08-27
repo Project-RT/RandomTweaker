@@ -2,13 +2,16 @@ package ink.ikx.rt.api.mods.cote.potion;
 
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.EntityHelper;
-import java.util.Objects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
+
+import javax.annotation.Nullable;
+import java.util.Objects;
 
 @SuppressWarnings("NullableProblems")
 public class PotionContent extends Potion {
@@ -83,6 +86,13 @@ public class PotionContent extends Potion {
     public void performEffect(EntityLivingBase living, int amplifier) {
         if (Objects.nonNull(potionRepresentation.performEffect)) {
             potionRepresentation.performEffect.call(EntityHelper.getIEntityLivingBase(living), amplifier);
+        }
+    }
+
+    @Override
+    public void affectEntity(@Nullable Entity source, @Nullable Entity indirectSource, EntityLivingBase living, int amplifier, double health) {
+        if (Objects.nonNull(potionRepresentation.affectEntity)) {
+            potionRepresentation.affectEntity.call(EntityHelper.getIEntityLivingBase(living), amplifier);
         }
     }
 }
