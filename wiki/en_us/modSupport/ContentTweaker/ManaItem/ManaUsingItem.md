@@ -9,6 +9,6 @@ extends [ManaItem](ManaItem.md) class, so you can use all things available in `M
 import mods.randomtweaker.cote.ManaUsingItem;
 ```
 
-[For field or method](../ManaItem/ManaItem.md)
+[For field or method](ManaItem.md)
 
 [For function](function.md#usesMana)
