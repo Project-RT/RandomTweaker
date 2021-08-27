@@ -49,7 +49,7 @@ potionObj.performEffect = function(living, amplifier) {
 
 The function is triggered only when the `instant` of `potion` is `true`
 
-### 导包
+### Import
 
 ```zenscript
 // This is not a error.
