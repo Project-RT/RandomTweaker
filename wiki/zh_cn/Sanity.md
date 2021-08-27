@@ -14,8 +14,7 @@ import mods.randomtweaker.PlayerSanityChangeEvent;
 ## 继承 IEventCancelable
 
 `PlayerSanityChangeEvent`
-事件继承了 [IEventCancelable](https://docs.blamejared.com/1.12/en/Vanilla/Events/Events/IEventCancelable/)
-, 所以他们的 `methods` `getters` `setters` 都可以被调用
+事件继承了 [IEventCancelable](https://docs.blamejared.com/1.12/en/Vanilla/Events/Events/IEventCancelable/), 所以他们的 `methods` `getters` `setters` 都可以被调用
 
 ## Getter
 

@@ -12,10 +12,10 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenRegister
 @ModOnly("botania")
 @ZenExpansion("crafttweaker.world.IWorld")
-public class BotaniaTileInGame {
+public class AlfPortalTileInGame {
 
     @ZenMethod
-    public static IMixinTileAlfPortal getAlfPortalInGame(IWorld world, IBlockPos blockPos) {
+    public static IMixinTileAlfPortal getAlfPortalTileInGame(IWorld world, IBlockPos blockPos) {
         TileEntity te = CraftTweakerMC.getWorld(world).getTileEntity(CraftTweakerMC.getBlockPos(blockPos));
         if (te instanceof IMixinTileAlfPortal) {
             return (IMixinTileAlfPortal) te;
