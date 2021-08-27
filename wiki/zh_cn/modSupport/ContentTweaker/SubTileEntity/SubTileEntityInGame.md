@@ -6,12 +6,16 @@
 import mods.randomtweaker.cote.SubTileEntityInGame;
 ```
 
-| Getter | 类型 | 是否有 Setter | 描述 |
-| :----- | ---- | ------------ | ---- |
+## Getter
+
+| Getter | 返回类型 | 是否有 Setter | 描述 |
+| :----- | :----- | :----- | :----- |
 | data | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | √ | 获取或者设置 (注意是设置不是更新) 自定义花的 Data |
 
-| Method | 类型 | 描述 |
-| :----- | ---- | --- |
+## Methods
+
+| Method | 返回类型 | 描述 |
+| :----- | :----- | :----- |
 | sync() | void | 同步 TileEntity 数据 (遇到什么奇奇怪怪的问题试试调用这个方法) |
 | typeOf() | string | 返回自定义花的类型 |
 | getCustomData() | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | 获取自定义花的 Data |
@@ -25,5 +29,4 @@ import mods.randomtweaker.cote.SubTileEntityInGame;
 
 ## 获取 SubTileEntityInGame
 
-你可以用 `worldObj.getSubTileEntityInGame(posObj)`
-来获取 [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileEntityInGame.md)
+你可以用 `worldObj.getSubTileEntityInGame(posObj)` 来获取 [SubTileEntityInGame](SubTileEntityInGame.md)

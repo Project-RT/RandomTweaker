@@ -70,8 +70,8 @@ import mods.randomtweaker.cote.BlockPlacedBy;
   as [IEntityLivingBase](https://docs.blamejared.com/1.12/en/Vanilla/Entities/IEntityLivingBase/)
   The entity who placed the flower
 
-* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Item on hand (
-  the placed flower)
+* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Item on
+  hand (the placed flower)
 
 ```zenscript
 subTileEntityObj.onBlockPlaceBy = function(world, pos, state, entity, stack) {
@@ -89,8 +89,7 @@ Called every tick
 import mods.randomtweaker.cote.Update;
 ```
 
-* subtile
-  as [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+* subtile as [SubTileEntityInGame](SubTileEntityInGame.md)
   The TileEntity of the flower
 
 * world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) The world of the flower
@@ -117,7 +116,8 @@ import mods.randomtweaker.cote.BlockHarvested;
 
 * pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) The pos of the flower
 
-* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) The blockstate of the flower
+* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) The
+  blockstate of the flower
 
 * player
   as [ICTPlayer](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Types/Player/ICTPlayer/)
@@ -145,7 +145,8 @@ import mods.randomtweaker.cote.BlockActivated;
 
 * pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) The pos of the flower
 
-* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) The blockstate of the flower
+* state as [IBlockState](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockState/) The
+  blockstate of the flower
 
 * player
   as [ICTPlayer](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Types/Player/ICTPlayer/)
@@ -154,7 +155,8 @@ import mods.randomtweaker.cote.BlockActivated;
 * hand as [Hand](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Types/Player/Hand/)
   Which hand the player uses when clicking the flower
 
-* side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) Direction of the player
+* side as [IFacing](https://docs.blamejared.com/1.12/en/Vanilla/World/IFacing/) Direction of the
+  player
 
 * hitX as float Relative coordinates of the player and the flower
 
@@ -170,7 +172,7 @@ subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, si
 
 ## canGeneratePassively
 
-Is the flower a passive generation flower ((Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+Is the flower a passive generation flower ((Only the [SubTileGenerating](SubTileGenerating.md)
 object has this function)
 
 ### Import
@@ -191,7 +193,7 @@ subTileGeneratingObj.canGeneratePassively = function(pos, world) {
 
 ## populateDropStackNBTs
 
-Decide the drop after harvested flowers (Only the [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/master/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+Decide the drop after harvested flowers (Only the [SubTileGenerating](SubTileGenerating.md)
 class has this function)
 
 ### Import
@@ -201,6 +203,7 @@ import mods.randomtweaker.cote.PopulateDropStackNBTs;
 ```
 
 * drops as [IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) List of drops
+
 ```zenscript
 subTileGeneratingObj.populateDropStackNBTs = function(drops) {
 

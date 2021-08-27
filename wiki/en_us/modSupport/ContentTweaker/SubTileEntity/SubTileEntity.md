@@ -8,9 +8,9 @@ Remember to put the custom flower texture in the `resources/contenttweaker/textu
 
 This class mainly makes the code easy to maintain
 
-To create generation flowers, please see [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+To create generation flowers, please see [SubTileGenerating](SubTileGenerating.md)
 
-To create functional flowers, please see [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md)
+To create functional flowers, please see [SubTileFunctional](SubTileFunctional.md)
 
 ## Import
 
@@ -21,7 +21,7 @@ import mods.randomtweaker.cote.SubTileEntity;
 ## ZenProperty
 
 | Feild | Type | Description |
-|:---- |:--- |----- |
+| :----- | :----- | :----- |
 | unlocalizedName | string | Unlocalized name |
 | range | int | Radius of work of the flower |
 | color | int | Color of the flower |
@@ -40,7 +40,8 @@ import mods.randomtweaker.cote.SubTileEntity;
 Please install `ZenUtils` Mod
 
 Both [Event hot reload](https://github.com/friendlyhj/ZenUtils/wiki/ReloadEvents)
-and [ContentTweaker fuction hot reload](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction) are provided by this mod
+and [ContentTweaker fuction hot reload](https://github.com/friendlyhj/ZenUtils/wiki/LateSetCoTFunction)
+are provided by this mod
 
 In the ContentTweaker script
 

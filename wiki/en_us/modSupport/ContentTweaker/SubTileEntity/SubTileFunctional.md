@@ -1,10 +1,11 @@
 # SubTileFunctional
 
-The `SubTileFunctional`
-class extends [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
-class, that means all the functions available in the `SubTileEntity` class can be used by the `SubTileFunctional` class.
+The `SubTileFunctional` class extends [SubTileEntity](SubTileEntity.md) class, that means all the
+functions available in the `SubTileEntity` class can be used by the `SubTileFunctional` class.
 
-If there is a mini functional flower, remember to put a separate texture for the small functional flower in the `resources/contenttweaker/textures/blocks` directory (texture name : `unlocalizedName` + _chibi.png)
+If there is a mini functional flower, remember to put a separate texture for the small functional
+flower in the `resources contenttweaker/textures/blocks` directory (texture name : `unlocalizedName`
++ _chibi.png)
 
 ## Import
 
@@ -14,18 +15,18 @@ import mods.randomtweaker.cote.SubTileFunctional;
 
 ## ZenProperty
 
-See [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+See [SubTileEntity](SubTileEntity.md)
 
 | Feild | Type | Description |
-|:---- |:--- |----- |
+| :---- | :---- | :---- |
 | hasMini | bool | Whether to create mini functional flowers |
 | miniRange | int | Radius of work for mini functional flowers |
 
 ## ZenMethod
 
-| Method | Type | Description |
-|:---- |:--- |----- |
-| register() | void | Register this flower |
+| Method | Description |
+| :----- | :----- |
+| register() | Register this flower |
 
 ## Example
 

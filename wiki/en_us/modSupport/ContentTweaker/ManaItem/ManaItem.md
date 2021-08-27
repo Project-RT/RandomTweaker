@@ -1,7 +1,10 @@
 # ManaItem
 
-Enables ContentTweaker to create items with Mana when Botania and ContentTweaker are loaded at the same time  
-The `ManaItem` class extends the [Item](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Item/) class, that means all the functions available in the `Item` class can also be be used on the `ManaItem` class
+Enables ContentTweaker to create items with Mana when Botania and ContentTweaker are loaded at the
+same time, The `ManaItem` class extends
+the [Item](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Creatable_Content/Item/)
+class, that means all the functions available in the `Item` class can also be be used on
+the `ManaItem` class
 
 ## Import
 
@@ -9,19 +12,21 @@ The `ManaItem` class extends the [Item](https://docs.blamejared.com/1.12/en/Mods
 import mods.randomtweaker.cote.ManaItem;
 ```
 
+## Feild
+
 | Feild | Type | Description |
-|:---------- |:---------- |----------- |
+| :--------- | :--------- | :--------- |
 | unlocalizedName | string | Unlocalized name |
 | maxMana | int (Default: 5w) | Max mana capacity |
 | isNoExport | bool (Default: false) | Does it really output mana |
 | hasFull | bool (Default: false) | Whether to create mana items full with mana |
 | hasCreative | bool (Default: false) | Whether to create Creative item(similar to Creative Mana Tablets) |
 
-## Method
+## Methods
 
-| Method | Type | Description |
-|:---- |:---- |---- |
-| register() | void | Register this item |
+| Method | Description |
+| :------ | :------ |
+| register() | Register this item |
 
 ## Hot reload
 

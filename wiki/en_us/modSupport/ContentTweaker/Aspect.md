@@ -8,19 +8,21 @@ Enables `CoT` to customize aspects when both `ThaumCraft` and `CoT` are installe
 import mods.randomtweaker.cote.Aspect;
 ```
 
+## Feild
+
 | Feild | Type | Description |
 | :--- | ---- | --- |
 | tag | string | Unique name of this aspect |
 | color | int | Color of this aspect |
-| image | string | Default path contenttweaker:textures/aspects/(all-lowercase)tag.png, create a aspects folder manually if there isn't one, use `:` to split the main file name and path if you want to use another path) |
+| image | string | Path of aspect (Default path contenttweaker:textures/aspects/(all-lowercase)tag.png) |
 | components | string[] | Which two aspects does this aspect craft from (fill in two aspects) |
-| blend | int |  |
+| blend | int | ? |
 
-## Method
+## Methods
 
-| Method | Type | Description |
-|:---- |:---- |---- |
-| register() | void | Register this aspect |
+| Method | Description |
+| :---- | :---- |
+| register() | Register this aspect |
 
 ## Example
 
@@ -31,5 +33,4 @@ import mods.randomtweaker.cote.Aspect;
 
 var aspect as Aspect = VanillaFactory.createAspect("test", 0x4169E1);
 aspect.register();
-
 ```

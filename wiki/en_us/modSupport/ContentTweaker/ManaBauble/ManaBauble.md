@@ -1,9 +1,8 @@
 # ManaBauble
 
 When Botania and ContentTweaker are loaded at the same time, it allows ContentTweaker to create
-baubles with mana. The `ManaBauble` class extends
-the [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/ManaItem/ManaItem.md)
-class, so all available functions of `ManaItem` are also available for `ManaBauble`.
+baubles with mana. The `ManaBauble` class extends the [ManaItem](../ManaItem/ManaItem.md) class, so
+all available functions of `ManaItem` are also available for `ManaBauble`.
 
 ## Import
 
@@ -11,16 +10,17 @@ class, so all available functions of `ManaItem` are also available for `ManaBaub
 import mods.randomtweaker.cote.ManaBauble;
 ```
 
+## Feild
+
 | Feild | Type | Description |
-|:--- | --- | ---- |
-| useMana | bool | This field has effect except for `RING` and `TRINKET` type bauble, also if the mana of the bauble is greater than 0 it will still return false |
-| baubleType | string | Specify the type of the bauble (must be the same, default is `RING`), there are only `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM` available.|
+| :---- | :---- | :---- |
+| baubleType | string | Specify the type of the bauble (must be the same, default is `TRINKET`), there are only `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM` available. |
 
-## Method
+## Methods
 
-| Method | Type | Description |
-|:---- |:---- |---- |
-| register() | void | Register this Mana Bauble |
+| Method | Description |
+| :---- | :---- |
+| register() | Register this Mana Bauble |
 
 ## Hot reload
 
@@ -40,12 +40,6 @@ import crafttweaker.player.IPlayer;
 };
 ```
 
-## Method
-
-| Method | Type | Description |
-|:---- |:---- |---- |
-| register() | void | Register this bauble|
-
 ## Example
 
 ```zenscript
@@ -55,7 +49,7 @@ import mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.cote.ManaBauble;
 import crafttweaker.player.IPlayer;
 
-var manaBauble as ManaBauble = VanillaFactory.createManaBauble("test_1", 500000, "TRINKET");
+var manaBauble as ManaBauble = VanillaFactory.createManaBauble("test", "TRINKET", 500000);
 manaBauble.onWornTick = function(bauble, wearer) {
    if(wearer instanceof IPlayer) {
         var player as IPlayer = wearer;
@@ -79,4 +73,4 @@ manaBauble.register();
 
 ## 本地化
 
-item.contenttweaker.物品ID.name
+item.contenttweaker.itemID.name

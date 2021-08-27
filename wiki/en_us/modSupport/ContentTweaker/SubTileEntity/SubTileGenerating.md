@@ -1,8 +1,7 @@
 # SubTileGenerating
 
-The `SubTileGenerating`
-class extends [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
-class, that means all the functions available in the `SubTileEntity` class can be used by the `SubTileGenerating` class.
+The `SubTileGenerating` class extends [SubTileEntity](SubTileEntity.md) class, that means all the
+functions available in the `SubTileEntity` class can be used by the `SubTileGenerating` class.
 
 ## Import
 
@@ -12,10 +11,10 @@ import mods.randomtweaker.cote.SubTileGenerating;
 
 ## ZenProperty
 
-See [SubTileEntity](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntity.md)
+See [SubTileEntity](SubTileEntity.md)
 
-| Deild | Type | Description |
-|:---- |:--- |----- |
+| Feild | Type | Description |
+| :---- | :--- | :----- |
 | PassiveFlower | bool | Whether it is a passive generation flower |
 | valueForPassiveGeneration | int | How many amount of mana each time the mana produced|
 | delayBetweenPassiveGeneration | int | Cooldown time after each time the mana produced (Unit : Tick) |

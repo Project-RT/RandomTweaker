@@ -12,11 +12,12 @@ import mods.randomtweaker.jei.JEIRecipe
 
 ## Getter
 
-| Getter | 返回类型 | 描述 | |:------ | |:------ | |:------ | | uid | string | 创建 JEI 时填的 UID | | inputs
-| [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) |
-获取当前配方的全部输入 | | outputs
-| [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) |
-获取当前配方的全部输出 | | JEIElements | [JEIElement[]](../JEI/JEIElement/JEIElement.md) | 获取当前配方的渲染元素 |
+| Getter | 返回类型 | 描述 |
+|:------ | :------ | :------ |
+| uid | string | 创建 JEI 时填的 UID |
+| inputs | [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | 获取当前配方的全部输入 |
+| outputs| [IIngredient[]](https://docs.blamejared.com/1.12/en/Vanilla/Variable_Types/IIngredient/) | 获取当前配方的全部输出 |
+| JEIElements | [JEIElement[]](../JEI/JEIElement/JEIElement.md) | 获取当前配方的渲染元素 |
 
 ## Methods
 

@@ -65,12 +65,35 @@ Decide whether the item accepts mana output from other items
 
 Need to return a bool
 
-* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Items to be output Mana 
+* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Items to be
+  output Mana
 
-* otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Item that outputs Mana
+* otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Item
+  that outputs Mana
 
 ```zenscript
 manaItemObj.canReceiveManaFromItem = function(stack, otherStack) {
+    return true;
+};
+```
+
+## usesMana
+
+### 导包
+
+```zenscript
+import mods.randomtweaker.cote.IsUsesMana;
+```
+
+决定物品是否使用背包或者饰品里储存的魔力 (仅 [ManaUsingItem](ManaUsingItem.md) 有此函数)
+
+需要返回一个 bool
+
+* stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) The item
+  itself
+
+```zenscript
+manaUsingItemObj.usesMana = function(stack) {
     return true;
 };
 ```

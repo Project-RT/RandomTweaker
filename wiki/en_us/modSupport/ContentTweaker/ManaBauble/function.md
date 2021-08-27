@@ -114,8 +114,8 @@ manaBaubleObj.willAutoSync = function((bauble, wearer) {
 
 This function is used to render the bauble when it is in the player's bauble bar
 
-Only simple rendering is currently available,
-For details of the rendering method, please see [BaubleRenderHelper](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/ManaBauble/BaubleRenderHelper.md)
+Only simple rendering is currently available, For details of the rendering method, please
+see [BaubleRenderHelper](BaubleRenderHelper.md)
 
 * stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) Bauble
 * player as [IPlayer](https://docs.blamejared.com/1.12/en/Vanilla/Players/IPlayer/) Players who wear bauble

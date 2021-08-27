@@ -8,12 +8,20 @@ Enables ContentTweaker to create potions like different types of potion bottles
 import mods.randomtweaker.cote.PotionType;
 ```
 
-| Feild | Type| Description |
-| ---- | :----- | ---- |
+## Feild
+
+| Feild | Type | Description |
+| :---- | :---- | :---- |
 | unlocalizedName | string | Unlocalized name |
 | duration | int | Duration (Unit : Tick, Default : 3600) |
 | amplifier | int | Potion level (default 0) |
 | potion | [Potion](Potion.md) | Specified potion |
+
+## Methods
+
+| Method | Description |
+| :---- | :---- |
+| register() | Register this potiontype |
 
 ## Example
 

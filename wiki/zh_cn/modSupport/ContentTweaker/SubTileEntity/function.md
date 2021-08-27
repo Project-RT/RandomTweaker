@@ -89,8 +89,7 @@ subTileEntityObj.onBlockPlaceBy = function(world, pos, state, entity, stack) {
 import mods.randomtweaker.cote.Update;
 ```
 
-* subtile
-  as [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileEntityInGame.md)
+* subtile as [SubTileEntityInGame](SubTileEntityInGame.md)
   产魔花的 TileEntity
 
 * world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/) 产魔花所在的世界
@@ -170,9 +169,7 @@ subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, si
 
 ## canGeneratePassively
 
-产魔花是否被动产能 (
-仅 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
-类具有此函数)
+产魔花是否被动产能 (仅 [SubTileGenerating](SubTileGenerating.md) 类具有此函数)
 
 ### 导包
 
@@ -192,9 +189,7 @@ subTileGeneratingObj.canGeneratePassively = function(pos, world) {
 
 ## populateDropStackNBTs
 
-决定挖掘完产魔花的掉落物 (
-仅 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md))
-类具有此函数)
+决定挖掘完产魔花的掉落物 (仅 [SubTileGenerating](SubTileGenerating.md)) 类具有此函数)
 
 ### 导包
 

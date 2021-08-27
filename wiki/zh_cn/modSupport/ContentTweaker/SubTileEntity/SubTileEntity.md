@@ -8,9 +8,9 @@ CrT 获取不到这个类, 只能获取到它的子类
 
 这个类主要让代码方便维护
 
-想创建产魔花请看 [SubTileGenerating](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileGenerating.md)
+想创建产魔花请看 [SubTileGenerating](SubTileGenerating.md)
 
-想创建功能花请看 [SubTileFunctional](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/SubTileEntity/SubTileFunctional.md)
+想创建功能花请看 [SubTileFunctional](SubTileFunctional.md)
 
 ## 导包
 
@@ -21,8 +21,8 @@ import mods.randomtweaker.cote.SubTileEntity;
 ## ZenProperty
 
 | 字段 | 类型 | 描述 |
-|:---- |:--- |----- |
-| unlocalizedName | string | 注册 |
+| :----- | :----- | :----- |
+| unlocalizedName | string | 注册名 |
 | range | int | 自定义花的工作范围 |
 | color | int | 自定义花的颜色 |
 | maxMana | int | 最大魔力容量 |

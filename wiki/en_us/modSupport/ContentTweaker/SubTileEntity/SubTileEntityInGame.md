@@ -6,12 +6,16 @@
 import mods.randomtweaker.cote.SubTileEntityInGame;
 ```
 
-| Getter | Type | Have Setter | Description |
-| :----- | ---- | ------------ | ---- |
+## Getter
+
+| Getter | Return Type | Have Setter | Description |
+| :----- | :----- | :----- | :----- |
 | data | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | √ | Get or set (note that it is set and not updated) the Data of the custom flower |
 
-| Method | Type | Description |
-| :----- | ---- | --- |
+## Methods
+
+| Method | Return Type | Description |
+| :----- | :----- | :----- |
 | sync() | void | Sync TileEntity data (Try calling this method when you encounter any problems)|
 | typeOf() | string | Return the type of the custom flower |
 | getCustomData() | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | Get the Data of the custom flower |
@@ -25,5 +29,5 @@ import mods.randomtweaker.cote.SubTileEntityInGame;
 
 ## Get SubTileEntityInGame
 
-You can use `worldObj.getSubTileEntityInGame(posObj)`
-to get [SubTileEntityInGame](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/en_us/modSupport/ContentTweaker/SubTileEntity/SubTileEntityInGame.md)
+You can use `worldObj.getSubTileEntityInGame(posObj)` to
+get [SubTileEntityInGame](SubTileEntityInGame.md)

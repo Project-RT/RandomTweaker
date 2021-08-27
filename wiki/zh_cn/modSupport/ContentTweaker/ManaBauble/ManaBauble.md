@@ -1,9 +1,7 @@
 # ManaBauble
 
-当同时加载了植物魔法和 CoT 时可以使 CoT 可以创建具有魔力 (Mana) 的饰品  
-因为 `ManaBauble`
-类继承 [ManaItem](https://github.com/ikexing-cn/RandomTweaker/blob/1.12/wiki/zh_cn/modSupport/ContentTweaker/ManaItem/ManaItem.md)
-类所以 `ManaItem` 所有可用的功能也可用于 `ManaBauble` 上
+当同时加载了植物魔法和 CoT 时可以使 CoT 可以创建具有魔力 (Mana) 的饰品, 因为 `ManaBauble`
+类继承 [ManaItem](../ManaItem/ManaItem.md) 类所以 `ManaItem` 所有可用的功能也可用于 `ManaBauble` 上
 
 ## 导包
 
@@ -11,16 +9,17 @@
 import mods.randomtweaker.cote.ManaBauble;
 ```
 
+## 字段
+
 | 字段 | 类型 | 描述 |
-|:--- | --- | ---- |
-| useMana | bool | 除 `RING` 和 `TRINKET` 类型的饰品此字段都有效果, 另外如果饰品的魔力大于 0 仍然会返回 false |
-| baubleType | string | 指定饰品的类型 (必须一致, 默认为 `RING`) , 有 `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM`|
+| :---- | :---- | :---- |
+| baubleType | string | 指定饰品的类型 (必须一致, 默认为 `TRINKET`) , 有 `AMULET`, `RING`, `BELT`, `TRINKET`, `HEAD`, `BODY`, `CHARM` |
 
-## Method
+## 方法
 
-| 方法 | 类型 | 描述 |
-|:---- |:---- |---- |
-| register() | void | 注册此魔力饰品 |
+| 方法 | 描述 |
+| :---- | :---- |
+| register() | 注册此魔力饰品 |
 
 ## 热重载
 
@@ -49,7 +48,7 @@ import mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.cote.ManaBauble;
 import crafttweaker.player.IPlayer;
 
-var manaBauble as ManaBauble = VanillaFactory.createManaBauble("test_1", 500000, "TRINKET");
+var manaBauble as ManaBauble = VanillaFactory.createManaBauble("test", "TRINKET", 500000);
 manaBauble.onWornTick = function(bauble, wearer) {
    if(wearer instanceof IPlayer) {
         var player as IPlayer = wearer;
