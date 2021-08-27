@@ -1,9 +1,7 @@
 package ink.ikx.rt.impl.item;
 
-import baubles.api.BaubleType;
 import ink.ikx.rt.api.internal.item.ManaBauble;
-import ink.ikx.rt.api.mods.cote.mana.ManaBaubleContent;
-import ink.ikx.rt.api.mods.cote.mana.ManaUsingContent;
+import ink.ikx.rt.api.mods.cote.mana.bauble.ManaBaubleContent;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -21,13 +19,5 @@ public class ManaBaubleImpl extends ManaItemImpl implements ManaBauble {
     @Override
     public String getBaubleType() {
         return this.manaBauble.getBaubleType(stack).toString();
-    }
-
-    @Override
-    public boolean getUseMana() {
-        if (this.manaBauble.getBaubleType(stack) != BaubleType.RING && this.manaBauble.getBaubleType(stack) != BaubleType.TRINKET) {
-            return ((ManaUsingContent) manaBauble).usesMana(stack);
-        }
-        return false;
     }
 }

@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.mana;
+package ink.ikx.rt.api.mods.cote.mana.bauble;
 
 import vazkii.botania.api.item.ICosmeticBauble;
 import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;

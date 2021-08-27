@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.mana;
+package ink.ikx.rt.api.mods.cote.mana.item;
 
 import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
@@ -18,13 +18,15 @@ import stanhebben.zenscript.annotations.ZenProperty;
 public class ManaItemRepresentation extends ItemRepresentation {
 
     @ZenProperty
-    public int maxMana;
-    @ZenProperty
     public boolean hasFull;
     @ZenProperty
     public boolean isNoExport;
     @ZenProperty
     public boolean hasCreative;
+    @ZenProperty
+    public int maxMana = 500000;
+    @ZenProperty
+    public int maxItemUseDuration;
     @ZenProperty
     public ManaWithPool canExportManaToPool;
     @ZenProperty
@@ -78,6 +80,16 @@ public class ManaItemRepresentation extends ItemRepresentation {
     @ZenMethod
     public void setCanReceiveManaFromItem(ManaWithItem canReceiveManaFromItem) {
         this.canReceiveManaFromItem = canReceiveManaFromItem;
+    }
+
+    @ZenMethod
+    public int getMaxItemUseDuration() {
+        return maxItemUseDuration;
+    }
+
+    @ZenMethod
+    public void setMaxItemUseDuration(int maxItemUseDuration) {
+        this.maxItemUseDuration = maxItemUseDuration;
     }
 
     @ZenMethod

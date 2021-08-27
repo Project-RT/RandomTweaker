@@ -14,6 +14,4 @@ public interface ManaBauble extends ManaItem {
     @ZenGetter("baubleType")
     String getBaubleType();
 
-    @ZenGetter("isUseMana")
-    boolean getUseMana();
 }

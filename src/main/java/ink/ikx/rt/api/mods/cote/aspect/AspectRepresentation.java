@@ -1,10 +1,10 @@
 package ink.ikx.rt.api.mods.cote.aspect;
 
+import com.teamacronymcoders.contenttweaker.api.ctobjects.resourcelocation.CTResourceLocation;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import java.util.ArrayList;
 import java.util.Objects;
-import net.minecraft.util.ResourceLocation;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -15,19 +15,20 @@ import thaumcraft.api.aspects.Aspect;
 public class AspectRepresentation {
 
     @ZenProperty
-    public String tag;
-    @ZenProperty
     public int color;
     @ZenProperty
-    public String image;
+    public String tag;
     @ZenProperty
     public int blend = 1;
     @ZenProperty
     public String[] components;
+    @ZenProperty
+    public CTResourceLocation image;
 
     public AspectRepresentation(String tag, int color) {
-        this.tag = tag;
-        this.color = color;
+        this.setTag(tag);
+        this.setColor(color);
+        this.setImage(CTResourceLocation.create("contenttweaker:textures/aspects/" + tag.toLowerCase()));
     }
 
     public Aspect[] asAspects() {
@@ -41,16 +42,9 @@ public class AspectRepresentation {
             for (String aspect : components) {
                 aspects.add(Aspect.getAspect(aspect));
             }
-            return (Aspect[]) aspects.toArray();
+            return aspects.toArray(new Aspect[0]);
         }
         return null;
-    }
-
-    public ResourceLocation getResourceLocation() {
-        if (Objects.nonNull(image)) {
-            return new ResourceLocation(image.split(":")[0], image.split(":")[1]);
-        }
-        return new ResourceLocation("contenttweaker", "textures/aspects/" + tag.toLowerCase() + ".png");
     }
 
     @ZenMethod
@@ -74,12 +68,12 @@ public class AspectRepresentation {
     }
 
     @ZenMethod
-    public String getImage() {
+    public CTResourceLocation getImage() {
         return image;
     }
 
     @ZenMethod
-    public void setImage(String image) {
+    public void setImage(CTResourceLocation image) {
         this.image = image;
     }
 
@@ -95,6 +89,6 @@ public class AspectRepresentation {
 
     @ZenMethod
     public void register() {
-        new Aspect(tag, color, this.asAspects(), this.getResourceLocation(), blend);
+        new Aspect(this.getTag(), this.getColor(), this.asAspects(), this.getImage().getInternal(), this.getBlend());
     }
 }

@@ -36,6 +36,9 @@ public interface ManaItem {
     @ZenGetter("full")
     boolean isFull();
 
+    @ZenGetter("isUseMana")
+    boolean getUseMana();
+
     @ZenMethod
     boolean canExportManaToPool(IWorld world, IBlockPos pos);
 

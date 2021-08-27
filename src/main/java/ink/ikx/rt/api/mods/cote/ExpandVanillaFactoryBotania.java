@@ -2,8 +2,9 @@ package ink.ikx.rt.api.mods.cote;
 
 import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalRepresentation;
 import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
-import ink.ikx.rt.api.mods.cote.mana.ManaBaubleRepresentation;
-import ink.ikx.rt.api.mods.cote.mana.ManaItemRepresentation;
+import ink.ikx.rt.api.mods.cote.mana.bauble.ManaBaubleRepresentation;
+import ink.ikx.rt.api.mods.cote.mana.item.ManaItemRepresentation;
+import ink.ikx.rt.api.mods.cote.mana.item.tool.ManaUsingItemRepresentation;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -14,12 +15,17 @@ import stanhebben.zenscript.annotations.ZenMethodStatic;
 public class ExpandVanillaFactoryBotania {
 
     @ZenMethodStatic
-    public static ManaItemRepresentation createManaItem(String unlocalizedName, @Optional(valueLong = 500000) int maxMana) {
+    public static ManaItemRepresentation createManaItem(String unlocalizedName, @Optional int maxMana) {
         return new ManaItemRepresentation(unlocalizedName, maxMana);
     }
 
     @ZenMethodStatic
-    public static ManaBaubleRepresentation createManaBauble(String unlocalizedName, @Optional(valueLong = 500000) int maxMana, @Optional(value = "RING") String baubleType) {
+    public static ManaUsingItemRepresentation createManaUsingItem(String unlocalizedName, @Optional int maxMana) {
+        return new ManaUsingItemRepresentation(unlocalizedName, maxMana);
+    }
+
+    @ZenMethodStatic
+    public static ManaBaubleRepresentation createManaBauble(String unlocalizedName, String baubleType, @Optional int maxMana) {
         return new ManaBaubleRepresentation(unlocalizedName, maxMana, baubleType);
     }
 

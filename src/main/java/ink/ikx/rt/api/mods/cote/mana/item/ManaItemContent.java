@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.cote.mana;
+package ink.ikx.rt.api.mods.cote.mana.item;
 
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemContent;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -8,8 +8,12 @@ import javax.annotation.Nonnull;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -32,6 +36,7 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
     private static final String TAG_MANA = "mana";
     private static final String TAG_ONE_USE = "oneUse";
     private static final String TAG_CREATIVE = "creative";
+    private static final int DEFAULT_MAX_ITEM_USE_DURATION = 32;
 
     public ManaItemContent(ManaItemRepresentation manaItem) {
         super(manaItem);
@@ -73,6 +78,21 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
                 stacks.add(fullPower);
             }
         }
+    }
+
+    @Nonnull
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ActionResult<ItemStack> actionResult = super.onItemRightClick(world, player, hand);
+        if (actionResult.getType() == EnumActionResult.SUCCESS) {
+            player.setActiveHand(hand);
+        }
+        return actionResult;
+    }
+
+    @Override
+    public int getMaxItemUseDuration(ItemStack stack) {
+        return (Objects.nonNull(manaItem.onItemUseFinish) && manaItem.maxItemUseDuration == 0) ? DEFAULT_MAX_ITEM_USE_DURATION : manaItem.maxItemUseDuration;
     }
 
     @Override
