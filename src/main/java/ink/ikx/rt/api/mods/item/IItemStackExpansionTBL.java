@@ -1,17 +1,16 @@
 package ink.ikx.rt.api.mods.item;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.block.IBlockState;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import java.util.Arrays;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 import thebetweenlands.api.item.CorrosionHelper;
 
-@ZenRegister
+import java.util.Arrays;
+
 @ModOnly("thebetweenlands")
 @ZenExpansion("crafttweaker.item.IItemStack")
 public class IItemStackExpansionTBL {

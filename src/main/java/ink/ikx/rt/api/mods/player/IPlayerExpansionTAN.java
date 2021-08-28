@@ -1,10 +1,8 @@
 package ink.ikx.rt.api.mods.player;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
-import java.util.Objects;
 import net.minecraft.entity.player.EntityPlayer;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -16,7 +14,9 @@ import toughasnails.api.temperature.TemperatureHelper;
 import toughasnails.api.thirst.ThirstHelper;
 import toughasnails.thirst.ThirstHandler;
 
-@ZenRegister
+import java.util.Objects;
+
+
 @ModOnly("toughasnails")
 @ZenExpansion("crafttweaker.player.IPlayer")
 public class IPlayerExpansionTAN {

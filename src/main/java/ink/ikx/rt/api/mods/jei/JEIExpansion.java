@@ -1,6 +1,5 @@
 package ink.ikx.rt.api.mods.jei;
 
-import crafttweaker.annotations.ZenRegister;
 import ink.ikx.rt.api.mods.jei.interfaces.element.*;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIBackground;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
@@ -17,7 +16,6 @@ import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-@ZenRegister
 @ZenExpansion("mods.jei.JEI")
 public class JEIExpansion {
 

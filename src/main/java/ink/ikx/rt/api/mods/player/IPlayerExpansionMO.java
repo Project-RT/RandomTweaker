@@ -1,7 +1,6 @@
 package ink.ikx.rt.api.mods.player;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.impl.matteroverdrive.IMatterOverdriveAndroid;
@@ -15,7 +14,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author skyraah
  */
-@ZenRegister
+
 @ModOnly("matteroverdrive")
 @ZenExpansion("crafttweaker.player.IPlayer")
 public class IPlayerExpansionMO {

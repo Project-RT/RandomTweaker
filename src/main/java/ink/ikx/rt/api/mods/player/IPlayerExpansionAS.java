@@ -2,19 +2,19 @@ package ink.ikx.rt.api.mods.player;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
 import hellfirepvp.astralsorcery.common.constellation.IMajorConstellation;
 import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import net.minecraft.entity.player.EntityPlayer;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@ZenRegister
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+
 @ModOnly("astralsorcery")
 @ZenExpansion("crafttweaker.player.IPlayer")
 public class IPlayerExpansionAS {

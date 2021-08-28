@@ -1,7 +1,6 @@
 package ink.ikx.rt.api.mods.world;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
@@ -10,7 +9,7 @@ import ink.ikx.rt.api.mods.naturesaura.AuraChunk;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@ZenRegister
+
 @ModOnly("naturesaura")
 @ZenExpansion("crafttweaker.world.IWorld")
 public class IWorldExpansionNA {

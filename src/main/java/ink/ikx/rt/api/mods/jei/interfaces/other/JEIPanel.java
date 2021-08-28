@@ -1,6 +1,5 @@
 package ink.ikx.rt.api.mods.jei.interfaces.other;
 
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import ink.ikx.rt.api.mods.jei.interfaces.element.JEIElement;
 import ink.ikx.rt.api.mods.jei.interfaces.slots.JEISlot;
@@ -9,7 +8,6 @@ import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenSetter;
 
-@ZenRegister
 @ZenClass("mods.randomtweaker.jei.JEIPanel")
 public interface JEIPanel {
 

@@ -2,7 +2,6 @@ package ink.ikx.rt.api.mods.tbl;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.entity.IEntity;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -12,7 +11,7 @@ import thebetweenlands.common.capability.circlegem.CircleGem.CombatType;
 import thebetweenlands.common.capability.circlegem.CircleGemHelper;
 import thebetweenlands.common.capability.circlegem.CircleGemType;
 
-@ZenRegister
+
 @ModOnly("thebetweenlands")
 @ZenClass("mods.randomtweaker.tbl.BLCircleGem")
 public class BLCircleGem {

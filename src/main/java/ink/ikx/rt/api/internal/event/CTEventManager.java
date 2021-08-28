@@ -1,6 +1,5 @@
 package ink.ikx.rt.api.internal.event;
 
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.event.IEventHandle;
 import crafttweaker.api.event.IEventManager;
 import crafttweaker.util.EventList;
@@ -17,7 +16,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@ZenRegister
 @ZenExpansion("crafttweaker.events.IEventManager")
 public class CTEventManager {
 

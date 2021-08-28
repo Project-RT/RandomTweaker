@@ -1,13 +1,11 @@
 package ink.ikx.rt.api.mods.cote;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionTypeRepresentation;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-@ZenRegister
 @ModOnly("contenttweaker")
 @ZenExpansion("mods.contenttweaker.VanillaFactory")
 public class ExpandVanillaFactory {

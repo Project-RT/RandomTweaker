@@ -1,7 +1,6 @@
 package ink.ikx.rt.api.mods.naturesaura;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
@@ -9,7 +8,7 @@ import de.ellpeck.naturesaura.api.aura.chunk.IAuraChunk;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@ZenRegister
+
 @ModOnly("naturesaura")
 @ZenClass("mods.randomtweaker.naturesaura.AuraChunk")
 public class AuraChunk {

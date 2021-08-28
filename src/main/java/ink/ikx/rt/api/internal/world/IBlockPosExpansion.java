@@ -1,16 +1,15 @@
 package ink.ikx.rt.api.internal.world;
 
 import com.google.common.collect.Lists;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
-import java.util.List;
 import net.minecraft.util.math.BlockPos;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-@ZenRegister
+import java.util.List;
+
 @ZenExpansion("crafttweaker.world.IBlockPos")
 public class IBlockPosExpansion {
 

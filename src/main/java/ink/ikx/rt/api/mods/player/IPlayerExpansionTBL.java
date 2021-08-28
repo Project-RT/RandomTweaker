@@ -1,7 +1,6 @@
 package ink.ikx.rt.api.mods.player;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,7 +9,6 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import thebetweenlands.api.capability.IDecayCapability;
 import thebetweenlands.common.registries.CapabilityRegistry;
 
-@ZenRegister
 @ModOnly("thebetweenlands")
 @ZenExpansion("crafttweaker.player.IPlayer")
 public class IPlayerExpansionTBL {

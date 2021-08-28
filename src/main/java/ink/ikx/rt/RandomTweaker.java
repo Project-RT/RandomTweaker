@@ -5,41 +5,30 @@ import cn.hutool.core.util.ReflectUtil;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import crafttweaker.CraftTweakerAPI;
-import crafttweaker.mc1120.CraftTweaker;
 import crafttweaker.mods.jei.JEI;
-import ink.ikx.rt.api.internal.file.Prop;
-import ink.ikx.rt.api.internal.player.IPlayerExpansionSanity;
-import ink.ikx.rt.api.mods.botania.Hydroangeas;
-import ink.ikx.rt.api.mods.botania.Orechid;
 import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
 import ink.ikx.rt.api.mods.cote.potion.PotionContent;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
-import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
 import ink.ikx.rt.impl.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.botania.subtitle.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.botania.subtitle.SubTileOrechidModified;
 import ink.ikx.rt.impl.client.capability.PlayerSanityCapabilityHandler;
 import ink.ikx.rt.impl.client.network.PlayerSanityNetWork;
 import ink.ikx.rt.impl.config.RTConfig;
-import ink.ikx.rt.impl.events.DreamJournal;
-import ink.ikx.rt.impl.events.ManaBaubleEvent;
 import ink.ikx.rt.impl.item.SanityGem;
 import ink.ikx.rt.impl.jei.HydroangeasJEI;
 import ink.ikx.rt.impl.jei.OrechidJEI;
 import ink.ikx.rt.impl.proxy.IProxy;
 import ink.ikx.rt.impl.utils.ItemDs;
-import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import net.minecraft.init.Blocks;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.discovery.ASMDataTable;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -70,8 +59,8 @@ public class RandomTweaker {
 
     public static final SanityGem SANITY_GEM = new SanityGem();
     public static final SoundEvent SOUND_SAN = new SoundEvent(
-        new ResourceLocation(RandomTweaker.MODID, "san"))
-        .setRegistryName(new ResourceLocation(RandomTweaker.MODID, "san"));
+            new ResourceLocation(RandomTweaker.MODID, "san"))
+            .setRegistryName(new ResourceLocation(RandomTweaker.MODID, "san"));
 
     public static Logger logger;
     public static Set<ItemDs> itemDsSet = new HashSet<>();
@@ -89,8 +78,8 @@ public class RandomTweaker {
         PlayerSanityNetWork.register();
         PlayerSanityCapabilityHandler.register();
         if (Loader.isModLoaded("botania")
-            && RTConfig.Botania.OrechidHasDefault
-            && RTConfig.Botania.OrechidModified)
+                && RTConfig.Botania.OrechidHasDefault
+                && RTConfig.Botania.OrechidModified)
             SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), (HashMap<String, Integer>) BotaniaAPI.oreWeights);
     }
 
@@ -104,18 +93,11 @@ public class RandomTweaker {
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) {
         try {
-            registerOtherClass();
-            for (ASMDataTable.ASMData asmData : event.getASMHarvestedData().getAll(RTRegisterClass.class.getCanonicalName())) {
-                List<String> modIDS = (List<String>) asmData.getAnnotationInfo().get("value");
-                if (modIDS.stream().allMatch(Loader::isModLoaded)) {
-                    CraftTweakerAPI.registerClass(Class.forName(asmData.getClassName(), false, CraftTweaker.class.getClassLoader()));
-                }
-            }
+            CrTSupport.registerClass();
+            CrTSupport.registerOtherClass();
         } catch (IOException e) {
             CraftTweakerAPI.logError("The fail occurs inside RT, see latest.log and report it.");
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            CraftTweaker.LOG.catching(e);
         }
     }
 
@@ -140,21 +122,4 @@ public class RandomTweaker {
         }
     }
 
-    private void registerOtherClass() throws IOException {
-        if (Loader.isModLoaded("thaumcraft") && RTConfig.Thaumcraft.DreamJournal)
-            MinecraftForge.EVENT_BUS.register(DreamJournal.class);
-        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker"))
-            MinecraftForge.EVENT_BUS.register(ManaBaubleEvent.class);
-        if (RTConfig.RandomTweaker.PlayerSanity)
-            CraftTweakerAPI.registerClass(IPlayerExpansionSanity.class);
-        if (RTConfig.FTBUltimine.AllowCrTControl)
-            CraftTweakerAPI.registerClass(IPlayerExpansionFTBU.class);
-        if (Prop.createOrDelete(RTConfig.RandomTweaker.Prop))
-            CraftTweakerAPI.registerClass(Prop.class);
-        // this's need this event or earlier to reg
-        if (RTConfig.Botania.OrechidModified)
-            CraftTweakerAPI.registerClass(Orechid.class);
-        if (RTConfig.Botania.HydroangeasModified)
-            CraftTweakerAPI.registerClass(Hydroangeas.class);
-    }
 }

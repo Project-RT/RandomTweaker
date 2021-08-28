@@ -1,19 +1,18 @@
 package ink.ikx.rt.api.internal.item;
 
-import static ink.ikx.rt.RandomTweaker.itemDsSet;
-
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.damage.IDamageSource;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.utils.ItemDs;
-import java.util.Objects;
 import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-@ZenRegister
+import java.util.Objects;
+
+import static ink.ikx.rt.RandomTweaker.itemDsSet;
+
 @ZenExpansion("crafttweaker.item.IItemStack")
 public class IItemStackExpansion {
 

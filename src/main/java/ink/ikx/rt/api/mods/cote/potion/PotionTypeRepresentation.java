@@ -3,7 +3,6 @@ package ink.ikx.rt.api.mods.cote.potion;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import ink.ikx.rt.RandomTweaker;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
@@ -11,7 +10,6 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@ZenRegister
 @ModOnly("contenttweaker")
 @ZenClass("mods.randomtweaker.cote.PotionType")
 public class PotionTypeRepresentation {

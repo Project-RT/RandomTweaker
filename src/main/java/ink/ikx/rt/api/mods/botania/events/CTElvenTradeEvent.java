@@ -1,20 +1,19 @@
 package ink.ikx.rt.api.mods.botania.events;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.event.IEventCancelable;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
 import ink.ikx.rt.impl.events.customevent.ElvenTradeEvent;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenSetter;
 
-@ZenRegister
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 @ModOnly("botania")
 @ZenClass("mods.randomtweaker.botania.ElvenTradeEvent")
 public class CTElvenTradeEvent implements IEventCancelable {

@@ -2,7 +2,6 @@ package ink.ikx.rt.api.internal.utils;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.data.DataMap;
 import crafttweaker.api.data.IData;
 import crafttweaker.mc1120.data.NBTConverter;
@@ -15,7 +14,6 @@ import stanhebben.zenscript.annotations.ZenSetter;
 /**
  * @author youyihj <br /> Mit LICENSE <br /> by -> https://github.com/friendlyhj/ZenUtils/blob/master/src/main/java/youyihj/zenutils/api/cotx/tile/TileData.java
  */
-@ZenRegister
 @ModOnly("contenttweaker")
 @ZenClass("mods.randomtweaker.cote.TileData")
 public class TileData implements INBTSerializable<NBTTagCompound> {

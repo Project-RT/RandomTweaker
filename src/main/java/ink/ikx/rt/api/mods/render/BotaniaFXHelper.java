@@ -1,12 +1,10 @@
 package ink.ikx.rt.api.mods.render;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import vazkii.botania.common.Botania;
 
-@ZenRegister
 @ModOnly("botania")
 @ZenClass("mods.randomtweaker.botania.BotaniaFXHelper")
 public class BotaniaFXHelper {

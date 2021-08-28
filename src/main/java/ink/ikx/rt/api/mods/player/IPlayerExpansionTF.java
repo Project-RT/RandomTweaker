@@ -1,7 +1,6 @@
 package ink.ikx.rt.api.mods.player;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.impl.twilight.RTTeleporter;
@@ -14,7 +13,7 @@ import twilightforest.TFConfig;
 /**
  * @author niyan
  */
-@ZenRegister
+
 @ModOnly("twilightforest")
 @ZenExpansion("crafttweaker.player.IPlayer")
 public class IPlayerExpansionTF {

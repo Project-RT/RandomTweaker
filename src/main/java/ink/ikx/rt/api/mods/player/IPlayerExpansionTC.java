@@ -1,10 +1,8 @@
 package ink.ikx.rt.api.mods.player;
 
 import crafttweaker.annotations.ModOnly;
-import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
-import java.util.Objects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -18,7 +16,9 @@ import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.lib.utils.InventoryUtils;
 
-@ZenRegister
+import java.util.Objects;
+
+
 @ModOnly("thaumcraft")
 @ZenExpansion("crafttweaker.player.IPlayer")
 public class IPlayerExpansionTC {
