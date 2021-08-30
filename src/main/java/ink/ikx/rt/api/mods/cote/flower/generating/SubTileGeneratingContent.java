@@ -124,7 +124,7 @@ public class SubTileGeneratingContent extends SubTileGenerating implements SubTi
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        return !Objects.nonNull(subtile.onBlockActivated) || subtile.onBlockActivated.call(
+        return Objects.nonNull(subtile.onBlockActivated) && subtile.onBlockActivated.call(
             CraftTweakerMC.getIWorld(world),
             CraftTweakerMC.getIBlockPos(pos),
             CraftTweakerMC.getBlockState(state),

@@ -43,7 +43,7 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        return !Objects.nonNull(subtile.onBlockActivated) || subtile.onBlockActivated.call(CraftTweakerMC.getIWorld(world), CraftTweakerMC.getIBlockPos(pos), CraftTweakerMC.getBlockState(state), new CTPlayer(player), Hand.of(hand), CraftTweakerMC.getIFacing(side), hitX, hitY, hitZ);
+        return Objects.nonNull(subtile.onBlockActivated) && subtile.onBlockActivated.call(CraftTweakerMC.getIWorld(world), CraftTweakerMC.getIBlockPos(pos), CraftTweakerMC.getBlockState(state), new CTPlayer(player), Hand.of(hand), CraftTweakerMC.getIFacing(side), hitX, hitY, hitZ);
     }
 
     @Override
