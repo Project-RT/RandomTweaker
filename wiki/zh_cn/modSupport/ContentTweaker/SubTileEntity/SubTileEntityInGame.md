@@ -25,7 +25,7 @@ import mods.randomtweaker.cote.SubTileEntityInGame;
 | addMana(mana as int) | void | 增加自定义花的 Mana |
 | setMana(mana as int) | void | 设置自定义花的 Mana |
 | getRedstoneSignal() | int | 获取自定义花的红石信号 |
-| getPassiveDecayTicks() | int | 获取产魔的冷却时间 |
+| getPassiveDecayTicks() | int | 获取被动花产魔的冷却时间 |
 
 ## 获取 SubTileEntityInGame
 
