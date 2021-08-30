@@ -84,6 +84,14 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
     }
 
     @Override
+    public void onUpdate() {
+        super.onUpdate();
+        if(Objects.nonNull(subtile.onUpdate)) {
+            subtile.onUpdate.call(this, CraftTweakerMC.getIWorld(this.getWorld()), CraftTweakerMC.getIBlockPos(this.getPos()));
+        }
+    }
+
+    @Override
     public void readFromPacketNBT(NBTTagCompound compound) {
         customData.readFromNBT(compound.getCompoundTag(TAG_CUSTOM_DATA));
         this.name = compound.getString(TAG_NAME);
@@ -133,11 +141,6 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
     @Override
     public boolean acceptsRedstone() {
         return super.acceptsRedstone();
-    }
-
-    @Override
-    public void onUpdate() {
-        super.onUpdate();
     }
 
     @Override

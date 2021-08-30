@@ -26,7 +26,7 @@ public class PotionTypeRepresentation {
     public PotionTypeRepresentation(String unlocalizedName, PotionRepresentation potion) {
         this.unlocalizedName = unlocalizedName;
         this.potion = potion;
-        if (!potion.isInstant()) {
+        if (potion.isInstant()) {
             this.duration = 0;
         }
     }
@@ -41,7 +41,7 @@ public class PotionTypeRepresentation {
         if (!potion.isInstant()) {
             this.duration = duration;
         } else {
-            this.amplifier = 0;
+            this.duration = 0;
         }
     }
 
