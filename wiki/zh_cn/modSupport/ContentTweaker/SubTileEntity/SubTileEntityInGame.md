@@ -21,11 +21,14 @@ import mods.randomtweaker.cote.SubTileEntityInGame;
 | getCustomData() | [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/) | 获取自定义花的 Data |
 | setCustomData(data as [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/)) | void | 设置自定义花的 Data |
 | updateCustomData(data as [IData](https://docs.blamejared.com/1.12/en/Vanilla/Data/IData/)) | void | 更新自定义花的 Data |
-| getMana() | void | 获取自定义花的 Mana |
+| getMana() | int | 获取自定义花的 Mana |
+| getMaxMana() | int | 获取自定义花的 MaxMana |
 | addMana(mana as int) | void | 增加自定义花的 Mana |
 | setMana(mana as int) | void | 设置自定义花的 Mana |
 | getRedstoneSignal() | int | 获取自定义花的红石信号 |
 | getPassiveDecayTicks() | int | 获取被动花产魔的冷却时间 |
+| isValidBinding() | bool | ? |
+| getBindingForCrT() | [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/) | ? |
 
 ## 获取 SubTileEntityInGame
 
