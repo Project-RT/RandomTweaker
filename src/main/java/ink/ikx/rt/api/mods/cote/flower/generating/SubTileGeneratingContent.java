@@ -22,7 +22,6 @@ import vazkii.botania.api.subtile.SubTileGenerating;
 
 public class SubTileGeneratingContent extends SubTileGenerating implements SubTileEntityInGame {
 
-    public String name;
     public final SubTileRepresentation subtile;
 
     public SubTileGeneratingContent(SubTileRepresentation subtile) {
@@ -64,7 +63,6 @@ public class SubTileGeneratingContent extends SubTileGenerating implements SubTi
     @Override
     public void readFromPacketNBT(NBTTagCompound compound) {
         customData.readFromNBT(compound.getCompoundTag(TAG_CUSTOM_DATA));
-        this.name = compound.getString(TAG_NAME);
         super.readFromPacketNBT(compound);
     }
 
@@ -73,7 +71,6 @@ public class SubTileGeneratingContent extends SubTileGenerating implements SubTi
         if (!compound.hasKey(TAG_CUSTOM_DATA)) {
             compound.setTag(TAG_CUSTOM_DATA, new NBTTagCompound());
         }
-        customData.writeToNBT(compound.getCompoundTag(TAG_NAME));
         customData.writeToNBT(compound.getCompoundTag(TAG_CUSTOM_DATA));
         super.writeToPacketNBT(compound);
     }

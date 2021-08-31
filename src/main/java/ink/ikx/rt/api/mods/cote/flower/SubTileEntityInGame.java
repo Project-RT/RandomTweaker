@@ -15,7 +15,6 @@ import stanhebben.zenscript.annotations.ZenSetter;
 @ZenClass("mods.randomtweaker.cote.SubTileEntityInGame")
 public interface SubTileEntityInGame {
 
-    String TAG_NAME = "SubTileName";
     String TAG_CUSTOM_DATA = "CustomData";
     TileData customData = new TileData();
 
