@@ -2,7 +2,7 @@
 
 ## onBlockAdded
 
-Called when the generation flowers are added to the world
+Called when the custom flowers are added to the world
 
 ### Import
 
@@ -52,7 +52,7 @@ subTileEntityObj.canSelect = function(player, wand, pos, side) {
 
 ## onBlockPlaceBy
 
-Called when the generation flowers are placed to the world
+Called when the custom flowers are placed to the world
 
 ### Import
 
@@ -104,7 +104,7 @@ subTileEntityObj.onUpdate = function(subtile, world, pos) {
 
 ## onBlockHarvested
 
-Called when the generation flowers are harvested
+Called when the custom flowers are harvested
 
 ### Import
 
@@ -172,7 +172,7 @@ subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, si
 
 ## canGeneratePassively
 
-Is the flower a passive generation flower ((Only the [SubTileGenerating](SubTileGenerating.md)
+Is the flower a passive generation mana (Only the [SubTileGenerating](SubTileGenerating.md)
 object has this function)
 
 ### Import
