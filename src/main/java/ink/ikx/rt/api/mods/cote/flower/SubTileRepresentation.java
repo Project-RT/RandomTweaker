@@ -24,7 +24,7 @@ import vazkii.botania.api.recipe.RecipeMiniFlower;
 public class SubTileRepresentation {
 
     @ZenProperty
-    public int color;
+    public int color = 0x4444FF;
     @ZenProperty
     public String unlocalizedName;
     @ZenProperty
