@@ -1,6 +1,10 @@
 package ink.ikx.rt.impl.mixins.mods.botania;
 
+import cn.hutool.core.lang.Pair;
 import ink.ikx.rt.RandomTweaker;
+import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
+import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalContent;
+import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingContent;
 import java.util.HashMap;
 import java.util.Map;
 import org.spongepowered.asm.mixin.Mixin;
@@ -31,7 +35,11 @@ public abstract class MixinBotaniaAPI {
     @Inject(method = "getSubTileMapping", at = @At(value = "HEAD"), cancellable = true)
     private static void injectGetSubTileMapping(String key, CallbackInfoReturnable<Class<? extends SubTileEntity>> cir) {
         if (RandomTweaker.subTileGeneratingMap.containsKey(key)) {
-            cir.setReturnValue((Class<? extends SubTileEntity>) RandomTweaker.subTileGeneratingMap.get(key).getValue().getClass());
+            if(RandomTweaker.subTileGeneratingMap.get(key).getKey().equals("generating")) {
+                cir.setReturnValue(SubTileGeneratingContent.class);
+            } else {
+                cir.setReturnValue(SubTileFunctionalContent.class);
+            }
         }
     }
 }

@@ -25,20 +25,20 @@ public class BracketHandlerCoTSubTile implements IBracketHandler {
 
     public static SubTileRepresentation getSubTile(String name) {
         if (RandomTweaker.subTileGeneratingMap.containsKey(name)) {
-            Pair<String, SubTileEntityInGame> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
-            return (SubTileRepresentation) subtilePair.getValue().getInstance();
+            Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
+            return subtilePair.getValue();
         }
         return null;
     }
 
     public static SubTileFunctionalRepresentation getSubTileF(String name) {
-        Pair<String, SubTileEntityInGame> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
-        return (SubTileFunctionalRepresentation) subtilePair.getValue().getInstance();
+        Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
+        return (SubTileFunctionalRepresentation) subtilePair.getValue();
     }
 
     public static SubTileGeneratingRepresentation getSubTileG(String name) {
-        Pair<String, SubTileEntityInGame> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
-        return (SubTileGeneratingRepresentation) subtilePair.getValue().getInstance();
+        Pair<String, SubTileRepresentation> subtilePair = RandomTweaker.subTileGeneratingMap.get(name);
+        return (SubTileGeneratingRepresentation) subtilePair.getValue();
     }
 
     @Override

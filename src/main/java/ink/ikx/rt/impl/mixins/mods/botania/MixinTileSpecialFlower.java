@@ -3,6 +3,9 @@ package ink.ikx.rt.impl.mixins.mods.botania;
 import cn.hutool.core.lang.Pair;
 import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
+import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
+import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalContent;
+import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingContent;
 import net.minecraft.nbt.NBTTagCompound;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -41,10 +44,14 @@ public abstract class MixinTileSpecialFlower extends TileMod {
 
     @Inject(method = "provideSubTile", at = @At(value = "HEAD"), cancellable = true)
     protected void injectProvideSubTile(String name, CallbackInfo ci) {
-        for (Entry<String, Pair<String, SubTileEntityInGame>> entries : RandomTweaker.subTileGeneratingMap.entrySet()) {
+        for (Entry<String, Pair<String, SubTileRepresentation>> entries : RandomTweaker.subTileGeneratingMap.entrySet()) {
             if (entries.getKey().equals(name)) {
                 subTileName = name;
-                setSubTile((SubTileEntity) entries.getValue().getValue());
+                if(entries.getValue().getKey().equals("generating")) {
+                    setSubTile(new SubTileGeneratingContent(entries.getValue().getValue()));
+                } else {
+                    setSubTile(new SubTileFunctionalContent(entries.getValue().getValue()));
+                }
                 ci.cancel();
             }
         }

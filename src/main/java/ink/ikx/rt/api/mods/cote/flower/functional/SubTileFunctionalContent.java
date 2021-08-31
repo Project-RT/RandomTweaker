@@ -4,6 +4,7 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.EntityHelper;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.player.CTPlayer;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.enums.Hand;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import crafttweaker.api.world.IBlockPos;
 import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
 import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
 import java.util.Objects;
@@ -146,8 +147,8 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
     }
 
     @Override
-    public BlockPos getBinding() {
-        return super.getBinding();
+    public IBlockPos getBindingForCrT() {
+        return CraftTweakerMC.getIBlockPos(super.getBinding());
     }
 
     @Override

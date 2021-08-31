@@ -7,6 +7,7 @@ import ink.ikx.rt.RandomTweaker;
 import ink.ikx.rt.api.internal.file.Prop;
 import ink.ikx.rt.api.mods.cote.flower.JAVATextContent;
 import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
+import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
 import ink.ikx.rt.impl.config.RTConfig;
 import java.io.File;
 import java.util.Map.Entry;
@@ -42,7 +43,7 @@ public class RegEventHandler {
             ModelLoader.setCustomModelResourceLocation(RandomTweaker.SANITY_GEM, 0,
                 new ModelResourceLocation(Objects.requireNonNull(RandomTweaker.SANITY_GEM.getRegistryName()), "inventory"));
         }
-        for (Entry<String, Pair<String, SubTileEntityInGame>> entries : RandomTweaker.subTileGeneratingMap.entrySet()) {
+        for (Entry<String, Pair<String, SubTileRepresentation>> entries : RandomTweaker.subTileGeneratingMap.entrySet()) {
             createFlowerBlockState(entries.getKey());
             BotaniaAPIClient.registerSubtileModel(entries.getKey(), new ModelResourceLocation(ContentTweaker.MOD_ID + ":" + entries.getKey()));
         }

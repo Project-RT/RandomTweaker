@@ -118,11 +118,11 @@ public class SubTileRepresentation {
             CraftTweakerAPI.logError("All SubTileEntity must be unique. Key: contenttweaker:" + unlocalizedName + " is not.", new UnsupportedOperationException());
         } else {
             if (typeName.equals("functional")) {
-                RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileFunctionalContent(this)));
+                RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, this));
                 if (hasMini)
                     registerMini(this);
             } else {
-                RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, new SubTileGeneratingContent(this)));
+                RandomTweaker.subTileGeneratingMap.put(getUnlocalizedName(), Pair.of(typeName, this));
             }
             BotaniaAPI.subtilesForCreativeMenu.add(getUnlocalizedName());
         }
@@ -131,7 +131,7 @@ public class SubTileRepresentation {
     private void registerMini(SubTileRepresentation subtile) {
         String name = subtile.getUnlocalizedName();
 
-        RandomTweaker.subTileGeneratingMap.put(name + "Chibi", Pair.of("functional", new SubTileFunctionalContent.Mini(this)));
+        RandomTweaker.subTileGeneratingMap.put(name + "Chibi", Pair.of("functional", this));
         BotaniaAPI.subtilesForCreativeMenu.add(name + "Chibi");
         BotaniaAPI.miniFlowers.put(name, name + "Chibi");
 

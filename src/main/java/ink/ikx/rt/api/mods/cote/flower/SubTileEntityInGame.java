@@ -1,11 +1,11 @@
 package ink.ikx.rt.api.mods.cote.flower;
 
 import crafttweaker.api.data.IData;
+import crafttweaker.api.world.IBlockPos;
 import crafttweaker.mc1120.data.NBTConverter;
 import ink.ikx.rt.api.internal.utils.TileData;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.BlockPos;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -49,6 +49,9 @@ public interface SubTileEntityInGame {
     int getMana();
 
     @ZenMethod
+    int getMaxMana();
+
+    @ZenMethod
     void setMana(int mana);
 
     @ZenMethod
@@ -61,7 +64,7 @@ public interface SubTileEntityInGame {
     boolean isValidBinding();
 
     @ZenMethod
-    BlockPos getBinding();
+    IBlockPos getBindingForCrT();
 
     Object getInstance();
 }
