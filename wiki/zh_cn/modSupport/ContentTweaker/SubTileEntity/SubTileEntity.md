@@ -24,7 +24,7 @@ import mods.randomtweaker.cote.SubTileEntity;
 | :----- | :----- | :----- |
 | unlocalizedName | string | 注册名 |
 | range | int | 自定义花的工作范围 |
-| color | int | 自定义花的颜色 |
+| color | int | 自定义花的魔力条颜色 |
 | maxMana | int | 最大魔力容量 |
 | acceptsRedstone | bool | 是否接受红石信号 |
 | overgrowthAffected | bool | 是否受蕴魔土的影响 |

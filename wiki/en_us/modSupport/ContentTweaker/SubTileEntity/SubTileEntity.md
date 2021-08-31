@@ -24,7 +24,7 @@ import mods.randomtweaker.cote.SubTileEntity;
 | :----- | :----- | :----- |
 | unlocalizedName | string | Unlocalized name |
 | range | int | Radius of work of the flower |
-| color | int | Color of the flower |
+| color | int | Color of the mana bar of the flower |
 | maxMana | int | Maximum Mana Capacity |
 | acceptsRedstone | bool | Whether to accept the redstone signal |
 | overgrowthAffected | bool | Whether it is influenced by the Enchanted Soil |

@@ -166,6 +166,9 @@ import mods.randomtweaker.cote.BlockActivated;
 
 ```zenscript
 subTileEntityObj.onBlockActivated = function(world, pos, state, player, hand, side, hitX, hitY, hitZ) {
+    if(<botania:twigwand>.matches(player.getHeldItem(hand))) {
+        return false;
+    }
     return true;
 };
 ```
