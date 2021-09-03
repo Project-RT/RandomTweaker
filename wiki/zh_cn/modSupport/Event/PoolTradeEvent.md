@@ -39,7 +39,7 @@ import mods.randomtweaker.botania.PoolTradeEvent;
 ```zenscript
 import mods.randomtweaker.botania.PoolTradeEvent;
 
-events.onElvenTrade(function(event as ElvenTradeEvent) {
+events.onPoolTrade(function(event as PoolTradeEvent) {
     if(!event.input.world.remote) {
         event.cancel();
     }
