@@ -6,7 +6,6 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.mods.jei.JEI;
-import ink.ikx.rt.api.mods.cote.flower.SubTileEntityInGame;
 import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionContent;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
@@ -54,7 +53,7 @@ public class RandomTweaker {
 
     public static final String MODID = "randomtweaker";
     public static final String NAME = "RandomTweaker";
-    public static final String VERSION = "1.1.13";
+    public static final String VERSION = "1.1.15";
     public static final String GUI_FACTORY = "ink.ikx.rt.impl.config.RTConfigGuiFactory";
     public static final String DESPENDENCIES = "required-after:crafttweaker;after:contenttweaker";
 
