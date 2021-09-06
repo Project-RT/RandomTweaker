@@ -23,7 +23,7 @@ import mods.jei.JEI;
 | createJEIFontInfoElement(x as int, y as int, info as string, color as int, @Optional width as int, @Optional height as int) | [JEIFontInfoElement](JEIElement/JEIFontInfoElement.md) |  |
 | createJEIArrowElement(x as int, y as int, direction as int) | [JEIArrowElement](JEIElement/JEIArrowElement.md) | direction 参数为四个箭头, 可填 0, 1, 2, 3 |
 | createJEICustomElement(x as int, y as int, width as int, height as int, u as int, v as int, texture as string) | [JEICustomElement](JEIElement/JEICustomElement.md) | texture 的格式为 modid:path |
-| createJEIManaBarElement(x as int, y as int, mana as int) | [JEICustomElement](JEIElement/JEIManaBarElement.md) | mana 为植物魔法魔力值 |
+| createJEIManaBarElement(x as int, y as int, mana as int) | [JEIManaBarElement](JEIElement/JEIManaBarElement.md) | mana 为植物魔法魔力值 |
 ## 热重载
 
 请安装 `ZenUtils` Mod
