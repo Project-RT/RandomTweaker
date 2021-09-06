@@ -13,9 +13,9 @@ import mods.jei.JEI;
 | createJEIPanel(uid as string, localizationKey as string) | [JEIPanel](JEIOther/JEIPanel.md)|  |
 | createJEIBackground(width as int, height as int) | [JEIBackground](JEIOther/JEIBackground.md) |  |
 | createJEIBackground(resourceName as string, u as int, v as int, width as int, height as int) | [JEIBackground](JEIOther/JEIBackground.md) |  |
-| createLiquidSlot(isInput as bool, x as int, y as int, @Optional(true) hasBase as bool) | [JEILiquidSlot](JEISlot/JEILiquidSlot.md) | hasBase 为是否渲染默认的流体槽 (需对比宽高) |
-| createLiquidSlot(isInput as bool, x as int, y as int, width as int, height as int, capacityMb as int, showCapacity as bool, @Optional(true) hasBase as bool) | [JEILiquidSlot](JEISlot/JEILiquidSlot.md) | hasBase 同上, 但流体槽必须要根据固定的宽高创建 (eg：16 * 16, 43 * 16, 16 * 34) |
-| createItemSlot(isInput as bool, x as int, y as int, @Optional(true) hasBase as bool) | [JEIItemSlot](JEISlot/JEIItemSlot.md) | hasBase 为是否渲染固定的物品槽 |
+| createLiquidSlot(isInput as bool, x as int, y as int, @Optional(true) hasBase as bool) | [JEILiquidSlot](JEISlot/JEILiquidSlot.md) | isInput 为是否是输入流体, hasBase 为是否渲染默认的流体槽 (需对比宽高) |
+| createLiquidSlot(isInput as bool, x as int, y as int, width as int, height as int, capacityMb as int, showCapacity as bool, @Optional(true) hasBase as bool) | [JEILiquidSlot](JEISlot/JEILiquidSlot.md) | isInput/hasBase 同上, 但流体槽必须要根据固定的宽高创建 (eg：16 * 16, 43 * 16, 16 * 34) |
+| createItemSlot(isInput as bool, x as int, y as int, @Optional(true) hasBase as bool) | [JEIItemSlot](JEISlot/JEIItemSlot.md) | isInput 为是否是输入物品, hasBase 为是否渲染固定的物品槽 |
 | createJEIRecipe(uid as string) | [JEIRecipe](JEIOther/JEIRecipe.md) | 创建JEI的配方, uid 为定义 JEI 的 uid |
 | createJEIItemInputElement(x as int, y as int) | [JEIItemElement](JEIElement/JEIItemElement.md) |  |
 | createJEIItemOutputElement(x as int, y as int) | [JEIItemElement](JEIElement/JEIItemElement.md) |  |
@@ -23,7 +23,7 @@ import mods.jei.JEI;
 | createJEIFontInfoElement(x as int, y as int, info as string, color as int, @Optional width as int, @Optional height as int) | [JEIFontInfoElement](JEIElement/JEIFontInfoElement.md) |  |
 | createJEIArrowElement(x as int, y as int, direction as int) | [JEIArrowElement](JEIElement/JEIArrowElement.md) | direction 参数为四个箭头, 可填 0, 1, 2, 3 |
 | createJEICustomElement(x as int, y as int, width as int, height as int, u as int, v as int, texture as string) | [JEICustomElement](JEIElement/JEICustomElement.md) | texture 的格式为 modid:path |
-
+| createJEIManaBarElement(x as int, y as int, mana as int) | [JEIManaBarElement](JEIElement/JEIManaBarElement.md) | mana 为植物魔法魔力值 |
 ## 热重载
 
 请安装 `ZenUtils` Mod
@@ -34,7 +34,10 @@ import mods.jei.JEI;
 ```zenscript
 #loader crafttweaker reloadableevents
 
-<jei:uid>.getJEISlots()[0].x = 10;
+<jei:uid>.JEISlots[0].x = 10;
+<jei:uid>.JEISlots[0].y = 20;
+
+<jei:uid>.JEIElements[0].x = 30;
 ```
 
 ## 例子
