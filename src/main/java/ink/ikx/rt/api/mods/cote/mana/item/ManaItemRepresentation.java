@@ -5,7 +5,6 @@ import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemRepresentation;
 import ink.ikx.rt.api.mods.cote.function.mana.ManaWithItem;
 import ink.ikx.rt.api.mods.cote.function.mana.ManaWithPool;
-import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -13,7 +12,6 @@ import stanhebben.zenscript.annotations.ZenProperty;
 /**
  * @author superhelo
  */
-@RTRegisterClass({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.ManaItem")
 public class ManaItemRepresentation extends ItemRepresentation {
 

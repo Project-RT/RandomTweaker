@@ -3,12 +3,10 @@ package ink.ikx.rt.api.mods.cote.flower.generating;
 import ink.ikx.rt.api.mods.cote.flower.SubTileRepresentation;
 import ink.ikx.rt.api.mods.cote.function.botania.CanGeneratePassively;
 import ink.ikx.rt.api.mods.cote.function.botania.PopulateDropStackNBTs;
-import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@RTRegisterClass({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.SubTileGenerating")
 public class SubTileGeneratingRepresentation extends SubTileRepresentation {
 

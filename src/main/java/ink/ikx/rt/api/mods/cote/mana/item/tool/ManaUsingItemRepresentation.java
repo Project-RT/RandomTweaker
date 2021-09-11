@@ -4,12 +4,13 @@ import com.teamacronymcoders.base.registrysystem.ItemRegistry;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
 import ink.ikx.rt.api.mods.cote.function.mana.IsUsesMana;
 import ink.ikx.rt.api.mods.cote.mana.item.ManaItemRepresentation;
-import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@RTRegisterClass({"contenttweaker", "botania"})
+/**
+ * @author superhelo
+ */
 @ZenClass("mods.randomtweaker.cote.ManaUsingItem")
 public class ManaUsingItemRepresentation extends ManaItemRepresentation {
 

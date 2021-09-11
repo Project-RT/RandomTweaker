@@ -98,14 +98,9 @@ public class RandomTweaker {
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) {
         try {
-            if (Loader.isModLoaded("botania")) {
-                CrTSupport.registerClassAboutBoT();
-                if (Loader.isModLoaded("contenttweaker")) {
-                    CrTSupport.registerClassAboutCoT();
-                }
-            }
             CrTSupport.registerClass();
             CrTSupport.registerOtherClass();
+            CrTSupport.registerClassAboutCoT();
         } catch (IOException e) {
             CraftTweakerAPI.logError("The fail occurs inside RT, see latest.log and report it.");
             e.printStackTrace();
