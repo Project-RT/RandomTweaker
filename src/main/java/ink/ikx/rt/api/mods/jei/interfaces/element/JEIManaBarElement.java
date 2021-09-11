@@ -13,6 +13,12 @@ public interface JEIManaBarElement extends JEIElement {
     @ZenGetter("log_multiples")
     int getMultiplesLog();
 
+    @ZenGetter
+    int getMode();
+
+    @ZenSetter
+    void setMode(int mode);
+
     @ZenSetter("mana")
     void setMana(int mana);
 

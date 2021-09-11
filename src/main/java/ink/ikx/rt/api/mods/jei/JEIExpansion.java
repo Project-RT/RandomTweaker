@@ -85,8 +85,13 @@ public class JEIExpansion {
     }
 
     @ZenMethodStatic
+    public static JEIManaBarElement createJEIManaBarElement(int x, int y, int mana, int mode) {
+        return new JEIManaBarElementImpl(x, y, mana, mode);
+    }
+
+    @ZenMethodStatic
     public static JEIManaBarElement createJEIManaBarElement(int x, int y, int mana) {
-        return new JEIManaBarElementImpl(x, y, mana);
+        return new JEIManaBarElementImpl(x, y, mana, 0);
     }
 
     @ZenMethodStatic
