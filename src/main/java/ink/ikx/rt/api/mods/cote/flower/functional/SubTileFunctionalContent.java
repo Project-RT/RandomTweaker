@@ -66,6 +66,11 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
     }
 
     @Override
+    public void consumeMana(int mana) {
+        this.addMana(-mana);
+    }
+
+    @Override
     public int getMaxMana() {
         return subtile.getMaxMana();
     }
@@ -109,6 +114,10 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
     @Override
     public void addMana(int mana) {
         super.addMana(mana);
+
+        if (this.mana < 0) {
+            this.mana = 0;
+        }
     }
 
     @Override
@@ -118,6 +127,11 @@ public class SubTileFunctionalContent extends SubTileFunctional implements SubTi
 
     @Override
     public void setMana(int mana) {
+        if (mana < 0) {
+            mana = 0;
+        } else if (mana > this.getMaxMana()) {
+            mana = this.getMaxMana();
+        }
         this.mana = mana;
     }
 

@@ -46,6 +46,9 @@ public interface SubTileEntityInGame {
     void addMana(int mana);
 
     @ZenMethod
+    void consumeMana(int mana);
+
+    @ZenMethod
     int getMana();
 
     @ZenMethod
