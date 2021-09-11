@@ -35,8 +35,20 @@ import ink.ikx.rt.api.mods.cote.flower.functional.SubTileFunctionalRepresentatio
 import ink.ikx.rt.api.mods.cote.flower.generating.SubTileGeneratingRepresentation;
 import ink.ikx.rt.api.mods.cote.function.PotionIsReady;
 import ink.ikx.rt.api.mods.cote.function.PotionPerformEffect;
-import ink.ikx.rt.api.mods.cote.function.botania.*;
-import ink.ikx.rt.api.mods.cote.function.mana.*;
+import ink.ikx.rt.api.mods.cote.function.botania.BlockActivated;
+import ink.ikx.rt.api.mods.cote.function.botania.BlockAdded;
+import ink.ikx.rt.api.mods.cote.function.botania.BlockHarvested;
+import ink.ikx.rt.api.mods.cote.function.botania.BlockPlacedBy;
+import ink.ikx.rt.api.mods.cote.function.botania.CanGeneratePassively;
+import ink.ikx.rt.api.mods.cote.function.botania.CanSelect;
+import ink.ikx.rt.api.mods.cote.function.botania.PopulateDropStackNBTs;
+import ink.ikx.rt.api.mods.cote.function.botania.Update;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunction;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleFunctionWithReturn;
+import ink.ikx.rt.api.mods.cote.function.mana.BaubleRender;
+import ink.ikx.rt.api.mods.cote.function.mana.IsUsesMana;
+import ink.ikx.rt.api.mods.cote.function.mana.ManaWithItem;
+import ink.ikx.rt.api.mods.cote.function.mana.ManaWithPool;
 import ink.ikx.rt.api.mods.cote.mana.bauble.ManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.cote.mana.item.ManaItemRepresentation;
 import ink.ikx.rt.api.mods.cote.mana.item.tool.ManaUsingItemRepresentation;
@@ -44,7 +56,13 @@ import ink.ikx.rt.api.mods.cote.potion.PotionRepresentation;
 import ink.ikx.rt.api.mods.cote.potion.PotionTypeRepresentation;
 import ink.ikx.rt.api.mods.jei.BracketHandlerJEI;
 import ink.ikx.rt.api.mods.jei.JEIExpansion;
-import ink.ikx.rt.api.mods.jei.interfaces.element.*;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIArrowElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEICustomElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIFluidElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIFontInfoElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIItemElement;
+import ink.ikx.rt.api.mods.jei.interfaces.element.JEIManaBarElement;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIBackground;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIPanel;
 import ink.ikx.rt.api.mods.jei.interfaces.other.JEIRecipe;
@@ -53,7 +71,13 @@ import ink.ikx.rt.api.mods.jei.interfaces.slots.JEIItemSlot;
 import ink.ikx.rt.api.mods.jei.interfaces.slots.JEILiquidSlot;
 import ink.ikx.rt.api.mods.jei.interfaces.slots.JEISlot;
 import ink.ikx.rt.api.mods.naturesaura.AuraChunk;
-import ink.ikx.rt.api.mods.player.*;
+import ink.ikx.rt.api.mods.player.IPlayerExpansionAS;
+import ink.ikx.rt.api.mods.player.IPlayerExpansionFTBU;
+import ink.ikx.rt.api.mods.player.IPlayerExpansionMO;
+import ink.ikx.rt.api.mods.player.IPlayerExpansionTAN;
+import ink.ikx.rt.api.mods.player.IPlayerExpansionTBL;
+import ink.ikx.rt.api.mods.player.IPlayerExpansionTC;
+import ink.ikx.rt.api.mods.player.IPlayerExpansionTF;
 import ink.ikx.rt.api.mods.render.BaubleRenderHelper;
 import ink.ikx.rt.api.mods.render.BotaniaFXHelper;
 import ink.ikx.rt.api.mods.tbl.BLCircleGem;
@@ -62,12 +86,11 @@ import ink.ikx.rt.impl.config.RTConfig;
 import ink.ikx.rt.impl.events.DreamJournal;
 import ink.ikx.rt.impl.events.ManaBaubleEvent;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Loader;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
 
 public class CrTSupport {
 
@@ -92,11 +115,8 @@ public class CrTSupport {
                 AspectRepresentation.class,
                 BracketHandlerCotPotion.class,
                 BracketHandlerCoTSubTile.class,
-                SubTileFunctionalRepresentation.class,
-                SubTileGeneratingRepresentation.class,
                 ExpandWorldForSubTile.class,
                 SubTileEntityInGame.class,
-                SubTileRepresentation.class,
                 BlockActivated.class,
                 BlockAdded.class,
                 BlockHarvested.class,
@@ -113,9 +133,6 @@ public class CrTSupport {
                 ManaWithPool.class,
                 PotionPerformEffect.class,
                 PotionIsReady.class,
-                ManaBaubleRepresentation.class,
-                ManaUsingItemRepresentation.class,
-                ManaItemRepresentation.class,
                 PotionRepresentation.class,
                 PotionTypeRepresentation.class,
                 ExpandVanillaFactory.class,
@@ -142,14 +159,26 @@ public class CrTSupport {
                 IPlayerExpansionFTBU.class,
                 IPlayerExpansionMO.class,
                 IPlayerExpansionTAN.class,
-                IPlayerExpansionTBL.class,
-                IPlayerExpansionTC.class,
-                IPlayerExpansionTF.class,
-                BaubleRenderHelper.class,
-                BotaniaFXHelper.class,
-                BLCircleGem.class,
-                IWorldExpansionNA.class
+            IPlayerExpansionTBL.class,
+            IPlayerExpansionTC.class,
+            IPlayerExpansionTF.class,
+            BaubleRenderHelper.class,
+            BotaniaFXHelper.class,
+            BLCircleGem.class,
+            IWorldExpansionNA.class
         );
+    }
+
+    public static void registerClassAboutCoT() {
+        CraftTweakerAPI.registerClass(ManaItemRepresentation.class);
+        CraftTweakerAPI.registerClass(ManaBaubleRepresentation.class);
+        CraftTweakerAPI.registerClass(ManaUsingItemRepresentation.class);
+    }
+
+    public static void registerClassAboutBoT() {
+        CraftTweakerAPI.registerClass(SubTileRepresentation.class);
+        CraftTweakerAPI.registerClass(SubTileFunctionalRepresentation.class);
+        CraftTweakerAPI.registerClass(SubTileGeneratingRepresentation.class);
     }
 
     public static void registerClass() {
