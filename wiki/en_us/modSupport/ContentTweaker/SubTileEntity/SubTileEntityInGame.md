@@ -24,6 +24,7 @@ import mods.randomtweaker.cote.SubTileEntityInGame;
 | getMana() | int | Get the amount of mana of the custom flower |
 | getMaxMana() | int | Get the max mana of the custom flower |
 | addMana(mana as int) | void | Add the amount of mana of the custom flower |
+| consumeMana(mana as int) | void | Consume the amount of mana of the custom flower |
 | setMana(mana as int) | void | Set the amount of mana of the custom flower |
 | getRedstoneSignal() | int | Get the redstone signal of a custom flower |
 | getPassiveDecayTicks() | int | Get cooldown time for last time of the custom passive generation flower |
