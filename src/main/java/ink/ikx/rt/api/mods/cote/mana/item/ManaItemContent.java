@@ -36,7 +36,7 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
     private static final String TAG_MANA = "mana";
     private static final String TAG_ONE_USE = "oneUse";
     private static final String TAG_CREATIVE = "creative";
-    private static final int DEFAULT_MAX_ITEM_USE_DURATION = 32;
+    private static final int DEFAULT_MAX_ITEM_USE_DURATION = 40;
 
     public ManaItemContent(ManaItemRepresentation manaItem) {
         super(manaItem);

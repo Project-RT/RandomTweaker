@@ -21,6 +21,7 @@ import mods.randomtweaker.cote.ManaItem;
 | isNoExport | bool (Default: false) | Does it really output mana |
 | hasFull | bool (Default: false) | Whether to create mana items full with mana |
 | hasCreative | bool (Default: false) | Whether to create Creative item(similar to Creative Mana Tablets) |
+| maxItemUseDuration | int (defsult: 0, but when this manaitem override [ItemUseFinish](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Advanced_Functionality/Functions/IItemUseFinish/) then default set 40) | Takes the maximum Tick threshold when the item is in continuous right clicking |
 
 ## Methods
 

@@ -19,6 +19,7 @@ import mods.randomtweaker.cote.ManaItem;
 | isNoExport | bool (默认 false) | 是否真正的输出魔力 |
 | hasFull | bool (默认 false) | 是否创建填满魔力的魔力物品 |
 | hasCreative | bool (默认 false) | 是否创建类似创造魔力石板的魔力物品 |
+| maxItemUseDuration | int (默认值为 0, 但当这个物品覆写了 [ItemUseFinish](https://docs.blamejared.com/1.12/en/Mods/ContentTweaker/Vanilla/Advanced_Functionality/Functions/IItemUseFinish/), 函数时则默认值为 40) | 此物品处于持续右键时, 最大 Tick 阈值 |
 
 ## 方法
 
