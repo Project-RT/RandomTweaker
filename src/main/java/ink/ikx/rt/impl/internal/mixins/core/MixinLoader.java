@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.mixins.core;
+package ink.ikx.rt.impl.internal.mixins.core;
 
 import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.common.*;

@@ -1,5 +1,5 @@
 {
-  "package": "ink.ikx.rt.impl.mixins.init",
+  "package": "ink.ikx.rt.impl.internal.mixins.init",
   "required": true,
   "refmap": "mixins.randomtweaker.refmap.json",
   "minVersion": "0.8",

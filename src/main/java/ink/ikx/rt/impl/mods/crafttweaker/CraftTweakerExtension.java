@@ -4,7 +4,7 @@ import cn.hutool.core.annotation.AnnotationUtil;
 import com.google.common.collect.Lists;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
-import ink.ikx.rt.api.world.IBlockPosExpansion;
+import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import net.minecraftforge.fml.common.Loader;
 
 import java.util.List;

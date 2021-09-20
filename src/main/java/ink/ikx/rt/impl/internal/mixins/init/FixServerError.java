@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.mixins.init;
+package ink.ikx.rt.impl.internal.mixins.init;
 
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;

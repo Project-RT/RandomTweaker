@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.world;
+package ink.ikx.rt.api.internal.world;
 
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
