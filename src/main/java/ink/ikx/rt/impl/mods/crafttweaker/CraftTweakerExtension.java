@@ -4,7 +4,9 @@ import cn.hutool.core.annotation.AnnotationUtil;
 import com.google.common.collect.Lists;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
+import ink.ikx.rt.api.internal.file.IProp;
 import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
+import ink.ikx.rt.impl.internal.config.RTConfig;
 import net.minecraftforge.fml.common.Loader;
 
 import java.util.List;
@@ -31,6 +33,12 @@ public class CraftTweakerExtension {
                 CraftTweakerAPI.registerClass(clazz);
             }
         }
+        registerSpecialClass();
+    }
+
+    public static void registerSpecialClass() {
+        if (IProp.isRegister(RTConfig.RandomTweaker.Prop))
+            CraftTweakerAPI.registerClass(IProp.class);
     }
 
 }
