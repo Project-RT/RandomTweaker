@@ -9,7 +9,7 @@ import java.util.stream.StreamSupport;
 
 @ZenExpansion("crafttweaker.world.IBlockPos")
 @ZenClass("mods.randomtweaker.vanilla.IBlockPos")
-public class IBlockPosExpansion {
+public abstract class IBlockPosExpansion {
 
     @ZenMethodStatic
     public static IBlockPos[] getAllInBox(IBlockPos from, IBlockPos to) {
