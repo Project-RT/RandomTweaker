@@ -1,0 +1,24 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+run
+logs/
+.tasks
+src/main/resources/assets/base/models/item/wrench.json
+src/main/resources/assets/base

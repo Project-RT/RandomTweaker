@@ -1,0 +1,146 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "https://maven.minecraftforge.net/" }
+        maven {url = "https://repo.spongepowered.org/maven"}
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3.4'
+        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'org.spongepowered.mixin'
+
+version = "2.0"
+group = "ink.ikx.rt"
+archivesBaseName = "RandomTweaker"
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = "1.12.2-14.23.5.2847"
+    runDir = "run"
+    mappings = "stable_39"
+
+    def args = [
+            "-Dfml.coreMods.load=ink.ikx.rt.MixinGuide",
+            "-Dmixin.hotSwap=true",
+            "-Dmixin.checks.interfaces=true"
+    ]
+
+    clientJvmArgs.addAll(args)
+    serverJvmArgs.addAll(args)
+    makeObfSourceJar = false
+}
+
+configurations {
+    embed
+    implementation.extendsFrom(embed)
+}
+
+dependencies {
+    runtime "vazkii.patchouli:Patchouli:1.0-21.5"
+    runtime "cofh:RedstoneFlux:1.12-2.0.0.1:universal"
+    runtime "mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17"
+
+    compile files('libs/CraftTweaker2-MC1120-Mod-JEI-1.12-4.1.20.656-deobf.jar')
+
+    deobfCompile "youyihj:zenutils:1.9.4"
+    deobfCompile "mezz.jei:jei_1.12.2:4.16.1.302"
+    deobfCompile "curse.maven:Baubles-227083:2518667"
+    deobfCompile "vazkii.botania:Botania:r1.10-363.148"
+    deobfCompile "curse.maven:thaumcraft-223628:2629023"
+    deobfCompile "curse.maven:ftb-ultimine-386134:3078750"
+    deobfCompile "curse.maven:toughasnails-246391:2710969"
+    deobfCompile "curse.maven:astralsorcery-241721:3044416"
+    deobfCompile "de.ellpeck.naturesaura:NaturesAura:r14-209"
+    deobfCompile "curse.maven:the-twilight-forest-227639:3051450"
+    deobfCompile "curse.maven:matteroverdrive-legacy-308192:2699215"
+    deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
+    deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.656"
+
+    embed 'cn.hutool:hutool-core:5.7.13'
+    embed ("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
+        exclude module: "asm-commons"
+        exclude module: "asm-tree"
+        exclude module: "launchwrapper"
+        exclude module: "guava"
+        exclude module: "log4j-core"
+        exclude module: "gson"
+        exclude module: "commons-io"
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'jei'
+        url =  "https://dvs1.progwml6.com/files/maven"
+    }
+    maven {
+        name = 'blamejared'
+        url = 'https://maven.blamejared.com'
+    }
+    maven {
+        name = 'tterrag maven'
+        url = "https://maven.tterrag.com/"
+    }
+    maven {
+        name = "CurseMaven"
+        url = "https://www.cursemaven.com"
+    }
+    maven {
+        name = "CoFH Maven"
+        url = "https://maven.covers1624.net"
+    }
+    maven {
+        name = "sponge"
+        url = "https://repo.spongepowered.org/maven"
+    }
+    maven {
+        name = "youyihj"
+        url = "https://friendlyhj.github.io/maven"
+    }
+    maven {
+        name = "naturesaura"
+        url = "https://maven.chaosfield.at"
+    }
+}
+
+jar {
+    from (configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude 'LICENSE.txt', 'META-INF/MANIFSET.MF', 'META-INF/maven/**', 'META-INF/*.RSA', 'META-INF/*.SF'
+    }
+    manifest {
+        attributes([
+                'TweakClass' : 'org.spongepowered.asm.launch.MixinTweaker',
+                "ForceLoadAsMod" : true,
+                "FMLCorePlugin": "ink.ikx.rt.impl.MixinBoot",
+                "FMLCorePluginContainsFMLMod": true,
+        ])
+    }
+}
+
+mixin {
+    add sourceSets.main, "mixins.randomtweaker.refmap.json"
+}
