@@ -1,5 +1,6 @@
 package ink.ikx.rt;
 
+import ink.ikx.rt.impl.mods.crafttweaker.CraftTweakerExtension;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
@@ -21,6 +22,7 @@ public class Main {
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) {
+        CraftTweakerExtension.registerAllClass();
     }
 
     @EventHandler
