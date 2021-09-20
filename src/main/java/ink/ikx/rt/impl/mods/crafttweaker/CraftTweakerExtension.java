@@ -6,6 +6,7 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import ink.ikx.rt.api.internal.file.IProp;
 import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
+import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.naturesaura.IWorldExpansionNa;
 import ink.ikx.rt.impl.internal.config.RTConfig;
 import net.minecraftforge.fml.common.Loader;
@@ -19,6 +20,7 @@ public class CraftTweakerExtension {
     static {
         classes = Lists.newArrayList(
                 IWorldExpansionNa.class,
+                IPlayerExpansionAs.class,
                 IBlockPosExpansion.class
         );
     }
