@@ -26,9 +26,6 @@ public class ManaUsingItemContent extends ManaItemContent implements IManaUsingI
 
     @Override
     public boolean usesMana(ItemStack stack) {
-        if (this.getMana(stack) > 0) {
-            return false;
-        }
         return Objects.isNull(manaUsingItem.usesMana) || manaUsingItem.usesMana.handle(CraftTweakerMC.getIItemStack(stack));
     }
 }
