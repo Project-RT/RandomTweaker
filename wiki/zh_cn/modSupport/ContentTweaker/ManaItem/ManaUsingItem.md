@@ -11,4 +11,4 @@ import mods.randomtweaker.cote.ManaUsingItem;
 
 [字段或方法请看](ManaItem.md)
 
-[函数请看](function.md#usesMana)
+[函数请看](function.md#usesmana)

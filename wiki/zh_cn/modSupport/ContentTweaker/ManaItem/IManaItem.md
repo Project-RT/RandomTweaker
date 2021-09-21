@@ -34,3 +34,4 @@ import mods.randomtweaker.item.IManaItem;
 | canExportManaToItem(otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | bool | 是否输出 Mana 到使用 Mana 的物品上 ([参数解析](function.md#canexportmanatoitem)) |
 | canReceiveManaFromPool(world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/), pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/)) | bool | 是否接受来自魔力池的 Mana ([参数解析](function.md#canreceivemanafrompool)) |
 | canReceiveManaFromItem(otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | bool | 是否接受来自物品的 Mana ([参数解析](function.md#canreceivemanafromitem)) |
+| getUseMana() | bool | 如果此物品是 [ManaUsingItem](ManaUsingItem.md) 类实例, 则返回能否使用魔力 |

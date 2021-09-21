@@ -11,4 +11,4 @@ import mods.randomtweaker.cote.ManaUsingItem;
 
 [For field or method](ManaItem.md)
 
-[For function](function.md#usesMana)
+[For function](function.md#usesmana)

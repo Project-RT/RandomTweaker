@@ -35,3 +35,4 @@ is an instance of the IManaItem class, and if so, use the `asIManaItem()` method
 | canExportManaToItem(otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | bool | Whether to export Mana to items that using Mana ([Parameter Analysis](function.md#canexportmanatoitem)) |
 | canReceiveManaFromPool(world as [IWorld](https://docs.blamejared.com/1.12/en/Vanilla/World/IWorld/), pos as [IBlockPos](https://docs.blamejared.com/1.12/en/Vanilla/World/IBlockPos/)) | bool | Whether to accept the Mana from Mana Pool ([Parameter Analysis](function.md#canreceivemanafrompool)) |
 | canReceiveManaFromItem(otherStack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | bool | Whether to accept the Mana from item ([Parameter Analysis](function.md#canreceivemanafromitem)) |
+| getUseMana() | bool | 如果此物品是 [ManaUsingItem](ManaUsingItem.md) 类实例, 则返回能否使用魔力 |

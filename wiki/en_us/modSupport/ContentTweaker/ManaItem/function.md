@@ -87,6 +87,8 @@ import mods.randomtweaker.cote.IsUsesMana;
 
 决定物品是否使用背包或者饰品里储存的魔力 (仅 [ManaUsingItem](ManaUsingItem.md) 有此函数)
 
+此函数仅是一个判断, 没有主动使用 [getUseMana()](IManaItem.md#Methods) 方法那基本没用
+
 需要返回一个 bool
 
 * stack as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) The item

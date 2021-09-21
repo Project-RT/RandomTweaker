@@ -83,7 +83,9 @@ manaItemObj.canReceiveManaFromItem = function(stack, otherStack) {
 import mods.randomtweaker.cote.IsUsesMana;
 ```
 
-决定物品是否使用背包或者饰品里储存的魔力 (仅 [ManaUsingItem](ManaUsingItem.md) 有此函数)
+决定物品能否使用背包里储存的魔力 (仅 [ManaUsingItem](ManaUsingItem.md) 有此函数)
+
+此函数仅是一个判断, 没有主动使用 [getUseMana()](IManaItem.md#Methods) 方法那基本没用
 
 需要返回一个 bool
 
