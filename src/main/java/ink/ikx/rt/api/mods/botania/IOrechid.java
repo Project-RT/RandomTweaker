@@ -5,12 +5,13 @@ import crafttweaker.IAction;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.oredict.IOreDictEntry;
 import crafttweaker.mc1120.brackets.BracketHandlerOre;
-import ink.ikx.rt.impl.internal.utils.Utils;
+import ink.ikx.rt.impl.internal.utils.InternalUtils;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 @ZenClass("mods.randomtweaker.botania.Orechid")
 public abstract class IOrechid {
@@ -34,7 +35,7 @@ public abstract class IOrechid {
 
     @ZenMethod
     public static IOreDictEntry[] getOres(IItemStack block) {
-        return Arrays.stream(SubTileOrechidManager.getOres(Utils.getState(block)))
+        return Arrays.stream(SubTileOrechidManager.getOres(InternalUtils.getState(block)))
                 .map(BracketHandlerOre::getOre)
                 .toArray(IOreDictEntry[]::new);
     }
@@ -53,7 +54,7 @@ public abstract class IOrechid {
 
         @Override
         public void apply() {
-            SubTileOrechidManager.addOreWeight(Utils.getState(block), ore.getName(), weight);
+            SubTileOrechidManager.addOreWeight(InternalUtils.getState(block), ore.getName(), weight);
         }
 
         @Override
@@ -61,10 +62,20 @@ public abstract class IOrechid {
             return "Adding Orechid Recipe for block: " + block.getDisplayName() + " -> " + ore.getName() + ", weight: " + weight;
         }
 
+        @Override
+        public boolean validate() {
+            return Objects.nonNull(InternalUtils.getState(block)) && !ore.isEmpty();
+        }
+
+        @Override
+        public String describeInvalid() {
+            return "The IItemStack in Orechid recipe is not a block, or the IOreDictEntry is empty.";
+        }
     }
 
     private static class ActionRemoveOrechidRecipe implements IAction {
 
+        private String describe;
         private final IItemStack block;
         private final IOreDictEntry ore;
 
@@ -75,12 +86,29 @@ public abstract class IOrechid {
 
         @Override
         public void apply() {
-            SubTileOrechidManager.delOreWeight(Utils.getState(block), ore.getName());
+            SubTileOrechidManager.delOre(InternalUtils.getState(block), ore.getName());
         }
 
         @Override
         public String describe() {
             return "Removing Orechid Recipe for block: " + block.getDisplayName() + " -> " + ore.getName();
+        }
+
+        @Override
+        public boolean validate() {
+            if (Objects.isNull(InternalUtils.getState(block))) {
+                describe = "The IItemStack is not a block.";
+                return false;
+            } else if (SubTileOrechidManager.checkOreExist(InternalUtils.getState(block), ore.getName())) {
+                describe = "The Orechid Recipe not exist.";
+                return false;
+            }
+            return true;
+        }
+
+        @Override
+        public String describeInvalid() {
+            return describe;
         }
 
     }

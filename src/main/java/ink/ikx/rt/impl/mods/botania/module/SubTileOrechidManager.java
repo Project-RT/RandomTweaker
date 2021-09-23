@@ -2,10 +2,7 @@ package ink.ikx.rt.impl.mods.botania.module;
 
 import net.minecraft.block.state.IBlockState;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 public class SubTileOrechidManager {
 
@@ -27,12 +24,16 @@ public class SubTileOrechidManager {
         return Objects.requireNonNull(Optional.ofNullable(oreWeights.get(state)).map(Map::keySet).orElse(null)).toArray(new String[0]);
     }
 
-    public static void delOreWeight(IBlockState state, String oreName) {
+    public static void delOre(IBlockState state, String oreName) {
         oreWeights.entrySet().stream()
                 .filter(entry -> entry.getKey() == state)
                 .map(Map.Entry::getValue)
                 .filter(map -> map.containsKey(oreName))
                 .forEach(e -> e.remove(oreName));
+    }
+
+    public static boolean checkOreExist(IBlockState state, String oreName) {
+        return Arrays.asList(getOres(state)).contains(oreName);
     }
 
 }
