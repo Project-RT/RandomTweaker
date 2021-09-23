@@ -40,8 +40,11 @@ import mods.randomtweaker.botania.PoolTradeEvent;
 import mods.randomtweaker.botania.PoolTradeEvent;
 
 events.onPoolTrade(function(event as PoolTradeEvent) {
-    if(!event.input.world.remote) {
-        event.cancel();
-    }
+    event.output = <item:minecraft:apple>;
+    
+    // 请勿执行此方法, 魔力池需匹配双端
+    // if(!event.input.world.remote) {
+    //    event.cancel();
+    // }
 });
 ```

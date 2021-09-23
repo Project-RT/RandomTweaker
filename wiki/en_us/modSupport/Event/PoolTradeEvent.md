@@ -40,8 +40,11 @@ import mods.randomtweaker.botania.PoolTradeEvent;
 import mods.randomtweaker.botania.PoolTradeEvent;
 
 events.onPoolTrade(function(event as PoolTradeEvent) {
-    if(!event.input.world.remote) {
-        event.cancel();
-    }
+    event.output = <item:minecraft:apple>;
+    
+    // Don't execute this program, because the botania pool isn't only handled on the server side.
+    // if(!event.input.world.remote) {
+    //    event.cancel();
+    // }
 });
 ```
