@@ -27,7 +27,7 @@ minecraft {
     mappings = "stable_39"
 
     def args = [
-            "-Dfml.coreMods.load=ink.ikx.rt.MixinGuide",
+            "-Dfml.coreMods.load=ink.ikx.rt.MixinBoot",
             "-Dmixin.hotSwap=true",
             "-Dmixin.checks.interfaces=true"
     ]
