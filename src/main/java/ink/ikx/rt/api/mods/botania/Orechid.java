@@ -6,12 +6,13 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.oredict.IOreDictEntry;
 import crafttweaker.mc1120.brackets.BracketHandlerOre;
 import ink.ikx.rt.impl.botania.module.SubTileOrechidManager;
-import java.util.Arrays;
-import java.util.Objects;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 @ZenClass("mods.randomtweaker.botania.Orechid")
 public class Orechid {
@@ -76,7 +77,8 @@ public class Orechid {
     public static IOreDictEntry[] getOreWeight(IItemStack block) {
         if (Objects.nonNull(getState(block))) {
             return Arrays.stream(SubTileOrechidManager.getOreWeight(getState(block)))
-                .map(BracketHandlerOre::getOre)
+                    .map(BracketHandlerOre::getOre)
+                    .filter(ore -> !ore.isEmpty())
                 .toArray(IOreDictEntry[]::new);
         }
         return null;
