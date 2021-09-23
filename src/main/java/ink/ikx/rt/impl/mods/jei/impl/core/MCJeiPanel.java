@@ -1,0 +1,148 @@
+package ink.ikx.rt.impl.mods.jei.impl.core;
+
+import com.google.common.collect.Lists;
+import crafttweaker.CraftTweakerAPI;
+import crafttweaker.IAction;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.mc1120.brackets.BracketHandlerItem;
+import ink.ikx.rt.Main;
+import ink.ikx.rt.api.mods.jei.core.IJeiBackground;
+import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
+import ink.ikx.rt.api.mods.jei.core.IJeiTooltip;
+import ink.ikx.rt.api.mods.jei.elements.IJeiElement;
+import ink.ikx.rt.api.mods.jei.slots.IJeiSlot;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class MCJeiPanel implements IJeiPanel {
+
+    public final List<IJeiSlot> slots = Lists.newArrayList();
+    public final List<IJeiElement> elements = Lists.newArrayList();
+    public final List<IItemStack> recipeCatalysts = Lists.newArrayList();
+    public String uid;
+    public String title;
+    public IJeiTooltip tooltip;
+    public IJeiBackground background;
+    public String modid = Main.MODID;
+    public IItemStack icon = BracketHandlerItem.getItem("minecraft:bedrock", 0);
+
+    public MCJeiPanel(String uid, String title) {
+        this.uid = uid;
+        this.title = title;
+    }
+
+    @Override
+    public IJeiPanel setModid(String modid) {
+        this.modid = modid;
+        return this;
+    }
+
+    @Override
+    public IJeiPanel setIcon(IItemStack icon) {
+        this.icon = icon;
+        return this;
+    }
+
+    @Override
+    public IJeiPanel addJeiSlot(IJeiSlot slot) {
+        this.slots.add(slot);
+        return this;
+    }
+
+    @Override
+    public IJeiPanel setJeiSlots(IJeiSlot[] slots) {
+        this.slots.clear();
+        Arrays.stream(slots).forEach(this::addJeiSlot);
+        return this;
+    }
+
+    @Override
+    public IJeiPanel setJeiTooltip(IJeiTooltip tooltip) {
+        this.tooltip = tooltip;
+        return this;
+    }
+
+    @Override
+    public IJeiPanel addJeiElement(IJeiElement element) {
+        this.elements.add(element);
+        return this;
+    }
+
+    @Override
+    public IJeiPanel setJeiElements(IJeiElement[] elements) {
+        this.elements.clear();
+        Arrays.stream(elements).forEach(this::addJeiElement);
+        return this;
+    }
+
+    @Override
+    public IJeiPanel addRecipeCatalyst(IItemStack stack) {
+        this.recipeCatalysts.add(stack);
+        return this;
+    }
+
+    @Override
+    public IJeiPanel setRecipeCatalysts(IItemStack[] stacks) {
+        this.recipeCatalysts.clear();
+        Arrays.stream(stacks).forEach(this::addRecipeCatalyst);
+        return this;
+    }
+
+    @Override
+    public IJeiPanel setJeiBackground(IJeiBackground background) {
+        this.background = background;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MCJeiPanel that = (MCJeiPanel) o;
+
+        return uid.equals(that.uid);
+    }
+
+    @Override
+    public int hashCode() {
+        return uid.hashCode();
+    }
+
+    @Override
+    public void register() {
+        CraftTweakerAPI.apply(new ActionAddJeiPanel(this));
+    }
+
+    public static class ActionAddJeiPanel implements IAction {
+
+        private final MCJeiPanel panel;
+
+        public ActionAddJeiPanel(MCJeiPanel panel) {
+            this.panel = panel;
+        }
+
+        @Override
+        public void apply() {
+            Main.JEI_PANEL_SET.add(panel);
+        }
+
+        @Override
+        public String describe() {
+            return "Adding JEIPanel for uid -> " + panel.uid;
+        }
+
+        @Override
+        public boolean validate() {
+            return !Main.JEI_PANEL_SET.contains(panel);
+        }
+
+        @Override
+        public String describeInvalid() {
+            return "The JeiPanel already exists, don't add it repeatedly.";
+        }
+
+    }
+
+}

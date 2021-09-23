@@ -2,7 +2,10 @@ package ink.ikx.rt;
 
 import cn.hutool.core.util.ReflectUtil;
 import com.google.common.collect.BiMap;
+import com.google.common.collect.Sets;
 import crafttweaker.mods.jei.JEI;
+import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
+import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
 import ink.ikx.rt.impl.internal.config.RTConfig;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
@@ -20,6 +23,7 @@ import vazkii.botania.common.lib.LibBlockNames;
 
 import java.lang.reflect.Field;
 import java.util.Objects;
+import java.util.Set;
 
 @Mod(
         modid = Main.MODID,
@@ -33,6 +37,9 @@ public class Main {
     public static final String NAME = "RandomTweaker";
     public static final String VERSION = "2.0";
     public static final String DESPENDENCIES = "required-after:crafttweaker;after:contenttweaker;";
+
+    public static final Set<IJeiPanel> JEI_PANEL_SET = Sets.newHashSet();
+    public static final Set<IJeiRecipe> JEI_RECIPE_SET = Sets.newHashSet();
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) {
