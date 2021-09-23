@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-@ZenClass("mods.randomtweaker.Prop")
+@ZenClass("mods.randomtweaker.file.IProp")
 public abstract class IProp {
 
     public static String FILE = getPath(System.getProperty("user.dir"), "rt.properties");
