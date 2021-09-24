@@ -4,6 +4,7 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.resourcelocation.CTRes
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -28,7 +29,7 @@ public class AspectRepresentation {
     public AspectRepresentation(String tag, int color) {
         this.setTag(tag);
         this.setColor(color);
-        this.setImage(CTResourceLocation.create("contenttweaker:textures/aspects/" + tag.toLowerCase()));
+        this.setImage(CTResourceLocation.create("contenttweaker:textures/aspects/" + tag.toLowerCase() + ".png"));
     }
 
     public Aspect[] asAspects() {
@@ -38,7 +39,7 @@ public class AspectRepresentation {
                 return null;
             }
 
-            ArrayList<Aspect> aspects = new ArrayList<>();
+            List<Aspect> aspects = new ArrayList<>();
             for (String aspect : components) {
                 aspects.add(Aspect.getAspect(aspect));
             }
@@ -89,6 +90,6 @@ public class AspectRepresentation {
 
     @ZenMethod
     public void register() {
-        new Aspect(this.getTag(), this.getColor(), this.asAspects(), this.getImage().getInternal(), this.getBlend());
+        new Aspect(this.tag, this.color, this.asAspects(), this.image.getInternal(), this.blend);
     }
 }
