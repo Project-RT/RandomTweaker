@@ -15,6 +15,7 @@ public class MCJeiSlots {
 
         @Override
         public void render(Minecraft minecraft) {
+            if (!hasBase) return;
             if (isInput) {
                 IJeiUtils.createItemInputElement(x, y).render(minecraft);
             } else {
