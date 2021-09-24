@@ -55,4 +55,10 @@ JEI.createJEIRecipe("keys1")
        return arr;
     })
     .build();
+
+JEI.createJEIRecipe("keys")
+    .addInput(<minecraft:apple>)
+    .addOutput(<minecraft:diamond>)
+    .addJEIElement(JEI.createJEIManaBarElement(30, 57, 10000))
+    .build();
 ```

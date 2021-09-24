@@ -23,7 +23,7 @@ import mods.jei.JEI;
 | createJEIFontInfoElement(x as int, y as int, info as string, color as int, @Optional width as int, @Optional height as int) | [JEIFontInfoElement](JEIElement/JEIFontInfoElement.md) |  |
 | createJEIArrowElement(x as int, y as int, direction as int) | [JEIArrowElement](JEIElement/JEIArrowElement.md) | direction is four arrows, you can fill 0 or 1 or 2 or 3 |
 | createJEICustomElement(x as int, y as int, width as int, height as int, u as int, v as int, texture as string) | [JEICustomElement](JEIElement/JEICustomElement.md) | The format of the texture is modid:path |
-
+| createJEIManaBarElement(x as int, y as int, mana as int) | [JEIManaBarElement](JEIElement/JEIManaBarElement.md) | |
 ## Hot reload
 
 Please install Mod
@@ -35,7 +35,10 @@ are provided by this mod
 ```zenscript
 #loader crafttweaker reloadableevents
 
-<jei:uid>.getJEISlots()[0].x = 10;
+<jei:uid>.JEISlots[0].x = 10;
+<jei:uid>.JEISlots[0].y = 20;
+
+<jei:uid>.JEIElements[0].x = 30;
 ```
 
 ## Example
