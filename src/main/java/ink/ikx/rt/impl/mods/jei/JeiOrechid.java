@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.mods;
+package ink.ikx.rt.impl.mods.jei;
 
 import cn.hutool.core.collection.CollUtil;
 import crafttweaker.api.block.IBlockState;
@@ -22,14 +22,14 @@ public class JeiOrechid {
 
     private static final String UID = "randomtweaker:jei_orechid";
     private static final String TEXTURE = "botania:textures/gui/pureDaisyOverlay.png";
-    private static final IItemStack flower = CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_ORECHID));
+    private static final IItemStack FLOWER = CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_ORECHID));
 
     public static void init() {
         JEIExpansion.createJei("randomtweaker:jei_orechid", "randomtweaker.jei_orechid")
-                .setIcon(CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_ORECHID)))
+                .setIcon(FLOWER)
                 .setBackground(IJeiUtils.createBackground(148, 45))
                 .addElement(IJeiUtils.createImageElement(48, 0, 64, 46, 0, 0, TEXTURE, 256, 256))
-                .addRecipeCatalyst(flower)
+                .addRecipeCatalyst(FLOWER)
                 .addRecipeCatalyst(CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), LibBlockNames.SUBTILE_ORECHID)))
                 .addSlot(IJeiUtils.createItemSlot(40, 13, true, false))
                 .addSlot(IJeiUtils.createItemSlot(70, 13, true, false))
@@ -46,7 +46,7 @@ public class JeiOrechid {
 
             v.entrySet().stream()
                     .filter(o -> CollUtil.isNotEmpty(OreDictionary.getOres(o.getKey())))
-                    .forEach(o -> JEIExpansion.createJeiRecipe(UID).addInput(input).addInput(flower).addOutput(getOutPut(v, o.getKey(), o.getValue())).build_());
+                    .forEach(o -> JEIExpansion.createJeiRecipe(UID).addInput(input).addInput(FLOWER).addOutput(getOutPut(v, o.getKey(), o.getValue())).build_());
         });
     }
 

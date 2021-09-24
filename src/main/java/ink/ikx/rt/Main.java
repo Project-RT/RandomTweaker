@@ -7,10 +7,12 @@ import crafttweaker.mods.jei.JEI;
 import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
 import ink.ikx.rt.impl.internal.config.RTConfig;
-import ink.ikx.rt.impl.mods.JeiOrechid;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
+import ink.ikx.rt.impl.mods.botania.subtile.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
 import ink.ikx.rt.impl.mods.crafttweaker.CraftTweakerExtension;
+import ink.ikx.rt.impl.mods.jei.JeiHydroangeas;
+import ink.ikx.rt.impl.mods.jei.JeiOrechid;
 import ink.ikx.rt.impl.mods.thaumcraft.DreamJournalEvent;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -71,9 +73,13 @@ public class Main {
             subTiles = (BiMap<String, Class<? extends SubTileEntity>>) ReflectUtil.setAccessible(field).get(null);
             if (Objects.nonNull(subTiles)) {
                 if (RTConfig.Botania.OrechidModified) {
+                    JeiOrechid.init();
                     JEI.hideCategory("botania.orechid");
                     subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModified.class);
-                    JeiOrechid.init();
+                }
+                if (RTConfig.Botania.HydroangeasModified) {
+                    JeiHydroangeas.init();
+                    subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
                 }
             }
         } catch (IllegalAccessException e) {

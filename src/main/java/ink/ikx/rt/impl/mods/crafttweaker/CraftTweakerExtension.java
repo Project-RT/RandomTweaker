@@ -7,6 +7,7 @@ import crafttweaker.annotations.ModOnly;
 import ink.ikx.rt.api.internal.file.IProp;
 import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
+import ink.ikx.rt.api.mods.botania.IHydroangeas;
 import ink.ikx.rt.api.mods.botania.IOrechid;
 import ink.ikx.rt.api.mods.jei.IJeiUtils;
 import ink.ikx.rt.api.mods.jei.IJeiUtilsWithBotania;
@@ -82,8 +83,12 @@ public class CraftTweakerExtension {
     public static void registerSpecialClass() {
         if (IProp.isRegister(RTConfig.RandomTweaker.Prop))
             CraftTweakerAPI.registerClass(IProp.class);
-        if (RTConfig.Botania.OrechidModified && Loader.isModLoaded("botania"))
-            CraftTweakerAPI.registerClass(IOrechid.class);
+        if (Loader.isModLoaded("botania")) {
+            if (RTConfig.Botania.OrechidModified)
+                CraftTweakerAPI.registerClass(IOrechid.class);
+            if (RTConfig.Botania.HydroangeasModified)
+                CraftTweakerAPI.registerClass(IHydroangeas.class);
+        }
     }
 
 }

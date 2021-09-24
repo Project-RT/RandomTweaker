@@ -23,6 +23,18 @@ public class RTConfig {
     public static class Botania {
 
         @RequiresMcRestart
+        @Comment("If true, the hydroangeas will be modified. [default: false]")
+        public boolean HydroangeasModified = false;
+
+        @RequiresMcRestart
+        @Comment("If true, the hydroangeas won't decay. [Valid only for modified results | default: false]")
+        public boolean HydroangeasDecay = false;
+
+        @RequiresMcRestart
+        @Comment("How much mana is max of hydroangeas? [Valid only for modified results | default: 18000]")
+        public int HydroangeasMaxMana = 18000;
+
+        @RequiresMcRestart
         @Comment("If true, the Orechid will be modified. [default: false]")
         public boolean OrechidModified = false;
 

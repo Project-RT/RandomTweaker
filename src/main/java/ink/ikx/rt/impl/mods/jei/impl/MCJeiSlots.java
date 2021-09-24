@@ -34,6 +34,7 @@ public class MCJeiSlots {
 
         @Override
         public void render(Minecraft minecraft) {
+            if (!hasBase) return;
             IJeiUtils.createLiquidElement(x, y, width, height).render(minecraft);
         }
 
