@@ -28,7 +28,7 @@ import mods.randomtweaker.cote.Aspect;
 
 ```zenscript
 #loader contenttweaker
-import mods.mods.contenttweaker.VanillaFactory;
+import mods.contenttweaker.VanillaFactory;
 import mods.randomtweaker.cote.Aspect;
 
 var aspect as Aspect = VanillaFactory.createAspect("test", 0x4169E1);
