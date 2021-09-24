@@ -21,6 +21,15 @@ import ink.ikx.rt.impl.jei.HydroangeasJEI;
 import ink.ikx.rt.impl.jei.OrechidJEI;
 import ink.ikx.rt.impl.proxy.IProxy;
 import ink.ikx.rt.impl.utils.ItemDs;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 import net.minecraft.init.Blocks;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.ResourceLocation;
@@ -37,10 +46,6 @@ import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.*;
-
 @SuppressWarnings("all")
 @Mod(
         modid = RandomTweaker.MODID,
@@ -53,7 +58,7 @@ public class RandomTweaker {
 
     public static final String MODID = "randomtweaker";
     public static final String NAME = "RandomTweaker";
-    public static final String VERSION = "1.1.18";
+    public static final String VERSION = "1.1.19";
     public static final String GUI_FACTORY = "ink.ikx.rt.impl.config.RTConfigGuiFactory";
     public static final String DESPENDENCIES = "required-after:crafttweaker;after:contenttweaker";
 

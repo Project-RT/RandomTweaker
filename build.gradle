@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 
-version = "1.1.18"
+version = "1.1.19"
 group = "com.ikexing.randomtweaker"
 archivesBaseName = "randomtweaker"
 
