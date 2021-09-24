@@ -10,7 +10,9 @@ import ink.ikx.rt.impl.internal.config.RTConfig;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
 import ink.ikx.rt.impl.mods.crafttweaker.CraftTweakerExtension;
+import ink.ikx.rt.impl.mods.thaumcraft.DreamJournalEvent;
 import net.minecraft.init.Blocks;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -50,6 +52,8 @@ public class Main {
     public void onPreInit(FMLPreInitializationEvent event) {
         if (RTConfig.Botania.OrechidHasDefault)
             SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), BotaniaAPI.oreWeights);
+        if (Loader.isModLoaded("thaumcraft"))
+            MinecraftForge.EVENT_BUS.register(DreamJournalEvent.class);
     }
 
     @EventHandler

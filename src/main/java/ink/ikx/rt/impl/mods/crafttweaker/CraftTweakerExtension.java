@@ -21,6 +21,7 @@ import ink.ikx.rt.api.mods.jei.slots.IJeiSlot;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlotItem;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlotLiquid;
 import ink.ikx.rt.api.mods.naturesaura.IWorldExpansionNa;
+import ink.ikx.rt.api.mods.thaumcraft.IPlayerExpansionTc;
 import ink.ikx.rt.impl.internal.config.RTConfig;
 import net.minecraftforge.fml.common.Loader;
 
@@ -44,8 +45,9 @@ public class CraftTweakerExtension {
                 IJeiSlotLiquid.class,
                 IJeiBackground.class,
                 IWorldExpansionNa.class,
-                IPlayerExpansionAs.class,
                 IBlockPosExpansion.class,
+                IPlayerExpansionAs.class,
+                IPlayerExpansionTc.class,
                 IJeiUtilsWithBotania.class,
                 IJeiElements.IJeiElementImage.class,
                 IJeiElements.IJeiElementArrow.class,
