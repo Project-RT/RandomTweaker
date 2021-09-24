@@ -77,6 +77,11 @@ public class MCJeiRecipe implements IJeiRecipe {
     }
 
     @Override
+    public void build_() {
+        Main.JEI_RECIPE_SET.add(this);
+    }
+
+    @Override
     public String getUid() {
         return uid;
     }

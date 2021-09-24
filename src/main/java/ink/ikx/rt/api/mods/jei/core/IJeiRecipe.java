@@ -34,6 +34,8 @@ public interface IJeiRecipe {
     @ZenMethod
     void build();
 
+    void build_();
+
     String getUid();
 
 }

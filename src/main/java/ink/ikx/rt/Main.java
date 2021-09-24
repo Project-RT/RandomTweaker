@@ -7,6 +7,7 @@ import crafttweaker.mods.jei.JEI;
 import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
 import ink.ikx.rt.impl.internal.config.RTConfig;
+import ink.ikx.rt.impl.mods.JeiOrechid;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
 import ink.ikx.rt.impl.mods.crafttweaker.CraftTweakerExtension;
@@ -72,7 +73,7 @@ public class Main {
                 if (RTConfig.Botania.OrechidModified) {
                     JEI.hideCategory("botania.orechid");
                     subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModified.class);
-//                    OrechidJEI.init(); todo
+                    JeiOrechid.init();
                 }
             }
         } catch (IllegalAccessException e) {

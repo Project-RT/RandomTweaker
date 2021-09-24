@@ -2,6 +2,7 @@ package ink.ikx.rt.api.mods.botania;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
+import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.oredict.IOreDictEntry;
 import crafttweaker.mc1120.brackets.BracketHandlerOre;
@@ -13,6 +14,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import java.util.Arrays;
 import java.util.Objects;
 
+@ModOnly("botania")
 @ZenClass("mods.randomtweaker.botania.IOrechid")
 public abstract class IOrechid {
 

@@ -115,6 +115,11 @@ public class MCJeiPanel implements IJeiPanel {
         CraftTweakerAPI.apply(new ActionAddJeiPanel(this));
     }
 
+    @Override
+    public void register_() {
+        Main.JEI_PANEL_SET.add(this);
+    }
+
     public static class ActionAddJeiPanel implements IAction {
 
         private final MCJeiPanel panel;

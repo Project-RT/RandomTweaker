@@ -44,4 +44,5 @@ public interface IJeiPanel {
     @ZenMethod
     void register();
 
+    void register_();
 }
