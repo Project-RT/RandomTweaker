@@ -19,12 +19,12 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public abstract class IJeiUtils {
 
     @ZenMethod
-    public static IJeiBackground createJeiBackground(int width, int height) {
+    public static IJeiBackground createBackground(int width, int height) {
         return new MCJeiBackground(width, height);
     }
 
     @ZenMethod
-    public static IJeiBackground createJEIBackground(int u, int v, int width, int height, String resourceName) {
+    public static IJeiBackground createBackground(int u, int v, int width, int height, String resourceName) {
         return new MCJeiBackground(u, v, width, height, resourceName);
     }
 
@@ -74,8 +74,8 @@ public abstract class IJeiUtils {
     }
 
     @ZenMethod
-    public static IJeiElements.IJeiElementImage createCustomElement(int x, int y, int width, int height, int u, int v,
-                                                                    String texture, int textureWidth, int textureHeight) {
+    public static IJeiElements.IJeiElementImage createImageElement(int x, int y, int width, int height, int u, int v,
+                                                                   String texture, int textureWidth, int textureHeight) {
         return new MCJeiElements.MCJeiElementImage(u, v, x, y, width, height, texture, textureWidth, textureHeight);
     }
 

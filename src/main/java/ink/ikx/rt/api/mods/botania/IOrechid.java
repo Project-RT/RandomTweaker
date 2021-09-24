@@ -13,28 +13,28 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import java.util.Arrays;
 import java.util.Objects;
 
-@ZenClass("mods.randomtweaker.botania.Orechid")
+@ZenClass("mods.randomtweaker.botania.IOrechid")
 public abstract class IOrechid {
 
     @ZenMethod
-    public static void addOreWeight(IItemStack block, IOreDictEntry ore, int weight) {
+    public static void addOreRecipe(IItemStack block, IOreDictEntry ore, int weight) {
         CraftTweakerAPI.apply(new ActionAddOrechidRecipe(block, ore, weight));
     }
 
     @ZenMethod
-    public static void delOreWeight(IItemStack block) {
-        for (IOreDictEntry ore : getOres(block)) {
-            delOreWeight(block, ore);
+    public static void delOreRecipe(IItemStack block) {
+        for (IOreDictEntry ore : getOreRecipes(block)) {
+            delOreRecipe(block, ore);
         }
     }
 
     @ZenMethod
-    public static void delOreWeight(IItemStack block, IOreDictEntry ore) {
+    public static void delOreRecipe(IItemStack block, IOreDictEntry ore) {
         CraftTweakerAPI.apply(new ActionRemoveOrechidRecipe(block, ore));
     }
 
     @ZenMethod
-    public static IOreDictEntry[] getOres(IItemStack block) {
+    public static IOreDictEntry[] getOreRecipes(IItemStack block) {
         return Arrays.stream(SubTileOrechidManager.getOres(InternalUtils.getState(block)))
                 .map(BracketHandlerOre::getOre)
                 .toArray(IOreDictEntry[]::new);

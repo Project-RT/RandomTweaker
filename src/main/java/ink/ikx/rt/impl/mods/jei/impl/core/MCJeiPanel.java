@@ -45,34 +45,34 @@ public class MCJeiPanel implements IJeiPanel {
     }
 
     @Override
-    public IJeiPanel addJeiSlot(IJeiSlot slot) {
+    public IJeiPanel addSlot(IJeiSlot slot) {
         this.slots.add(slot);
         return this;
     }
 
     @Override
-    public IJeiPanel setJeiSlots(IJeiSlot[] slots) {
+    public IJeiPanel setSlots(IJeiSlot[] slots) {
         this.slots.clear();
-        Arrays.stream(slots).forEach(this::addJeiSlot);
+        Arrays.stream(slots).forEach(this::addSlot);
         return this;
     }
 
     @Override
-    public IJeiPanel setJeiTooltip(IJeiTooltip tooltip) {
+    public IJeiPanel setTooltip(IJeiTooltip tooltip) {
         this.tooltip = tooltip;
         return this;
     }
 
     @Override
-    public IJeiPanel addJeiElement(IJeiElement element) {
+    public IJeiPanel addElement(IJeiElement element) {
         this.elements.add(element);
         return this;
     }
 
     @Override
-    public IJeiPanel setJeiElements(IJeiElement[] elements) {
+    public IJeiPanel setElements(IJeiElement[] elements) {
         this.elements.clear();
-        Arrays.stream(elements).forEach(this::addJeiElement);
+        Arrays.stream(elements).forEach(this::addElement);
         return this;
     }
 
@@ -90,7 +90,7 @@ public class MCJeiPanel implements IJeiPanel {
     }
 
     @Override
-    public IJeiPanel setJeiBackground(IJeiBackground background) {
+    public IJeiPanel setBackground(IJeiBackground background) {
         this.background = background;
         return this;
     }

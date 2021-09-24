@@ -18,19 +18,19 @@ public interface IJeiPanel {
     IJeiPanel setIcon(IItemStack icon);
 
     @ZenMethod
-    IJeiPanel addJeiSlot(IJeiSlot slot);
+    IJeiPanel addSlot(IJeiSlot slot);
 
     @ZenMethod
-    IJeiPanel setJeiSlots(IJeiSlot[] slots);
+    IJeiPanel setSlots(IJeiSlot[] slots);
 
     @ZenMethod
-    IJeiPanel setJeiTooltip(IJeiTooltip tooltip);
+    IJeiPanel setTooltip(IJeiTooltip tooltip);
 
     @ZenMethod
-    IJeiPanel addJeiElement(IJeiElement elements);
+    IJeiPanel addElement(IJeiElement elements);
 
     @ZenMethod
-    IJeiPanel setJeiElements(IJeiElement[] elements);
+    IJeiPanel setElements(IJeiElement[] elements);
 
     @ZenMethod
     IJeiPanel addRecipeCatalyst(IItemStack stack);
@@ -39,7 +39,7 @@ public interface IJeiPanel {
     IJeiPanel setRecipeCatalysts(IItemStack[] stacks);
 
     @ZenMethod
-    IJeiPanel setJeiBackground(IJeiBackground background);
+    IJeiPanel setBackground(IJeiBackground background);
 
     @ZenMethod
     void register();
