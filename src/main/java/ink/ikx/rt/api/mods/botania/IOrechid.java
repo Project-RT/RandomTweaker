@@ -73,6 +73,7 @@ public abstract class IOrechid {
         public String describeInvalid() {
             return "The IItemStack in Orechid recipe is not a block, or the IOreDictEntry is empty.";
         }
+
     }
 
     private static class ActionRemoveOrechidRecipe implements IAction {
@@ -93,7 +94,7 @@ public abstract class IOrechid {
 
         @Override
         public String describe() {
-            return "Removing Orechid Recipe for block: " + block.getDisplayName() + " -> " + ore.getName();
+            return "Removing IOrechid Recipe for block: " + block.getDisplayName() + " -> " + ore.getName();
         }
 
         @Override
@@ -102,7 +103,7 @@ public abstract class IOrechid {
                 describe = "The IItemStack is not a block.";
                 return false;
             } else if (SubTileOrechidManager.checkOreExist(InternalUtils.getState(block), ore.getName())) {
-                describe = "The Orechid Recipe not exist.";
+                describe = "The IOrechid Recipe not exist.";
                 return false;
             }
             return true;
