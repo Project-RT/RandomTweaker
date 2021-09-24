@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.internal.mixins.init;
+package ink.ikx.rt.mixins.init;
 
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
@@ -17,7 +17,7 @@ import java.util.List;
  * https://github.com/ProjectHDS/HerodotusUtils/blob/main/src/main/java/youyihj/herodotusutils/mixins/init/MixinLoader.java
  */
 @Mixin(value = Loader.class, remap = false, priority = 800)
-public abstract class FixServerError {
+public abstract class HackFixServer {
 
     @Shadow
     private List<ModContainer> mods;

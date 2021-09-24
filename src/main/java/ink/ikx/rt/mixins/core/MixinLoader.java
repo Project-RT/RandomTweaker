@@ -1,9 +1,10 @@
-package ink.ikx.rt.impl.internal.mixins.core;
+package ink.ikx.rt.mixins.core;
 
 import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.common.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.MixinEnvironment;
+import org.spongepowered.asm.mixin.Mixins;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -22,11 +23,11 @@ public abstract class MixinLoader {
 
     @Inject(method = "distributeStateMessage(Lnet/minecraftforge/fml/common/LoaderState;[Ljava/lang/Object;)V", at = @At("HEAD"))
     private void beforeConstructing(LoaderState state, Object[] eventData, CallbackInfo ci) throws Throwable {
-        if (state == LoaderState.CONSTRUCTING) { // This state is where Forge adds mod files to ModClassLoader
+        if (state == LoaderState.CONSTRUCTING) {
 
             ModClassLoader modClassLoader = (ModClassLoader) eventData[0];
 
-//            Mixins.addConfiguration("mixins.randomtweaker.mods.json");
+            Mixins.addConfiguration("mixins.randomtweaker.mods.json");
 
             for (ModContainer container : this.loader.getActiveModList()) {
                 modClassLoader.addFile(container.getSource());

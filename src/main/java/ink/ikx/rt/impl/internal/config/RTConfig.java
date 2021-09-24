@@ -8,8 +8,9 @@ import net.minecraftforge.common.config.Config.RequiresMcRestart;
 @Config(modid = Main.MODID)
 public class RTConfig {
 
-    public static Botania Botania = new Botania();
-    public static RandomTweaker RandomTweaker = new RandomTweaker();
+    public static final Botania Botania = new Botania();
+    public static final FTBUltimine FTBUltimine = new FTBUltimine();
+    public static final RandomTweaker RandomTweaker = new RandomTweaker();
 
     public static class RandomTweaker {
 
@@ -40,6 +41,13 @@ public class RTConfig {
         @RequiresMcRestart
         @Comment("If true, the Orechid will keep the Botania recipes. [Valid only for modified results | default: true]")
         public boolean OrechidHasDefault = true;
+
+    }
+
+    public static class FTBUltimine {
+
+        @Comment("If true, Allow Crt to Control the FTBUltimine enable")
+        public boolean AllowCrTControl = false;
 
     }
 
