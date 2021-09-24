@@ -10,9 +10,10 @@
 import mods.randomtweaker.botania.AlfPortalDroppedEvent;
 ```
 
-## Extending IEventCancelable
+## Implementing IEventCancelable
 
-此事件继承了 [IEventCancelable](https://docs.blamejared.com/1.12/en/Vanilla/Events/Events/IEventCancelable/), 所以他们的 `methods` `getters` `setters` 都可以被调用
+此事件实现了 [IEventCancelable](https://docs.blamejared.com/1.12/en/Vanilla/Events/Events/IEventCancelable/)
+, 所以他们的 `methods` `getters` `setters` 都可以被调用
 
 ## Getter
 
@@ -37,6 +38,8 @@ import mods.randomtweaker.botania.AlfPortalDroppedEvent;
 | setDead(dead as bool) | 设置进入精灵门的物品是否消失 |
 
 ## Example
+
+**这只是示例, 并不是一定要写到事件上!**
 
 ```zenscript
 import crafttweaker.item.IItemStack;

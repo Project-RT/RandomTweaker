@@ -41,16 +41,6 @@ public class ManaItemHandlerCrT {
     }
 
     @ZenMethod
-    public static int dispatchMana(IItemStack stack, IPlayer player, int manaToSend, boolean add) {
-        return ManaItemHandler.dispatchMana(CraftTweakerMC.getItemStack(stack), CraftTweakerMC.getPlayer(player), manaToSend, add);
-    }
-
-    @ZenMethod
-    public static boolean dispatchManaExact(IItemStack stack, IPlayer player, int manaToSend, boolean add) {
-        return ManaItemHandler.dispatchManaExact(CraftTweakerMC.getItemStack(stack), CraftTweakerMC.getPlayer(player), manaToSend, add);
-    }
-
-    @ZenMethod
     public static int requestManaForTool(IItemStack stack, IPlayer player, int manaToGet, boolean remove) {
         return ManaItemHandler.requestManaForTool(CraftTweakerMC.getItemStack(stack), CraftTweakerMC.getPlayer(player), manaToGet, remove);
     }
@@ -58,6 +48,16 @@ public class ManaItemHandlerCrT {
     @ZenMethod
     public static boolean requestManaExactForTool(IItemStack stack, IPlayer player, int manaToGet, boolean remove) {
         return ManaItemHandler.requestManaExactForTool(CraftTweakerMC.getItemStack(stack), CraftTweakerMC.getPlayer(player), manaToGet, remove);
+    }
+
+    @ZenMethod
+    public static int dispatchMana(IItemStack stack, IPlayer player, int manaToSend, boolean add) {
+        return ManaItemHandler.dispatchMana(CraftTweakerMC.getItemStack(stack), CraftTweakerMC.getPlayer(player), manaToSend, add);
+    }
+
+    @ZenMethod
+    public static boolean dispatchManaExact(IItemStack stack, IPlayer player, int manaToSend, boolean add) {
+        return ManaItemHandler.dispatchManaExact(CraftTweakerMC.getItemStack(stack), CraftTweakerMC.getPlayer(player), manaToSend, add);
     }
 
     @ZenMethod

@@ -2,19 +2,20 @@
 
 每当魔力池触发合成时触发
 
-## Import
+## 导包
 
 ```zenscript
 import mods.randomtweaker.botania.PoolTradeEvent;
 ```
 
-## Extending IEventCancelable
+## 实现 IEventCancelable
 
-此事件继承了 [IEventCancelable](https://docs.blamejared.com/1.12/en/Vanilla/Events/Events/IEventCancelable/), 所以他们的 `methods` `getters` `setters` 都可以被调用
+此事件实现了 [IEventCancelable](https://docs.blamejared.com/1.12/en/Vanilla/Events/Events/IEventCancelable/)
+, 所以他们的 `methods` `getters` `setters` 都可以被调用
 
 ## Getter
 
-| Getter | Return Type | Description | 有无同名 Setter |
+| Getter | 返回类型 | 描述 | 有无同名 Setter |
 | :---- | :---- | :---- | :----- |
 | mana | int | 配方消耗的 mana | ✓ |
 | output | [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/) | 待输出的物品 | ✓ |
@@ -28,13 +29,15 @@ import mods.randomtweaker.botania.PoolTradeEvent;
 
 ## Methods
 
-| Method | Return Type | Description |
+| Method | 返回类型 | 描述 |
 | :---- | :---- | :---- |
 | setMana(mana as int) | void | 设置配方所消耗的 mana |
 | setOutput(output as [IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | void | 设置待输出的物品 |
 | setAllowExceed(allowExceed as bool) | void | 设置当配方需求 mana 超过魔力池所有 mana 时是否允许合成 |
 
-## Example
+## 实例
+
+**这只是示例, 并不是一定要写到事件上!**
 
 ```zenscript
 import mods.randomtweaker.botania.PoolTradeEvent;
@@ -42,8 +45,8 @@ import mods.randomtweaker.botania.PoolTradeEvent;
 events.onPoolTrade(function(event as PoolTradeEvent) {
     event.output = <item:minecraft:apple>;
     
-    // Don't execute this program, because the botania pool isn't only handled on the server side.
-    // if(!event.input.world.remote) {
+    // 请勿执行此方法, 魔力池需匹配双端
+    // if(!event.world.remote) {
     //    event.cancel();
     // }
 });

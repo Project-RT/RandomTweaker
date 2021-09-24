@@ -10,9 +10,10 @@
 import mods.randomtweaker.botania.ElvenTradeEvent;
 ```
 
-## 继承 IEventCancelable
+## 实现 IEventCancelable
 
-此事件继承了 [IEventCancelable](https://docs.blamejared.com/1.12/en/Vanilla/Events/Events/IEventCancelable/), 所以他们的 `methods` `getters` `setters` 都可以被调用
+此事件实现了 [IEventCancelable](https://docs.blamejared.com/1.12/en/Vanilla/Events/Events/IEventCancelable/)
+, 所以他们的 `methods` `getters` `setters` 都可以被调用
 
 ## Getter
 
@@ -35,14 +36,14 @@ import mods.randomtweaker.botania.ElvenTradeEvent;
 | setOutput([IItemStack[]](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | void | 设置交易的物品 |
 | addOutput([IItemStack](https://docs.blamejared.com/1.12/en/Vanilla/Items/IItemStack/)) | void | 增加交易的物品 |
 
-## 实例
+## 示例
+
+**这只是示例, 并不是一定要写到事件上!**
 
 ```zenscript
 import mods.randomtweaker.botania.ElvenTradeEvent;
 
 events.onElvenTrade(function(event as ElvenTradeEvent) {
-    if(!event.alfPortal.world.remote) {
-        event.cancel();
-    }
+    event.cancel();
 });
 ```
