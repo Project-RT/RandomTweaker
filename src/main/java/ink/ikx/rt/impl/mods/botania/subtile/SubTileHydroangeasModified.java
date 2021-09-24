@@ -3,7 +3,7 @@ package ink.ikx.rt.impl.mods.botania.subtile;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.internal.config.RTConfig;
-import ink.ikx.rt.impl.mods.botania.module.HydroangeasManager;
+import ink.ikx.rt.impl.mods.botania.module.SubTileHydroangeasManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.properties.PropertyInteger;
@@ -69,7 +69,7 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
                             supertile.getWorld().getBlockState(posCheck)
                                     .getBlock() instanceof BlockFluidBase ? BlockFluidBase.LEVEL : null;
 
-                    for (HydroangeasManager.HydroangeasHandler handler : HydroangeasManager.handlerList) {
+                    for (SubTileHydroangeasManager.HydroangeasHandler handler : SubTileHydroangeasManager.handlerList) {
 
                         if (getWorld().getBlockState(posCheck).getBlock() == handler
                                 .getBlockLiquid()
@@ -113,8 +113,8 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
             }
             IItemStack block = CraftTweakerMC.getIItemStack(
                     new ItemStack(supertile.getWorld().getBlockState(pos.down()).getBlock()));
-            if (HydroangeasManager.blockFactorList.containsKey(block)) {
-                manaFactorBlock = HydroangeasManager.blockFactorList.get(block);
+            if (SubTileHydroangeasManager.blockFactorList.containsKey(block)) {
+                manaFactorBlock = SubTileHydroangeasManager.blockFactorList.get(block);
             }
 
             addMana((int) (manaGen * manaFactorBlock));
@@ -139,7 +139,7 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
     }
 
     public int getBurnTime() {
-        return HydroangeasManager.burnTime;
+        return SubTileHydroangeasManager.burnTime;
     }
 
     @Override

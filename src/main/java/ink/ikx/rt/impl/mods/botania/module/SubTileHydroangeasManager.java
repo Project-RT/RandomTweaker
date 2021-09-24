@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HydroangeasManager {
+public class SubTileHydroangeasManager {
 
     public static List<HydroangeasHandler> handlerList = new ArrayList<>();
     public static Map<IItemStack, Double> blockFactorList = new HashMap<>();
@@ -23,15 +23,6 @@ public class HydroangeasManager {
             blockFactorList.put(block, factor);
         } else {
             CraftTweakerAPI.getLogger().logError(block + " is not a block.");
-        }
-    }
-
-    public static void setFluidFactor(ILiquidStack inputFluid, ILiquidStack liquidCat, double factor) {
-        for (HydroangeasHandler handler : handlerList) {
-            if (handler.liquidConsume.equals(inputFluid)) {
-                handler.liquidCatalyst = liquidCat;
-                handler.fluidFactor = factor;
-            }
         }
     }
 

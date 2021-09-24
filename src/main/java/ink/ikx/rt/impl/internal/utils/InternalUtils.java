@@ -1,6 +1,5 @@
 package ink.ikx.rt.impl.internal.utils;
 
-import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -15,11 +14,7 @@ import java.util.stream.Collectors;
 public class InternalUtils {
 
     public static boolean isItemBlock(IItemStack block) {
-        if (!block.isItemBlock()) {
-            CraftTweakerAPI.logError("This is not ItemBlock");
-            return false;
-        }
-        return true;
+        return block.isItemBlock();
     }
 
     public static IBlockState getState(IItemStack block) {

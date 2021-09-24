@@ -9,7 +9,7 @@ import ink.ikx.rt.api.mods.jei.JEIExpansion;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
 import ink.ikx.rt.api.mods.jei.core.IJeiTooltip;
 import ink.ikx.rt.api.mods.jei.elements.IJeiElements;
-import ink.ikx.rt.impl.mods.botania.module.HydroangeasManager;
+import ink.ikx.rt.impl.mods.botania.module.SubTileHydroangeasManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -40,9 +40,9 @@ public class JeiHydroangeas {
     }
 
     private static void getHydroangeasRecipes() {
-        for (HydroangeasManager.HydroangeasHandler handler : HydroangeasManager.handlerList) {
+        for (SubTileHydroangeasManager.HydroangeasHandler handler : SubTileHydroangeasManager.handlerList) {
             FluidStack blockInput = new FluidStack(FluidRegistry.lookupFluidForBlock(handler.getBlockLiquid()), 1000);
-            int mana = handler.getManaGen() * HydroangeasManager.burnTime;
+            int mana = handler.getManaGen() * SubTileHydroangeasManager.burnTime;
             IJeiElements.IJeiElementManaBar manaBar = IJeiUtilsWithBotania.createJEIManaBarElement(2, 60, mana, 1);
             IJeiTooltip tooltip = (mouseX, mouseY) -> {
                 List<String> text = new ArrayList<>();
@@ -63,7 +63,7 @@ public class JeiHydroangeas {
                 recipe.addInput(iFluidFactor);
             }
 
-            recipe.build();
+            recipe.build_();
         }
     }
 
