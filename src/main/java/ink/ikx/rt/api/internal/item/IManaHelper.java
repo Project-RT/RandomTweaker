@@ -8,6 +8,7 @@ import ink.ikx.rt.api.mods.cote.mana.item.ManaItemContent;
 import ink.ikx.rt.impl.item.ManaBaubleImpl;
 import ink.ikx.rt.impl.item.ManaItemImpl;
 import ink.ikx.rt.impl.utils.annotation.RTRegisterClass;
+import stanhebben.zenscript.annotations.ZenCaster;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -28,6 +29,7 @@ public class IManaHelper {
         return CraftTweakerMC.getItemStack(stack).getItem() instanceof ManaBaubleContent;
     }
 
+    @ZenCaster
     @ZenMethod
     public static ManaItem asIManaItem(IItemStack stack) {
         if (stack instanceof IMutableItemStack) {
@@ -36,6 +38,7 @@ public class IManaHelper {
         return new ManaItemImpl(CraftTweakerMC.getItemStack(stack));
     }
 
+    @ZenCaster
     @ZenMethod
     public static ManaBauble asIManaBauble(IItemStack stack) {
         if (stack instanceof IMutableItemStack) {

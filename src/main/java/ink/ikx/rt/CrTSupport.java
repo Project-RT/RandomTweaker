@@ -18,6 +18,7 @@ import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.botania.AlfPortalTileInGame;
 import ink.ikx.rt.api.mods.botania.Hydroangeas;
 import ink.ikx.rt.api.mods.botania.IMixinTileAlfPortal;
+import ink.ikx.rt.api.mods.botania.ManaItemHandlerCrT;
 import ink.ikx.rt.api.mods.botania.Orechid;
 import ink.ikx.rt.api.mods.botania.events.CTAlfPortalDroppedEvent;
 import ink.ikx.rt.api.mods.botania.events.CTElvenTradeEvent;
@@ -98,6 +99,7 @@ public class CrTSupport {
 
     static {
         CLASSES = Lists.newArrayList(
+            ManaItemHandlerCrT.class,
             BracketHandler.class,
             CTEventManager.class,
             CTPlayerSanityChangeEvent.class,
