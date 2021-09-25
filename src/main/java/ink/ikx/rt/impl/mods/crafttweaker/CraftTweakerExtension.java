@@ -4,7 +4,9 @@ import cn.hutool.core.annotation.AnnotationUtil;
 import com.google.common.collect.Lists;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
+import crafttweaker.zenscript.GlobalRegistry;
 import ink.ikx.rt.api.internal.file.IProp;
+import ink.ikx.rt.api.internal.utils.IInputPattern;
 import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.botania.IHydroangeas;
@@ -28,6 +30,7 @@ import net.minecraftforge.fml.common.Loader;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class CraftTweakerExtension {
 
@@ -43,6 +46,7 @@ public class CraftTweakerExtension {
                 IJeiElement.class,
                 IJeiSlotItem.class,
                 JEIExpansion.class,
+                IInputPattern.class,
                 IJeiSlotLiquid.class,
                 IJeiBackground.class,
                 IWorldExpansionNa.class,
@@ -77,6 +81,7 @@ public class CraftTweakerExtension {
                 CraftTweakerAPI.registerClass(clazz);
             }
         }
+        registerGlobal();
         registerSpecialClass();
     }
 
@@ -89,6 +94,15 @@ public class CraftTweakerExtension {
             if (RTConfig.Botania.HydroangeasModified)
                 CraftTweakerAPI.registerClass(IHydroangeas.class);
         }
+    }
+
+    public static void registerGlobal() {
+
+        GlobalRegistry.registerGlobal("inputPattern",
+                GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPattern", String[].class, Map.class));
+
+        GlobalRegistry.registerGlobal("inputPatternWithShapeLess",
+                GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPatternWithShapeLess", String[].class, Map.class));
     }
 
 }
