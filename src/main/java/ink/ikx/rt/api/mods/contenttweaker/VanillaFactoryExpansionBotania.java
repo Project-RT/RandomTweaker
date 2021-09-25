@@ -8,12 +8,14 @@ import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.tool.MCManaUsingItemRepresentation;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
 import stanhebben.zenscript.annotations.Optional;
+import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
 @ModTotal({"botania", "contenttweaker"})
 @ZenExpansion("mods.contenttweaker.VanillaFactory")
-public class VanillaFactoryExpansionBotania {
+@ZenClass("mods.randomtweaker.cote.VanillaFactoryExpansionBotania")
+public abstract class VanillaFactoryExpansionBotania {
 
     @ZenMethodStatic
     public static IManaItemRepresentation createManaItem(String unlocalizedName, @Optional int maxMana) {
@@ -29,4 +31,5 @@ public class VanillaFactoryExpansionBotania {
     public static IManaBaubleRepresentation createManaBauble(String unlocalizedName, String baubleType, @Optional int maxMana) {
         return new MCManaBaubleRepresentation(unlocalizedName, maxMana, baubleType);
     }
+
 }

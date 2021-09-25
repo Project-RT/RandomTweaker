@@ -12,6 +12,16 @@ import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.botania.IHydroangeas;
 import ink.ikx.rt.api.mods.botania.IOrechid;
 import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansion;
+import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansionBotania;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunction;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunctionWithReturn;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleRender;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithItem;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithPool;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IisUsesMana;
+import ink.ikx.rt.api.mods.contenttweaker.mana.bauble.IManaBaubleRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.mana.item.tool.IManaUsingItemRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionTypeRepresentation;
 import ink.ikx.rt.api.mods.jei.IJeiUtils;
@@ -29,11 +39,10 @@ import ink.ikx.rt.api.mods.jei.slots.IJeiSlotLiquid;
 import ink.ikx.rt.api.mods.naturesaura.IWorldExpansionNa;
 import ink.ikx.rt.api.mods.thaumcraft.IPlayerExpansionTc;
 import ink.ikx.rt.impl.internal.config.RTConfig;
-import net.minecraftforge.fml.common.Loader;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import net.minecraftforge.fml.common.Loader;
 
 public class CraftTweakerExtension {
 
@@ -41,32 +50,39 @@ public class CraftTweakerExtension {
 
     static {
         classes = Lists.newArrayList(
-                IJeiSlot.class,
-                IJeiUtils.class,
-                IJeiPanel.class,
-                IJeiRecipe.class,
-                IJeiTooltip.class,
-                IJeiElement.class,
-                IJeiSlotItem.class,
-                JEIExpansion.class,
-                IInputPattern.class,
-                IJeiSlotLiquid.class,
-                IJeiBackground.class,
-                IWorldExpansionNa.class,
-                IBlockPosExpansion.class,
-                IPlayerExpansionAs.class,
-                IPlayerExpansionTc.class,
-                IJeiUtilsWithBotania.class,
-                IPotionRepresentation.class,
-                VanillaFactoryExpansion.class,
-                IPotionTypeRepresentation.class,
-                IJeiElements.IJeiElementImage.class,
-                IJeiElements.IJeiElementArrow.class,
-                IJeiElements.IJeiElementLiquid.class,
-                IJeiElements.IJeiElementManaBar.class,
-                IJeiElements.IJeiElementFontInfo.class,
-                IJeiElements.IJeiElementItemInput.class,
-                IJeiElements.IJeiElementItemOutput.class
+            IJeiSlot.class,
+            IJeiUtils.class,
+            IJeiPanel.class,
+            IJeiRecipe.class,
+            IJeiTooltip.class,
+            IJeiElement.class,
+            IisUsesMana.class,
+            IJeiSlotItem.class,
+            JEIExpansion.class,
+            IManaWithItem.class,
+            IManaWithPool.class,
+            IBaubleRender.class,
+            IInputPattern.class,
+            IJeiSlotLiquid.class,
+            IJeiBackground.class,
+            IBaubleFunction.class,
+            IWorldExpansionNa.class,
+            IBlockPosExpansion.class,
+            IPlayerExpansionAs.class,
+            IPlayerExpansionTc.class,
+            IJeiUtilsWithBotania.class,
+            IPotionRepresentation.class,
+            VanillaFactoryExpansion.class,
+            IPotionTypeRepresentation.class,
+            IBaubleFunctionWithReturn.class,
+            IJeiElements.IJeiElementImage.class,
+            IJeiElements.IJeiElementArrow.class,
+            VanillaFactoryExpansionBotania.class,
+            IJeiElements.IJeiElementLiquid.class,
+            IJeiElements.IJeiElementManaBar.class,
+            IJeiElements.IJeiElementFontInfo.class,
+            IJeiElements.IJeiElementItemInput.class,
+            IJeiElements.IJeiElementItemOutput.class
         );
     }
 
@@ -95,10 +111,19 @@ public class CraftTweakerExtension {
         if (IProp.isRegister(RTConfig.RandomTweaker.Prop))
             CraftTweakerAPI.registerClass(IProp.class);
         if (Loader.isModLoaded("botania")) {
-            if (RTConfig.Botania.OrechidModified)
+            if (RTConfig.Botania.OrechidModified) {
                 CraftTweakerAPI.registerClass(IOrechid.class);
-            if (RTConfig.Botania.HydroangeasModified)
+            }
+
+            if (RTConfig.Botania.HydroangeasModified) {
                 CraftTweakerAPI.registerClass(IHydroangeas.class);
+            }
+
+            if (Loader.isModLoaded("contenttweaker")) {
+                CraftTweakerAPI.registerClass(IManaItemRepresentation.class);
+                CraftTweakerAPI.registerClass(IManaBaubleRepresentation.class);
+                CraftTweakerAPI.registerClass(IManaUsingItemRepresentation.class);
+            }
         }
     }
 
