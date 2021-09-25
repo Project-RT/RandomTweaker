@@ -11,6 +11,9 @@ import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.botania.IHydroangeas;
 import ink.ikx.rt.api.mods.botania.IOrechid;
+import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansion;
+import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionTypeRepresentation;
 import ink.ikx.rt.api.mods.jei.IJeiUtils;
 import ink.ikx.rt.api.mods.jei.IJeiUtilsWithBotania;
 import ink.ikx.rt.api.mods.jei.JEIExpansion;
@@ -54,6 +57,9 @@ public class CraftTweakerExtension {
                 IPlayerExpansionAs.class,
                 IPlayerExpansionTc.class,
                 IJeiUtilsWithBotania.class,
+                IPotionRepresentation.class,
+                VanillaFactoryExpansion.class,
+                IPotionTypeRepresentation.class,
                 IJeiElements.IJeiElementImage.class,
                 IJeiElements.IJeiElementArrow.class,
                 IJeiElements.IJeiElementLiquid.class,
@@ -97,7 +103,6 @@ public class CraftTweakerExtension {
     }
 
     public static void registerGlobal() {
-
         GlobalRegistry.registerGlobal("inputPattern",
                 GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPattern", String[].class, Map.class));
 
