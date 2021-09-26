@@ -11,6 +11,7 @@ import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.botania.IHydroangeas;
 import ink.ikx.rt.api.mods.botania.IOrechid;
+import ink.ikx.rt.api.mods.botania.ManaItemHandlerCrT;
 import ink.ikx.rt.api.mods.botania.mana.IManaBauble;
 import ink.ikx.rt.api.mods.botania.mana.IManaHelper;
 import ink.ikx.rt.api.mods.botania.mana.IManaItem;
@@ -81,6 +82,7 @@ public class CraftTweakerExtension {
             IBlockPosExpansion.class,
             IPlayerExpansionAs.class,
             IPlayerExpansionTc.class,
+            ManaItemHandlerCrT.class,
             IJeiUtilsWithBotania.class,
             IPotionRepresentation.class,
             IAspectRepresentation.class,
