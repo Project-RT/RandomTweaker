@@ -18,6 +18,7 @@ import ink.ikx.rt.api.mods.botania.render.BaubleRenderHelper;
 import ink.ikx.rt.api.mods.botania.render.BotaniaFXHelper;
 import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansion;
 import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansionWithBotania;
+import ink.ikx.rt.api.mods.contenttweaker.aspect.IAspectRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunction;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunctionWithReturn;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleRender;
@@ -82,6 +83,7 @@ public class CraftTweakerExtension {
             IPlayerExpansionTc.class,
             IJeiUtilsWithBotania.class,
             IPotionRepresentation.class,
+            IAspectRepresentation.class,
             VanillaFactoryExpansion.class,
             IPotionTypeRepresentation.class,
             IBaubleFunctionWithReturn.class,
