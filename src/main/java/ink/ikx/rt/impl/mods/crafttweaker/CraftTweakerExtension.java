@@ -11,8 +11,13 @@ import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.botania.IHydroangeas;
 import ink.ikx.rt.api.mods.botania.IOrechid;
+import ink.ikx.rt.api.mods.botania.mana.IManaBauble;
+import ink.ikx.rt.api.mods.botania.mana.IManaHelper;
+import ink.ikx.rt.api.mods.botania.mana.IManaItem;
+import ink.ikx.rt.api.mods.botania.render.BaubleRenderHelper;
+import ink.ikx.rt.api.mods.botania.render.BotaniaFXHelper;
 import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansion;
-import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansionBotania;
+import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansionWithBotania;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunction;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunctionWithReturn;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleRender;
@@ -53,7 +58,10 @@ public class CraftTweakerExtension {
             IJeiSlot.class,
             IJeiUtils.class,
             IJeiPanel.class,
+            IManaItem.class,
             IJeiRecipe.class,
+            IManaBauble.class,
+            IManaHelper.class,
             IJeiTooltip.class,
             IJeiElement.class,
             IisUsesMana.class,
@@ -66,7 +74,9 @@ public class CraftTweakerExtension {
             IJeiSlotLiquid.class,
             IJeiBackground.class,
             IBaubleFunction.class,
+            BotaniaFXHelper.class,
             IWorldExpansionNa.class,
+            BaubleRenderHelper.class,
             IBlockPosExpansion.class,
             IPlayerExpansionAs.class,
             IPlayerExpansionTc.class,
@@ -77,12 +87,12 @@ public class CraftTweakerExtension {
             IBaubleFunctionWithReturn.class,
             IJeiElements.IJeiElementImage.class,
             IJeiElements.IJeiElementArrow.class,
-            VanillaFactoryExpansionBotania.class,
             IJeiElements.IJeiElementLiquid.class,
             IJeiElements.IJeiElementManaBar.class,
             IJeiElements.IJeiElementFontInfo.class,
             IJeiElements.IJeiElementItemInput.class,
-            IJeiElements.IJeiElementItemOutput.class
+            IJeiElements.IJeiElementItemOutput.class,
+            VanillaFactoryExpansionWithBotania.class
         );
     }
 
