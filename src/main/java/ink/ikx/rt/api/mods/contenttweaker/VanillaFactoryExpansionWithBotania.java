@@ -14,8 +14,8 @@ import stanhebben.zenscript.annotations.ZenMethodStatic;
 
 @ModTotal({"botania", "contenttweaker"})
 @ZenExpansion("mods.contenttweaker.VanillaFactory")
-@ZenClass("mods.randomtweaker.cote.VanillaFactoryExpansionBotania")
-public abstract class VanillaFactoryExpansionBotania {
+@ZenClass("mods.randomtweaker.cote.VanillaFactoryExpansionWithBotania")
+public abstract class VanillaFactoryExpansionWithBotania {
 
     @ZenMethodStatic
     public static IManaItemRepresentation createManaItem(String unlocalizedName, @Optional int maxMana) {
