@@ -32,12 +32,6 @@ public abstract class IManaItemRepresentation extends ItemRepresentation {
     @ZenProperty
     public IManaWithItem canReceiveManaFromItem;
 
-    public IManaItemRepresentation(String unlocalizedName, int maxMana) {
-        this.setUnlocalizedName(unlocalizedName);
-        this.setMaxMana(maxMana);
-        this.setMaxStackSize(1);
-    }
-
     @ZenMethod
     public IManaWithPool getCanExportManaToPool() {
         return canExportManaToPool;

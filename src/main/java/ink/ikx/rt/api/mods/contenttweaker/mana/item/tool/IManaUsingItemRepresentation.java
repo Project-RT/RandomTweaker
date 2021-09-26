@@ -15,10 +15,6 @@ public abstract class IManaUsingItemRepresentation extends IManaItemRepresentati
     @ZenProperty
     public IisUsesMana usesMana;
 
-    public IManaUsingItemRepresentation(String unlocalizedName, int maxMana) {
-        super(unlocalizedName, maxMana);
-    }
-
     @ZenMethod
     public IisUsesMana getUsesMana() {
         return usesMana;

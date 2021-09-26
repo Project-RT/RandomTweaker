@@ -7,7 +7,10 @@ import ink.ikx.rt.api.mods.contenttweaker.mana.bauble.IManaBaubleRepresentation;
 public class MCManaBaubleRepresentation extends IManaBaubleRepresentation {
 
     public MCManaBaubleRepresentation(String unlocalizedName, int maxMana, String baubleType) {
-        super(unlocalizedName, maxMana, baubleType);
+        this.setUnlocalizedName(unlocalizedName);
+        this.setMaxMana(maxMana);
+        this.setMaxStackSize(1);
+        this.setBaubleType(baubleType);
     }
 
     @Override

@@ -7,7 +7,9 @@ import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
 public class MCManaItemRepresentation extends IManaItemRepresentation {
 
     public MCManaItemRepresentation(String unlocalizedName, int maxMana) {
-        super(unlocalizedName, maxMana);
+        this.setUnlocalizedName(unlocalizedName);
+        this.setMaxMana(maxMana);
+        this.setMaxStackSize(1);
     }
 
     @Override

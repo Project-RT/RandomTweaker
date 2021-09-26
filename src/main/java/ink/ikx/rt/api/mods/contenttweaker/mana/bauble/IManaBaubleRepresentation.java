@@ -31,11 +31,6 @@ public abstract class IManaBaubleRepresentation extends IManaItemRepresentation 
     @ZenProperty
     public IBaubleFunctionWithReturn willAutoSync;
 
-    public IManaBaubleRepresentation(String unlocalizedName, int maxMana, String baubleType) {
-        super(unlocalizedName, maxMana);
-        this.setBaubleType(baubleType);
-    }
-
     @ZenMethod
     public String getBaubleType() {
         return baubleType;
