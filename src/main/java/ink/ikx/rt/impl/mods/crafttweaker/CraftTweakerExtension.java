@@ -16,11 +16,6 @@ import ink.ikx.rt.api.mods.botania.IOrechid;
 import ink.ikx.rt.api.mods.botania.ITileAlfPortal;
 import ink.ikx.rt.api.mods.botania.event.CTAlfPortalDroppedEvent;
 import ink.ikx.rt.api.mods.botania.event.CTElvenTradeEvent;
-import ink.ikx.rt.api.mods.botania.mana.IManaBauble;
-import ink.ikx.rt.api.mods.botania.mana.IManaHelper;
-import ink.ikx.rt.api.mods.botania.mana.IManaItem;
-import ink.ikx.rt.api.mods.botania.render.IBaubleRenderHelper;
-import ink.ikx.rt.api.mods.botania.render.IBotaniaFXHelper;
 import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansion;
 import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansionWithBotania;
 import ink.ikx.rt.api.mods.contenttweaker.aspect.IAspectRepresentation;
@@ -50,10 +45,16 @@ import ink.ikx.rt.api.mods.jei.slots.IJeiSlotLiquid;
 import ink.ikx.rt.api.mods.naturesaura.IWorldExpansionNa;
 import ink.ikx.rt.api.mods.thaumcraft.IPlayerExpansionTc;
 import ink.ikx.rt.impl.internal.config.RTConfig;
+import net.minecraftforge.fml.common.Loader;
+import ink.ikx.rt.api.mods.botania.mana.IManaBauble;
+import ink.ikx.rt.api.mods.botania.mana.IManaHelper;
+import ink.ikx.rt.api.mods.botania.mana.IManaItem;
+import ink.ikx.rt.api.mods.botania.render.IBaubleRenderHelper;
+import ink.ikx.rt.api.mods.botania.render.IBotaniaFXHelper;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import net.minecraftforge.fml.common.Loader;
 
 public class CraftTweakerExtension {
 
@@ -61,50 +62,50 @@ public class CraftTweakerExtension {
 
     static {
         classes = Lists.newArrayList(
-            IJeiSlot.class,
-            IJeiUtils.class,
-            IJeiPanel.class,
-            IManaItem.class,
-            IJeiRecipe.class,
-            IManaBauble.class,
-            IManaHelper.class,
-            IJeiTooltip.class,
-            IJeiElement.class,
-            IisUsesMana.class,
-            IJeiSlotItem.class,
-            JEIExpansion.class,
-            IManaWithItem.class,
-            IManaWithPool.class,
-            IBaubleRender.class,
-            IInputPattern.class,
-            IJeiSlotLiquid.class,
-            IJeiBackground.class,
-            ITileAlfPortal.class,
-            CTEventManager.class,
-            CTElvenTradeEvent.class,
-            IBaubleFunction.class,
-            IBotaniaFXHelper.class,
-            IWorldExpansionNa.class,
-            IBaubleRenderHelper.class,
-            IBlockPosExpansion.class,
-            IPlayerExpansionAs.class,
-            IPlayerExpansionTc.class,
-            IManaItemHandler.class,
-            IJeiUtilsWithBotania.class,
-            IPotionRepresentation.class,
-            IAspectRepresentation.class,
-            VanillaFactoryExpansion.class,
-            CTAlfPortalDroppedEvent.class,
-            IPotionTypeRepresentation.class,
-            IBaubleFunctionWithReturn.class,
-            IJeiElements.IJeiElementImage.class,
-            IJeiElements.IJeiElementArrow.class,
-            IJeiElements.IJeiElementLiquid.class,
-            IJeiElements.IJeiElementManaBar.class,
-            IJeiElements.IJeiElementFontInfo.class,
-            IJeiElements.IJeiElementItemInput.class,
-            IJeiElements.IJeiElementItemOutput.class,
-            VanillaFactoryExpansionWithBotania.class
+                IJeiSlot.class,
+                IJeiUtils.class,
+                IJeiPanel.class,
+                IManaItem.class,
+                IJeiRecipe.class,
+                IManaBauble.class,
+                IManaHelper.class,
+                IJeiTooltip.class,
+                IJeiElement.class,
+                IisUsesMana.class,
+                IJeiSlotItem.class,
+                JEIExpansion.class,
+                IManaWithItem.class,
+                IManaWithPool.class,
+                IBaubleRender.class,
+                IInputPattern.class,
+                IJeiSlotLiquid.class,
+                IJeiBackground.class,
+                ITileAlfPortal.class,
+                CTEventManager.class,
+                CTElvenTradeEvent.class,
+                IBaubleFunction.class,
+                IBotaniaFXHelper.class,
+                IWorldExpansionNa.class,
+                IBaubleRenderHelper.class,
+                IBlockPosExpansion.class,
+                IPlayerExpansionAs.class,
+                IPlayerExpansionTc.class,
+                IManaItemHandler.class,
+                IJeiUtilsWithBotania.class,
+                IPotionRepresentation.class,
+                IAspectRepresentation.class,
+                VanillaFactoryExpansion.class,
+                CTAlfPortalDroppedEvent.class,
+                IPotionTypeRepresentation.class,
+                IBaubleFunctionWithReturn.class,
+                IJeiElements.IJeiElementImage.class,
+                IJeiElements.IJeiElementArrow.class,
+                IJeiElements.IJeiElementLiquid.class,
+                IJeiElements.IJeiElementManaBar.class,
+                IJeiElements.IJeiElementFontInfo.class,
+                IJeiElements.IJeiElementItemInput.class,
+                IJeiElements.IJeiElementItemOutput.class,
+                VanillaFactoryExpansionWithBotania.class
         );
     }
 
@@ -133,13 +134,11 @@ public class CraftTweakerExtension {
         if (IProp.isRegister(RTConfig.RandomTweaker.Prop))
             CraftTweakerAPI.registerClass(IProp.class);
         if (Loader.isModLoaded("botania")) {
-            if (RTConfig.Botania.OrechidModified) {
+            if (RTConfig.Botania.OrechidModified)
                 CraftTweakerAPI.registerClass(IOrechid.class);
-            }
 
-            if (RTConfig.Botania.HydroangeasModified) {
+            if (RTConfig.Botania.HydroangeasModified)
                 CraftTweakerAPI.registerClass(IHydroangeas.class);
-            }
 
             if (Loader.isModLoaded("contenttweaker")) {
                 CraftTweakerAPI.registerClass(IManaItemRepresentation.class);
@@ -151,10 +150,10 @@ public class CraftTweakerExtension {
 
     public static void registerGlobal() {
         GlobalRegistry.registerGlobal("inputPattern",
-            GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPattern", String[].class, Map.class));
+                GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPattern", String[].class, Map.class));
 
         GlobalRegistry.registerGlobal("inputPatternWithShapeLess",
-            GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPatternWithShapeLess", String[].class, Map.class));
+                GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPatternWithShapeLess", String[].class, Map.class));
     }
 
 }
