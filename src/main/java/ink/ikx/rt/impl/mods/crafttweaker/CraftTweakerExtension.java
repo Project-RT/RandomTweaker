@@ -11,12 +11,12 @@ import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.botania.IHydroangeas;
 import ink.ikx.rt.api.mods.botania.IOrechid;
-import ink.ikx.rt.api.mods.botania.ManaItemHandlerCrT;
+import ink.ikx.rt.api.mods.botania.IManaItemHandler;
 import ink.ikx.rt.api.mods.botania.mana.IManaBauble;
 import ink.ikx.rt.api.mods.botania.mana.IManaHelper;
 import ink.ikx.rt.api.mods.botania.mana.IManaItem;
-import ink.ikx.rt.api.mods.botania.render.BaubleRenderHelper;
-import ink.ikx.rt.api.mods.botania.render.BotaniaFXHelper;
+import ink.ikx.rt.api.mods.botania.render.IBaubleRenderHelper;
+import ink.ikx.rt.api.mods.botania.render.IBotaniaFXHelper;
 import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansion;
 import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansionWithBotania;
 import ink.ikx.rt.api.mods.contenttweaker.aspect.IAspectRepresentation;
@@ -46,10 +46,11 @@ import ink.ikx.rt.api.mods.jei.slots.IJeiSlotLiquid;
 import ink.ikx.rt.api.mods.naturesaura.IWorldExpansionNa;
 import ink.ikx.rt.api.mods.thaumcraft.IPlayerExpansionTc;
 import ink.ikx.rt.impl.internal.config.RTConfig;
+import net.minecraftforge.fml.common.Loader;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import net.minecraftforge.fml.common.Loader;
 
 public class CraftTweakerExtension {
 
@@ -76,13 +77,13 @@ public class CraftTweakerExtension {
             IJeiSlotLiquid.class,
             IJeiBackground.class,
             IBaubleFunction.class,
-            BotaniaFXHelper.class,
+            IBotaniaFXHelper.class,
             IWorldExpansionNa.class,
-            BaubleRenderHelper.class,
+            IBaubleRenderHelper.class,
             IBlockPosExpansion.class,
             IPlayerExpansionAs.class,
             IPlayerExpansionTc.class,
-            ManaItemHandlerCrT.class,
+            IManaItemHandler.class,
             IJeiUtilsWithBotania.class,
             IPotionRepresentation.class,
             IAspectRepresentation.class,
@@ -143,10 +144,10 @@ public class CraftTweakerExtension {
 
     public static void registerGlobal() {
         GlobalRegistry.registerGlobal("inputPattern",
-                GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPattern", String[].class, Map.class));
+            GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPattern", String[].class, Map.class));
 
         GlobalRegistry.registerGlobal("inputPatternWithShapeLess",
-                GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPatternWithShapeLess", String[].class, Map.class));
+            GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPatternWithShapeLess", String[].class, Map.class));
     }
 
 }
