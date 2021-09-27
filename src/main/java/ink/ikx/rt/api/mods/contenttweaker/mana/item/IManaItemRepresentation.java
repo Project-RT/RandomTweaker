@@ -129,4 +129,5 @@ public abstract class IManaItemRepresentation extends ItemRepresentation {
 
     @Override
     public abstract void register();
+
 }

@@ -84,4 +84,5 @@ public abstract class IAspectRepresentation {
 
     @ZenMethod
     public abstract void register();
+
 }

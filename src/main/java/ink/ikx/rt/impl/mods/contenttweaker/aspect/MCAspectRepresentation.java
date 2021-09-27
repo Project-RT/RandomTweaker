@@ -16,4 +16,5 @@ public class MCAspectRepresentation extends IAspectRepresentation {
     public void register() {
         new Aspect(this.tag, this.color, this.asAspects(), this.image.getInternal(), this.blend);
     }
+
 }

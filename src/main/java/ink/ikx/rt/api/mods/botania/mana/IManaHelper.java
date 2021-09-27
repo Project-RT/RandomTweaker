@@ -5,10 +5,11 @@ import crafttweaker.api.item.IMutableItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.mods.botania.mana.MCManaBauble;
 import ink.ikx.rt.impl.mods.botania.mana.MCManaItem;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.ManaBaubleContent;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.item.ManaItemContent;
+import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBaubleContent;
+import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemContent;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
 import stanhebben.zenscript.annotations.ZenCaster;
+import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -17,16 +18,17 @@ import stanhebben.zenscript.annotations.ZenMethod;
  */
 @ModTotal({"contenttweaker", "botania"})
 @ZenExpansion("crafttweaker.item.IItemStack")
-public class IManaHelper {
+@ZenClass("mods.randomtweaker.botania.IItemStack")
+public abstract class IManaHelper {
 
     @ZenMethod
     public static boolean isIManaItem(IItemStack stack) {
-        return CraftTweakerMC.getItemStack(stack).getItem() instanceof ManaItemContent;
+        return CraftTweakerMC.getItemStack(stack).getItem() instanceof MCManaItemContent;
     }
 
     @ZenMethod
     public static boolean isIManaBauble(IItemStack stack) {
-        return CraftTweakerMC.getItemStack(stack).getItem() instanceof ManaBaubleContent;
+        return CraftTweakerMC.getItemStack(stack).getItem() instanceof MCManaBaubleContent;
     }
 
     @ZenCaster
@@ -46,4 +48,5 @@ public class IManaHelper {
         }
         return new MCManaBauble(CraftTweakerMC.getItemStack(stack));
     }
+
 }

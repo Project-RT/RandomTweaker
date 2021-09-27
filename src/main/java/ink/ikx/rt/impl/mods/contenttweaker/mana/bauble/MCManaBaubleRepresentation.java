@@ -16,9 +16,10 @@ public class MCManaBaubleRepresentation extends IManaBaubleRepresentation {
     @Override
     public void register() {
         if (baubleType.equals("TRINKET")) {
-            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaTrinketContent(this));
+            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new MCManaTrinketContent(this));
         } else {
-            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaBaubleContent(this));
+            ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new MCManaBaubleContent(this));
         }
     }
+
 }

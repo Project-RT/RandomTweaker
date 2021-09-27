@@ -5,8 +5,8 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
 import ink.ikx.rt.api.mods.botania.mana.IManaItem;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.item.ManaItemContent;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.item.tool.ManaUsingItemContent;
+import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemContent;
+import ink.ikx.rt.impl.mods.contenttweaker.mana.item.tool.MCMCManaUsingItemContent;
 import java.util.Objects;
 import net.minecraft.item.ItemStack;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
@@ -17,11 +17,11 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 public class MCManaItem implements IManaItem {
 
     protected final ItemStack stack;
-    protected final ManaItemContent itemIn;
+    protected final MCManaItemContent itemIn;
 
     public MCManaItem(ItemStack stack) {
         this.stack = stack.copy();
-        this.itemIn = (ManaItemContent) stack.getItem();
+        this.itemIn = (MCManaItemContent) stack.getItem();
     }
 
     @Override
@@ -61,7 +61,7 @@ public class MCManaItem implements IManaItem {
 
     @Override
     public boolean getUseMana() {
-        return itemIn instanceof ManaUsingItemContent && ((ManaUsingItemContent) itemIn).usesMana(stack);
+        return itemIn instanceof MCMCManaUsingItemContent && ((MCMCManaUsingItemContent) itemIn).usesMana(stack);
     }
 
     @Override
@@ -96,4 +96,5 @@ public class MCManaItem implements IManaItem {
 
         return (this.getMana() - originalMana);
     }
+
 }

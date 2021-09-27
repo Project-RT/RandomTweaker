@@ -53,4 +53,5 @@ public interface IManaItem {
 
     @ZenMethod
     int updateMana(int mana);
+
 }

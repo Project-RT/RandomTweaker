@@ -71,4 +71,5 @@ public class ClientProxy implements IProxy {
     public void translate(double x, double y, double z) {
         GlStateManager.translate(x, y, z);
     }
+
 }

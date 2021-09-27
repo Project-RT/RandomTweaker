@@ -8,7 +8,7 @@ import baubles.api.cap.IBaublesItemHandler;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.contenttweaker.mana.bauble.IManaBaubleRepresentation;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.item.ManaItemContent;
+import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemContent;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,14 +34,14 @@ import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
  * @author superhelo
  */
 @ExpandContentTweakerEntry
-public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable, IBaubleRender {
+public class MCManaBaubleContent extends MCManaItemContent implements IBauble, ICosmeticAttachable, IPhantomInkable, IBaubleRender {
 
     private static final String TAG_PHANTOM_INK = "phantomInk";
     private static final String TAG_COSMETIC_ITEM = "cosmeticItem";
     public final IManaBaubleRepresentation manaBauble;
     public BaubleType baubleType;
 
-    public ManaBaubleContent(IManaBaubleRepresentation manaBauble) {
+    public MCManaBaubleContent(IManaBaubleRepresentation manaBauble) {
         super(manaBauble);
         this.manaBauble = manaBauble;
         this.baubleType = BaubleType.valueOf(manaBauble.getBaubleType());
@@ -197,4 +197,5 @@ public class ManaBaubleContent extends ManaItemContent implements IBauble, ICosm
         }
         return ActionResult.newResult(EnumActionResult.PASS, stack);
     }
+
 }

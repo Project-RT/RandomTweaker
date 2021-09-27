@@ -30,7 +30,7 @@ import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
  * @author superhelo
  */
 @ExpandContentTweakerEntry
-public class ManaItemContent extends ItemContent implements IManaItem, ICreativeManaProvider, IManaTooltipDisplay {
+public class MCManaItemContent extends ItemContent implements IManaItem, ICreativeManaProvider, IManaTooltipDisplay {
 
     private static final String TAG_MANA = "mana";
     private static final String TAG_ONE_USE = "oneUse";
@@ -38,7 +38,7 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
     private static final int DEFAULT_MAX_ITEM_USE_DURATION = 40;
     public final IManaItemRepresentation manaItem;
 
-    public ManaItemContent(IManaItemRepresentation manaItem) {
+    public MCManaItemContent(IManaItemRepresentation manaItem) {
         super(manaItem);
         this.manaItem = manaItem;
     }
@@ -182,4 +182,5 @@ public class ManaItemContent extends ItemContent implements IManaItem, ICreative
     public int getRGBDurabilityForDisplay(ItemStack stack) {
         return MathHelper.hsvToRGB(this.getManaFractionForDisplay(stack) / 3.0F, 1.0F, 1.0F);
     }
+
 }

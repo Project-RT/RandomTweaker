@@ -48,4 +48,5 @@ public abstract class IManaBaubleRepresentation extends IManaItemRepresentation 
 
     @Override
     public abstract void register();
+
 }

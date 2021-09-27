@@ -14,6 +14,6 @@ public class MCManaUsingItemRepresentation extends IManaUsingItemRepresentation 
 
     @Override
     public void register() {
-        ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new ManaUsingItemContent(this));
+        ContentTweaker.instance.getRegistry(ItemRegistry.class, "ITEM").register(new MCMCManaUsingItemContent(this));
     }
 }

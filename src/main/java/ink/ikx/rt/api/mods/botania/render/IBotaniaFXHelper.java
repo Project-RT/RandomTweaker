@@ -6,8 +6,8 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import vazkii.botania.common.Botania;
 
 @ModOnly("botania")
-@ZenClass("mods.randomtweaker.botania.BotaniaFXHelper")
-public class BotaniaFXHelper {
+@ZenClass("mods.randomtweaker.botania.IBotaniaFXHelper")
+public abstract class IBotaniaFXHelper {
 
     @ZenMethod
     public static void setWispFXDistanceLimit(boolean limit) {
@@ -63,4 +63,5 @@ public class BotaniaFXHelper {
     public static void wispFX(double x, double y, double z, float r, float g, float b, float size, float motionX, float motionY, float motionZ, float maxAgeMul) {
         Botania.proxy.wispFX(x, y, z, r, g, b, size, motionX, motionY, motionZ, maxAgeMul);
     }
+
 }

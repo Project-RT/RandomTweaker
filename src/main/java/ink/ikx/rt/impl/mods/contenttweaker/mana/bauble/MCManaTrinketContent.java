@@ -6,9 +6,9 @@ import vazkii.botania.api.item.ICosmeticBauble;
 /**
  * @author superhelo
  */
-public class ManaTrinketContent extends ManaBaubleContent implements ICosmeticBauble {
+public class MCManaTrinketContent extends MCManaBaubleContent implements ICosmeticBauble {
 
-    public ManaTrinketContent(IManaBaubleRepresentation manaBauble) {
+    public MCManaTrinketContent(IManaBaubleRepresentation manaBauble) {
         super(manaBauble);
     }
 

@@ -1,7 +1,7 @@
 package ink.ikx.rt.impl.mods.botania.mana;
 
 import ink.ikx.rt.api.mods.botania.mana.IManaBauble;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.ManaBaubleContent;
+import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBaubleContent;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -15,6 +15,7 @@ public class MCManaBauble extends MCManaItem implements IManaBauble {
 
     @Override
     public String getBaubleType() {
-        return ((ManaBaubleContent) this.itemIn).getBaubleType(stack).toString();
+        return ((MCManaBaubleContent) this.itemIn).getBaubleType(stack).toString();
     }
+
 }

@@ -12,8 +12,8 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import vazkii.botania.api.mana.ManaItemHandler;
 
 @ModOnly("botania")
-@ZenClass("mods.randomtweaker.botania.ManaItemHandler")
-public class ManaItemHandlerCrT {
+@ZenClass("mods.randomtweaker.botania.IManaItemHandler")
+public class IManaItemHandler {
 
     @ZenMethod
     public static IItemStack[] getManaItems(IPlayer player) {

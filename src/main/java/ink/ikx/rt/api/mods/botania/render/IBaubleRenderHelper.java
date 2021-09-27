@@ -12,8 +12,8 @@ import stanhebben.zenscript.annotations.ZenMethod;
  * @author superhelo
  */
 @ModTotal({"contenttweaker", "botania"})
-@ZenClass("mods.randomtweaker.render.BaubleRenderHelper")
-public class BaubleRenderHelper {
+@ZenClass("mods.randomtweaker.render.IBaubleRenderHelper")
+public abstract class IBaubleRenderHelper {
 
     @ZenMethod
     public static void bindTexture(String resourceLocation) {
@@ -64,4 +64,5 @@ public class BaubleRenderHelper {
     public static void translateToChest() {
         Main.proxy.translateToChest();
     }
+
 }

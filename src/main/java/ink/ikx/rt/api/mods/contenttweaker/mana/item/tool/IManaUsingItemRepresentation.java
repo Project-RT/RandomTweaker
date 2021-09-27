@@ -32,4 +32,5 @@ public abstract class IManaUsingItemRepresentation extends IManaItemRepresentati
 
     @Override
     public abstract void register();
+
 }

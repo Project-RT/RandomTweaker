@@ -13,4 +13,5 @@ public interface IManaBauble extends IManaItem {
 
     @ZenGetter("baubleType")
     String getBaubleType();
+
 }

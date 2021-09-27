@@ -13,4 +13,5 @@ import stanhebben.zenscript.annotations.ZenClass;
 public interface IisUsesMana {
 
     boolean call(IItemStack stack);
+
 }
