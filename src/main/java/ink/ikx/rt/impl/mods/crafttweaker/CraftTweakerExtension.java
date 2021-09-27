@@ -5,13 +5,17 @@ import com.google.common.collect.Lists;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.zenscript.GlobalRegistry;
+import ink.ikx.rt.api.internal.event.CTEventManager;
 import ink.ikx.rt.api.internal.file.IProp;
 import ink.ikx.rt.api.internal.utils.IInputPattern;
 import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.botania.IHydroangeas;
-import ink.ikx.rt.api.mods.botania.IOrechid;
 import ink.ikx.rt.api.mods.botania.IManaItemHandler;
+import ink.ikx.rt.api.mods.botania.IOrechid;
+import ink.ikx.rt.api.mods.botania.ITileAlfPortal;
+import ink.ikx.rt.api.mods.botania.event.CTAlfPortalDroppedEvent;
+import ink.ikx.rt.api.mods.botania.event.CTElvenTradeEvent;
 import ink.ikx.rt.api.mods.botania.mana.IManaBauble;
 import ink.ikx.rt.api.mods.botania.mana.IManaHelper;
 import ink.ikx.rt.api.mods.botania.mana.IManaItem;
@@ -46,11 +50,10 @@ import ink.ikx.rt.api.mods.jei.slots.IJeiSlotLiquid;
 import ink.ikx.rt.api.mods.naturesaura.IWorldExpansionNa;
 import ink.ikx.rt.api.mods.thaumcraft.IPlayerExpansionTc;
 import ink.ikx.rt.impl.internal.config.RTConfig;
-import net.minecraftforge.fml.common.Loader;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import net.minecraftforge.fml.common.Loader;
 
 public class CraftTweakerExtension {
 
@@ -76,6 +79,9 @@ public class CraftTweakerExtension {
             IInputPattern.class,
             IJeiSlotLiquid.class,
             IJeiBackground.class,
+            ITileAlfPortal.class,
+            CTEventManager.class,
+            CTElvenTradeEvent.class,
             IBaubleFunction.class,
             IBotaniaFXHelper.class,
             IWorldExpansionNa.class,
@@ -88,6 +94,7 @@ public class CraftTweakerExtension {
             IPotionRepresentation.class,
             IAspectRepresentation.class,
             VanillaFactoryExpansion.class,
+            CTAlfPortalDroppedEvent.class,
             IPotionTypeRepresentation.class,
             IBaubleFunctionWithReturn.class,
             IJeiElements.IJeiElementImage.class,
