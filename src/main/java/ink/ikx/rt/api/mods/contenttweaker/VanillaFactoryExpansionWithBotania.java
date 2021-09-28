@@ -2,10 +2,10 @@ package ink.ikx.rt.api.mods.contenttweaker;
 
 import ink.ikx.rt.api.mods.contenttweaker.mana.bauble.IManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
-import ink.ikx.rt.api.mods.contenttweaker.mana.item.tool.IManaUsingItemRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.mana.item.tool.IIsUsesManaItemRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBaubleRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemRepresentation;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.item.tool.MCManaUsingItemRepresentation;
+import ink.ikx.rt.impl.mods.contenttweaker.mana.item.tool.MCIsUsesManaItemRepresentation;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -23,8 +23,8 @@ public abstract class VanillaFactoryExpansionWithBotania {
     }
 
     @ZenMethodStatic
-    public static IManaUsingItemRepresentation createManaUsingItem(String unlocalizedName, @Optional int maxMana) {
-        return new MCManaUsingItemRepresentation(unlocalizedName, maxMana);
+    public static IIsUsesManaItemRepresentation createManaUsingItem(String unlocalizedName, @Optional int maxMana) {
+        return new MCIsUsesManaItemRepresentation(unlocalizedName, maxMana);
     }
 
     @ZenMethodStatic

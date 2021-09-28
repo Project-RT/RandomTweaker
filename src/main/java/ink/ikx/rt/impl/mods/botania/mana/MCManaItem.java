@@ -6,7 +6,7 @@ import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
 import ink.ikx.rt.api.mods.botania.mana.IManaItem;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemContent;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.item.tool.MCMCManaUsingItemContent;
+import ink.ikx.rt.impl.mods.contenttweaker.mana.item.tool.MCIsUsesManaItemContent;
 import java.util.Objects;
 import net.minecraft.item.ItemStack;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
@@ -61,7 +61,7 @@ public class MCManaItem implements IManaItem {
 
     @Override
     public boolean getUseMana() {
-        return itemIn instanceof MCMCManaUsingItemContent && ((MCMCManaUsingItemContent) itemIn).usesMana(stack);
+        return itemIn instanceof MCIsUsesManaItemContent && ((MCIsUsesManaItemContent) itemIn).usesMana(stack);
     }
 
     @Override

@@ -3,8 +3,7 @@ package ink.ikx.rt.api.mods.contenttweaker.aspect;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.resourcelocation.CTResourceLocation;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -29,15 +28,10 @@ public abstract class IAspectRepresentation {
     public Aspect[] asAspects() {
         if (Objects.nonNull(components)) {
             if (components.length != 2) {
-                CraftTweakerAPI.logError("components' length must be two");
+                CraftTweakerAPI.logError("components' length must be two", new IllegalArgumentException());
                 return null;
             }
-
-            List<Aspect> aspects = new ArrayList<>();
-            for (String aspect : components) {
-                aspects.add(Aspect.getAspect(aspect));
-            }
-            return aspects.toArray(new Aspect[0]);
+            Arrays.stream(components).map(Aspect::getAspect).toArray(Aspect[] :: new);
         }
         return null;
     }

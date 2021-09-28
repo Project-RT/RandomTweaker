@@ -27,7 +27,7 @@ import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithPool;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IisUsesMana;
 import ink.ikx.rt.api.mods.contenttweaker.mana.bauble.IManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
-import ink.ikx.rt.api.mods.contenttweaker.mana.item.tool.IManaUsingItemRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.mana.item.tool.IIsUsesManaItemRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionTypeRepresentation;
 import ink.ikx.rt.api.mods.jei.IJeiUtils;
@@ -136,14 +136,12 @@ public class CraftTweakerExtension {
         if (Loader.isModLoaded("botania")) {
             if (RTConfig.Botania.OrechidModified)
                 CraftTweakerAPI.registerClass(IOrechid.class);
-
             if (RTConfig.Botania.HydroangeasModified)
                 CraftTweakerAPI.registerClass(IHydroangeas.class);
-
             if (Loader.isModLoaded("contenttweaker")) {
                 CraftTweakerAPI.registerClass(IManaItemRepresentation.class);
                 CraftTweakerAPI.registerClass(IManaBaubleRepresentation.class);
-                CraftTweakerAPI.registerClass(IManaUsingItemRepresentation.class);
+                CraftTweakerAPI.registerClass(IIsUsesManaItemRepresentation.class);
             }
         }
     }

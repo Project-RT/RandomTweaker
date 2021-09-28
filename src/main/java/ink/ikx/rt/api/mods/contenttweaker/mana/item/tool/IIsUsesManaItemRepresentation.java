@@ -10,7 +10,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
  * @author superhelo
  */
 @ZenClass("mods.randomtweaker.cote.ManaUsingItem")
-public abstract class IManaUsingItemRepresentation extends IManaItemRepresentation {
+public abstract class IIsUsesManaItemRepresentation extends IManaItemRepresentation {
 
     @ZenProperty
     public IisUsesMana usesMana;
