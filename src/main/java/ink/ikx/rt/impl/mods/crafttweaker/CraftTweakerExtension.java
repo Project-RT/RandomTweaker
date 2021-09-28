@@ -11,11 +11,23 @@ import ink.ikx.rt.api.internal.utils.IInputPattern;
 import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.botania.IHydroangeas;
+import ink.ikx.rt.api.mods.botania.IManaItemHandler;
 import ink.ikx.rt.api.mods.botania.IOrechid;
 import ink.ikx.rt.api.mods.botania.ITileAlfPortal;
 import ink.ikx.rt.api.mods.botania.event.CTAlfPortalDroppedEvent;
 import ink.ikx.rt.api.mods.botania.event.CTElvenTradeEvent;
 import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansion;
+import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansionWithBotania;
+import ink.ikx.rt.api.mods.contenttweaker.aspect.IAspectRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunction;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunctionWithReturn;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleRender;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithItem;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithPool;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IisUsesMana;
+import ink.ikx.rt.api.mods.contenttweaker.mana.bauble.IManaBaubleRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.mana.item.tool.IIsUsesManaItemRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionTypeRepresentation;
 import ink.ikx.rt.api.mods.jei.IJeiUtils;
@@ -34,6 +46,11 @@ import ink.ikx.rt.api.mods.naturesaura.IWorldExpansionNa;
 import ink.ikx.rt.api.mods.thaumcraft.IPlayerExpansionTc;
 import ink.ikx.rt.impl.internal.config.RTConfig;
 import net.minecraftforge.fml.common.Loader;
+import ink.ikx.rt.api.mods.botania.mana.IManaBauble;
+import ink.ikx.rt.api.mods.botania.mana.IManaHelper;
+import ink.ikx.rt.api.mods.botania.mana.IManaItem;
+import ink.ikx.rt.api.mods.botania.render.IBaubleRenderHelper;
+import ink.ikx.rt.api.mods.botania.render.IBotaniaFXHelper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,11 +65,18 @@ public class CraftTweakerExtension {
                 IJeiSlot.class,
                 IJeiUtils.class,
                 IJeiPanel.class,
+                IManaItem.class,
                 IJeiRecipe.class,
+                IManaBauble.class,
+                IManaHelper.class,
                 IJeiTooltip.class,
                 IJeiElement.class,
+                IisUsesMana.class,
                 IJeiSlotItem.class,
                 JEIExpansion.class,
+                IManaWithItem.class,
+                IManaWithPool.class,
+                IBaubleRender.class,
                 IInputPattern.class,
                 IJeiSlotLiquid.class,
                 IJeiBackground.class,
@@ -60,21 +84,28 @@ public class CraftTweakerExtension {
                 CTEventManager.class,
                 CTElvenTradeEvent.class,
                 IWorldExpansionNa.class,
+                IBaubleFunction.class,
+                IBotaniaFXHelper.class,
+                IBaubleRenderHelper.class,
                 IBlockPosExpansion.class,
                 IPlayerExpansionAs.class,
                 IPlayerExpansionTc.class,
+                IManaItemHandler.class,
                 IJeiUtilsWithBotania.class,
                 IPotionRepresentation.class,
+                IAspectRepresentation.class,
                 VanillaFactoryExpansion.class,
                 CTAlfPortalDroppedEvent.class,
                 IPotionTypeRepresentation.class,
+                IBaubleFunctionWithReturn.class,
                 IJeiElements.IJeiElementImage.class,
                 IJeiElements.IJeiElementArrow.class,
                 IJeiElements.IJeiElementLiquid.class,
                 IJeiElements.IJeiElementManaBar.class,
                 IJeiElements.IJeiElementFontInfo.class,
                 IJeiElements.IJeiElementItemInput.class,
-                IJeiElements.IJeiElementItemOutput.class
+                IJeiElements.IJeiElementItemOutput.class,
+                VanillaFactoryExpansionWithBotania.class
         );
     }
 
@@ -107,6 +138,11 @@ public class CraftTweakerExtension {
                 CraftTweakerAPI.registerClass(IOrechid.class);
             if (RTConfig.Botania.HydroangeasModified)
                 CraftTweakerAPI.registerClass(IHydroangeas.class);
+            if (Loader.isModLoaded("contenttweaker")) {
+                CraftTweakerAPI.registerClass(IManaItemRepresentation.class);
+                CraftTweakerAPI.registerClass(IManaBaubleRepresentation.class);
+                CraftTweakerAPI.registerClass(IIsUsesManaItemRepresentation.class);
+            }
         }
     }
 
