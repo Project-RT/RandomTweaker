@@ -1,0 +1,16 @@
+[
+{
+  "modid": "randomtweaker",
+  "name": "RandomTweaker",
+  "description": "Random Tweaker",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ikexing"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

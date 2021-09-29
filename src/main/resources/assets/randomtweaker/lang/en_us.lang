@@ -1,0 +1,8 @@
+item.randomtweaker.sanity_gem.name=Sanity Gem
+
+randomtweaker.jei_hydroangeas=Hydroangeas
+randomtweaker.jei_orechid=Orechid
+randomtweaker.message.used=The current Sanity is %s
+
+text.randomtweaker.hydroangeas_factorblock_description=This block can increase the mana generation of Hydroangeas.
+text.randomtweaker.factor=Factor:
