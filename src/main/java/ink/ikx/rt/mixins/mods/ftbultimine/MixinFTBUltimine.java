@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Pseudo
 @Mixin(value = FTBUltimine.class, remap = false)
-public class MixinFTBUltimine {
+public abstract class MixinFTBUltimine {
 
     @Inject(method = "blockBroken", at = @At(value = "HEAD"), cancellable = true)
     public void injectBlockBroken(BlockEvent.BreakEvent event, CallbackInfo ci) {
