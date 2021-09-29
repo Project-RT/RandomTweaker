@@ -1,9 +1,12 @@
 package ink.ikx.rt;
 
+import cn.hutool.core.lang.Pair;
 import cn.hutool.core.util.ReflectUtil;
 import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Sets;
 import crafttweaker.mods.jei.JEI;
+import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
 import ink.ikx.rt.impl.internal.config.RTConfig;
@@ -11,13 +14,11 @@ import ink.ikx.rt.impl.internal.proxy.IProxy;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
+import ink.ikx.rt.impl.mods.contenttweaker.subtile.MCSubTileEntityRegEvent;
 import ink.ikx.rt.impl.mods.crafttweaker.CraftTweakerExtension;
 import ink.ikx.rt.impl.mods.jei.JeiHydroangeas;
 import ink.ikx.rt.impl.mods.jei.JeiOrechid;
 import ink.ikx.rt.impl.mods.thaumcraft.DreamJournalEvent;
-import java.lang.reflect.Field;
-import java.util.Objects;
-import java.util.Set;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -30,6 +31,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
+
+import java.lang.reflect.Field;
+import java.util.Objects;
+import java.util.Set;
 
 @Mod(
         modid = Main.MODID,
@@ -46,6 +51,7 @@ public class Main {
 
     public static final Set<IJeiPanel> JEI_PANEL_SET = Sets.newHashSet();
     public static final Set<IJeiRecipe> JEI_RECIPE_SET = Sets.newHashSet();
+    public static final BiMap<String, Pair<String, ISubTileEntityRepresentation>> SUB_TILE_GENERATING_MAP = HashBiMap.create();
 
     @SidedProxy(clientSide = "ink.ikx.rt.impl.internal.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.internal.proxy.SeverProxy")
     public static IProxy proxy;
@@ -53,6 +59,9 @@ public class Main {
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) {
         CraftTweakerExtension.registerAllClass();
+        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
+            MinecraftForge.EVENT_BUS.register(MCSubTileEntityRegEvent.class);
+        }
     }
 
     @EventHandler
