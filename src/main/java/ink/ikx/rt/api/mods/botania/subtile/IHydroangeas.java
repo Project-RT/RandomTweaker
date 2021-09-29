@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.botania;
+package ink.ikx.rt.api.mods.botania.subtile;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;

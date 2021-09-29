@@ -10,26 +10,32 @@ import ink.ikx.rt.api.internal.file.IProp;
 import ink.ikx.rt.api.internal.utils.IInputPattern;
 import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
-import ink.ikx.rt.api.mods.botania.IHydroangeas;
 import ink.ikx.rt.api.mods.botania.IManaItemHandler;
-import ink.ikx.rt.api.mods.botania.IOrechid;
 import ink.ikx.rt.api.mods.botania.ITileAlfPortal;
 import ink.ikx.rt.api.mods.botania.event.CTAlfPortalDroppedEvent;
 import ink.ikx.rt.api.mods.botania.event.CTElvenTradeEvent;
-import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansion;
-import ink.ikx.rt.api.mods.contenttweaker.VanillaFactoryExpansionWithBotania;
+import ink.ikx.rt.api.mods.botania.subtile.IHydroangeas;
+import ink.ikx.rt.api.mods.botania.subtile.IOrechid;
+import ink.ikx.rt.api.mods.contenttweaker.ExpandVanillaFactory;
+import ink.ikx.rt.api.mods.contenttweaker.ExpandVanillaFactoryWithBotania;
+import ink.ikx.rt.api.mods.contenttweaker.ExpandVanillaFactoryWithThaumcraft;
 import ink.ikx.rt.api.mods.contenttweaker.aspect.IAspectRepresentation;
-import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunction;
-import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunctionWithReturn;
-import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleRender;
-import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithItem;
-import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithPool;
-import ink.ikx.rt.api.mods.contenttweaker.function.mana.IisUsesMana;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.*;
+import ink.ikx.rt.api.mods.contenttweaker.mana.IManaBauble;
+import ink.ikx.rt.api.mods.contenttweaker.mana.IManaHelper;
+import ink.ikx.rt.api.mods.contenttweaker.mana.IManaItem;
 import ink.ikx.rt.api.mods.contenttweaker.mana.bauble.IManaBaubleRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.mana.item.tool.IIsUsesManaItemRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionTypeRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.render.IBaubleRenderHelper;
+import ink.ikx.rt.api.mods.contenttweaker.render.IBotaniaFXHelper;
+import ink.ikx.rt.api.mods.contenttweaker.subtile.ExpandWorldForSubTile;
+import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityInGame;
+import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.subtile.functional.ISubTileEntityFunctionalRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.subtile.generating.ISubTileEntityGeneratingRepresentation;
 import ink.ikx.rt.api.mods.jei.IJeiUtils;
 import ink.ikx.rt.api.mods.jei.IJeiUtilsWithBotania;
 import ink.ikx.rt.api.mods.jei.JEIExpansion;
@@ -46,11 +52,6 @@ import ink.ikx.rt.api.mods.naturesaura.IWorldExpansionNa;
 import ink.ikx.rt.api.mods.thaumcraft.IPlayerExpansionTc;
 import ink.ikx.rt.impl.internal.config.RTConfig;
 import net.minecraftforge.fml.common.Loader;
-import ink.ikx.rt.api.mods.botania.mana.IManaBauble;
-import ink.ikx.rt.api.mods.botania.mana.IManaHelper;
-import ink.ikx.rt.api.mods.botania.mana.IManaItem;
-import ink.ikx.rt.api.mods.botania.render.IBaubleRenderHelper;
-import ink.ikx.rt.api.mods.botania.render.IBotaniaFXHelper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -91,21 +92,24 @@ public class CraftTweakerExtension {
                 IPlayerExpansionAs.class,
                 IPlayerExpansionTc.class,
                 IManaItemHandler.class,
+                ISubTileEntityInGame.class,
                 IJeiUtilsWithBotania.class,
                 IPotionRepresentation.class,
                 IAspectRepresentation.class,
-                VanillaFactoryExpansion.class,
+                ExpandVanillaFactory.class,
+                ExpandWorldForSubTile.class,
                 CTAlfPortalDroppedEvent.class,
                 IPotionTypeRepresentation.class,
                 IBaubleFunctionWithReturn.class,
                 IJeiElements.IJeiElementImage.class,
                 IJeiElements.IJeiElementArrow.class,
                 IJeiElements.IJeiElementLiquid.class,
+                ExpandVanillaFactoryWithBotania.class,
                 IJeiElements.IJeiElementManaBar.class,
                 IJeiElements.IJeiElementFontInfo.class,
                 IJeiElements.IJeiElementItemInput.class,
-                IJeiElements.IJeiElementItemOutput.class,
-                VanillaFactoryExpansionWithBotania.class
+                ExpandVanillaFactoryWithThaumcraft.class,
+                IJeiElements.IJeiElementItemOutput.class
         );
     }
 
@@ -142,6 +146,9 @@ public class CraftTweakerExtension {
                 CraftTweakerAPI.registerClass(IManaItemRepresentation.class);
                 CraftTweakerAPI.registerClass(IManaBaubleRepresentation.class);
                 CraftTweakerAPI.registerClass(IIsUsesManaItemRepresentation.class);
+                CraftTweakerAPI.registerClass(ISubTileEntityRepresentation.class);
+                CraftTweakerAPI.registerClass(ISubTileEntityFunctionalRepresentation.class);
+                CraftTweakerAPI.registerClass(ISubTileEntityGeneratingRepresentation.class);
             }
         }
     }

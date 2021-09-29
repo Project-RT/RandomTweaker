@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.botania.mana;
+package ink.ikx.rt.api.mods.contenttweaker.mana;
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.world.IBlockPos;

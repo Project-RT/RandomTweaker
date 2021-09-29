@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.botania;
+package ink.ikx.rt.api.mods.botania.subtile;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
@@ -78,9 +78,9 @@ public abstract class IOrechid {
 
     private static class ActionRemoveOrechidRecipe implements IAction {
 
-        private String describe;
         private final IItemStack block;
         private final IOreDictEntry ore;
+        private String describe;
 
         public ActionRemoveOrechidRecipe(IItemStack block, IOreDictEntry ore) {
             this.ore = ore;

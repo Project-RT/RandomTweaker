@@ -1,11 +1,11 @@
-package ink.ikx.rt.api.mods.botania.mana;
+package ink.ikx.rt.api.mods.contenttweaker.mana;
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.item.IMutableItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.impl.mods.botania.mana.MCManaBauble;
-import ink.ikx.rt.impl.mods.botania.mana.MCManaItem;
+import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBauble;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBaubleContent;
+import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItem;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemContent;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
 import stanhebben.zenscript.annotations.ZenCaster;

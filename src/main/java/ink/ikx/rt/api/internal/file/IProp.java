@@ -68,7 +68,7 @@ public abstract class IProp {
         return flag;
     }
 
-    private static String getPath(String... path) {
+    public static String getPath(String... path) {
         StringBuilder sb = new StringBuilder();
         for (String s1 : path) {
             if (!StrUtil.isBlank(sb.toString()))

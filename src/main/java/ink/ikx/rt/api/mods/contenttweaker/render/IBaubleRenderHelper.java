@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.botania.render;
+package ink.ikx.rt.api.mods.contenttweaker.render;
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
