@@ -9,6 +9,7 @@
     "botania.MixinBlockSpecialFlower",
     "botania.MixinBotaniaAPI",
     "botania.MixinTileAlfPortal",
+    "botania.MixinTilePool",
     "botania.MixinTileSpecialFlower",
     "ftbultimine.MixinFTBUltimine"
   ],

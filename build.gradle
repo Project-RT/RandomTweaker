@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 
-version = "2.0"
+version = "1.2.0"
 group = "ink.ikx.rt"
 archivesBaseName = "RandomTweaker"
 
@@ -134,6 +134,7 @@ jar {
                 "ForceLoadAsMod" : true,
                 "FMLCorePlugin": "ink.ikx.rt.impl.MixinBoot",
                 "FMLCorePluginContainsFMLMod": true,
+                'FMLAT': 'randomtweaker_at.cfg'
         ])
     }
 }

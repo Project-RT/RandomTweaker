@@ -6,6 +6,7 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Sets;
 import crafttweaker.mods.jei.JEI;
+import ink.ikx.rt.api.mods.botania.event.CTEventManager;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
@@ -46,7 +47,7 @@ public class Main {
 
     public static final String MODID = "randomtweaker";
     public static final String NAME = "RandomTweaker";
-    public static final String VERSION = "2.0";
+    public static final String VERSION = "1.2.0";
     public static final String DESPENDENCIES = "required-after:crafttweaker;after:contenttweaker;";
 
     public static final Set<IJeiPanel> JEI_PANEL_SET = Sets.newHashSet();
@@ -59,8 +60,11 @@ public class Main {
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) {
         CraftTweakerExtension.registerAllClass();
-        if (Loader.isModLoaded("botania") && Loader.isModLoaded("contenttweaker")) {
-            MinecraftForge.EVENT_BUS.register(MCSubTileEntityRegEvent.class);
+        MinecraftForge.EVENT_BUS.register(CTEventManager.Handler.class);
+        if (Loader.isModLoaded("botania")) {
+            if (Loader.isModLoaded("contenttweaker")) {
+                MinecraftForge.EVENT_BUS.register(MCSubTileEntityRegEvent.class);
+            }
         }
     }
 
