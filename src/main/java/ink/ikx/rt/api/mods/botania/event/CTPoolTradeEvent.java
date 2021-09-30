@@ -1,5 +1,6 @@
 package ink.ikx.rt.api.mods.botania.event;
 
+import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.entity.IEntityItem;
 import crafttweaker.api.event.IEventCancelable;
 import crafttweaker.api.item.IItemStack;
@@ -7,10 +8,13 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
 import ink.ikx.rt.impl.mods.botania.event.PoolTradeEvent;
+import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenSetter;
 
+@ModOnly("botania")
+@ZenClass("mods.randomtweaker.botania.CTPoolTradeEvent")
 public abstract class CTPoolTradeEvent implements IEventCancelable {
 
     private final PoolTradeEvent event;
