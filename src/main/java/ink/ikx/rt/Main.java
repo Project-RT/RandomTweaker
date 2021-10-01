@@ -11,7 +11,6 @@ import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
 import ink.ikx.rt.impl.internal.config.RTConfig;
-import ink.ikx.rt.impl.internal.event.MCManaBaubleEvent;
 import ink.ikx.rt.impl.internal.proxy.IProxy;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileHydroangeasModified;
@@ -64,7 +63,6 @@ public class Main {
         if (Loader.isModLoaded("botania")) {
             if (Loader.isModLoaded("contenttweaker")) {
                 MinecraftForge.EVENT_BUS.register(MCSubTileEntityRegEvent.class);
-                MinecraftForge.EVENT_BUS.register(MCManaBaubleEvent.class);
             }
         }
     }
