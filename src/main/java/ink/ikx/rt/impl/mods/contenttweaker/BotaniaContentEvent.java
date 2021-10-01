@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.mods.contenttweaker.subtile;
+package ink.ikx.rt.impl.mods.contenttweaker;
 
 import baubles.api.BaublesApi;
 import cn.hutool.core.io.FileUtil;
@@ -20,17 +20,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.IItemHandler;
 import vazkii.botania.api.BotaniaAPIClient;
 
-public class MCSubTileEntityRegEvent {
+public class BotaniaContentEvent {
 
     public static String FLOWER_BLOCK_STATE = "{\n"
-            + "  \"forge_marker\": 1,\n"
-            + "  \"variants\": {\n"
-            + "    \"normal\": [{\n"
-            + "      \"model\": \"botania:shapes/cross_tinted\",\n"
-            + "      \"textures\": {\n"
-            + "        \"cross\": \"contenttweaker:blocks/${name}\"\n"
-            + "      }\n"
-            + "    }],\n"
+        + "  \"forge_marker\": 1,\n"
+        + "  \"variants\": {\n"
+        + "    \"normal\": [{\n"
+        + "      \"model\": \"botania:shapes/cross_tinted\",\n"
+        + "      \"textures\": {\n"
+        + "        \"cross\": \"contenttweaker:blocks/${name}\"\n"
+        + "      }\n"
+        + "    }],\n"
             + "    \"inventory\": [{\n"
             + "      \"model\": \"builtin/generated\",\n"
             + "      \"transform\": \"forge:default-item\",\n"
