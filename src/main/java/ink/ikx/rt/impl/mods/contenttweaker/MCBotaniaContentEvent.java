@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.IItemHandler;
 import vazkii.botania.api.BotaniaAPIClient;
 
-public class BotaniaContentEvent {
+public class MCBotaniaContentEvent {
 
     public static String FLOWER_BLOCK_STATE = "{\n"
         + "  \"forge_marker\": 1,\n"
