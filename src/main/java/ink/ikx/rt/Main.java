@@ -15,7 +15,7 @@ import ink.ikx.rt.impl.internal.proxy.IProxy;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
-import ink.ikx.rt.impl.mods.contenttweaker.BotaniaContentEvent;
+import ink.ikx.rt.impl.mods.contenttweaker.MCBotaniaContentEvent;
 import ink.ikx.rt.impl.mods.crafttweaker.CraftTweakerExtension;
 import ink.ikx.rt.impl.mods.jei.JeiHydroangeas;
 import ink.ikx.rt.impl.mods.jei.JeiOrechid;
@@ -62,7 +62,7 @@ public class Main {
         MinecraftForge.EVENT_BUS.register(CTEventManager.Handler.class);
         if (Loader.isModLoaded("botania")) {
             if (Loader.isModLoaded("contenttweaker")) {
-                MinecraftForge.EVENT_BUS.register(BotaniaContentEvent.class);
+                MinecraftForge.EVENT_BUS.register(MCBotaniaContentEvent.class);
             }
         }
     }
