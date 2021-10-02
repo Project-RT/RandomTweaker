@@ -6,7 +6,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ModOnly("naturesaura")
-@ZenClass("mods.randomtweaker.naturesaura.AuraChunk")
+@ZenClass("mods.randomtweaker.naturesaura.IAuraChunk")
 public interface IAuraChunk {
 
     @ZenMethod
