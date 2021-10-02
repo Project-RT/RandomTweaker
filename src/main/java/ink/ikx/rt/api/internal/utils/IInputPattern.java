@@ -16,13 +16,13 @@ public interface IInputPattern {
     }
 
     @ZenMethod
-    static IIngredient[][] inputPattern(String[] pattern, Map<String, IIngredient> mapping) {
-        return create(pattern).transform(mapping).get();
+    static IInputPattern inputPattern(String[] pattern) {
+        return create(pattern);
     }
 
     @ZenMethod
-    static IIngredient[] inputPatternWithShapeLess(String[] pattern, Map<String, IIngredient> mapping) {
-        return create(pattern).transform(mapping).getWithShapeless();
+    static IIngredient[][] inputPatternGet(String[] pattern, Map<String, IIngredient> mapping) {
+        return create(pattern).transform(mapping).get();
     }
 
     @ZenMethod

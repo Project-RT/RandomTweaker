@@ -6,7 +6,9 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.zenscript.GlobalRegistry;
 import ink.ikx.rt.api.internal.file.IProp;
+import ink.ikx.rt.api.internal.item.IItemStackExpansion;
 import ink.ikx.rt.api.internal.utils.IInputPattern;
+import ink.ikx.rt.api.internal.utils.ITileData;
 import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.botania.IManaItemHandler;
@@ -14,13 +16,17 @@ import ink.ikx.rt.api.mods.botania.ITileAlfPortal;
 import ink.ikx.rt.api.mods.botania.event.CTAlfPortalDroppedEvent;
 import ink.ikx.rt.api.mods.botania.event.CTElvenTradeEvent;
 import ink.ikx.rt.api.mods.botania.event.CTEventManager;
+import ink.ikx.rt.api.mods.botania.event.CTPoolTradeEvent;
 import ink.ikx.rt.api.mods.botania.subtile.IHydroangeas;
 import ink.ikx.rt.api.mods.botania.subtile.IOrechid;
 import ink.ikx.rt.api.mods.contenttweaker.ExpandVanillaFactory;
 import ink.ikx.rt.api.mods.contenttweaker.ExpandVanillaFactoryWithBotania;
 import ink.ikx.rt.api.mods.contenttweaker.ExpandVanillaFactoryWithThaumcraft;
 import ink.ikx.rt.api.mods.contenttweaker.aspect.IAspectRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.function.IPotionIsReady;
+import ink.ikx.rt.api.mods.contenttweaker.function.IPotionPerformEffect;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.*;
+import ink.ikx.rt.api.mods.contenttweaker.function.subtile.*;
 import ink.ikx.rt.api.mods.contenttweaker.mana.IManaBauble;
 import ink.ikx.rt.api.mods.contenttweaker.mana.IManaHelper;
 import ink.ikx.rt.api.mods.contenttweaker.mana.IManaItem;
@@ -36,6 +42,7 @@ import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityInGame;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.functional.ISubTileEntityFunctionalRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.generating.ISubTileEntityGeneratingRepresentation;
+import ink.ikx.rt.api.mods.ftbultimine.IPlayerExpansionFTBU;
 import ink.ikx.rt.api.mods.jei.IJeiUtils;
 import ink.ikx.rt.api.mods.jei.IJeiUtilsWithBotania;
 import ink.ikx.rt.api.mods.jei.JEIExpansion;
@@ -48,6 +55,7 @@ import ink.ikx.rt.api.mods.jei.elements.IJeiElements;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlot;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlotItem;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlotLiquid;
+import ink.ikx.rt.api.mods.naturesaura.IAuraChunk;
 import ink.ikx.rt.api.mods.naturesaura.IWorldExpansionNa;
 import ink.ikx.rt.api.mods.thaumcraft.IPlayerExpansionTc;
 import ink.ikx.rt.impl.internal.config.RTConfig;
@@ -65,6 +73,7 @@ public class CraftTweakerExtension {
         classes = Lists.newArrayList(
                 IJeiSlot.class,
                 IJeiUtils.class,
+                ITileData.class,
                 IJeiPanel.class,
                 IManaItem.class,
                 IJeiRecipe.class,
@@ -82,16 +91,30 @@ public class CraftTweakerExtension {
                 IJeiSlotLiquid.class,
                 IJeiBackground.class,
                 ITileAlfPortal.class,
+                BlockActivated.class,
+                BlockAdded.class,
+                IAuraChunk.class,
+                BlockHarvested.class,
+                BlockPlacedBy.class,
+                CanGeneratePassively.class,
+                CanSelect.class,
+                PopulateDropStackNBTs.class,
+                Update.class,
+                IPotionIsReady.class,
+                IPotionPerformEffect.class,
+                IPlayerExpansionFTBU.class,
                 CTEventManager.class,
                 CTElvenTradeEvent.class,
                 IWorldExpansionNa.class,
                 IBaubleFunction.class,
+                CTPoolTradeEvent.class,
                 IBotaniaFXHelper.class,
                 IBaubleRenderHelper.class,
                 IBlockPosExpansion.class,
                 IPlayerExpansionAs.class,
                 IPlayerExpansionTc.class,
                 IManaItemHandler.class,
+                IItemStackExpansion.class,
                 ISubTileEntityInGame.class,
                 IJeiUtilsWithBotania.class,
                 IPotionRepresentation.class,
@@ -155,10 +178,10 @@ public class CraftTweakerExtension {
 
     public static void registerGlobal() {
         GlobalRegistry.registerGlobal("inputPattern",
-                GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPattern", String[].class, Map.class));
+                GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPattern", String[].class));
 
-        GlobalRegistry.registerGlobal("inputPatternWithShapeLess",
-                GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPatternWithShapeLess", String[].class, Map.class));
+        GlobalRegistry.registerGlobal("inputPatternGet",
+                GlobalRegistry.getStaticFunction(IInputPattern.class, "inputPatternGet", String[].class, Map.class));
     }
 
 }

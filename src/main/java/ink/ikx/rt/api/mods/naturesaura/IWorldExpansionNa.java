@@ -15,7 +15,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public abstract class IWorldExpansionNa {
 
     @ZenMethod
-    public static MCAuraChunk getAuraChunk(IWorld world, IBlockPos pos) {
+    public static IAuraChunk getAuraChunk(IWorld world, IBlockPos pos) {
         return new MCAuraChunk(world, pos);
     }
 
