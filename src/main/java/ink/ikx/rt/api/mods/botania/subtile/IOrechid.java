@@ -39,6 +39,7 @@ public abstract class IOrechid {
     public static IOreDictEntry[] getOreRecipes(IItemStack block) {
         return Arrays.stream(SubTileOrechidManager.getOres(InternalUtils.getState(block)))
                 .map(BracketHandlerOre::getOre)
+                .filter(o -> !o.isEmpty())
                 .toArray(IOreDictEntry[]::new);
     }
 
@@ -102,7 +103,7 @@ public abstract class IOrechid {
             if (Objects.isNull(InternalUtils.getState(block))) {
                 describe = "The IItemStack is not a block.";
                 return false;
-            } else if (SubTileOrechidManager.checkOreExist(InternalUtils.getState(block), ore.getName())) {
+            } else if (!SubTileOrechidManager.checkOreExist(InternalUtils.getState(block), ore.getName())) {
                 describe = "The IOrechid Recipe not exist.";
                 return false;
             }

@@ -21,7 +21,10 @@ public class SubTileOrechidManager {
     }
 
     public static String[] getOres(IBlockState state) {
-        return Objects.requireNonNull(Optional.ofNullable(oreWeights.get(state)).map(Map::keySet).orElse(null)).toArray(new String[0]);
+        return Objects.requireNonNull(Optional.ofNullable(oreWeights.get(state))
+                        .map(Map::keySet)
+                        .orElse(null))
+                .toArray(new String[0]);
     }
 
     public static void delOre(IBlockState state, String oreName) {
