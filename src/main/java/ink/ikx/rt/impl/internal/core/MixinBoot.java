@@ -1,4 +1,4 @@
-package ink.ikx.rt;
+package ink.ikx.rt.impl.internal.core;
 
 import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
