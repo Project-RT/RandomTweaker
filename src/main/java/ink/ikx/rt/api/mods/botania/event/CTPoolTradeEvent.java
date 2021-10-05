@@ -14,7 +14,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenSetter;
 
 @ModOnly("botania")
-@ZenClass("mods.randomtweaker.botania.CTPoolTradeEvent")
+@ZenClass("mods.randomtweaker.botania.PoolTradeEvent")
 public abstract class CTPoolTradeEvent implements IEventCancelable {
 
     private final PoolTradeEvent event;

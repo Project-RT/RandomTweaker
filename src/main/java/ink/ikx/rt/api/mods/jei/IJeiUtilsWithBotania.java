@@ -12,7 +12,7 @@ import stanhebben.zenscript.annotations.ZenMethodStatic;
 public abstract class IJeiUtilsWithBotania {
 
     @ZenMethodStatic
-    public static IJeiElements.IJeiElementManaBar createJEIManaBarElement(int x, int y, int mana, @Optional int mode) {
+    public static IJeiElements.IJeiElementManaBar createJeiManaBarElement(int x, int y, int mana, @Optional int mode) {
         return new MCJeiElementManaBar(x, y, mana, mode);
     }
 

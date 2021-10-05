@@ -43,7 +43,7 @@ public class JeiHydroangeas {
         for (SubTileHydroangeasManager.HydroangeasHandler handler : SubTileHydroangeasManager.handlerList) {
             FluidStack blockInput = new FluidStack(FluidRegistry.lookupFluidForBlock(handler.getBlockLiquid()), 1000);
             int mana = handler.getManaGen() * SubTileHydroangeasManager.burnTime;
-            IJeiElements.IJeiElementManaBar manaBar = IJeiUtilsWithBotania.createJEIManaBarElement(2, 60, mana, 1);
+            IJeiElements.IJeiElementManaBar manaBar = IJeiUtilsWithBotania.createJeiManaBarElement(2, 60, mana, 1);
             IJeiTooltip tooltip = (mouseX, mouseY) -> {
                 List<String> text = new ArrayList<>();
                 if (mouseX >= 2 && mouseX <= 103 && mouseY >= 60 && mouseY <= 64) {

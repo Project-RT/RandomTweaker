@@ -16,7 +16,7 @@ public interface IInputPattern {
     }
 
     @ZenMethod
-    static IInputPattern inputPattern(String[] pattern) {
+    static IInputPattern inputPattern(String... pattern) {
         return create(pattern);
     }
 
