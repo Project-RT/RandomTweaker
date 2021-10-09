@@ -2,7 +2,6 @@ package ink.ikx.rt.impl.events;
 
 import baubles.api.BaublesApi;
 import ink.ikx.rt.api.mods.cote.mana.bauble.ManaBaubleContent;
-import java.util.Objects;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -20,7 +19,7 @@ public class ManaBaubleEvent {
             IItemHandler inv = BaublesApi.getBaublesHandler((EntityPlayer) evt.getEntityLiving());
             for (int i = 0; i < inv.getSlots(); i++) {
                 ItemStack stack = inv.getStackInSlot(i);
-                if (!stack.isEmpty() && Objects.requireNonNull(stack.getItem().getRegistryName()).getNamespace().equals("contenttweaker")) {
+                if (!stack.isEmpty() && stack.getItem() instanceof ManaBaubleContent) {
                     ((ManaBaubleContent) stack.getItem()).onUnequipped(stack, evt.getEntityLiving());
                 }
             }
