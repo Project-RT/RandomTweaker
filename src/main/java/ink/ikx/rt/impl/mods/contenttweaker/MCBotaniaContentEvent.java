@@ -10,7 +10,6 @@ import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBaubleContent;
 import java.io.File;
 import java.util.Map;
-import java.util.Objects;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -58,7 +57,7 @@ public class MCBotaniaContentEvent {
             IItemHandler inv = BaublesApi.getBaublesHandler((EntityPlayer) evt.getEntityLiving());
             for (int i = 0; i < inv.getSlots(); i++) {
                 ItemStack stack = inv.getStackInSlot(i);
-                if (!stack.isEmpty() && Objects.requireNonNull(stack.getItem().getRegistryName()).getNamespace().equals("contenttweaker")) {
+                if (!stack.isEmpty() && stack.getItem() instanceof MCManaBaubleContent) {
                     ((MCManaBaubleContent) stack.getItem()).onUnequipped(stack, evt.getEntityLiving());
                 }
             }

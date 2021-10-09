@@ -39,7 +39,7 @@ public class MCManaBaubleContent extends MCManaItemContent implements IBauble, I
     private static final String TAG_PHANTOM_INK = "phantomInk";
     private static final String TAG_COSMETIC_ITEM = "cosmeticItem";
     public final IManaBaubleRepresentation manaBauble;
-    public BaubleType baubleType;
+    public final BaubleType baubleType;
 
     public MCManaBaubleContent(IManaBaubleRepresentation manaBauble) {
         super(manaBauble);
