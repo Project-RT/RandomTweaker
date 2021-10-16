@@ -31,7 +31,7 @@ public abstract class IAspectRepresentation {
                 CraftTweakerAPI.logError("components' length must be two", new IllegalArgumentException());
                 return null;
             }
-            Arrays.stream(components).map(Aspect::getAspect).toArray(Aspect[] :: new);
+            Arrays.stream(components).map(Aspect::getAspect).toArray(Aspect[]::new);
         }
         return null;
     }
