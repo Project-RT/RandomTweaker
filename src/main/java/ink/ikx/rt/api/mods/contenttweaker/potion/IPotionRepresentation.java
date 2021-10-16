@@ -9,7 +9,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 @ModOnly("contenttweaker")
-@ZenClass("mods.randomtweaker.cote.Potion")
+@ZenClass("mods.randomtweaker.cote.IPotion")
 public abstract class IPotionRepresentation {
 
     public final int liquidColor;

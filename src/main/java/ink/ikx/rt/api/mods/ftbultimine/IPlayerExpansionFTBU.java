@@ -8,7 +8,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 @ModOnly("ftbultimine")
 @ZenExpansion("crafttweaker.player.IPlayer")
-@ZenClass("mods.randomtweaker.mods.ftbultimine.IPlayer")
+@ZenClass("mods.randomtweaker.ftbultimine.IPlayer")
 public abstract class IPlayerExpansionFTBU {
 
     @ZenMethod

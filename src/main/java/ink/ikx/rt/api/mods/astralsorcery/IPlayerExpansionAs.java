@@ -7,18 +7,17 @@ import crafttweaker.api.player.IPlayer;
 import hellfirepvp.astralsorcery.common.constellation.IMajorConstellation;
 import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
 import net.minecraft.entity.player.EntityPlayer;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
-
 @ModOnly("astralsorcery")
 @ZenExpansion("crafttweaker.player.IPlayer")
-@ZenClass("mods.randomtweaker.mods.astralsorcery.IPlayer")
+@ZenClass("mods.randomtweaker.astralsorcery.IPlayer")
 public abstract class IPlayerExpansionAs {
 
     @ZenMethod

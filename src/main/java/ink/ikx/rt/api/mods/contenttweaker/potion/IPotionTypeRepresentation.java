@@ -6,7 +6,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 @ModOnly("contenttweaker")
-@ZenClass("mods.randomtweaker.cote.PotionType")
+@ZenClass("mods.randomtweaker.cote.IPotionType")
 public abstract class IPotionTypeRepresentation {
 
     public String unlocalizedName;

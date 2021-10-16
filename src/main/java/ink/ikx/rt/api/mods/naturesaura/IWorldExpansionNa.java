@@ -11,7 +11,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 @ModOnly("naturesaura")
 @ZenExpansion("crafttweaker.world.IWorld")
-@ZenClass("mods.randomtweaker.mods.naturesaura.IWorld")
+@ZenClass("mods.randomtweaker.naturesaura.IWorld")
 public abstract class IWorldExpansionNa {
 
     @ZenMethod
