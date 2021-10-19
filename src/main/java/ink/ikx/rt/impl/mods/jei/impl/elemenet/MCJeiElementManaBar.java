@@ -26,12 +26,12 @@ public class MCJeiElementManaBar extends IJeiElements.IJeiElementManaBar {
     }
 
     private void handlerMode(int mode) {
-        if (mode == 0) {
+        if (mode == 1) {
             for (; mana > manaMax; manaMax *= 10)
                 multiplesLog += 1;
             for (; (manaMax / mana > 50); manaMax /= 10)
                 multiplesLog -= 1;
-        } else if (mode == 1) {
+        } else {
             manaMax = TilePool.MAX_MANA / 10;
             multiplesLog = 0;
         }

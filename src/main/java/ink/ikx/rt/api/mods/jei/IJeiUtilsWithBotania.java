@@ -13,7 +13,7 @@ public abstract class IJeiUtilsWithBotania {
 
     @ZenMethodStatic
     public static IJeiElements.IJeiElementManaBar createJeiManaBarElement(int x, int y, int mana, @Optional int mode) {
-        return new MCJeiElementManaBar(x, y, mana, mode);
+        return new MCJeiElementManaBar(x, y, mode, mana);
     }
 
 }
