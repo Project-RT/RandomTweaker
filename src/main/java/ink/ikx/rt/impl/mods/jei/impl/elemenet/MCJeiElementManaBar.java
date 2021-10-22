@@ -1,12 +1,11 @@
 package ink.ikx.rt.impl.mods.jei.impl.elemenet;
 
 import ink.ikx.rt.api.mods.jei.elements.IJeiElements;
-import ink.ikx.rt.api.mods.jei.slots.IJeiSlotRenderable;
 import net.minecraft.client.Minecraft;
 import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.common.block.tile.mana.TilePool;
 
-public class MCJeiElementManaBar extends IJeiElements.IJeiElementManaBar implements IJeiSlotRenderable {
+public class MCJeiElementManaBar extends IJeiElements.IJeiElementManaBar {
 
     public int multiplesLog = 0;
     public int manaMax = TilePool.MAX_MANA_DILLUTED;

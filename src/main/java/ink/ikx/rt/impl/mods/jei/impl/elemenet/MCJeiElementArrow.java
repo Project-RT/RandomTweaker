@@ -2,13 +2,12 @@ package ink.ikx.rt.impl.mods.jei.impl.elemenet;
 
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.api.mods.jei.elements.IJeiElements;
-import ink.ikx.rt.api.mods.jei.slots.IJeiSlotRenderable;
 import ink.ikx.rt.impl.mods.jei.JeiPlugin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.ResourceLocation;
 
-public class MCJeiElementArrow extends IJeiElements.IJeiElementArrow implements IJeiSlotRenderable {
+public class MCJeiElementArrow extends IJeiElements.IJeiElementArrow {
 
     public MCJeiElementArrow(int x, int y, int direction) {
         super(x, y, direction);

@@ -1,13 +1,12 @@
 package ink.ikx.rt.impl.mods.jei.impl.elemenet;
 
 import ink.ikx.rt.api.mods.jei.elements.IJeiElements;
-import ink.ikx.rt.api.mods.jei.slots.IJeiSlotRenderable;
 import ink.ikx.rt.impl.mods.jei.JeiPlugin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.ResourceLocation;
 
-public class MCJeiElementLiquid extends IJeiElements.IJeiElementLiquid implements IJeiSlotRenderable {
+public class MCJeiElementLiquid extends IJeiElements.IJeiElementLiquid {
 
     public MCJeiElementLiquid(int x, int y, int width, int height) {
         super(x, y, width, height);

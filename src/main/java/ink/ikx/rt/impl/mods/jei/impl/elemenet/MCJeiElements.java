@@ -1,7 +1,6 @@
 package ink.ikx.rt.impl.mods.jei.impl.elemenet;
 
 import ink.ikx.rt.api.mods.jei.elements.IJeiElements;
-import ink.ikx.rt.api.mods.jei.slots.IJeiSlotRenderable;
 import ink.ikx.rt.impl.mods.jei.JeiPlugin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -10,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class MCJeiElements {
 
-    public static class MCJeiElementItemInput extends IJeiElements.IJeiElementItemInput implements IJeiSlotRenderable {
+    public static class MCJeiElementItemInput extends IJeiElements.IJeiElementItemInput {
 
         public MCJeiElementItemInput(int x, int y) {
             super(x, y);
@@ -24,7 +23,7 @@ public class MCJeiElements {
 
     }
 
-    public static class MCJeiElementItemOutput extends IJeiElements.IJeiElementItemOutput implements IJeiSlotRenderable{
+    public static class MCJeiElementItemOutput extends IJeiElements.IJeiElementItemOutput {
 
         public MCJeiElementItemOutput(int x, int y) {
             super(x, y);
@@ -38,7 +37,7 @@ public class MCJeiElements {
 
     }
 
-    public static class MCJeiElementFontInfo extends IJeiElements.IJeiElementFontInfo implements IJeiSlotRenderable{
+    public static class MCJeiElementFontInfo extends IJeiElements.IJeiElementFontInfo {
 
         public MCJeiElementFontInfo(int x, int y, int width, int height, int color, String info) {
             super(x, y, width, height, color, info);
@@ -52,7 +51,7 @@ public class MCJeiElements {
 
     }
 
-    public static class MCJeiElementImage extends IJeiElements.IJeiElementImage implements IJeiSlotRenderable{
+    public static class MCJeiElementImage extends IJeiElements.IJeiElementImage {
 
 
         public MCJeiElementImage(int u, int v, int x, int y, int width, int height,

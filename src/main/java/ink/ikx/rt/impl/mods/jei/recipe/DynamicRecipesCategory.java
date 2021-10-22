@@ -2,12 +2,9 @@ package ink.ikx.rt.impl.mods.jei.recipe;
 
 import cn.hutool.core.util.StrUtil;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.Main;
-import ink.ikx.rt.api.mods.jei.elements.IJeiElement;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlot;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlotItem;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlotLiquid;
-import ink.ikx.rt.api.mods.jei.slots.IJeiSlotRenderable;
 import ink.ikx.rt.impl.mods.jei.impl.core.MCJeiPanel;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -76,38 +73,12 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
         return this.icon;
     }
 
-    public static void draw(IJeiSlot slot, Minecraft minecraft){
-
-    }
-
-
-    public static final int JEI_ELEMENT_ARROW = 0;
-    public static final int JEI_FONT_INFO = 1;
-    public static final int JEI_ITEM_INPUT = 2;
-    public static final int JEI_ITEM_OUTPUT = 3;
-    public static final int JEI_ELEMENT_IMAGE = 4;
-    public static final int JEI_ITEM_LIQUID = 5;
-    public static final int JEI_ITEM_MANABAR = 6;
-
-
-    public static void draw(IJeiElement element, Minecraft minecraft){
-
-
-    }
-
     @Override
     public void drawExtras(Minecraft minecraft) {
-        if(!Main.isOnServer) {
-            GlStateManager.enableAlpha();
-            try {
-                panel.slots.forEach(s -> ((IJeiSlotRenderable) s).render(minecraft));
-                panel.elements.forEach(e -> ((IJeiSlotRenderable) e).render(minecraft));
-            } catch (Exception e) {
-                System.out.println("Caught exception rendering a slot.");
-                e.printStackTrace();
-            }
-            GlStateManager.disableAlpha();
-        }
+        GlStateManager.enableAlpha();
+        panel.slots.forEach(s -> s.render(minecraft));
+        panel.elements.forEach(e -> e.render(minecraft));
+        GlStateManager.disableAlpha();
     }
 
     @Nonnull

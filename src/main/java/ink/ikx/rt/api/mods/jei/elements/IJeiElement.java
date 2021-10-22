@@ -46,4 +46,7 @@ public abstract class IJeiElement {
     }
 
 
+    @SideOnly(Side.CLIENT)
+    public abstract void render(Minecraft minecraft);
+
 }

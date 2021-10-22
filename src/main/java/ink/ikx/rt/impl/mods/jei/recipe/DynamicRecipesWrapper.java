@@ -1,8 +1,6 @@
 package ink.ikx.rt.impl.mods.jei.recipe;
 
 import crafttweaker.api.item.IIngredient;
-import ink.ikx.rt.Main;
-import ink.ikx.rt.api.mods.jei.slots.IJeiSlotRenderable;
 import ink.ikx.rt.impl.internal.utils.InternalUtils;
 import ink.ikx.rt.impl.mods.jei.impl.core.MCJeiRecipe;
 import mezz.jei.api.ingredients.IIngredients;
@@ -52,16 +50,9 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
 
     @Override
     public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-        if(!Main.isOnServer) {
-            GlStateManager.enableAlpha();
-            try {
-                recipe.elements.forEach(e -> ((IJeiSlotRenderable) e).render(minecraft));
-            } catch (Exception e) {
-                System.out.println("Caught exception rendering a slot.");
-                e.printStackTrace();
-            }
-            GlStateManager.disableAlpha();
-        }
+        GlStateManager.enableAlpha();
+        recipe.elements.forEach(e -> e.render(minecraft));
+        GlStateManager.disableAlpha();
     }
 
     @Nonnull
