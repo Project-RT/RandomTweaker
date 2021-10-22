@@ -1,7 +1,6 @@
 package ink.ikx.rt.api.mods.jei.slots;
 
 import crafttweaker.annotations.ModOnly;
-import net.minecraft.client.Minecraft;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
@@ -27,6 +26,4 @@ public abstract class IJeiSlot {
         this.isInput = isInput;
         this.hasBase = hasBase;
     }
-
-    public abstract void render(Minecraft minecraft);
 }

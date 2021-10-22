@@ -12,6 +12,7 @@ import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
 import ink.ikx.rt.impl.internal.config.RTConfig;
 import ink.ikx.rt.impl.internal.proxy.IProxy;
+import ink.ikx.rt.impl.internal.proxy.ServerProxy;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
@@ -54,11 +55,14 @@ public class Main {
     public static final Set<IJeiRecipe> JEI_RECIPE_SET = Sets.newHashSet();
     public static final BiMap<String, Pair<String, ISubTileEntityRepresentation>> SUB_TILE_GENERATING_MAP = HashBiMap.create();
 
-    @SidedProxy(clientSide = "ink.ikx.rt.impl.internal.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.internal.proxy.SeverProxy")
+    public static boolean isOnServer = false;
+
+    @SidedProxy(clientSide = "ink.ikx.rt.impl.internal.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.internal.proxy.ServerProxy")
     public static IProxy proxy;
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) {
+        isOnServer = (proxy instanceof ServerProxy);
         CraftTweakerExtension.registerAllClass();
         MinecraftForge.EVENT_BUS.register(CTEventManager.Handler.class);
         if (Loader.isModLoaded("botania")) {
