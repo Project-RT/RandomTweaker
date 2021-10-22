@@ -2,6 +2,8 @@ package ink.ikx.rt.api.mods.jei.slots;
 
 import crafttweaker.annotations.ModOnly;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
@@ -28,5 +30,6 @@ public abstract class IJeiSlot {
         this.hasBase = hasBase;
     }
 
+    @SideOnly(Side.CLIENT)
     public abstract void render(Minecraft minecraft);
 }

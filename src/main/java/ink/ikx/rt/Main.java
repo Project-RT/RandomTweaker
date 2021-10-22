@@ -54,7 +54,7 @@ public class Main {
     public static final Set<IJeiRecipe> JEI_RECIPE_SET = Sets.newHashSet();
     public static final BiMap<String, Pair<String, ISubTileEntityRepresentation>> SUB_TILE_GENERATING_MAP = HashBiMap.create();
 
-    @SidedProxy(clientSide = "ink.ikx.rt.impl.internal.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.internal.proxy.SeverProxy")
+    @SidedProxy(clientSide = "ink.ikx.rt.impl.internal.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.internal.proxy.ServerProxy")
     public static IProxy proxy;
 
     @EventHandler
