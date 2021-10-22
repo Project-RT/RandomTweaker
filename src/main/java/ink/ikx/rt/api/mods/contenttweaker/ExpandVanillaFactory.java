@@ -5,10 +5,12 @@ import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionTypeRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.potion.MCPotionRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.potion.MCPotionTypeRepresentation;
+import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
+@ZenRegister
 @ModOnly("contenttweaker")
 @ZenExpansion("mods.contenttweaker.VanillaFactory")
 @ZenClass("mods.randomtweaker.cote.VanillaFactoryExpansion")

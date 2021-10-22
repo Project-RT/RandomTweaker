@@ -4,6 +4,7 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -11,6 +12,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author superhelo
  */
+@ZenRegister
 @ModTotal({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.render.IBaubleRenderHelper")
 public abstract class IBaubleRenderHelper {

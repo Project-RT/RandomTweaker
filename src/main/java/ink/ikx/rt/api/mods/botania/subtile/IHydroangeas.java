@@ -9,6 +9,7 @@ import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.mods.jei.JEI;
 import ink.ikx.rt.impl.internal.utils.InternalUtils;
 import ink.ikx.rt.impl.mods.botania.module.SubTileHydroangeasManager;
+import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import net.minecraft.client.resources.I18n;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -16,6 +17,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.Objects;
 
+@ZenRegister
 @ModOnly("botania")
 @ZenClass("mods.randomtweaker.botania.IHydroangeas")
 public abstract class IHydroangeas {

@@ -3,13 +3,16 @@ package ink.ikx.rt.api.mods.contenttweaker.aspect;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.resourcelocation.CTResourceLocation;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import java.util.Arrays;
-import java.util.Objects;
+import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 import thaumcraft.api.aspects.Aspect;
 
+import java.util.Arrays;
+import java.util.Objects;
+
+@ZenRegister
 @ModTotal({"thaumcraft", "contenttweaker"})
 @ZenClass("mods.randomtweaker.cote.Aspect")
 public abstract class IAspectRepresentation {
@@ -31,7 +34,7 @@ public abstract class IAspectRepresentation {
                 CraftTweakerAPI.logError("components' length must be two", new IllegalArgumentException());
                 return null;
             }
-            Arrays.stream(components).map(Aspect::getAspect).toArray(Aspect[]::new);
+            return Arrays.stream(components).map(Aspect::getAspect).toArray(Aspect[]::new);
         }
         return null;
     }

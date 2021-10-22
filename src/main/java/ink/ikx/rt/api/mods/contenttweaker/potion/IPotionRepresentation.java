@@ -3,11 +3,13 @@ package ink.ikx.rt.api.mods.contenttweaker.potion;
 import crafttweaker.annotations.ModOnly;
 import ink.ikx.rt.api.mods.contenttweaker.function.IPotionIsReady;
 import ink.ikx.rt.api.mods.contenttweaker.function.IPotionPerformEffect;
+import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import net.minecraft.potion.Potion;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
+@ZenRegister
 @ModOnly("contenttweaker")
 @ZenClass("mods.randomtweaker.cote.IPotion")
 public abstract class IPotionRepresentation {

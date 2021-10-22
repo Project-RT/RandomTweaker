@@ -2,11 +2,13 @@ package ink.ikx.rt.api.mods.jei;
 
 import ink.ikx.rt.api.mods.jei.elements.IJeiElements;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import ink.ikx.rt.impl.mods.jei.impl.elemenet.MCJeiElementManaBar;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
+@ZenRegister
 @ModTotal({"jei", "botania"})
 @ZenExpansion("mods.randomtweaker.jei.IJeiUtils")
 public abstract class IJeiUtilsWithBotania {

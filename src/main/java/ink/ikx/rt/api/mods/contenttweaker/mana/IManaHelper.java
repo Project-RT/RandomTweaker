@@ -8,6 +8,7 @@ import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBaubleContent;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItem;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemContent;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import stanhebben.zenscript.annotations.ZenCaster;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -16,6 +17,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author superhelo
  */
+@ZenRegister
 @ModTotal({"contenttweaker", "botania"})
 @ZenExpansion("crafttweaker.item.IItemStack")
 @ZenClass("mods.randomtweaker.botania.IItemStack")
