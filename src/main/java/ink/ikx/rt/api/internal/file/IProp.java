@@ -1,7 +1,6 @@
 package ink.ikx.rt.api.internal.file;
 
 import cn.hutool.core.util.StrUtil;
-import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -13,7 +12,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-@ZenRegister
 @ZenClass("mods.randomtweaker.file.IProp")
 public abstract class IProp {
 

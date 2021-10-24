@@ -4,13 +4,11 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
-import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import ink.ikx.rt.impl.mods.naturesaura.MCAuraChunk;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@ZenRegister
 @ModOnly("naturesaura")
 @ZenExpansion("crafttweaker.world.IWorld")
 @ZenClass("mods.randomtweaker.naturesaura.IWorld")

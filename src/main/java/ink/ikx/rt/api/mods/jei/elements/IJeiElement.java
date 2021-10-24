@@ -1,14 +1,12 @@
 package ink.ikx.rt.api.mods.jei.elements;
 
 import crafttweaker.annotations.ModOnly;
-import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@ZenRegister
 @ModOnly("jei")
 @ZenClass("mods.randomtweaker.jei.IJeiElement")
 public abstract class IJeiElement {

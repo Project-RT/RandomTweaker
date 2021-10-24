@@ -5,10 +5,8 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.player.ICTPlaye
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.world.IFacing;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 
-@ZenRegister
 @FunctionalInterface
 @ModTotal({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.CanSelect")
