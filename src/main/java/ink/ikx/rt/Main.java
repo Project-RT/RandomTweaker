@@ -17,7 +17,6 @@ import ink.ikx.rt.impl.mods.botania.subtile.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
 import ink.ikx.rt.impl.mods.contenttweaker.MCBotaniaContentEvent;
 import ink.ikx.rt.impl.mods.crafttweaker.CraftTweakerExtension;
-import ink.ikx.rt.impl.mods.crafttweaker.ZenRegister;
 import ink.ikx.rt.impl.mods.jei.JeiHydroangeas;
 import ink.ikx.rt.impl.mods.jei.JeiOrechid;
 import ink.ikx.rt.impl.mods.thaumcraft.DreamJournalEvent;
@@ -49,7 +48,7 @@ public class Main {
     public static final String MODID = "randomtweaker";
     public static final String NAME = "RandomTweaker";
     public static final String VERSION = "1.2.5";
-    public static final String DESPENDENCIES = "required-after:crafttweaker;before:contenttweaker;";
+    public static final String DESPENDENCIES = "required-after:crafttweaker;after:contenttweaker;";
 
     public static final Set<IJeiPanel> JEI_PANEL_SET = Sets.newHashSet();
     public static final Set<IJeiRecipe> JEI_RECIPE_SET = Sets.newHashSet();
@@ -60,7 +59,7 @@ public class Main {
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) {
-        CraftTweakerExtension.registerAllClass(event.getASMHarvestedData().getAll(ZenRegister.class.getCanonicalName()));
+        CraftTweakerExtension.registerAllClass();
         MinecraftForge.EVENT_BUS.register(CTEventManager.Handler.class);
         if (Loader.isModLoaded("botania")) {
             if (Loader.isModLoaded("contenttweaker")) {
@@ -71,7 +70,7 @@ public class Main {
 
     @EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
-        if (RTConfig.Botania.OrechidHasDefault && Loader.isModLoaded("botania"))
+        if (RTConfig.Botania.OrechidHasDefault)
             SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), BotaniaAPI.oreWeights);
         if (Loader.isModLoaded("thaumcraft"))
             MinecraftForge.EVENT_BUS.register(DreamJournalEvent.class);
