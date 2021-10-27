@@ -12,6 +12,7 @@ import ink.ikx.rt.api.mods.jei.elements.IJeiElements;
 import ink.ikx.rt.impl.mods.botania.module.SubTileHydroangeasManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import vazkii.botania.common.block.ModBlocks;
@@ -28,7 +29,7 @@ public class JeiHydroangeas {
     private static final IItemStack FLOWER = CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HYDROANGEAS));
 
     public static void init() {
-        JEIExpansion.createJei(UID, "randomtweaker.jei_hydroangeas")
+        JEIExpansion.createJei(UID, I18n.translateToLocal("randomtweaker.jei_hydroangeas"))
                 .setIcon(FLOWER)
                 .setBackground(IJeiUtils.createBackground(0, 0, 105, 64, TEXTURE))
                 .addRecipeCatalyst(FLOWER)

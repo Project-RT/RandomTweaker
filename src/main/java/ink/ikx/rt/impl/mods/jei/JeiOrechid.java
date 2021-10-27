@@ -11,6 +11,7 @@ import ink.ikx.rt.api.mods.jei.IJeiUtils;
 import ink.ikx.rt.api.mods.jei.JEIExpansion;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
@@ -25,7 +26,7 @@ public class JeiOrechid {
     private static final IItemStack FLOWER = CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_ORECHID));
 
     public static void init() {
-        JEIExpansion.createJei("randomtweaker:jei_orechid", "randomtweaker.jei_orechid")
+        JEIExpansion.createJei("randomtweaker:jei_orechid", I18n.translateToLocal("randomtweaker.jei_orechid"))
                 .setIcon(FLOWER)
                 .setBackground(IJeiUtils.createBackground(148, 45))
                 .addElement(IJeiUtils.createImageElement(48, 0, 64, 46, 0, 0, TEXTURE, 256, 256))
