@@ -6,11 +6,16 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.EntityHelper;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.player.CTPlayer;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.enums.Hand;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.world.MCWorld;
+import crafttweaker.api.data.IData;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
+import crafttweaker.mc1120.data.NBTConverter;
+import ink.ikx.rt.api.internal.utils.ITileData;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityInGame;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.functional.ISubTileEntityFunctionalRepresentation;
+import ink.ikx.rt.impl.internal.utils.MCTileData;
+import java.util.Objects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,11 +28,10 @@ import net.minecraft.world.World;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
 
-import java.util.Objects;
-
 public class MCSubTileEntityFunctionalContent extends SubTileFunctional implements ISubTileEntityInGame {
 
     public final ISubTileEntityRepresentation subtile;
+    private final ITileData customData = new MCTileData();
 
     public MCSubTileEntityFunctionalContent(ISubTileEntityRepresentation subtile) {
         this.subtile = subtile;
@@ -63,6 +67,11 @@ public class MCSubTileEntityFunctionalContent extends SubTileFunctional implemen
         if (Objects.nonNull(subtile.onBlockHarvested)) {
             subtile.onBlockHarvested.call(new MCWorld(world), new MCBlockPos(pos), new MCBlockState(state), new CTPlayer(player));
         }
+    }
+
+    @Override
+    public ITileData getITileData() {
+        return customData;
     }
 
     @Override

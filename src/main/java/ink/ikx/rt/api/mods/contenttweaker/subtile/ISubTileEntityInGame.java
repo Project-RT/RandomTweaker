@@ -4,7 +4,6 @@ import crafttweaker.api.data.IData;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.mc1120.data.NBTConverter;
 import ink.ikx.rt.api.internal.utils.ITileData;
-import ink.ikx.rt.impl.internal.utils.MCTileData;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
 import net.minecraft.nbt.NBTTagCompound;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -17,7 +16,6 @@ import stanhebben.zenscript.annotations.ZenSetter;
 public interface ISubTileEntityInGame {
 
     String TAG_CUSTOM_DATA = "CustomData";
-    ITileData customData = new MCTileData();
 
     @ZenMethod
     void sync();
@@ -28,18 +26,18 @@ public interface ISubTileEntityInGame {
     @ZenMethod
     @ZenGetter("data")
     default IData getCustomData() {
-        return customData.getData();
+        return this.getITileData().getData();
     }
 
     @ZenMethod
     @ZenSetter("data")
     default void setCustomData(IData data) {
-        customData.readFromNBT((NBTTagCompound) NBTConverter.from(data));
+        ITileData.checkDataMap(data);
+        this.getITileData().readFromNBT((NBTTagCompound) NBTConverter.from(data));
     }
 
     @ZenMethod
     default void updateCustomData(IData data) {
-        ITileData.checkDataMap(data);
         setCustomData(getCustomData().add(data));
     }
 
@@ -69,6 +67,8 @@ public interface ISubTileEntityInGame {
 
     @ZenMethod
     IBlockPos getBindingForCrT();
+
+    ITileData getITileData();
 
     Object getInstance();
 

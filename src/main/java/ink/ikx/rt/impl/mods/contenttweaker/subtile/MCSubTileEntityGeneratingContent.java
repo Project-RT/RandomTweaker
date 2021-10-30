@@ -6,11 +6,17 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.EntityHelper;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.player.CTPlayer;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.enums.Hand;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.world.MCWorld;
+import crafttweaker.api.data.IData;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
+import crafttweaker.mc1120.data.NBTConverter;
+import ink.ikx.rt.api.internal.utils.ITileData;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityInGame;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.generating.ISubTileEntityGeneratingRepresentation;
+import ink.ikx.rt.impl.internal.utils.MCTileData;
+import java.util.List;
+import java.util.Objects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,15 +29,18 @@ import net.minecraft.world.World;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileGenerating;
 
-import java.util.List;
-import java.util.Objects;
-
 public class MCSubTileEntityGeneratingContent extends SubTileGenerating implements ISubTileEntityInGame {
 
     public final ISubTileEntityRepresentation subtile;
+    private final ITileData customData = new MCTileData();
 
     public MCSubTileEntityGeneratingContent(ISubTileEntityRepresentation subtile) {
         this.subtile = subtile;
+    }
+
+    @Override
+    public ITileData getITileData() {
+        return customData;
     }
 
     @Override
