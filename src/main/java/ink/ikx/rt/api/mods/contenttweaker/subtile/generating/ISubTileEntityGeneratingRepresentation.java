@@ -15,7 +15,7 @@ public abstract class ISubTileEntityGeneratingRepresentation extends ISubTileEnt
     private static final String TYPE_NAME = "generating";
 
     @ZenProperty
-    public boolean PassiveFlower;
+    public boolean passiveFlower;
     @ZenProperty
     public int valueForPassiveGeneration = 1;
     @ZenProperty

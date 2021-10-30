@@ -6,10 +6,8 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.EntityHelper;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.player.CTPlayer;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.enums.Hand;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.world.MCWorld;
-import crafttweaker.api.data.IData;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
-import crafttweaker.mc1120.data.NBTConverter;
 import ink.ikx.rt.api.internal.utils.ITileData;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityInGame;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
@@ -72,7 +70,7 @@ public class MCSubTileEntityGeneratingContent extends SubTileGenerating implemen
     @Override
     public boolean isPassiveFlower() {
         ISubTileEntityGeneratingRepresentation subtile = (ISubTileEntityGeneratingRepresentation) this.subtile;
-        return subtile.PassiveFlower;
+        return subtile.passiveFlower;
     }
 
     @Override

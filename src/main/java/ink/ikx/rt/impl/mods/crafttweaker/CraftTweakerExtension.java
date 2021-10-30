@@ -61,6 +61,8 @@ import ink.ikx.rt.api.mods.thaumcraft.IEntityExpansionTc;
 import ink.ikx.rt.api.mods.thaumcraft.IItemStackExpansionTc;
 import ink.ikx.rt.api.mods.thaumcraft.IPlayerExpansionTc;
 import ink.ikx.rt.impl.internal.config.RTConfig;
+import ink.ikx.rt.impl.mods.crafttweaker.brackethandler.BracketHandlerPotion;
+import ink.ikx.rt.impl.mods.crafttweaker.brackethandler.BracketHandlerSubTile;
 import net.minecraftforge.fml.common.Loader;
 
 import java.util.Arrays;
@@ -120,11 +122,13 @@ public class CraftTweakerExtension {
                 CanGeneratePassively.class,
                 IPotionPerformEffect.class,
                 IPlayerExpansionFTBU.class,
+                BracketHandlerPotion.class,
                 IItemStackExpansionTc.class,
                 IPotionRepresentation.class,
                 PopulateDropStackNBTs.class,
                 IAspectRepresentation.class,
                 ExpandWorldForSubTile.class,
+                BracketHandlerSubTile.class,
                 CTAlfPortalDroppedEvent.class,
                 IBaubleFunctionWithReturn.class,
                 IPotionTypeRepresentation.class,
