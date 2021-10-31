@@ -42,6 +42,9 @@ public interface ISubTileEntityInGame {
     }
 
     @ZenMethod
+    int getTicksExisted();
+
+    @ZenMethod
     void addMana(int mana);
 
     @ZenMethod

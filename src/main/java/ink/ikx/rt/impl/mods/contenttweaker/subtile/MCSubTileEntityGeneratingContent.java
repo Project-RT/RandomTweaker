@@ -58,6 +58,11 @@ public class MCSubTileEntityGeneratingContent extends SubTileGenerating implemen
     }
 
     @Override
+    public int getTicksExisted() {
+        return ticksExisted;
+    }
+
+    @Override
     public void consumeMana(int mana) {
         this.addMana(-mana);
     }
