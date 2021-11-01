@@ -15,6 +15,10 @@ public class MCJeiElements {
             super(x, y);
         }
 
+        public MCJeiElementItemInput(String elementName, int x, int y) {
+            super(elementName, x, y);
+        }
+
         @Override
         public void render(Minecraft minecraft) {
             minecraft.getTextureManager().bindTexture(new ResourceLocation(JeiPlugin.DEFAULT_TEXTURE));
@@ -27,6 +31,10 @@ public class MCJeiElements {
 
         public MCJeiElementItemOutput(int x, int y) {
             super(x, y);
+        }
+
+        public MCJeiElementItemOutput(String elementName, int x, int y) {
+            super(elementName, x, y);
         }
 
         @Override
@@ -43,6 +51,10 @@ public class MCJeiElements {
             super(x, y, width, height, color, info);
         }
 
+        public MCJeiElementFontInfo(String elementName, int x, int y, int width, int height, int color, String info) {
+            super(elementName, x, y, width, height, color, info);
+        }
+
         @Override
         public void render(Minecraft minecraft) {
             FontRenderer fontRenderer = minecraft.fontRenderer;
@@ -57,6 +69,11 @@ public class MCJeiElements {
         public MCJeiElementImage(int u, int v, int x, int y, int width, int height,
                                  String texture, int textureWidth, int textureHeight) {
             super(u, v, x, y, width, height, texture, textureWidth, textureHeight);
+        }
+
+        public MCJeiElementImage(String elementName, int u, int v, int x, int y, int width, int height,
+                                 String texture, int textureWidth, int textureHeight) {
+            super(elementName, u, v, x, y, width, height, texture, textureWidth, textureHeight);
         }
 
         @Override

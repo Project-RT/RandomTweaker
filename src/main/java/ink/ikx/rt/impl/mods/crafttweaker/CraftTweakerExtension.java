@@ -61,6 +61,7 @@ import ink.ikx.rt.api.mods.thaumcraft.IEntityExpansionTc;
 import ink.ikx.rt.api.mods.thaumcraft.IItemStackExpansionTc;
 import ink.ikx.rt.api.mods.thaumcraft.IPlayerExpansionTc;
 import ink.ikx.rt.impl.internal.config.RTConfig;
+import ink.ikx.rt.impl.mods.crafttweaker.brackethandler.BracketHandlerJei;
 import ink.ikx.rt.impl.mods.crafttweaker.brackethandler.BracketHandlerPotion;
 import ink.ikx.rt.impl.mods.crafttweaker.brackethandler.BracketHandlerSubTile;
 import net.minecraftforge.fml.common.Loader;
@@ -108,6 +109,7 @@ public class CraftTweakerExtension {
                 CTPoolTradeEvent.class,
                 IBotaniaFXHelper.class,
                 IManaItemHandler.class,
+                BracketHandlerJei.class,
                 CTElvenTradeEvent.class,
                 IWorldExpansionNa.class,
                 IEntityExpansionTc.class,

@@ -29,6 +29,9 @@ public abstract class IJeiElement {
     @ZenProperty
     public int height;
 
+    @ZenProperty
+    public String elementName;
+
     protected IJeiElement(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
@@ -45,6 +48,25 @@ public abstract class IJeiElement {
         this.height = height;
     }
 
+    protected IJeiElement(String elementName, int x, int y, int width, int height) {
+        this.elementName = elementName;
+
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+    protected IJeiElement(String elementName, int u, int v, int x, int y, int width, int height) {
+        this.elementName = elementName;
+
+        this.u = u;
+        this.v = v;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
 
     @SideOnly(Side.CLIENT)
     public abstract void render(Minecraft minecraft);

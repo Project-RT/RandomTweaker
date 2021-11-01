@@ -24,7 +24,7 @@ public interface IJeiPanel {
     IJeiPanel setSlots(IJeiSlot[] slots);
 
     @ZenMethod
-    IJeiPanel setTooltip(IJeiTooltip tooltip);
+    IJeiPanel onTooltip(IJeiTooltip tooltip);
 
     @ZenMethod
     IJeiPanel addElement(IJeiElement elements);
@@ -40,6 +40,18 @@ public interface IJeiPanel {
 
     @ZenMethod
     IJeiPanel setBackground(IJeiBackground background);
+
+    @ZenMethod
+    IJeiSlot[] getJeiSlots();
+
+    @ZenMethod
+    IJeiSlot getJeiSlot(String slotName);
+
+    @ZenMethod
+    IJeiElement[] getJeiElements();
+
+    @ZenMethod
+    IJeiElement getJeiElement(String elementName);
 
     @ZenMethod
     void register();

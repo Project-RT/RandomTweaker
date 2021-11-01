@@ -13,6 +13,10 @@ public class MCJeiSlots {
             super(x, y, isInput, hasBase);
         }
 
+        public MCJeiSlotItem(String slotName, int x, int y, boolean isInput, boolean hasBase) {
+            super(slotName, x, y, isInput, hasBase);
+        }
+
         @Override
         public void render(Minecraft minecraft) {
             if (!hasBase) return;
@@ -30,6 +34,11 @@ public class MCJeiSlots {
         public MCJeiSlotLiquid(int x, int y, int width, int height, int capacityMb,
                                boolean showCapacity, boolean isInput, boolean hasBase) {
             super(x, y, isInput, hasBase, width, height, capacityMb, showCapacity);
+        }
+
+        public MCJeiSlotLiquid(String slotName, int x, int y, boolean isInput, boolean hasBase,
+                               int width, int height, int capacityMb, boolean showCapacity) {
+            super(slotName, x, y, isInput, hasBase, width, height, capacityMb, showCapacity);
         }
 
         @Override

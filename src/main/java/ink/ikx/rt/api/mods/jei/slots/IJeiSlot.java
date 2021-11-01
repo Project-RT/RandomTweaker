@@ -23,7 +23,19 @@ public abstract class IJeiSlot {
     @ZenProperty
     public boolean hasBase;
 
-    public IJeiSlot(int x, int y, boolean isInput, boolean hasBase) {
+    @ZenProperty
+    public String slotName;
+
+    protected IJeiSlot(int x, int y, boolean isInput, boolean hasBase) {
+        this.x = x;
+        this.y = y;
+        this.isInput = isInput;
+        this.hasBase = hasBase;
+    }
+
+    protected IJeiSlot(String slotName, int x, int y, boolean isInput, boolean hasBase) {
+        this.slotName = slotName;
+
         this.x = x;
         this.y = y;
         this.isInput = isInput;

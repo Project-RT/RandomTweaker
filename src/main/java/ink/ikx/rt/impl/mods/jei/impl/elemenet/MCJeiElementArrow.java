@@ -13,6 +13,10 @@ public class MCJeiElementArrow extends IJeiElements.IJeiElementArrow {
         super(x, y, direction);
     }
 
+    public MCJeiElementArrow(String elementName, int x, int y, int direction) {
+        super(elementName, x, y, direction);
+    }
+
     @Override
     public void render(Minecraft minecraft) {
         minecraft.getTextureManager().bindTexture(new ResourceLocation(JeiPlugin.DEFAULT_TEXTURE));

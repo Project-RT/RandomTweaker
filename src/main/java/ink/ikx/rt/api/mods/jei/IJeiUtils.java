@@ -46,6 +46,22 @@ public abstract class IJeiUtils {
         return new MCJeiSlots.MCJeiSlotItem(x, y, isInput, hasBase);
     }
 
+    @ZenMethod
+    public static IJeiSlotLiquid createLiquidSlot(String slotName, int x, int y, int width, int height, int capacityMb, boolean showCapacity,
+                                                  boolean isInput, @Optional(valueBoolean = true) boolean hasBase) {
+        return new MCJeiSlots.MCJeiSlotLiquid(slotName, x, y, isInput, hasBase, width, height, capacityMb, showCapacity);
+    }
+
+    @ZenMethod
+    public static IJeiSlotLiquid createLiquidSlot(String slotName, int x, int y, boolean isInput, @Optional(valueBoolean = true) boolean hasBase) {
+        return createLiquidSlot(slotName, x, y, 16, 16, 1000, false, isInput, hasBase);
+    }
+
+    @ZenMethod
+    public static IJeiSlotItem createItemSlot(String slotName, int x, int y, boolean isInput, @Optional(valueBoolean = true) boolean hasBase) {
+        return new MCJeiSlots.MCJeiSlotItem(slotName, x, y, isInput, hasBase);
+    }
+
     //-------------------------------------------------------------------------------------------
 
     @ZenMethod
@@ -77,6 +93,37 @@ public abstract class IJeiUtils {
     public static IJeiElements.IJeiElementImage createImageElement(int x, int y, int width, int height, int u, int v,
                                                                    String texture, int textureWidth, int textureHeight) {
         return new MCJeiElements.MCJeiElementImage(u, v, x, y, width, height, texture, textureWidth, textureHeight);
+    }
+
+    @ZenMethod
+    public static IJeiElements.IJeiElementItemInput createItemInputElement(String elementName, int x, int y) {
+        return new MCJeiElements.MCJeiElementItemInput(elementName, x, y);
+    }
+
+    @ZenMethod
+    public static IJeiElements.IJeiElementItemOutput createItemOutputElement(String elementName, int x, int y) {
+        return new MCJeiElements.MCJeiElementItemOutput(elementName, x, y);
+    }
+
+    @ZenMethod
+    public static IJeiElements.IJeiElementLiquid createLiquidElement(String elementName, int x, int y, int width, int height) {
+        return new MCJeiElementLiquid(elementName, x, y, width, height);
+    }
+
+    @ZenMethod
+    public static IJeiElements.IJeiElementFontInfo createFontInfoElement(String elementName, String info, int x, int y, int color, @Optional int width, @Optional int height) {
+        return new MCJeiElements.MCJeiElementFontInfo(elementName, x, y, width, height, color, info);
+    }
+
+    @ZenMethod
+    public static IJeiElements.IJeiElementArrow createArrowElement(String elementName, int x, int y, int direction) {
+        return new MCJeiElementArrow(elementName, x, y, direction);
+    }
+
+    @ZenMethod
+    public static IJeiElements.IJeiElementImage createImageElement(String elementName, int x, int y, int width, int height, int u, int v,
+                                                                   String texture, int textureWidth, int textureHeight) {
+        return new MCJeiElements.MCJeiElementImage(elementName, u, v, x, y, width, height, texture, textureWidth, textureHeight);
     }
 
 }

@@ -14,6 +14,10 @@ public class MCJeiElementManaBar extends IJeiElements.IJeiElementManaBar {
         super(x, y, mode, mana);
     }
 
+    public MCJeiElementManaBar(String elementName, int x, int y, int mode, int mana) {
+        super(elementName, x, y, mode, mana);
+    }
+
     @Override
     public void render(Minecraft minecraft) {
         handlerMode(mode);

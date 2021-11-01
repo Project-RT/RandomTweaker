@@ -15,6 +15,9 @@ public abstract class IJeiElements {
             super(x, y, 18, 18);
         }
 
+        protected IJeiElementItemInput(String elementName, int x, int y) {
+            super(elementName, x, y, 18, 18);
+        }
     }
 
     @ModOnly("jei")
@@ -25,6 +28,10 @@ public abstract class IJeiElements {
             super(80, 0, x, y, 27, 27);
         }
 
+        protected IJeiElementItemOutput(String elementName, int x, int y) {
+            super(elementName, 80, 0, x, y, 27, 27);
+        }
+
     }
 
     @ModOnly("jei")
@@ -33,6 +40,10 @@ public abstract class IJeiElements {
 
         protected IJeiElementLiquid(int x, int y, int width, int height) {
             super(x, y, width, height);
+        }
+
+        protected IJeiElementLiquid(String elementName, int x, int y, int width, int height) {
+            super(elementName, x, y, width, height);
         }
 
     }
@@ -46,6 +57,11 @@ public abstract class IJeiElements {
 
         protected IJeiElementArrow(int x, int y, int direction) {
             super(x, y, 0, 0);
+            this.direction = direction;
+        }
+
+        protected IJeiElementArrow(String elementName, int x, int y, int direction) {
+            super(elementName, x, y, 0, 0);
             this.direction = direction;
         }
 
@@ -63,6 +79,12 @@ public abstract class IJeiElements {
 
         protected IJeiElementFontInfo(int x, int y, int width, int height, int color, String info) {
             super(x, y, width, height);
+            this.info = info;
+            this.color = color;
+        }
+
+        protected IJeiElementFontInfo(String elementName, int x, int y, int width, int height, int color, String info) {
+            super(elementName, x, y, width, height);
             this.info = info;
             this.color = color;
         }
@@ -85,6 +107,12 @@ public abstract class IJeiElements {
             this.mana = mana;
         }
 
+        protected IJeiElementManaBar(String elementName, int x, int y, int mode, int mana) {
+            super(elementName, x, y, 0, 0);
+            this.mode = mode;
+            this.mana = mana;
+        }
+
     }
 
     @ModOnly("jei")
@@ -103,6 +131,14 @@ public abstract class IJeiElements {
         protected IJeiElementImage(int u, int v, int x, int y, int width, int height,
                                    String texture, int textureWidth, int textureHeight) {
             super(u, v, x, y, width, height);
+            this.texture = texture;
+            this.textureWidth = textureWidth;
+            this.textureHeight = textureHeight;
+        }
+
+        protected IJeiElementImage(String elementName, int u, int v, int x, int y, int width, int height,
+                                   String texture, int textureWidth, int textureHeight) {
+            super(elementName, u, v, x, y, width, height);
             this.texture = texture;
             this.textureWidth = textureWidth;
             this.textureHeight = textureHeight;

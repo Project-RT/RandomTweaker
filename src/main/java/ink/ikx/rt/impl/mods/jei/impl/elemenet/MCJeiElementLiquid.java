@@ -12,6 +12,10 @@ public class MCJeiElementLiquid extends IJeiElements.IJeiElementLiquid {
         super(x, y, width, height);
     }
 
+    public MCJeiElementLiquid(String elementName, int x, int y, int width, int height) {
+        super(elementName, x, y, width, height);
+    }
+
     @Override
     public void render(Minecraft minecraft) {
         minecraft.getTextureManager().bindTexture(new ResourceLocation(JeiPlugin.DEFAULT_TEXTURE));

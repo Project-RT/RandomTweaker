@@ -1,5 +1,6 @@
 package ink.ikx.rt.impl.mods.jei.impl.core;
 
+import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Lists;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
@@ -58,7 +59,7 @@ public class MCJeiPanel implements IJeiPanel {
     }
 
     @Override
-    public IJeiPanel setTooltip(IJeiTooltip tooltip) {
+    public IJeiPanel onTooltip(IJeiTooltip tooltip) {
         this.tooltip = tooltip;
         return this;
     }
@@ -93,6 +94,28 @@ public class MCJeiPanel implements IJeiPanel {
     public IJeiPanel setBackground(IJeiBackground background) {
         this.background = background;
         return this;
+    }
+
+    @Override
+    public IJeiSlot[] getJeiSlots() {
+        return this.slots.toArray(new IJeiSlot[0]);
+    }
+
+    @Override
+    public IJeiSlot getJeiSlot(String slotName) {
+        if (StrUtil.isBlankOrUndefined(slotName)) return null;
+        return this.slots.stream().filter(s -> s.slotName.equals(slotName)).findFirst().orElse(null);
+    }
+
+    @Override
+    public IJeiElement[] getJeiElements() {
+        return this.elements.toArray(new IJeiElement[0]);
+    }
+
+    @Override
+    public IJeiElement getJeiElement(String elementName) {
+        if (StrUtil.isBlankOrUndefined(elementName)) return null;
+        return this.elements.stream().filter(e -> e.elementName.equals(elementName)).findFirst().orElse(null);
     }
 
     @Override
