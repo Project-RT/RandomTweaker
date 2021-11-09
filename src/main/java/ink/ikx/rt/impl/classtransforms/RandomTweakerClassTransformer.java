@@ -19,7 +19,6 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
         if (transformedName.equals("hellfirepvp.astralsorcery.common.tile.TileAttunementAltar")) {
             LogManager.getLogger().info("transforming class {}", transformedName);
             ClassWriter writer = new ClassWriter(0);
-            //TODO
             ASMTileAttunementAltar asm = new ASMTileAttunementAltar(ASM5, writer);
             try {
                 System.out.println("on astral sorcery class visitor");
