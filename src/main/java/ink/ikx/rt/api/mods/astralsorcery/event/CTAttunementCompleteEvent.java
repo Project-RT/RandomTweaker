@@ -25,37 +25,40 @@ public abstract class CTAttunementCompleteEvent implements IEventCancelable {
     }
 
     @ZenGetter("input")
+    @ZenMethod
     public IItemStack getInput() {
         return CraftTweakerMC.getIItemStack(this.event.getInput());
     }
 
     @ZenGetter("output")
+    @ZenMethod
     public IItemStack getOutput() {
         return CraftTweakerMC.getIItemStack(this.event.getOutput());
     }
 
     @ZenSetter("output")
+    @ZenMethod
     public void setOutput(IItemStack output) {
         this.event.setOutput(CraftTweakerMC.getItemStack(output));
     }
 
     @ZenGetter("world")
+    @ZenMethod
     public World getWorld() {
         return this.event.getWorld();
     }
 
     @ZenGetter("constellation")
+    @ZenMethod
     public String getConstellation() {
         return this.event.getConstellation().getUnlocalizedName();
     }
 
-    @ZenSetter("additionalOutput")
     @ZenMethod
     public void addAdditionalOutput(IItemStack additionalOutput) {
         this.event.getAdditionalOutput().add(CraftTweakerMC.getItemStack(additionalOutput));
     }
 
-    @ZenGetter("additionalOutput")
     @ZenMethod
     public List<ItemStack> getAdditionalOutput() {
         return this.event.getAdditionalOutput();
