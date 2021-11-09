@@ -16,7 +16,6 @@ import static org.objectweb.asm.Opcodes.ASM5;
 public class RandomTweakerClassTransformer implements IClassTransformer {
     @Override
     public byte[] transform(String name, String transformedName, byte[] basicClass) {
-        //System.out.println(transformedName);
         if (transformedName.equals("hellfirepvp.astralsorcery.common.tile.TileAttunementAltar")) {
             LogManager.getLogger().info("transforming class {}", transformedName);
             ClassWriter writer = new ClassWriter(0);

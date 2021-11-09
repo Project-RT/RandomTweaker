@@ -21,28 +21,28 @@ public class ASMTileAttunementAltar extends ClassVisitor {
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc,
                                      String signature, String[] exceptions) {
-        //System.out.println("method: " + name + ", description: " + desc + ", signature: " + signature);
+        
         if (name.equals("update") || name.equals("func_73660_a")) {
-            //System.out.println("Astral Sorcery attunement altar, Method: update");
+            
             return new ASMAltarUpdateTransformer(api, super.visitMethod(access, name, desc, signature, exceptions));
         }
 
         if (name.equals("checkForAttunements")) {
-            //System.out.println("Astral Sorcery attunement altar, Method: check For Attunements");
+            
             return new ASMAltarCheckAttunementTransformer(api, super.visitMethod(access, name, desc, signature, exceptions));
         }
         if (name.equals("setAttunementState")) {
-            //System.out.println("Astral Sorcery attunement altar, Method: set Attunement State");
+            
             return new ASMAltarSetAttunementStateTransformer(api, super.visitMethod(access, name, desc, signature, exceptions));
         }
 
         if (name.equals("renderEffects")) {
-            //System.out.println("Astral Sorcery attunement altar, Method: render Effects");
+            
             return new ASMAltarRenderEffectTransformer(api, super.visitMethod(access, name, desc, signature, exceptions));
         }
 
         if (name.equals("lambda$playCrystalAttenuationEffects$8")) {
-            //System.out.println("Astral Sorcery attunement altar, Method: play attenuation Effects");
+            
             return new ASMAltarplayCrystalAttenuationEffectsTransformer(api, super.visitMethod(access, name, desc, signature, exceptions));
         }
 
@@ -163,7 +163,7 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
             resultCreated = false;
         }
         if (opcode == ASTORE && var == lastStoredStack + 1 && isCraftFinishFlag3) {
-            //System.out.println("crafting finish, probability 100%");
+            
             isCraftFinishFlag4 = true;
         }
 
@@ -210,7 +210,7 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
             if (owner.equals("hellfirepvp/astralsorcery/common/tile/TileAttunementAltar") &&
                     name.equals("activeEntity") &&
                     desc.equals("Lnet/minecraft/entity/Entity;")) {
-                //System.out.println("crafting finish, probability 25%");
+                
                 isCraftFinishFlag1 = true;
             }
         }
@@ -221,7 +221,7 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
     public void visitTypeInsn(int opcode, String type) {
         if (opcode == CHECKCAST) {
             if (isCraftFinishFlag1 && type.equals("net/minecraft/entity/item/EntityItem")) {
-                //System.out.println("crafting finish, probability 50%");
+                
                 isCraftFinishFlag2 = true;
             }
         } else {
@@ -278,7 +278,7 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
                                 name.equals("getThrower") &&
                                 desc.equals("()Ljava/lang/String;")
                 ) {
-                    //System.out.println("crafting finish, probability 75%");
+                    
                     isCraftFinishFlag3 = true;
                 }
                 if (owner.equals("hellfirepvp/astralsorcery/common/item/crystal/base/ItemRockCrystalBase") &&
@@ -304,7 +304,7 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
                                 name.equals("apply") &&
                                 desc.equals("(Ljava/lang/Object;)Z")
                 ) {
-                    //System.out.println("predicate application");
+                    
                     checkItemLogicFoundTime += 1;
                 }
             default:
@@ -365,7 +365,7 @@ class ASMAltarRenderEffectTransformer extends MethodVisitor {
                                 desc.equals("(Ljava/lang/Object;)Z") &&
                                 (!customRecipeInserted)
                 ) {
-                    //System.out.println("predicate application");
+                    
                     checkItemLogicFound = true;
                 }
                 break;
@@ -427,7 +427,7 @@ class ASMAltarplayCrystalAttenuationEffectsTransformer extends MethodVisitor {
                                 desc.equals("(Ljava/lang/Object;)Z") &&
                                 (!customRecipeInserted)
                 ) {
-                    //System.out.println("predicate application");
+                    
                     checkItemLogicFound = true;
                 }
                 break;
@@ -503,7 +503,7 @@ class ASMAltarCheckAttunementTransformer extends MethodVisitor {
         switch (opcode) {
             case CHECKCAST:
                 if (isCheckItemFlag1 && type.equals("net/minecraft/entity/item/EntityItem")) {
-                    //System.out.println("check item section, probably:66%");
+                    
                     isCheckItemFlag2 = true;
                 }
                 break;
@@ -522,13 +522,13 @@ class ASMAltarCheckAttunementTransformer extends MethodVisitor {
         switch (opcode) {
             case ASTORE:
                 if (isCheckItemFlag2 && var == 3) {
-                    //System.out.println("check item section, probably:100%");
+                    
                     isCheckItemFlag3 = true;
                 }
 
                 if (isCheckItemFlag3) {
                     super.visitVarInsn(opcode, var);
-                    //System.out.println("inserted method after check for attunements.");
+                    
                     //insert after
                     super.visitVarInsn(ALOAD, var);     //load current address in local
                     // (the item being checked)
@@ -549,13 +549,13 @@ class ASMAltarCheckAttunementTransformer extends MethodVisitor {
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
         switch (opcode) {
             case INVOKEINTERFACE:
-                //System.out.println("owner: " + owner + ",name: " + name + ",desc: " + desc + ". ");
+                
                 if (
                         owner.equals("java/util/List") &&
                                 name.equals("get") &&
                                 desc.equals("(I)Ljava/lang/Object;")
                 ) {
-                    //System.out.println("check item section, probably:33%");
+                    
                     isCheckItemFlag1 = true;
                 }
                 if (
@@ -564,7 +564,7 @@ class ASMAltarCheckAttunementTransformer extends MethodVisitor {
                                 desc.equals("(Ljava/lang/Object;)Z") &&
                                 (!customRecipeInserted)
                 ) {
-                    //System.out.println("predicate application");
+                    
                     checkItemLogicFound = true;
                 }
                 break;
@@ -595,13 +595,13 @@ class ASMAltarSetAttunementStateTransformer extends MethodVisitor {
     public void visitFieldInsn(int opcode, String owner, String name, String desc) {
         switch (opcode) {
             case PUTFIELD:
-                //System.out.println("owner: " + owner + ",name: " + name + ",desc: " + desc + ". ");
+                
                 if (isSetAttunementFlag1 &&
                         owner.equals("hellfirepvp/astralsorcery/common/tile/TileAttunementAltar") &&
                         name.equals("entityIdActive") &&
                         desc.equals("I")
                 ) {
-                    //System.out.println("check item section, probably:66%");
+                    
                     isSetAttunementFlag2 = true;
                 }
 
@@ -610,14 +610,14 @@ class ASMAltarSetAttunementStateTransformer extends MethodVisitor {
                         name.equals("activeEntity") &&
                         desc.equals("Lnet/minecraft/entity/Entity;")
                 ) {
-                    //System.out.println("check item section, probably:100%");
+                    
                     isSetAttunementFlag3 = true;
                 }
 
 
                 if (isSetAttunementFlag3) {
                     super.visitFieldInsn(opcode, owner, name, desc);
-                    //System.out.println("inserted method after setting attunement.");
+                    
                     //insert after
 
                     //load from local 0 ("this")
@@ -649,14 +649,14 @@ class ASMAltarSetAttunementStateTransformer extends MethodVisitor {
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
         switch (opcode) {
             case INVOKEVIRTUAL:
-                //System.out.println("owner: " + owner + ",name: " + name + ",desc: " + desc + ". ");
+                
                 if (
                         owner.equals("net/minecraft/entity/Entity") &&
                                 name.equals("getEntityId") &&
                                 desc.equals("()I")
                     //"trigger.getEntityId()"
                 ) {
-                    //System.out.println("set state section, probably:33%");
+                    
                     isSetAttunementFlag1 = true;
                 }
                 break;

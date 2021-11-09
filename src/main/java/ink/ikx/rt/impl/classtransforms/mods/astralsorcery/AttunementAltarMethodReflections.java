@@ -20,18 +20,18 @@ import net.minecraft.world.World;
 public class AttunementAltarMethodReflections {
 
     public static void debugPrint(Object object) {
-        //System.out.println("RandomTweakerASM: debug print");
-        //System.out.println("RandomTweakerASM: " + object.toString());
+        
+        
     }
 
     public static void checkForAttunements(EntityItem itemStack) {
-        //System.out.println("RandomTweakerASM: checking for attunements.");
-        //System.out.println("RandomTweakerASM: item stack: " + itemStack.getItem());
+        
+        
     }
 
     public static void onAttunementStart(EntityItem itemStack) {
-        //System.out.println("RandomTweakerASM: attunement starts.");
-        //System.out.println("RandomTweakerASM: item stack: " + itemStack.getItem());
+        
+        
     }
 
     public static void onCraftingFinish(ItemStack itemStack, EntityItem original, World world, IConstellation constellation) {
@@ -62,23 +62,14 @@ public class AttunementAltarMethodReflections {
         } else {
             itemStack.setCount(0);
         }
-
-
-        /*
-        //System.out.println("RandomTweakerASM: attunement finished.");
-        //System.out.println("RandomTweakerASM: item stack: " + itemStack.getItem().toString());
-        //System.out.println("RandomTweakerASM: original stack: " + original.getItem().toString());
-        //System.out.println("RandomTweakerASM: world: " + world.toString());
-        //System.out.println("RandomTweakerASM: constellation: " + constellation.toString());*/
-
     }
 
     public static boolean haveRecipe(IConstellation constellation, ItemStack itemStack) {
-        //System.out.println("Checking Recipe on Item: " + CraftTweakerMC.getIItemStack(itemStack)+ " for constellation " + constellation.toString());
+        
         for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
-            //System.out.println("checking with recipe: " + recipe.getOriginal().toString());
+            
             if (recipe.canDoRecipe(constellation, itemStack)) {
-                //System.out.println("Found recipe!");
+                
                 return true;
             }
         }
@@ -116,7 +107,7 @@ public class AttunementAltarMethodReflections {
     }
 
     public static boolean logicPatch(boolean A, boolean B, boolean C) {
-        //System.out.println("Logic patch: " + A + " " + B + " " + C);
+        
         return (A && B) || C;
     }
 
