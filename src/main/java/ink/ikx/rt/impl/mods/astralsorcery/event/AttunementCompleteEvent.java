@@ -14,10 +14,10 @@ import java.util.List;
 public class AttunementCompleteEvent extends BaseEvent {
 
     private final ItemStack input;
-    private ItemStack output;
     private final List<ItemStack> additionalOutput = new ArrayList<>();
     private final World world;
     private final IConstellation constellation;
+    private ItemStack output;
 
     public AttunementCompleteEvent(ItemStack output, EntityItem input, World world, IConstellation constellation) {
         this.input = input.getItem();

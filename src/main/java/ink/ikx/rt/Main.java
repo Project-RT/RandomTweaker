@@ -18,6 +18,7 @@ import ink.ikx.rt.impl.mods.botania.subtile.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
 import ink.ikx.rt.impl.mods.contenttweaker.MCBotaniaContentEvent;
 import ink.ikx.rt.impl.mods.crafttweaker.CraftTweakerExtension;
+import ink.ikx.rt.impl.mods.jei.JeiAttunements;
 import ink.ikx.rt.impl.mods.jei.JeiHydroangeas;
 import ink.ikx.rt.impl.mods.jei.JeiOrechid;
 import ink.ikx.rt.impl.mods.thaumcraft.DreamJournalEvent;
@@ -82,6 +83,7 @@ public class Main {
     @EventHandler
     public void onInit(FMLInitializationEvent event) {
         registryFlowerModified();
+        registerAttuAltarRecipe();
     }
 
     @SuppressWarnings("unchecked")
@@ -93,17 +95,27 @@ public class Main {
             subTiles = (BiMap<String, Class<? extends SubTileEntity>>) ReflectUtil.setAccessible(field).get(null);
             if (Objects.nonNull(subTiles)) {
                 if (RTConfig.Botania.OrechidModified) {
-                    JeiOrechid.init();
-                    JEI.hideCategory("botania.orechid");
+                    if (Loader.isModLoaded("jei")) {
+                        JeiOrechid.init();
+                        JEI.hideCategory("botania.orechid");
+                    }
                     subTiles.forcePut(LibBlockNames.SUBTILE_ORECHID, SubTileOrechidModified.class);
                 }
                 if (RTConfig.Botania.HydroangeasModified) {
-                    JeiHydroangeas.init();
+                    if (Loader.isModLoaded("jei")) {
+                        JeiHydroangeas.init();
+                    }
                     subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
                 }
             }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void registerAttuAltarRecipe() {
+        if (Loader.isModLoaded("astralsorcery") && Loader.isModLoaded("jei")) {
+            JeiAttunements.init();
         }
     }
 
