@@ -32,7 +32,7 @@
 ## Participants
 
 Developers ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315)
-, [NiYanhhhhh](https://github.com/NiYanhhhhh) <br /><br />
+, [NiYanhhhhh](https://github.com/NiYanhhhhh), [Water_Moon](https://github.com/Water-Moon) <br /><br />
 Wiki Editors ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315) <br /><br />
 English Translation : [liuseniubi](https://github.com/liuseniubi)
 , [Seleclipse](https://github.com/lunareclipse-64) <br /><br />
