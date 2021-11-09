@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import java.util.ArrayList;
 
 public class CustomAttunementRecipe {
-    
+
     public static ArrayList<CustomAttunementRecipe> allRecipes = new ArrayList<>();
 
     final IConstellation constellation;
