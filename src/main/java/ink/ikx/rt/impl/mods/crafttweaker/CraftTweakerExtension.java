@@ -20,6 +20,7 @@ import ink.ikx.rt.api.mods.botania.event.CTAlfPortalDroppedEvent;
 import ink.ikx.rt.api.mods.botania.event.CTElvenTradeEvent;
 import ink.ikx.rt.api.mods.botania.event.CTEventManager;
 import ink.ikx.rt.api.mods.botania.event.CTPoolTradeEvent;
+import ink.ikx.rt.api.mods.botania.render.IBotaniaFXHelper;
 import ink.ikx.rt.api.mods.botania.subtile.IHydroangeas;
 import ink.ikx.rt.api.mods.botania.subtile.IOrechid;
 import ink.ikx.rt.api.mods.contenttweaker.ExpandVanillaFactory;
@@ -39,7 +40,6 @@ import ink.ikx.rt.api.mods.contenttweaker.mana.item.tool.IIsUsesManaItemRepresen
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionTypeRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.render.IBaubleRenderHelper;
-import ink.ikx.rt.api.mods.botania.render.IBotaniaFXHelper;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ExpandWorldForSubTile;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityInGame;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
@@ -110,6 +110,8 @@ public class CraftTweakerExtension {
                 BlockHarvested.class,
                 IBaubleFunction.class,
                 CTPoolTradeEvent.class,
+                IAttunementAltar.class,
+                CTEventManagerAS.class,
                 IBotaniaFXHelper.class,
                 IManaItemHandler.class,
                 BracketHandlerJei.class,
@@ -135,6 +137,7 @@ public class CraftTweakerExtension {
                 ExpandWorldForSubTile.class,
                 BracketHandlerSubTile.class,
                 CTAlfPortalDroppedEvent.class,
+                CTAttunementCompleteEvent.class,
                 IBaubleFunctionWithReturn.class,
                 IPotionTypeRepresentation.class,
                 IJeiElements.IJeiElementImage.class,
@@ -145,11 +148,7 @@ public class CraftTweakerExtension {
                 IJeiElements.IJeiElementFontInfo.class,
                 IJeiElements.IJeiElementItemInput.class,
                 ExpandVanillaFactoryWithThaumcraft.class,
-                IJeiElements.IJeiElementItemOutput.class,
-
-                IAttunementAltar.class,
-                CTEventManagerAS.class,
-                CTAttunementCompleteEvent.class
+                IJeiElements.IJeiElementItemOutput.class
         );
     }
 
