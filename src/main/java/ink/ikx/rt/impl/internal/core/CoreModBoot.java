@@ -18,9 +18,9 @@ import java.util.Map;
 @IFMLLoadingPlugin.Name("RandomTweaker Mixin Boot")
 @IFMLLoadingPlugin.SortingIndex(-7500)
 @IFMLLoadingPlugin.MCVersion("1.12.2")
-public class MixinBoot implements IFMLLoadingPlugin {
+public class CoreModBoot implements IFMLLoadingPlugin {
 
-    public MixinBoot() {
+    public CoreModBoot() {
         MixinBootstrap.init();
         LogManager.getLogger("RandomTweaker Mixins").info("registering core mixins...");
         Mixins.addConfiguration("mixins.randomtweaker.init.json");
@@ -45,7 +45,9 @@ public class MixinBoot implements IFMLLoadingPlugin {
 
     @Override
     public String[] getASMTransformerClass() {
-        return new String[]{};
+        return new String[]{
+                "ink.ikx.rt.classTransforms.RandomTweakerClassTransformer"
+        };
     }
 
     @Override
