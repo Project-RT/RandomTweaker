@@ -65,11 +65,8 @@ public class AttunementAltarMethodReflections {
     }
 
     public static boolean haveRecipe(IConstellation constellation, ItemStack itemStack) {
-
         for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
-
             if (recipe.canDoRecipe(constellation, itemStack)) {
-
                 return true;
             }
         }
@@ -111,12 +108,12 @@ public class AttunementAltarMethodReflections {
         return (A && B) || C;
     }
 
-    public static Item getTunedItemVariant(Item item, IConstellation constellation) {
+    public static Item getTunedItemVariant(Item item, EntityItem itemStack, IConstellation constellation) {
         if (item instanceof ItemRockCrystalBase) {
             return ((ItemRockCrystalBase) item).getTunedItemVariant();
         } else {
             for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
-                if (recipe.canDoRecipe(constellation, new ItemStack(item))) {
+                if (recipe.canDoRecipe(constellation, itemStack.getItem())) {
                     return recipe.getResult().getItem();
                 }
             }

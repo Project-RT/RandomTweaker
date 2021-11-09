@@ -3,9 +3,6 @@ package ink.ikx.rt.impl.mods.contenttweaker.mana.item;
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemContent;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nonnull;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,6 +22,10 @@ import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaTooltipDisplay;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
+
+import javax.annotation.Nonnull;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author superhelo

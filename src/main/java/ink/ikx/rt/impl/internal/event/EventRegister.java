@@ -2,13 +2,14 @@ package ink.ikx.rt.impl.internal.event;
 
 import com.google.common.collect.Maps;
 import ink.ikx.rt.impl.mods.contenttweaker.potion.MCPotionContent;
-import java.util.Map;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+
+import java.util.Map;
 
 @Mod.EventBusSubscriber
 public class EventRegister {

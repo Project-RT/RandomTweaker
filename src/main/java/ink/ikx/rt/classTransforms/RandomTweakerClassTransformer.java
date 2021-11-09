@@ -26,7 +26,7 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
                 Path dir = Paths.get("rtDebug");
                 Files.createDirectories(dir);
                 Files.write(dir.resolve("TileAttunementAltar.class"), result);
-                */
+                 */
                 return result;
             } catch (IOException e) {
                 e.printStackTrace();

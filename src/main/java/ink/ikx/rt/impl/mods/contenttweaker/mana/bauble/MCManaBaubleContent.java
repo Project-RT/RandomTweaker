@@ -9,8 +9,6 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.contenttweaker.mana.bauble.IManaBaubleRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemContent;
-import java.util.Objects;
-import javax.annotation.Nonnull;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -29,6 +27,9 @@ import vazkii.botania.common.core.helper.ItemNBTHelper;
 import vazkii.botania.common.core.helper.PlayerHelper;
 import vazkii.botania.common.entity.EntityDoppleganger;
 import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
+
+import javax.annotation.Nonnull;
+import java.util.Objects;
 
 /**
  * @author superhelo

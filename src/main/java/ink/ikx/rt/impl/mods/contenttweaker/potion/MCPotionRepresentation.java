@@ -3,8 +3,9 @@ package ink.ikx.rt.impl.mods.contenttweaker.potion;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.impl.internal.event.EventRegister;
-import java.text.MessageFormat;
 import net.minecraft.potion.Potion;
+
+import java.text.MessageFormat;
 
 public class MCPotionRepresentation extends IPotionRepresentation {
 
@@ -18,7 +19,7 @@ public class MCPotionRepresentation extends IPotionRepresentation {
             EventRegister.POTION_MAP.put(unlocalizedName, new MCPotionContent(this));
         } else {
             CraftTweakerAPI.getLogger().logError(MessageFormat.format(
-                    "All Potion must be unique. Key: contenttweaker:{0} is not.", unlocalizedName)
+                            "All Potion must be unique. Key: contenttweaker:{0} is not.", unlocalizedName)
                     , new UnsupportedOperationException());
         }
     }

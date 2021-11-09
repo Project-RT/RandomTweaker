@@ -3,12 +3,13 @@ package ink.ikx.rt.api.mods.contenttweaker.aspect;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.resourcelocation.CTResourceLocation;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import java.util.Arrays;
-import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 import thaumcraft.api.aspects.Aspect;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 @ModTotal({"thaumcraft", "contenttweaker"})
 @ZenClass("mods.randomtweaker.cote.Aspect")

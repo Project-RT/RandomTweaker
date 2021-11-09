@@ -69,9 +69,6 @@ public abstract class IAttunementAltar {
 
         @Override
         public boolean validate() {
-            if (ingredient.getAmount() > 1) {
-                return false;
-            }
             if (constellationString != null) {
                 IConstellation constellation = ConstellationRegistry.getConstellationByName(constellationString);
                 return constellation != null;
@@ -81,7 +78,7 @@ public abstract class IAttunementAltar {
 
         @Override
         public String describeInvalid() {
-            return "Unknown constellation, more than one input or invalid input/output for attunement altar recipe.";
+            return "Unknown constellation for attunement altar recipe.";
         }
     }
 }

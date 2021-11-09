@@ -32,7 +32,7 @@ public class JeiAttunements {
             JEIAttunementRecipe JEIRecipe = (JEIAttunementRecipe)
                     new JEIAttunementRecipe(UID)
                             .setConstellation(recipe.getConstellation())
-                            .addInput(recipe.getOriginal())
+                            .addInput(recipe.getOriginal().amount(recipe.getOriginal().getAmount()))
                             .addOutput(CraftTweakerMC.getIItemStack(recipe.getResult()));
             JEIRecipe.build_();
         }

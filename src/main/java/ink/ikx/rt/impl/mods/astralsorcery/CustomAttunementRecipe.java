@@ -43,5 +43,4 @@ public class CustomAttunementRecipe {
     public ItemStack getResult() {
         return result;
     }
-
 }

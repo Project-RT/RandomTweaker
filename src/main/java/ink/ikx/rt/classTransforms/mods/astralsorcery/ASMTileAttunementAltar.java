@@ -286,12 +286,21 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
                     super.visitVarInsn(ALOAD, 0);
                     super.visitFieldInsn(GETFIELD,
                             "hellfirepvp/astralsorcery/common/tile/TileAttunementAltar",
+                            "activeEntity",
+                            "Lnet/minecraft/entity/Entity;");
+                    super.visitTypeInsn(CHECKCAST, "net/minecraft/entity/item/EntityItem");
+
+                    super.visitVarInsn(ALOAD, 0);
+                    super.visitFieldInsn(GETFIELD,
+                            "hellfirepvp/astralsorcery/common/tile/TileAttunementAltar",
                             "activeFound",
                             "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;");
+
                     super.visitMethodInsn(INVOKESTATIC,
                             ASMTileAttunementAltar.reflectionMethods,
                             "getTunedItemVariant",
                             "(Lnet/minecraft/item/Item;" +
+                                    "Lnet/minecraft/entity/item/EntityItem;" +
                                     "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;)" +
                                     "Lnet/minecraft/item/Item;",
                             false);

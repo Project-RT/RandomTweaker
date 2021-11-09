@@ -13,7 +13,6 @@ import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityInGame;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.functional.ISubTileEntityFunctionalRepresentation;
 import ink.ikx.rt.impl.internal.utils.MCTileData;
-import java.util.Objects;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,6 +24,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
+
+import java.util.Objects;
 
 public class MCSubTileEntityFunctionalContent extends SubTileFunctional implements ISubTileEntityInGame {
 

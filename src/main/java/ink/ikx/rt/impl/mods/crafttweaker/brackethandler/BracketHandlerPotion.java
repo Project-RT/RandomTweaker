@@ -6,13 +6,14 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.zenscript.IBracketHandler;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.impl.internal.event.EventRegister;
-import java.util.List;
 import stanhebben.zenscript.compiler.IEnvironmentGlobal;
 import stanhebben.zenscript.expression.ExpressionCallStatic;
 import stanhebben.zenscript.expression.ExpressionString;
 import stanhebben.zenscript.parser.Token;
 import stanhebben.zenscript.symbols.IZenSymbol;
 import stanhebben.zenscript.type.natives.IJavaMethod;
+
+import java.util.List;
 
 @SuppressWarnings("ALL")
 @ModOnly("contenttweaker")
