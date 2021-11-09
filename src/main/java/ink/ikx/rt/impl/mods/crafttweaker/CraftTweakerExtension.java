@@ -10,7 +10,10 @@ import ink.ikx.rt.api.internal.item.IItemStackExpansion;
 import ink.ikx.rt.api.internal.utils.IInputPattern;
 import ink.ikx.rt.api.internal.utils.ITileData;
 import ink.ikx.rt.api.internal.world.IBlockPosExpansion;
+import ink.ikx.rt.api.mods.astralsorcery.IAttunementAltar;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
+import ink.ikx.rt.api.mods.astralsorcery.event.CTAttunementCompleteEvent;
+import ink.ikx.rt.api.mods.astralsorcery.event.CTEventManagerAS;
 import ink.ikx.rt.api.mods.botania.IManaItemHandler;
 import ink.ikx.rt.api.mods.botania.ITileAlfPortal;
 import ink.ikx.rt.api.mods.botania.event.CTAlfPortalDroppedEvent;
@@ -142,7 +145,11 @@ public class CraftTweakerExtension {
                 IJeiElements.IJeiElementFontInfo.class,
                 IJeiElements.IJeiElementItemInput.class,
                 ExpandVanillaFactoryWithThaumcraft.class,
-                IJeiElements.IJeiElementItemOutput.class
+                IJeiElements.IJeiElementItemOutput.class,
+
+                IAttunementAltar.class,
+                CTEventManagerAS.class,
+                CTAttunementCompleteEvent.class
         );
     }
 

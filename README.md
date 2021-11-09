@@ -16,11 +16,12 @@
 3. Customize the vanilla potion / potion bottle.
 4. Customize the JEI interface.
 5. Customize Thaumcraft aspects.
-6. FTBUltime support, which gives or removes a player's chain effect at any time.
-7. Modified Hydroangeas to accept other fluids, and modified Orechid to accept blocks as input that are not limited
+6. Customize Astral Sorcery attunement altar recipes.
+7. FTBUltime support, which gives or removes a player's chain effect at any time.
+8. Modified Hydroangeas to accept other fluids, and modified Orechid to accept blocks as input that are not limited
    to `Stone`.
-8. New randomtweaker.prop exists in the root directory and can be used to store data for Map<String, String>.
-9. Support some mods and vanilla game expansion.
+9. New randomtweaker.prop exists in the root directory and can be used to store data for Map<String, String>.
+10. Support some mods and vanilla game expansion.
 
 ↑ Above functions require configuration files for switching
 
