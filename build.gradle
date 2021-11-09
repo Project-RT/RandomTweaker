@@ -27,7 +27,7 @@ minecraft {
     mappings = "stable_39"
 
     def args = [
-            "-Dfml.coreMods.load=ink.ikx.rt.impl.internal.core.MixinBoot",
+            "-Dfml.coreMods.load=ink.ikx.rt.impl.internal.core.CoreModBoot",
             "-Dmixin.hotSwap=true",
             "-Dmixin.checks.interfaces=true"
     ]
@@ -132,7 +132,7 @@ jar {
         attributes([
                 'TweakClass' : 'org.spongepowered.asm.launch.MixinTweaker',
                 "ForceLoadAsMod" : true,
-                "FMLCorePlugin": "ink.ikx.rt.impl.internal.core.MixinBoot",
+                "FMLCorePlugin": "ink.ikx.rt.impl.internal.core.CoreModBoot",
                 "FMLCorePluginContainsFMLMod": true,
                 'FMLAT': 'randomtweaker_at.cfg'
         ])
