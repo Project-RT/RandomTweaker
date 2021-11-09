@@ -46,7 +46,7 @@ public class MixinBoot implements IFMLLoadingPlugin {
     @Override
     public String[] getASMTransformerClass() {
         return new String[]{
-                "ink.ikx.rt.impl.classtransforms.RandomTweakerClassTransformer"
+                "ink.ikx.rt.classTransforms.RandomTweakerClassTransformer"
         };
     }
 

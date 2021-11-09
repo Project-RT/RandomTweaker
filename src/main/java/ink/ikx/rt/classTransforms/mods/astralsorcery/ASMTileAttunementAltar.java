@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.classtransforms.mods.astralsorcery;
+package ink.ikx.rt.classTransforms.mods.astralsorcery;
 
 
 import org.objectweb.asm.ClassVisitor;
@@ -8,7 +8,7 @@ import org.objectweb.asm.MethodVisitor;
 import static org.objectweb.asm.Opcodes.*;
 
 public class ASMTileAttunementAltar extends ClassVisitor {
-    public static final String reflectionMethods = "ink/ikx/rt/impl/classtransforms/mods/astralsorcery/AttunementAltarMethodReflections";
+    public static final String reflectionMethods = "ink/ikx/rt/impl/classTransforms/mods/astralsorcery/AttunementAltarMethodReflections";
 
     public ASMTileAttunementAltar(int api) {
         super(api);

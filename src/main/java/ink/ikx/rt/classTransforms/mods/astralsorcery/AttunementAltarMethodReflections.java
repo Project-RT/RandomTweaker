@@ -1,4 +1,4 @@
-package ink.ikx.rt.impl.classtransforms.mods.astralsorcery;
+package ink.ikx.rt.classTransforms.mods.astralsorcery;
 
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;

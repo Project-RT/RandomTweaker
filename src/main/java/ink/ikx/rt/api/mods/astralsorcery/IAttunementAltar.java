@@ -25,7 +25,7 @@ public abstract class IAttunementAltar {
     @ZenMethod
     public static void addRecipe(IIngredient input, IItemStack output) {
         CraftTweakerAPI.apply(
-                new ActionAttunementAltar(input, output, null)
+                new ActionAttunementAltar(input, output)
         );
     }
 
@@ -53,12 +53,11 @@ public abstract class IAttunementAltar {
                 CustomAttunementRecipe.allRecipes.add(
                         new CustomAttunementRecipe(null, ingredient, output)
                 );
-                return;
+            }else{
+                CustomAttunementRecipe.allRecipes.add(
+                        new CustomAttunementRecipe(ConstellationRegistry.getConstellationByName(constellationString),
+                                ingredient, output));
             }
-            CustomAttunementRecipe.allRecipes.add(
-                    new CustomAttunementRecipe(ConstellationRegistry.getConstellationByName(constellationString),
-                            ingredient, output)
-            );
         }
 
         @Override

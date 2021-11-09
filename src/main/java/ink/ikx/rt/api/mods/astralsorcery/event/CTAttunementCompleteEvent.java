@@ -56,7 +56,7 @@ public abstract class CTAttunementCompleteEvent implements IEventCancelable {
 
     @ZenMethod
     public void addAdditionalOutput(IItemStack additionalOutput) {
-        this.event.getAdditionalOutput().add(CraftTweakerMC.getItemStack(additionalOutput));
+        this.event.addAdditionalOutput(CraftTweakerMC.getItemStack(additionalOutput));
     }
 
     @ZenMethod

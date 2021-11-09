@@ -1,15 +1,12 @@
-package ink.ikx.rt.impl.classtransforms;
+package ink.ikx.rt.classTransforms;
 
-import ink.ikx.rt.impl.classtransforms.mods.astralsorcery.ASMTileAttunementAltar;
+import ink.ikx.rt.classTransforms.mods.astralsorcery.ASMTileAttunementAltar;
 import net.minecraft.launchwrapper.IClassTransformer;
 import org.apache.logging.log4j.LogManager;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.objectweb.asm.Opcodes.ASM5;
 
