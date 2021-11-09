@@ -8,7 +8,7 @@ import org.objectweb.asm.MethodVisitor;
 import static org.objectweb.asm.Opcodes.*;
 
 public class ASMTileAttunementAltar extends ClassVisitor {
-    public static final String reflectionMethods = "ink/ikx/rt/impl/classTransforms/mods/astralsorcery/AttunementAltarMethodReflections";
+    public static final String reflectionMethods = "ink/ikx/rt/classTransforms/mods/astralsorcery/AttunementAltarMethodReflections";
 
     public ASMTileAttunementAltar(int api) {
         super(api);
