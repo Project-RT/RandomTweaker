@@ -2,6 +2,8 @@ package ink.ikx.rt.api.mods.astralsorcery.event;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.event.IEventCancelable;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementCompleteEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -23,18 +25,18 @@ public abstract class CTAttunementCompleteEvent implements IEventCancelable {
     }
 
     @ZenGetter("input")
-    public ItemStack getInput() {
-        return this.event.getInput();
+    public IItemStack getInput() {
+        return CraftTweakerMC.getIItemStack(this.event.getInput());
     }
 
     @ZenGetter("output")
-    public ItemStack getOutput() {
-        return this.event.getOutput();
+    public IItemStack getOutput() {
+        return CraftTweakerMC.getIItemStack(this.event.getOutput());
     }
 
     @ZenSetter("output")
-    public void setOutput(ItemStack output) {
-        this.event.setOutput(output);
+    public void setOutput(IItemStack output) {
+        this.event.setOutput(CraftTweakerMC.getItemStack(output));
     }
 
     @ZenGetter("world")
@@ -49,8 +51,8 @@ public abstract class CTAttunementCompleteEvent implements IEventCancelable {
 
     @ZenSetter("additionalOutput")
     @ZenMethod
-    public void addAdditionalOutput(ItemStack additionalOutput) {
-        this.event.getAdditionalOutput().add(additionalOutput);
+    public void addAdditionalOutput(IItemStack additionalOutput) {
+        this.event.getAdditionalOutput().add(CraftTweakerMC.getItemStack(additionalOutput));
     }
 
     @ZenGetter("additionalOutput")
