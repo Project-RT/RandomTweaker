@@ -53,12 +53,11 @@ public abstract class IAttunementAltar {
                 CustomAttunementRecipe.allRecipes.add(
                         new CustomAttunementRecipe(null, ingredient, output)
                 );
-                return;
+            }else{
+                CustomAttunementRecipe.allRecipes.add(
+                        new CustomAttunementRecipe(ConstellationRegistry.getConstellationByName(constellationString),
+                                ingredient, output));
             }
-            CustomAttunementRecipe.allRecipes.add(
-                    new CustomAttunementRecipe(ConstellationRegistry.getConstellationByName(constellationString),
-                            ingredient, output)
-            );
         }
 
         @Override
