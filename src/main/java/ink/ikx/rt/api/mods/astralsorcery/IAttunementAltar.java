@@ -29,19 +29,19 @@ public abstract class IAttunementAltar {
         );
     }
 
-    private static class ActionAttunementAltar implements IAction{
+    private static class ActionAttunementAltar implements IAction {
 
         IIngredient ingredient;
         IItemStack output;
         String constellationString;
 
-        public ActionAttunementAltar(IIngredient input, IItemStack output, String constellationString){
+        public ActionAttunementAltar(IIngredient input, IItemStack output, String constellationString) {
             this.ingredient = input;
             this.output = output;
             this.constellationString = constellationString;
         }
 
-        public ActionAttunementAltar(IIngredient input, IItemStack output){
+        public ActionAttunementAltar(IIngredient input, IItemStack output) {
             this.ingredient = input;
             this.output = output;
             this.constellationString = null;
@@ -53,7 +53,7 @@ public abstract class IAttunementAltar {
                 CustomAttunementRecipe.allRecipes.add(
                         new CustomAttunementRecipe(null, ingredient, output)
                 );
-            }else{
+            } else {
                 CustomAttunementRecipe.allRecipes.add(
                         new CustomAttunementRecipe(ConstellationRegistry.getConstellationByName(constellationString),
                                 ingredient, output));
@@ -63,12 +63,13 @@ public abstract class IAttunementAltar {
         @Override
         public String describe() {
             return "Add attunement recipe " +
-                    ingredient.toString() + (constellationString!=null ? constellationString : "")
+                    ingredient.toString() + (constellationString != null ? constellationString : "")
                     + " -> " + output.toString();
         }
+
         @Override
         public boolean validate() {
-            if(constellationString != null){
+            if (constellationString != null) {
                 IConstellation constellation = ConstellationRegistry.getConstellationByName(constellationString);
                 return constellation != null;
             }
