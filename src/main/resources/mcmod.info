@@ -1,16 +1,19 @@
 [
-{
-  "modid": "randomtweaker",
-  "name": "RandomTweaker",
-  "description": "Random Tweaker",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["ikexing", "superhelo"],
-  "credits": "",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
+  {
+    "modid": "randomtweaker",
+    "name": "RandomTweaker",
+    "description": "Random Tweaker",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "ikexing",
+      "superhelo"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
 ]

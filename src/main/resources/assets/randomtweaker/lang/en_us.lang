@@ -3,3 +3,9 @@ randomtweaker.jei_orechid=Orechid
 
 text.randomtweaker.hydroangeas_factorblock_description=This block can increase the mana generation of Hydroangeas.
 text.randomtweaker.factor=Factor:
+
+
+text.randomtweaker.attunement_constellation=Attuned to constellation:
+text.randomtweaker.attunement_any_constellation=Any attunement constellation.
+
+randomtweaker.jei_attunements=Attunement Altar

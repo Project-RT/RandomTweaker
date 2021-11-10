@@ -4,6 +4,7 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.impl.mods.jei.impl.core.MCJeiPanel;
 import ink.ikx.rt.impl.mods.jei.impl.core.MCJeiRecipe;
+import ink.ikx.rt.impl.mods.jei.recipe.AttunementRecipeWarpper;
 import ink.ikx.rt.impl.mods.jei.recipe.DynamicRecipesCategory;
 import ink.ikx.rt.impl.mods.jei.recipe.DynamicRecipesWrapper;
 import mezz.jei.Internal;
@@ -38,7 +39,11 @@ public class JeiPlugin implements IModPlugin {
                     .filter(r -> r.getUid().equals(panel.uid))
                     .map(r -> (MCJeiRecipe) r)
                     .collect(Collectors.toList());
-            registry.addRecipes(recipeList.stream().map(DynamicRecipesWrapper::new).collect(Collectors.toList()), panel.uid);
+            if (panel.uid.equals(JeiAttunements.UID)) {
+                registry.addRecipes(recipeList.stream().map(AttunementRecipeWarpper::new).collect(Collectors.toList()), panel.uid);
+            } else {
+                registry.addRecipes(recipeList.stream().map(DynamicRecipesWrapper::new).collect(Collectors.toList()), panel.uid);
+            }
         });
     }
 

@@ -8,8 +8,6 @@ import ink.ikx.rt.Main;
 import ink.ikx.rt.api.internal.file.IProp;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBaubleContent;
-import java.io.File;
-import java.util.Map;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,17 +17,20 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.IItemHandler;
 import vazkii.botania.api.BotaniaAPIClient;
 
+import java.io.File;
+import java.util.Map;
+
 public class MCBotaniaContentEvent {
 
     public static String FLOWER_BLOCK_STATE = "{\n"
-        + "  \"forge_marker\": 1,\n"
-        + "  \"variants\": {\n"
-        + "    \"normal\": [{\n"
-        + "      \"model\": \"botania:shapes/cross_tinted\",\n"
-        + "      \"textures\": {\n"
-        + "        \"cross\": \"contenttweaker:blocks/${name}\"\n"
-        + "      }\n"
-        + "    }],\n"
+            + "  \"forge_marker\": 1,\n"
+            + "  \"variants\": {\n"
+            + "    \"normal\": [{\n"
+            + "      \"model\": \"botania:shapes/cross_tinted\",\n"
+            + "      \"textures\": {\n"
+            + "        \"cross\": \"contenttweaker:blocks/${name}\"\n"
+            + "      }\n"
+            + "    }],\n"
             + "    \"inventory\": [{\n"
             + "      \"model\": \"builtin/generated\",\n"
             + "      \"transform\": \"forge:default-item\",\n"
@@ -38,7 +39,7 @@ public class MCBotaniaContentEvent {
             + "      }\n"
             + "    }]\n"
             + "  }\n"
-        + "}";
+            + "}";
 
     @SubscribeEvent
     public static void onModelRegistry(ModelRegistryEvent event) {
@@ -51,9 +52,9 @@ public class MCBotaniaContentEvent {
     @SubscribeEvent
     public static void onDeath(LivingDeathEvent evt) {
         if (!evt.getEntityLiving().world.isRemote
-            && evt.getEntityLiving() instanceof EntityPlayer
-            && !evt.getEntityLiving().world.getGameRules().getBoolean("keepInventory")
-            && !((EntityPlayer) evt.getEntityLiving()).isSpectator()) {
+                && evt.getEntityLiving() instanceof EntityPlayer
+                && !evt.getEntityLiving().world.getGameRules().getBoolean("keepInventory")
+                && !((EntityPlayer) evt.getEntityLiving()).isSpectator()) {
             IItemHandler inv = BaublesApi.getBaublesHandler((EntityPlayer) evt.getEntityLiving());
             for (int i = 0; i < inv.getSlots(); i++) {
                 ItemStack stack = inv.getStackInSlot(i);

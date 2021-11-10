@@ -20,18 +20,18 @@ import net.minecraft.world.World;
 public class AttunementAltarMethodReflections {
 
     public static void debugPrint(Object object) {
-        
-        
+
+
     }
 
     public static void checkForAttunements(EntityItem itemStack) {
-        
-        
+
+
     }
 
     public static void onAttunementStart(EntityItem itemStack) {
-        
-        
+
+
     }
 
     public static void onCraftingFinish(ItemStack itemStack, EntityItem original, World world, IConstellation constellation) {
@@ -65,11 +65,8 @@ public class AttunementAltarMethodReflections {
     }
 
     public static boolean haveRecipe(IConstellation constellation, ItemStack itemStack) {
-        
         for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
-            
             if (recipe.canDoRecipe(constellation, itemStack)) {
-                
                 return true;
             }
         }
@@ -107,16 +104,16 @@ public class AttunementAltarMethodReflections {
     }
 
     public static boolean logicPatch(boolean A, boolean B, boolean C) {
-        
+
         return (A && B) || C;
     }
 
-    public static Item getTunedItemVariant(Item item, IConstellation constellation) {
+    public static Item getTunedItemVariant(Item item, EntityItem itemStack, IConstellation constellation) {
         if (item instanceof ItemRockCrystalBase) {
             return ((ItemRockCrystalBase) item).getTunedItemVariant();
         } else {
             for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
-                if (recipe.canDoRecipe(constellation, new ItemStack(item))) {
+                if (recipe.canDoRecipe(constellation, itemStack.getItem())) {
                     return recipe.getResult().getItem();
                 }
             }

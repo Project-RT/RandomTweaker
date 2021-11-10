@@ -3,3 +3,8 @@ randomtweaker.jei_orechid=凝矿兰
 
 text.randomtweaker.hydroangeas_factorblock_description=该方块可增加水绣球的魔力产出。
 text.randomtweaker.factor=倍数：
+
+text.randomtweaker.attunement_constellation=需要与此星座共鸣：
+text.randomtweaker.attunement_any_constellation=任何星座都可共鸣。
+
+randomtweaker.jei_attunements=共鸣祭坛
