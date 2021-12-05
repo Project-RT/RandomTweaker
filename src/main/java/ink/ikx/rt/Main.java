@@ -7,6 +7,7 @@ import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Sets;
 import crafttweaker.mods.jei.JEI;
 import ink.ikx.rt.api.mods.astralsorcery.event.CTEventManagerAS;
+import ink.ikx.rt.api.mods.botania.ICocoon;
 import ink.ikx.rt.api.mods.botania.event.CTEventManager;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
@@ -54,6 +55,7 @@ public class Main {
 
     public static final Set<IJeiPanel> JEI_PANEL_SET = Sets.newHashSet();
     public static final Set<IJeiRecipe> JEI_RECIPE_SET = Sets.newHashSet();
+    public static final Set<ICocoon> CUSTOM_COCOONS_SPAWN = Sets.newHashSet();
     public static final BiMap<String, Pair<String, ISubTileEntityRepresentation>> SUB_TILE_GENERATING_MAP = HashBiMap.create();
 
     @SidedProxy(clientSide = "ink.ikx.rt.impl.internal.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.internal.proxy.ServerProxy")

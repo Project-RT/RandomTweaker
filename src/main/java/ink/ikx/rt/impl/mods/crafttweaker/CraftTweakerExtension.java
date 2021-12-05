@@ -14,6 +14,7 @@ import ink.ikx.rt.api.mods.astralsorcery.IAttunementAltar;
 import ink.ikx.rt.api.mods.astralsorcery.IPlayerExpansionAs;
 import ink.ikx.rt.api.mods.astralsorcery.event.CTAttunementCompleteEvent;
 import ink.ikx.rt.api.mods.astralsorcery.event.CTEventManagerAS;
+import ink.ikx.rt.api.mods.botania.ICocoon;
 import ink.ikx.rt.api.mods.botania.IManaItemHandler;
 import ink.ikx.rt.api.mods.botania.ITileAlfPortal;
 import ink.ikx.rt.api.mods.botania.event.CTAlfPortalDroppedEvent;
@@ -80,6 +81,7 @@ public class CraftTweakerExtension {
     static {
         classes = Lists.newArrayList(
                 Update.class,
+                ICocoon.class,
                 IJeiSlot.class,
                 IJeiUtils.class,
                 CanSelect.class,
