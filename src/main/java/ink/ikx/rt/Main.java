@@ -23,6 +23,9 @@ import ink.ikx.rt.impl.mods.jei.JeiAttunements;
 import ink.ikx.rt.impl.mods.jei.JeiHydroangeas;
 import ink.ikx.rt.impl.mods.jei.JeiOrechid;
 import ink.ikx.rt.impl.mods.thaumcraft.DreamJournalEvent;
+import java.lang.reflect.Field;
+import java.util.Objects;
+import java.util.Set;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -36,10 +39,6 @@ import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
 
-import java.lang.reflect.Field;
-import java.util.Objects;
-import java.util.Set;
-
 @Mod(
         modid = Main.MODID,
         name = Main.NAME,
@@ -50,7 +49,7 @@ public class Main {
 
     public static final String MODID = "randomtweaker";
     public static final String NAME = "RandomTweaker";
-    public static final String VERSION = "1.2.7";
+    public static final String VERSION = "1.2.8";
     public static final String DESPENDENCIES = "required-after:crafttweaker;after:contenttweaker;";
 
     public static final Set<IJeiPanel> JEI_PANEL_SET = Sets.newHashSet();
