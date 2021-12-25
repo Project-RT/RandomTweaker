@@ -17,46 +17,55 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ModOnly("botania")
-@ZenClass("mods.randomtweaker.botania.Cocoon")
+@ZenClass("mods.randomtweaker.botania.ICocoon")
 public abstract class ICocoon {
 
     public abstract ItemStack getStack();
 
-    public abstract Map<Float, EntityEntry> getSpawnTab();
+    public abstract Map<EntityEntry, Double> getSpawnTab();
 
-    public abstract EntityEntry getEntityAt(float probability);
+    public abstract double getProbablyByEntity(EntityEntry entity);
 
     public abstract boolean match(ItemStack stack);
 
     public abstract boolean match(String stack);
 
     @ZenMethod
-    public static void registerSpawn(@NotNull IItemStack stack, @NotNull Map<Float, IEntityDefinition> spawnTab) {
-        if(checkMap(spawnTab)) {
-            Map<Float, EntityEntry> tab = Maps.newHashMap();
-            spawnTab.forEach((key, value) -> tab.put(key, (EntityEntry) value.getInternal()));
-            Main.CUSTOM_COCOONS_SPAWN.add(new MCCocoon(CraftTweakerMC.getItemStack(stack), tab));
+    public static void registerSpawn(@NotNull IItemStack stack, @NotNull Map<IEntityDefinition, Double> spawnTab) {
+        if(Objects.isNull(stack) || Objects.isNull(spawnTab)) {
+            CraftTweakerAPI.logError("The argument cannot be null", new IllegalArgumentException());
+            return;
         }
+
+        Map<EntityEntry, Double> tab = Maps.newHashMap();
+        spawnTab.forEach((entity, probably) -> {
+            if(Objects.nonNull(entity)) {
+                if(entity.getInternal() instanceof EntityEntry) {
+                    tab.put((EntityEntry) entity.getInternal(), probably);
+                } else {
+                    CraftTweakerAPI.logError("The internal type of the entity is not EntityEntry!");
+                }
+            }
+        });
+        MCCocoon.create(CraftTweakerMC.getItemStack(stack), tab);
     }
 
-    private static boolean checkMap(Map<Float, IEntityDefinition> spawnTab) {
-        float sumResult = 0.0f;
-
-        for(float probability : spawnTab.keySet()) {
-            sumResult += probability;
-            IEntityDefinition entity = spawnTab.get(probability);
-            if(Objects.isNull(entity) || Objects.isNull(entity.getInternal()) || !(entity.getInternal() instanceof EntityEntry)) {
-                CraftTweakerAPI.logError("entity cannot be null!", new IllegalArgumentException());
-                return false;
+    public static ICocoon getInstanceByString(String stack) {
+        for(ICocoon cocoon : Main.CUSTOM_COCOONS_SPAWN) {
+            if(cocoon.match(stack)) {
+                return cocoon;
             }
         }
+        return null;
+    }
 
-        if(sumResult > 1.0f) {
-            CraftTweakerAPI.logError("probability over 1", new IllegalArgumentException());
-            return false;
+    public static ICocoon getInstanceByStack(ItemStack stack) {
+        for(ICocoon cocoon : Main.CUSTOM_COCOONS_SPAWN) {
+            if(cocoon.match(stack)) {
+                return cocoon;
+            }
         }
-
-        return true;
+        return null;
     }
 
 }

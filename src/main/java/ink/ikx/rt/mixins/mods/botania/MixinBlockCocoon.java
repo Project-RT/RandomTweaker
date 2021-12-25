@@ -23,12 +23,12 @@ public abstract class MixinBlockCocoon {
 
     @Inject(method = "addStack", at = @At(value = "HEAD"), cancellable = true)
     private void injectAddStack(World world, BlockPos pos, ItemStack stack, boolean creative, CallbackInfoReturnable<Boolean> cir) {
-        boolean stackInMap = Main.CUSTOM_COCOONS_SPAWN.stream().anyMatch(cocoon -> cocoon.match(stack));
+        boolean isStackInSet = Main.CUSTOM_COCOONS_SPAWN.stream().anyMatch(cocoon -> cocoon.match(stack));
         TileCocoon cocoon = (TileCocoon) world.getTileEntity(pos);
         Item item = stack.getItem();
 
         if(item != Items.EMERALD && item != Items.CHORUS_FRUIT) {
-            if (!world.isRemote && Objects.nonNull(cocoon) && !stack.isEmpty() && stackInMap) {
+            if (!world.isRemote && Objects.nonNull(cocoon) && !stack.isEmpty() && isStackInSet) {
                 NBTTagCompound tileData = cocoon.getTileData();
 
                 if (!tileData.hasKey("ItemGiven")) {
@@ -36,7 +36,7 @@ public abstract class MixinBlockCocoon {
                 }
 
                 NBTTagCompound itemGiven = tileData.getCompoundTag("ItemGiven");
-                String stackToString = MCCocoon.getStackName(stack);
+                String stackToString = MCCocoon.writeStackToString(stack);
 
                 int amount = itemGiven.getInteger(stackToString);
 

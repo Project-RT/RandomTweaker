@@ -1,49 +1,104 @@
 package ink.ikx.rt.impl.mods.botania;
 
+import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.botania.ICocoon;
 import java.util.Map;
+import java.util.Objects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 
 public class MCCocoon extends ICocoon {
 
     private final ItemStack giveStack;
-    private final Map<Float, EntityEntry> spawnTab;
+    private final Map<EntityEntry, Double> spawnTab;
 
-    public MCCocoon(ItemStack giveStack, Map<Float, EntityEntry> spawnTab) {
+    private MCCocoon(ItemStack giveStack, Map<EntityEntry, Double> spawnTab) {
         this.giveStack = giveStack;
         this.spawnTab = spawnTab;
+    }
+
+    public static MCCocoon create(ItemStack giveStack, Map<EntityEntry, Double> spawnTab) {
+        if(check(spawnTab)) {
+            MCCocoon cocoon = new MCCocoon(giveStack, spawnTab);
+            Main.CUSTOM_COCOONS_SPAWN.add(cocoon);
+            return cocoon;
+        }
+
+        return null;
     }
 
     public ItemStack getStack() {
         return giveStack;
     }
 
-    public Map<Float, EntityEntry> getSpawnTab() {
+    public Map<EntityEntry, Double> getSpawnTab() {
         return spawnTab;
     }
 
-    public EntityEntry getEntityAt(float probability) {
-        return spawnTab.get(probability);
+    @Override
+    public double getProbablyByEntity(EntityEntry entity) {
+        return spawnTab.get(entity);
     }
 
     public boolean match(ItemStack stack) {
-        return CraftTweakerMC.getIItemStack(giveStack).matches(CraftTweakerMC.getIItemStack(stack));
+        return CraftTweakerMC.getIItemStack(this.giveStack).matches(CraftTweakerMC.getIItemStack(stack));
     }
 
     @Override
     public boolean match(String stack) {
-        String stackToString = getStackName(giveStack);
+        String stackToString = writeStackToString(giveStack);
         return stackToString.equals(stack);
     }
 
-    public static String getStackName(ItemStack stack) {
-        NBTTagCompound stackToNBT = stack.writeToNBT(new NBTTagCompound());
-        stackToNBT.removeTag("Count");
-        stackToNBT.removeTag("ForgeCaps");
-        return stackToNBT.toString();
+    public static String writeStackToString(ItemStack stack) {
+        NBTTagCompound nbt = new NBTTagCompound();
+        ResourceLocation resourcelocation = Item.REGISTRY.getNameForObject(stack.getItem());
+
+        nbt.setString("id", Objects.isNull(resourcelocation) ? "minecraft:air" : resourcelocation.toString());
+        nbt.setShort("Damage", (short) stack.getItemDamage());
+
+        if(Objects.nonNull(stack.getTagCompound())) {
+            nbt.setTag("tag", stack.getTagCompound());
+        }
+
+        return nbt.toString();
+    }
+
+    private static boolean check(Map<EntityEntry, Double> spawnTab) {
+        double sumResult = 0.0f;
+
+        if(Objects.isNull(spawnTab)) {
+            CraftTweakerAPI.logError("SpawnTab cannot be null!", new IllegalArgumentException());
+            return false;
+        }
+
+        for(EntityEntry entity : spawnTab.keySet()) {
+            if(Objects.isNull(entity)) {
+                CraftTweakerAPI.logError("The entity cannot be null!", new IllegalArgumentException());
+                return false;
+            }
+
+            double probably = spawnTab.get(entity);
+
+            if(probably <= 0.0f) {
+                CraftTweakerAPI.logError("Probably less than 0!", new IllegalArgumentException());
+                return false;
+            }
+
+            sumResult += probably;
+        }
+
+        if(sumResult > 1.0f) {
+            CraftTweakerAPI.logError("Probably over 1!", new IllegalArgumentException());
+            return false;
+        }
+
+        return true;
     }
 
     @Override
@@ -57,12 +112,17 @@ public class MCCocoon extends ICocoon {
 
         ICocoon that = (ICocoon) o;
 
-        return giveStack.equals(that.getStack());
+        return this.match(that.getStack());
     }
 
     @Override
     public int hashCode() {
-        return giveStack.hashCode();
+        int hash = 7;
+        hash = 41 * hash + giveStack.getItem().hashCode();
+        hash = 41 * hash + giveStack.getItemDamage();
+        hash = 41 * hash + (Objects.nonNull(giveStack.getTagCompound()) ? giveStack.getTagCompound().hashCode() : 0);
+
+        return hash;
     }
 
 }
