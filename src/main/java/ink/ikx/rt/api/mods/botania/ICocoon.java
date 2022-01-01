@@ -28,44 +28,39 @@ public abstract class ICocoon {
 
     public abstract boolean match(ItemStack stack);
 
-    public abstract boolean match(String stack);
-
     @ZenMethod
-    public static void registerSpawn(@NotNull IItemStack stack, @NotNull Map<IEntityDefinition, Double> spawnTab) {
-        if(Objects.isNull(stack) || Objects.isNull(spawnTab)) {
+    public static void registerSpawn(@NotNull String name, @NotNull IItemStack stack, @NotNull Map<IEntityDefinition, Double> spawnTab) {
+        if (Objects.isNull(name) && Objects.isNull(stack) || Objects.isNull(spawnTab)) {
             CraftTweakerAPI.logError("The argument cannot be null", new IllegalArgumentException());
             return;
         }
 
         Map<EntityEntry, Double> tab = Maps.newHashMap();
         spawnTab.forEach((entity, probably) -> {
-            if(Objects.nonNull(entity)) {
-                if(entity.getInternal() instanceof EntityEntry) {
+            if (Objects.nonNull(entity)) {
+                if (entity.getInternal() instanceof EntityEntry) {
                     tab.put((EntityEntry) entity.getInternal(), probably);
                 } else {
                     CraftTweakerAPI.logError("The internal type of the entity is not EntityEntry!");
                 }
             }
         });
-        MCCocoon.create(CraftTweakerMC.getItemStack(stack), tab);
+        Main.CUSTOM_COCOONS_SPAWN.put(name, MCCocoon.create(name, CraftTweakerMC.getItemStack(stack), tab));
     }
 
-    public static ICocoon getInstanceByString(String stack) {
-        for(ICocoon cocoon : Main.CUSTOM_COCOONS_SPAWN) {
-            if(cocoon.match(stack)) {
-                return cocoon;
-            }
-        }
-        return null;
+    public static ICocoon getInstanceByName(String name) {
+        return Main.CUSTOM_COCOONS_SPAWN.get(name);
     }
 
     public static ICocoon getInstanceByStack(ItemStack stack) {
-        for(ICocoon cocoon : Main.CUSTOM_COCOONS_SPAWN) {
-            if(cocoon.match(stack)) {
+        for (ICocoon cocoon : Main.CUSTOM_COCOONS_SPAWN.values()) {
+            if (cocoon.match(stack)) {
                 return cocoon;
             }
         }
         return null;
     }
+
+    public abstract String getName();
 
 }

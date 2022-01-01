@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Pair;
 import cn.hutool.core.util.ReflectUtil;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import crafttweaker.mods.jei.JEI;
 import ink.ikx.rt.api.mods.astralsorcery.event.CTEventManagerAS;
@@ -24,6 +25,7 @@ import ink.ikx.rt.impl.mods.jei.JeiHydroangeas;
 import ink.ikx.rt.impl.mods.jei.JeiOrechid;
 import ink.ikx.rt.impl.mods.thaumcraft.DreamJournalEvent;
 import java.lang.reflect.Field;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import net.minecraft.init.Blocks;
@@ -54,7 +56,7 @@ public class Main {
 
     public static final Set<IJeiPanel> JEI_PANEL_SET = Sets.newHashSet();
     public static final Set<IJeiRecipe> JEI_RECIPE_SET = Sets.newHashSet();
-    public static final Set<ICocoon> CUSTOM_COCOONS_SPAWN = Sets.newHashSet();
+    public static final Map<String, ICocoon> CUSTOM_COCOONS_SPAWN = Maps.newHashMap();
     public static final BiMap<String, Pair<String, ISubTileEntityRepresentation>> SUB_TILE_GENERATING_MAP = HashBiMap.create();
 
     @SidedProxy(clientSide = "ink.ikx.rt.impl.internal.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.internal.proxy.ServerProxy")

@@ -6,30 +6,64 @@ import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.botania.ICocoon;
 import java.util.Map;
 import java.util.Objects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 
 public class MCCocoon extends ICocoon {
 
+    private final String name;
     private final ItemStack giveStack;
     private final Map<EntityEntry, Double> spawnTab;
 
-    private MCCocoon(ItemStack giveStack, Map<EntityEntry, Double> spawnTab) {
+    private MCCocoon(String name, ItemStack giveStack, Map<EntityEntry, Double> spawnTab) {
+        this.name = name;
         this.giveStack = giveStack;
         this.spawnTab = spawnTab;
     }
 
-    public static MCCocoon create(ItemStack giveStack, Map<EntityEntry, Double> spawnTab) {
-        if(check(spawnTab)) {
-            MCCocoon cocoon = new MCCocoon(giveStack, spawnTab);
-            Main.CUSTOM_COCOONS_SPAWN.add(cocoon);
-            return cocoon;
+    public static MCCocoon create(String name, ItemStack giveStack, Map<EntityEntry, Double> spawnTab) {
+        if (check(name, spawnTab)) {
+            return new MCCocoon(name, giveStack, spawnTab);
         }
 
         return null;
+    }
+
+    private static boolean check(String name, Map<EntityEntry, Double> spawnTab) {
+        double sumResult = 0.0f;
+
+        if (Objects.isNull(name) || Main.CUSTOM_COCOONS_SPAWN.containsKey(name)) {
+            CraftTweakerAPI.logError("The name cannot be null and must be unique!", new IllegalArgumentException());
+            return false;
+        }
+
+        if (Objects.isNull(spawnTab)) {
+            CraftTweakerAPI.logError("SpawnTab cannot be null!", new IllegalArgumentException());
+            return false;
+        }
+
+        for (EntityEntry entity : spawnTab.keySet()) {
+            if (Objects.isNull(entity)) {
+                CraftTweakerAPI.logError("The entity cannot be null!", new IllegalArgumentException());
+                return false;
+            }
+
+            double probably = spawnTab.get(entity);
+
+            if(probably <= 0.0f) {
+                CraftTweakerAPI.logError("Probably less than 0!", new IllegalArgumentException());
+                return false;
+            }
+
+            sumResult += probably;
+        }
+
+        if (sumResult > 1.0f) {
+            CraftTweakerAPI.logError("Probably over 1!", new IllegalArgumentException());
+            return false;
+        }
+
+        return true;
     }
 
     public ItemStack getStack() {
@@ -50,55 +84,8 @@ public class MCCocoon extends ICocoon {
     }
 
     @Override
-    public boolean match(String stack) {
-        String stackToString = writeStackToString(giveStack);
-        return stackToString.equals(stack);
-    }
-
-    public static String writeStackToString(ItemStack stack) {
-        NBTTagCompound nbt = new NBTTagCompound();
-        ResourceLocation resourcelocation = Item.REGISTRY.getNameForObject(stack.getItem());
-
-        nbt.setString("id", Objects.isNull(resourcelocation) ? "minecraft:air" : resourcelocation.toString());
-        nbt.setShort("Damage", (short) stack.getItemDamage());
-
-        if(Objects.nonNull(stack.getTagCompound())) {
-            nbt.setTag("tag", stack.getTagCompound());
-        }
-
-        return nbt.toString();
-    }
-
-    private static boolean check(Map<EntityEntry, Double> spawnTab) {
-        double sumResult = 0.0f;
-
-        if(Objects.isNull(spawnTab)) {
-            CraftTweakerAPI.logError("SpawnTab cannot be null!", new IllegalArgumentException());
-            return false;
-        }
-
-        for(EntityEntry entity : spawnTab.keySet()) {
-            if(Objects.isNull(entity)) {
-                CraftTweakerAPI.logError("The entity cannot be null!", new IllegalArgumentException());
-                return false;
-            }
-
-            double probably = spawnTab.get(entity);
-
-            if(probably <= 0.0f) {
-                CraftTweakerAPI.logError("Probably less than 0!", new IllegalArgumentException());
-                return false;
-            }
-
-            sumResult += probably;
-        }
-
-        if(sumResult > 1.0f) {
-            CraftTweakerAPI.logError("Probably over 1!", new IllegalArgumentException());
-            return false;
-        }
-
-        return true;
+    public String getName() {
+        return this.name;
     }
 
     @Override
