@@ -9,6 +9,8 @@ import stanhebben.zenscript.annotations.ZenSetter;
 
 public class MCTileData implements ITileData {
 
+    private final NBTTagCompound nbtTagCompound = new NBTTagCompound();
+
     public void readFromNBT(NBTTagCompound nbt) {
         this.nbtTagCompound.merge(nbt);
     }

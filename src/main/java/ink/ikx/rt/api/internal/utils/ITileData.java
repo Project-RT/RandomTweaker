@@ -19,8 +19,6 @@ import stanhebben.zenscript.annotations.ZenSetter;
 @ZenClass("mods.randomtweaker.cote.TileData")
 public interface ITileData extends INBTSerializable<NBTTagCompound> {
 
-    NBTTagCompound nbtTagCompound = new NBTTagCompound();
-
     static void checkDataMap(IData data) {
         if (!(data instanceof DataMap)) {
             CraftTweakerAPI.logError("data argument must be DataMap", new IllegalArgumentException());
