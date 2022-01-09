@@ -13,15 +13,17 @@
 
 1. Create custom Botania Generating / Functional Flowers.
 2. Customize Botania ManaItem / ManaBauble.
-3. Customize the vanilla potion / potion bottle.
-4. Customize the JEI interface.
-5. Customize Thaumcraft aspects.
-6. Customize Astral Sorcery attunement altar recipes.
-7. FTBUltime support, which gives or removes a player's chain effect at any time.
-8. Modified Hydroangeas to accept other fluids, and modified Orechid to accept blocks as input that are not limited
-   to `Stone`.
-9. New randomtweaker.prop exists in the root directory and can be used to store data for Map<String, String>.
-10. Support some mods and vanilla game expansion.
+3. Customize Botania Cocoon of Caprice spawns.
+4. Customize the vanilla potion / potion bottle.
+5. Customize the JEI interface.
+6. Customize Thaumcraft aspects.
+7. Customize Astral Sorcery attunement altar recipes.
+8. FTBUltime support, which gives or removes a player's chain effect at any time.
+9. Modified Hydroangeas to accept other fluids, and modified Orechid to accept blocks as input that
+   are not limited to `Stone`.
+10. New randomtweaker.prop exists in the root directory and can be used to store data for Map<
+    String, String>.
+11. Support some mods and vanilla game expansion.
 
 ↑ Above functions require configuration files for switching
 
