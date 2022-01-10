@@ -40,7 +40,7 @@ import ink.ikx.rt.api.mods.contenttweaker.mana.item.tool.IIsUsesManaItemRepresen
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionTypeRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.render.IBaubleRenderHelper;
-import ink.ikx.rt.api.mods.contenttweaker.render.IBotaniaFXHelper;
+import ink.ikx.rt.api.mods.botania.render.IBotaniaFXHelper;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ExpandWorldForSubTile;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityInGame;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;

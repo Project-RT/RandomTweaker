@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.contenttweaker.render;
+package ink.ikx.rt.api.mods.botania.render;
 
 import crafttweaker.annotations.ModOnly;
 import stanhebben.zenscript.annotations.ZenClass;
