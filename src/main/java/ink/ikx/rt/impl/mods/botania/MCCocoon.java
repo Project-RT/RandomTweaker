@@ -25,7 +25,6 @@ public class MCCocoon extends ICocoon {
         if (check(name, spawnTab)) {
             return new MCCocoon(name, giveStack, spawnTab);
         }
-
         return null;
     }
 
@@ -33,7 +32,7 @@ public class MCCocoon extends ICocoon {
         double sumResult = 0.0f;
 
         if (Objects.isNull(name) || Main.CUSTOM_COCOONS_SPAWN.containsKey(name)) {
-            CraftTweakerAPI.logError("The name cannot be null and must be unique!", new IllegalArgumentException());
+            CraftTweakerAPI.logWarning("The name cannot be null and must be unique!");
             return false;
         }
 
