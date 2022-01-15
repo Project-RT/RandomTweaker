@@ -5,7 +5,6 @@ import com.google.common.collect.Maps;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.item.IIngredient;
 import ink.ikx.rt.api.internal.utils.IInputPattern;
-
 import java.text.MessageFormat;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +15,7 @@ public class MCInputPattern implements IInputPattern {
     private final Map<Character, IIngredient> mapping = Maps.newHashMap();
     private final Map<Integer, List<IIngredient>> grip = Maps.newLinkedHashMap();
 
-    public MCInputPattern(String[] pattern) {
+    public MCInputPattern(String... pattern) {
         this.pattern = pattern;
     }
 
