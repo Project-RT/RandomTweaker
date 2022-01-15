@@ -16,7 +16,7 @@ import stanhebben.zenscript.annotations.ZenSetter;
  * <br /> by -> https://github.com/friendlyhj/ZenUtils/blob/master/src/main/java/youyihj/zenutils/api/cotx/tile/TileData.java
  */
 @ModOnly("contenttweaker")
-@ZenClass("mods.randomtweaker.cote.TileData")
+@ZenClass("mods.randomtweaker.utils.ITileData")
 public interface ITileData extends INBTSerializable<NBTTagCompound> {
 
     static void checkDataMap(IData data) {

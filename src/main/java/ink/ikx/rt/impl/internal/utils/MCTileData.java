@@ -4,8 +4,6 @@ import crafttweaker.api.data.IData;
 import crafttweaker.mc1120.data.NBTConverter;
 import ink.ikx.rt.api.internal.utils.ITileData;
 import net.minecraft.nbt.NBTTagCompound;
-import stanhebben.zenscript.annotations.ZenGetter;
-import stanhebben.zenscript.annotations.ZenSetter;
 
 public class MCTileData implements ITileData {
 
@@ -20,12 +18,12 @@ public class MCTileData implements ITileData {
         return nbt;
     }
 
-    @ZenGetter("data")
+    @Override
     public IData getData() {
         return NBTConverter.from(this.writeToNBT(new NBTTagCompound()), true);
     }
 
-    @ZenSetter("data")
+    @Override
     public void setData(IData data) {
         ITileData.checkDataMap(data);
         this.readFromNBT((NBTTagCompound) NBTConverter.from(data));
