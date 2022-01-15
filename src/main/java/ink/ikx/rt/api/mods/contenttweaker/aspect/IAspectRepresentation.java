@@ -1,15 +1,13 @@
 package ink.ikx.rt.api.mods.contenttweaker.aspect;
 
-import com.teamacronymcoders.contenttweaker.api.ctobjects.resourcelocation.CTResourceLocation;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import java.util.Arrays;
+import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 import thaumcraft.api.aspects.Aspect;
-
-import java.util.Arrays;
-import java.util.Objects;
 
 @ModTotal({"thaumcraft", "contenttweaker"})
 @ZenClass("mods.randomtweaker.cote.Aspect")
@@ -24,7 +22,7 @@ public abstract class IAspectRepresentation {
     @ZenProperty
     public String[] components;
     @ZenProperty
-    public CTResourceLocation image;
+    public String image;
 
     public Aspect[] asAspects() {
         if (Objects.nonNull(components)) {
@@ -32,7 +30,7 @@ public abstract class IAspectRepresentation {
                 CraftTweakerAPI.logError("components' length must be two", new IllegalArgumentException());
                 return null;
             }
-            Arrays.stream(components).map(Aspect::getAspect).toArray(Aspect[]::new);
+            return Arrays.stream(components).map(Aspect::getAspect).toArray(Aspect[]::new);
         }
         return null;
     }
@@ -58,12 +56,12 @@ public abstract class IAspectRepresentation {
     }
 
     @ZenMethod
-    public CTResourceLocation getImage() {
+    public String getImage() {
         return image;
     }
 
     @ZenMethod
-    public void setImage(CTResourceLocation image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
