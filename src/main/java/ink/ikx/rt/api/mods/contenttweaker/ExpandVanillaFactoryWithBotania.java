@@ -21,27 +21,27 @@ import stanhebben.zenscript.annotations.ZenMethodStatic;
 public abstract class ExpandVanillaFactoryWithBotania {
 
     @ZenMethodStatic
-    public static IManaItemRepresentation createManaItem(String unlocalizedName, @Optional int maxMana) {
+    public static IManaItemRepresentation createManaItem(String unlocalizedName, @Optional(valueLong = 500000) int maxMana) {
         return new MCManaItemRepresentation(unlocalizedName, maxMana);
     }
 
     @ZenMethodStatic
-    public static IIsUsesManaItemRepresentation createManaUsingItem(String unlocalizedName, @Optional int maxMana) {
+    public static IIsUsesManaItemRepresentation createManaUsingItem(String unlocalizedName, @Optional(valueLong = 500000) int maxMana) {
         return new MCIsUsesManaItemRepresentation(unlocalizedName, maxMana);
     }
 
     @ZenMethodStatic
-    public static IManaBaubleRepresentation createManaBauble(String unlocalizedName, String baubleType, @Optional int maxMana) {
+    public static IManaBaubleRepresentation createManaBauble(String unlocalizedName, String baubleType, @Optional(valueLong = 500000) int maxMana) {
         return new MCManaBaubleRepresentation(unlocalizedName, maxMana, baubleType);
     }
 
     @ZenMethodStatic
-    public static ISubTileEntityGeneratingRepresentation createSubTileGenerating(String unlocalizedName, @Optional(valueLong = 0x4444FF) int color) {
+    public static ISubTileEntityGeneratingRepresentation createSubTileGenerating(String unlocalizedName, @Optional int color) {
         return new MCSubTileEntityRepresentation.MCSubTileEntityGeneratingRepresentation(color, unlocalizedName);
     }
 
     @ZenMethodStatic
-    public static ISubTileEntityFunctionalRepresentation createSubTileFunctional(String unlocalizedName, @Optional(valueLong = 0x4444FF) int color) {
+    public static ISubTileEntityFunctionalRepresentation createSubTileFunctional(String unlocalizedName, @Optional int color) {
         return new MCSubTileEntityRepresentation.MCSubTileEntityFunctionalRepresentation(color, unlocalizedName);
     }
 
