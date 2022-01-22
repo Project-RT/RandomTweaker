@@ -12,7 +12,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public abstract class IPlayerExpansionFTBU {
 
     @ZenMethod
-    public static void isAllowFTBUltimine(IPlayer player, boolean flag) {
+    public static void setAllowFTBUltimine(IPlayer player, boolean flag) {
         if (flag) {
             player.addTag("allowFTBUltimine");
         } else {
