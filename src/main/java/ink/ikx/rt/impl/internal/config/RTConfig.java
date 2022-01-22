@@ -23,7 +23,6 @@ public class RTConfig {
 
     public static class Thaumcraft {
 
-        @RequiresMcRestart
         @Comment("If true, The original DreamJournal will be no longer available. [default: false]")
         public boolean DreamJournal = false;
 
