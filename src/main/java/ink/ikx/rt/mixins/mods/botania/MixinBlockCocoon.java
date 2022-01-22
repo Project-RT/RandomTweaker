@@ -1,7 +1,7 @@
 package ink.ikx.rt.mixins.mods.botania;
 
 import ink.ikx.rt.Main;
-import ink.ikx.rt.api.mods.botania.IMixinTileCocoon;
+import ink.ikx.rt.impl.mods.botania.IMixinTileCocoon;
 import java.util.Objects;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;

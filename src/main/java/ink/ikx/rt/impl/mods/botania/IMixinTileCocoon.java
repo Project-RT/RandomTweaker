@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.botania;
+package ink.ikx.rt.impl.mods.botania;
 
 import net.minecraft.item.ItemStack;
 

@@ -3,7 +3,7 @@ package ink.ikx.rt.mixins.mods.botania;
 import com.google.common.collect.Maps;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.api.mods.botania.ICocoon;
-import ink.ikx.rt.api.mods.botania.IMixinTileCocoon;
+import ink.ikx.rt.impl.mods.botania.IMixinTileCocoon;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
