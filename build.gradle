@@ -5,7 +5,7 @@ buildscript {
         maven {url = "https://repo.spongepowered.org/maven"}
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3.4'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
         classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
     }
 }
@@ -54,9 +54,9 @@ dependencies {
     deobfCompile "curse.maven:Baubles-227083:2518667"
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
+    deobfCompile "curse.maven:naturesaura-306626:2882138"
     deobfCompile "curse.maven:ftb-ultimine-386134:3078750"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
-    deobfCompile "de.ellpeck.naturesaura:NaturesAura:r14-209"
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.670"
@@ -117,10 +117,6 @@ repositories {
     maven {
         name = "youyihj"
         url = "https://friendlyhj.github.io/maven"
-    }
-    maven {
-        name = "naturesaura"
-        url = "https://maven.chaosfield.at"
     }
 }
 
