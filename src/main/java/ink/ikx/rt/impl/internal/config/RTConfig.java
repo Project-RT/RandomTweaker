@@ -10,6 +10,7 @@ public class RTConfig {
 
     public static final Botania Botania = new Botania();
     public static final FTBUltimine FTBUltimine = new FTBUltimine();
+    public static final Thaumcraft Thaumcraft = new Thaumcraft();
     public static final RandomTweaker RandomTweaker = new RandomTweaker();
 
     public static class RandomTweaker {
@@ -17,6 +18,14 @@ public class RTConfig {
         @RequiresMcRestart
         @Comment("If true, Allow CrT to manipulate the file \"rt.properties\". [default: false]")
         public boolean Prop = false;
+
+    }
+
+    public static class Thaumcraft {
+
+        @RequiresMcRestart
+        @Comment("If true, The original DreamJournal will be no longer available. [default: false]")
+        public boolean DreamJournal = false;
 
     }
 

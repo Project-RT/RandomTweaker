@@ -77,10 +77,12 @@ public class Main {
 
     @EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
-        if (RTConfig.Botania.OrechidHasDefault && Loader.isModLoaded("botania"))
+        if (RTConfig.Botania.OrechidHasDefault && Loader.isModLoaded("botania")) {
             SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), BotaniaAPI.oreWeights);
-        if (Loader.isModLoaded("thaumcraft"))
+        }
+        if (Loader.isModLoaded("thaumcraft") && RTConfig.Thaumcraft.DreamJournal) {
             MinecraftForge.EVENT_BUS.register(DreamJournalEvent.class);
+        }
     }
 
     @EventHandler
