@@ -80,7 +80,7 @@ public class Main {
         if (RTConfig.Botania.OrechidHasDefault && Loader.isModLoaded("botania")) {
             SubTileOrechidManager.oreWeights.put(Blocks.STONE.getDefaultState(), BotaniaAPI.oreWeights);
         }
-        if (Loader.isModLoaded("thaumcraft") && RTConfig.Thaumcraft.DreamJournal) {
+        if (Loader.isModLoaded("thaumcraft")) {
             MinecraftForge.EVENT_BUS.register(DreamJournalEvent.class);
         }
     }

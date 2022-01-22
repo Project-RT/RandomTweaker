@@ -1,5 +1,6 @@
 package ink.ikx.rt.impl.mods.thaumcraft;
 
+import ink.ikx.rt.impl.internal.config.RTConfig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
@@ -15,11 +16,11 @@ public class DreamJournalEvent {
     public static void onItemPickup(EntityItemPickupEvent event) {
         EntityPlayer player = event.getEntityPlayer();
         World world = player.getEntityWorld();
-        if (!world.isRemote && event.getItem() != null) {
+        if (RTConfig.Thaumcraft.DreamJournal && !world.isRemote && event.getItem() != null) {
             IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(player);
             String gotdream = "!gotdream";
             if ((event.getItem().getItem().getItem() instanceof ItemCrystalEssence &&
-                    !knowledge.isResearchKnown(gotdream))) {
+                !knowledge.isResearchKnown(gotdream))) {
                 knowledge.addResearch(gotdream);
             }
         }
