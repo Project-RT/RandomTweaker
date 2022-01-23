@@ -33,4 +33,15 @@ public abstract class IPlayerExpansionFTBU {
         NetworkManager.FTBUltimineTag.sendClientCustomPacket(mcPlayer); // send to client
     }
 
+    @ZenMethod
+    public static boolean isAllowFTBUltimine(IPlayer player) {
+        EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
+        if (!(mcPlayer instanceof EntityPlayerMP)) {
+            CraftTweakerAPI.logError("The IPlayer object is not an EntityPlayerMP object.");
+            return false;
+        }
+        FTBUltimineTag capability = mcPlayer.getCapability(CapabilityRegistryHandler.FTB_ULTIMINE_CAPABILITY, null);
+        return Objects.requireNonNull(capability).isAllow();
+    }
+
 }
