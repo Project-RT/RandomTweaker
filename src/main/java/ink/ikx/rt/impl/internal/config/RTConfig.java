@@ -66,6 +66,7 @@ public class RTConfig {
 
     public static class FTBUltimine {
 
+        @RequiresMcRestart
         @Comment("If true, Allow Crt to Control the FTBUltimine enable")
         public boolean AllowCrTControl = false;
 

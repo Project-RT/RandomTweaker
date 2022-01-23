@@ -11,8 +11,11 @@ import ink.ikx.rt.api.mods.botania.event.CTEventManager;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
+import ink.ikx.rt.impl.internal.capability.CapabilityRegistryHandler;
 import ink.ikx.rt.impl.internal.config.RTConfig;
+import ink.ikx.rt.impl.internal.network.NetworkManager;
 import ink.ikx.rt.impl.internal.proxy.IProxy;
+import ink.ikx.rt.impl.internal.utils.InternalUtils;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
@@ -83,6 +86,10 @@ public class Main {
         }
         if (Loader.isModLoaded("thaumcraft")) {
             MinecraftForge.EVENT_BUS.register(DreamJournalEvent.class);
+        }
+        if (InternalUtils.isOpenFtbultimineControl()) {
+            NetworkManager.registerFTBUltimineTag();
+            CapabilityRegistryHandler.registerFTBUltimineTag();
         }
     }
 

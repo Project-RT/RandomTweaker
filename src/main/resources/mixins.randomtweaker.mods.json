@@ -6,14 +6,15 @@
   "target": "@env(DEFAULT)",
   "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
+    "botania.MixinBlockCocoon",
     "botania.MixinBlockSpecialFlower",
     "botania.MixinBotaniaAPI",
     "botania.MixinTileAlfPortal",
     "botania.MixinTileCocoon",
-    "botania.MixinBlockCocoon",
     "botania.MixinTilePool",
     "botania.MixinTileSpecialFlower",
-    "ftbultimine.MixinFTBUltimine"
+    "ftbultimine.MixinFTBUltimine",
+    "ftbultimine.MixinFTBUltimineClient"
   ],
   "client": []
 }
