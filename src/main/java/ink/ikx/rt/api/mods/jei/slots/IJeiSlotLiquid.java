@@ -1,9 +1,11 @@
 package ink.ikx.rt.api.mods.jei.slots;
 
 import crafttweaker.annotations.ModOnly;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
+@RTRegister
 @ModOnly("jei")
 @ZenClass("mods.randomtweaker.jei.IJeiSlotLiquid")
 public abstract class IJeiSlotLiquid extends IJeiSlot {

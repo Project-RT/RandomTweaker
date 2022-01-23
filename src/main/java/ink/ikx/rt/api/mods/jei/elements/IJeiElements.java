@@ -2,11 +2,13 @@ package ink.ikx.rt.api.mods.jei.elements;
 
 import crafttweaker.annotations.ModOnly;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
 public abstract class IJeiElements {
 
+    @RTRegister
     @ModOnly("jei")
     @ZenClass("mods.randomtweaker.jei.IJeiElementItemInput")
     public abstract static class IJeiElementItemInput extends IJeiElement {
@@ -20,6 +22,7 @@ public abstract class IJeiElements {
         }
     }
 
+    @RTRegister
     @ModOnly("jei")
     @ZenClass("mods.randomtweaker.jei.IJeiElementItemOutput")
     public abstract static class IJeiElementItemOutput extends IJeiElement {
@@ -34,6 +37,7 @@ public abstract class IJeiElements {
 
     }
 
+    @RTRegister
     @ModOnly("jei")
     @ZenClass("mods.randomtweaker.jei.IJeiElementLiquid")
     public abstract static class IJeiElementLiquid extends IJeiElement {
@@ -48,6 +52,7 @@ public abstract class IJeiElements {
 
     }
 
+    @RTRegister
     @ModOnly("jei")
     @ZenClass("mods.randomtweaker.jei.IJeiElementArrow")
     public abstract static class IJeiElementArrow extends IJeiElement {
@@ -67,6 +72,7 @@ public abstract class IJeiElements {
 
     }
 
+    @RTRegister
     @ModOnly("jei")
     @ZenClass("mods.randomtweaker.jei.IJeiElementFontInfo")
     public abstract static class IJeiElementFontInfo extends IJeiElement {
@@ -91,6 +97,7 @@ public abstract class IJeiElements {
 
     }
 
+    @RTRegister
     @ModTotal({"jei", "botania"})
     @ZenClass("mods.randomtweaker.jei.IJeiElementManaBar")
     public abstract static class IJeiElementManaBar extends IJeiElement {
@@ -115,6 +122,7 @@ public abstract class IJeiElements {
 
     }
 
+    @RTRegister
     @ModOnly("jei")
     @ZenClass("mods.randomtweaker.jei.IJeiElementImage")
     public abstract static class IJeiElementImage extends IJeiElement {

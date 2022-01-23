@@ -4,9 +4,11 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.item.IItemStack;
 import ink.ikx.rt.api.mods.jei.elements.IJeiElement;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlot;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+@RTRegister
 @ModOnly("jei")
 @ZenClass("mods.randomtweaker.jei.IJeiPanel")
 public interface IJeiPanel {

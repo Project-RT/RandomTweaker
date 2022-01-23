@@ -9,11 +9,13 @@ import ink.ikx.rt.impl.mods.botania.event.AbstractClassImplement;
 import ink.ikx.rt.impl.mods.botania.event.AlfPortalDroppedEvent;
 import ink.ikx.rt.impl.mods.botania.event.ElvenTradeEvent;
 import ink.ikx.rt.impl.mods.botania.event.PoolTradeEvent;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+@RTRegister
 @ModOnly("botania")
 @ZenClass("mods.randomtweaker.botania.IEventManager")
 @ZenExpansion("crafttweaker.events.IEventManager")

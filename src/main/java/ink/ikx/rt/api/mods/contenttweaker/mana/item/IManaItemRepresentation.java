@@ -3,6 +3,7 @@ package ink.ikx.rt.api.mods.contenttweaker.mana.item;
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithItem;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithPool;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -10,6 +11,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
 /**
  * @author superhelo
  */
+@RTRegister
 @ZenClass("mods.randomtweaker.cote.ManaItem")
 public abstract class IManaItemRepresentation extends ItemRepresentation {
 

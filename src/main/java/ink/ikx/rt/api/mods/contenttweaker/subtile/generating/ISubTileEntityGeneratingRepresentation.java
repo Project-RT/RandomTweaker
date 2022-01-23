@@ -4,10 +4,12 @@ import ink.ikx.rt.api.mods.contenttweaker.function.subtile.CanGeneratePassively;
 import ink.ikx.rt.api.mods.contenttweaker.function.subtile.PopulateDropStackNBTs;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
+@RTRegister
 @ModTotal({"botania", "contenttweaker"})
 @ZenClass("mods.randomtweaker.cote.ISubTileEntityGenerating")
 public abstract class ISubTileEntityGeneratingRepresentation extends ISubTileEntityRepresentation {

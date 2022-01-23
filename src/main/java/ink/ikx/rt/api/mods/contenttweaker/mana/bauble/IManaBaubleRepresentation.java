@@ -4,6 +4,7 @@ import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunction;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunctionWithReturn;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleRender;
 import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
@@ -11,6 +12,7 @@ import stanhebben.zenscript.annotations.ZenProperty;
 /**
  * @author superhelo
  */
+@RTRegister
 @ZenClass("mods.randomtweaker.cote.ManaBauble")
 public abstract class IManaBaubleRepresentation extends IManaItemRepresentation {
 

@@ -5,12 +5,14 @@ import crafttweaker.api.world.IBlockPos;
 import crafttweaker.mc1120.data.NBTConverter;
 import ink.ikx.rt.api.internal.utils.ITileData;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import net.minecraft.nbt.NBTTagCompound;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenSetter;
 
+@RTRegister
 @ModTotal({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.SubTileEntityInGame")
 public interface ISubTileEntityInGame {

@@ -7,6 +7,7 @@ import crafttweaker.api.player.IPlayer;
 import hellfirepvp.astralsorcery.common.constellation.IMajorConstellation;
 import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -16,6 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
+@RTRegister
 @ModOnly("astralsorcery")
 @ZenExpansion("crafttweaker.player.IPlayer")
 @ZenClass("mods.randomtweaker.astralsorcery.IPlayer")

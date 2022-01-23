@@ -4,6 +4,7 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.data.DataMap;
 import crafttweaker.api.data.IData;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.INBTSerializable;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -15,6 +16,7 @@ import stanhebben.zenscript.annotations.ZenSetter;
  * <br /> Mit LICENSE
  * <br /> by -> https://github.com/friendlyhj/ZenUtils/blob/master/src/main/java/youyihj/zenutils/api/cotx/tile/TileData.java
  */
+@RTRegister
 @ModOnly("contenttweaker")
 @ZenClass("mods.randomtweaker.utils.ITileData")
 public interface ITileData extends INBTSerializable<NBTTagCompound> {

@@ -2,10 +2,13 @@ package ink.ikx.rt.api.internal.utils;
 
 import crafttweaker.api.item.IIngredient;
 import ink.ikx.rt.impl.internal.utils.MCInputPattern;
-import java.util.Map;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.util.Map;
+
+@RTRegister
 @ZenClass("mods.randomtweaker.utils.IInputPattern")
 public interface IInputPattern {
 

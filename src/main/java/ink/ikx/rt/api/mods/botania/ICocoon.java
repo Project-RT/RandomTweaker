@@ -8,14 +8,17 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.impl.mods.botania.MCCocoon;
-import java.util.Map;
-import java.util.Objects;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import stanhebben.zenscript.annotations.NotNull;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.util.Map;
+import java.util.Objects;
+
+@RTRegister
 @ModOnly("botania")
 @ZenClass("mods.randomtweaker.botania.ICocoon")
 public abstract class ICocoon {

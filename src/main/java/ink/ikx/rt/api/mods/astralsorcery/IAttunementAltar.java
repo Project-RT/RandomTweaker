@@ -8,9 +8,11 @@ import crafttweaker.api.item.IItemStack;
 import hellfirepvp.astralsorcery.common.constellation.ConstellationRegistry;
 import hellfirepvp.astralsorcery.common.constellation.IConstellation;
 import ink.ikx.rt.impl.mods.astralsorcery.CustomAttunementRecipe;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+@RTRegister
 @ModOnly("astralsorcery")
 @ZenClass("mods.randomtweaker.astralsorcery.AttunementAltar")
 public abstract class IAttunementAltar {

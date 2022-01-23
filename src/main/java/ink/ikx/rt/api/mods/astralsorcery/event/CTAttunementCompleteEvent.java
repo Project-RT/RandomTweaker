@@ -5,6 +5,7 @@ import crafttweaker.api.event.IEventCancelable;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementCompleteEvent;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -14,6 +15,7 @@ import stanhebben.zenscript.annotations.ZenSetter;
 
 import java.util.List;
 
+@RTRegister
 @ModOnly("astralsorcery")
 @ZenClass("mods.randomtweaker.astralsorcery.AttunementCompleteEvent")
 public abstract class CTAttunementCompleteEvent implements IEventCancelable {

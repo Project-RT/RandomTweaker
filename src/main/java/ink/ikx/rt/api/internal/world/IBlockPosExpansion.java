@@ -2,14 +2,13 @@ package ink.ikx.rt.api.internal.world;
 
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
-import java.util.stream.StreamSupport;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import net.minecraft.util.math.BlockPos;
-import stanhebben.zenscript.annotations.Optional;
-import stanhebben.zenscript.annotations.ZenClass;
-import stanhebben.zenscript.annotations.ZenExpansion;
-import stanhebben.zenscript.annotations.ZenMethod;
-import stanhebben.zenscript.annotations.ZenMethodStatic;
+import stanhebben.zenscript.annotations.*;
 
+import java.util.stream.StreamSupport;
+
+@RTRegister
 @ZenExpansion("crafttweaker.world.IBlockPos")
 @ZenClass("mods.randomtweaker.vanilla.IBlockPos")
 public abstract class IBlockPosExpansion {

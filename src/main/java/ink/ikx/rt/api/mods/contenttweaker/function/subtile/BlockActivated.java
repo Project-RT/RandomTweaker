@@ -7,8 +7,10 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.enums.Hand;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.world.IWorld;
 import crafttweaker.api.world.IFacing;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 
+@RTRegister
 @FunctionalInterface
 @ModTotal({"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.BlockActivated")
