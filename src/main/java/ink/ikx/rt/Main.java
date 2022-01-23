@@ -35,7 +35,6 @@ import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.commons.lang3.tuple.Pair;
-import org.codehaus.plexus.util.ReflectionUtils;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
@@ -103,9 +102,9 @@ public class Main {
     private void registryFlowerModified() {
         if (!Loader.isModLoaded("botania")) return;
         final BiMap<String, Class<? extends SubTileEntity>> subTiles;
-        Field field = ReflectionUtils.getFieldByNameIncludingSuperclasses("subTiles", BotaniaAPI.class);
-        field.setAccessible(true);
         try {
+            Field field = BotaniaAPI.class.getDeclaredField("subTiles");
+            field.setAccessible(true);
             subTiles = (BiMap<String, Class<? extends SubTileEntity>>) field.get(null);
             if (Objects.nonNull(subTiles)) {
                 if (RTConfig.Botania.OrechidModified) {
@@ -122,7 +121,7 @@ public class Main {
                     subTiles.forcePut(LibBlockNames.SUBTILE_HYDROANGEAS, SubTileHydroangeasModified.class);
                 }
             }
-        } catch (IllegalAccessException e) {
+        } catch (IllegalAccessException | NoSuchFieldException e) {
             e.printStackTrace();
         }
     }

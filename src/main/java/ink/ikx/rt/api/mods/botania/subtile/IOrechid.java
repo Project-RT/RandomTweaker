@@ -8,14 +8,12 @@ import crafttweaker.api.oredict.IOreDictEntry;
 import crafttweaker.mc1120.brackets.BracketHandlerOre;
 import ink.ikx.rt.impl.internal.utils.InternalUtils;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-@RTRegister
 @ModOnly("botania")
 @ZenClass("mods.randomtweaker.botania.IOrechid")
 public abstract class IOrechid {
