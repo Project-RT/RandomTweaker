@@ -119,18 +119,28 @@ repositories {
     }
 }
 
+def attributes = [
+        'TweakClass'                 : 'org.spongepowered.asm.launch.MixinTweaker',
+        "FMLCorePlugin"              : "ink.ikx.rt.impl.internal.core.CoreModBoot",
+        "FMLCorePluginContainsFMLMod": true,
+        'FMLAT'                      : 'randomtweaker_at.cfg'
+]
+
+build {
+    attributes.put("ForceLoadAsMod", true)
+}
+
+runClient {
+    args '--username', 'dev_player'
+
+    attributes.remove("ForceLoadAsMod")
+}
+
 jar {
     from(configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }) {
         exclude 'LICENSE.txt', 'META-INF/MANIFSET.MF', 'META-INF/maven/**', 'META-INF/*.RSA', 'META-INF/*.SF'
     }
-    manifest {
-        attributes([
-                'TweakClass'                 : 'org.spongepowered.asm.launch.MixinTweaker',
-                "FMLCorePlugin"              : "ink.ikx.rt.impl.internal.core.CoreModBoot",
-                "FMLCorePluginContainsFMLMod": true,
-                'FMLAT'                      : 'randomtweaker_at.cfg'
-        ])
-    }
+    manifest.attributes.putAll(attributes)
 }
 
 mixin {
