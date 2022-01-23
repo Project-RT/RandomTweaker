@@ -23,11 +23,6 @@ public abstract class IBlockPosExpansion {
     }
 
     @ZenMethod
-    public static IBlockPos add(IBlockPos pos, double x, double y, double z) {
-        return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).add(x, y, z));
-    }
-
-    @ZenMethod
     public static IBlockPos add(IBlockPos pos, int x, int y, int z) {
         return CraftTweakerMC.getIBlockPos(CraftTweakerMC.getBlockPos(pos).add(x, y, z));
     }
