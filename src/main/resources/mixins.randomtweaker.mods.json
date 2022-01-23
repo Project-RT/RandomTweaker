@@ -1,10 +1,8 @@
 {
-  "required": true,
+  "required": false,
   "compatibilityLevel": "JAVA_8",
   "package": "ink.ikx.rt.mixins.mods",
   "minVersion": "0.8",
-  "target": "@env(DEFAULT)",
-  "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
     "botania.MixinBlockCocoon",
     "botania.MixinBlockSpecialFlower",

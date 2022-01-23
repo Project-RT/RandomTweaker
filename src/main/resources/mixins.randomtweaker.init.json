@@ -1,11 +1,12 @@
 {
-  "package": "ink.ikx.rt.mixins.init",
   "required": true,
-  "refmap": "mixins.randomtweaker.refmap.json",
-  "minVersion": "0.8",
-  "target": "@env(INIT)",
   "compatibilityLevel": "JAVA_8",
+  "package": "ink.ikx.rt.mixins.core",
+  "minVersion": "0.7.11",
+  "setSourceFile": true,
+  "target": "@env(INIT)",
+  "priority": 0,
   "mixins": [
-    "HackFixServer"
+    "MixinLoader"
   ]
 }

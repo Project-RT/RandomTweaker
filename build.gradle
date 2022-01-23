@@ -2,7 +2,7 @@ buildscript {
     repositories {
         jcenter()
         maven { url = "https://maven.minecraftforge.net/" }
-        maven {url = "https://repo.spongepowered.org/maven"}
+        maven { url = "https://repo.spongepowered.org/maven" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
@@ -61,7 +61,7 @@ dependencies {
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.670"
 
-    embed ("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
+    embed("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
         exclude module: "asm-commons"
         exclude module: "asm-tree"
         exclude module: "launchwrapper"
@@ -79,7 +79,7 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
 
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version': project.version, 'mcversion': project.minecraft.version
     }
 
     from(sourceSets.main.resources.srcDirs) {
@@ -91,7 +91,7 @@ repositories {
     mavenCentral()
     maven {
         name = 'jei'
-        url =  "https://dvs1.progwml6.com/files/maven"
+        url = "https://dvs1.progwml6.com/files/maven"
     }
     maven {
         name = 'blamejared'
@@ -120,16 +120,15 @@ repositories {
 }
 
 jar {
-    from (configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }) {
+    from(configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }) {
         exclude 'LICENSE.txt', 'META-INF/MANIFSET.MF', 'META-INF/maven/**', 'META-INF/*.RSA', 'META-INF/*.SF'
     }
     manifest {
         attributes([
-                'TweakClass' : 'org.spongepowered.asm.launch.MixinTweaker',
-                "ForceLoadAsMod" : true,
-                "FMLCorePlugin": "ink.ikx.rt.impl.internal.core.CoreModBoot",
+                'TweakClass'                 : 'org.spongepowered.asm.launch.MixinTweaker',
+                "FMLCorePlugin"              : "ink.ikx.rt.impl.internal.core.CoreModBoot",
                 "FMLCorePluginContainsFMLMod": true,
-                'FMLAT': 'randomtweaker_at.cfg'
+                'FMLAT'                      : 'randomtweaker_at.cfg'
         ])
     }
 }

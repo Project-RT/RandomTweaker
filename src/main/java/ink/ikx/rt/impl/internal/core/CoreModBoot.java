@@ -1,46 +1,24 @@
 package ink.ikx.rt.impl.internal.core;
 
-import net.minecraftforge.fml.relauncher.CoreModManager;
+import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.apache.logging.log4j.LogManager;
 import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.Mixins;
 
-import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.security.CodeSource;
 import java.util.Map;
 
 /**
  * @author ikexing
  */
 @IFMLLoadingPlugin.Name("RandomTweaker Mixin Boot")
-@IFMLLoadingPlugin.SortingIndex(-7500)
-@IFMLLoadingPlugin.MCVersion("1.12.2")
+@IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
 public class CoreModBoot implements IFMLLoadingPlugin {
 
     public CoreModBoot() {
         MixinBootstrap.init();
         LogManager.getLogger("RandomTweaker Mixins").info("registering core mixins...");
         Mixins.addConfiguration("mixins.randomtweaker.init.json");
-        Mixins.addConfiguration("mixins.randomtweaker.vanilla.json");
-
-        CodeSource codeSource = this.getClass().getProtectionDomain().getCodeSource();
-        if (codeSource != null) {
-            URL location = codeSource.getLocation();
-            try {
-                File file = new File(location.toURI());
-                if (file.isFile()) {
-                    CoreModManager.getReparseableCoremods().remove(file.getName());
-                }
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
-        } else {
-            LogManager.getLogger().warn("No CodeSource, if this is not a development environment we might run into problems!");
-            LogManager.getLogger().warn(this.getClass().getProtectionDomain());
-        }
     }
 
     @Override
