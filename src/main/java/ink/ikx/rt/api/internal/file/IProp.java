@@ -1,6 +1,6 @@
 package ink.ikx.rt.api.internal.file;
 
-import cn.hutool.core.util.StrUtil;
+import org.apache.commons.lang3.StringUtils;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -71,7 +71,7 @@ public abstract class IProp {
     public static String getPath(String... path) {
         StringBuilder sb = new StringBuilder();
         for (String s1 : path) {
-            if (!StrUtil.isBlank(sb.toString()))
+            if (!StringUtils.isBlank(sb.toString()))
                 sb.append(sb.toString().endsWith(File.separator) ? s1 : (File.separator + s1));
             else sb.append(s1).append(File.separator);
         }

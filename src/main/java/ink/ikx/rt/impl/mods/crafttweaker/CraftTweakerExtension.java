@@ -1,6 +1,5 @@
 package ink.ikx.rt.impl.mods.crafttweaker;
 
-import cn.hutool.core.annotation.AnnotationUtil;
 import com.google.common.collect.Lists;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ModOnly;
@@ -21,6 +20,7 @@ import ink.ikx.rt.api.mods.botania.event.CTAlfPortalDroppedEvent;
 import ink.ikx.rt.api.mods.botania.event.CTElvenTradeEvent;
 import ink.ikx.rt.api.mods.botania.event.CTEventManager;
 import ink.ikx.rt.api.mods.botania.event.CTPoolTradeEvent;
+import ink.ikx.rt.api.mods.botania.render.IBotaniaFXHelper;
 import ink.ikx.rt.api.mods.botania.subtile.IHydroangeas;
 import ink.ikx.rt.api.mods.botania.subtile.IOrechid;
 import ink.ikx.rt.api.mods.contenttweaker.ExpandVanillaFactory;
@@ -40,7 +40,6 @@ import ink.ikx.rt.api.mods.contenttweaker.mana.item.tool.IIsUsesManaItemRepresen
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionTypeRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.render.IBaubleRenderHelper;
-import ink.ikx.rt.api.mods.botania.render.IBotaniaFXHelper;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ExpandWorldForSubTile;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityInGame;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
@@ -158,12 +157,12 @@ public class CraftTweakerExtension {
     // My use of @ZenRegister will cause it to be called twice on the server side
     public static void registerAllClass() {
         for (Class<?> clazz : classes) {
-            if (AnnotationUtil.hasAnnotation(clazz, ModOnly.class)) {
-                if (Loader.isModLoaded(AnnotationUtil.getAnnotationValue(clazz, ModOnly.class))) {
+            if (clazz.getAnnotation(ModOnly.class) != null) {
+                if (Loader.isModLoaded(clazz.getAnnotation(ModOnly.class).value())) {
                     CraftTweakerAPI.registerClass(clazz);
                 }
-            } else if (AnnotationUtil.hasAnnotation(clazz, ModTotal.class)) {
-                String[] values = AnnotationUtil.getAnnotationValue(clazz, ModTotal.class);
+            } else if (clazz.getAnnotation(ModTotal.class) != null) {
+                String[] values = clazz.getAnnotation(ModTotal.class).value();
                 if (Arrays.stream(values).allMatch(Loader::isModLoaded)) {
                     CraftTweakerAPI.registerClass(clazz);
                 }

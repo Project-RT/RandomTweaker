@@ -1,6 +1,5 @@
 package ink.ikx.rt.impl.mods.jei;
 
-import cn.hutool.core.collection.CollUtil;
 import crafttweaker.api.block.IBlockState;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
@@ -9,6 +8,7 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.mc1120.brackets.BracketHandlerOre;
 import ink.ikx.rt.api.mods.jei.IJeiUtils;
 import ink.ikx.rt.api.mods.jei.JEIExpansion;
+import ink.ikx.rt.impl.internal.utils.InternalUtils;
 import ink.ikx.rt.impl.mods.botania.module.SubTileOrechidManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.translation.I18n;
@@ -46,7 +46,7 @@ public class JeiOrechid {
             IItemStack input = CraftTweakerMC.getIItemStack(itemStack);
 
             v.entrySet().stream()
-                    .filter(o -> CollUtil.isNotEmpty(OreDictionary.getOres(o.getKey())))
+                    .filter(o -> InternalUtils.collIsNotEmpty(OreDictionary.getOres(o.getKey())))
                     .forEach(o -> JEIExpansion.createJeiRecipe(UID).addInput(input).addInput(FLOWER).addOutput(getOutPut(v, o.getKey(), o.getValue())).build_());
         });
     }

@@ -1,11 +1,11 @@
 package ink.ikx.rt.mixins.mods.botania;
 
-import cn.hutool.core.lang.Pair;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.subtile.MCSubTileEntityFunctionalContent;
 import ink.ikx.rt.impl.mods.contenttweaker.subtile.MCSubTileEntityGeneratingContent;
 import net.minecraft.nbt.NBTTagCompound;
+import org.apache.commons.lang3.tuple.Pair;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;

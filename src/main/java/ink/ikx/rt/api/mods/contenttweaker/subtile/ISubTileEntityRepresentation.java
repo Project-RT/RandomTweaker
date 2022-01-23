@@ -1,10 +1,10 @@
 package ink.ikx.rt.api.mods.contenttweaker.subtile;
 
-import cn.hutool.core.lang.Pair;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.contenttweaker.function.subtile.*;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import org.apache.commons.lang3.tuple.Pair;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;

@@ -1,9 +1,8 @@
 package ink.ikx.rt.impl.mods.contenttweaker;
 
 import baubles.api.BaublesApi;
-import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.lang.Pair;
 import com.teamacronymcoders.contenttweaker.ContentTweaker;
+import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.api.internal.file.IProp;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
@@ -15,9 +14,12 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.IItemHandler;
+import org.apache.commons.lang3.tuple.Pair;
+import org.codehaus.plexus.util.FileUtils;
 import vazkii.botania.api.BotaniaAPIClient;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 public class MCBotaniaContentEvent {
@@ -69,11 +71,15 @@ public class MCBotaniaContentEvent {
         String nameL = name.toLowerCase();
         String path = IProp.getPath(System.getProperty("user.dir"), "resources", "contenttweaker", "blockstates", nameL + ".json");
         File file = new File(path);
-        if (!FileUtil.exist(file)) {
+        if (!file.exists()) {
             if (nameL.contains("chibi")) {
                 nameL = nameL.replace("chibi", "_chibi");
             }
-            FileUtil.writeUtf8String(FLOWER_BLOCK_STATE.replace("${name}", nameL), file);
+            try {
+                FileUtils.fileWrite(file, FLOWER_BLOCK_STATE.replace("${name}", nameL));
+            } catch (IOException e) {
+                CraftTweakerAPI.logError("Failed to create blockstate for " + name, e);
+            }
         }
     }
 

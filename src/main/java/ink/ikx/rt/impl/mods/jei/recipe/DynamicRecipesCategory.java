@@ -1,6 +1,5 @@
 package ink.ikx.rt.impl.mods.jei.recipe;
 
-import cn.hutool.core.util.StrUtil;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlot;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlotItem;
@@ -16,6 +15,7 @@ import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -35,7 +35,7 @@ public class DynamicRecipesCategory implements IRecipeCategory<DynamicRecipesWra
     public DynamicRecipesCategory(IGuiHelper guiHelper, MCJeiPanel panel) {
         this.panel = panel;
         this.icon = guiHelper.createDrawableIngredient(CraftTweakerMC.getItemStack(panel.icon));
-        if (StrUtil.isBlank(panel.background.resourceName)) {
+        if (StringUtils.isBlank(panel.background.resourceName)) {
             this.background = guiHelper.createBlankDrawable(panel.background.width, panel.background.height);
         } else {
             ResourceLocation location = new ResourceLocation(panel.background.resourceName);

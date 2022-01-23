@@ -8,6 +8,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,6 +56,10 @@ public class InternalUtils {
 
     public static List<ItemStack> getItemStackListCopy(List<ItemStack> items) {
         return items.stream().map(ItemStack::copy).collect(Collectors.toList());
+    }
+
+    public static boolean collIsNotEmpty(Collection<?> coll) {
+        return !coll.isEmpty();
     }
 
 }

@@ -1,6 +1,5 @@
 package ink.ikx.rt.impl.mods.crafttweaker.brackethandler;
 
-import cn.hutool.core.lang.Pair;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.BracketHandler;
 import crafttweaker.zenscript.IBracketHandler;
@@ -9,6 +8,7 @@ import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.functional.ISubTileEntityFunctionalRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.generating.ISubTileEntityGeneratingRepresentation;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import org.apache.commons.lang3.tuple.Pair;
 import stanhebben.zenscript.compiler.IEnvironmentGlobal;
 import stanhebben.zenscript.expression.ExpressionCallStatic;
 import stanhebben.zenscript.expression.ExpressionString;
