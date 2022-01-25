@@ -68,13 +68,13 @@ public class InternalUtils {
         return !coll.isEmpty();
     }
 
-    public static boolean isOpenFtbultimineControl() {
+    public static boolean isOpenFTBUltimineControl() {
         return Loader.isModLoaded("ftbultimine") && RTConfig.FTBUltimine.AllowCrTControl;
     }
 
     public static void decouplingMethod(CallbackInfo ci) {
         CapabilityRegistryHandler.FTBUltimineTag capability = Minecraft.getMinecraft().player.getCapability(CapabilityRegistryHandler.FTB_ULTIMINE_CAPABILITY, null);
-        if (InternalUtils.isOpenFtbultimineControl() && !Objects.requireNonNull(capability).isAllow()) {
+        if (InternalUtils.isOpenFTBUltimineControl() && !Objects.requireNonNull(capability).isAllow()) {
             ci.cancel();
         }
     }

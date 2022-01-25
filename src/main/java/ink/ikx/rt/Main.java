@@ -13,6 +13,7 @@ import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
 import ink.ikx.rt.impl.internal.capability.CapabilityRegistryHandler;
 import ink.ikx.rt.impl.internal.config.RTConfig;
+import ink.ikx.rt.impl.internal.event.FTBUltimineEvent;
 import ink.ikx.rt.impl.internal.network.NetworkManager;
 import ink.ikx.rt.impl.internal.proxy.IProxy;
 import ink.ikx.rt.impl.internal.utils.InternalUtils;
@@ -86,9 +87,10 @@ public class Main {
         if (Loader.isModLoaded("thaumcraft")) {
             MinecraftForge.EVENT_BUS.register(DreamJournalEvent.class);
         }
-        if (InternalUtils.isOpenFtbultimineControl()) {
+        if (InternalUtils.isOpenFTBUltimineControl()) {
             NetworkManager.registerFTBUltimineTag();
             CapabilityRegistryHandler.registerFTBUltimineTag();
+            MinecraftForge.EVENT_BUS.register(FTBUltimineEvent.class);
         }
     }
 
