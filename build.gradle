@@ -126,14 +126,14 @@ def attributes = [
         'FMLAT'                      : 'randomtweaker_at.cfg'
 ]
 
-build {
-    attributes.put("ForceLoadAsMod", true)
+task buildSpecially {
+    attributes.put('ForceLoadAsMod', true)
 }
+
+buildSpecially.finalizedBy(':build')
 
 runClient {
     args '--username', 'dev_player'
-
-    attributes.remove("ForceLoadAsMod")
 }
 
 jar {
