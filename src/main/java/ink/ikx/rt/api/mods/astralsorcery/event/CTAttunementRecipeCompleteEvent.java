@@ -2,6 +2,7 @@ package ink.ikx.rt.api.mods.astralsorcery.event;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.entity.IEntity;
+import crafttweaker.api.entity.IEntityItem;
 import crafttweaker.api.event.IEntityEvent;
 import crafttweaker.api.event.IEventCancelable;
 import crafttweaker.api.item.IItemStack;
@@ -61,8 +62,14 @@ public abstract class CTAttunementRecipeCompleteEvent implements IEventCancelabl
     //the entity item being attuned
     //this is final for attunement complete event
     @ZenGetter("entity")
+    @Override
     public IEntity getEntity() {
         return (IEntity) this.event.getInputEntity();
+    }
+
+    @ZenGetter("itemEntity")
+    public IEntityItem getItemEntity(){
+        return (IEntityItem) this.event.getInputEntity();
     }
 
     @ZenMethod

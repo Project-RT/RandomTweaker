@@ -35,6 +35,7 @@ public abstract class CTAttunementStartEvent implements IEntityEvent {
 
     //the entity being attuned
     @ZenGetter("entity")
+    @Override
     public IEntity getEntity() {
         return (IEntity) this.event.getInputEntity();
     }
