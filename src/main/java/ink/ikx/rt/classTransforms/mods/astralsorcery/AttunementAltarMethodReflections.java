@@ -9,7 +9,7 @@ import hellfirepvp.astralsorcery.common.item.crystal.CrystalPropertyItem;
 import hellfirepvp.astralsorcery.common.item.crystal.base.ItemRockCrystalBase;
 import hellfirepvp.astralsorcery.common.item.crystal.base.ItemTunedCrystalBase;
 import ink.ikx.rt.impl.mods.astralsorcery.CustomAttunementRecipe;
-import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementCompleteEvent;
+import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementRecipeCompleteEvent;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementStartEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -33,7 +33,7 @@ public class AttunementAltarMethodReflections {
                 itemStack.setCount(recipe.getResult().getCount());
             }
         }
-        AttunementCompleteEvent event = new AttunementCompleteEvent(itemStack, original, world, constellation);
+        AttunementRecipeCompleteEvent event = new AttunementRecipeCompleteEvent(itemStack, original, world, constellation);
         boolean eventExec = event.post();
 
         if (!eventExec) {

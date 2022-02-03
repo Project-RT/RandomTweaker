@@ -25,9 +25,11 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
                 ClassReader classReader = new ClassReader("hellfirepvp.astralsorcery.common.tile.TileAttunementAltar");
                 classReader.accept(asm, 0);
                 byte[] result = writer.toByteArray();
+                /*
                 Path dir = Paths.get("rtDebug");
                 Files.createDirectories(dir);
                 Files.write(dir.resolve("TileAttunementAltar.class"), result);
+                */
                 return result;
             } catch (IOException e) {
                 e.printStackTrace();

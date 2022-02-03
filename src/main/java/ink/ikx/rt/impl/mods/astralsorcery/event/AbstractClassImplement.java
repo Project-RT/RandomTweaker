@@ -1,13 +1,13 @@
 package ink.ikx.rt.impl.mods.astralsorcery.event;
 
-import ink.ikx.rt.api.mods.astralsorcery.event.CTAttunementCompleteEvent;
+import ink.ikx.rt.api.mods.astralsorcery.event.CTAttunementRecipeCompleteEvent;
 import ink.ikx.rt.api.mods.astralsorcery.event.CTAttunementStartEvent;
 
 public class AbstractClassImplement {
 
-    public static class CTAttunementCompleteEventImpl extends CTAttunementCompleteEvent {
+    public static class CTAttunementRecipeCompleteEventImpl extends CTAttunementRecipeCompleteEvent {
 
-        public CTAttunementCompleteEventImpl(AttunementCompleteEvent event) {
+        public CTAttunementRecipeCompleteEventImpl(AttunementRecipeCompleteEvent event) {
             super(event);
         }
 

@@ -23,14 +23,6 @@ import java.util.Objects;
 @ZenClass("mods.randomtweaker.botania.ICocoon")
 public abstract class ICocoon {
 
-    public abstract ItemStack getStack();
-
-    public abstract Map<EntityEntry, Double> getSpawnTab();
-
-    public abstract double getProbablyByEntity(EntityEntry entity);
-
-    public abstract boolean match(ItemStack stack);
-
     @ZenMethod
     public static void registerSpawn(@NotNull String name, @NotNull IItemStack stack, @NotNull Map<IEntityDefinition, Double> spawnTab) {
         if (Objects.isNull(name) && Objects.isNull(stack) || Objects.isNull(spawnTab)) {
@@ -63,6 +55,14 @@ public abstract class ICocoon {
         }
         return null;
     }
+
+    public abstract ItemStack getStack();
+
+    public abstract Map<EntityEntry, Double> getSpawnTab();
+
+    public abstract double getProbablyByEntity(EntityEntry entity);
+
+    public abstract boolean match(ItemStack stack);
 
     public abstract String getName();
 

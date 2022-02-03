@@ -6,7 +6,7 @@ import crafttweaker.api.event.IEntityEvent;
 import crafttweaker.api.event.IEventCancelable;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementCompleteEvent;
+import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementRecipeCompleteEvent;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -20,11 +20,11 @@ import java.util.List;
 @RTRegister
 @ModOnly("astralsorcery")
 @ZenClass("mods.randomtweaker.astralsorcery.AttunementCompleteEvent")
-public abstract class CTAttunementCompleteEvent implements IEventCancelable, IEntityEvent {
+public abstract class CTAttunementRecipeCompleteEvent implements IEventCancelable, IEntityEvent {
 
-    private final AttunementCompleteEvent event;
+    private final AttunementRecipeCompleteEvent event;
 
-    public CTAttunementCompleteEvent(AttunementCompleteEvent event) {
+    public CTAttunementRecipeCompleteEvent(AttunementRecipeCompleteEvent event) {
         this.event = event;
     }
 
@@ -61,7 +61,9 @@ public abstract class CTAttunementCompleteEvent implements IEventCancelable, IEn
     //the entity item being attuned
     //this is final for attunement complete event
     @ZenGetter("entity")
-    public IEntity getEntity() { return (IEntity) this.event.getInputEntity();}
+    public IEntity getEntity() {
+        return (IEntity) this.event.getInputEntity();
+    }
 
     @ZenMethod
     public void addAdditionalOutput(IItemStack additionalOutput) {
