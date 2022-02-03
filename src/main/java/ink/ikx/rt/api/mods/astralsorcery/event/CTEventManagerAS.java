@@ -36,7 +36,7 @@ public abstract class CTEventManagerAS {
     public static final class Handler {
 
         @SubscribeEvent
-        public static void onAttunementComplete(AttunementRecipeCompleteEvent event) {
+        public static void onAttunementRecipeComplete(AttunementRecipeCompleteEvent event) {
             if (attunementCompleteEventList.hasHandlers()) {
                 attunementCompleteEventList.publish(new AbstractClassImplement.CTAttunementRecipeCompleteEventImpl(event));
             }
