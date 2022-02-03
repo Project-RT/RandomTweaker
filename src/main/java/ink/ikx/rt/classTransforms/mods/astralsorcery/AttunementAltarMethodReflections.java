@@ -9,7 +9,8 @@ import hellfirepvp.astralsorcery.common.item.crystal.CrystalPropertyItem;
 import hellfirepvp.astralsorcery.common.item.crystal.base.ItemRockCrystalBase;
 import hellfirepvp.astralsorcery.common.item.crystal.base.ItemTunedCrystalBase;
 import ink.ikx.rt.impl.mods.astralsorcery.CustomAttunementRecipe;
-import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementCompleteEvent;
+import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementRecipeCompleteEvent;
+import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementStartEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
@@ -19,19 +20,11 @@ import net.minecraft.world.World;
 @SuppressWarnings("unused")
 public class AttunementAltarMethodReflections {
 
-    public static void debugPrint(Object object) {
-
-
-    }
-
-    public static void checkForAttunements(EntityItem itemStack) {
-
-
-    }
-
-    public static void onAttunementStart(EntityItem itemStack) {
-
-
+    public static void onAttunementStart(Entity itemStack, World world, IConstellation constellation) {
+        if(itemStack == null){
+            return;
+        }
+        AttunementStartEvent event = new AttunementStartEvent(itemStack, world, constellation);
     }
 
     public static void onCraftingFinish(ItemStack itemStack, EntityItem original, World world, IConstellation constellation) {
@@ -40,7 +33,7 @@ public class AttunementAltarMethodReflections {
                 itemStack.setCount(recipe.getResult().getCount());
             }
         }
-        AttunementCompleteEvent event = new AttunementCompleteEvent(itemStack, original, world, constellation);
+        AttunementRecipeCompleteEvent event = new AttunementRecipeCompleteEvent(itemStack, original, world, constellation);
         boolean eventExec = event.post();
 
         if (!eventExec) {

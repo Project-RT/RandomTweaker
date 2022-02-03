@@ -11,17 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Cancelable
-public class AttunementCompleteEvent extends BaseEvent {
+public class AttunementRecipeCompleteEvent extends BaseEvent {
 
     private final ItemStack input;
     private final List<ItemStack> additionalOutput = new ArrayList<>();
     private final World world;
     private final IConstellation constellation;
     private ItemStack output;
+    private final EntityItem inputEntity;
 
-    public AttunementCompleteEvent(ItemStack output, EntityItem input, World world, IConstellation constellation) {
+    public AttunementRecipeCompleteEvent(ItemStack output, EntityItem input, World world, IConstellation constellation) {
         this.input = input.getItem();
         this.output = output;
+        this.inputEntity = input;
         this.world = world;
         this.constellation = constellation;
     }
@@ -58,4 +60,7 @@ public class AttunementCompleteEvent extends BaseEvent {
         return this.additionalOutput;
     }
 
+    public EntityItem getInputEntity() {
+        return this.inputEntity;
+    }
 }
