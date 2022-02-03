@@ -18,10 +18,12 @@ public class AttunementCompleteEvent extends BaseEvent {
     private final World world;
     private final IConstellation constellation;
     private ItemStack output;
+    private final EntityItem inputEntity;
 
     public AttunementCompleteEvent(ItemStack output, EntityItem input, World world, IConstellation constellation) {
         this.input = input.getItem();
         this.output = output;
+        this.inputEntity = input;
         this.world = world;
         this.constellation = constellation;
     }
@@ -58,4 +60,7 @@ public class AttunementCompleteEvent extends BaseEvent {
         return this.additionalOutput;
     }
 
+    public EntityItem getInputEntity() {
+        return this.inputEntity;
+    }
 }

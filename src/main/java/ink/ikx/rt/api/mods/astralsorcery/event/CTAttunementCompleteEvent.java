@@ -1,6 +1,8 @@
 package ink.ikx.rt.api.mods.astralsorcery.event;
 
 import crafttweaker.annotations.ModOnly;
+import crafttweaker.api.entity.IEntity;
+import crafttweaker.api.event.IEntityEvent;
 import crafttweaker.api.event.IEventCancelable;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -18,7 +20,7 @@ import java.util.List;
 @RTRegister
 @ModOnly("astralsorcery")
 @ZenClass("mods.randomtweaker.astralsorcery.AttunementCompleteEvent")
-public abstract class CTAttunementCompleteEvent implements IEventCancelable {
+public abstract class CTAttunementCompleteEvent implements IEventCancelable, IEntityEvent {
 
     private final AttunementCompleteEvent event;
 
@@ -55,6 +57,11 @@ public abstract class CTAttunementCompleteEvent implements IEventCancelable {
     public String getConstellation() {
         return this.event.getConstellation().getUnlocalizedName();
     }
+
+    //the entity item being attuned
+    //this is final for attunement complete event
+    @ZenGetter("entity")
+    public IEntity getEntity() { return (IEntity) this.event.getInputEntity();}
 
     @ZenMethod
     public void addAdditionalOutput(IItemStack additionalOutput) {

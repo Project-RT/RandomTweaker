@@ -527,34 +527,6 @@ class ASMAltarCheckAttunementTransformer extends MethodVisitor {
     }
 
     @Override
-    public void visitVarInsn(int opcode, int var) {
-        switch (opcode) {
-            case ASTORE:
-                if (isCheckItemFlag2 && var == 3) {
-
-                    isCheckItemFlag3 = true;
-                }
-
-                if (isCheckItemFlag3) {
-                    super.visitVarInsn(opcode, var);
-
-                    //insert after
-                    super.visitVarInsn(ALOAD, var);     //load current address in local
-                    // (the item being checked)
-                    super.visitMethodInsn(INVOKESTATIC, //invoke method
-                            ASMTileAttunementAltar.reflectionMethods,
-                            "checkForAttunements",
-                            "(Lnet/minecraft/entity/item/EntityItem;)V",
-                            false);
-                    isCheckItemFlag1 = isCheckItemFlag2 = isCheckItemFlag3 = false;
-                    return;
-                }
-
-        }
-        super.visitVarInsn(opcode, var);
-    }
-
-    @Override
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
         switch (opcode) {
             case INVOKEINTERFACE:
@@ -637,14 +609,28 @@ class ASMAltarSetAttunementStateTransformer extends MethodVisitor {
                             "activeEntity",
                             "Lnet/minecraft/entity/Entity;");
 
-                    //cast to Entity Item
-                    super.visitTypeInsn(CHECKCAST, "net/minecraft/entity/item/EntityItem");
+                    super.visitVarInsn(ALOAD, 0);
+                    //get the World
+                    super.visitFieldInsn(GETFIELD,
+                            "hellfirepvp/astralsorcery/common/tile/TileAttunementAltar",
+                            "world",
+                            "Lnet/minecraft/world/World;");
+
+                    super.visitVarInsn(ALOAD, 0);
+                    //get the Constellation
+                    super.visitFieldInsn(GETFIELD,
+                            "hellfirepvp/astralsorcery/common/tile/TileAttunementAltar",
+                            "activeFound",
+                            "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;");
 
                     //invoke our method
                     super.visitMethodInsn(INVOKESTATIC,
                             ASMTileAttunementAltar.reflectionMethods,
                             "onAttunementStart",
-                            "(Lnet/minecraft/entity/item/EntityItem;)V",
+                            "(Lnet/minecraft/entity/Entity;" +
+                                    "Lnet/minecraft/world/World;" +
+                                    "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;)" +
+                                    "V",
                             false);
                     isSetAttunementFlag1 = isSetAttunementFlag2 = isSetAttunementFlag3 = false;
                     return;
