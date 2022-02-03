@@ -12,7 +12,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 @RTRegister
 @ModOnly("astralsorcery")
-@ZenClass("mods.randomtweaker.astralsorcery.AttunementCompleteEvent")
+@ZenClass("mods.randomtweaker.astralsorcery.AttunementStartEvent")
 public abstract class CTAttunementStartEvent implements IEntityEvent {
 
     private final AttunementStartEvent event;
