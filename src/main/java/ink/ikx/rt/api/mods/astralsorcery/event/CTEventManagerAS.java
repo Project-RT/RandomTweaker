@@ -24,7 +24,7 @@ public abstract class CTEventManagerAS {
     private static final EventList<CTAttunementStartEvent> attunementStartEventList = new EventList<>();
 
     @ZenMethod
-    public static IEventHandle onAttunementComplete(IEventManager manager, IEventHandler<CTAttunementRecipeCompleteEvent> event) {
+    public static IEventHandle onAttunementRecipeComplete(IEventManager manager, IEventHandler<CTAttunementRecipeCompleteEvent> event) {
         return attunementCompleteEventList.add(event);
     }
 
