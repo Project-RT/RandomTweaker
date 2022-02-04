@@ -5,16 +5,12 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
 import hellfirepvp.astralsorcery.common.constellation.IMajorConstellation;
-import hellfirepvp.astralsorcery.common.data.research.PlayerProgress;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
-import hellfirepvp.astralsorcery.common.network.PacketChannel;
-import hellfirepvp.astralsorcery.common.network.packet.server.PktSyncKnowledge;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.math.MathHelper;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -51,6 +47,7 @@ public abstract class IPlayerExpansionAs {
 
     @ZenMethod
     public static List<String> getKnownConstellations(IPlayer player) {
+
         return ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getKnownConstellations();
     }
 
@@ -62,50 +59,21 @@ public abstract class IPlayerExpansionAs {
     @ZenMethod
     public static boolean modifyPerkExp(IPlayer player, double exp) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
-        PlayerProgress progress = ResearchManager.getProgress(mcPlayer);
         if (IPlayerExpansionAs.getAttunedConstellation(player) == null) {
-            CraftTweakerAPI.logInfo("The Player has not constellations.");
+            CraftTweakerAPI.logInfo("This Player has not constellations.");
             return false;
         }
-        try {
-            Class<? extends PlayerProgress> progressClass = progress.getClass();
-            Method setExp = progressClass.getMethod("modifyExp", double.class, EntityPlayer.class);
-            setExp.setAccessible(true);
-            setExp.invoke(progress, exp, mcPlayer);
-            sendPacket(mcPlayer, progress);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            CraftTweakerAPI.logError("Maybe you need to report this error", e);
-        }
-        return true;
+        return mcPlayer instanceof EntityPlayerMP && ResearchManager.modifyExp(mcPlayer, exp);
     }
 
     @ZenMethod
     public static boolean setPerkExp(IPlayer player, double exp) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
-        PlayerProgress progress = ResearchManager.getProgress(mcPlayer);
-
         if (IPlayerExpansionAs.getAttunedConstellation(player) == null) {
             CraftTweakerAPI.logInfo("This Player is not constellations");
             return false;
         }
-        try {
-            Class<? extends PlayerProgress> progressClass = progress.getClass();
-            Method setExp = progressClass.getDeclaredMethod("setExp", double.class);
-            setExp.setAccessible(true);
-            setExp.invoke(progress, exp);
-            sendPacket(mcPlayer, progress);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            CraftTweakerAPI.logError("Maybe you need to report this error", e);
-        }
-        return true;
-    }
-
-    private static void sendPacket(EntityPlayer player, PlayerProgress progress) {
-        if (player instanceof EntityPlayerMP) {
-            PktSyncKnowledge packet = new PktSyncKnowledge(PktSyncKnowledge.STATE_ADD);
-            packet.load(progress);
-            PacketChannel.CHANNEL.sendTo(packet, (EntityPlayerMP) player);
-        }
+        return mcPlayer instanceof EntityPlayerMP && ResearchManager.setExp(mcPlayer, MathHelper.lfloor(exp));
     }
 
 }
