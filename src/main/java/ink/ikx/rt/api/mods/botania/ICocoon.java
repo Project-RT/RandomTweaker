@@ -36,7 +36,7 @@ public abstract class ICocoon {
                 if (entity.getInternal() instanceof EntityEntry) {
                     tab.put((EntityEntry) entity.getInternal(), probably);
                 } else {
-                    CraftTweakerAPI.logError("The internal type of the entity is not EntityEntry!");
+                    CraftTweakerAPI.logError("The internal type of " + entity.getId() + " is not EntityEntry!");
                 }
             }
         });
