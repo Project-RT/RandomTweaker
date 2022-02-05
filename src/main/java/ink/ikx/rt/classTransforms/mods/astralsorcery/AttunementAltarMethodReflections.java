@@ -34,27 +34,51 @@ public class AttunementAltarMethodReflections {
             }
         }
         AttunementRecipeCompleteEvent event = new AttunementRecipeCompleteEvent(itemStack, original, world, constellation);
+        ItemStack originalStack = original.getItem().copy();
+        originalStack.setTagCompound(null);
         boolean eventExec = event.post();
 
         if (!eventExec) {
-            itemStack = event.getOutput();
+            ItemStack output = event.getOutput().copy();
+            EntityItem item = new EntityItem(world,
+                original.posX,
+                original.posY,
+                original.posZ,
+                output);
+            resetMotion(item);
+            world.spawnEntity(item);
+
             for (ItemStack stack : event.getAdditionalOutput()) {
-                if (!world.isRemote) {
-                    EntityItem additionalStack = new EntityItem(world,
-                            original.posX,
-                            original.posY,
-                            original.posZ,
-                            stack);
-                    additionalStack.motionX = 0.0D;
-                    additionalStack.motionY = 0.0D;
-                    additionalStack.motionZ = 0.0D;
-                    world.spawnEntity(additionalStack);
-                    additionalStack.setDefaultPickupDelay();
-                }
+                EntityItem additionalStack = new EntityItem(world,
+                    original.posX,
+                    original.posY,
+                    original.posZ,
+                    stack);
+                resetMotion(additionalStack);
+                additionalStack.setDefaultPickupDelay();
+                world.spawnEntity(additionalStack);
             }
         } else {
-            itemStack.setCount(0);
+            EntityItem originalInput = new EntityItem(world,
+                original.posX,
+                original.posY,
+                original.posZ,
+                originalStack);
+
+            originalInput.motionX = Math.random() * 0.3;
+            originalInput.motionY = Math.random() * 0.2;
+            originalInput.motionZ = Math.random() * 0.3;
+            originalInput.setDefaultPickupDelay();
+            world.spawnEntity(originalInput);
         }
+
+        itemStack.setCount(0);
+    }
+
+    private static void resetMotion(EntityItem item) {
+        item.motionX = 0.0D;
+        item.motionY = 0.0D;
+        item.motionZ = 0.0D;
     }
 
     public static boolean haveRecipe(IConstellation constellation, ItemStack itemStack) {
