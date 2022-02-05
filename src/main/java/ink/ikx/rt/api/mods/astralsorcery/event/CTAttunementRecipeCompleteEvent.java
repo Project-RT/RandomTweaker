@@ -60,15 +60,15 @@ public abstract class CTAttunementRecipeCompleteEvent implements IEventCancelabl
 
     //the entity item being attuned
     //this is final for attunement complete event
-    @ZenGetter("entity")
     @Override
     public IEntity getEntity() {
-        return (IEntity) this.event.getInputEntity();
+        return this.getItemEntity();
     }
 
     @ZenGetter("itemEntity")
+    @ZenMethod
     public IEntityItem getItemEntity(){
-        return (IEntityItem) this.event.getInputEntity();
+        return CraftTweakerMC.getIEntityItem(this.event.getInputEntity());
     }
 
     @ZenMethod

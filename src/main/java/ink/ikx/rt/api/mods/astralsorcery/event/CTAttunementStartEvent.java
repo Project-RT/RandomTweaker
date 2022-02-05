@@ -3,6 +3,7 @@ package ink.ikx.rt.api.mods.astralsorcery.event;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.entity.IEntity;
 import crafttweaker.api.event.IEntityEvent;
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementStartEvent;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import net.minecraft.world.World;
@@ -34,10 +35,9 @@ public abstract class CTAttunementStartEvent implements IEntityEvent {
     }
 
     //the entity being attuned
-    @ZenGetter("entity")
     @Override
     public IEntity getEntity() {
-        return (IEntity) this.event.getInputEntity();
+        return CraftTweakerMC.getIEntity(this.event.getInputEntity());
     }
 
 }
