@@ -4,9 +4,9 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.entity.IEntity;
 import crafttweaker.api.event.IEntityEvent;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import crafttweaker.api.world.IWorld;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementStartEvent;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
-import net.minecraft.world.World;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -24,8 +24,8 @@ public abstract class CTAttunementStartEvent implements IEntityEvent {
 
     @ZenGetter("world")
     @ZenMethod
-    public World getWorld() {
-        return this.event.getWorld();
+    public IWorld getWorld() {
+        return CraftTweakerMC.getIWorld(this.event.getWorld());
     }
 
     @ZenGetter("constellation")
