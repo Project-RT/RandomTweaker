@@ -65,8 +65,8 @@ public abstract class IAttunementAltar {
         @Override
         public String describe() {
             return "Add attunement recipe " +
-                    ingredient.toString() + (constellationString != null ? constellationString : "")
-                    + " -> " + output.toString();
+                ingredient.toString() + (constellationString != null ? ", constellation : " + constellationString : "")
+                + " -> " + output.toString();
         }
 
         @Override
