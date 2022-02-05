@@ -42,7 +42,7 @@ public abstract class IPlayerExpansionAs {
     public static String getAttunedConstellation(IPlayer player) {
         IMajorConstellation attunedConstellation =
                 ResearchManager.getProgress(CraftTweakerMC.getPlayer(player)).getAttunedConstellation();
-        return attunedConstellation == null ? null : attunedConstellation.getSimpleName();
+        return attunedConstellation == null ? null : attunedConstellation.getUnlocalizedName();
     }
 
     @ZenMethod
@@ -60,7 +60,7 @@ public abstract class IPlayerExpansionAs {
     public static boolean modifyPerkExp(IPlayer player, double exp) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         if (IPlayerExpansionAs.getAttunedConstellation(player) == null) {
-            CraftTweakerAPI.logInfo("This Player has not constellations.");
+            CraftTweakerAPI.logInfo("The Player has not constellations.");
             return false;
         }
         return mcPlayer instanceof EntityPlayerMP && ResearchManager.modifyExp(mcPlayer, exp);
@@ -70,7 +70,7 @@ public abstract class IPlayerExpansionAs {
     public static boolean setPerkExp(IPlayer player, double exp) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         if (IPlayerExpansionAs.getAttunedConstellation(player) == null) {
-            CraftTweakerAPI.logInfo("This Player is not constellations");
+            CraftTweakerAPI.logInfo("The Player is not constellations");
             return false;
         }
         return mcPlayer instanceof EntityPlayerMP && ResearchManager.setExp(mcPlayer, MathHelper.lfloor(exp));
