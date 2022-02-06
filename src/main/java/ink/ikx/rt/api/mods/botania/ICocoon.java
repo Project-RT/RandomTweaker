@@ -40,7 +40,14 @@ public abstract class ICocoon {
                 }
             }
         });
-        Main.CUSTOM_COCOONS_SPAWN.put(name, MCCocoon.create(name, CraftTweakerMC.getItemStack(stack), tab));
+
+        ICocoon cocoon = MCCocoon.create(name, CraftTweakerMC.getItemStack(stack), tab);
+
+        if (Objects.nonNull(cocoon)) {
+            Main.CUSTOM_COCOONS_SPAWN.put(name, cocoon);
+        } else {
+            CraftTweakerAPI.logError("Registration " + name + " failed");
+        }
     }
 
     public static ICocoon getInstanceByName(String name) {
