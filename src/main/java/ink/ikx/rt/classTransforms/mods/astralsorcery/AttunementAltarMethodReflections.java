@@ -20,11 +20,12 @@ import net.minecraft.world.World;
 @SuppressWarnings("unused")
 public class AttunementAltarMethodReflections {
 
-    public static void onAttunementStart(Entity itemStack, World world, IConstellation constellation) {
-        if(itemStack == null){
+    public static void onAttunementStart(Entity entity, World world, IConstellation constellation) {
+        if (entity == null) {
             return;
         }
-        AttunementStartEvent event = new AttunementStartEvent(itemStack, world, constellation);
+        AttunementStartEvent event = new AttunementStartEvent(entity, world, constellation);
+        event.post();
     }
 
     public static void onCraftingFinish(ItemStack itemStack, EntityItem original, World world, IConstellation constellation) {
