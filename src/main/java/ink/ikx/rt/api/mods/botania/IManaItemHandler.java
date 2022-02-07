@@ -5,7 +5,6 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
-import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import vazkii.botania.api.mana.ManaItemHandler;
@@ -27,9 +26,10 @@ public abstract class IManaItemHandler {
     public static Map<Integer, IItemStack> getManaBaubles(IPlayer player) {
         Map<Integer, IItemStack> toReturn = new HashMap<>();
 
-        for (Map.Entry<Integer, ItemStack> entry : ManaItemHandler.getManaBaubles(CraftTweakerMC.getPlayer(player)).entrySet()) {
-            toReturn.put(entry.getKey(), CraftTweakerMC.getIItemStack(entry.getValue()));
-        }
+        ManaItemHandler.getManaBaubles(CraftTweakerMC.getPlayer(player)).forEach((
+            (slot, stack) -> toReturn.put(slot, CraftTweakerMC.getIItemStack(stack))
+        ));
+
         return toReturn;
     }
 
