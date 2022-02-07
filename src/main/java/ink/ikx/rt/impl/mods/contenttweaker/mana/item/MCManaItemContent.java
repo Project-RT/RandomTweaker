@@ -3,6 +3,9 @@ package ink.ikx.rt.impl.mods.contenttweaker.mana.item;
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemContent;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nonnull;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -23,10 +26,6 @@ import vazkii.botania.api.mana.IManaTooltipDisplay;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
 
-import javax.annotation.Nonnull;
-import java.util.List;
-import java.util.Objects;
-
 /**
  * @author superhelo
  */
@@ -34,14 +33,18 @@ import java.util.Objects;
 public class MCManaItemContent extends ItemContent implements IManaItem, ICreativeManaProvider, IManaTooltipDisplay {
 
     private static final String TAG_MANA = "mana";
-    private static final String TAG_ONE_USE = "oneUse";
     private static final String TAG_CREATIVE = "creative";
     private static final int DEFAULT_MAX_ITEM_USE_DURATION = 40;
-    public final IManaItemRepresentation manaItem;
+    private final IManaItemRepresentation manaItem;
 
     public MCManaItemContent(IManaItemRepresentation manaItem) {
         super(manaItem);
         this.manaItem = manaItem;
+    }
+
+    @ExpandContentTweakerEntry.RepresentationGetter
+    public IManaItemRepresentation getRepresentation() {
+        return manaItem;
     }
 
     public static void setMana(ItemStack stack, int mana) {
@@ -52,17 +55,8 @@ public class MCManaItemContent extends ItemContent implements IManaItem, ICreati
         ItemNBTHelper.setBoolean(stack, TAG_CREATIVE, true);
     }
 
-    public static boolean isStackCreative(ItemStack stack) {
-        return ItemNBTHelper.getBoolean(stack, TAG_CREATIVE, false);
-    }
-
-    @ExpandContentTweakerEntry.RepresentationGetter
-    public IManaItemRepresentation getRepresentation() {
-        return manaItem;
-    }
-
     @Override
-    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> stacks) {
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> stacks) {
         if (isInCreativeTab(tab)) {
             stacks.add(new ItemStack(this));
 
@@ -78,6 +72,23 @@ public class MCManaItemContent extends ItemContent implements IManaItem, ICreati
                 setMana(fullPower, this.manaItem.getMaxMana());
                 stacks.add(fullPower);
             }
+        }
+    }
+
+    @Override
+    public int getMana(ItemStack stack) {
+        return ItemNBTHelper.getInt(stack, TAG_MANA, 0);
+    }
+
+    @Override
+    public int getMaxMana(ItemStack stack) {
+        return this.manaItem.getMaxMana();
+    }
+
+    @Override
+    public void addMana(ItemStack stack, int mana) {
+        if (!isCreative(stack)) {
+            setMana(stack, Math.min(this.getMana(stack) + mana, this.manaItem.getMaxMana()));
         }
     }
 
@@ -97,40 +108,44 @@ public class MCManaItemContent extends ItemContent implements IManaItem, ICreati
     }
 
     @Override
-    public int getMana(ItemStack stack) {
-        return ItemNBTHelper.getInt(stack, TAG_MANA, 0);
-    }
-
-    @Override
-    public int getMaxMana(ItemStack stack) {
-        return this.manaItem.getMaxMana();
-    }
-
-    @Override
-    public void addMana(ItemStack stack, int mana) {
-        if (!isStackCreative(stack)) {
-            setMana(stack, Math.min(this.getMana(stack) + mana, this.manaItem.getMaxMana()));
-        }
-    }
-
-    @Override
     public boolean canReceiveManaFromPool(ItemStack stack, TileEntity pool) {
-        return !ItemNBTHelper.getBoolean(stack, TAG_ONE_USE, false) && (!Objects.nonNull(this.manaItem.canReceiveManaFromPool) || this.manaItem.canReceiveManaFromPool.call(CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIWorld(pool.getWorld()), CraftTweakerMC.getIBlockPos(pool.getPos())));
+        return Objects.isNull(this.manaItem.canReceiveManaFromPool) || this.manaItem.canReceiveManaFromPool.call(
+            CraftTweakerMC.getIItemStack(stack),
+            CraftTweakerMC.getIWorld(pool.getWorld()),
+            CraftTweakerMC.getIBlockPos(pool.getPos())
+        );
     }
 
     @Override
     public boolean canReceiveManaFromItem(ItemStack stack, ItemStack otherStack) {
-        return !isCreative(stack) && (!Objects.nonNull(this.manaItem.canReceiveManaFromItem) || this.manaItem.canReceiveManaFromItem.call(CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIItemStack(otherStack)));
+        return !isCreative(stack) && (Objects.isNull(this.manaItem.canReceiveManaFromItem) || this.manaItem.canReceiveManaFromItem.call(
+            CraftTweakerMC.getIItemStack(stack),
+            CraftTweakerMC.getIItemStack(otherStack)
+        ));
     }
 
     @Override
     public boolean canExportManaToPool(ItemStack stack, TileEntity pool) {
-        return !Objects.nonNull(this.manaItem.canExportManaToPool) || this.manaItem.canExportManaToPool.call(CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIWorld(pool.getWorld()), CraftTweakerMC.getIBlockPos(pool.getPos()));
+        return Objects.isNull(this.manaItem.canExportManaToPool) || this.manaItem.canExportManaToPool.call(
+            CraftTweakerMC.getIItemStack(stack),
+            CraftTweakerMC.getIWorld(pool.getWorld()),
+            CraftTweakerMC.getIBlockPos(pool.getPos()));
     }
 
     @Override
     public boolean canExportManaToItem(ItemStack stack, ItemStack otherStack) {
-        return !Objects.nonNull(this.manaItem.canExportManaToItem) || this.manaItem.canExportManaToItem.call(CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIItemStack(otherStack));
+        return Objects.isNull(this.manaItem.canExportManaToItem) || this.manaItem.canExportManaToItem.call(
+            CraftTweakerMC.getIItemStack(stack),
+            CraftTweakerMC.getIItemStack(otherStack)
+        );
+    }
+
+    @Override
+    public int getEntityLifespan(ItemStack stack, World world) {
+        return Objects.isNull(this.manaItem.getEntityLifeSpan) ? super.getEntityLifespan(stack, world) : this.manaItem.getEntityLifeSpan.call(
+            CraftTweakerMC.getIItemStack(stack),
+            CraftTweakerMC.getIWorld(world)
+        );
     }
 
     @Override
@@ -140,17 +155,12 @@ public class MCManaItemContent extends ItemContent implements IManaItem, ICreati
 
     @Override
     public boolean isCreative(ItemStack stack) {
-        return isStackCreative(stack);
+        return ItemNBTHelper.getBoolean(stack, TAG_CREATIVE, false);
     }
 
     @Override
     public float getManaFractionForDisplay(ItemStack stack) {
         return (float) this.getMana(stack) / (float) this.getMaxMana(stack);
-    }
-
-    @Override
-    public int getEntityLifespan(ItemStack itemStack, World world) {
-        return Integer.MAX_VALUE;
     }
 
     @Override
@@ -171,7 +181,7 @@ public class MCManaItemContent extends ItemContent implements IManaItem, ICreati
 
     @Override
     public boolean showDurabilityBar(ItemStack stack) {
-        return !isStackCreative(stack);
+        return !isCreative(stack);
     }
 
     @Override

@@ -3,6 +3,7 @@ package ink.ikx.rt.api.mods.contenttweaker.mana.bauble;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunction;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleFunctionWithReturn;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IBaubleRender;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IGetBaubleType;
 import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -22,6 +23,8 @@ public abstract class IManaBaubleRepresentation extends IManaItemRepresentation 
     public IBaubleFunction onEquipped;
     @ZenProperty
     public IBaubleFunction onUnequipped;
+    @ZenProperty
+    public IGetBaubleType getBaubleType;
     @ZenProperty
     public IBaubleRender onPlayerBaubleRender;
     @ZenProperty

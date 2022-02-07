@@ -1,6 +1,7 @@
 package ink.ikx.rt.api.mods.contenttweaker.mana.item;
 
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemRepresentation;
+import ink.ikx.rt.api.mods.contenttweaker.function.mana.IGetEntityLifeSpan;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithItem;
 import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithPool;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -31,6 +32,8 @@ public abstract class IManaItemRepresentation extends ItemRepresentation {
     public IManaWithPool canReceiveManaFromPool;
     @ZenProperty
     public IManaWithItem canReceiveManaFromItem;
+    @ZenProperty
+    public IGetEntityLifeSpan entityLifeSpan;
 
     @ZenMethod
     public IManaWithPool getCanExportManaToPool() {

@@ -5,11 +5,11 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
 import ink.ikx.rt.api.mods.contenttweaker.mana.IManaItem;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.item.tool.MCIsUsesManaItemContent;
+import javax.annotation.Nullable;
 import net.minecraft.item.ItemStack;
+import vazkii.botania.api.mana.ICreativeManaProvider;
+import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
-
-import java.util.Objects;
 
 /**
  * @author superhelo
@@ -17,16 +17,36 @@ import java.util.Objects;
 public class MCManaItem implements IManaItem {
 
     protected final ItemStack stack;
-    protected final MCManaItemContent itemIn;
+    protected final vazkii.botania.api.mana.IManaItem itemIn;
 
-    public MCManaItem(ItemStack stack) {
+    protected MCManaItem(ItemStack stack) {
         this.stack = stack.copy();
-        this.itemIn = (MCManaItemContent) stack.getItem();
+        this.itemIn = (vazkii.botania.api.mana.IManaItem) stack.getItem();
+    }
+
+    @Nullable
+    public static IManaItem create(ItemStack stack) {
+        return stack.getItem() instanceof vazkii.botania.api.mana.IManaItem ? new MCManaItem(stack) : null;
+    }
+
+    @Override
+    public boolean hasFull() {
+        return itemIn instanceof MCManaItemContent && ((MCManaItemContent) itemIn).getRepresentation().hasFull();
+    }
+
+    @Override
+    public boolean hasCreative() {
+        return itemIn instanceof MCManaItemContent && ((MCManaItemContent) itemIn).getRepresentation().hasCreative();
+    }
+
+    @Override
+    public boolean getUseMana() {
+        return itemIn instanceof IManaUsingItem && ((IManaUsingItem) itemIn).usesMana(stack);
     }
 
     @Override
     public boolean isCreative() {
-        return itemIn.isCreative(stack);
+        return itemIn instanceof ICreativeManaProvider && ((ICreativeManaProvider) itemIn).isCreative(stack);
     }
 
     @Override
@@ -50,38 +70,23 @@ public class MCManaItem implements IManaItem {
     }
 
     @Override
-    public boolean hasFull() {
-        return itemIn.manaItem.hasFull();
-    }
-
-    @Override
-    public boolean hasCreative() {
-        return itemIn.manaItem.hasCreative();
-    }
-
-    @Override
-    public boolean getUseMana() {
-        return itemIn instanceof MCIsUsesManaItemContent && ((MCIsUsesManaItemContent) itemIn).usesMana(stack);
-    }
-
-    @Override
     public boolean canExportManaToPool(IWorld world, IBlockPos pos) {
-        return Objects.isNull(itemIn.manaItem.canExportManaToPool) || itemIn.manaItem.canExportManaToPool.call(CraftTweakerMC.getIItemStack(stack), world, pos);
+        return itemIn.canExportManaToPool(stack, CraftTweakerMC.getWorld(world).getTileEntity(CraftTweakerMC.getBlockPos(pos)));
     }
 
     @Override
     public boolean canExportManaToItem(IItemStack otherStack) {
-        return Objects.isNull(itemIn.manaItem.canExportManaToItem) || itemIn.manaItem.canExportManaToItem.call(CraftTweakerMC.getIItemStack(stack), otherStack);
+        return itemIn.canExportManaToItem(stack, CraftTweakerMC.getItemStack(otherStack));
     }
 
     @Override
     public boolean canReceiveManaFromPool(IWorld world, IBlockPos pos) {
-        return !ItemNBTHelper.getBoolean(stack, "oneUse", false) && (Objects.isNull(itemIn.manaItem.canReceiveManaFromPool) || itemIn.manaItem.canReceiveManaFromPool.call(CraftTweakerMC.getIItemStack(stack), world, pos));
+        return itemIn.canReceiveManaFromPool(stack, CraftTweakerMC.getWorld(world).getTileEntity(CraftTweakerMC.getBlockPos(pos)));
     }
 
     @Override
     public boolean canReceiveManaFromItem(IItemStack otherStack) {
-        return !itemIn.isCreative(stack) && (Objects.isNull(itemIn.manaItem.canReceiveManaFromItem) || itemIn.manaItem.canReceiveManaFromItem.call(CraftTweakerMC.getIItemStack(stack), otherStack));
+        return itemIn.canReceiveManaFromItem(stack, CraftTweakerMC.getItemStack(otherStack));
     }
 
     @Override

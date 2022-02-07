@@ -9,6 +9,8 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.contenttweaker.mana.bauble.IManaBaubleRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemContent;
+import java.util.Objects;
+import javax.annotation.Nonnull;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -28,9 +30,6 @@ import vazkii.botania.common.core.helper.PlayerHelper;
 import vazkii.botania.common.entity.EntityDoppleganger;
 import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
 
-import javax.annotation.Nonnull;
-import java.util.Objects;
-
 /**
  * @author superhelo
  */
@@ -39,13 +38,11 @@ public class MCManaBaubleContent extends MCManaItemContent implements IBauble, I
 
     private static final String TAG_PHANTOM_INK = "phantomInk";
     private static final String TAG_COSMETIC_ITEM = "cosmeticItem";
-    public final IManaBaubleRepresentation manaBauble;
-    public final BaubleType baubleType;
+    private final IManaBaubleRepresentation manaBauble;
 
     public MCManaBaubleContent(IManaBaubleRepresentation manaBauble) {
         super(manaBauble);
         this.manaBauble = manaBauble;
-        this.baubleType = BaubleType.valueOf(manaBauble.getBaubleType());
     }
 
     @ExpandContentTweakerEntry.RepresentationGetter
@@ -56,21 +53,22 @@ public class MCManaBaubleContent extends MCManaItemContent implements IBauble, I
     @Override
     public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
         if (Objects.nonNull(this.manaBauble.onPlayerBaubleRender)) {
-            Main.proxy.onPlayerBaubleRender(this.manaBauble.onPlayerBaubleRender, CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIPlayer(player), type.toString(), partialTicks);
+            Main.proxy.onPlayerBaubleRender(
+                this.manaBauble.onPlayerBaubleRender,
+                CraftTweakerMC.getIItemStack(stack),
+                CraftTweakerMC.getIPlayer(player),
+                type.toString(),
+                partialTicks
+            );
         }
     }
 
     @Override
-    public BaubleType getBaubleType(ItemStack var1) {
-        if (Objects.nonNull(this.baubleType)) {
-            return baubleType;
+    public BaubleType getBaubleType(ItemStack stack) {
+        if (Objects.nonNull(this.manaBauble.getBaubleType)) {
+            return BaubleType.valueOf(this.manaBauble.getBaubleType.call(CraftTweakerMC.getIItemStack(stack)));
         }
-        return BaubleType.TRINKET;
-    }
-
-    @Override
-    public boolean canExportManaToItem(ItemStack stack, ItemStack otherStack) {
-        return this.baubleType != BaubleType.TRINKET && super.canExportManaToItem(stack, otherStack);
+        return BaubleType.valueOf(this.manaBauble.baubleType);
     }
 
     @Override
@@ -96,17 +94,26 @@ public class MCManaBaubleContent extends MCManaItemContent implements IBauble, I
 
     @Override
     public boolean canEquip(ItemStack baubleItem, EntityLivingBase wearer) {
-        return Objects.isNull(this.manaBauble.canEquip) || this.manaBauble.canEquip.call(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        return Objects.isNull(this.manaBauble.canEquip) || this.manaBauble.canEquip.call(
+            CraftTweakerMC.getIItemStack(baubleItem),
+            CraftTweakerMC.getIEntityLivingBase(wearer)
+        );
     }
 
     @Override
     public boolean canUnequip(ItemStack baubleItem, EntityLivingBase wearer) {
-        return Objects.isNull(this.manaBauble.canUnEquip) || this.manaBauble.canUnEquip.call(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        return Objects.isNull(this.manaBauble.canUnEquip) || this.manaBauble.canUnEquip.call(
+            CraftTweakerMC.getIItemStack(baubleItem),
+            CraftTweakerMC.getIEntityLivingBase(wearer)
+        );
     }
 
     @Override
     public boolean willAutoSync(ItemStack baubleItem, EntityLivingBase wearer) {
-        return Objects.nonNull(this.manaBauble.willAutoSync) && this.manaBauble.willAutoSync.call(CraftTweakerMC.getIItemStack(baubleItem), CraftTweakerMC.getIEntityLivingBase(wearer));
+        return Objects.nonNull(this.manaBauble.willAutoSync) && this.manaBauble.willAutoSync.call(
+            CraftTweakerMC.getIItemStack(baubleItem),
+            CraftTweakerMC.getIEntityLivingBase(wearer)
+        );
     }
 
     @Override
@@ -151,6 +158,7 @@ public class MCManaBaubleContent extends MCManaItemContent implements IBauble, I
     @Nonnull
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ActionResult<ItemStack> result = super.onItemRightClick(world, player, hand);
         ItemStack stack = player.getHeldItem(hand);
         if (!EntityDoppleganger.isTruePlayer(player)) {
             return ActionResult.newResult(EnumActionResult.FAIL, stack);
@@ -196,7 +204,7 @@ public class MCManaBaubleContent extends MCManaItemContent implements IBauble, I
                 }
             }
         }
-        return ActionResult.newResult(EnumActionResult.PASS, stack);
+        return result;
     }
 
 }
