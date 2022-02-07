@@ -1,14 +1,15 @@
 package ink.ikx.rt.api.mods.contenttweaker.mana;
 
+import baubles.api.IBauble;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.item.IMutableItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBauble;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBaubleContent;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItem;
-import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemContent;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import javax.annotation.Nullable;
+import net.minecraft.item.Item;
 import stanhebben.zenscript.annotations.ZenCaster;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -25,30 +26,33 @@ public abstract class IManaHelper {
 
     @ZenMethod
     public static boolean isIManaItem(IItemStack stack) {
-        return CraftTweakerMC.getItemStack(stack).getItem() instanceof MCManaItemContent;
+        return CraftTweakerMC.getItemStack(stack).getItem() instanceof vazkii.botania.api.mana.IManaItem;
     }
 
     @ZenMethod
     public static boolean isIManaBauble(IItemStack stack) {
-        return CraftTweakerMC.getItemStack(stack).getItem() instanceof MCManaBaubleContent;
+        Item item = CraftTweakerMC.getItemStack(stack).getItem();
+        return item instanceof IManaItem && item instanceof IBauble;
     }
 
+    @Nullable
     @ZenCaster
     @ZenMethod
     public static IManaItem asIManaItem(IItemStack stack) {
         if (stack instanceof IMutableItemStack) {
-            return new MCManaItem(CraftTweakerMC.getItemStack((IMutableItemStack) stack));
+            return MCManaItem.create(CraftTweakerMC.getItemStack((IMutableItemStack) stack));
         }
-        return new MCManaItem(CraftTweakerMC.getItemStack(stack));
+        return MCManaItem.create(CraftTweakerMC.getItemStack(stack));
     }
 
+    @Nullable
     @ZenCaster
     @ZenMethod
     public static IManaBauble asIManaBauble(IItemStack stack) {
         if (stack instanceof IMutableItemStack) {
-            return new MCManaBauble(CraftTweakerMC.getItemStack((IMutableItemStack) stack));
+            return MCManaBauble.create(CraftTweakerMC.getItemStack((IMutableItemStack) stack));
         }
-        return new MCManaBauble(CraftTweakerMC.getItemStack(stack));
+        return MCManaBauble.create(CraftTweakerMC.getItemStack(stack));
     }
 
 }

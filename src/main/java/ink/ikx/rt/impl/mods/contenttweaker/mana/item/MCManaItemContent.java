@@ -142,7 +142,7 @@ public class MCManaItemContent extends ItemContent implements IManaItem, ICreati
 
     @Override
     public int getEntityLifespan(ItemStack stack, World world) {
-        return Objects.isNull(this.manaItem.getEntityLifeSpan) ? super.getEntityLifespan(stack, world) : this.manaItem.getEntityLifeSpan.call(
+        return Objects.isNull(this.manaItem.entityLifeSpan) ? super.getEntityLifespan(stack, world) : this.manaItem.entityLifeSpan.call(
             CraftTweakerMC.getIItemStack(stack),
             CraftTweakerMC.getIWorld(world)
         );
