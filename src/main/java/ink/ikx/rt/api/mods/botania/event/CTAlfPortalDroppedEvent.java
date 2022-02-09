@@ -15,6 +15,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenSetter;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RTRegister
@@ -44,7 +45,15 @@ public abstract class CTAlfPortalDroppedEvent implements IEventCancelable {
     }
 
     @ZenMethod
+    public void addOutput(IItemStack output) {
+        event.addOutput(CraftTweakerMC.getItemStack(output));
+    }
+
+    @ZenMethod
     public void setOutput(IItemStack[] output) {
+        if (Objects.isNull(output)) {
+            return;
+        }
         event.setOutput(Arrays.stream(CraftTweakerMC.getItemStacks(output)).collect(Collectors.toList()));
     }
 

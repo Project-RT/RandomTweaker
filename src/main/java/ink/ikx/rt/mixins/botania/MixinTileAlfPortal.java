@@ -36,6 +36,7 @@ import vazkii.botania.common.block.tile.TileMod;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -101,8 +102,8 @@ public abstract class MixinTileAlfPortal extends TileMod implements ITileAlfPort
     private void injectResolveRecipes(CallbackInfo ci, int i, Iterator<?> var2, RecipeElvenTrade recipe) {
         ElvenTradeEvent event = new ElvenTradeEvent(this, stacksIn, recipe.getOutputs());
         recipe.matches(stacksIn, true);
-        if (!event.post()) {
-            event.getOutput().forEach(this::spawnItem);
+        if (!event.post() && Objects.nonNull(event.getOutput())) {
+            event.getOutput().stream().filter(Objects::nonNull).forEach(this::spawnItem);
         }
         ci.cancel();
     }

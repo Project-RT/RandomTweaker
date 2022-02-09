@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
 
 import java.util.List;
+import java.util.Objects;
 
 @Cancelable
 public class AlfPortalDroppedEvent extends BaseEvent {
@@ -36,6 +37,12 @@ public class AlfPortalDroppedEvent extends BaseEvent {
 
     public void setOutput(List<ItemStack> output) {
         this.output = output;
+    }
+
+    public void addOutput(ItemStack output) {
+        if (Objects.nonNull(this.output)) {
+            this.output.add(output);
+        }
     }
 
     public boolean isDead() {

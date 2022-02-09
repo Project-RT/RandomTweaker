@@ -3,9 +3,6 @@ package ink.ikx.rt.impl.mods.contenttweaker.mana.item;
 import com.teamacronymcoders.contenttweaker.modules.vanilla.items.ItemContent;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.contenttweaker.mana.item.IManaItemRepresentation;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nonnull;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,13 +15,15 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import vazkii.botania.api.mana.ICreativeManaProvider;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaTooltipDisplay;
 import vazkii.botania.common.core.helper.ItemNBTHelper;
 import youyihj.zenutils.api.cotx.annotation.ExpandContentTweakerEntry;
+
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nonnull;
 
 /**
  * @author superhelo
@@ -171,7 +170,6 @@ public class MCManaItemContent extends ItemContent implements IManaItem, ICreati
         return 0;
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack par1ItemStack, World world, List<String> stacks, ITooltipFlag flags) {
         if (this.isCreative(par1ItemStack)) {
