@@ -1,4 +1,4 @@
-package ink.ikx.rt.mixins.mods.botania;
+package ink.ikx.rt.mixins.botania;
 
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityInGame;
 import net.minecraft.block.state.IBlockState;

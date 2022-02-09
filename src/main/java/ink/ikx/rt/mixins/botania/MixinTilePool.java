@@ -1,4 +1,4 @@
-package ink.ikx.rt.mixins.mods.botania;
+package ink.ikx.rt.mixins.botania;
 
 import ink.ikx.rt.impl.mods.botania.event.PoolTradeEvent;
 import net.minecraft.entity.item.EntityItem;

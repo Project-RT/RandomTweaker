@@ -1,7 +1,7 @@
 {
   "required": false,
   "compatibilityLevel": "JAVA_8",
-  "package": "ink.ikx.rt.mixins.mods",
+  "package": "ink.ikx.rt.mixins",
   "minVersion": "0.8",
   "mixins": [
     "botania.MixinBlockCocoon",

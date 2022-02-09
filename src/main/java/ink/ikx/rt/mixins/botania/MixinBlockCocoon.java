@@ -1,8 +1,7 @@
-package ink.ikx.rt.mixins.mods.botania;
+package ink.ikx.rt.mixins.botania;
 
 import ink.ikx.rt.Main;
 import ink.ikx.rt.impl.mods.botania.IMixinTileCocoon;
-import java.util.Objects;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,6 +14,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import vazkii.botania.common.block.BlockCocoon;
 import vazkii.botania.common.block.tile.TileCocoon;
+
+import java.util.Objects;
 
 @Pseudo
 @Mixin(value = BlockCocoon.class, remap = false)

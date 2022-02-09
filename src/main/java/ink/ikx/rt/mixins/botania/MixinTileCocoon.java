@@ -1,12 +1,9 @@
-package ink.ikx.rt.mixins.mods.botania;
+package ink.ikx.rt.mixins.botania;
 
 import com.google.common.collect.Maps;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.api.mods.botania.ICocoon;
 import ink.ikx.rt.impl.mods.botania.IMixinTileCocoon;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Objects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
@@ -23,6 +20,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import vazkii.botania.common.block.tile.TileCocoon;
 import vazkii.botania.common.block.tile.TileMod;
+
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
 
 @Pseudo
 @Mixin(value = TileCocoon.class, remap = false)

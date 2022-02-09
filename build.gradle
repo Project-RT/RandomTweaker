@@ -54,6 +54,7 @@ dependencies {
     deobfCompile "curse.maven:Baubles-227083:2518667"
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
+    deobfCompile "curse.maven:mixinbooter-419286:3642000"
     deobfCompile "curse.maven:naturesaura-306626:2882138"
     deobfCompile "curse.maven:ftb-ultimine-386134:3078750"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
@@ -61,7 +62,7 @@ dependencies {
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.670"
 
-    embed("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
+    compile("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
         exclude module: "asm-commons"
         exclude module: "asm-tree"
         exclude module: "launchwrapper"
@@ -120,26 +121,17 @@ repositories {
 }
 
 def attributes = [
-        'TweakClass'                 : 'org.spongepowered.asm.launch.MixinTweaker',
-        "FMLCorePlugin"              : "ink.ikx.rt.impl.internal.core.CoreModBoot",
         "FMLCorePluginContainsFMLMod": true,
-        'FMLAT'                      : 'randomtweaker_at.cfg'
+        "ForceLoadAsMod"             : true,
+        'FMLAT'                      : 'randomtweaker_at.cfg',
+        "FMLCorePlugin"              : "ink.ikx.rt.impl.internal.core.CoreModBoot",
 ]
-
-task buildSpecially {
-    attributes.put('ForceLoadAsMod', true)
-}
-
-buildSpecially.finalizedBy(':build')
 
 runClient {
     args '--username', 'dev_player'
 }
 
 jar {
-    from(configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }) {
-        exclude 'LICENSE.txt', 'META-INF/MANIFSET.MF', 'META-INF/maven/**', 'META-INF/*.RSA', 'META-INF/*.SF'
-    }
     manifest.attributes.putAll(attributes)
 }
 

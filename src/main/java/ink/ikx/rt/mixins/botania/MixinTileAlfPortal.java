@@ -1,4 +1,4 @@
-package ink.ikx.rt.mixins.mods.botania;
+package ink.ikx.rt.mixins.botania;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.data.DataMap;
