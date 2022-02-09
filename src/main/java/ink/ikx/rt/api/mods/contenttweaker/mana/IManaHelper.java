@@ -32,7 +32,7 @@ public abstract class IManaHelper {
     @ZenMethod
     public static boolean isIManaBauble(IItemStack stack) {
         Item item = CraftTweakerMC.getItemStack(stack).getItem();
-        return item instanceof IManaItem && item instanceof IBauble;
+        return item instanceof vazkii.botania.api.mana.IManaItem && item instanceof IBauble;
     }
 
     @Nullable
