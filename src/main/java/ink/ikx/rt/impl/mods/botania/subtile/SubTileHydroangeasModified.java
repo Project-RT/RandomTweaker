@@ -102,25 +102,22 @@ public class SubTileHydroangeasModified extends SubTileGenerating {
             }
             burnTime--;
 
-            for (BlockPos.MutableBlockPos posCheck : BlockPos.getAllInBoxMutable(
-                    pos.add(-RANGE, -RANGE_Y, -RANGE),
-                    pos.add(RANGE, RANGE_Y, RANGE))) {
-
-                if (supertile.getWorld().getBlockState(posCheck).getBlock()
-                        == fluidCat) {
-                    manaGen *= manaFactorFluid;
-                }
-            }
-            IItemStack block = CraftTweakerMC.getIItemStack(
-                    new ItemStack(supertile.getWorld().getBlockState(pos.down()).getBlock()));
-            if (SubTileHydroangeasManager.blockFactorList.containsKey(block)) {
-                manaFactorBlock = SubTileHydroangeasManager.blockFactorList.get(block);
-            }
-
-            addMana((int) (manaGen * manaFactorBlock));
-
             if (burnTime == 0) {
                 cooldown = getCooldown();
+
+                for (BlockPos.MutableBlockPos posCheck : BlockPos.getAllInBoxMutable(pos.add(-RANGE, -RANGE_Y, -RANGE), pos.add(RANGE, RANGE_Y, RANGE))) {
+
+                    if (supertile.getWorld().getBlockState(posCheck).getBlock() == fluidCat) {
+                        manaGen *= manaFactorFluid;
+                    }
+                }
+                IItemStack block = CraftTweakerMC.getIItemStack(
+                        new ItemStack(supertile.getWorld().getBlockState(pos.down()).getBlock()));
+                if (SubTileHydroangeasManager.blockFactorList.containsKey(block)) {
+                    manaFactorBlock = SubTileHydroangeasManager.blockFactorList.get(block);
+                }
+
+                addMana((int) (manaGen * manaFactorBlock));
                 sync();
             }
         }
