@@ -73,9 +73,11 @@ public class InternalUtils {
     }
 
     public static void decouplingMethod(CallbackInfo ci) {
-        CapabilityRegistryHandler.FTBUltimineTag capability = Minecraft.getMinecraft().player.getCapability(CapabilityRegistryHandler.FTB_ULTIMINE_CAPABILITY, null);
-        if (InternalUtils.isOpenFTBUltimineControl() && !Objects.requireNonNull(capability).isAllow()) {
-            ci.cancel();
+        if (InternalUtils.isOpenFTBUltimineControl()) {
+            CapabilityRegistryHandler.FTBUltimineTag capability = Minecraft.getMinecraft().player.getCapability(CapabilityRegistryHandler.FTB_ULTIMINE_CAPABILITY, null);
+            if (!Objects.requireNonNull(capability).isAllow()) {
+                ci.cancel();
+            }
         }
     }
 

@@ -30,13 +30,14 @@ public abstract class MixinFTBUltimine {
             ),
             cancellable = true)
     public void injectBlockBroken(BlockEvent.BreakEvent event, CallbackInfo ci) {
-        CapabilityRegistryHandler.FTBUltimineTag capability =
-                Minecraft.getMinecraft().player.getCapability(CapabilityRegistryHandler.FTB_ULTIMINE_CAPABILITY, null);
-        if (InternalUtils.isOpenFTBUltimineControl() && !Objects.requireNonNull(capability).isAllow()) {
-            if (IPlayerExpansionFTBU.langKey != null) {
-                event.getPlayer().sendMessage(new TextComponentString(I18n.translateToLocal(IPlayerExpansionFTBU.langKey)));
+        if (InternalUtils.isOpenFTBUltimineControl()) {
+            CapabilityRegistryHandler.FTBUltimineTag capability = Minecraft.getMinecraft().player.getCapability(CapabilityRegistryHandler.FTB_ULTIMINE_CAPABILITY, null);
+            if (!Objects.requireNonNull(capability).isAllow()) {
+                if (IPlayerExpansionFTBU.langKey != null) {
+                    event.getPlayer().sendMessage(new TextComponentString(I18n.translateToLocal(IPlayerExpansionFTBU.langKey)));
+                }
+                ci.cancel();
             }
-            ci.cancel();
         }
     }
 
