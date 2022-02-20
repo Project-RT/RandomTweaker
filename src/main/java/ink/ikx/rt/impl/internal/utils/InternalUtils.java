@@ -24,7 +24,8 @@ public class InternalUtils {
         return block.isItemBlock();
     }
 
-    public static IBlockState getState(IItemStack block) {
+    @SuppressWarnings("deprecation")
+    public static IBlockState getStateFromStack(IItemStack block) {
         if (isItemBlock(block)) {
             Block mcBlock = Block.getBlockFromItem(CraftTweakerMC.getItem(block.getDefinition()));
             return mcBlock.getStateFromMeta(block.getMetadata());

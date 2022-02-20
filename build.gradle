@@ -58,6 +58,8 @@ dependencies {
     deobfCompile "curse.maven:naturesaura-306626:2882138"
     deobfCompile "curse.maven:ftb-ultimine-386134:3078750"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
+    deobfCompile "curse.maven:hammerlib-247401:3611193"
+    deobfCompile "curse.maven:thaumicadditions-232564:3280205"
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.670"

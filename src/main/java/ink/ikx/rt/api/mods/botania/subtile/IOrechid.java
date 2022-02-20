@@ -37,7 +37,7 @@ public abstract class IOrechid {
 
     @ZenMethod
     public static IOreDictEntry[] getOreRecipes(IItemStack block) {
-        return Arrays.stream(SubTileOrechidManager.getOres(InternalUtils.getState(block)))
+        return Arrays.stream(SubTileOrechidManager.getOres(InternalUtils.getStateFromStack(block)))
                 .map(BracketHandlerOre::getOre)
                 .filter(o -> !o.isEmpty())
                 .toArray(IOreDictEntry[]::new);
@@ -57,7 +57,7 @@ public abstract class IOrechid {
 
         @Override
         public void apply() {
-            SubTileOrechidManager.addOreWeight(InternalUtils.getState(block), ore.getName(), weight);
+            SubTileOrechidManager.addOreWeight(InternalUtils.getStateFromStack(block), ore.getName(), weight);
         }
 
         @Override
@@ -67,7 +67,7 @@ public abstract class IOrechid {
 
         @Override
         public boolean validate() {
-            return Objects.nonNull(InternalUtils.getState(block)) && !ore.isEmpty();
+            return Objects.nonNull(InternalUtils.getStateFromStack(block)) && !ore.isEmpty();
         }
 
         @Override
@@ -90,7 +90,7 @@ public abstract class IOrechid {
 
         @Override
         public void apply() {
-            SubTileOrechidManager.delOre(InternalUtils.getState(block), ore.getName());
+            SubTileOrechidManager.delOre(InternalUtils.getStateFromStack(block), ore.getName());
         }
 
         @Override
@@ -100,10 +100,10 @@ public abstract class IOrechid {
 
         @Override
         public boolean validate() {
-            if (Objects.isNull(InternalUtils.getState(block))) {
+            if (Objects.isNull(InternalUtils.getStateFromStack(block))) {
                 describe = "The IItemStack is not a block.";
                 return false;
-            } else if (!SubTileOrechidManager.checkOreExist(InternalUtils.getState(block), ore.getName())) {
+            } else if (!SubTileOrechidManager.checkOreExist(InternalUtils.getStateFromStack(block), ore.getName())) {
                 describe = "The IOrechid Recipe not exist.";
                 return false;
             }
