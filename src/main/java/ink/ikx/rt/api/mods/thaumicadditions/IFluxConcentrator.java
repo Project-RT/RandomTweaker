@@ -1,35 +1,36 @@
 package ink.ikx.rt.api.mods.thaumicadditions;
 
-import com.zeitheron.thaumicadditions.api.RecipesFluxConcentrator;
-import com.zeitheron.thaumicadditions.api.RecipesFluxConcentrator.FluxConcentratorOutput;
+import com.google.common.collect.Lists;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.block.IBlockState;
+import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.internal.utils.InternalUtils;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import org.zeith.thaumicadditions.api.RecipesFluxConcentrator;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-import java.lang.reflect.Field;
-import java.util.Map;
+import java.util.List;
 
 @RTRegister
 @ModOnly("thaumadditions")
 @ZenClass("mods.randomtweaker.thaumadditions.IFluxConcentrator")
 public abstract class IFluxConcentrator {
 
+    public static final List<IBlockState> LATE_REMOVES = Lists.newArrayList();
+
     @ZenMethod
-    public static void addRecipes(IItemStack input, IItemStack output) {
+    public static void addRecipes(IIngredient input, IItemStack output) {
         if (input == null || output == null) {
             CraftTweakerAPI.logError("input or output can't be null!!");
-        } else if (!input.isItemBlock() || !output.isItemBlock()) {
+        } else if (!input.getItems().stream().allMatch(IItemStack::isItemBlock) || !output.isItemBlock()) {
             CraftTweakerAPI.logError("input or output is not a block!");
         } else {
-            IFluxConcentrator.addRecipes(CraftTweakerMC.getBlockState(InternalUtils.getStateFromStack(input)),
-                    CraftTweakerMC.getBlockState(InternalUtils.getStateFromStack(output)));
+            CraftTweakerAPI.apply(new AddRecipeAction(input, CraftTweakerMC.getBlockState(InternalUtils.getStateFromStack(output))));
         }
     }
 
@@ -54,61 +55,73 @@ public abstract class IFluxConcentrator {
     }
 
     @ZenMethod
-    public static void removeRecipes(IBlockState input) {
-        if (input == null) {
-            CraftTweakerAPI.logError("Source can't be null!");
+    public static void removeRecipes(IBlockState output) {
+        if (output == null) {
+            CraftTweakerAPI.logError("output can't be null!");
         } else {
-            CraftTweakerAPI.apply(new RemoveRecipeAction(input));
+            CraftTweakerAPI.apply(new RemoveRecipeAction(output));
         }
     }
 
     public static class AddRecipeAction implements IAction {
 
-        private final IBlockState src;
-        private final IBlockState target;
+        private final IBlockState output;
+        private IIngredient input;
+        private IBlockState input_;
 
-        public AddRecipeAction(IBlockState src, IBlockState target) {
-            this.src = src;
-            this.target = target;
+        public AddRecipeAction(IIngredient input, IBlockState output) {
+            this.input = input;
+            this.output = output;
+        }
+
+        public AddRecipeAction(IBlockState input_, IBlockState output) {
+            this.input_ = input_;
+            this.output = output;
         }
 
         @Override
         public void apply() {
-            RecipesFluxConcentrator.handle(CraftTweakerMC.getBlockState(src), RecipesFluxConcentrator.output(CraftTweakerMC.getBlockState(target)));
+            if (input_ != null) {
+                RecipesFluxConcentrator.handle(CraftTweakerMC.getBlockState(input_),
+                        RecipesFluxConcentrator.output(CraftTweakerMC.getBlockState(output)));
+            } else {
+                for (IItemStack item : input.getItems()) {
+                    if (item.getMetadata() == 32767) {
+                        for (IItemStack subItem : item.getDefinition().getSubItems()) {
+                            RecipesFluxConcentrator.handle(InternalUtils.getStateFromStack(subItem),
+                                    RecipesFluxConcentrator.output(CraftTweakerMC.getBlockState(output)));
+                        }
+                    } else {
+                        RecipesFluxConcentrator.handle(InternalUtils.getStateFromStack(item),
+                                RecipesFluxConcentrator.output(CraftTweakerMC.getBlockState(output)));
+                    }
+                }
+            }
         }
 
         @Override
         public String describe() {
-            return "Adding flux concentrator recipe for " + src.getBlock().getDisplayName() + " -> " + target.getBlock().getDisplayName();
+            return "Adding flux concentrator recipe for " + (input == null ? input_.toCommandString() : input.toCommandString()) + " -> " + output.toCommandString();
         }
 
     }
 
     public static class RemoveRecipeAction implements IAction {
 
-        private final IBlockState input;
+        private final IBlockState output;
 
-        public RemoveRecipeAction(IBlockState input) {
-            this.input = input;
+        public RemoveRecipeAction(IBlockState output) {
+            this.output = output;
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public void apply() {
-            try {
-                Field field = RecipesFluxConcentrator.class.getDeclaredField("HANDLERS");
-                field.setAccessible(true);
-                Map<net.minecraft.block.state.IBlockState, FluxConcentratorOutput> handlers =
-                        (Map<net.minecraft.block.state.IBlockState, FluxConcentratorOutput>) field.get(RecipesFluxConcentrator.class);
-                handlers.remove(CraftTweakerMC.getBlockState(input));
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
+            IFluxConcentrator.LATE_REMOVES.add(output);
         }
 
         @Override
         public String describe() {
-            return "Removing flux concentrator recipe for input -> " + input.getBlock().getDisplayName();
+            return "Removing flux concentrator recipe for input -> " + output.toCommandString();
         }
 
     }

@@ -1,9 +1,9 @@
 package ink.ikx.rt;
 
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.*;
+import com.zeitheron.hammercore.utils.OnetimeCaller;
+import crafttweaker.api.block.IBlockState;
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.mods.jei.JEI;
 import ink.ikx.rt.api.mods.astralsorcery.event.CTEventManagerAS;
 import ink.ikx.rt.api.mods.botania.ICocoon;
@@ -11,6 +11,7 @@ import ink.ikx.rt.api.mods.botania.event.CTEventManager;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
+import ink.ikx.rt.api.mods.thaumicadditions.IFluxConcentrator;
 import ink.ikx.rt.impl.internal.capability.CapabilityRegistryHandler;
 import ink.ikx.rt.impl.internal.config.RTConfig;
 import ink.ikx.rt.impl.internal.event.FTBUltimineEvent;
@@ -26,10 +27,6 @@ import ink.ikx.rt.impl.mods.jei.JeiAttunements;
 import ink.ikx.rt.impl.mods.jei.JeiHydroangeas;
 import ink.ikx.rt.impl.mods.jei.JeiOrechid;
 import ink.ikx.rt.impl.mods.thaumcraft.DreamJournalEvent;
-import java.lang.reflect.Field;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -38,11 +35,19 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.commons.lang3.tuple.Pair;
+import org.zeith.thaumicadditions.api.RecipesFluxConcentrator;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
+
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 @Mod(
         modid = Main.MODID,
@@ -97,6 +102,42 @@ public class Main {
     public void onInit(FMLInitializationEvent event) {
         registryFlowerModified();
         registerAttuAltarRecipe();
+    }
+
+    @EventHandler
+    public void onPostInit(FMLPostInitializationEvent event) {
+        if (Loader.isModLoaded("thaumadditions")) {
+            new OnetimeCaller(this::removeRecipeLate).call();
+        }
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    private void removeRecipeLate() {
+        for (IBlockState lateRemove : IFluxConcentrator.LATE_REMOVES) {
+            List<net.minecraft.block.state.IBlockState> toRemoveForPassInBlocks = Lists.newArrayList();
+            try {
+                Field field = RecipesFluxConcentrator.class.getDeclaredField("HANDLERS");
+                field.setAccessible(true);
+                Map<net.minecraft.block.state.IBlockState, RecipesFluxConcentrator.FluxConcentratorOutput> handlers =
+                        (Map) field.get(RecipesFluxConcentrator.class);
+                handlers.entrySet().removeIf(next -> {
+                    boolean toReturn = next.getValue().getOutState().equals(CraftTweakerMC.getBlockState(lateRemove));
+                    if (toReturn) {
+                        toRemoveForPassInBlocks.add(next.getKey());
+                    }
+                    return toReturn;
+                });
+
+                Field field1 = RecipesFluxConcentrator.class.getDeclaredField("PASS_IN_BLOCKS");
+                field1.setAccessible(true);
+                Set passInBlocks = (Set) field1.get(RecipesFluxConcentrator.class);
+                for (net.minecraft.block.state.IBlockState toRemoveForPassInBlock : toRemoveForPassInBlocks) {
+                    passInBlocks.remove(CraftTweakerMC.getBlockState(toRemoveForPassInBlock));
+                }
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
