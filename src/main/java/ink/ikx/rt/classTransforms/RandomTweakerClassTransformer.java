@@ -14,12 +14,12 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
     @Override
     public byte[] transform(String name, String transformedName, byte[] basicClass) {
         if (transformedName.equals("hellfirepvp.astralsorcery.common.tile.TileAttunementAltar")) {
-            LogManager.getLogger().info("transforming class {}", transformedName);
+            LogManager.getLogger().info("transforming class {} ({})", transformedName, name);
             ClassWriter writer = new ClassWriter(0);
             ASMTileAttunementAltar asm = new ASMTileAttunementAltar(ASM5, writer);
             try {
                 System.out.println("on astral sorcery class visitor");
-                ClassReader classReader = new ClassReader("hellfirepvp.astralsorcery.common.tile.TileAttunementAltar");
+                ClassReader classReader = new ClassReader(basicClass);
                 classReader.accept(asm, 0);
                 byte[] result = writer.toByteArray();
                 /*
@@ -28,7 +28,8 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
                 Files.write(dir.resolve("TileAttunementAltar.class"), result);
                 */
                 return result;
-            } catch (IOException e) {
+            } catch (Exception e) {
+                System.out.println("Error loading astral sorcery ASM");
                 e.printStackTrace();
             }
         }

@@ -8,6 +8,7 @@ import ink.ikx.rt.api.mods.jei.JEIExpansion;
 import ink.ikx.rt.impl.mods.astralsorcery.CustomAttunementRecipe;
 import ink.ikx.rt.impl.mods.jei.recipe.JEIAttunementRecipe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.translation.I18n;
 
 public class JeiAttunements {
@@ -17,7 +18,7 @@ public class JeiAttunements {
     private static final IItemStack ALTAR = CraftTweakerMC.getIItemStack(new ItemStack(BlocksAS.attunementAltar));
 
     public static void init() {
-        JEIExpansion.createJei(UID, I18n.translateToLocal("randomtweaker.jei_attunements"))
+        JEIExpansion.createJei(UID, new TextComponentTranslation("randomtweaker.jei_attunements").getUnformattedComponentText())
                 .setIcon(ALTAR)
                 .setBackground(IJeiUtils.createBackground(0, 0, 115, 161, TEXTURE))
                 .addRecipeCatalyst(ALTAR)
