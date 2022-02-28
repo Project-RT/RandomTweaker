@@ -113,18 +113,27 @@ public class Main {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     private void removeRecipeLate() {
-        for (IBlockState lateRemove : IFluxConcentrator.LATE_REMOVES) {
+        for (Map.Entry<IBlockState, Boolean> entry : IFluxConcentrator.LATE_REMOVES.entrySet()) {
+            Boolean isRemoveAll = entry.getValue();
+            IBlockState lateRemove = entry.getKey();
             List<net.minecraft.block.state.IBlockState> toRemoveForPassInBlocks = Lists.newArrayList();
+
             try {
                 Field field = RecipesFluxConcentrator.class.getDeclaredField("HANDLERS");
                 field.setAccessible(true);
                 Map<net.minecraft.block.state.IBlockState, RecipesFluxConcentrator.FluxConcentratorOutput> handlers =
                         (Map) field.get(RecipesFluxConcentrator.class);
                 handlers.entrySet().removeIf(next -> {
-                    boolean toReturn = next.getValue().getOutState().equals(CraftTweakerMC.getBlockState(lateRemove));
-                    if (toReturn) {
+                    boolean toReturn = false;
+
+                    if (isRemoveAll && next.getValue().getOutState().getBlock().equals(CraftTweakerMC.getBlockState(lateRemove).getBlock())) {
+                        toReturn = true;
+                        toRemoveForPassInBlocks.add(next.getKey());
+                    } else if (next.getValue().getOutState().equals(CraftTweakerMC.getBlockState(lateRemove))) {
+                        toReturn = true;
                         toRemoveForPassInBlocks.add(next.getKey());
                     }
+
                     return toReturn;
                 });
 

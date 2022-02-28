@@ -1,6 +1,6 @@
 package ink.ikx.rt.api.mods.thaumicadditions;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
 import crafttweaker.annotations.ModOnly;
@@ -11,17 +11,18 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.internal.utils.InternalUtils;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import org.zeith.thaumicadditions.api.RecipesFluxConcentrator;
+import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-import java.util.List;
+import java.util.Map;
 
 @RTRegister
 @ModOnly("thaumadditions")
 @ZenClass("mods.randomtweaker.thaumadditions.IFluxConcentrator")
 public abstract class IFluxConcentrator {
 
-    public static final List<IBlockState> LATE_REMOVES = Lists.newArrayList();
+    public static final Map<IBlockState, Boolean> LATE_REMOVES = Maps.newHashMap();
 
     @ZenMethod
     public static void addRecipes(IIngredient input, IItemStack output) {
@@ -44,22 +45,22 @@ public abstract class IFluxConcentrator {
     }
 
     @ZenMethod
-    public static void removeRecipes(IItemStack input) {
-        if (input == null) {
+    public static void removeRecipes(IItemStack output, @Optional boolean isRemoveAll) {
+        if (output == null) {
             CraftTweakerAPI.logError("input can't be null!");
-        } else if (!input.isItemBlock()) {
+        } else if (!output.isItemBlock()) {
             CraftTweakerAPI.logError("input is not a block!");
         } else {
-            IFluxConcentrator.removeRecipes(CraftTweakerMC.getBlockState(InternalUtils.getStateFromStack(input)));
+            IFluxConcentrator.removeRecipes(CraftTweakerMC.getBlockState(InternalUtils.getStateFromStack(output)), isRemoveAll);
         }
     }
 
     @ZenMethod
-    public static void removeRecipes(IBlockState output) {
+    public static void removeRecipes(IBlockState output, @Optional boolean isRemoveAll) {
         if (output == null) {
             CraftTweakerAPI.logError("output can't be null!");
         } else {
-            CraftTweakerAPI.apply(new RemoveRecipeAction(output));
+            CraftTweakerAPI.apply(new RemoveRecipeAction(output, isRemoveAll));
         }
     }
 
@@ -109,19 +110,21 @@ public abstract class IFluxConcentrator {
     public static class RemoveRecipeAction implements IAction {
 
         private final IBlockState output;
+        private final boolean isRemoveAll;
 
-        public RemoveRecipeAction(IBlockState output) {
+        public RemoveRecipeAction(IBlockState output, boolean isRemoveAll) {
             this.output = output;
+            this.isRemoveAll = isRemoveAll;
         }
 
         @Override
         public void apply() {
-            IFluxConcentrator.LATE_REMOVES.add(output);
+            IFluxConcentrator.LATE_REMOVES.put(output, isRemoveAll);
         }
 
         @Override
         public String describe() {
-            return "Removing flux concentrator recipe for input -> " + output.toCommandString();
+            return "Removing flux concentrator recipe for input -> " + output.toCommandString() + " (all: " + isRemoveAll + ")";
         }
 
     }
