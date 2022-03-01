@@ -107,7 +107,7 @@ public class Main {
     @EventHandler
     public void onPostInit(FMLPostInitializationEvent event) {
         if (Loader.isModLoaded("thaumadditions")) {
-            new OnetimeCaller(this::removeRecipeLate).call();
+            if (!IFluxConcentrator.LATE_REMOVES.isEmpty()) OnetimeCaller.of(this::removeRecipeLate).call();
         }
     }
 

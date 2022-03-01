@@ -1,5 +1,8 @@
 package ink.ikx.rt.api.mods.thaumcraft;
 
+import com.blamejared.compat.thaumcraft.handlers.aspects.CTAspect;
+import com.blamejared.compat.thaumcraft.handlers.aspects.CTAspectStack;
+import com.blamejared.compat.thaumcraft.handlers.brackets.BracketHandlerAspect;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.entity.IEntity;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -19,9 +22,12 @@ import java.util.Arrays;
 public abstract class IEntityExpansionTc {
 
     @ZenMethod
-    public static String[] getAspects(IEntity entity) {
+    public static CTAspect[] getAspects(IEntity entity) {
         Aspect[] aspects = AspectHelper.getEntityAspects(CraftTweakerMC.getEntity(entity)).copy().getAspects();
-        return Arrays.stream(aspects).map(Aspect::getTag).toArray(String[]::new);
+        return Arrays.stream(aspects)
+                .map(Aspect::getTag)
+                .map(BracketHandlerAspect::getAspect)
+                .map(CTAspectStack::getInternal).toArray(CTAspect[]::new);
     }
 
 }
