@@ -24,7 +24,7 @@ public abstract class IEdibleAspect {
     }
 
     @ZenMethod
-    public static void addEatCall(CTAspect aspect, EatFunctionWithPlayer function) {
+    public static void addEatCall(CTAspect aspect, EatFunctionWithEntity function) {
         EdibleAspect.addEatCall(aspect.getInternal(), (entityLiving, count) -> function.apply(CraftTweakerMC.getIEntityLivingBase(entityLiving), count));
     }
 
@@ -45,9 +45,9 @@ public abstract class IEdibleAspect {
 
     @RTRegister
     @ModTotal({"thaumadditions", "modtweaker"})
-    @ZenClass("mods.randomtweaker.thaumadditions.EatFunction")
+    @ZenClass("mods.randomtweaker.thaumadditions.EatFunctionWithEntity")
     @FunctionalInterface
-    public interface EatFunctionWithPlayer {
+    public interface EatFunctionWithEntity {
 
         boolean apply(IEntityLivingBase entityLiving, int count);
 
