@@ -50,6 +50,7 @@ dependencies {
     compile files('CraftTweaker2-MC1120-Mod-JEI-1.12-4.1.20.670-deobf.jar')
 
     deobfCompile "youyihj:zenutils:1.9.4"
+    deobfCompile "com.blamejared:MTLib:3.0.5.15"
     deobfCompile "mezz.jei:jei_1.12.2:4.16.1.302"
     deobfCompile "curse.maven:Baubles-227083:2518667"
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
