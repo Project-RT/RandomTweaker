@@ -1,24 +1,24 @@
 package ink.ikx.rt.api.mods.thaumicadditions;
 
-import com.blamejared.compat.thaumcraft.handlers.aspects.CTAspect;
+import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.entity.IEntityLivingBase;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.potions.IPotionEffect;
+import ink.ikx.rt.api.mods.thaumcraft.IAspect;
 import ink.ikx.rt.api.mods.thaumcraft.IAspectList;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import org.zeith.thaumicadditions.api.EdibleAspect;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @RTRegister
-@ModTotal({"thaumadditions", "modtweaker"})
+@ModOnly("thaumadditions")
 @ZenClass("mods.randomtweaker.thaumadditions.IEdibleAspect")
 public abstract class IEdibleAspect {
 
     @ZenMethod
-    public static void addEatCall(CTAspect aspect, EatFunction function) {
+    public static void addEatCall(IAspect aspect, EatFunction function) {
         EdibleAspect.addEatCall(aspect.getInternal(), (entity, count) -> {
             entity.addPotionEffect(CraftTweakerMC.getPotionEffect(function.apply(count)));
             return true;
@@ -26,12 +26,12 @@ public abstract class IEdibleAspect {
     }
 
     @ZenMethod
-    public static void addEatCall(CTAspect aspect, EatFunctionWithEntity function) {
+    public static void addEatCall(IAspect aspect, EatFunctionWithEntity function) {
         EdibleAspect.addEatCall(aspect.getInternal(), (entity, count) -> function.apply(CraftTweakerMC.getIEntityLivingBase(entity), count));
     }
 
     @ZenMethod
-    public static void removeEatCall(CTAspect aspect) {
+    public static void removeEatCall(IAspect aspect) {
         EdibleAspect.EAT_FUNCTIONS.entrySet().removeIf(entry -> entry.getKey().getTag().equals(aspect.getInternal().getTag()));
     }
 
@@ -46,7 +46,7 @@ public abstract class IEdibleAspect {
     }
 
     @RTRegister
-    @ModTotal({"thaumadditions", "modtweaker"})
+    @ModOnly("thaumadditions")
     @ZenClass("mods.randomtweaker.thaumadditions.EatFunction")
     @FunctionalInterface
     public interface EatFunction {
@@ -56,7 +56,7 @@ public abstract class IEdibleAspect {
     }
 
     @RTRegister
-    @ModTotal({"thaumadditions", "modtweaker"})
+    @ModOnly("thaumadditions")
     @ZenClass("mods.randomtweaker.thaumadditions.EatFunctionWithEntity")
     @FunctionalInterface
     public interface EatFunctionWithEntity {
