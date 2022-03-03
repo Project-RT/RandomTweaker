@@ -20,7 +20,7 @@ public class MCAspect implements IAspect {
 
     @Override
     public IAspect[] getComponents() {
-        return Arrays.stream(this.internal.getComponents()).map(IAspect::of).toArray(IAspect[]::new);
+        return Objects.nonNull(internal.getComponents()) ? Arrays.stream(this.internal.getComponents()).map(IAspect::of).toArray(IAspect[]::new) : null;
     }
 
     @Override
