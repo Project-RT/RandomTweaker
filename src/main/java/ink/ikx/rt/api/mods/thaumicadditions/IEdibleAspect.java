@@ -1,5 +1,7 @@
 package ink.ikx.rt.api.mods.thaumicadditions;
 
+import crafttweaker.CraftTweakerAPI;
+import crafttweaker.IAction;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.entity.IEntityLivingBase;
 import crafttweaker.api.item.IItemStack;
@@ -19,20 +21,44 @@ public abstract class IEdibleAspect {
 
     @ZenMethod
     public static void addEatCall(IAspect aspect, EatFunction function) {
-        EdibleAspect.addEatCall(aspect.getInternal(), (entity, count) -> {
-            entity.addPotionEffect(CraftTweakerMC.getPotionEffect(function.apply(count)));
-            return true;
+        CraftTweakerAPI.apply(new IAction() {
+            @Override public void apply() {
+                EdibleAspect.addEatCall(aspect.getInternal(), (entity, count) -> {
+                    entity.addPotionEffect(CraftTweakerMC.getPotionEffect(function.apply(count)));
+                    return true;
+                });
+            }
+
+            @Override public String describe() {
+                return "Adding EatCall for -> " + aspect.getName();
+            }
         });
     }
 
     @ZenMethod
     public static void addEatCall(IAspect aspect, EatFunctionWithEntity function) {
-        EdibleAspect.addEatCall(aspect.getInternal(), (entity, count) -> function.apply(CraftTweakerMC.getIEntityLivingBase(entity), count));
+        CraftTweakerAPI.apply(new IAction() {
+            @Override public void apply() {
+                EdibleAspect.addEatCall(aspect.getInternal(), (entity, count) -> function.apply(CraftTweakerMC.getIEntityLivingBase(entity), count));
+            }
+
+            @Override public String describe() {
+                return "Adding EatCall for -> " + aspect.getName();
+            }
+        });
     }
 
     @ZenMethod
     public static void removeEatCall(IAspect aspect) {
-        EdibleAspect.EAT_FUNCTIONS.entrySet().removeIf(entry -> entry.getKey().getTag().equals(aspect.getInternal().getTag()));
+        CraftTweakerAPI.apply(new IAction() {
+            @Override public void apply() {
+                EdibleAspect.EAT_FUNCTIONS.entrySet().removeIf(entry -> entry.getKey().getTag().equals(aspect.getInternal().getTag()));
+            }
+
+            @Override public String describe() {
+                return "Removing EatCall for -> " + aspect.getName();
+            }
+        });
     }
 
     @ZenMethod
@@ -44,6 +70,7 @@ public abstract class IEdibleAspect {
     public static IAspectList getSalt(IItemStack stack) {
         return IAspectList.of(EdibleAspect.getSalt(CraftTweakerMC.getItemStack(stack)));
     }
+
 
     @RTRegister
     @ModOnly("thaumadditions")

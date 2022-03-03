@@ -18,7 +18,6 @@ public abstract class IEntityExpansionTc {
     @ZenMethod
     public static IAspectList getAspects(IEntity entity) {
         return IAspectList.of(AspectHelper.getEntityAspects(CraftTweakerMC.getEntity(entity)).copy());
-
     }
 
 }

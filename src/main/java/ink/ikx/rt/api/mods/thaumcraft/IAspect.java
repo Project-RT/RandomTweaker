@@ -41,6 +41,10 @@ public interface IAspect {
     @ZenGetter("components")
     IAspect[] getComponents();
 
+    @ZenMethod
+    @ZenGetter("chatColor")
+    String getChatcolor();
+
     Aspect getInternal();
 
 }

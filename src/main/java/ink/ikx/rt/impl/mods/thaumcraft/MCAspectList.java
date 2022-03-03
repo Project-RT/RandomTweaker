@@ -2,9 +2,9 @@ package ink.ikx.rt.impl.mods.thaumcraft;
 
 import ink.ikx.rt.api.mods.thaumcraft.IAspect;
 import ink.ikx.rt.api.mods.thaumcraft.IAspectList;
-import java.util.Arrays;
-import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+
+import java.util.Arrays;
 
 public class MCAspectList implements IAspectList {
 
@@ -22,11 +22,6 @@ public class MCAspectList implements IAspectList {
     @Override
     public int getVisSize() {
         return internal.visSize();
-    }
-
-    @Override
-    public int getAmount(String key) {
-        return internal.getAmount(Aspect.getAspect(key));
     }
 
     @Override
@@ -61,10 +56,8 @@ public class MCAspectList implements IAspectList {
     }
 
     @Override
-    public IAspectList add(String key, int amount) {
-        if(containsKey(key))
-            internal.add(getAspect(key), amount);
-        return this;
+    public boolean reduce(IAspect key, int amount) {
+        return internal.reduce(key.getInternal(), amount);
     }
 
     @Override
@@ -74,34 +67,8 @@ public class MCAspectList implements IAspectList {
     }
 
     @Override
-    public boolean reduce(String key, int amount) {
-        if(containsKey(key))
-            return internal.reduce(getAspect(key), amount);
-        return false;
-    }
-
-    @Override
-    public boolean reduce(IAspect key, int amount) {
-        return internal.reduce(key.getInternal(), amount);
-    }
-
-    @Override
-    public IAspectList remove(String key) {
-        if(containsKey(key))
-            internal.remove(getAspect(key));
-        return this;
-    }
-
-    @Override
     public IAspectList remove(IAspect key) {
         internal.remove(key.getInternal());
-        return this;
-    }
-
-    @Override
-    public IAspectList remove(String key, int amount) {
-        if(containsKey(key))
-            internal.remove(getAspect(key), amount);
         return this;
     }
 
@@ -118,9 +85,8 @@ public class MCAspectList implements IAspectList {
     }
 
     @Override
-    public IAspectList merge(String key, int amount) {
-        if(containsKey(key))
-            internal.merge(getAspect(key), amount);
+    public IAspectList merge(IAspectList in) {
+        internal.merge(in.getInternal());
         return this;
     }
 
@@ -131,22 +97,9 @@ public class MCAspectList implements IAspectList {
     }
 
     @Override
-    public IAspectList merge(IAspectList in) {
-        internal.merge(in.getInternal());
-        return this;
-    }
-
-    @Override
     public AspectList getInternal() {
-        return this.internal;
+        return internal;
     }
 
-    private boolean containsKey(String key) {
-        return Aspect.aspects.containsKey(key);
-    }
-
-    private Aspect getAspect(String key) {
-        return Aspect.getAspect(key);
-    }
 
 }
