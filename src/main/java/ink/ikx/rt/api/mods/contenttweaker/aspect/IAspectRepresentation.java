@@ -3,13 +3,12 @@ package ink.ikx.rt.api.mods.contenttweaker.aspect;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import java.util.Arrays;
+import java.util.Objects;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 import thaumcraft.api.aspects.Aspect;
-
-import java.util.Arrays;
-import java.util.Objects;
 
 @RTRegister
 @ModTotal({"thaumcraft", "contenttweaker"})
@@ -26,9 +25,11 @@ public abstract class IAspectRepresentation {
     public String[] components;
     @ZenProperty
     public String image;
+    @ZenProperty
+    public String chatcolor;
 
     public Aspect[] asAspects() {
-        if (Objects.nonNull(components)) {
+        if (Objects.nonNull(components) && components.length != 0) {
             if (components.length != 2) {
                 CraftTweakerAPI.logError("components' length must be two", new IllegalArgumentException());
                 return null;
@@ -76,6 +77,16 @@ public abstract class IAspectRepresentation {
     @ZenMethod
     public void setBlend(int blend) {
         this.blend = blend;
+    }
+
+    @ZenMethod
+    public String getChatColor() {
+        return chatcolor;
+    }
+
+    @ZenMethod
+    public void setChatColor(String chatcolor) {
+        this.chatcolor = chatcolor;
     }
 
     @ZenMethod
