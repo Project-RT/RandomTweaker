@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.modtweaker;
+package ink.ikx.rt.api.mods.thaumcraft.expand;
 
 import com.blamejared.compat.thaumcraft.handlers.aspects.CTAspect;
 import ink.ikx.rt.api.mods.thaumcraft.IAspect;
@@ -11,14 +11,14 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 @RTRegister
 @ModTotal({"thaumcraft", "modtweaker"})
-@ZenExpansion("thaumcraft.aspect.CTAspect")
-@ZenClass("mods.randomtweaker.modtweaker.CTAspect")
-public class ExpandCTAspect {
+@ZenExpansion("mods.randomtweaker.thaumcraft.IAspect")
+@ZenClass("mods.randomtweaker.thaumcraft.expand.IAspect")
+public class ExpandIAspect {
 
     @ZenMethod
     @ZenCaster
-    public static IAspect asIAstral(CTAspect aspect) {
-        return IAspect.of(aspect.getInternal());
+    public static CTAspect asCTAspect(IAspect internal) {
+        return new CTAspect(internal.getInternal());
     }
 
 }

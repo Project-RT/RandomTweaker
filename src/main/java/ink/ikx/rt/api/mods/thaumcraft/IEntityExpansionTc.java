@@ -7,10 +7,7 @@ import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
-import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectHelper;
-
-import java.util.Arrays;
 
 @RTRegister
 @ModOnly("thaumcraft")
@@ -19,9 +16,8 @@ import java.util.Arrays;
 public abstract class IEntityExpansionTc {
 
     @ZenMethod
-    public static IAspect[] getAspects(IEntity entity) {
-        Aspect[] aspects = AspectHelper.getEntityAspects(CraftTweakerMC.getEntity(entity)).copy().getAspects();
-        return Arrays.stream(aspects).map(IAspect::of).toArray(IAspect[]::new);
+    public static IAspectList getAspects(IEntity entity) {
+        return IAspectList.of(AspectHelper.getEntityAspects(CraftTweakerMC.getEntity(entity)).copy());
 
     }
 
