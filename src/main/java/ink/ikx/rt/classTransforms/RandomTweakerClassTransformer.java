@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 
-import java.io.IOException;
 
 import static org.objectweb.asm.Opcodes.ASM5;
 

@@ -16,19 +16,21 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import org.apache.logging.log4j.LogManager;
 
 @SuppressWarnings("unused")
 public class AttunementAltarMethodReflections {
 
-    public static void onAttunementStart(Entity entity, World world, IConstellation constellation) {
+    public static void onAttunementStart(Entity entity, IConstellation constellation) {
         if (entity == null) {
             return;
         }
-        AttunementStartEvent event = new AttunementStartEvent(entity, world, constellation);
+        AttunementStartEvent event = new AttunementStartEvent(entity, entity.getEntityWorld(), constellation);
         event.post();
     }
 
-    public static void onCraftingFinish(ItemStack itemStack, EntityItem original, World world, IConstellation constellation) {
+    public static void onCraftingFinish(ItemStack itemStack, EntityItem original, IConstellation constellation) {
+        World world = original.getEntityWorld();
         for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
             if (recipe.canDoRecipe(constellation, original.getItem())) {
                 itemStack.setCount(recipe.getResult().getCount());
@@ -41,14 +43,16 @@ public class AttunementAltarMethodReflections {
 
         if (!eventExec) {
             ItemStack output = event.getOutput().copy();
-            EntityItem item = new EntityItem(world,
-                original.posX,
-                original.posY,
-                original.posZ,
-                output);
-            resetMotion(item);
-            world.spawnEntity(item);
-
+            if(!output.equals(itemStack)){
+                EntityItem item = new EntityItem(world,
+                        original.posX,
+                        original.posY,
+                        original.posZ,
+                        output);
+                resetMotion(item);
+                world.spawnEntity(item);
+                itemStack.setCount(0);
+            }
             for (ItemStack stack : event.getAdditionalOutput()) {
                 EntityItem additionalStack = new EntityItem(world,
                     original.posX,
@@ -71,9 +75,8 @@ public class AttunementAltarMethodReflections {
             originalInput.motionZ = Math.random() * 0.3;
             originalInput.setDefaultPickupDelay();
             world.spawnEntity(originalInput);
+            itemStack.setCount(0);
         }
-
-        itemStack.setCount(0);
     }
 
     private static void resetMotion(EntityItem item) {
@@ -122,7 +125,6 @@ public class AttunementAltarMethodReflections {
     }
 
     public static boolean logicPatch(boolean A, boolean B, boolean C) {
-
         return (A && B) || C;
     }
 
@@ -130,8 +132,15 @@ public class AttunementAltarMethodReflections {
         if (item instanceof ItemRockCrystalBase) {
             return ((ItemRockCrystalBase) item).getTunedItemVariant();
         } else {
+            //first check all recipe with constellation
             for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
-                if (recipe.canDoRecipe(constellation, itemStack.getItem())) {
+                if (recipe.getConstellation() != null && recipe.canDoRecipe(constellation, itemStack.getItem())) {
+                    return recipe.getResult().getItem();
+                }
+            }
+            //then if there isn't any recipe with constellation, check recipes without constellation
+            for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
+                if (recipe.getConstellation() == null && recipe.canDoRecipe(constellation, itemStack.getItem())) {
                     return recipe.getResult().getItem();
                 }
             }

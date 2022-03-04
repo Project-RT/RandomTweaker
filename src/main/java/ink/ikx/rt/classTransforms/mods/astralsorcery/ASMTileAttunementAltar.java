@@ -166,7 +166,6 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
 
             isCraftFinishFlag4 = true;
         }
-
         if (isCraftFinishFlag4) {
             super.visitVarInsn(opcode, var);
             super.visitVarInsn(ALOAD, lastStoredStack);     //new item stack        - first in stack
@@ -180,21 +179,15 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
             super.visitVarInsn(ALOAD, 0);
             super.visitFieldInsn(GETFIELD,
                     "hellfirepvp/astralsorcery/common/tile/TileAttunementAltar",
-                    "world",
-                    "Lnet/minecraft/world/World;");     //world - third in stack
-            super.visitVarInsn(ALOAD, 0);
-            super.visitFieldInsn(GETFIELD,
-                    "hellfirepvp/astralsorcery/common/tile/TileAttunementAltar",
                     "activeFound",
                     "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;");
-            //constellation - forth in stack
+            //constellation - third in stack
             //invoke our method (current stack: result, original, world, constellation)
             super.visitMethodInsn(INVOKESTATIC,
                     ASMTileAttunementAltar.reflectionMethods,
                     "onCraftingFinish",
                     "(Lnet/minecraft/item/ItemStack;" +
                             "Lnet/minecraft/entity/item/EntityItem;" +
-                            "Lnet/minecraft/world/World;" +
                             "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;)" +
                             "V",
                     false);
@@ -202,19 +195,6 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
             return;
         }
         super.visitVarInsn(opcode, var);
-    }
-
-    @Override
-    public void visitFieldInsn(int opcode, String owner, String name, String desc) {
-        if (opcode == GETFIELD) {
-            if (owner.equals("hellfirepvp/astralsorcery/common/tile/TileAttunementAltar") &&
-                    name.equals("activeEntity") &&
-                    desc.equals("Lnet/minecraft/entity/Entity;")) {
-
-                isCraftFinishFlag1 = true;
-            }
-        }
-        super.visitFieldInsn(opcode, owner, name, desc);
     }
 
     @Override
@@ -275,10 +255,9 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
             case INVOKEVIRTUAL:
                 if (
                         owner.equals("net/minecraft/entity/item/EntityItem") &&
-                                name.equals("getThrower") &&
+                                (name.equals("getThrower") || name.equals("func_145800_j")) &&
                                 desc.equals("()Ljava/lang/String;")
                 ) {
-
                     isCraftFinishFlag3 = true;
                 }
                 if (owner.equals("hellfirepvp/astralsorcery/common/item/crystal/base/ItemRockCrystalBase") &&
@@ -313,9 +292,18 @@ class ASMAltarUpdateTransformer extends MethodVisitor {
                                 name.equals("apply") &&
                                 desc.equals("(Ljava/lang/Object;)Z")
                 ) {
-
                     checkItemLogicFoundTime += 1;
                 }
+                break;
+            case INVOKESPECIAL:
+                if(
+                        owner.equals("hellfirepvp/astralsorcery/common/tile/TileAttunementAltar") &&
+                                name.equals("setAttunementState") &&
+                                desc.equals("(ILnet/minecraft/entity/Entity;)V")
+                ){
+                    isCraftFinishFlag1 = true;
+                }
+                break;
             default:
                 isCraftFinishFlag1 = isCraftFinishFlag2 = isCraftFinishFlag3 = isCraftFinishFlag4 = false;
         }
@@ -610,13 +598,6 @@ class ASMAltarSetAttunementStateTransformer extends MethodVisitor {
                             "Lnet/minecraft/entity/Entity;");
 
                     super.visitVarInsn(ALOAD, 0);
-                    //get the World
-                    super.visitFieldInsn(GETFIELD,
-                            "hellfirepvp/astralsorcery/common/tile/TileAttunementAltar",
-                            "world",
-                            "Lnet/minecraft/world/World;");
-
-                    super.visitVarInsn(ALOAD, 0);
                     //get the Constellation
                     super.visitFieldInsn(GETFIELD,
                             "hellfirepvp/astralsorcery/common/tile/TileAttunementAltar",
@@ -628,7 +609,6 @@ class ASMAltarSetAttunementStateTransformer extends MethodVisitor {
                             ASMTileAttunementAltar.reflectionMethods,
                             "onAttunementStart",
                             "(Lnet/minecraft/entity/Entity;" +
-                                    "Lnet/minecraft/world/World;" +
                                     "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;)" +
                                     "V",
                             false);
@@ -647,7 +627,7 @@ class ASMAltarSetAttunementStateTransformer extends MethodVisitor {
 
                 if (
                         owner.equals("net/minecraft/entity/Entity") &&
-                                name.equals("getEntityId") &&
+                                (name.equals("getEntityId") || name.equals("func_145782_y")) &&
                                 desc.equals("()I")
                     //"trigger.getEntityId()"
                 ) {
