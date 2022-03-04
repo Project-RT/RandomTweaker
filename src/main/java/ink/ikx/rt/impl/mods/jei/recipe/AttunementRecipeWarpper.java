@@ -39,7 +39,7 @@ public class AttunementRecipeWarpper extends DynamicRecipesWrapper {
         int constellationScaleY = -40;
 
         if (constellation != null) {
-            GlStateManager.disableAlpha();
+            //GlStateManager.disableAlpha();
             RenderConstellation.renderConstellationIntoGUI(constellation.getConstellationColor(), constellation,
                     constellationOffsetX,
                     constellationOffsetY,
@@ -55,7 +55,7 @@ public class AttunementRecipeWarpper extends DynamicRecipesWrapper {
                     },
                     true, false
             );
-            GlStateManager.enableAlpha();
+            //GlStateManager.enableAlpha();
             RenderHelper.enableGUIStandardItemLighting();
             for (StarLocation location : constellation.getStars()) {
                 int x = constellationOffsetX + scaleToLocation(31, recipeWidth + constellationScaleX, location.x);
