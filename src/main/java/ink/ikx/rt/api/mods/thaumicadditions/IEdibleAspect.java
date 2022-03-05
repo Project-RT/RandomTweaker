@@ -30,20 +30,20 @@ public abstract class IEdibleAspect {
             }
 
             @Override public String describe() {
-                return "Adding EatCall for -> " + aspect.getName();
+                return "Adding EatCall -> " + aspect.getName();
             }
         });
     }
 
     @ZenMethod
-    public static void addEatCall(IAspect aspect, EatFunctionWithEntity function) {
+    public static void addAdvancedEatCall(IAspect aspect, EatFunctionWithEntity function) {
         CraftTweakerAPI.apply(new IAction() {
             @Override public void apply() {
                 EdibleAspect.addEatCall(aspect.getInternal(), (entity, count) -> function.apply(CraftTweakerMC.getIEntityLivingBase(entity), count));
             }
 
             @Override public String describe() {
-                return "Adding EatCall for -> " + aspect.getName();
+                return "Adding EatCall -> " + aspect.getName();
             }
         });
     }
@@ -56,7 +56,7 @@ public abstract class IEdibleAspect {
             }
 
             @Override public String describe() {
-                return "Removing EatCall for -> " + aspect.getName();
+                return "Removing EatCall -> " + aspect.getName();
             }
         });
     }
@@ -70,7 +70,6 @@ public abstract class IEdibleAspect {
     public static IAspectList getSalt(IItemStack stack) {
         return IAspectList.of(EdibleAspect.getSalt(CraftTweakerMC.getItemStack(stack)));
     }
-
 
     @RTRegister
     @ModOnly("thaumadditions")
