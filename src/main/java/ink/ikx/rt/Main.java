@@ -59,7 +59,7 @@ public class Main {
 
     public static final String MODID = "randomtweaker";
     public static final String NAME = "RandomTweaker";
-    public static final String VERSION = "1.2.10";
+    public static final String VERSION = "1.3.0";
     public static final String DESPENDENCIES = "required-after:crafttweaker;required-after:mixinbooter;after:contenttweaker;";
 
     public static final Set<IJeiPanel> JEI_PANEL_SET = Sets.newHashSet();
