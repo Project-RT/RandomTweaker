@@ -39,7 +39,7 @@ public class CraftTweakerExtension {
                 } else {
                     CraftTweakerAPI.registerClass(clazz);
                 }
-                CraftTweakerAPI.logDefault("class:" + asmData.getClassName());
+                // CraftTweakerAPI.logDefault("class:" + asmData.getClassName());
             } catch (ClassNotFoundException e) {
                 CraftTweaker.LOG.catching(e);
             }
