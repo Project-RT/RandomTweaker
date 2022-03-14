@@ -35,7 +35,7 @@ public class RTConfig {
         public boolean HydroangeasModified = false;
 
         @RequiresMcRestart
-        @Comment("If true, the hydroangeas won't decay. [Valid only for modified results | default: false]")
+        @Comment("If true, the hydroangeas will be decay. [Valid only for modified results | default: false]")
         public boolean HydroangeasDecay = false;
 
         @RequiresMcRestart
