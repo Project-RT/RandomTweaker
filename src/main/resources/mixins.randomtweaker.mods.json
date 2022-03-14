@@ -3,6 +3,7 @@
   "compatibilityLevel": "JAVA_8",
   "package": "ink.ikx.rt.mixins",
   "minVersion": "0.8",
+  "refmap": "mixins.randomtweaker.refmap.json",
   "mixins": [
     "botania.MixinBlockCocoon",
     "botania.MixinBlockSpecialFlower",
