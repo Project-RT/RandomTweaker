@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 @Mixin(value = BlockCocoon.class, remap = false)
 public abstract class MixinBlockCocoon {
 
-    @Inject(method = "onBlockActivated", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "onBlockActivated", at = @At(value = "HEAD"), cancellable = true, remap = true)
     private void injectOnBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing s, float xs, float ys, float zs, CallbackInfoReturnable<Boolean> cir) {
         logic(world, pos, player.getHeldItem(hand), player.capabilities.isCreativeMode, player, cir);
     }
