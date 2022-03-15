@@ -41,27 +41,27 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Pseudo
-@Mixin(value = TileAlfPortal.class)
+@Mixin(value = TileAlfPortal.class, remap = false)
 public abstract class MixinTileAlfPortal extends TileMod implements ITileAlfPortal {
 
-    @Shadow(remap = false)
+    @Shadow
     @Final
     private static String TAG_PORTAL_FLAG;
     private final ItemStackList inputList = new ItemStackList();
-    @Shadow(remap = false)
+    @Shadow
     @Final
     private List<ItemStack> stacksIn;
     private ItemStack stacksCopy;
     private boolean eventExec;
 
-    @Shadow(remap = false)
+    @Shadow
     protected abstract void spawnItem(ItemStack stack);
 
-    @Shadow(remap = false)
+    @Shadow
     public abstract boolean consumeMana(List<BlockPos> pylons, int totalCost, boolean close);
 
 
-    @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;validateItemUsage(Lnet/minecraft/item/ItemStack;)Z", remap = false), locals = LocalCapture.CAPTURE_FAILHARD)
+    @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;validateItemUsage(Lnet/minecraft/item/ItemStack;)Z", remap = false), remap = true, locals = LocalCapture.CAPTURE_FAILHARD)
     private void injectUpdate(CallbackInfo ci, IBlockState iBlockState, AlfPortalState state, AlfPortalState newState,
                               AxisAlignedBB aabb, boolean open, ElvenPortalUpdateEvent eventU, List<?> items, Iterator<?> var8,
                               EntityItem item, ItemStack stack, boolean consume) { // validateItemUsage
@@ -83,7 +83,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements ITileAlfPort
         }
     }
 
-    @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;addItem(Lnet/minecraft/item/ItemStack;)V", shift = At.Shift.AFTER, remap = false))
+    @Inject(method = "update", at = @At(value = "INVOKE", target = "Lvazkii/botania/common/block/tile/TileAlfPortal;addItem(Lnet/minecraft/item/ItemStack;)V", shift = At.Shift.AFTER, remap = false), remap = true)
     private void injectUpdate(CallbackInfo ci) {
         AtomicInteger count = new AtomicInteger(1);
         if (eventExec) {
@@ -98,7 +98,7 @@ public abstract class MixinTileAlfPortal extends TileMod implements ITileAlfPort
         }
     }
 
-    @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", ordinal = 1), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true, remap = false)
+    @Inject(method = "resolveRecipes", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeElvenTrade;matches(Ljava/util/List;Z)Z", ordinal = 1), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
     private void injectResolveRecipes(CallbackInfo ci, int i, Iterator<?> var2, RecipeElvenTrade recipe) {
         ElvenTradeEvent event = new ElvenTradeEvent(this, stacksIn, recipe.getOutputs());
         recipe.matches(stacksIn, true);

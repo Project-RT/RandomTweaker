@@ -15,9 +15,7 @@ import ink.ikx.rt.impl.mods.botania.cocoon.IMixinTileCocoon;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
@@ -25,7 +23,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -40,11 +37,6 @@ import javax.annotation.Nullable;
 @Pseudo
 @Mixin(value = TileCocoon.class, remap = false)
 public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoon, ICocoonTileEntity {
-
-    @Shadow
-    public int emeraldsGiven;
-    @Shadow
-    public int chorusFruitGiven;
 
     private static final String CUSTOM_TAB = "CustomTab";
 
@@ -137,26 +129,11 @@ public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoo
         entityLiving.spawnExplosionParticle();
     }
 
-    private void spawnItem() {
-        double x = pos.getX() + 0.5;
-        double y = pos.getY() + 1.5;
-        double z = pos.getZ() + 0.5;
-
-        if (emeraldsGiven > 0) {
-            EntityItem emeralds = new EntityItem(world, x, y, z, new ItemStack(Items.EMERALD, emeraldsGiven));
-            world.spawnEntity(emeralds);
-        }
-
-        if (chorusFruitGiven > 0) {
-            EntityItem chorusFruit = new EntityItem(world, x, y, z, new ItemStack(Items.CHORUS_FRUIT, chorusFruitGiven));
-            world.spawnEntity(chorusFruit);
-        }
-    }
-
     @Inject(method = "readPacketNBT", at = @At(value = "HEAD"))
     private void injectReadPacketNBT(NBTTagCompound cmp, CallbackInfo ci) {
-        cmp.getCompoundTag(CUSTOM_TAB).getKeySet().forEach(name ->
-            this.customMap.put(name, cmp.getCompoundTag(CUSTOM_TAB).getInteger(name)));
+        NBTTagCompound data = cmp.getCompoundTag(CUSTOM_TAB);
+        data.getKeySet().forEach(name ->
+            this.customMap.put(name, data.getInteger(name)));
     }
 
     @Inject(method = "writePacketNBT", at = @At(value = "HEAD"))
@@ -168,13 +145,13 @@ public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoo
         customMap.forEach((name, amount) -> cmp.getCompoundTag(CUSTOM_TAB).setInteger(name, amount));
     }
 
-    @Inject(method = "hatch", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/EntityLiving;setPosition(DDD)V"), cancellable = true)
+    @Inject(method = "hatch", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/EntityLiving;setPosition(DDD)V", remap = true), cancellable = true)
     private void injectHatch(CallbackInfo ci) {
         String name = this.getTabName();
         ICocoon cocoon = ICocoon.getInstanceByName(name);
-        boolean spawnEntity = false;
 
-        if (Objects.isNull(name)) {
+        if (Objects.isNull(cocoon)) {
+            CraftTweakerAPI.logWarning("[RandomTweaker] cocoon is null");
             return;
         }
 
@@ -184,17 +161,12 @@ public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoo
                 Entity entity = entityEntry.newInstance(this.world);
                 if (entity instanceof EntityLiving) {
                     this.spawnEntityLiving((EntityLiving) entity);
-                    spawnEntity = true;
                     ci.cancel();
                     break;
                 }
 
                 CraftTweakerAPI.logWarning(entity.getName() + " does not extend EntityLiving");
             }
-        }
-
-        if (spawnEntity) {
-            this.spawnItem();
         }
     }
 
