@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
         maven { url = "https://maven.minecraftforge.net/" }
         maven { url = "https://repo.spongepowered.org/maven" }
     }
@@ -29,7 +29,8 @@ minecraft {
     def args = [
             "-Dfml.coreMods.load=ink.ikx.rt.impl.internal.core.CoreModBoot",
             "-Dmixin.hotSwap=true",
-            "-Dmixin.checks.interfaces=true"
+            "-Dmixin.checks.interfaces=true",
+            "-Dmixin.debug.export=true",
     ]
 
     clientJvmArgs.addAll(args)
@@ -50,6 +51,7 @@ dependencies {
     compile files('CraftTweaker2-MC1120-Mod-JEI-1.12-4.1.20.670-deobf.jar')
 
     deobfCompile "youyihj:zenutils:1.9.4"
+    deobfCompile "zone.rong:mixinbooter:4.2"
     deobfCompile "com.blamejared:MTLib:3.0.5.15"
     deobfCompile "mezz.jei:jei_1.12.2:4.16.1.302"
     deobfCompile "curse.maven:Baubles-227083:2518667"
@@ -57,7 +59,6 @@ dependencies {
     deobfCompile "curse.maven:modtweaker-220954:3488553"
     deobfCompile "curse.maven:hammerlib-247401:3611193"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
-    deobfCompile "curse.maven:mixinbooter-419286:3642000"
     deobfCompile "curse.maven:naturesaura-306626:2882138"
     deobfCompile "curse.maven:ftb-ultimine-386134:3078750"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
@@ -65,16 +66,6 @@ dependencies {
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.670"
-
-    compile("org.spongepowered:mixin:0.8.1-SNAPSHOT") {
-        exclude module: "asm-commons"
-        exclude module: "asm-tree"
-        exclude module: "launchwrapper"
-        exclude module: "guava"
-        exclude module: "log4j-core"
-        exclude module: "gson"
-        exclude module: "commons-io"
-    }
 }
 
 processResources {
@@ -94,6 +85,10 @@ processResources {
 
 repositories {
     mavenCentral()
+    maven {
+        name = "CleanRoomMc"
+        url = "https://maven.cleanroommc.com"
+    }
     maven {
         name = 'jei'
         url = "https://dvs1.progwml6.com/files/maven"

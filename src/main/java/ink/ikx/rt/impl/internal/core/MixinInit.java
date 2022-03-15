@@ -1,13 +1,15 @@
 package ink.ikx.rt.impl.internal.core;
 
-import org.spongepowered.asm.mixin.Mixins;
-import zone.rong.mixinbooter.MixinLoader;
+import com.google.common.collect.Lists;
+import zone.rong.mixinbooter.ILateMixinLoader;
 
-@MixinLoader
-public class MixinInit {
+import java.util.List;
 
-    public MixinInit() {
-        Mixins.addConfiguration("mixins.randomtweaker.mods.json");
+public class MixinInit implements ILateMixinLoader {
+
+    @Override
+    public List<String> getMixinConfigs() {
+        return Lists.newArrayList("mixins.randomtweaker.mods.json");
     }
-
+    
 }
