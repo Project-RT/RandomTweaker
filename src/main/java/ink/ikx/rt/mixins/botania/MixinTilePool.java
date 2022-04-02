@@ -26,7 +26,8 @@ public abstract class MixinTilePool extends TileMod {
 
     @Shadow
     protected abstract void craftingFanciness();
-
+    
+    @SuppressWarnings("deprecation")
     @Inject(method = "collideEntityItem", at = @At(value = "INVOKE", target = "Lvazkii/botania/api/recipe/RecipeManaInfusion;getManaToConsume()I", shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
     public void injectCollideEntityItem(EntityItem item, CallbackInfoReturnable<Boolean> cir, ItemStack stack, RecipeManaInfusion recipe) {
         int mana = recipe.getManaToConsume();
@@ -34,6 +35,7 @@ public abstract class MixinTilePool extends TileMod {
         if (!event.post()) {
             if (event.getMana() > getCurrentMana() && !event.isAllowExceed()) {
                 cir.setReturnValue(false);
+                return;
             }
             recieveMana(-event.getMana());
             stack.shrink(1);
