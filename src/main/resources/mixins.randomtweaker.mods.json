@@ -12,8 +12,9 @@
     "botania.MixinTileCocoon",
     "botania.MixinTilePool",
     "botania.MixinTileSpecialFlower",
-    "ftbultimine.MixinFTBUltimine",
-    "ftbultimine.MixinFTBUltimineClient"
+    "ftbultimine.MixinFTBUltimine"
   ],
-  "client": []
+  "client": [
+    "ftbultimine.MixinFTBUltimineClient"
+  ]
 }
