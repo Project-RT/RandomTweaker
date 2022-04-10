@@ -12,8 +12,7 @@
     "botania.MixinTileCocoon",
     "botania.MixinTilePool",
     "botania.MixinTileSpecialFlower",
-    "ftbultimine.MixinFTBUltimine",
-    "thaumcraft.MixinAspectEventProxy"
+    "ftbultimine.MixinFTBUltimine"
   ],
   "client": [
     "ftbultimine.MixinFTBUltimineClient"
