@@ -1,8 +1,9 @@
-package ink.ikx.rt.api.mods.thaumcraft;
+package ink.ikx.rt.api.mods.thaumcraft.expand;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import ink.ikx.rt.api.mods.thaumcraft.IAspectList;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
@@ -13,7 +14,7 @@ import thaumcraft.api.aspects.AspectHelper;
 @ModOnly("thaumcraft")
 @ZenExpansion("crafttweaker.item.IItemStack")
 @ZenClass("mods.randomtweaker.thaumcraft.IItemStack")
-public abstract class IItemStackExpansionTc {
+public abstract class ExpandIItemStack {
 
     @ZenMethod
     public static IAspectList getAspects(IItemStack stack) {

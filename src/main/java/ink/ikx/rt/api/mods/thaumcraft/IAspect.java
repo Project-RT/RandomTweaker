@@ -5,9 +5,7 @@ import crafttweaker.annotations.ModOnly;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import ink.ikx.rt.impl.mods.thaumcraft.MCAspect;
 import org.apache.commons.lang3.StringUtils;
-import stanhebben.zenscript.annotations.ZenClass;
-import stanhebben.zenscript.annotations.ZenGetter;
-import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.*;
 import thaumcraft.api.aspects.Aspect;
 
 @RTRegister
@@ -44,6 +42,9 @@ public interface IAspect {
     @ZenMethod
     @ZenGetter("chatColor")
     String getChatcolor();
+
+    @ZenOperator(OperatorType.EQUALS)
+    boolean equals(IAspect other);
 
     Aspect getInternal();
 

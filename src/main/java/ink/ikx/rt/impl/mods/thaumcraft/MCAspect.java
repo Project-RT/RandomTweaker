@@ -1,9 +1,10 @@
 package ink.ikx.rt.impl.mods.thaumcraft;
 
 import ink.ikx.rt.api.mods.thaumcraft.IAspect;
+import thaumcraft.api.aspects.Aspect;
+
 import java.util.Arrays;
 import java.util.Objects;
-import thaumcraft.api.aspects.Aspect;
 
 public class MCAspect implements IAspect {
 
@@ -31,6 +32,11 @@ public class MCAspect implements IAspect {
     @Override
     public Aspect getInternal() {
         return this.internal;
+    }
+
+    @Override
+    public boolean equals(IAspect other) {
+        return Objects.equals(other.getName(), this.getName());
     }
 
 }

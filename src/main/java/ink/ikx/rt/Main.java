@@ -2,6 +2,7 @@ package ink.ikx.rt;
 
 import com.google.common.collect.*;
 import com.zeitheron.hammercore.utils.OnetimeCaller;
+import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.block.IBlockState;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.mods.jei.JEI;
@@ -60,7 +61,7 @@ public class Main {
     public static final String MODID = "randomtweaker";
     public static final String NAME = "RandomTweaker";
     public static final String VERSION = "1.3.2";
-    public static final String DESPENDENCIES = "required-after:crafttweaker;required-after:mixinbooter@[4.2,);after:contenttweaker;";
+    public static final String DESPENDENCIES = "required-after:crafttweaker;required-after:mixinbooter@[4.2,);after:contenttweaker;after:thaumcraft";
 
     public static final Set<IJeiPanel> JEI_PANEL_SET = Sets.newHashSet();
     public static final Set<IJeiRecipe> JEI_RECIPE_SET = Sets.newHashSet();
@@ -106,8 +107,11 @@ public class Main {
 
     @EventHandler
     public void onPostInit(FMLPostInitializationEvent event) {
-        if (Loader.isModLoaded("thaumadditions")) {
-            if (!IFluxConcentrator.LATE_REMOVES.isEmpty()) OnetimeCaller.of(this::removeRecipeLate).call();
+        if (Loader.isModLoaded("thaumcraft")) {
+            CraftTweakerAPI.tweaker.loadScript(false, "thaumcraft");
+            if (Loader.isModLoaded("thaumadditions")) {
+                if (!IFluxConcentrator.LATE_REMOVES.isEmpty()) OnetimeCaller.of(this::removeRecipeLate).call();
+            }
         }
     }
 

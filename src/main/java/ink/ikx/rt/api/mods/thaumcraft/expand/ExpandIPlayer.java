@@ -1,4 +1,4 @@
-package ink.ikx.rt.api.mods.thaumcraft;
+package ink.ikx.rt.api.mods.thaumcraft.expand;
 
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -24,9 +24,10 @@ import java.util.Objects;
 @ModOnly("thaumcraft")
 @ZenExpansion("crafttweaker.player.IPlayer")
 @ZenClass("mods.randomtweaker.thaumcraft.IPlayer")
-public abstract class IPlayerExpansionTc {
+public abstract class ExpandIPlayer {
 
     @ZenMethod
+    @SuppressWarnings("deprecation")
     public static void giverDreamJournl(IPlayer player) {
         EntityPlayer mcPlayer = CraftTweakerMC.getPlayer(player);
         giverDreamJournl(mcPlayer);
