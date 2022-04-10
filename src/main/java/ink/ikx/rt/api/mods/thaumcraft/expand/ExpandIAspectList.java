@@ -12,7 +12,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ModTotal({"thaumcraft", "modtweaker"})
 @ZenExpansion("mods.randomtweaker.thaumcraft.IAspectList")
 @ZenClass("mods.randomtweaker.thaumcraft.expand.IAspectList")
-public class ExpandIAspectList {
+public abstract class ExpandIAspectList {
 
     @ZenMethod
     public static IAspectList add(IAspectList internal, CTAspectStack in) {
