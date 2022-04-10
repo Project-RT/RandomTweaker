@@ -5,6 +5,7 @@ import ink.ikx.rt.api.mods.thaumcraft.IAspectList;
 import thaumcraft.api.aspects.AspectList;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class MCAspectList implements IAspectList {
 
@@ -101,5 +102,19 @@ public class MCAspectList implements IAspectList {
         return internal;
     }
 
+    @Override
+    public IAspect get(int index) {
+        return IAspect.of(internal.getAspects()[index]);
+    }
+
+    @Override
+    public boolean contains(IAspect aspect) {
+        return aspect != null && internal.aspects.containsKey(aspect.getInternal());
+    }
+
+    @Override
+    public Iterator<IAspect> iterator() {
+        return internal.aspects.keySet().stream().map(IAspect::of).iterator();
+    }
 
 }

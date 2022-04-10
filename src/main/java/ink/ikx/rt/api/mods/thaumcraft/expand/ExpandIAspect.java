@@ -1,6 +1,7 @@
 package ink.ikx.rt.api.mods.thaumcraft.expand;
 
 import com.blamejared.compat.thaumcraft.handlers.aspects.CTAspect;
+import com.blamejared.compat.thaumcraft.handlers.aspects.CTAspectStack;
 import ink.ikx.rt.api.mods.thaumcraft.IAspect;
 import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
@@ -19,6 +20,11 @@ public abstract class ExpandIAspect {
     @ZenCaster
     public static CTAspect asCTAspect(IAspect internal) {
         return new CTAspect(internal.getInternal());
+    }
+
+    @ZenMethod
+    public static CTAspectStack asCTAspectStack(IAspect internal, int amount) {
+        return new CTAspectStack(asCTAspect(internal), amount);
     }
 
 }

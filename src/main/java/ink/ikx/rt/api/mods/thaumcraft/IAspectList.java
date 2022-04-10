@@ -3,16 +3,14 @@ package ink.ikx.rt.api.mods.thaumcraft;
 import crafttweaker.annotations.ModOnly;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import ink.ikx.rt.impl.mods.thaumcraft.MCAspectList;
-import stanhebben.zenscript.annotations.Optional;
-import stanhebben.zenscript.annotations.ZenClass;
-import stanhebben.zenscript.annotations.ZenGetter;
-import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.*;
 import thaumcraft.api.aspects.AspectList;
 
 @RTRegister
 @ModOnly("thaumcraft")
 @ZenClass("mods.randomtweaker.thaumcraft.IAspectList")
-public interface IAspectList {
+@IterableSimple("mods.randomtweaker.thaumcraft.IAspect")
+public interface IAspectList extends Iterable<IAspect> {
 
     static IAspectList of(AspectList list) {
         return new MCAspectList(list);
@@ -69,6 +67,15 @@ public interface IAspectList {
 
     @ZenMethod
     IAspectList merge(IAspect key, @Optional(valueLong = 1) int amount);
+
+    @ZenMethod
+    @ZenMemberGetter
+    @ZenOperator(OperatorType.INDEXGET)
+    IAspect get(int index);
+
+    @ZenMethod
+    @ZenOperator(OperatorType.CONTAINS)
+    boolean contains(IAspect aspect);
 
     AspectList getInternal();
 
