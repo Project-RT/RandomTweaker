@@ -4,22 +4,23 @@ import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.botania.ICocoon;
-import ink.ikx.rt.api.mods.botania.function.ICocoonDynamic;
+import ink.ikx.rt.api.mods.botania.function.DynamicSpawnTable;
 import ink.ikx.rt.api.mods.botania.function.ICocoonTileEntity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.EntityEntry;
-
+import ink.ikx.rt.impl.internal.utils.InternalUtils;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.EntityEntry;
 
 public class MCCocoon extends ICocoon {
 
     private final String name;
     private final ItemStack giveStack;
     private final Map<EntityEntry, Double> spawnTab;
-    private ICocoonDynamic dynamicSpawn = (stack, player, context) -> this.getName();
+    private DynamicSpawnTable dynamicSpawn = null;
 
     private MCCocoon(String name, ItemStack giveStack, Map<EntityEntry, Double> spawnTab) {
         this.name = name;
@@ -34,11 +35,11 @@ public class MCCocoon extends ICocoon {
         return null;
     }
 
-    public static ICocoon create(@Nonnull String name, @Nonnull ItemStack giveStack, @Nonnull Map<EntityEntry, Double> spawnTab, ICocoonDynamic dynamicSpawn) {
+    public static ICocoon create(@Nonnull String name, @Nonnull ItemStack giveStack, @Nonnull Map<EntityEntry, Double> spawnTab, DynamicSpawnTable dynamicSpawn) {
         ICocoon cocoon = create(name, giveStack, spawnTab);
 
         if (Objects.nonNull(cocoon) && Objects.nonNull(dynamicSpawn)) {
-            cocoon.setSpawnDynamic(dynamicSpawn);
+            cocoon.setDynamicSpawnTable(dynamicSpawn);
         }
 
         return cocoon;
@@ -48,12 +49,12 @@ public class MCCocoon extends ICocoon {
         double sumResult = 0.0f;
 
         if (Main.CUSTOM_COCOONS_SPAWN.containsKey(name)) {
-            CraftTweakerAPI.logWarning("The name repeated : " + name);
+            CraftTweakerAPI.logWarning("The name must be unique!");
             return false;
         }
 
         if (stack.isEmpty()) {
-            CraftTweakerAPI.logError("The stack cannot be empty");
+            CraftTweakerAPI.logError("The stack cannot be empty!");
             return false;
         }
 
@@ -89,8 +90,9 @@ public class MCCocoon extends ICocoon {
         return spawnTab;
     }
 
+    @Nullable
     @Override
-    public ICocoonDynamic getSpawnDynamic() {
+    public DynamicSpawnTable getDynamicSpawnTable() {
         return this.dynamicSpawn;
     }
 
@@ -99,22 +101,22 @@ public class MCCocoon extends ICocoon {
         return spawnTab.get(entity);
     }
 
-    public boolean match(ItemStack stack) {
-        return CraftTweakerMC.getIItemStack(this.giveStack).matches(CraftTweakerMC.getIItemStack(stack));
-    }
-
     @Override
-    public void setSpawnDynamic(ICocoonDynamic dynamicSpawn) {
+    public void setDynamicSpawnTable(DynamicSpawnTable dynamicSpawn) {
         this.dynamicSpawn = dynamicSpawn;
     }
 
+    public boolean match(ItemStack stack) {
+        return InternalUtils.areItemStacksEqual(this.giveStack, stack);
+    }
+
     @Override
-    public String getSpawnDynamicResult(ItemStack stack, EntityPlayer player, ICocoonTileEntity tile) {
-        return this.dynamicSpawn.call(
+    public String getDynamicResult(ItemStack stack, EntityPlayer player, ICocoonTileEntity tile) {
+        return Objects.nonNull(this.dynamicSpawn) ? this.dynamicSpawn.call(
             CraftTweakerMC.getIItemStack(stack),
             CraftTweakerMC.getIPlayer(player),
             tile
-        );
+        ) : this.name;
     }
 
     @Override
@@ -132,10 +134,10 @@ public class MCCocoon extends ICocoon {
         }
 
         ICocoon that = (ICocoon) o;
-        boolean theSameAsMap = spawnTab.entrySet().stream().allMatch((entry) ->
+        boolean areTheSameAsMap = spawnTab.entrySet().stream().allMatch((entry) ->
             that.getSpawnTab().containsKey(entry.getKey()) && that.getProbablyByEntity(entry.getKey()) == entry.getValue());
 
-        return this.match(that.getStack()) && theSameAsMap;
+        return this.spawnTab.size() == that.getSpawnTab().size() && this.match(that.getStack()) && areTheSameAsMap;
     }
 
     @Override

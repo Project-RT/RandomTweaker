@@ -19,8 +19,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import vazkii.botania.common.block.BlockCocoon;
 
-import javax.annotation.Nullable;
-
 @Pseudo
 @Mixin(value = BlockCocoon.class, remap = false)
 public abstract class MixinBlockCocoon {
@@ -35,7 +33,7 @@ public abstract class MixinBlockCocoon {
         logic(world, pos, stack, creative, null, cir);
     }
 
-    private void logic(World world, BlockPos pos, ItemStack stack, boolean creative, @Nullable EntityPlayer player, CallbackInfoReturnable<Boolean> cir) {
+    private void logic(World world, BlockPos pos, ItemStack stack, boolean creative, EntityPlayer player, CallbackInfoReturnable<Boolean> cir) {
         Item item = stack.getItem();
         TileEntity cocoon = world.getTileEntity(pos);
         if (!(cocoon instanceof IMixinTileCocoon) || item == Items.EMERALD || item == Items.CHORUS_FRUIT) {

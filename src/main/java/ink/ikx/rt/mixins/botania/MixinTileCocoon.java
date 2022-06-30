@@ -8,10 +8,14 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
 import crafttweaker.mc1120.data.NBTConverter;
-import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.botania.ICocoon;
 import ink.ikx.rt.api.mods.botania.function.ICocoonTileEntity;
 import ink.ikx.rt.impl.mods.botania.cocoon.IMixinTileCocoon;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
@@ -28,11 +32,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import vazkii.botania.common.block.tile.TileCocoon;
 import vazkii.botania.common.block.tile.TileMod;
-
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Objects;
-import javax.annotation.Nullable;
 
 @Pseudo
 @Mixin(value = TileCocoon.class, remap = false)
@@ -55,7 +54,7 @@ public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoo
     @Override
     public void updateData(IData data) {
         if (data instanceof DataMap) {
-            this.getTileData().merge((NBTTagCompound) NBTConverter.from((data)));
+            this.getTileData().merge(CraftTweakerMC.getNBTCompound(data));
             this.markDirty();
         } else {
             CraftTweakerAPI.logError("data argument must be DataMap", new IllegalArgumentException());
@@ -72,36 +71,23 @@ public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoo
         return CraftTweakerMC.getIBlockPos(this.pos);
     }
 
-    public int getAmount(String cocoonName) {
-        return customMap.getOrDefault(cocoonName, 0);
-    }
-
     @Override
     public int getAmount(World world, BlockPos pos, ItemStack stack, EntityPlayer player) {
-        ICocoon cocoon = ICocoon.getInstanceByStack(stack);
-
-        if (Objects.nonNull(cocoon)) {
-            String name = cocoon.getSpawnDynamicResult(stack, player, this);
-
-            if (Main.CUSTOM_COCOONS_SPAWN.containsKey(name)) {
-                return this.getAmount(name);
-            }
-        }
-
-        return 0;
+        return this.getDynamicResult(stack, player).map(customMap::get).orElse(0);
     }
 
     @Override
     public void setAmount(World world, BlockPos pos, ItemStack stack, EntityPlayer player, int amount) {
+        this.getDynamicResult(stack, player).ifPresent(nameIn -> this.customMap.put(nameIn, amount));
+    }
+
+    private Optional<String> getDynamicResult(ItemStack stack, EntityPlayer player) {
         ICocoon cocoon = ICocoon.getInstanceByStack(stack);
 
         if (Objects.nonNull(cocoon)) {
-            String name = cocoon.getSpawnDynamicResult(stack, player, this);
-
-            if (Main.CUSTOM_COCOONS_SPAWN.containsKey(name)) {
-                this.customMap.put(name, amount);
-            }
+            return Optional.of(cocoon.getDynamicResult(stack, player, this));
         }
+        return Optional.empty();
     }
 
     @Nullable

@@ -8,9 +8,9 @@ import stanhebben.zenscript.annotations.ZenClass;
 
 @RTRegister
 @ModOnly("botania")
-@ZenClass("mods.randomtweaker.botania.IDynamicSpawn")
+@ZenClass("mods.randomtweaker.botania.DynamicSpawnTable")
 @FunctionalInterface
-public interface ICocoonDynamic {
+public interface DynamicSpawnTable {
 
     String call(IItemStack stack, IPlayer player, ICocoonTileEntity tile);
 
