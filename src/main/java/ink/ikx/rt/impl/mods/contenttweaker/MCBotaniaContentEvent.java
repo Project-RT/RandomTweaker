@@ -14,8 +14,8 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.items.IItemHandler;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.tuple.Pair;
-import org.codehaus.plexus.util.FileUtils;
 import vazkii.botania.api.BotaniaAPIClient;
 
 import java.io.File;
@@ -76,7 +76,7 @@ public class MCBotaniaContentEvent {
                 nameL = nameL.replace("chibi", "_chibi");
             }
             try {
-                FileUtils.fileWrite(file, FLOWER_BLOCK_STATE.replace("${name}", nameL));
+                FileUtils.writeStringToFile(file, FLOWER_BLOCK_STATE.replace("${name}", nameL), "UTF-8", false);
             } catch (IOException e) {
                 CraftTweakerAPI.logError("Failed to create blockstate for " + name, e);
             }

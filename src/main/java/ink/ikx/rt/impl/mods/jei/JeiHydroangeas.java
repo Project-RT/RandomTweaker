@@ -28,6 +28,7 @@ public class JeiHydroangeas {
     private static final String TEXTURE = "randomtweaker:textures/gui/jei/hydroangeas.png";
     private static final IItemStack FLOWER = CraftTweakerMC.getIItemStack(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HYDROANGEAS));
 
+    @SuppressWarnings("deprecation")
     public static void init() {
         JEIExpansion.createJei(UID, I18n.translateToLocal("randomtweaker.jei_hydroangeas"))
                 .setIcon(FLOWER)
@@ -43,7 +44,7 @@ public class JeiHydroangeas {
     private static void getHydroangeasRecipes() {
         for (SubTileHydroangeasManager.HydroangeasHandler handler : SubTileHydroangeasManager.handlerList) {
             FluidStack blockInput = new FluidStack(FluidRegistry.lookupFluidForBlock(handler.getBlockLiquid()), 1000);
-            int mana = handler.getManaGen() * SubTileHydroangeasManager.burnTime;
+            int mana = handler.getManaGen();
             IJeiElements.IJeiElementManaBar manaBar = IJeiUtilsWithBotania.createJeiManaBarElement(2, 60, mana, 1);
             IJeiTooltip tooltip = (mouseX, mouseY) -> {
                 List<String> text = new ArrayList<>();
