@@ -50,7 +50,7 @@ dependencies {
 
     compile files('CraftTweaker2-MC1120-Mod-JEI-1.12-4.1.20.670-deobf.jar')
 
-    deobfCompile "youyihj:zenutils:1.9.4"
+    deobfCompile "youyihj:zenutils:1.12.3"
     deobfCompile "zone.rong:mixinbooter:4.2"
     deobfCompile "com.blamejared:MTLib:3.0.5.15"
     deobfCompile "mezz.jei:jei_1.12.2:4.16.1.302"
@@ -65,7 +65,7 @@ dependencies {
     deobfCompile "curse.maven:thaumicadditions-232564:3663195"
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.670"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.682"
 }
 
 processResources {
