@@ -5,6 +5,7 @@ import com.zeitheron.hammercore.utils.OnetimeCaller;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.block.IBlockState;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import crafttweaker.mc1120.commands.CTChatCommand;
 import crafttweaker.mods.jei.JEI;
 import ink.ikx.rt.api.mods.astralsorcery.event.CTEventManagerAS;
 import ink.ikx.rt.api.mods.botania.ICocoon;
@@ -24,6 +25,7 @@ import ink.ikx.rt.impl.mods.botania.subtile.SubTileHydroangeasModified;
 import ink.ikx.rt.impl.mods.botania.subtile.SubTileOrechidModified;
 import ink.ikx.rt.impl.mods.contenttweaker.MCBotaniaContentEvent;
 import ink.ikx.rt.impl.mods.crafttweaker.CraftTweakerExtension;
+import ink.ikx.rt.impl.mods.crafttweaker.command.AttributeCommand;
 import ink.ikx.rt.impl.mods.jei.JeiAttunements;
 import ink.ikx.rt.impl.mods.jei.JeiHydroangeas;
 import ink.ikx.rt.impl.mods.jei.JeiOrechid;
@@ -107,6 +109,7 @@ public class Main {
 
     @EventHandler
     public void onPostInit(FMLPostInitializationEvent event) {
+        CTChatCommand.registerCommand(new AttributeCommand());
         if (Loader.isModLoaded("thaumcraft")) {
             CraftTweakerAPI.tweaker.loadScript(false, "thaumcraft");
             if (Loader.isModLoaded("thaumadditions")) {
