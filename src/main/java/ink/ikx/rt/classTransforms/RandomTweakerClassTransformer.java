@@ -35,7 +35,7 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
         if (transformedName.equals("net.minecraft.item.ItemStack")) {
             LogManager.getLogger().info("transforming class {} ({})", transformedName, name);
             ClassWriter writer = new ClassWriter(0);
-            ASMItemStack asm = new ASMItemStack(ASM5, writer);
+            ASMItemStack asm = new ASMItemStack(ASM5, writer, name);
             try {
                 System.out.println("on vanilla class visitor");
                 ClassReader classReader = new ClassReader(basicClass);

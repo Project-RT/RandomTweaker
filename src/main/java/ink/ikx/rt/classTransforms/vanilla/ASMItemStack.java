@@ -1,5 +1,6 @@
 package ink.ikx.rt.classTransforms.vanilla;
 
+import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
@@ -10,16 +11,20 @@ import org.objectweb.asm.Opcodes;
  */
 public class ASMItemStack extends ClassVisitor {
 
-    public ASMItemStack(int api, ClassVisitor cv) {
+    private final String className;
+
+    public ASMItemStack(int api, ClassVisitor cv, String className) {
         super(api, cv);
+        this.className = className;
     }
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
-        if (name.equals("getTooltip") || name.equals("func_82840_a")) {
+        String methodName = FMLDeobfuscatingRemapper.INSTANCE.mapMethodName(className, name, desc);
+        if (methodName.equals("func_82840_a") || methodName.equals("getTooltip")) {
             return new ASMItemStackGetTooltip(api, super.visitMethod(access, name, desc, signature, exceptions));
         }
-        if (name.equals("getAttributeModifiers") || name.equals("func_111283_C")) {
+        if (methodName.equals("func_111283_C") || methodName.equals("getAttributeModifiers")) {
             return new ASMItemStackGetAttributeModifiers(api, super.visitMethod(access, name, desc, signature, exceptions));
         }
         return super.visitMethod(access, name, desc, signature, exceptions);
@@ -61,7 +66,7 @@ class ASMItemStackGetAttributeModifiers extends MethodVisitor implements Opcodes
     @Override
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
         super.visitMethodInsn(opcode, owner, name, desc, itf);
-        if (owner.equals("net/minecraft/item/Item") && name.equals("getAttributeModifiers")) {
+        if (name.equals("getAttributeModifiers")) {
             triggered = true;
         }
     }
