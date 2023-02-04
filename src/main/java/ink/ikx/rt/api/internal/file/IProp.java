@@ -1,5 +1,8 @@
 package ink.ikx.rt.api.internal.file;
 
+import crafttweaker.api.block.IBlock;
+import crafttweaker.api.item.IIngredient;
+import crafttweaker.api.item.IItemStack;
 import org.apache.commons.lang3.StringUtils;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -28,6 +31,36 @@ public abstract class IProp {
             }
         } catch (IOException ignored) {
         }
+    }
+
+    @ZenMethod
+    public static void write(String key, int value) {
+        write(key, String.valueOf(value));
+    }
+
+    @ZenMethod
+    public static void write(String key, float value) {
+        write(key, String.valueOf(value));
+    }
+
+    @ZenMethod
+    public static void write(String key, double value) {
+        write(key, String.valueOf(value));
+    }
+
+    @ZenMethod
+    public static void write(String key, long value) {
+        write(key, String.valueOf(value));
+    }
+
+    @ZenMethod
+    public static void write(String key, boolean value) {
+        write(key, String.valueOf(value));
+    }
+
+    @ZenMethod
+    public static void write(String key, IIngredient value) {
+        write(key, value.toCommandString());
     }
 
     @ZenMethod
