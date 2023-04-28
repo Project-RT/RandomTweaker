@@ -6,6 +6,7 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.zenscript.IBracketHandler;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import ink.ikx.rt.impl.mods.jei.impl.core.MCJeiPanel;
 import stanhebben.zenscript.compiler.IEnvironmentGlobal;
 import stanhebben.zenscript.expression.ExpressionCallStatic;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @ModOnly("jei")
 @BracketHandler(priority = 100)
+@RTRegister
 public class BracketHandlerJei implements IBracketHandler {
 
     public static IJeiPanel getJEIPanel(String name) {

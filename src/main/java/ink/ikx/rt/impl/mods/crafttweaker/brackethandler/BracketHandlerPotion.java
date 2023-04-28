@@ -6,6 +6,7 @@ import crafttweaker.annotations.ModOnly;
 import crafttweaker.zenscript.IBracketHandler;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.impl.internal.event.EventRegister;
+import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.compiler.IEnvironmentGlobal;
 import stanhebben.zenscript.expression.ExpressionCallStatic;
 import stanhebben.zenscript.expression.ExpressionString;
@@ -18,6 +19,7 @@ import java.util.List;
 @SuppressWarnings("ALL")
 @ModOnly("contenttweaker")
 @BracketHandler(priority = 100)
+@RTRegister
 public class BracketHandlerPotion implements IBracketHandler {
 
     public static IPotionRepresentation getPotion(String name) {
