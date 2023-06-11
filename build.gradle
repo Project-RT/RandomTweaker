@@ -66,6 +66,8 @@ dependencies {
     deobfCompile "com.teamacronymcoders:ContentTweaker:1.12.2-4.9.1"
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.682"
+
+    compileOnly "com.brandon3055.draconicevolution:Draconic-Evolution:1.12.2-2.3.27.+:deobf"
 }
 
 processResources {
@@ -116,6 +118,10 @@ repositories {
     maven {
         name = "youyihj"
         url = "https://friendlyhj.github.io/maven"
+    }
+    maven {
+        name = "OC Maven"
+        url = "https://maven.cil.li/"
     }
 }
 
