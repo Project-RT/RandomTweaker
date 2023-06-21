@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 
-version = "1.3.6"
+version = "1.3.7"
 group = "ink.ikx.rt"
 archivesBaseName = "RandomTweaker"
 
@@ -67,7 +67,11 @@ dependencies {
     deobfCompile "com.teamacronymcoders.base:base:1.12.2-3.13.0-SNAPSHOT.+"
     deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.682"
 
-    compileOnly "com.brandon3055.draconicevolution:Draconic-Evolution:1.12.2-2.3.27.+:deobf"
+    compileOnly ("com.brandon3055.draconicevolution:Draconic-Evolution:1.12.2-2.3.27.+:deobf") {
+        exclude module: "jei_1.12.2"
+        exclude module: "RedstoneFlux"
+    }
+
 }
 
 processResources {
