@@ -14,10 +14,6 @@ import net.minecraft.item.ItemStack;
 @SuppressWarnings("unused")
 public class ItemStackHook {
     public static void fireAttributeModificationEvent(ItemStack stack, EntityEquipmentSlot equipmentSlot, Multimap<String, AttributeModifier> multimap) {
-        CTEventHandler.elAttributeModification.publish(new ItemAttributeModificationEvent(
-                CraftTweakerMC.getIItemStack(stack),
-                CraftTweakerMC.getIEntityEquipmentSlot(equipmentSlot),
-                multimap
-        ));
+        CTEventHandler.Holder.publishItemAttributeModificationEvent(stack, equipmentSlot, multimap);
     }
 }
