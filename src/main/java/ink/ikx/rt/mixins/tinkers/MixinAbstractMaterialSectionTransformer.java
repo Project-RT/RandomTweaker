@@ -4,7 +4,11 @@ package ink.ikx.rt.mixins.tinkers;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import slimeknights.mantle.client.book.data.SectionData;
 import slimeknights.mantle.client.book.data.content.PageContent;
 import slimeknights.mantle.client.book.data.element.ImageData;
@@ -49,12 +53,12 @@ public abstract class MixinAbstractMaterialSectionTransformer extends SectionTra
     @Shadow
     protected abstract PageContent getPageContent(Material var1);
 
-    /**
-     * @author
-     * @reason
-     */
-    @Overwrite
-    public void transform(BookData book, SectionData data) {
+
+    @Inject(
+            method = "transform",
+            at = @At("HEAD"),
+            cancellable = true)
+    public void transform(BookData book, SectionData data, CallbackInfo ci) {
         data.source = BookRepository.DUMMY;
         data.parent = book;
         List<Material> materialList = TinkerRegistry.getAllMaterials().stream().filter((m) -> !m.isHidden()).filter(Material::hasItems).filter(this::isValidMaterial).collect(Collectors.toList());
@@ -87,5 +91,6 @@ public abstract class MixinAbstractMaterialSectionTransformer extends SectionTra
             }
 
         }
+        return;
     }
 }
