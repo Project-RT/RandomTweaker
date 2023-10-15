@@ -13,7 +13,7 @@
     "botania.MixinTilePool",
     "botania.MixinTileSpecialFlower",
     "ftbultimine.MixinFTBUltimine",
-    "tinkers.MixinAbstractMaterialSectionTransformer"
+    "tconstruct.MixinAbstractMaterialSectionTransformer"
   ],
   "client": [
     "ftbultimine.MixinFTBUltimineClient"
