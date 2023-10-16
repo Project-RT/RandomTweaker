@@ -1,39 +1,94 @@
 package ink.ikx.rt.api.mods.tconstruct;
 
+import crafttweaker.CraftTweakerAPI;
+import crafttweaker.IAction;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
+import ink.ikx.rt.Main;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
-import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 /**
  * Created by IntelliJ IDEA.
- *
- * @Author : wdcftgg
- * @create 2023/10/3 19:06
+ * <p>
+ * &#064;Author  : wdcftgg
+ * &#064;create  2023/10/3 19:06
  */
 @RTRegister
 @ModOnly("tconstruct")
 @ZenClass("mods.randomtweaker.tconstruct.IBook")
 public abstract class IBook {
 
-    public static List<String> hiddenmaterialList = new ArrayList<>();
-
-    public static HashMap<String, ItemStack> materialshowitem = new HashMap<String, ItemStack>();
-
     @ZenMethod
     public static void addHiddenMaterial(String material) {
-        hiddenmaterialList.add(material);
+        CraftTweakerAPI.apply(new AddHiddenMaterialAction(material));
     }
 
     @ZenMethod
     public static void changeMaterialItem(String material, IItemStack item) {
-        materialshowitem.put(material, CraftTweakerMC.getItemStack(item));
+        CraftTweakerAPI.apply(new ChangeMaterialItem(material, item));
     }
+
+    public static class AddHiddenMaterialAction implements IAction {
+
+        private final String material;
+
+        public AddHiddenMaterialAction(String material) {
+            this.material = material;
+        }
+
+        @Override
+        public void apply() {
+            Main.HIDDEN_MATERIAL_LIST.add(this.material);
+        }
+
+        @Override
+        public String describe() {
+            return "Adding material " + this.material + " to hidden materials";
+        }
+
+        @Override
+        public boolean validate() {
+            return !Main.HIDDEN_MATERIAL_LIST.contains(this.material);
+        }
+
+        @Override
+        public String describeInvalid() {
+            return "Material " + this.material + " is already exists in hidden materials";
+        }
+    }
+
+    public static class ChangeMaterialItem implements IAction {
+
+        private final String material;
+        private final IItemStack item;
+
+        public ChangeMaterialItem(String material, IItemStack item) {
+            this.material = material;
+            this.item = item;
+        }
+
+        @Override
+        public void apply() {
+            Main.MATERIAL_SHOW_ITEM_MAP.put(this.material, CraftTweakerMC.getItemStack(this.item));
+        }
+
+        @Override
+        public String describe() {
+            return "Changing material " + this.material + " to item " + this.item.toCommandString();
+        }
+
+        @Override
+        public boolean validate() {
+            return !Main.MATERIAL_SHOW_ITEM_MAP.containsKey(this.material);
+        }
+
+        @Override
+        public String describeInvalid() {
+            return "Material " + this.material + " is already changed";
+        }
+    }
+
 }

@@ -13,7 +13,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ModTotal({"thaumcraft", "modtweaker"})
 @ZenExpansion("thaumcraft.aspect.CTAspect")
 @ZenClass("mods.randomtweaker.modtweaker.CTAspect")
-public class ExpandCTAspect {
+public  class ExpandCTAspect {
 
     @ZenMethod
     @ZenCaster
