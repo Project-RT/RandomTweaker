@@ -60,6 +60,8 @@ dependencies {
     deobfCompile "curse.maven:hammerlib-247401:3611193"
     deobfCompile "curse.maven:thaumcraft-223628:2629023"
     deobfCompile "curse.maven:naturesaura-306626:2882138"
+    deobfCompile "curse.maven:TinkersConstruct-74072:2902483"
+    deobfCompile "curse.maven:Mantle-74924:2713386"
     deobfCompile "curse.maven:ftb-ultimine-386134:3078750"
     deobfCompile "curse.maven:astralsorcery-241721:3044416"
     deobfCompile "curse.maven:thaumicadditions-232564:3663195"

@@ -24,18 +24,19 @@
 10. New randomtweaker.prop exists in the root directory and can be used to store data for Map<
     String, String>.
 11. Support some mods and vanilla game expansion.
+12. And more...
 
 ↑ Above functions require configuration files for switching
 
 ## Follow up plans
-1. Customized one-block machines.
-2. Support more mods and vanilla game expansion.
+Support more mods and vanilla game expansion. <em>(PR welcome)</em>
 
-## Participants
+## Contributions
 
-Developers ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315)
-, [NiYanhhhhh](https://github.com/NiYanhhhhh), [Water_Moon](https://github.com/Water-Moon) <br /><br />
-Wiki Editors ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315) <br /><br />
+Developers ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315),
+, [NiYanhhhhh](https://github.com/NiYanhhhhh), [Water_Moon](https://github.com/Water-Moon),
+[唐轩宇](https://github.com/ukmojb) <br /><br />
+Wiki Editors ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315), [唐轩宇](https://github.com/ukmojb) <br /><br />
 English Translation : [liuseniubi](https://github.com/liuseniubi)
 , [Seleclipse](https://github.com/lunareclipse-64) <br /><br />
 Special Thanks ：[friendlyhj](https://github.com/friendlyhj)
