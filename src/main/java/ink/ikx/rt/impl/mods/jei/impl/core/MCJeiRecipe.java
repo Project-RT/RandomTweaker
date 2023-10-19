@@ -99,14 +99,19 @@ public class MCJeiRecipe implements IJeiRecipe {
     protected String serialize() {
         StringJoiner input = new StringJoiner(", ", "input -> [", "]");
         StringJoiner output = new StringJoiner(", ", ", output -> [", "]");
-        this.inputs.stream().map(IIngredient::toCommandString).forEach(input::add);
-        this.outputs.stream().map(IIngredient::toCommandString).forEach(output::add);
+        this.inputs.stream().map(Objects::toString).forEach(input::add);
+        this.outputs.stream().map(Objects::toString).forEach(output::add);
         return input.toString() + output;
     }
 
     @Override
     public int hashCode() {
         return serialize().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return serialize();
     }
 
     public static class ActionAddJeiRecipe implements IAction {
@@ -124,7 +129,7 @@ public class MCJeiRecipe implements IJeiRecipe {
 
         @Override
         public String describe() {
-            return "Adding JeiRecipe to " + recipe.uid + ", " + recipe.serialize();
+            return "Adding JeiRecipe to " + recipe.uid + ", " + recipe;
         }
 
         @Override
