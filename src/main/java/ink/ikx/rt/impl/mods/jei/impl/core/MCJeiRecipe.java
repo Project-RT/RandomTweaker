@@ -8,6 +8,8 @@ import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
 import ink.ikx.rt.api.mods.jei.core.IJeiTooltip;
 import ink.ikx.rt.api.mods.jei.elements.IJeiElement;
+import youyihj.zenutils.api.reload.Reloadable;
+import youyihj.zenutils.api.util.ReflectionInvoked;
 
 import java.util.Arrays;
 import java.util.List;
@@ -114,6 +116,7 @@ public class MCJeiRecipe implements IJeiRecipe {
         return serialize();
     }
 
+    @Reloadable
     public static class ActionAddJeiRecipe implements IAction {
 
         private final MCJeiRecipe recipe;
@@ -125,6 +128,11 @@ public class MCJeiRecipe implements IJeiRecipe {
         @Override
         public void apply() {
             Main.JEI_RECIPE_SET.add(recipe);
+        }
+
+        @ReflectionInvoked
+        public void undo() {
+            Main.JEI_RECIPE_SET.remove(recipe);
         }
 
         @Override

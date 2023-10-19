@@ -12,6 +12,8 @@ import ink.ikx.rt.api.mods.jei.core.IJeiTooltip;
 import ink.ikx.rt.api.mods.jei.elements.IJeiElement;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlot;
 import org.apache.commons.lang3.StringUtils;
+import youyihj.zenutils.api.reload.Reloadable;
+import youyihj.zenutils.api.util.ReflectionInvoked;
 
 import java.util.Arrays;
 import java.util.List;
@@ -143,6 +145,7 @@ public class MCJeiPanel implements IJeiPanel {
         Main.JEI_PANEL_SET.add(this);
     }
 
+    @Reloadable
     public static class ActionAddJeiPanel implements IAction {
 
         private final MCJeiPanel panel;
@@ -154,6 +157,11 @@ public class MCJeiPanel implements IJeiPanel {
         @Override
         public void apply() {
             Main.JEI_PANEL_SET.add(panel);
+        }
+
+        @ReflectionInvoked
+        public void undo() {
+            Main.JEI_PANEL_SET.remove(panel);
         }
 
         @Override
