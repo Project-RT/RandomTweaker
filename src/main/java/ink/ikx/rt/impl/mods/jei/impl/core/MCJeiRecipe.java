@@ -8,6 +8,8 @@ import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.jei.core.IJeiRecipe;
 import ink.ikx.rt.api.mods.jei.core.IJeiTooltip;
 import ink.ikx.rt.api.mods.jei.elements.IJeiElement;
+import youyihj.zenutils.api.reload.Reloadable;
+import youyihj.zenutils.api.util.ReflectionInvoked;
 
 import java.util.Arrays;
 import java.util.List;
@@ -99,8 +101,8 @@ public class MCJeiRecipe implements IJeiRecipe {
     protected String serialize() {
         StringJoiner input = new StringJoiner(", ", "input -> [", "]");
         StringJoiner output = new StringJoiner(", ", ", output -> [", "]");
-        this.inputs.stream().map(IIngredient::toCommandString).forEach(input::add);
-        this.outputs.stream().map(IIngredient::toCommandString).forEach(output::add);
+        this.inputs.stream().map(Objects::toString).forEach(input::add);
+        this.outputs.stream().map(Objects::toString).forEach(output::add);
         return input.toString() + output;
     }
 
@@ -109,6 +111,12 @@ public class MCJeiRecipe implements IJeiRecipe {
         return serialize().hashCode();
     }
 
+    @Override
+    public String toString() {
+        return serialize();
+    }
+
+    @Reloadable
     public static class ActionAddJeiRecipe implements IAction {
 
         private final MCJeiRecipe recipe;
@@ -122,9 +130,14 @@ public class MCJeiRecipe implements IJeiRecipe {
             Main.JEI_RECIPE_SET.add(recipe);
         }
 
+        @ReflectionInvoked
+        public void undo() {
+            Main.JEI_RECIPE_SET.remove(recipe);
+        }
+
         @Override
         public String describe() {
-            return "Adding JeiRecipe to " + recipe.uid + ", " + recipe.serialize();
+            return "Adding JeiRecipe to " + recipe.uid + ", " + recipe;
         }
 
         @Override
