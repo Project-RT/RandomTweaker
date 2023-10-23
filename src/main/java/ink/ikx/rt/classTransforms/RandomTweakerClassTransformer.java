@@ -52,7 +52,7 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
             LogManager.getLogger().info("transforming class {} ({})", transformedName, name);
             ClassWriter classWriter = createClassWriter(false);
             ASMAbstractMaterialSectionTransformer asm = new ASMAbstractMaterialSectionTransformer(ASM5, classWriter);
-            return tryGetAsmResult("tinkers construct", basicClass, asm, classWriter, true);
+            return tryGetAsmResult("tinkers construct", basicClass, asm, classWriter, false);
         }
         if (transformedName.equals("net.minecraft.item.ItemStack")) {
             LogManager.getLogger().info("transforming class {} ({})", transformedName, name);
