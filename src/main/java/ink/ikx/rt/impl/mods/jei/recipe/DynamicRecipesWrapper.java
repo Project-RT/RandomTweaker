@@ -11,11 +11,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @ParametersAreNonnullByDefault
@@ -27,7 +25,10 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
         this.recipe = recipe;
     }
 
-    private static List<IItemStack> getItems(IIngredient ingredient) {
+    private static List<IItemStack> getItems(@Nullable IIngredient ingredient) {
+        if (ingredient == null) {
+            return Collections.emptyList();
+        }
         List<IItemStack> itemStackUnsized = ingredient.getItems();
         ArrayList<IItemStack> itemstacks = new ArrayList<>();
         itemStackUnsized.forEach(itemStack -> {
@@ -43,6 +44,7 @@ public class DynamicRecipesWrapper implements IRecipeWrapper {
                 .map(InternalUtils::getItemStacks)
                 .collect(Collectors.toList()));
         ingredients.setInputLists(VanillaTypes.FLUID, recipe.inputs.stream()
+                .filter(Objects::nonNull)
                 .map(IIngredient::getLiquids)
                 .map(InternalUtils::getFluidStacks)
                 .collect(Collectors.toList()));
