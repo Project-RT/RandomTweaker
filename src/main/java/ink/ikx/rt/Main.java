@@ -69,7 +69,8 @@ public class Main {
     public static final BiMap<String, Pair<String, ISubTileEntityRepresentation>> SUB_TILE_GENERATING_MAP = HashBiMap.create();
 
     public static final List<String> HIDDEN_MATERIAL_LIST = new ArrayList<>();
-    public static final HashMap<String, ItemStack> MATERIAL_SHOW_ITEM_MAP = new HashMap<>();
+    public static final Map<String, Integer> MATERIAL_PRIORITY_MAP = new HashMap<>();
+    public static final Map<String, ItemStack> MATERIAL_SHOW_ITEM_MAP = new HashMap<>();
 
     @SidedProxy(clientSide = "ink.ikx.rt.impl.internal.proxy.ClientProxy", serverSide = "ink.ikx.rt.impl.internal.proxy.ServerProxy")
     public static IProxy proxy;

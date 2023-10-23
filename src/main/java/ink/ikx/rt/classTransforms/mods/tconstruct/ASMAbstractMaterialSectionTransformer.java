@@ -27,9 +27,12 @@ class ASMAbstractMaterialSectionTransformerTransform extends MethodVisitor imple
 
     private int iconIndex;
     private int materialIndex;
+    private int materialListIndex;
+    private int materialListLoadIndex = 0;
     private boolean foundLoop = false;
     private boolean foundIcon = false;
     private boolean foundMaterial = false;
+    private boolean foundMaterialList = false;
     private Label loopLabel = new Label();
 
     public ASMAbstractMaterialSectionTransformerTransform(int api, MethodVisitor mv) {
@@ -38,20 +41,24 @@ class ASMAbstractMaterialSectionTransformerTransform extends MethodVisitor imple
 
     @Override
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
+        if (opcode == INVOKEINTERFACE && owner.equals("java/util/List") && name.equals("size") && desc.equals("()I") && itf) {
+
+        }
         super.visitMethodInsn(opcode, owner, name, desc, itf);
-        if (opcode == INVOKEINTERFACE
-                && owner.equals("java/util/List")
-                && name.equals("iterator")
-                && desc.equals("()Ljava/util/Iterator;")
-                && itf) {
+        if (opcode == INVOKEINTERFACE && owner.equals("java/util/List") && name.equals("iterator") && desc.equals("()Ljava/util/Iterator;") && itf) {
             this.foundLoop = true;
         }
     }
 
     @Override
     public void visitTypeInsn(int opcode, String type) {
-        if (opcode == CHECKCAST && Objects.equals(type, "slimeknights/tconstruct/library/materials/Material")) {
-            this.foundMaterial = true;
+        if (opcode == CHECKCAST) {
+            if (Objects.equals(type, "slimeknights/tconstruct/library/materials/Material")) {
+                this.foundMaterial = true;
+            }
+            if (Objects.equals(type, "java/util/List")) {
+                this.foundMaterialList = true;
+            }
         }
         if (opcode == NEW) {
             this.foundIcon = true;
@@ -61,12 +68,24 @@ class ASMAbstractMaterialSectionTransformerTransform extends MethodVisitor imple
 
     @Override
     public void visitVarInsn(int opcode, int var) {
+        if (this.foundMaterialList && opcode == ALOAD && var == this.materialListIndex) {
+            System.out.println("debugger materialListIndex: " + this.materialListIndex);
+            if (++this.materialListLoadIndex == 2) {
+                super.visitVarInsn(ALOAD, this.materialListIndex);
+                super.visitMethodInsn(INVOKESTATIC, "ink/ikx/rt/classTransforms/mods/tconstruct/AbstractMaterialSectionTransformerHooks", "sortMaterialList", "(Ljava/util/List;)Ljava/util/List;", false);
+                super.visitVarInsn(ASTORE, this.materialListIndex);
+                this.foundMaterialList = false;
+            }
+        }
         super.visitVarInsn(opcode, var);
         if (this.foundMaterial) {
             this.materialIndex = var;
         }
         if (this.foundIcon && opcode == ASTORE) {
             this.iconIndex = var;
+        }
+        if (this.foundMaterialList && opcode == ASTORE) {
+            this.materialListIndex = var;
         }
     }
 
@@ -80,21 +99,11 @@ class ASMAbstractMaterialSectionTransformerTransform extends MethodVisitor imple
         if (this.foundIcon) {
             this.foundIcon = false;
             super.visitVarInsn(ALOAD, this.materialIndex);
-            super.visitMethodInsn(
-                    INVOKESTATIC,
-                    "ink/ikx/rt/classTransforms/mods/tconstruct/AbstractMaterialSectionTransformerHooks",
-                    "isMaterialInShowItemMap",
-                    "(Lslimeknights/tconstruct/library/materials/Material;)Z",
-                    false);
+            super.visitMethodInsn(INVOKESTATIC, "ink/ikx/rt/classTransforms/mods/tconstruct/AbstractMaterialSectionTransformerHooks", "isMaterialInShowItemMap", "(Lslimeknights/tconstruct/library/materials/Material;)Z", false);
             Label elseLabel = new Label();
             super.visitJumpInsn(IFEQ, elseLabel);
             super.visitVarInsn(ALOAD, this.materialIndex);
-            super.visitMethodInsn(
-                    INVOKESTATIC,
-                    "ink/ikx/rt/classTransforms/mods/tconstruct/AbstractMaterialSectionTransformerHooks",
-                    "createElementItem",
-                    "(Lslimeknights/tconstruct/library/materials/Material;)Lslimeknights/mantle/client/gui/book/element/ElementItem;",
-                    false);
+            super.visitMethodInsn(INVOKESTATIC, "ink/ikx/rt/classTransforms/mods/tconstruct/AbstractMaterialSectionTransformerHooks", "createElementItem", "(Lslimeknights/tconstruct/library/materials/Material;)Lslimeknights/mantle/client/gui/book/element/ElementItem;", false);
             super.visitVarInsn(ASTORE, this.iconIndex);
             super.visitLabel(elseLabel);
         }
@@ -108,12 +117,7 @@ class ASMAbstractMaterialSectionTransformerTransform extends MethodVisitor imple
         if (this.foundMaterial) {
             this.foundMaterial = false;
             super.visitVarInsn(ALOAD, this.materialIndex);
-            super.visitMethodInsn(
-                    INVOKESTATIC,
-                    "ink/ikx/rt/classTransforms/mods/tconstruct/AbstractMaterialSectionTransformerHooks",
-                    "isMaterialInHiddenItems",
-                    "(Lslimeknights/tconstruct/library/materials/Material;)Z",
-                    false);
+            super.visitMethodInsn(INVOKESTATIC, "ink/ikx/rt/classTransforms/mods/tconstruct/AbstractMaterialSectionTransformerHooks", "isMaterialInHiddenItems", "(Lslimeknights/tconstruct/library/materials/Material;)Z", false);
             Label label1 = new Label();
             super.visitJumpInsn(IFEQ, label1);
             super.visitJumpInsn(GOTO, this.loopLabel);
