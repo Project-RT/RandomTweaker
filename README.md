@@ -31,12 +31,11 @@
 ## Follow up plans
 Support more mods and vanilla game expansion. <em>(PR welcome)</em>
 
-## Contributions
+## Contributors
+Thank you to all the contributors!
 
-Developers ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315),
-, [NiYanhhhhh](https://github.com/NiYanhhhhh), [Water_Moon](https://github.com/Water-Moon),
-[唐轩宇](https://github.com/ukmojb) <br /><br />
-Wiki Editors ：[ikexing](https://github.com/ikexing-cn), [superhelo](https://github.com/XHL315), [唐轩宇](https://github.com/ukmojb) <br /><br />
-English Translation : [liuseniubi](https://github.com/liuseniubi)
-, [Seleclipse](https://github.com/lunareclipse-64) <br /><br />
-Special Thanks ：[friendlyhj](https://github.com/friendlyhj)
+<p align="center">
+  <a href="https://github.com/Project-RT/RandomTweaker/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=Project-RT/RandomTweaker" />
+  </a>
+</p>
