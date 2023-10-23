@@ -41,9 +41,6 @@ class ASMAbstractMaterialSectionTransformerTransform extends MethodVisitor imple
 
     @Override
     public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
-        if (opcode == INVOKEINTERFACE && owner.equals("java/util/List") && name.equals("size") && desc.equals("()I") && itf) {
-
-        }
         super.visitMethodInsn(opcode, owner, name, desc, itf);
         if (opcode == INVOKEINTERFACE && owner.equals("java/util/List") && name.equals("iterator") && desc.equals("()Ljava/util/Iterator;") && itf) {
             this.foundLoop = true;
@@ -69,7 +66,6 @@ class ASMAbstractMaterialSectionTransformerTransform extends MethodVisitor imple
     @Override
     public void visitVarInsn(int opcode, int var) {
         if (this.foundMaterialList && opcode == ALOAD && var == this.materialListIndex) {
-            System.out.println("debugger materialListIndex: " + this.materialListIndex);
             if (++this.materialListLoadIndex == 2) {
                 super.visitVarInsn(ALOAD, this.materialListIndex);
                 super.visitMethodInsn(INVOKESTATIC, "ink/ikx/rt/classTransforms/mods/tconstruct/AbstractMaterialSectionTransformerHooks", "sortMaterialList", "(Ljava/util/List;)Ljava/util/List;", false);
