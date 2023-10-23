@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @author ikexing
  */
-@IFMLLoadingPlugin.Name("RandomTweaker Mixin Boot")
+@IFMLLoadingPlugin.Name("RandomTweaker CoreMod Boot")
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
 public class CoreModBoot implements IFMLLoadingPlugin {
 

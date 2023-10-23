@@ -17,7 +17,7 @@ import static org.objectweb.asm.Opcodes.ASM5;
 public class RandomTweakerClassTransformer implements IClassTransformer {
 
     private ClassWriter createClassWriter(@SuppressWarnings("SameParameterValue") boolean debug) {
-        return new ClassWriter(debug ? 0 : ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
+        return new RandomTweakerClassWriter(debug ? 0 : ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
     }
 
     private byte[] tryGetAsmResult(
@@ -52,7 +52,7 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
             LogManager.getLogger().info("transforming class {} ({})", transformedName, name);
             ClassWriter classWriter = createClassWriter(false);
             ASMAbstractMaterialSectionTransformer asm = new ASMAbstractMaterialSectionTransformer(ASM5, classWriter);
-            return tryGetAsmResult("tinkers construct", basicClass, asm, classWriter, false);
+            return tryGetAsmResult("tinkers construct", basicClass, asm, classWriter, true);
         }
         if (transformedName.equals("net.minecraft.item.ItemStack")) {
             LogManager.getLogger().info("transforming class {} ({})", transformedName, name);
