@@ -20,6 +20,10 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
         return new RandomTweakerClassWriter(debug ? 0 : ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
     }
 
+    private ClassWriter createDefaultClassWriter(@SuppressWarnings("SameParameterValue") boolean debug) {
+        return new ClassWriter(debug ? 0 : ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
+    }
+
     private byte[] tryGetAsmResult(
             String modName,
             byte[] basicClass,
@@ -56,7 +60,7 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
         }
         if (transformedName.equals("net.minecraft.item.ItemStack")) {
             LogManager.getLogger().info("transforming class {} ({})", transformedName, name);
-            ClassWriter classWriter = createClassWriter(false);
+            ClassWriter classWriter = createDefaultClassWriter(false);
             ASMItemStack asm = new ASMItemStack(ASM5, classWriter, name);
            return tryGetAsmResult("vanilla", basicClass, asm, classWriter, false);
         }

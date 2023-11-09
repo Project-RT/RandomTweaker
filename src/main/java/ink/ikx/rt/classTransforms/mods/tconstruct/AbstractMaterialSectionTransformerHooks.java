@@ -1,6 +1,9 @@
 package ink.ikx.rt.classTransforms.mods.tconstruct;
 
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
+import net.minecraft.item.ItemStack;
+import org.apache.logging.log4j.LogManager;
 import slimeknights.mantle.client.gui.book.element.ElementItem;
 import slimeknights.tconstruct.library.materials.Material;
 
@@ -20,7 +23,9 @@ public class AbstractMaterialSectionTransformerHooks {
     }
 
     public static ElementItem createElementItem(Material material) {
-        return new ElementItem(0, 0, 1.0F, Main.MATERIAL_SHOW_ITEM_MAP.get(material.getIdentifier()));
+        ItemStack stack = Main.MATERIAL_SHOW_ITEM_MAP.get(material.getIdentifier());
+        LogManager.getLogger().info("Create ElementItem for " + material.getIdentifier() + "->" + CraftTweakerMC.getIItemStack(stack).toString());
+        return new ElementItem(0, 0, 1.0F, stack);
     }
 
     public static List<Material> sortMaterialList(List<Material> materialList) {
