@@ -5,6 +5,7 @@ bin
 .metadata
 .classpath
 .project
+
 # idea
 out
 *.ipr
@@ -17,8 +18,5 @@ build
 .gradle
 
 # other
+eclipse
 run
-logs/
-.tasks
-src/main/resources/assets/base/models/item/wrench.json
-src/main/resources/assets/base
