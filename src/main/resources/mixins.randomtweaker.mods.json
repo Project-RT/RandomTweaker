@@ -15,6 +15,7 @@
     "ftbultimine.MixinFTBUltimine"
   ],
   "client": [
-    "ftbultimine.MixinFTBUltimineClient"
+    "ftbultimine.MixinFTBUltimineClient",
+    "tconstruct.MixinContentMaterial"
   ]
 }
