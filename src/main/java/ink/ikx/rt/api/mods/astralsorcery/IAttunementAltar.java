@@ -7,6 +7,7 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import hellfirepvp.astralsorcery.common.constellation.ConstellationRegistry;
 import hellfirepvp.astralsorcery.common.constellation.IConstellation;
+import ink.ikx.rt.impl.internal.config.RTConfig;
 import ink.ikx.rt.impl.mods.astralsorcery.CustomAttunementRecipe;
 import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -71,6 +72,9 @@ public abstract class IAttunementAltar {
 
         @Override
         public boolean validate() {
+            if (!RTConfig.Astralsorcery.attunementModification) {
+                return false;
+            }
             if (constellationString != null) {
                 IConstellation constellation = ConstellationRegistry.getConstellationByName(constellationString);
                 return constellation != null;
@@ -80,7 +84,11 @@ public abstract class IAttunementAltar {
 
         @Override
         public String describeInvalid() {
+            if (!RTConfig.Astralsorcery.attunementModification) {
+                return "Change \"attunementModification\" to true in the configuration file";
+            }
             return "Unknown constellation for attunement altar recipe.";
         }
     }
+
 }

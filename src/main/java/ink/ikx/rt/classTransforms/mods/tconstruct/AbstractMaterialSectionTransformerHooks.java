@@ -2,6 +2,7 @@ package ink.ikx.rt.classTransforms.mods.tconstruct;
 
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
+import ink.ikx.rt.impl.internal.config.RTConfig;
 import net.minecraft.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import slimeknights.mantle.client.gui.book.element.ElementItem;
@@ -15,11 +16,11 @@ import java.util.stream.Collectors;
 public class AbstractMaterialSectionTransformerHooks {
 
     public static boolean isMaterialInHiddenItems(Material material) {
-        return Main.HIDDEN_MATERIAL_LIST.contains(material.getIdentifier());
+        return RTConfig.Tconstruct.iconModification && Main.HIDDEN_MATERIAL_LIST.contains(material.getIdentifier());
     }
 
     public static boolean isMaterialInShowItemMap(Material material) {
-        return Main.MATERIAL_SHOW_ITEM_MAP.containsKey(material.getIdentifier());
+        return RTConfig.Tconstruct.iconModification && Main.MATERIAL_SHOW_ITEM_MAP.containsKey(material.getIdentifier());
     }
 
     public static ElementItem createElementItem(Material material) {
@@ -29,9 +30,12 @@ public class AbstractMaterialSectionTransformerHooks {
     }
 
     public static List<Material> sortMaterialList(List<Material> materialList) {
-        return materialList.stream()
-                .sorted(Comparator.comparing(m -> Main.MATERIAL_PRIORITY_MAP.getOrDefault(m.getIdentifier(), 0)))
-                .collect(Collectors.toList());
+        if (RTConfig.Tconstruct.iconModification) {
+            return materialList.stream()
+                    .sorted(Comparator.comparing(m -> Main.MATERIAL_PRIORITY_MAP.getOrDefault(m.getIdentifier(), 0)))
+                    .collect(Collectors.toList());
+        }
+        return materialList;
     }
 
 }
