@@ -9,6 +9,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 import thaumcraft.api.aspects.AspectHelper;
+import thaumcraft.api.aspects.AspectList;
 
 @RTRegister
 @ModOnly("thaumcraft")
@@ -18,7 +19,11 @@ public abstract class ExpandIEntity {
 
     @ZenMethod
     public static IAspectList getAspects(IEntity entity) {
-        return IAspectList.of(AspectHelper.getEntityAspects(CraftTweakerMC.getEntity(entity)).copy());
+        AspectList entityAspects = AspectHelper.getEntityAspects(CraftTweakerMC.getEntity(entity));
+        if (entityAspects != null) {
+            return IAspectList.of(entityAspects.copy());
+        }
+        return IAspectList.of();
     }
 
 }
