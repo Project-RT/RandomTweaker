@@ -1,6 +1,8 @@
 package ink.ikx.rt;
 
-import com.google.common.collect.*;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.google.common.collect.Lists;
 import com.zeitheron.hammercore.utils.OnetimeCaller;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.block.IBlockState;
@@ -48,7 +50,13 @@ import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.lib.LibBlockNames;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 @Mod(
         modid = Main.MODID,
@@ -63,9 +71,9 @@ public class Main {
     public static final String VERSION = "1.4.1";
     public static final String DESPENDENCIES = "required-after:crafttweaker;required-after:mixinbooter@[4.2,);after:contenttweaker;after:thaumcraft";
 
-    public static final Set<IJeiPanel> JEI_PANEL_SET = Sets.newHashSet();
-    public static final Set<IJeiRecipe> JEI_RECIPE_SET = Sets.newHashSet();
-    public static final Map<String, ICocoon> CUSTOM_COCOONS_SPAWN = Maps.newHashMap();
+    public static final Set<IJeiPanel> JEI_PANEL_SET = new HashSet<>();
+    public static final Set<IJeiRecipe> JEI_RECIPE_SET = new HashSet<>();
+    public static final Map<String, ICocoon> CUSTOM_COCOONS_SPAWN = new HashMap<>();
     public static final BiMap<String, Pair<String, ISubTileEntityRepresentation>> SUB_TILE_GENERATING_MAP = HashBiMap.create();
 
     public static final List<String> HIDDEN_MATERIAL_LIST = new ArrayList<>();

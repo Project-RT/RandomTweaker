@@ -12,6 +12,24 @@ public class RTConfig {
     public static final FTBUltimine FTBUltimine = new FTBUltimine();
     public static final Thaumcraft Thaumcraft = new Thaumcraft();
     public static final RandomTweaker RandomTweaker = new RandomTweaker();
+    public static final Astralsorcery Astralsorcery = new Astralsorcery();
+    public static final Tconstruct Tconstruct = new Tconstruct();
+
+    public static class Tconstruct {
+
+        @RequiresMcRestart
+        @Comment("If true, enable the extension of tconstruct. [default: false]")
+        public boolean iconModification = false;
+
+    }
+
+    public static class Astralsorcery {
+
+        @RequiresMcRestart
+        @Comment("If true, Modify attunement and add related events. [default: false]")
+        public boolean attunementModification = false;
+
+    }
 
     public static class RandomTweaker {
 
