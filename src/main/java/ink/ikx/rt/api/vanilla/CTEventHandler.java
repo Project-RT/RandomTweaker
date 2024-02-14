@@ -36,5 +36,7 @@ public class CTEventHandler {
                 elAttributeModification.publish(new ItemAttributeModificationEvent(CraftTweakerMC.getIItemStack(stack), CraftTweakerMC.getIEntityEquipmentSlot(equipmentSlot), multimap));
             }
         }
+
     }
+
 }

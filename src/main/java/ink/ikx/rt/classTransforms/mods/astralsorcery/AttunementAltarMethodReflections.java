@@ -8,6 +8,7 @@ import hellfirepvp.astralsorcery.common.item.crystal.CrystalProperties;
 import hellfirepvp.astralsorcery.common.item.crystal.CrystalPropertyItem;
 import hellfirepvp.astralsorcery.common.item.crystal.base.ItemRockCrystalBase;
 import hellfirepvp.astralsorcery.common.item.crystal.base.ItemTunedCrystalBase;
+import ink.ikx.rt.impl.internal.config.RTConfig;
 import ink.ikx.rt.impl.mods.astralsorcery.CustomAttunementRecipe;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementRecipeCompleteEvent;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementStartEvent;
@@ -16,13 +17,12 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import org.apache.logging.log4j.LogManager;
 
 @SuppressWarnings("unused")
 public class AttunementAltarMethodReflections {
 
     public static void onAttunementStart(Entity entity, IConstellation constellation) {
-        if (entity == null) {
+        if (!RTConfig.Astralsorcery.attunementModification || entity == null) {
             return;
         }
         AttunementStartEvent event = new AttunementStartEvent(entity, entity.getEntityWorld(), constellation);
@@ -30,6 +30,9 @@ public class AttunementAltarMethodReflections {
     }
 
     public static void onCraftingFinish(ItemStack itemStack, EntityItem original, IConstellation constellation) {
+        if (!RTConfig.Astralsorcery.attunementModification) {
+            return;
+        }
         World world = original.getEntityWorld();
         for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
             if (recipe.canDoRecipe(constellation, original.getItem())) {
@@ -86,6 +89,9 @@ public class AttunementAltarMethodReflections {
     }
 
     public static boolean haveRecipe(IConstellation constellation, ItemStack itemStack) {
+        if (!RTConfig.Astralsorcery.attunementModification) {
+            return false;
+        }
         for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
             if (recipe.canDoRecipe(constellation, itemStack)) {
                 return true;
@@ -97,9 +103,8 @@ public class AttunementAltarMethodReflections {
     public static boolean haveRecipe(IConstellation constellation, Entity entity) {
         if (entity instanceof EntityItem) {
             return haveRecipe(constellation, ((EntityItem) entity).getItem());
-        } else {
-            return false;
         }
+        return false;
     }
 
     public static boolean haveRecipe(IConstellation constellation, EntityItem itemStack) {
@@ -107,7 +112,7 @@ public class AttunementAltarMethodReflections {
     }
 
     public static boolean haveAnyRecipe(Entity entity) {
-        if (entity instanceof EntityItem) {
+        if (RTConfig.Astralsorcery.attunementModification && entity instanceof EntityItem) {
             IItemStack itemStack = CraftTweakerMC.getIItemStack(((EntityItem) entity).getItem());
             for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
                 if (recipe.getOriginal().matches(itemStack)) {
@@ -125,7 +130,7 @@ public class AttunementAltarMethodReflections {
     }
 
     public static boolean logicPatch(boolean A, boolean B, boolean C) {
-        return (A && B) || C;
+        return RTConfig.Astralsorcery.attunementModification && ((A && B) || C);
     }
 
     public static Item getTunedItemVariant(Item item, EntityItem itemStack, IConstellation constellation) {
