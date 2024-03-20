@@ -70,11 +70,11 @@ public class RTConfig {
         public boolean OrechidModified = false;
 
         @RequiresMcRestart
-        @Comment("How much the interval of each work of Orechid.[Valid only for modified results | default: 700]")
+        @Comment("How much the interval of each work of Orechid.[Valid only for modified results | default: 20]")
         public int OrechidDelay = 20;
 
         @RequiresMcRestart
-        @Comment("How much mana is consumed per work of Orechid.[Valid only for modified results | default: 20]")
+        @Comment("How much mana is consumed per work of Orechid.[Valid only for modified results | default: 700]")
         public int OrechidCost = 700;
 
         @RequiresMcRestart
