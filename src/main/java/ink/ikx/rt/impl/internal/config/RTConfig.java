@@ -1,5 +1,6 @@
 package ink.ikx.rt.impl.internal.config;
 
+import com.cleanroommc.configanytime.ConfigAnytime;
 import ink.ikx.rt.Main;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
@@ -36,6 +37,10 @@ public class RTConfig {
         @RequiresMcRestart
         @Comment("If true, Allow CrT to manipulate the file \"rt.properties\". [default: false]")
         public boolean Prop = false;
+
+        @RequiresMcRestart
+        @Comment({"If true, Allow CrT to modify item attribute modifiers. [default: false]"})
+        public boolean itemAttributeModification = false;
 
     }
 
@@ -88,6 +93,11 @@ public class RTConfig {
         @Comment("If true, Allow Crt to Control the FTBUltimine enable")
         public boolean AllowCrTControl = false;
 
+    }
+
+
+    static {
+        ConfigAnytime.register(RTConfig.class);
     }
 
 }

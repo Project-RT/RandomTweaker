@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 public class AttunementAltarMethodReflections {
 
     public static void onAttunementStart(Entity entity, IConstellation constellation) {
-        if (!RTConfig.Astralsorcery.attunementModification || entity == null) {
+        if (entity == null) {
             return;
         }
         AttunementStartEvent event = new AttunementStartEvent(entity, entity.getEntityWorld(), constellation);
@@ -30,9 +30,6 @@ public class AttunementAltarMethodReflections {
     }
 
     public static void onCraftingFinish(ItemStack itemStack, EntityItem original, IConstellation constellation) {
-        if (!RTConfig.Astralsorcery.attunementModification) {
-            return;
-        }
         World world = original.getEntityWorld();
         for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
             if (recipe.canDoRecipe(constellation, original.getItem())) {
@@ -89,9 +86,6 @@ public class AttunementAltarMethodReflections {
     }
 
     public static boolean haveRecipe(IConstellation constellation, ItemStack itemStack) {
-        if (!RTConfig.Astralsorcery.attunementModification) {
-            return false;
-        }
         for (CustomAttunementRecipe recipe : CustomAttunementRecipe.allRecipes) {
             if (recipe.canDoRecipe(constellation, itemStack)) {
                 return true;
@@ -130,7 +124,7 @@ public class AttunementAltarMethodReflections {
     }
 
     public static boolean logicPatch(boolean A, boolean B, boolean C) {
-        return RTConfig.Astralsorcery.attunementModification && ((A && B) || C);
+        return ((A && B) || C);
     }
 
     public static Item getTunedItemVariant(Item item, EntityItem itemStack, IConstellation constellation) {
