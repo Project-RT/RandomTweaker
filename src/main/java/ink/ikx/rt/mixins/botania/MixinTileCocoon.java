@@ -1,6 +1,5 @@
 package ink.ikx.rt.mixins.botania;
 
-import com.google.common.collect.Maps;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.api.data.DataMap;
 import crafttweaker.api.data.IData;
@@ -11,11 +10,6 @@ import crafttweaker.mc1120.data.NBTConverter;
 import ink.ikx.rt.api.mods.botania.ICocoon;
 import ink.ikx.rt.api.mods.botania.function.ICocoonTileEntity;
 import ink.ikx.rt.impl.mods.botania.cocoon.IMixinTileCocoon;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
@@ -27,23 +21,31 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import vazkii.botania.common.block.tile.TileCocoon;
 import vazkii.botania.common.block.tile.TileMod;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
+
 @Pseudo
 @Mixin(value = TileCocoon.class, remap = false)
 public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoon, ICocoonTileEntity {
 
+    @Unique
     private static final String CUSTOM_TAB = "CustomTab";
 
-    private final Map<String, Integer> customMap = Maps.newHashMap();
+    @Unique
+    private final Map<String, Integer> randomTweaker$customMap = new HashMap<>();
 
     @Override
-    public int getMapSize() {
-        return customMap.size();
+    public int randomTweaker$getMapSize() {
+        return randomTweaker$customMap.size();
     }
 
     @Override
@@ -72,32 +74,33 @@ public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoo
     }
 
     @Override
-    public int getAmount(World world, BlockPos pos, ItemStack stack, EntityPlayer player) {
-        return this.getDynamicResult(stack, player).map(customMap::get).orElse(0);
+    public int randomTweaker$getAmount(World world, BlockPos pos, ItemStack stack, EntityPlayer player) {
+        return this.randomTweaker$getDynamicResult(stack, player).map(randomTweaker$customMap::get).orElse(0);
     }
 
     @Override
-    public void setAmount(World world, BlockPos pos, ItemStack stack, EntityPlayer player, int amount) {
-        this.getDynamicResult(stack, player).ifPresent(nameIn -> this.customMap.put(nameIn, amount));
+    public void randomTweaker$setAmount(World world, BlockPos pos, ItemStack stack, EntityPlayer player, int amount) {
+        this.randomTweaker$getDynamicResult(stack, player).ifPresent(name -> this.randomTweaker$customMap.put(name, amount));
     }
 
-    private Optional<String> getDynamicResult(ItemStack stack, EntityPlayer player) {
+    @Unique
+    private Optional<String> randomTweaker$getDynamicResult(ItemStack stack, EntityPlayer player) {
         ICocoon cocoon = ICocoon.getInstanceByStack(stack);
 
-        if (Objects.nonNull(cocoon)) {
-            return Optional.of(cocoon.getDynamicResult(stack, player, this));
+        if (cocoon != null) {
+            return Optional.ofNullable(cocoon.getDynamicResult(stack, player, this));
         }
         return Optional.empty();
     }
 
-    @Nullable
-    private String getTabName() {
+    @Unique
+    private String randomTweaker$getTabName() {
         String name = null;
 
-        for (Entry<String, Integer> entry : customMap.entrySet()) {
-            if (Objects.isNull(name)) {
+        for (Entry<String, Integer> entry : randomTweaker$customMap.entrySet()) {
+            if (name == null) {
                 name = entry.getKey();
-            } else if (entry.getValue() > customMap.get(name)) {
+            } else if (entry.getValue() > randomTweaker$customMap.get(name)) {
                 name = entry.getKey();
             }
         }
@@ -105,7 +108,8 @@ public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoo
         return name;
     }
 
-    private void spawnEntityLiving(EntityLiving entityLiving) {
+    @Unique
+    private void randomTweaker$spawnEntityLiving(EntityLiving entityLiving) {
         entityLiving.setPosition(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
         if (entityLiving instanceof EntityAgeable) {
             ((EntityAgeable) entityLiving).setGrowingAge(-24000);
@@ -119,7 +123,7 @@ public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoo
     private void injectReadPacketNBT(NBTTagCompound cmp, CallbackInfo ci) {
         NBTTagCompound data = cmp.getCompoundTag(CUSTOM_TAB);
         data.getKeySet().forEach(name ->
-            this.customMap.put(name, data.getInteger(name)));
+                this.randomTweaker$customMap.put(name, data.getInteger(name)));
     }
 
     @Inject(method = "writePacketNBT", at = @At(value = "HEAD"))
@@ -128,30 +132,26 @@ public abstract class MixinTileCocoon extends TileMod implements IMixinTileCocoo
             cmp.setTag(CUSTOM_TAB, new NBTTagCompound());
         }
 
-        customMap.forEach((name, amount) -> cmp.getCompoundTag(CUSTOM_TAB).setInteger(name, amount));
+        randomTweaker$customMap.forEach((name, amount) -> cmp.getCompoundTag(CUSTOM_TAB).setInteger(name, amount));
     }
 
     @Inject(method = "hatch", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/EntityLiving;setPosition(DDD)V", remap = true), cancellable = true)
     private void injectHatch(CallbackInfo ci) {
-        String name = this.getTabName();
-        ICocoon cocoon = ICocoon.getInstanceByName(name);
+        ICocoon cocoon = ICocoon.getInstanceByName(this.randomTweaker$getTabName());
 
-        if (Objects.isNull(cocoon)) {
-            CraftTweakerAPI.logWarning("[RandomTweaker] cocoon is null");
-            return;
-        }
+        if (cocoon != null) {
+            for (EntityEntry entityEntry : cocoon.getSpawnTab().keySet()) {
+                double probability = cocoon.getProbabilityByEntity(entityEntry);
+                if (Math.random() < probability) {
+                    Entity entity = entityEntry.newInstance(this.world);
+                    if (entity instanceof EntityLiving) {
+                        this.randomTweaker$spawnEntityLiving((EntityLiving) entity);
+                        ci.cancel();
+                        break;
+                    }
 
-        for (EntityEntry entityEntry : cocoon.getSpawnTab().keySet()) {
-            double probably = cocoon.getProbablyByEntity(entityEntry);
-            if (Math.random() < probably) {
-                Entity entity = entityEntry.newInstance(this.world);
-                if (entity instanceof EntityLiving) {
-                    this.spawnEntityLiving((EntityLiving) entity);
-                    ci.cancel();
-                    break;
+                    CraftTweakerAPI.logWarning(entity.getName() + " doesn't extend EntityLiving");
                 }
-
-                CraftTweakerAPI.logWarning(entity.getName() + " does not extend EntityLiving");
             }
         }
     }

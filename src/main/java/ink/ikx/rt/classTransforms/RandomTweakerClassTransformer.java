@@ -3,7 +3,9 @@ package ink.ikx.rt.classTransforms;
 import ink.ikx.rt.classTransforms.mods.astralsorcery.ASMTileAttunementAltar;
 import ink.ikx.rt.classTransforms.mods.tconstruct.ASMAbstractMaterialSectionTransformer;
 import ink.ikx.rt.classTransforms.vanilla.ASMItemStack;
+import ink.ikx.rt.impl.internal.config.RTConfig;
 import net.minecraft.launchwrapper.IClassTransformer;
+import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +19,7 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private static final boolean debug = true;
+    private static final boolean debug = FMLLaunchHandler.isDeobfuscatedEnvironment();
 
     protected static ClassWriter createClassWriter(@SuppressWarnings("SameParameterValue") boolean debug) {
         return new RandomTweakerClassWriter(debug ? 0 : ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
@@ -51,19 +53,21 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
 
     @Override
     public byte[] transform(String name, String transformedName, byte[] basicClass) {
-        if (transformedName.equals("hellfirepvp.astralsorcery.common.tile.TileAttunementAltar")) {
+        if (transformedName.startsWith("ink.ikx.rt"))
+            return basicClass;
+        if (RTConfig.Astralsorcery.attunementModification && "hellfirepvp.astralsorcery.common.tile.TileAttunementAltar".equals(transformedName)) {
             LOGGER.info("transforming class {} ({})", transformedName, name);
             ClassWriter classWriter = createClassWriter(false);
             ASMTileAttunementAltar asm = new ASMTileAttunementAltar(ASM5, classWriter);
             return tryGetAsmResult("astral sorcery", transformedName, basicClass, asm, classWriter);
         }
-        if (transformedName.equals("slimeknights.tconstruct.library.book.sectiontransformer.AbstractMaterialSectionTransformer")) {
+        if (RTConfig.Tconstruct.iconModification && "slimeknights.tconstruct.library.book.sectiontransformer.AbstractMaterialSectionTransformer".equals(transformedName)) {
             LOGGER.info("transforming class {} ({})", transformedName, name);
             ClassWriter classWriter = createClassWriter(false);
             ASMAbstractMaterialSectionTransformer asm = new ASMAbstractMaterialSectionTransformer(ASM5, classWriter);
             return tryGetAsmResult("tinkers construct", transformedName, basicClass, asm, classWriter);
         }
-        if (transformedName.equals("net.minecraft.item.ItemStack")) {
+        if (RTConfig.RandomTweaker.itemAttributeModification && "net.minecraft.item.ItemStack".equals(transformedName)) {
             LOGGER.info("transforming class {} ({})", transformedName, name);
             ClassWriter classWriter = createDefaultClassWriter(false);
             ASMItemStack asm = new ASMItemStack(ASM5, classWriter, name);

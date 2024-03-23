@@ -1,5 +1,6 @@
 package ink.ikx.rt.impl.internal.config;
 
+import com.cleanroommc.configanytime.ConfigAnytime;
 import ink.ikx.rt.Main;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
@@ -37,6 +38,10 @@ public class RTConfig {
         @Comment("If true, Allow CrT to manipulate the file \"rt.properties\". [default: false]")
         public boolean Prop = false;
 
+        @RequiresMcRestart
+        @Comment({"If true, Allow CrT to modify item attribute modifiers. [default: false]"})
+        public boolean itemAttributeModification = false;
+
     }
 
     public static class Thaumcraft {
@@ -65,11 +70,11 @@ public class RTConfig {
         public boolean OrechidModified = false;
 
         @RequiresMcRestart
-        @Comment("How much the interval of each work of Orechid.[Valid only for modified results | default: 700]")
+        @Comment("How much the interval of each work of Orechid.[Valid only for modified results | default: 20]")
         public int OrechidDelay = 20;
 
         @RequiresMcRestart
-        @Comment("How much mana is consumed per work of Orechid.[Valid only for modified results | default: 20]")
+        @Comment("How much mana is consumed per work of Orechid.[Valid only for modified results | default: 700]")
         public int OrechidCost = 700;
 
         @RequiresMcRestart
@@ -88,6 +93,11 @@ public class RTConfig {
         @Comment("If true, Allow Crt to Control the FTBUltimine enable")
         public boolean AllowCrTControl = false;
 
+    }
+
+
+    static {
+        ConfigAnytime.register(RTConfig.class);
     }
 
 }

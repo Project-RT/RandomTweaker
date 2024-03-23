@@ -1,14 +1,15 @@
 package ink.ikx.rt.api.mods.tconstruct;
 
+import com.google.common.base.Preconditions;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
-import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
-
+import ink.ikx.rt.impl.internal.config.RTConfig;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,17 +24,24 @@ public abstract class IBook {
 
     @ZenMethod
     public static void addHiddenMaterial(String material) {
+        checkConfig();
         CraftTweakerAPI.apply(new AddHiddenMaterialAction(material));
     }
 
     @ZenMethod
     public static void changeMaterialItem(String material, IItemStack item) {
+        checkConfig();
         CraftTweakerAPI.apply(new ChangeMaterialItem(material, item));
     }
 
     @ZenMethod
     public static void setMaterialPriority(String material, int priority) {
+        checkConfig();
         CraftTweakerAPI.apply(new SetMaterialPriority(material, priority));
+    }
+
+    private static void checkConfig() {
+        Preconditions.checkArgument(RTConfig.Tconstruct.iconModification, "Please change Tconstruct iconModification config to true.");
     }
 
     public static class AddHiddenMaterialAction implements IAction {
