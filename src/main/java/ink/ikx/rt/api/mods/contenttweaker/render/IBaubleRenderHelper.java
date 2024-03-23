@@ -3,8 +3,8 @@ package ink.ikx.rt.api.mods.contenttweaker.render;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.Main;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -12,8 +12,8 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author superhelo
  */
-@RTRegister
-@ModTotal({"contenttweaker", "botania"})
+
+@SidedZenRegister(modDeps = {"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.render.IBaubleRenderHelper")
 public abstract class IBaubleRenderHelper {
 

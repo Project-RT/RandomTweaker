@@ -3,13 +3,13 @@ package ink.ikx.rt.api.mods.thaumicadditions;
 import com.google.common.collect.Maps;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.block.IBlockState;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.internal.utils.InternalUtils;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import org.zeith.thaumicadditions.api.RecipesFluxConcentrator;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -17,8 +17,8 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.Map;
 
-@RTRegister
-@ModOnly("thaumadditions")
+
+@SidedZenRegister(modDeps = "thaumadditions")
 @ZenClass("mods.randomtweaker.thaumadditions.IFluxConcentrator")
 public abstract class IFluxConcentrator {
 

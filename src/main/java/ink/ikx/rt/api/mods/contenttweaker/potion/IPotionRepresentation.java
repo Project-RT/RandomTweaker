@@ -1,16 +1,16 @@
 package ink.ikx.rt.api.mods.contenttweaker.potion;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import ink.ikx.rt.api.mods.contenttweaker.function.IPotionIsReady;
 import ink.ikx.rt.api.mods.contenttweaker.function.IPotionPerformEffect;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import net.minecraft.potion.Potion;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@RTRegister
-@ModOnly("contenttweaker")
+
+@SidedZenRegister(modDeps = "contenttweaker")
 @ZenClass("mods.randomtweaker.cote.IPotion")
 public abstract class IPotionRepresentation {
 

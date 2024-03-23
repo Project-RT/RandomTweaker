@@ -3,7 +3,7 @@ package ink.ikx.rt.api.vanilla;
 import crafttweaker.api.entity.IEntityEquipmentSlot;
 import crafttweaker.api.entity.attribute.IEntityAttributeModifier;
 import crafttweaker.api.item.IItemStack;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @author youyihj
  */
-@RTRegister
+
 @ZenClass("mods.randomtweaker.vanilla.IItemAttributeModificationEvent")
 public interface IItemAttributeModificationEvent {
     @ZenGetter("item")

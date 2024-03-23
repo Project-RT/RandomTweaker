@@ -1,12 +1,12 @@
 package ink.ikx.rt.api.mods.jei.core;
 
-import crafttweaker.annotations.ModOnly;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@RTRegister
-@ModOnly("jei")
+
+@SidedZenRegister(modDeps = "jei")
 @ZenClass("mods.randomtweaker.jei.IJeiBackground")
 public abstract class IJeiBackground {
 

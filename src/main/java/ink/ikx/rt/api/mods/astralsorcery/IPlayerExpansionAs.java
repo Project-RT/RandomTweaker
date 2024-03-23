@@ -1,12 +1,12 @@
 package ink.ikx.rt.api.mods.astralsorcery;
 
 import crafttweaker.CraftTweakerAPI;
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
 import hellfirepvp.astralsorcery.common.constellation.IMajorConstellation;
 import hellfirepvp.astralsorcery.common.data.research.ResearchManager;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import java.util.List;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -15,8 +15,8 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("astralsorcery")
+
+@SidedZenRegister(modDeps = "astralsorcery")
 @ZenExpansion("crafttweaker.player.IPlayer")
 @ZenClass("mods.randomtweaker.astralsorcery.IPlayer")
 public abstract class IPlayerExpansionAs {

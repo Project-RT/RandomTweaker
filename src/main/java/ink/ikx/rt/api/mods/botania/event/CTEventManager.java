@@ -1,6 +1,6 @@
 package ink.ikx.rt.api.mods.botania.event;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.event.IEventHandle;
 import crafttweaker.api.event.IEventManager;
 import crafttweaker.util.EventList;
@@ -9,14 +9,14 @@ import ink.ikx.rt.impl.mods.botania.event.AbstractClassImplement;
 import ink.ikx.rt.impl.mods.botania.event.AlfPortalDroppedEvent;
 import ink.ikx.rt.impl.mods.botania.event.ElvenTradeEvent;
 import ink.ikx.rt.impl.mods.botania.event.PoolTradeEvent;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("botania")
+
+@SidedZenRegister(modDeps = "botania")
 @ZenClass("mods.randomtweaker.botania.IEventManager")
 @ZenExpansion("crafttweaker.events.IEventManager")
 public abstract class CTEventManager {

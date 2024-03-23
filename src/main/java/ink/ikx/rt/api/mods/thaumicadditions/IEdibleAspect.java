@@ -2,20 +2,20 @@ package ink.ikx.rt.api.mods.thaumicadditions;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.entity.IEntityLivingBase;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.potions.IPotionEffect;
 import ink.ikx.rt.api.mods.thaumcraft.IAspect;
 import ink.ikx.rt.api.mods.thaumcraft.IAspectList;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import org.zeith.thaumicadditions.api.EdibleAspect;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("thaumadditions")
+
+@SidedZenRegister(modDeps = "thaumadditions")
 @ZenClass("mods.randomtweaker.thaumadditions.IEdibleAspect")
 public abstract class IEdibleAspect {
 
@@ -71,8 +71,8 @@ public abstract class IEdibleAspect {
         return IAspectList.of(EdibleAspect.getSalt(CraftTweakerMC.getItemStack(stack)));
     }
 
-    @RTRegister
-    @ModOnly("thaumadditions")
+    
+    @SidedZenRegister(modDeps = "thaumadditions")
     @ZenClass("mods.randomtweaker.thaumadditions.EatFunction")
     @FunctionalInterface
     public interface EatFunction {
@@ -81,8 +81,8 @@ public abstract class IEdibleAspect {
 
     }
 
-    @RTRegister
-    @ModOnly("thaumadditions")
+    
+    @SidedZenRegister(modDeps = "thaumadditions")
     @ZenClass("mods.randomtweaker.thaumadditions.EatFunctionWithEntity")
     @FunctionalInterface
     public interface EatFunctionWithEntity {

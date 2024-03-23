@@ -2,14 +2,14 @@ package ink.ikx.rt.api.mods.thaumcraft.expand;
 
 import com.blamejared.compat.thaumcraft.handlers.aspects.CTAspectStack;
 import ink.ikx.rt.api.mods.thaumcraft.IAspectList;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModTotal({"thaumcraft", "modtweaker"})
+
+@SidedZenRegister(modDeps = {"thaumcraft", "modtweaker"})
 @ZenExpansion("mods.randomtweaker.thaumcraft.IAspectList")
 @ZenClass("mods.randomtweaker.thaumcraft.expand.IAspectList")
 public abstract class ExpandIAspectList {

@@ -1,13 +1,13 @@
 package ink.ikx.rt.api.mods.contenttweaker.function;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.entity.IEntityLivingBase;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 
-@RTRegister
+
 @FunctionalInterface
-@ModOnly("contenttweaker")
+@SidedZenRegister(modDeps = "contenttweaker")
 @ZenClass("mods.randomtweaker.cote.IPotionPerformEffect")
 public interface IPotionPerformEffect {
 

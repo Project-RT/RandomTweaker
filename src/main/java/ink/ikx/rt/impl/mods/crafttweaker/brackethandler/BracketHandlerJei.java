@@ -2,11 +2,11 @@ package ink.ikx.rt.impl.mods.crafttweaker.brackethandler;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.BracketHandler;
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.zenscript.IBracketHandler;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.jei.core.IJeiPanel;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import ink.ikx.rt.impl.mods.jei.impl.core.MCJeiPanel;
 import stanhebben.zenscript.compiler.IEnvironmentGlobal;
 import stanhebben.zenscript.expression.ExpressionCallStatic;
@@ -17,9 +17,9 @@ import stanhebben.zenscript.type.natives.IJavaMethod;
 
 import java.util.List;
 
-@ModOnly("jei")
+@SidedZenRegister(modDeps = "jei")
 @BracketHandler(priority = 100)
-@RTRegister
+
 public class BracketHandlerJei implements IBracketHandler {
 
     public static IJeiPanel getJEIPanel(String name) {

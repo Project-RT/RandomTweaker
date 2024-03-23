@@ -2,14 +2,14 @@ package ink.ikx.rt.api.mods.contenttweaker;
 
 import ink.ikx.rt.api.mods.contenttweaker.aspect.IAspectRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.aspect.MCAspectRepresentation;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-@RTRegister
-@ModTotal({"thaumcraft", "contenttweaker"})
+
+@SidedZenRegister(modDeps = {"thaumcraft", "contenttweaker"})
 @ZenExpansion("mods.contenttweaker.VanillaFactory")
 @ZenClass("mods.randomtweaker.cote.VanillaFactoryExpansionWithThaumcraft")
 public abstract class ExpandVanillaFactoryWithThaumcraft {

@@ -1,13 +1,13 @@
 package ink.ikx.rt.api.mods.naturesaura;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.world.IBlockPos;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("naturesaura")
+
+@SidedZenRegister(modDeps = "naturesaura")
 @ZenClass("mods.randomtweaker.naturesaura.IAuraChunk")
 public interface IAuraChunk {
 

@@ -2,7 +2,7 @@ package ink.ikx.rt.api.mods.botania;
 
 import com.google.common.collect.Maps;
 import crafttweaker.CraftTweakerAPI;
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.entity.IEntityDefinition;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
@@ -10,7 +10,7 @@ import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.botania.function.DynamicSpawnTable;
 import ink.ikx.rt.api.mods.botania.function.ICocoonTileEntity;
 import ink.ikx.rt.impl.mods.botania.cocoon.MCCocoon;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nonnull;
@@ -23,8 +23,8 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("botania")
+
+@SidedZenRegister(modDeps = "botania")
 @ZenClass("mods.randomtweaker.botania.ICocoon")
 public abstract class ICocoon {
 

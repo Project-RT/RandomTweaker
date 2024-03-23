@@ -2,7 +2,7 @@ package ink.ikx.rt.api.mods.botania.subtile;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
@@ -16,7 +16,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.Objects;
 
-@ModOnly("botania")
+@SidedZenRegister(modDeps = "botania")
 @ZenClass("mods.randomtweaker.botania.IHydroangeas")
 public abstract class IHydroangeas {
 

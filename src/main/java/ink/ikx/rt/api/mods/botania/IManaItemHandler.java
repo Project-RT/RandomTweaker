@@ -1,10 +1,10 @@
 package ink.ikx.rt.api.mods.botania;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import vazkii.botania.api.mana.ManaItemHandler;
@@ -12,8 +12,8 @@ import vazkii.botania.api.mana.ManaItemHandler;
 import java.util.HashMap;
 import java.util.Map;
 
-@RTRegister
-@ModOnly("botania")
+
+@SidedZenRegister(modDeps = "botania")
 @ZenClass("mods.randomtweaker.botania.IManaItemHandler")
 public abstract class IManaItemHandler {
 

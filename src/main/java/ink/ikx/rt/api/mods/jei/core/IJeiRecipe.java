@@ -1,14 +1,14 @@
 package ink.ikx.rt.api.mods.jei.core;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.item.IIngredient;
 import ink.ikx.rt.api.mods.jei.elements.IJeiElement;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("jei")
+
+@SidedZenRegister(modDeps = "jei")
 @ZenClass("mods.randomtweaker.jei.IJeiRecipe")
 public interface IJeiRecipe {
 

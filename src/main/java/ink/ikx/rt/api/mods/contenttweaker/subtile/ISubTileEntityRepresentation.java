@@ -3,7 +3,6 @@ package ink.ikx.rt.api.mods.contenttweaker.subtile;
 import crafttweaker.CraftTweakerAPI;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.contenttweaker.function.subtile.*;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
 import org.apache.commons.lang3.tuple.Pair;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -11,7 +10,6 @@ import stanhebben.zenscript.annotations.ZenProperty;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.recipe.RecipeMiniFlower;
 
-@ModTotal({"botania", "contenttweaker"})
 @ZenClass("mods.randomtweaker.cote.ISubTileEntity")
 public abstract class ISubTileEntityRepresentation {
 

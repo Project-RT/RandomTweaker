@@ -2,19 +2,19 @@ package ink.ikx.rt.api.mods.astralsorcery;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import hellfirepvp.astralsorcery.common.constellation.ConstellationRegistry;
 import hellfirepvp.astralsorcery.common.constellation.IConstellation;
 import ink.ikx.rt.impl.internal.config.RTConfig;
 import ink.ikx.rt.impl.mods.astralsorcery.CustomAttunementRecipe;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("astralsorcery")
+
+@SidedZenRegister(modDeps = "astralsorcery")
 @ZenClass("mods.randomtweaker.astralsorcery.AttunementAltar")
 public abstract class IAttunementAltar {
 
