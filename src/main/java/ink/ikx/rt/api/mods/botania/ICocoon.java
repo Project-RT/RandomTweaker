@@ -41,12 +41,6 @@ public interface ICocoon {
 
     @Nullable
     @ZenMethod
-    static ICocoon getSpawnWhenEmpty() {
-        return Main.CUSTOM_COCOONS_SPAWN.get("default");
-    }
-
-    @Nullable
-    @ZenMethod
     static ICocoon getInstanceByStack(IItemStack stack) {
         return getInstanceByStack(CraftTweakerMC.getItemStack(stack));
     }

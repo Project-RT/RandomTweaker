@@ -35,6 +35,9 @@ public class MCCocoon implements ICocoon {
 
     public static ICocoon create(@Nonnull String name, @Nonnull ItemStack giveStack, @Nonnull Map<EntityEntry, Double> spawnTab, DynamicSpawnTable dynamicSpawn) {
 	    if (check(name, spawnTab)) {
+		    if (dynamicSpawn == null) {
+			    dynamicSpawn = (stack, player, tile) -> name;
+		    }
 		    return new MCCocoon(name, giveStack, spawnTab, dynamicSpawn);
         }
 	    return null;
