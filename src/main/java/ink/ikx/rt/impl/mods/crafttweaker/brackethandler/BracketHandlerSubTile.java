@@ -7,8 +7,8 @@ import ink.ikx.rt.Main;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.functional.ISubTileEntityFunctionalRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.generating.ISubTileEntityGeneratingRepresentation;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import org.apache.commons.lang3.tuple.Pair;
 import stanhebben.zenscript.compiler.IEnvironmentGlobal;
 import stanhebben.zenscript.expression.ExpressionCallStatic;
@@ -21,8 +21,8 @@ import java.util.List;
 
 @SuppressWarnings("ALL")
 @BracketHandler(priority = 100)
-@ModTotal({"botania", "contenttweaker"})
-@RTRegister
+@SidedZenRegister(modDeps = {"botania", "contenttweaker"})
+
 public class BracketHandlerSubTile implements IBracketHandler {
 
     public static ISubTileEntityRepresentation getSubTile(String name) {

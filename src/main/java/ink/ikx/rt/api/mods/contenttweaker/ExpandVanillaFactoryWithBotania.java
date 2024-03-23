@@ -9,15 +9,15 @@ import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBaubleRepresentatio
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItemRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.tool.MCIsUsesManaItemRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.subtile.MCSubTileEntityRepresentation;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-@RTRegister
-@ModTotal({"botania", "contenttweaker"})
+
+@SidedZenRegister(modDeps = {"botania", "contenttweaker"})
 @ZenExpansion("mods.contenttweaker.VanillaFactory")
 @ZenClass("mods.randomtweaker.cote.VanillaFactoryExpansionWithBotania")
 public abstract class ExpandVanillaFactoryWithBotania {

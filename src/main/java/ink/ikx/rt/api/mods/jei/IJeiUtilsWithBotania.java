@@ -1,15 +1,15 @@
 package ink.ikx.rt.api.mods.jei;
 
 import ink.ikx.rt.api.mods.jei.elements.IJeiElements;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import ink.ikx.rt.impl.mods.jei.impl.elemenet.MCJeiElementManaBar;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-@RTRegister
-@ModTotal({"jei", "botania"})
+
+@SidedZenRegister(modDeps = {"jei", "botania"})
 @ZenExpansion("mods.randomtweaker.jei.IJeiUtils")
 public abstract class IJeiUtilsWithBotania {
 

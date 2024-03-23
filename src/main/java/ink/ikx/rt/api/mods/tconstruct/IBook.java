@@ -2,11 +2,11 @@ package ink.ikx.rt.api.mods.tconstruct;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -16,8 +16,8 @@ import stanhebben.zenscript.annotations.ZenMethod;
  * &#064;Author  : wdcftgg
  * &#064;create  2023/10/3 19:06
  */
-@RTRegister
-@ModOnly("tconstruct")
+
+@SidedZenRegister(modDeps = "tconstruct")
 @ZenClass("mods.randomtweaker.tconstruct.IBook")
 public abstract class IBook {
 

@@ -4,13 +4,13 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.blockpos.IBlockPos;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.blockstate.ICTBlockState;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.entity.player.ICTPlayer;
 import com.teamacronymcoders.contenttweaker.api.ctobjects.world.IWorld;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 
-@RTRegister
+
 @FunctionalInterface
-@ModTotal({"contenttweaker", "botania"})
+@SidedZenRegister(modDeps = {"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.BlockHarvested")
 public interface BlockHarvested {
 

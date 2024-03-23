@@ -3,18 +3,18 @@ package ink.ikx.rt.api.mods.draconicevolution;
 import com.brandon3055.brandonscore.client.particle.BCEffectHandler;
 import com.brandon3055.brandonscore.lib.Vec3D;
 import crafttweaker.CraftTweakerAPI;
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IVector3d;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 /**
  * @author youyihj
  */
-@RTRegister
-@ModOnly("draconicevolution")
+
+@SidedZenRegister(modDeps = "draconicevolution")
 @ZenClass("mods.randomtweaker.draconicevolution.IDraconicEvolutionFXHelper")
 public class IDraconicEvolutionFXHelper {
     @ZenMethod

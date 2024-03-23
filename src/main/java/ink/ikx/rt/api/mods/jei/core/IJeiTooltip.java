@@ -1,11 +1,11 @@
 package ink.ikx.rt.api.mods.jei.core;
 
-import crafttweaker.annotations.ModOnly;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 
-@RTRegister
-@ModOnly("jei")
+
+@SidedZenRegister(modDeps = "jei")
 @FunctionalInterface
 @ZenClass("mods.randomtweaker.jei.IJeiTooltip")
 public interface IJeiTooltip {

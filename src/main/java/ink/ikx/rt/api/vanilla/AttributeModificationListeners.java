@@ -6,7 +6,7 @@ import crafttweaker.api.entity.IEntityEquipmentSlot;
 import crafttweaker.api.entity.attribute.IEntityAttributeModifier;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.util.IEventHandler;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -14,7 +14,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author youyihj
  */
-@RTRegister
+
 @ZenExpansion("crafttweaker.item.IIngredient")
 public class AttributeModificationListeners {
     @ZenMethod

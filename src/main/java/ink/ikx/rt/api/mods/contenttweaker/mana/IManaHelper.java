@@ -6,8 +6,8 @@ import crafttweaker.api.item.IMutableItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.bauble.MCManaBauble;
 import ink.ikx.rt.impl.mods.contenttweaker.mana.item.MCManaItem;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import javax.annotation.Nullable;
 import net.minecraft.item.Item;
 import stanhebben.zenscript.annotations.ZenCaster;
@@ -18,8 +18,8 @@ import stanhebben.zenscript.annotations.ZenMethod;
 /**
  * @author superhelo
  */
-@RTRegister
-@ModTotal({"contenttweaker", "botania"})
+
+@SidedZenRegister(modDeps = {"contenttweaker", "botania"})
 @ZenExpansion("crafttweaker.item.IItemStack")
 @ZenClass("mods.randomtweaker.botania.IItemStack")
 public abstract class IManaHelper {

@@ -5,13 +5,13 @@ import com.teamacronymcoders.contenttweaker.api.ctobjects.blockstate.ICTBlockSta
 import com.teamacronymcoders.contenttweaker.api.ctobjects.world.IWorld;
 import crafttweaker.api.entity.IEntityLivingBase;
 import crafttweaker.api.item.IItemStack;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 
-@RTRegister
+
 @FunctionalInterface
-@ModTotal({"contenttweaker", "botania"})
+@SidedZenRegister(modDeps = {"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.BlockPlacedBy")
 public interface BlockPlacedBy {
 

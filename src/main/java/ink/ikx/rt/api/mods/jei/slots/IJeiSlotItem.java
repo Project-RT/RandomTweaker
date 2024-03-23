@@ -1,11 +1,11 @@
 package ink.ikx.rt.api.mods.jei.slots;
 
-import crafttweaker.annotations.ModOnly;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 
-@RTRegister
-@ModOnly("jei")
+
+@SidedZenRegister(modDeps = "jei")
 @ZenClass("mods.randomtweaker.jei.IJeiSlotItem")
 public abstract class IJeiSlotItem extends IJeiSlot {
 

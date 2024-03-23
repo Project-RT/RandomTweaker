@@ -1,13 +1,13 @@
 package ink.ikx.rt.api.mods.thaumcraft;
 
-import crafttweaker.annotations.ModOnly;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import ink.ikx.rt.impl.mods.thaumcraft.MCAspectList;
 import stanhebben.zenscript.annotations.*;
 import thaumcraft.api.aspects.AspectList;
 
-@RTRegister
-@ModOnly("thaumcraft")
+
+@SidedZenRegister(modDeps = "thaumcraft")
 @ZenClass("mods.randomtweaker.thaumcraft.IAspectList")
 @IterableSimple("mods.randomtweaker.thaumcraft.IAspect")
 public interface IAspectList extends Iterable<IAspect> {

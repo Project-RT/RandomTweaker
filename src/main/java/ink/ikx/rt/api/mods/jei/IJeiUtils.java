@@ -1,11 +1,11 @@
 package ink.ikx.rt.api.mods.jei;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import ink.ikx.rt.api.mods.jei.core.IJeiBackground;
 import ink.ikx.rt.api.mods.jei.elements.IJeiElements;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlotItem;
 import ink.ikx.rt.api.mods.jei.slots.IJeiSlotLiquid;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import ink.ikx.rt.impl.mods.jei.impl.MCJeiSlots;
 import ink.ikx.rt.impl.mods.jei.impl.core.MCJeiBackground;
 import ink.ikx.rt.impl.mods.jei.impl.elemenet.MCJeiElementArrow;
@@ -15,8 +15,8 @@ import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("jei")
+
+@SidedZenRegister(modDeps = "jei")
 @ZenClass("mods.randomtweaker.jei.IJeiUtils")
 public abstract class IJeiUtils {
 

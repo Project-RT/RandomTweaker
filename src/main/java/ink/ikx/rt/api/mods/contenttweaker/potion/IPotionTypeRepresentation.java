@@ -1,13 +1,13 @@
 package ink.ikx.rt.api.mods.contenttweaker.potion;
 
-import crafttweaker.annotations.ModOnly;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@RTRegister
-@ModOnly("contenttweaker")
+
+@SidedZenRegister(modDeps = "contenttweaker")
 @ZenClass("mods.randomtweaker.cote.IPotionType")
 public abstract class IPotionTypeRepresentation {
 

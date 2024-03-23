@@ -1,16 +1,16 @@
 package ink.ikx.rt.api.mods.botania.function;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.data.IData;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("botania")
+
+@SidedZenRegister(modDeps = "botania")
 @ZenClass("mods.randomtweaker.botania.ICocoonTileEntity")
 public interface ICocoonTileEntity {
 

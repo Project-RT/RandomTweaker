@@ -1,17 +1,17 @@
 package ink.ikx.rt.api.mods.naturesaura;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IBlockPos;
 import crafttweaker.api.world.IWorld;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import ink.ikx.rt.impl.mods.naturesaura.MCAuraChunk;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("naturesaura")
+
+@SidedZenRegister(modDeps = "naturesaura")
 @ZenExpansion("crafttweaker.world.IWorld")
 @ZenClass("mods.randomtweaker.naturesaura.IWorld")
 public abstract class IWorldExpansionNa {

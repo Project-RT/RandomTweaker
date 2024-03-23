@@ -1,18 +1,18 @@
 package ink.ikx.rt.api.mods.astralsorcery.event;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.entity.IEntity;
 import crafttweaker.api.event.IEntityEvent;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.world.IWorld;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementStartEvent;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("astralsorcery")
+
+@SidedZenRegister(modDeps = "astralsorcery")
 @ZenClass("mods.randomtweaker.astralsorcery.AttunementStartEvent")
 public abstract class CTAttunementStartEvent implements IEntityEvent {
 

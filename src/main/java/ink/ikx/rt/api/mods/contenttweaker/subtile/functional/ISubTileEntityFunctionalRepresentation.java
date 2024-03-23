@@ -1,12 +1,11 @@
 package ink.ikx.rt.api.mods.contenttweaker.subtile.functional;
 
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
-import ink.ikx.rt.impl.mods.crafttweaker.ModTotal;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@ModTotal({"botania", "contenttweaker"})
 @ZenClass("mods.randomtweaker.cote.ISubTileEntityFunctional")
 public abstract class ISubTileEntityFunctionalRepresentation extends ISubTileEntityRepresentation {
 

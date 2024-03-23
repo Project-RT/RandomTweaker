@@ -1,6 +1,6 @@
 package ink.ikx.rt.api.mods.astralsorcery.event;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.event.IEventHandle;
 import crafttweaker.api.event.IEventManager;
 import crafttweaker.util.EventList;
@@ -8,14 +8,14 @@ import crafttweaker.util.IEventHandler;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AbstractClassImplement;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementRecipeCompleteEvent;
 import ink.ikx.rt.impl.mods.astralsorcery.event.AttunementStartEvent;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@RTRegister
-@ModOnly("astralsorcery")
+
+@SidedZenRegister(modDeps = "astralsorcery")
 @ZenClass("mods.randomtweaker.astralsorcery.IEventManager")
 @ZenExpansion("crafttweaker.events.IEventManager")
 public abstract class CTEventManagerAS {

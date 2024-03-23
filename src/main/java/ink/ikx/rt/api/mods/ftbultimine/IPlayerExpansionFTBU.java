@@ -2,13 +2,13 @@ package ink.ikx.rt.api.mods.ftbultimine;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.player.IPlayer;
 import ink.ikx.rt.impl.internal.capability.CapabilityRegistryHandler;
 import ink.ikx.rt.impl.internal.capability.CapabilityRegistryHandler.FTBUltimineTag;
 import ink.ikx.rt.impl.internal.network.NetworkManager;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import stanhebben.zenscript.annotations.ZenClass;
@@ -18,8 +18,8 @@ import stanhebben.zenscript.annotations.ZenMethodStatic;
 
 import java.util.Objects;
 
-@RTRegister
-@ModOnly("ftbultimine")
+
+@SidedZenRegister(modDeps = "ftbultimine")
 @ZenExpansion("crafttweaker.player.IPlayer")
 @ZenClass("mods.randomtweaker.ftbultimine.IPlayer")
 public abstract class IPlayerExpansionFTBU {

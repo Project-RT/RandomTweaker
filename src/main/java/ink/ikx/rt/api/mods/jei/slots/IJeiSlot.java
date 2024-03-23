@@ -1,15 +1,15 @@
 package ink.ikx.rt.api.mods.jei.slots;
 
-import crafttweaker.annotations.ModOnly;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
+
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenProperty;
 
-@RTRegister
-@ModOnly("jei")
+
+@SidedZenRegister(modDeps = "jei")
 @ZenClass("mods.randomtweaker.jei.IJeiSlot")
 public abstract class IJeiSlot {
 

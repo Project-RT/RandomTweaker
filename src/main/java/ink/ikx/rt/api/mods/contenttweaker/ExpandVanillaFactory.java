@@ -1,17 +1,17 @@
 package ink.ikx.rt.api.mods.contenttweaker;
 
-import crafttweaker.annotations.ModOnly;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionRepresentation;
 import ink.ikx.rt.api.mods.contenttweaker.potion.IPotionTypeRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.potion.MCPotionRepresentation;
 import ink.ikx.rt.impl.mods.contenttweaker.potion.MCPotionTypeRepresentation;
-import ink.ikx.rt.impl.mods.crafttweaker.RTRegister;
+
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-@RTRegister
-@ModOnly("contenttweaker")
+
+@SidedZenRegister(modDeps = "contenttweaker")
 @ZenExpansion("mods.contenttweaker.VanillaFactory")
 @ZenClass("mods.randomtweaker.cote.VanillaFactoryExpansion")
 public abstract class ExpandVanillaFactory {
