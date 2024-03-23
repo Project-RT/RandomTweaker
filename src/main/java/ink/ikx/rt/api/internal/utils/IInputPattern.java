@@ -5,10 +5,12 @@ import ink.ikx.rt.impl.internal.utils.MCInputPattern;
 
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 
 import java.util.Map;
 
 
+@SidedZenRegister
 @ZenClass("mods.randomtweaker.utils.IInputPattern")
 public interface IInputPattern {
 

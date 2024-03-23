@@ -7,10 +7,12 @@ import ink.ikx.rt.api.mods.contenttweaker.function.mana.IManaWithPool;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 
 /**
  * @author superhelo
  */
+@SidedZenRegister(modDeps = {"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.ManaItem")
 public abstract class IManaItemRepresentation extends ItemRepresentation {
 

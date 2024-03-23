@@ -9,7 +9,9 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.recipe.RecipeMiniFlower;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 
+@SidedZenRegister(modDeps = {"contenttweaker", "botania"})
 @ZenClass("mods.randomtweaker.cote.ISubTileEntity")
 public abstract class ISubTileEntityRepresentation {
 

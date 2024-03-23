@@ -88,7 +88,7 @@ public class Main {
 
     @EventHandler
     public void onConstruct(FMLConstructionEvent event) {
-        CraftTweakerExtension.registerAllClass(event.getASMHarvestedData());
+        CraftTweakerExtension.registerAllClass();
         if (Loader.isModLoaded("astralsorcery"))
             MinecraftForge.EVENT_BUS.register(CTEventManagerAS.Handler.class);
         if (Loader.isModLoaded("botania")) {
