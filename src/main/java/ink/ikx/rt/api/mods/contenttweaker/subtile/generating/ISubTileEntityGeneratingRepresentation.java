@@ -3,7 +3,6 @@ package ink.ikx.rt.api.mods.contenttweaker.subtile.generating;
 import ink.ikx.rt.api.mods.contenttweaker.function.subtile.CanGeneratePassively;
 import ink.ikx.rt.api.mods.contenttweaker.function.subtile.PopulateDropStackNBTs;
 import ink.ikx.rt.api.mods.contenttweaker.subtile.ISubTileEntityRepresentation;
-import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenProperty;
