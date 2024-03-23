@@ -5,6 +5,7 @@ import ink.ikx.rt.classTransforms.mods.tconstruct.ASMAbstractMaterialSectionTran
 import ink.ikx.rt.classTransforms.vanilla.ASMItemStack;
 import ink.ikx.rt.impl.internal.config.RTConfig;
 import net.minecraft.launchwrapper.IClassTransformer;
+import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,7 +19,7 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private static final boolean debug = true;
+    private static final boolean debug = FMLLaunchHandler.isDeobfuscatedEnvironment();
 
     protected static ClassWriter createClassWriter(@SuppressWarnings("SameParameterValue") boolean debug) {
         return new RandomTweakerClassWriter(debug ? 0 : ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);

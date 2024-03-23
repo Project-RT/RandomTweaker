@@ -3,12 +3,13 @@ package ink.ikx.rt.api.mods.tconstruct;
 import com.google.common.base.Preconditions;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
-import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.Main;
+import ink.ikx.rt.impl.internal.config.RTConfig;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 
 /**
  * Created by IntelliJ IDEA.

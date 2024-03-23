@@ -7,10 +7,10 @@ import net.minecraft.world.World;
 
 public interface IMixinTileCocoon {
 
-    int getMapSize();
+	int randomTweaker$getMapSize();
 
-    int getAmount(World world, BlockPos pos, ItemStack stack, EntityPlayer player);
+	int randomTweaker$getAmount(World world, BlockPos pos, ItemStack stack, EntityPlayer player);
 
-    void setAmount(World world, BlockPos pos, ItemStack stack, EntityPlayer player, int amount);
+	void randomTweaker$setAmount(World world, BlockPos pos, ItemStack stack, EntityPlayer player, int amount);
 
 }

@@ -7,76 +7,55 @@ import ink.ikx.rt.api.mods.botania.ICocoon;
 import ink.ikx.rt.api.mods.botania.function.DynamicSpawnTable;
 import ink.ikx.rt.api.mods.botania.function.ICocoonTileEntity;
 import ink.ikx.rt.impl.internal.utils.InternalUtils;
-import java.util.Map;
-import java.util.Objects;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 
-public class MCCocoon extends ICocoon {
+import java.util.Map;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+public class MCCocoon implements ICocoon {
 
     private final String name;
     private final ItemStack giveStack;
     private final Map<EntityEntry, Double> spawnTab;
-    private DynamicSpawnTable dynamicSpawn = null;
+	private final DynamicSpawnTable dynamicSpawn;
 
-    private MCCocoon(String name, ItemStack giveStack, Map<EntityEntry, Double> spawnTab) {
+	private MCCocoon(String name, ItemStack giveStack, Map<EntityEntry, Double> spawnTab, DynamicSpawnTable dynamicSpawn) {
         this.name = name;
         this.spawnTab = spawnTab;
         this.giveStack = giveStack;
+		this.dynamicSpawn = dynamicSpawn;
     }
 
-    public static ICocoon create(@Nonnull String name, @Nonnull ItemStack giveStack, @Nonnull Map<EntityEntry, Double> spawnTab) {
-        if (check(name, giveStack, spawnTab)) {
-            return new MCCocoon(name, giveStack, spawnTab);
-        }
-        return null;
+	public static ICocoon create(@Nonnull String name, ItemStack giveStack, @Nonnull Map<EntityEntry, Double> spawnTab) {
+		return create(name, giveStack, spawnTab, (stack, player, tile) -> name);
     }
 
     public static ICocoon create(@Nonnull String name, @Nonnull ItemStack giveStack, @Nonnull Map<EntityEntry, Double> spawnTab, DynamicSpawnTable dynamicSpawn) {
-        ICocoon cocoon = create(name, giveStack, spawnTab);
-
-        if (Objects.nonNull(cocoon) && Objects.nonNull(dynamicSpawn)) {
-            cocoon.setDynamicSpawnTable(dynamicSpawn);
+	    if (check(name, spawnTab)) {
+		    return new MCCocoon(name, giveStack, spawnTab, dynamicSpawn);
         }
-
-        return cocoon;
+	    return null;
     }
 
-    private static boolean check(String name, ItemStack stack, Map<EntityEntry, Double> spawnTab) {
-        double sumResult = 0.0f;
+	private static boolean check(String name, Map<EntityEntry, Double> spawnTab) {
 
         if (Main.CUSTOM_COCOONS_SPAWN.containsKey(name)) {
-            CraftTweakerAPI.logWarning("The name must be unique!");
-            return false;
-        }
-
-        if (stack.isEmpty()) {
-            CraftTweakerAPI.logError("The stack cannot be empty!");
+	        CraftTweakerAPI.logError("The name must be unique!");
             return false;
         }
 
         for (EntityEntry entity : spawnTab.keySet()) {
-            if (Objects.isNull(entity)) {
+	        if (entity == null) {
                 CraftTweakerAPI.logError("The entity cannot be null!", new IllegalArgumentException());
                 return false;
             }
-
-            double probably = spawnTab.get(entity);
-
-            if(probably <= 0.0f) {
-                CraftTweakerAPI.logError("Probably less than 0!", new IllegalArgumentException());
-                return false;
-            }
-
-            sumResult += probably;
-        }
-
-        if (sumResult > 1.0f) {
-            CraftTweakerAPI.logError("Probably over 1!", new IllegalArgumentException());
-            return false;
+	        if (spawnTab.get(entity) <= 0.0f) {
+		        CraftTweakerAPI.logError("Probability less than 0!", new IllegalArgumentException());
+		        return false;
+	        }
         }
 
         return true;
@@ -97,13 +76,8 @@ public class MCCocoon extends ICocoon {
     }
 
     @Override
-    public double getProbablyByEntity(EntityEntry entity) {
+    public double getProbabilityByEntity(EntityEntry entity) {
         return spawnTab.get(entity);
-    }
-
-    @Override
-    public void setDynamicSpawnTable(DynamicSpawnTable dynamicSpawn) {
-        this.dynamicSpawn = dynamicSpawn;
     }
 
     public boolean match(ItemStack stack) {
@@ -112,42 +86,16 @@ public class MCCocoon extends ICocoon {
 
     @Override
     public String getDynamicResult(ItemStack stack, EntityPlayer player, ICocoonTileEntity tile) {
-        return Objects.nonNull(this.dynamicSpawn) ? this.dynamicSpawn.call(
+	    return this.dynamicSpawn.call(
             CraftTweakerMC.getIItemStack(stack),
             CraftTweakerMC.getIPlayer(player),
             tile
-        ) : this.name;
+	    );
     }
 
     @Override
     public String getName() {
         return this.name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        ICocoon that = (ICocoon) o;
-        boolean areTheSameAsMap = spawnTab.entrySet().stream().allMatch((entry) ->
-            that.getSpawnTab().containsKey(entry.getKey()) && that.getProbablyByEntity(entry.getKey()) == entry.getValue());
-
-        return this.spawnTab.size() == that.getSpawnTab().size() && this.match(that.getStack()) && areTheSameAsMap;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + giveStack.getItem().hashCode();
-        hash = 41 * hash + giveStack.getItemDamage();
-        hash = 41 * hash + (Objects.nonNull(giveStack.getTagCompound()) ? giveStack.getTagCompound().hashCode() : 0);
-
-        return hash;
     }
 
 }

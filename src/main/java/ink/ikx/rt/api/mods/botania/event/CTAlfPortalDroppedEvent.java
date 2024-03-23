@@ -1,6 +1,5 @@
 package ink.ikx.rt.api.mods.botania.event;
 
-import youyihj.zenutils.api.zenscript.SidedZenRegister;
 import crafttweaker.api.entity.IEntityItem;
 import crafttweaker.api.event.IEventCancelable;
 import crafttweaker.api.item.IItemStack;
@@ -8,14 +7,13 @@ import crafttweaker.api.minecraft.CraftTweakerMC;
 import ink.ikx.rt.api.mods.botania.ITileAlfPortal;
 import ink.ikx.rt.impl.internal.utils.InternalUtils;
 import ink.ikx.rt.impl.mods.botania.event.AlfPortalDroppedEvent;
-
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenSetter;
+import youyihj.zenutils.api.zenscript.SidedZenRegister;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -51,9 +49,6 @@ public abstract class CTAlfPortalDroppedEvent implements IEventCancelable {
 
     @ZenMethod
     public void setOutput(IItemStack[] output) {
-        if (Objects.isNull(output)) {
-            return;
-        }
         event.setOutput(Arrays.stream(CraftTweakerMC.getItemStacks(output)).collect(Collectors.toList()));
     }
 

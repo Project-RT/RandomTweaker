@@ -6,6 +6,7 @@ import crafttweaker.api.entity.IEntityEquipmentSlot;
 import crafttweaker.api.entity.attribute.IEntityAttributeModifier;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.util.IEventHandler;
+import ink.ikx.rt.impl.internal.config.RTConfig;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -72,5 +73,7 @@ public class AttributeModificationListeners {
         public String describeInvalid() {
             return "Please change itemAttributeModification config to true";
         }
+
     }
+
 }
