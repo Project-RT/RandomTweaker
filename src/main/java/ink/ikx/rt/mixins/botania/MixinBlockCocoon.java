@@ -43,19 +43,15 @@ public abstract class MixinBlockCocoon {
 
         IMixinTileCocoon mixinCocoon = ((IMixinTileCocoon) cocoon);
 		if (!world.isRemote && !stack.isEmpty()) {
+
 			int amount = mixinCocoon.randomTweaker$getAmount(world, pos, stack, player);
-
-            if (amount >= 20) {
-                cir.setReturnValue(false);
-                return;
-            }
-
 			mixinCocoon.randomTweaker$setAmount(world, pos, stack, player, amount + 1);
 
             if (!creative) {
                 stack.shrink(1);
             }
-        }
+
+		}
         cir.setReturnValue(true);
     }
 

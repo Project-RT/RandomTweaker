@@ -12,6 +12,7 @@ import ink.ikx.rt.impl.mods.botania.cocoon.MCCocoon;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.EntityEntry;
+import stanhebben.zenscript.annotations.NotNull;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenGetter;
@@ -19,7 +20,6 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import youyihj.zenutils.api.zenscript.SidedZenRegister;
 
 import java.util.Map;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 @SidedZenRegister(modDeps = "botania")
@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 public interface ICocoon {
 
     @ZenMethod
-    static ICocoon registerSpawn(@Nonnull String name, IItemStack stack, Map<IEntityDefinition, Double> spawnTab, @Optional DynamicSpawnTable dynamicSpawnTab) {
+    static ICocoon registerSpawn(@NotNull String name, IItemStack stack, Map<IEntityDefinition, Double> spawnTab, @Optional DynamicSpawnTable dynamicSpawnTab) {
         Map<EntityEntry, Double> tab = convertToEntityEntry(spawnTab);
         ICocoon cocoon = MCCocoon.create(name, CraftTweakerMC.getItemStack(stack), tab, dynamicSpawnTab);
 
