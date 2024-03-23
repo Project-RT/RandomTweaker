@@ -126,7 +126,6 @@ dependencies {
     }
 
     implementation files('libs/CraftTweaker2-MC1120-Mod-JEI-1.12-4.1.20.670-deobf.jar')
-    implementation(files('libs/ProbeZS-1.18.1.jar'))
 
     implementation rfg.deobf("curse.maven:Baubles-227083:2518667")
     implementation rfg.deobf("curse.maven:zenutil-401178:4796427-sources-4796428")
