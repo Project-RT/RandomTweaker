@@ -6,7 +6,7 @@ import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.RequiresMcRestart;
 
-@Config(modid = Main.MODID)
+@Config(modid = Main.MODID, name = Main.MODID)
 public class RTConfig {
 
     public static final Botania Botania = new Botania();
