@@ -79,7 +79,7 @@ class ASMItemStackGetAttributeModifiers extends MethodVisitor implements Opcodes
             super.visitVarInsn(ALOAD, 1);
             super.visitVarInsn(ALOAD, 2);
             super.visitMethodInsn(INVOKESTATIC,
-                    "ink/ikx/rt/classTransforms/vanilla/ItemStackHook",
+                    "ink/ikx/rt/classTransforms/vanilla/Hooks",
                     "fireAttributeModificationEvent",
                     "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/inventory/EntityEquipmentSlot;Lcom/google/common/collect/Multimap;)V",
                     false);

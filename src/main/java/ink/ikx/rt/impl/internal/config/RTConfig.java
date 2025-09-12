@@ -42,6 +42,9 @@ public class RTConfig {
         @Comment({"If true, Allow CrT to modify item attribute modifiers. [default: false]"})
         public boolean itemAttributeModification = false;
 
+        @RequiresMcRestart
+        @Comment("Avoid Mending enchantment mending unexpected items. Also works for Durability")
+        public String[] breakableEnchantmentBlacklist = new String[] {};
     }
 
     public static class Thaumcraft {

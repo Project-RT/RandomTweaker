@@ -2,6 +2,7 @@ package ink.ikx.rt.classTransforms;
 
 import ink.ikx.rt.classTransforms.mods.astralsorcery.ASMTileAttunementAltar;
 import ink.ikx.rt.classTransforms.mods.tconstruct.ASMAbstractMaterialSectionTransformer;
+import ink.ikx.rt.classTransforms.vanilla.ASMBreakableEnchantmentType;
 import ink.ikx.rt.classTransforms.vanilla.ASMItemStack;
 import ink.ikx.rt.impl.internal.config.RTConfig;
 import net.minecraft.launchwrapper.IClassTransformer;
@@ -71,6 +72,12 @@ public class RandomTweakerClassTransformer implements IClassTransformer {
             LOGGER.info("transforming class {} ({})", transformedName, name);
             ClassWriter classWriter = createDefaultClassWriter(false);
             ASMItemStack asm = new ASMItemStack(ASM5, classWriter, name);
+            return tryGetAsmResult("vanilla", transformedName, basicClass, asm, classWriter);
+        }
+        if (RTConfig.RandomTweaker.breakableEnchantmentBlacklist.length != 0 && "net.minecraft.enchantment.EnumEnchantmentType$10".equals(transformedName)) {
+            LOGGER.info("transforming class {} ({})", transformedName, name);
+            ClassWriter classWriter = createDefaultClassWriter(false);
+            ASMBreakableEnchantmentType asm = new ASMBreakableEnchantmentType(ASM5, classWriter, name);
             return tryGetAsmResult("vanilla", transformedName, basicClass, asm, classWriter);
         }
         return basicClass;
