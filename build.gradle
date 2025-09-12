@@ -146,7 +146,7 @@ dependencies {
     implementation rfg.deobf("hellfirepvp.astralsorcery:astralsorcery:1.12.2-1.10.25-v167")
     implementation rfg.deobf("vazkii.patchouli:Patchouli:1.0-21.5")
     implementation rfg.deobf("cofh:RedstoneFlux:1.12-2.0.0.1:universal")
-    implementation rfg.deobf("mcjty.theoneprobe:TheOneProbe-1.12:1.12-1.4.28-17")
+    implementation rfg.deobf("curse.maven:theoneprobe-245211:2667280")
     implementation rfg.deobf("zone.rong:mixinbooter:4.2")
     implementation rfg.deobf("com.blamejared:MTLib:3.0.5.15")
     implementation rfg.deobf("mezz.jei:jei_1.12.2:4.16.1.302")
