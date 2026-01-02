@@ -2,6 +2,7 @@ package ink.ikx.rt.api.vanilla;
 
 import com.google.common.collect.Multimap;
 import crafttweaker.api.event.IEventHandle;
+import crafttweaker.api.event.IEventManager;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.util.EventList;
 import crafttweaker.util.IEventHandler;
@@ -23,7 +24,7 @@ public class CTEventHandler {
     public static final EventList<IItemAttributeModificationEvent> elAttributeModification = new EventList<>();
 
     @ZenMethod
-    public static IEventHandle onItemAttributeModificationEvent(IEventHandler<IItemAttributeModificationEvent> handler) {
+    public static IEventHandle onItemAttributeModificationEvent(IEventManager manager, IEventHandler<IItemAttributeModificationEvent> handler) {
         Holder.used = true;
         return elAttributeModification.add(handler);
     }

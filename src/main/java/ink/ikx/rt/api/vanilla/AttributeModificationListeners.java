@@ -58,7 +58,7 @@ public class AttributeModificationListeners {
 
         @Override
         public void apply() {
-            CTEventHandler.onItemAttributeModificationEvent(handler);
+            CTEventHandler.onItemAttributeModificationEvent(CraftTweakerAPI.events, handler);
         }
 
         @Override
