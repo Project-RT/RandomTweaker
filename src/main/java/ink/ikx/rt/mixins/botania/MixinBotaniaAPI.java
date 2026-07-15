@@ -1,5 +1,6 @@
 package ink.ikx.rt.mixins.botania;
 
+import com.google.common.collect.Sets;
 import ink.ikx.rt.Main;
 import ink.ikx.rt.impl.mods.contenttweaker.subtile.MCSubTileEntityFunctionalContent;
 import ink.ikx.rt.impl.mods.contenttweaker.subtile.MCSubTileEntityGeneratingContent;
@@ -15,6 +16,7 @@ import vazkii.botania.api.subtile.signature.SubTileSignature;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 @Pseudo
 @Mixin(value = BotaniaAPI.class, remap = false)
@@ -41,5 +43,11 @@ public abstract class MixinBotaniaAPI {
             }
         }
     }
+
+    @Inject(method = "getAllSubTiles", at = @At(value = "RETURN"), cancellable = true)
+    private static void injectGetAllSubTiles(CallbackInfoReturnable<Set<String>> cir) {
+        cir.setReturnValue(Sets.union(cir.getReturnValue(), Main.SUB_TILE_GENERATING_MAP.keySet()));
+    }
+
 
 }
